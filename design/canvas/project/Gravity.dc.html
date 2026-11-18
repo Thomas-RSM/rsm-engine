@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RSM Gravity — hero field</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div ref="{{setRoot}}" onMouseMove="{{onMove}}" onMouseLeave="{{onLeave}}" onClick="{{onClick}}" style="position: relative; width: 100%; height: 100%; min-height: 960px; overflow: hidden; background: radial-gradient(90% 70% at 50% {{cyPct}}%, #16224A 0%, #0E1634 45%, #10172D 100%); font-family: Inter, system-ui, sans-serif;">
+  <canvas aria-hidden="true" ref="{{setBack}}" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 1;"></canvas>
+  <div aria-hidden="true" style="position: absolute; left: 50%; top: {{cyPct}}%; width: 212px; height: 212px; margin: -106px 0 0 -106px; z-index: 2; border-radius: 50%; padding: 13px; box-sizing: border-box; background: conic-gradient(from 210deg, #7A5200, #F2C55C, #FFF0C2, #C98E00, #6E4A00, #E8B443, #FFF5D6, #B57B00, #7A5200); box-shadow: 0 0 0 1px rgba(255,236,190,0.5), 0 0 60px rgba(248,177,15,0.35), 0 0 160px rgba(72,99,181,0.6), 0 30px 80px rgba(0,0,0,0.6);">
+    <div style="width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle at 36% 30%, #34488F 0%, #18245A 38%, #0B1230 72%, #050816 100%); box-shadow: inset 0 0 0 1px rgba(0,0,0,0.6), inset 0 10px 30px rgba(255,255,255,0.08), inset 0 -18px 40px rgba(0,0,0,0.55); display: flex; align-items: center; justify-content: center;">
+      <img src="/_blob/df8bb70e2a1d62ada3ebb847412f9dfb" alt="" style="width: 126px; height: auto; transform: translate(3px, 2px); filter: drop-shadow(0 4px 14px rgba(0,0,0,0.5));">
+    </div>
+  </div>
+  <canvas aria-hidden="true" ref="{{setFront}}" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none;"></canvas>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"centerY":{"editor":"range","default":64,"min":45,"max":85,"unit":"%","section":"Layout"},"$preview":{"width":1440,"height":1080}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    // four bands of meaning: gold wisdom, gold into blue, electric blue technology, teal innovation
+    this.bands = [
+      { u: 0.16, c: [248, 190, 80], al: 0.9 },
+      { u: 0.4, c: [190, 170, 150], al: 0.75 },
+      { u: 0.66, c: [96, 128, 230], al: 0.75 },
+      { u: 0.92, c: [76, 192, 168], al: 0.6 }
+    ];
+    this.engines = [
+      { name: 'Google', ai: false, b: 0, ph: 0.4, size: 5.5, line: 'Page one for the searches that bring buyers' },
+      { name: 'ChatGPT', ai: true, b: 0, ph: 3.5, size: 5.5, line: 'The business ChatGPT recommends' },
+      { name: 'AI Overviews', ai: true, b: 1, ph: 1.6, size: 5, line: 'The source Google’s AI answer quotes' },
+      { name: 'Gemini', ai: true, b: 1, ph: 4.8, size: 4.8, line: 'Named when people ask Gemini' },
+      { name: 'Google Maps', ai: false, b: 2, ph: 0.9, size: 4.6, line: 'At the top of the map in your city' },
+      { name: 'Perplexity', ai: true, b: 2, ph: 4.1, size: 4.4, line: 'Cited as a source in Perplexity' },
+      { name: 'AI Mode', ai: true, b: 3, ph: 2.4, size: 4.2, line: 'Chosen inside Google’s AI Mode' },
+      { name: 'Claude', ai: true, b: 3, ph: 5.6, size: 4, line: 'Named in Claude’s answers' }
+    ];
+    this.bezel = 'UNIFIED SEARCH VISIBILITY · AI SEARCH VISIBILITY · AIO · AEO · GEO · AI SEO · ';
+    this.m = { x: -9999, y: -9999, tx: 0, ty: 0, sx: 0, sy: 0 };
+    this.waves = []; this.sel = 0; this.lastSel = 0; this.fire = null; this.lastFire = 0; this.flash = 0; this.lastChant = -1;
+  }
+  componentDidMount() {
+    this.bokeh = [];
+    for (let i = 0; i < 22; i++) this.bokeh.push({ x: Math.random(), y: Math.random(), r: 10 + Math.random() * 34, a: 0.03 + Math.random() * 0.05, gold: Math.random() < 0.4, vx: (Math.random() - 0.5) * 0.004, ph: Math.random() * 6.28 });
+    this.stars = [];
+    for (let i = 0; i < 90; i++) this.stars.push({ x: Math.random(), y: Math.random() * 0.85, r: Math.random() * 1.1 + 0.3, tw: Math.random() * 6.28 });
+    this.sprites = {};
+    [['w', '255,255,255'], ['g', '255,214,140'], ['b', '150,175,255'], ['t', '130,230,205']].forEach((s) => {
+      const c = document.createElement('canvas'); c.width = c.height = 96;
+      const x = c.getContext('2d'), gr = x.createRadialGradient(48, 48, 0, 48, 48, 48);
+      gr.addColorStop(0, 'rgba(' + s[1] + ',1)'); gr.addColorStop(0.12, 'rgba(' + s[1] + ',0.8)'); gr.addColorStop(0.35, 'rgba(' + s[1] + ',0.22)'); gr.addColorStop(1, 'rgba(' + s[1] + ',0)');
+      x.fillStyle = gr; x.fillRect(0, 0, 96, 96); this.sprites[s[0]] = c;
+    });
+    this.resize = () => {
+      if (!this.root || !this.back || !this.front) return;
+      const rc = this.root.getBoundingClientRect();
+      this.dpr = Math.min(2, window.devicePixelRatio || 1);
+      this.W = rc.width; this.H = rc.height;
+      for (const c of [this.back, this.front]) { c.width = Math.round(this.W * this.dpr); c.height = Math.round(this.H * this.dpr); }
+    };
+    this.resize();
+    if (window.ResizeObserver && this.root) { this.ro = new ResizeObserver(() => this.resize()); this.ro.observe(this.root); }
+    this.start = performance.now();
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const loop = (now) => { const t = (now - this.start) / 1000; this.frame(reduce ? 4 : t, reduce ? 0 : 1); if (!reduce) this.raf = requestAnimationFrame(loop); };
+    this.raf = requestAnimationFrame(loop);
+  }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); if (this.ro) this.ro.disconnect(); }
+  frame(t, live) {
+    const B = this.back && this.back.getContext('2d'), F = this.front && this.front.getContext('2d');
+    if (!B || !F || !this.W) return;
+    const W = this.W, H = this.H, dpr = this.dpr, m = this.m;
+    m.sx += (m.tx - m.sx) * 0.035; m.sy += (m.ty - m.sy) * 0.035;
+    const cx = W / 2, cy = H * ((this.props.centerY ?? 64) / 100);
+    const tilt = -0.1 + m.sx * 0.05, flat = 0.21 + m.sy * 0.04, ct = Math.cos(tilt), st = Math.sin(tilt);
+    const R0 = 170, R1 = Math.max(460, Math.min(W * 0.66, 980));
+    const pt = (r, a) => { const x = r * Math.cos(a), y = r * flat * Math.sin(a); return [cx + x * ct - y * st, cy + x * st + y * ct]; };
+    // the Om: one deep chant every 7 seconds
+    const OM = 7, ot = t % OM, cyc = Math.floor(t / OM);
+    const om = ot < 2.2 ? 0.2 * ot / 2.2 : ot < 5.6 ? 0.2 + 0.8 * Math.sin(Math.PI * Math.min(1, (ot - 2.2) / 0.6) / 2) : 1 - (ot - 5.6) / 1.4;
+    if (live && ot > 2.2 && this.lastChant !== cyc) { this.lastChant = cyc; this.waves.push({ t0: t, A: 30 }); this.flash = 1; }
+    this.waves = this.waves.filter((w) => t - w.t0 < 4.2);
+    const swell = (r) => { let d = 0, k = 0; for (const w of this.waves) { const age = t - w.t0, wr = 110 + age * 300, dd = r - wr, kk = Math.exp(-(dd * dd) / (2 * 60 * 60)) * Math.pow(1 - age / 4.2, 1.3); d += w.A * kk; k += kk; } return [d, k]; };
+    for (const C of [B, F]) { C.setTransform(dpr, 0, 0, dpr, 0, 0); C.clearRect(0, 0, W, H); C.filter = 'none'; }
+    // stars and bokeh: depth
+    for (const s of this.stars) { B.fillStyle = 'rgba(225,232,255,' + (0.25 + 0.45 * (0.5 + 0.5 * Math.sin(t * 0.8 + s.tw))).toFixed(3) + ')'; B.fillRect(s.x * W - m.sx * 6, s.y * H - m.sy * 6, s.r, s.r); }
+    B.globalCompositeOperation = 'lighter';
+    for (const b of this.bokeh) {
+      b.x += b.vx * 0.016 * live; if (b.x < -0.05) b.x = 1.05; if (b.x > 1.05) b.x = -0.05;
+      const X = b.x * W - m.sx * 22, Y = b.y * H - m.sy * 14, a = b.a * (0.7 + 0.3 * Math.sin(t * 0.5 + b.ph));
+      const g = B.createRadialGradient(X, Y, 0, X, Y, b.r);
+      const c = b.gold ? '248,200,120' : '140,165,240';
+      g.addColorStop(0, 'rgba(' + c + ',' + a.toFixed(3) + ')'); g.addColorStop(0.7, 'rgba(' + c + ',' + (a * 0.8).toFixed(3) + ')'); g.addColorStop(1, 'rgba(' + c + ',0)');
+      B.fillStyle = g; B.beginPath(); B.arc(X, Y, b.r, 0, 6.283); B.fill();
+    }
+    // corona: deep gold heart, electric blue aura
+    const cg = B.createRadialGradient(cx, cy, 90, cx, cy, 520);
+    cg.addColorStop(0, 'rgba(248,190,70,' + (0.2 + 0.25 * om + 0.15 * this.flash).toFixed(3) + ')');
+    cg.addColorStop(0.3, 'rgba(72,99,181,' + (0.2 + 0.08 * om).toFixed(3) + ')');
+    cg.addColorStop(1, 'rgba(72,99,181,0)');
+    B.fillStyle = cg; B.beginPath(); B.arc(cx, cy, 520, 0, 6.283); B.fill();
+    // a single anamorphic flare through the core
+    const lf = B.createLinearGradient(cx - W * 0.42, 0, cx + W * 0.42, 0);
+    lf.addColorStop(0, 'rgba(150,175,255,0)'); lf.addColorStop(0.5, 'rgba(215,225,255,' + (0.35 + 0.35 * om).toFixed(3) + ')'); lf.addColorStop(1, 'rgba(150,175,255,0)');
+    B.fillStyle = lf; B.fillRect(cx - W * 0.42, cy - 1, W * 0.84, 2);
+    // the Om wave: a bold soft ring of gold light leaving the core
+    for (const w of this.waves) {
+      const age = t - w.t0, p = age / 4.2, R = 110 + age * 300;
+      if (R > 620) continue;
+      const a = 0.3 * Math.pow(1 - p, 2.2) * Math.min(1, (620 - R) / 200);
+      const rg = B.createRadialGradient(cx, cy, Math.max(0, R - 70), cx, cy, R + 10);
+      rg.addColorStop(0, 'rgba(255,205,110,0)'); rg.addColorStop(0.85, 'rgba(255,205,110,' + a.toFixed(3) + ')'); rg.addColorStop(1, 'rgba(255,205,110,0)');
+      B.fillStyle = rg; B.beginPath(); B.ellipse(cx, cy, R + 10, (R + 10) * 0.92, 0, 0, 6.283); B.fill();
+    }
+    // the faint yantra behind the bindu
+    B.save(); B.translate(cx, cy); B.rotate(t * 0.015); B.globalCompositeOperation = 'lighter';
+    B.strokeStyle = 'rgba(248,177,15,' + (0.06 + 0.06 * om).toFixed(3) + ')'; B.lineWidth = 0.8;
+    const tri = (s, up, off) => { B.beginPath(); for (let k = 0; k < 3; k++) { const an = (up ? -Math.PI / 2 : Math.PI / 2) + k * 2.094; const x = Math.cos(an) * s, y = Math.sin(an) * s + off; if (k) B.lineTo(x, y); else B.moveTo(x, y); } B.closePath(); B.stroke(); };
+    [[220, 1, 12], [182, 1, 4], [146, 1, -4]].forEach((v) => tri(v[0], true, v[2]));
+    [[212, 0, -10], [174, 0, -3], [138, 0, 4], [108, 0, 2]].forEach((v) => tri(v[0], false, v[2]));
+    B.restore();
+    // bold bands of light, blurred where they pass behind the core
+    const drawBand = (C, band, half, sw) => {
+      const r = R0 + band.u * (R1 - R0) + sw[0], c = band.c, k = sw[1];
+      const layers = half ? [[16, 0.05], [6, 0.13], [1.8, 0.8]] : [[16, 0.035], [6, 0.08], [1.4, 0.45]];
+      layers.forEach((L) => {
+        const lg = C.createLinearGradient(cx - r, 0, cx + r, 0);
+        const al = Math.min(1, L[1] * band.al * (1 + k * 1.6 + om * 0.25));
+        lg.addColorStop(0, 'rgba(' + c + ',0)'); lg.addColorStop(0.18, 'rgba(' + c + ',' + (al * 0.6).toFixed(3) + ')'); lg.addColorStop(0.5, 'rgba(' + c + ',' + al.toFixed(3) + ')'); lg.addColorStop(0.82, 'rgba(' + c + ',' + (al * 0.6).toFixed(3) + ')'); lg.addColorStop(1, 'rgba(' + c + ',0)');
+        C.strokeStyle = lg; C.lineWidth = L[0] * (1 + k * 0.6); C.lineCap = 'round';
+        C.beginPath(); C.ellipse(cx, cy, r, r * flat, tilt, half ? 0.02 : Math.PI + 0.02, half ? Math.PI - 0.02 : 2 * Math.PI - 0.02); C.stroke();
+      });
+      // a slow sheen of light travelling each band
+      const sa = (t * (0.09 - band.u * 0.04) + band.u * 9) % 6.283, sp = pt(r, sa);
+      if ((Math.sin(sa) > 0) === !!half) { C.globalAlpha = (half ? 0.7 : 0.35); const s = half ? 70 : 50; C.drawImage(this.sprites[band.u < 0.3 ? 'g' : band.u > 0.8 ? 't' : 'b'], sp[0] - s / 2, sp[1] - s / 2, s, s); C.globalAlpha = 1; }
+    };
+    B.globalCompositeOperation = 'lighter'; F.globalCompositeOperation = 'lighter';
+    B.filter = 'blur(1.4px)';
+    this.bands.forEach((b) => drawBand(B, b, 0, swell(R0 + b.u * (R1 - R0))));
+    B.filter = 'none';
+    this.bands.forEach((b) => drawBand(F, b, 1, swell(R0 + b.u * (R1 - R0))));
+    // let the bands fall away across the face of the core
+    F.globalCompositeOperation = 'destination-out';
+    const mk = F.createRadialGradient(cx, cy, 0, cx, cy, 118);
+    mk.addColorStop(0, 'rgba(0,0,0,1)'); mk.addColorStop(0.86, 'rgba(0,0,0,1)'); mk.addColorStop(1, 'rgba(0,0,0,0)');
+    F.fillStyle = mk; F.beginPath(); F.arc(cx, cy, 118, 0, 6.283); F.fill();
+    // planets: jewels of light on the bands
+    if (live && t - this.lastSel > 4 && !this.hover) { this.sel = (this.sel + 1) % this.engines.length; this.lastSel = t; }
+    let near = -1, nd = 46;
+    const P = this.engines.map((e, i) => {
+      const band = this.bands[e.b], r = R0 + band.u * (R1 - R0) + swell(R0 + band.u * (R1 - R0))[0];
+      const a = e.ph + t * 0.05 * Math.pow(300 / r, 1.4) * live, p = pt(r, a);
+      const d = Math.hypot(m.x - p[0], m.y - p[1]); if (d < nd) { nd = d; near = i; }
+      return { X: p[0], Y: p[1], front: Math.sin(a) > 0, depth: 0.5 + 0.5 * Math.sin(a), i: i };
+    });
+    if (near >= 0) { this.sel = near; this.hover = true; this.lastSel = t; } else this.hover = false;
+    // one signal of relevance at a time, travelling home
+    if (live && !this.fire && t - this.lastFire > 2.2) {
+      const pool = P.filter((q) => q.Y > cy - 120 && Math.hypot(q.X - cx, q.Y - cy) > 200 && q.X > 40 && q.X < W - 40);
+      if (pool.length) { this.fire = { i: pool[Math.floor(Math.random() * pool.length)].i, t0: t }; }
+    }
+    if (this.fire) {
+      const q = P[this.fire.i], C = q.front ? F : B, age = (t - this.fire.t0) / 1.6;
+      if (age >= 1) { this.fire = null; this.lastFire = t; this.flash = Math.max(this.flash, 0.7); }
+      else {
+        const dx = q.X - cx, dy = q.Y - cy, len = Math.hypot(dx, dy), ux = dx / len, uy = dy / len;
+        const ax = cx + ux * 108, ay = cy + uy * 108, bow = len * 0.07, mx = (ax + q.X) / 2 - uy * bow, my = (ay + q.Y) / 2 + ux * bow;
+        const at = (s) => [(1 - s) * (1 - s) * q.X + 2 * (1 - s) * s * mx + s * s * ax, (1 - s) * (1 - s) * q.Y + 2 * (1 - s) * s * my + s * s * ay];
+        const head = Math.min(1, age * 1.25), tail = Math.max(0, head - 0.45), fade = age > 0.8 ? (1 - age) / 0.2 : 1;
+        C.globalCompositeOperation = 'lighter'; C.lineCap = 'round';
+        for (let k = 0; k < 30; k++) {
+          const s0 = tail + (head - tail) * k / 30, s1 = tail + (head - tail) * (k + 1) / 30, p0 = at(s0), p1 = at(s1), w = (k + 1) / 30;
+          C.strokeStyle = 'rgba(248,190,80,' + (0.14 * w * fade).toFixed(3) + ')'; C.lineWidth = 9 * w; C.beginPath(); C.moveTo(p0[0], p0[1]); C.lineTo(p1[0], p1[1]); C.stroke();
+          C.strokeStyle = 'rgba(255,240,210,' + (0.9 * w * fade).toFixed(3) + ')'; C.lineWidth = 1.4 * w + 0.4; C.beginPath(); C.moveTo(p0[0], p0[1]); C.lineTo(p1[0], p1[1]); C.stroke();
+        }
+        const hp = at(head); C.globalAlpha = fade; C.drawImage(this.sprites.g, hp[0] - 18, hp[1] - 18, 36, 36); C.globalAlpha = 1;
+      }
+    }
+    P.slice().sort((a, b) => a.depth - b.depth).forEach((q) => {
+      const e = this.engines[q.i], C = q.front ? F : B, on = q.i === this.sel, quiet = q.Y < cy - 150 ? 0.4 : 1;
+      const r = e.size * (0.75 + 0.45 * q.depth) * (on ? 1.2 : 1);
+      C.globalCompositeOperation = 'lighter';
+      if (!q.front) C.filter = 'blur(1.2px)';
+      C.globalAlpha = quiet * (0.55 + 0.45 * q.depth);
+      const spr = on ? 'g' : (e.ai ? 't' : 'b'), s = r * 9;
+      C.drawImage(this.sprites[spr], q.X - s / 2, q.Y - s / 2, s, s);
+      C.drawImage(this.sprites.w, q.X - r * 1.6, q.Y - r * 1.6, r * 3.2, r * 3.2);
+      C.globalAlpha = 1; C.filter = 'none';
+      if (quiet < 1 || !q.front || q.X < 60 || q.X > W - 60 || Math.hypot(q.X - cx, q.Y - cy) < 190) return;
+      C.globalCompositeOperation = 'source-over';
+      C.textAlign = 'center'; C.textBaseline = 'bottom';
+      C.font = (on ? '600' : '500') + ' 11px Inter, sans-serif';
+      C.fillStyle = on ? 'rgba(255,226,160,1)' : 'rgba(220,228,250,' + (0.55 + 0.35 * q.depth).toFixed(3) + ')';
+      C.fillText(e.name.toUpperCase().split('').join(String.fromCharCode(8202, 8202)), q.X, q.Y - r * 2.2 - 8);
+      if (on && W >= 700 && Math.abs(q.X - cx) > 240) { C.font = '400 13px Inter, sans-serif'; C.fillStyle = 'rgba(205,215,240,0.85)'; C.fillText(e.line, q.X, q.Y - r * 2.2 - 26); }
+    });
+    // the engraved bezel and its slow gold glint
+    F.globalCompositeOperation = 'source-over';
+    F.save(); F.translate(cx, cy); F.rotate(-t * 0.05);
+    F.font = '600 8.5px Inter, sans-serif'; F.textBaseline = 'middle'; F.fillStyle = 'rgba(60,38,0,0.78)';
+    const ch = this.bezel.split(''), stp = 6.283 / ch.length;
+    ch.forEach((c, i) => { F.save(); F.rotate(i * stp); F.translate(0, -99.5); F.fillText(c, -2.5, 0); F.restore(); });
+    F.restore();
+    F.globalCompositeOperation = 'lighter';
+    const ga = t * 0.5;
+    const gg = F.createRadialGradient(cx + Math.cos(ga) * 100, cy + Math.sin(ga) * 100, 0, cx + Math.cos(ga) * 100, cy + Math.sin(ga) * 100, 46);
+    gg.addColorStop(0, 'rgba(255,248,225,0.55)'); gg.addColorStop(1, 'rgba(255,248,225,0)');
+    F.fillStyle = gg; F.beginPath(); F.arc(cx, cy, 106, 0, 6.283); F.arc(cx, cy, 93, 6.283, 0, true); F.fill('evenodd');
+    this.flash *= 0.95;
+    if (this.flash > 0.03 || om > 0.3) {
+      const fa = Math.max(this.flash, (om - 0.3) * 0.6);
+      F.strokeStyle = 'rgba(255,220,150,' + (0.5 * fa).toFixed(3) + ')'; F.lineWidth = 1.5 + 3 * fa;
+      F.beginPath(); F.arc(cx, cy, 108 + 4 * fa, 0, 6.283); F.stroke();
+    }
+    B.globalCompositeOperation = 'source-over'; F.globalCompositeOperation = 'source-over';
+  }
+  renderVals() {
+    return {
+      cyPct: this.props.centerY ?? 64,
+      setRoot: (el) => { this.root = el; },
+      setBack: (el) => { this.back = el; },
+      setFront: (el) => { this.front = el; },
+      onMove: (ev) => {
+        if (!this.root) return;
+        const r = this.root.getBoundingClientRect();
+        this.m.x = ev.clientX - r.left; this.m.y = ev.clientY - r.top;
+        this.m.tx = (this.m.x / r.width - 0.5) * 2; this.m.ty = (this.m.y / r.height - 0.5) * 2;
+      },
+      onLeave: () => { this.m.x = -9999; this.m.y = -9999; this.m.tx = 0; this.m.ty = 0; },
+      onClick: () => { const t = (performance.now() - this.start) / 1000; this.waves.push({ t0: t, A: 40 }); this.flash = 1; }
+    };
+  }
+}
+</script>
+</body>
+</html>

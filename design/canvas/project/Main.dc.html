@@ -1,0 +1,858 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Relevant Search Media — Home v4</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#F3F8FB}
+a{color:#3A54A4}a:hover{color:#22389A}
+@property --ang{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes ang{to{--ang:360deg}}
+@keyframes orbit{to{offset-distance:100%}}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(80px,40px) scale(1.15)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-60px,-50px) scale(1.1)}}
+@keyframes twinkle{0%,100%{opacity:.15}50%{opacity:1}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(76,192,168,.55)}70%{box-shadow:0 0 0 14px rgba(76,192,168,0)}}
+@keyframes corepulse{0%,100%{filter:drop-shadow(0 0 18px rgba(72,99,181,.55))}50%{filter:drop-shadow(0 0 40px rgba(76,192,168,.45))}}
+@keyframes caret{50%{opacity:0}}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@keyframes logscroll{to{transform:translateY(-50%)}}
+@keyframes beam{0%{background-position:-40% 0}100%{background-position:140% 0}}
+@keyframes ring{0%{transform:scale(.6);opacity:.8}100%{transform:scale(2.2);opacity:0}}
+.orbit-chip{position:absolute;top:0;left:0;offset-rotate:0deg;animation:orbit linear infinite}
+.o-outer{offset-path:path('M 15 280 A 265 120 0 1 1 545 280 A 265 120 0 1 1 15 280');animation-duration:38s}
+.o-mid{offset-path:path('M 75 280 A 205 82 0 1 1 485 280 A 205 82 0 1 1 75 280');animation-duration:26s;animation-direction:reverse}
+.chip-in{rotate:14deg;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;transform:translate(-50%,-50%)}
+.core{animation:corepulse 5s ease-in-out infinite}
+.aur1{animation:drift1 18s ease-in-out infinite}
+.aur2{animation:drift2 22s ease-in-out infinite}
+.tw{animation:twinkle 3.2s ease-in-out infinite}
+.caret{animation:caret 1s steps(1) infinite}
+.rise{animation:rise .5s ease-out both}
+.marq{animation:marquee 40s linear infinite}
+.logs{animation:logscroll 24s linear infinite}
+.beam{background:linear-gradient(90deg,transparent 0%,#4863B5 40%,#4CC0A8 60%,transparent 100%) no-repeat;background-size:40% 100%;animation:beam 3.6s ease-in-out infinite}
+.dot-pulse{animation:pulse 2.2s ease-out infinite}
+.seal{animation:spin 40s linear infinite}
+.ringfx{animation:ring 3s ease-out infinite}
+.gborder{border:1.5px solid transparent !important;background:linear-gradient(#1E2849,#1E2849) padding-box,conic-gradient(from var(--ang),#4863B5,#A3B5F2,#4CC0A8,#4863B5) border-box !important;animation:ang 7s linear infinite}
+.lift{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.lift:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(17,26,51,.12);border-color:#B8C6EC !important}
+.lift-d{transition:transform .25s ease,border-color .25s ease,background .25s ease}
+.lift-d:hover{transform:translateY(-4px);border-color:rgba(143,166,240,.5) !important;background:#25315A !important}
+.navlink{color:#C9D3EE;text-decoration:none;padding:11px 13px;border-radius:11px;display:inline-flex;align-items:center;gap:6px;font-size:14.5px;font-weight:500;letter-spacing:.005em;white-space:nowrap;transition:color .2s,background .2s}
+.navlink:hover,.dd:hover>.navlink,.dd:focus-within>.navlink{color:#FFFFFF;background:rgba(163,181,242,.12)}
+.chev{transition:transform .25s ease;opacity:.7}
+.dd:hover .chev,.dd:focus-within .chev{transform:rotate(180deg);opacity:1}
+.mwrap{position:absolute;left:50%;top:calc(100% - 22px);transform:translateX(-50%);padding-top:34px;z-index:60;visibility:hidden;opacity:0;pointer-events:none;transition:opacity .18s ease,visibility .18s}
+.dd:hover .mwrap,.dd:focus-within .mwrap,.mwrap.pinned{visibility:visible;opacity:1;pointer-events:auto}
+.mpanel{box-sizing:border-box;max-width:calc(100vw - 40px);padding:18px;border-radius:20px;background:linear-gradient(180deg,#18214A 0%,#111936 100%);border:1px solid rgba(163,181,242,.2);box-shadow:0 40px 80px rgba(4,8,22,.6),inset 0 1px 0 rgba(255,255,255,.07);transform:translateY(-6px);transition:transform .22s ease}
+.dd:hover .mpanel,.dd:focus-within .mpanel,.mwrap.pinned .mpanel{transform:none}
+.mhead{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:6px 10px 8px}
+.mk{color:#FFFFFF;text-decoration:none;border-radius:12px;padding:10px;display:flex;gap:12px;align-items:flex-start;transition:background .18s}
+.mk:hover{background:rgba(163,181,242,.11);color:#FFFFFF}
+.mi{color:#B9C4E0;text-decoration:none;border-radius:9px;padding:7px 10px;display:flex;gap:9px;align-items:center;font-size:14.5px;line-height:1.3;transition:background .18s,color .18s}
+.mi:hover{background:rgba(163,181,242,.11);color:#FFFFFF}
+.mcard{text-decoration:none;border-radius:14px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;background:linear-gradient(160deg,rgba(72,99,181,.38),rgba(16,23,45,.6));border:1px solid rgba(163,181,242,.2)}
+.mcard:hover{border-color:rgba(248,177,15,.6)}
+.btn-y{transition:transform .2s ease,box-shadow .2s ease}
+.btn-y:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(247,179,20,.35)}
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+details[open] .pl{transform:rotate(45deg)}
+@supports (animation-timeline: view()){
+  .rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 100%}
+}
+.menu-btn{display:none}
+.svc{position:relative;overflow:hidden}
+.svc::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--hue),transparent);opacity:.55;transition:opacity .25s}
+.svc:hover::before{opacity:1}
+.ind{text-decoration:none;color:#DDE4F7;border:1px solid rgba(163,181,242,.22);background:rgba(16,23,45,.5);border-radius:99px;padding:8px 15px;font-size:14px;font-weight:500;transition:border-color .2s,color .2s,background .2s}
+.ind:hover{color:#161E38;background:#F8B10F;border-color:#F8B10F}
+.cmp-rsm{background:#EEF2FD}
+@media (max-width:980px){.hero-grid{grid-template-columns:minmax(0,1fr) !important;row-gap:28px !important}}
+@media (max-width:1279px){.nav-links{display:none !important}.menu-btn{display:inline-flex}.hide-md{display:none !important}}
+@media (max-width:640px){.lock-name{font-size:16px !important}.lock-tag{font-size:8.5px !important;letter-spacing:.14em !important}.nav-book{padding:9px 13px !important}.logrow{grid-template-columns:46px minmax(0,1fr) !important;font-size:12px}.logrow>span:last-child{display:none}.eyebrow{letter-spacing:.12em !important;font-size:10.5px !important}.hide-sm{display:none !important}}
+@media (max-width:440px){.nav-book{display:none !important}}
+@media (min-width:1280px){.mdrawer{display:none !important}}
+@media (prefers-reduced-motion: reduce){*{animation:none !important}}
+</style>
+</helmet>
+
+<div style="font-family: Inter, system-ui, sans-serif; color: #161E38; background: #F3F8FB; font-size: 17px; line-height: 1.6; overflow: hidden;">
+
+<!-- ================= HERO (Midnight Navy) ================= -->
+<div style="position: relative; background: #10172D; color: #FFFFFF;">
+  <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; overflow: hidden;">
+    <div class="aur1" style="position: absolute; width: 760px; height: 760px; left: -220px; top: -280px; border-radius: 50%; background: radial-gradient(circle, rgba(72,99,181,0.45) 0%, rgba(72,99,181,0) 65%);"></div>
+    <div class="aur2" style="position: absolute; width: 640px; height: 640px; right: -160px; top: 140px; border-radius: 50%; background: radial-gradient(circle, rgba(72,99,181,0.22) 0%, rgba(72,99,181,0) 65%);"></div>
+    <span class="tw" style="position: absolute; left: 8%; top: 22%; width: 3px; height: 3px; border-radius: 50%; background: #FFFFFF;"></span>
+    <span class="tw" style="position: absolute; left: 31%; top: 9%; width: 2px; height: 2px; border-radius: 50%; background: #FFFFFF; animation-delay: 1.1s;"></span>
+    <span class="tw" style="position: absolute; left: 47%; top: 71%; width: 2px; height: 2px; border-radius: 50%; background: #FFFFFF; animation-delay: .5s;"></span>
+    <span class="tw" style="position: absolute; left: 63%; top: 14%; width: 3px; height: 3px; border-radius: 50%; background: #F8B10F; animation-delay: 2s;"></span>
+    <span class="tw" style="position: absolute; left: 88%; top: 30%; width: 2px; height: 2px; border-radius: 50%; background: #FFFFFF; animation-delay: 1.6s;"></span>
+    <span class="tw" style="position: absolute; left: 92%; top: 78%; width: 3px; height: 3px; border-radius: 50%; background: #8FA6F0; animation-delay: .8s;"></span>
+    <span class="tw" style="position: absolute; left: 18%; top: 84%; width: 2px; height: 2px; border-radius: 50%; background: #FFFFFF; animation-delay: 2.4s;"></span>
+    <svg style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.05; mix-blend-mode: overlay;">
+      <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"></feTurbulence></filter>
+      <rect width="100%" height="100%" filter="url(#grain)"></rect>
+    </svg>
+  </div>
+
+  <!-- NAV: a floating glass bar with three menus -->
+  <header style="position: relative; z-index: 40; padding: 14px 20px 0;">
+    <div class="navbar" style="position: relative; max-width: 1320px; margin: 0 auto; box-sizing: border-box; padding: 9px 10px 9px 16px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-radius: 20px; background: linear-gradient(180deg, rgba(30,42,86,0.62), rgba(14,20,42,0.72)); border: 1px solid rgba(163,181,242,0.18); box-shadow: 0 14px 34px rgba(4,8,22,0.38), inset 0 1px 0 rgba(255,255,255,0.08); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);">
+      <a href="#top" aria-label="Relevant Search Media home" style="display: flex; align-items: center; gap: 12px; flex-shrink: 0; text-decoration: none; color: #FFFFFF;">
+        <span style="width: 44px; height: 44px; flex-shrink: 0; border-radius: 50%; background: radial-gradient(circle at 42% 34%, #FBF7EC 0%, #F6EFDF 50%, #E3D8BF 100%); box-shadow: 0 0 0 1.5px #E2AE45, 0 0 18px rgba(248,177,15,0.28); display: flex; align-items: center; justify-content: center;"><img src="/_blob/f0ddc11df1deb86f300b7c52eb17b3ff" alt="" style="width: 30px; height: auto; transform: translate(1px, 0);"></span>
+        <span style="display: flex; flex-direction: column; line-height: 1.05;"><span class="lock-name" style="font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 18px; letter-spacing: -0.01em; color: #FFFFFF;">Relevant Search Media</span><span class="lock-tag" style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #A3B5F2; margin-top: 5px;">Unified Search Visibility</span></span>
+      </a>
+
+      <nav aria-label="Main" class="nav-links" style="display: flex; align-items: center; gap: 4px;">
+        <!-- Services -->
+        <div class="dd">
+          <a class="navlink" href="/services/" aria-haspopup="true">Services <svg aria-hidden="true" class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></a>
+          <div class="mwrap {{menuClass}}">
+            <div class="mpanel" style="width: 960px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) 250px; gap: 6px 12px;">
+              <sc-for list="{{serviceGroups}}" as="g" hint-placeholder-count="3">
+                <div style="display: flex; flex-direction: column; gap: 2px;">
+                  <span class="mhead" style="color: {{g.hue}};">{{g.num}} · {{g.title}}</span>
+                  <sc-for list="{{g.items}}" as="s" hint-placeholder-count="3">
+                    <a class="mk" href="{{s.href}}">
+                      <span style="flex: 0 0 auto; width: 38px; height: 38px; border-radius: 11px; border: 1px solid {{g.hueBd}}; background: {{g.hueBg}}; display: flex; align-items: center; justify-content: center; color: #EEF2FD;">
+                        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 40 40" fill="none"><path d="{{s.icon}}" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path><path d="M0 -5L1.3 -1.3L5 0L1.3 1.3L0 5L-1.3 1.3L-5 0L-1.3 -1.3Z" transform="translate({{s.sx}} {{s.sy}})" fill="#F8B10F"></path></svg>
+                      </span>
+                      <span style="display: flex; flex-direction: column; min-width: 0;">
+                        <span style="font-weight: 600; font-size: 15px; color: #FFFFFF;">{{s.name}}</span>
+                        <span style="font-size: 13px; color: #9AA8CB; line-height: 1.4;">{{s.desc}}</span>
+                      </span>
+                    </a>
+                  </sc-for>
+                </div>
+              </sc-for>
+              <a href="#launch" class="mcard">
+                <span class="mhead" style="padding: 0; color: #A3B5F2;">Every plan includes all nine</span>
+                <span style="font-family: 'Inter Tight', sans-serif; font-size: 22px; font-weight: 800; line-height: 1.15; color: #FFFFFF;">One team. One system. Live work by day 5.</span>
+                <span style="font-weight: 600; font-size: 14px; color: #F8B10F;">See your first 5 days →</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Industries -->
+        <div class="dd">
+          <a class="navlink" href="/industries/" aria-haspopup="true">Industries <svg aria-hidden="true" class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></a>
+          <div class="mwrap">
+            <div class="mpanel" style="width: max-content; display: grid; grid-template-columns: repeat(4, max-content) 220px; gap: 6px 22px;">
+              <sc-for list="{{industryGroups}}" as="g" hint-placeholder-count="4">
+                <div style="display: flex; flex-direction: column; gap: 1px;">
+                  <span class="mhead" style="color: {{g.hue}};">{{g.title}}</span>
+                  <sc-for list="{{g.items}}" as="it" hint-placeholder-count="6">
+                    <a class="mi" href="{{it.href}}"><svg aria-hidden="true" width="10" height="10" viewBox="-6 -6 12 12" style="flex-shrink: 0;"><path d="M0 -5L1.3 -1.3L5 0L1.3 1.3L0 5L-1.3 1.3L-5 0L-1.3 -1.3Z" fill="{{g.hue}}"></path></svg><span style="white-space: nowrap;">SEO for <strong style="font-weight: 600; color: #FFFFFF;">{{it.name}}</strong></span></a>
+                  </sc-for>
+                </div>
+              </sc-for>
+              <a href="/industries/" class="mcard">
+                <span class="mhead" style="padding: 0; color: #A3B5F2;">One per trade, per city</span>
+                <span style="font-family: 'Inter Tight', sans-serif; font-size: 20px; font-weight: 800; line-height: 1.2; color: #FFFFFF;">We take one business in each trade in each city.</span>
+                <span style="font-size: 13px; color: #9AA8CB; line-height: 1.45;">Don’t see your trade? We work with most local businesses that live on being found.</span>
+                <span style="font-weight: 600; font-size: 14px; color: #F8B10F;">See all industries →</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- What is AI SEO -->
+        <div class="dd">
+          <a class="navlink" href="/ai-seo/" aria-haspopup="true">What is AI SEO <svg aria-hidden="true" class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></a>
+          <div class="mwrap">
+            <div class="mpanel" style="width: 700px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 12px;">
+              <span class="mhead" style="grid-column: 1 / -1; color: #A3B5F2;">Plain answers, no jargon</span>
+              <sc-for list="{{learn}}" as="l" hint-placeholder-count="8">
+                <a class="mk" href="{{l.href}}">
+                  <span style="flex: 0 0 auto; min-width: 46px; height: 34px; padding: 0 8px; box-sizing: border-box; border-radius: 9px; border: 1px solid rgba(163,181,242,0.28); background: rgba(111,140,240,0.14); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; color: #DDE4F7;">{{l.tag}}</span>
+                  <span style="display: flex; flex-direction: column; min-width: 0;">
+                    <span style="font-weight: 600; font-size: 15px; color: #FFFFFF;">{{l.name}}</span>
+                    <span style="font-size: 13px; color: #9AA8CB; line-height: 1.4;">{{l.desc}}</span>
+                  </span>
+                </a>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+        <a class="navlink" href="#launch">How it works</a>
+        <a class="navlink" href="#plans">Plans</a>
+        <a class="navlink" href="#about">About</a>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 14px; flex-shrink: 0;">
+        <a href="tel:+12026096641" class="hide-md" style="color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; gap: 8px;">
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4CC0A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg>
+          (202) 609-6641
+        </a>
+        <a class="nav-book btn-y" href="https://calendly.com/thomas-relevant-search-media/30min" style="color: #161E38; background: #F8B10F; text-decoration: none; font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 12px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px;">Book a call
+          <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+        <button type="button" class="menu-btn" onClick="{{toggleMenu}}" aria-label="{{menuLabel}}" aria-expanded="{{mOpenStr}}" style="width: 44px; height: 44px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.04); color: #FFFFFF; align-items: center; justify-content: center; cursor: pointer;">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="{{menuIcon}}"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- phone and tablet menu -->
+    <sc-if value="{{mOpen}}" hint-placeholder-val="{{ false }}">
+      <div class="mdrawer" style="max-width: 1320px; margin: 10px auto 0; box-sizing: border-box; padding: 18px; border-radius: 20px; background: #131B36; border: 1px solid rgba(163,181,242,0.18); box-shadow: 0 24px 50px rgba(4,8,22,0.5); display: flex; flex-direction: column; gap: 22px;">
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <span class="mhead" style="padding: 0; color: #A3B5F2;">Services</span>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2px 12px;">
+            <sc-for list="{{serviceGroups}}" as="g" hint-placeholder-count="3"><sc-for list="{{g.items}}" as="s" hint-placeholder-count="3"><a class="mi" href="{{s.href}}" style="font-size: 16px; padding: 10px 8px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: {{g.hue}}; flex-shrink: 0;"></span><span style="color: #FFFFFF; font-weight: 500;">{{s.name}}</span></a></sc-for></sc-for>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <span class="mhead" style="padding: 0; color: #A3B5F2;">Industries</span>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <sc-for list="{{industries}}" as="ind" hint-placeholder-count="22"><a class="ind" href="/industries/" style="padding: 10px 14px;">{{ind}}</a></sc-for>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <span class="mhead" style="padding: 0; color: #A3B5F2;">What is AI SEO</span>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2px 12px;">
+            <sc-for list="{{learn}}" as="l" hint-placeholder-count="8"><a class="mi" href="{{l.href}}" style="font-size: 16px; padding: 10px 8px;"><span style="color: #FFFFFF; font-weight: 500;">{{l.name}}</span></a></sc-for>
+          </div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px 22px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 16px; font-weight: 600;">
+          <a href="#launch" style="color: #FFFFFF; text-decoration: none; padding: 10px 0;">How it works</a>
+          <a href="#plans" style="color: #FFFFFF; text-decoration: none; padding: 10px 0;">Plans</a>
+          <a href="#about" style="color: #FFFFFF; text-decoration: none; padding: 10px 0;">About</a>
+          <a href="tel:+12026096641" style="color: #4CC0A8; text-decoration: none; padding: 10px 0;">(202) 609-6641</a>
+        </div>
+        <a class="btn-y" href="https://calendly.com/thomas-relevant-search-media/30min" style="background: #F8B10F; color: #161E38; text-decoration: none; font-weight: 700; font-size: 16px; padding: 15px; border-radius: 12px; text-align: center;">Book 20 minutes with Thomas</a>
+      </div>
+    </sc-if>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero-origin" style="position: relative; z-index: 1; max-width: 1600px; margin: 0 auto;">
+    <dc-import name="Origin" hint-size="100%,804px"></dc-import>
+  </div>
+  <section id="top" class="hero-grid" style="position: relative; z-index: 2; max-width: 1320px; margin: 0 auto; padding: 8px 28px 88px; box-sizing: border-box; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: end; column-gap: 72px; row-gap: 28px;">
+    <div style="min-width: 0; display: flex; flex-direction: column; gap: 24px;">
+
+      <div style="display: inline-flex; align-self: flex-start; align-items: center; gap: 10px; padding: 7px 14px 7px 8px; border: 1px solid rgba(76,192,168,0.4); border-radius: 99px; background: rgba(76,192,168,0.08); font-size: 13px; color: #BFEDE2;">
+        <span class="dot-pulse" style="width: 8px; height: 8px; border-radius: 50%; background: #4CC0A8; margin-left: 4px;"></span>
+        <span style="font-family: 'JetBrains Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase;">Organic growth ecosystem</span>
+      </div>
+      <h1 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: clamp(38px, 4.2vw, 60px); line-height: 1.03; letter-spacing: -0.035em;">We build the ecosystem around your business. <span style="display: block; white-space: nowrap; margin-top: 8px; font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; font-size: 1.04em; letter-spacing: -0.02em; color: #A3B5F2;">Every search leads to <span style="color: #F8B10F;">you.</span></span></h1>
+    </div>
+    <div style="min-width: 0; display: flex; flex-direction: column; gap: 26px;">
+      <p style="margin: 0; font-size: 19px; line-height: 1.6; color: #C3CDE6; max-width: 540px;">Google, Maps, ChatGPT and every AI engine, pulled into one system we grow around your business every day. <span style="color: #FFFFFF;">You see every lead it brings. The method stays ours.</span></p>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px;">
+        <a class="btn-y" href="https://calendly.com/thomas-relevant-search-media/30min" style="background: #F8B10F; color: #161E38; text-decoration: none; font-weight: 700; font-size: 16px; padding: 16px 26px; border-radius: 12px; display: inline-flex; align-items: center; gap: 10px;">Book 20 minutes with Thomas
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a href="#launch" style="color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 16px; padding: 16px 4px; display: inline-flex; align-items: center; gap: 8px;"><span style="border-bottom: 1px solid rgba(255,255,255,0.35); padding-bottom: 2px;">See your first 5 days</span></a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 28px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.08);">
+        <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: -0.02em;">2020</span><span style="font-size: 14px; color: rgba(255,255,255,0.72);">Founded</span></div>
+        <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: -0.02em;">900+</span><span style="font-size: 14px; color: rgba(255,255,255,0.72);">Businesses served</span></div>
+        <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: -0.02em;">100+</span><span style="font-size: 14px; color: rgba(255,255,255,0.72);">Specialists on US hours</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= COMMITMENT (navy with paper) ================= -->
+<section id="commitment" style="background: #161E38; color: #FFFFFF; position: relative; overflow: hidden;">
+  <div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 0; height: 1px; background: linear-gradient(90deg, rgba(248,177,15,0) 0%, rgba(248,177,15,0.55) 28%, rgba(72,99,181,0.8) 62%, rgba(76,192,168,0) 100%);"></div>
+  <div aria-hidden="true" class="aur1" style="position: absolute; width: 700px; height: 700px; right: -200px; top: -200px; border-radius: 50%; background: radial-gradient(circle, rgba(72,99,181,0.35) 0%, rgba(72,99,181,0) 65%); pointer-events: none;"></div>
+  <div style="position: relative; max-width: 1320px; margin: 0 auto; padding: 128px 28px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center;">
+    <div class="rv" style="flex: 1 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+      <span class="eb" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #A3B5F2;"><svg aria-hidden="true" width="12" height="12" viewBox="-6 -6 12 12"><path d="M0 -5L1.3 -1.3L5 0L1.3 1.3L0 5L-1.3 1.3L-5 0L-1.3 -1.3Z" fill="#F8B10F"></path></svg><span style="opacity: 0.55;">01</span><span aria-hidden="true" style="width: 22px; height: 1px; background: currentColor; opacity: 0.35;"></span>The Relevance Commitment</span>
+      <h2 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: clamp(36px, 4.4vw, 62px); line-height: 1.03; letter-spacing: -0.03em;">Two promises, <span style="display: block; font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: #A3B5F2;">signed before you pay.</span></h2>
+      <p style="margin: 0; font-size: 18px; color: #C3CDE6;">Almost no agency in the US market puts a defined promise in writing. We put two on every plan.</p>
+    </div>
+    <div class="rv" style="flex: 1 1 620px; min-width: 0; position: relative;">
+      <div style="background: #FFFFFF; color: #161E38; border-radius: 6px; padding: clamp(28px, 4vw, 52px); box-shadow: 0 50px 100px rgba(0,0,0,0.45); display: flex; flex-direction: column; gap: 28px; border-top: 6px solid #4863B5;">
+        <div style="display: flex; justify-content: space-between; gap: 16px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #5A6785;">
+          <span>Relevant Search Media</span><span>Every plan</span>
+        </div>
+        <div style="display: flex; gap: 20px; align-items: flex-start;">
+          <span style="font-family: 'Instrument Serif', serif; font-size: 52px; line-height: 0.9; color: #4863B5;">I</span>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <strong style="font-family: 'Inter Tight', sans-serif; font-size: 26px; font-weight: 800;">Everything ships, or it's free.</strong>
+            <span style="font-size: 17px; color: #45526F;">Every item in your plan ships and is logged with a link. If a 15-day report shows we missed what we committed, that 15-day period is free.</span>
+          </div>
+        </div>
+        <div style="height: 1px; background: #E7ECF5;"></div>
+        <div style="display: flex; gap: 20px; align-items: flex-start;">
+          <span style="font-family: 'Instrument Serif', serif; font-size: 52px; line-height: 0.9; color: #4863B5;">II</span>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <strong style="font-family: 'Inter Tight', sans-serif; font-size: 26px; font-weight: 800;">Half on page one by month four.</strong>
+            <span style="font-size: 17px; color: #45526F;">At least half the customer searches in your map reach page one of Google by the end of month four. If they don't, we keep working at no charge until they do.</span>
+          </div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 40px; padding-top: 16px; border-top: 1px dashed #C9D3E3;">
+          <div style="display: flex; flex-direction: column;">
+            <span style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 34px; color: #161E38; line-height: 1.1;">Thomas D'Souza</span>
+            <span style="font-size: 13px; color: #5A6785;">Senior Partner · in digital marketing since 2010</span>
+          </div>
+        </div>
+        <span style="font-size: 13px; color: #5A6785;">We don't promise a position in AI answers or on Google Maps, because no one honestly can. We track both and report them every 15 days.</span>
+      </div>
+      <div aria-hidden="true" class="hide-sm" style="position: absolute; right: -64px; top: -78px; width: 140px; height: 140px;">
+        <svg class="seal" viewBox="0 0 140 140" style="width: 140px; height: 140px;">
+          <defs><path id="sealp" d="M70 70 m-52 0 a52 52 0 1 1 104 0 a52 52 0 1 1 -104 0"></path></defs>
+          <circle cx="70" cy="70" r="68" fill="#F8B10F"></circle>
+          <circle cx="70" cy="70" r="40" fill="none" stroke="#161E38" stroke-width="1"></circle>
+          <text fill="#161E38" font-family="JetBrains Mono, monospace" font-size="10.5" letter-spacing="2.2"><textPath href="#sealp">SIGNED · IN WRITING · RELEVANT SEARCH MEDIA ·</textPath></text>
+        </svg>
+        <img src="/_blob/f0ddc11df1deb86f300b7c52eb17b3ff" alt="" style="position: absolute; left: 50%; top: 50%; width: 50px; transform: translate(-50%,-50%);">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE MEANING (Navy) ================= -->
+<section style="background: #10172D; color: #FFFFFF; position: relative; overflow: hidden;">
+  <div aria-hidden="true" class="aur2" style="position: absolute; width: 760px; height: 760px; left: 50%; top: 140px; margin-left: -380px; border-radius: 50%; background: radial-gradient(circle, rgba(72,99,181,0.28) 0%, rgba(72,99,181,0) 65%); pointer-events: none;"></div>
+  <div style="position: relative; max-width: 1320px; margin: 0 auto; padding: 96px 28px 128px; display: flex; flex-direction: column; gap: 72px;">
+    <div class="rv" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 22px; max-width: 920px; margin: 0 auto;">
+      <span class="eb" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #A3B5F2;"><svg aria-hidden="true" width="12" height="12" viewBox="-6 -6 12 12"><path d="M0 -5L1.3 -1.3L5 0L1.3 1.3L0 5L-1.3 1.3L-5 0L-1.3 -1.3Z" fill="#F8B10F"></path></svg><span style="opacity: 0.55;">02</span><span aria-hidden="true" style="width: 22px; height: 1px; background: currentColor; opacity: 0.35;"></span>The meaning of our name</span>
+      <h2 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: clamp(40px, 5.4vw, 80px); line-height: 1; letter-spacing: -0.035em;">Relevance is <span style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: #A3B5F2;">gravity.</span></h2>
+      <p style="margin: 0; font-size: 20px; line-height: 1.6; color: #C3CDE6;">In the Sri Yantra of Maa Tripura Sundari, the whole universe unfolds from a single point at the center, the bindu. AI search now works the same way. Engines don't hand out lists anymore. They are pulled toward the one business they can verify, trust and quote.</p>
+    </div>
+    <div class="rv" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+      <div style="border: 1px solid rgba(163,181,242,0.18); border-radius: 22px; padding: 34px; display: flex; flex-direction: column; gap: 16px; background: rgba(255,255,255,0.02);">
+        <svg aria-hidden="true" width="56" height="56" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="9" fill="#F8B10F"></circle><circle cx="28" cy="28" r="17" stroke="#A3B5F2" stroke-opacity="0.5"></circle><circle cx="28" cy="28" r="26" stroke="#A3B5F2" stroke-opacity="0.25"></circle></svg>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #95A2C4;">Relevant · the gravity</span>
+        <span style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 44px; line-height: 1;">Relevant</span>
+        <p style="margin: 0; font-size: 17px; color: #C3CDE6;">The force that decides who gets chosen. Not the loudest business, the most relevant one: the best answer to the exact question, proven everywhere.</p>
+      </div>
+      <div style="border: 1px solid rgba(163,181,242,0.18); border-radius: 22px; padding: 34px; display: flex; flex-direction: column; gap: 16px; background: rgba(255,255,255,0.02);">
+        <svg aria-hidden="true" width="56" height="56" viewBox="0 0 56 56" fill="none"><ellipse cx="28" cy="28" rx="25" ry="9" stroke="#A3B5F2" transform="rotate(-18 28 28)"></ellipse><ellipse cx="28" cy="28" rx="25" ry="9" stroke="#A3B5F2" stroke-opacity="0.45" transform="rotate(38 28 28)"></ellipse><circle cx="28" cy="28" r="5" fill="#FFFFFF"></circle><circle cx="50" cy="20" r="3.5" fill="#4863B5"></circle></svg>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #95A2C4;">Search · the orbits</span>
+        <span style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 44px; line-height: 1;">Search</span>
+        <p style="margin: 0; font-size: 17px; color: #C3CDE6;">Google, AI Overviews, ChatGPT, Gemini, Perplexity, Maps. Each one is its own world on its own axis, and all of them circle the same question: who is the best answer?</p>
+      </div>
+      <div style="border: 1px solid rgba(163,181,242,0.18); border-radius: 22px; padding: 34px; display: flex; flex-direction: column; gap: 16px; background: rgba(255,255,255,0.02);">
+        <svg aria-hidden="true" width="56" height="56" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="7" fill="#FFFFFF"></circle><path d="M28 6v8M28 42v8M6 28h8M42 28h8M12.4 12.4l5.7 5.7M37.9 37.9l5.7 5.7M12.4 43.6l5.7-5.7M37.9 18.1l5.7-5.7" stroke="#F8B10F" stroke-width="2" stroke-linecap="round"></path></svg>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #95A2C4;">Media · the light</span>
+        <span style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 44px; line-height: 1;">Media</span>
+        <p style="margin: 0; font-size: 17px; color: #C3CDE6;">Pages, answers, mentions, reviews and posts. The light a business gives off. The truer and brighter it is, the further it reaches into every engine.</p>
+      </div>
+    </div>
+    <p class="rv" style="margin: 0 auto; max-width: 860px; text-align: center; font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.35; letter-spacing: -0.01em;">That is Unified Search Visibility: one center, every orbit. <span style="color: #A3B5F2;">Understanding that pull is our whole job, and we build it for your business.</span></p>
+  </div>
+</section>
+
+<!-- ================= THE SHIFT (Cloud) ================= -->
+<section style="max-width: 1320px; margin: 0 auto; padding: 128px 28px 112px; display: flex; flex-direction: column; gap: 64px;">
+  <div class="rv" style="display: flex; flex-direction: column; gap: 20px; max-width: 980px;">
+    <span class="eb" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #3A54A4;"><svg aria-hidden="true" width="12" height="12" viewBox="-6 -6 12 12"><path d="M0 -5L1.3 -1.3L5 0L1.3 1.3L0 5L-1.3 1.3L-5 0L-1.3 -1.3Z" fill="#F8B10F"></path></svg><span style="opacity: 0.55;">03</span><span aria-hidden="true" style="width: 22px; height: 1px; background: currentColor; opacity: 0.35;"></span>The shift</span>
+    <h2 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: clamp(38px, 5vw, 72px); line-height: 1.02; letter-spacing: -0.03em;">Google ranks pages. <span style="display: block; font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: #4863B5;">AI recommends businesses.</span></h2>
+    <p style="margin: 0; font-size: 20px; color: #45526F; max-width: 720px;">A search used to return ten links. Now it returns one answer with two or three names. The businesses named get the call. Everyone else never hears the phone ring.</p>
+  </div>
+  <div class="rv" style="display: flex; flex-wrap: wrap; gap: 24px; align-items: stretch;">
+    <div style="flex: 1 1 420px; min-width: 0; border: 1px solid #DCE4F2; border-radius: 22px; padding: 30px; background: #FFFFFF; display: flex; flex-direction: column; gap: 14px;">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #5A6785;">Then · ten blue links</span>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; flex-direction: column; gap: 6px;"><span style="height: 10px; width: 60%; background: #C4CFEC; border-radius: 4px;"></span><span style="height: 8px; width: 90%; background: #E7ECF5; border-radius: 4px;"></span></div>
+        <div style="display: flex; flex-direction: column; gap: 6px;"><span style="height: 10px; width: 52%; background: #C4CFEC; border-radius: 4px;"></span><span style="height: 8px; width: 84%; background: #E7ECF5; border-radius: 4px;"></span></div>
+        <div style="display: flex; flex-direction: column; gap: 6px;"><span style="height: 10px; width: 66%; background: #C4CFEC; border-radius: 4px;"></span><span style="height: 8px; width: 78%; background: #E7ECF5; border-radius: 4px;"></span></div>
+        <div style="display: flex; flex-direction: column; gap: 6px;"><span style="height: 10px; width: 48%; background: #C4CFEC; border-radius: 4px;"></span><span style="height: 8px; width: 88%; background: #E7ECF5; border-radius: 4px;"></span></div>
+        <div style="display: flex; flex-direction: column; gap: 6px;"><span style="height: 10px; width: 58%; background: #C4CFEC; border-radius: 4px;"></span><span style="height: 8px; width: 72%; background: #E7ECF5; border-radius: 4px;"></span></div>
+      </div>
+      <span style="font-size: 16px; color: #5A6785; padding-top: 6px;">Customers scrolled, compared and clicked around.</span>
+    </div>
+    <div class="hide-md" style="display: flex; align-items: center; color: #4863B5;">
+      <svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+    </div>
+    <div class="gborder" style="flex: 1 1 420px; min-width: 0; border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 14px; color: #FFFFFF; box-shadow: 0 30px 60px rgba(17,26,51,0.2);">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #4CC0A8;">Now · one answer</span>
+      <div style="background: rgba(255,255,255,0.06); border-radius: 12px; padding: 12px 14px; font-size: 15px; color: #DDE4F7;">“Who's the best HVAC company in Dallas for a same-day repair?”</div>
+      <div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px;">
+        <div style="display: flex; gap: 12px; align-items: center; background: rgba(247,179,20,0.12); border: 1px solid rgba(247,179,20,0.55); border-radius: 12px; padding: 12px 14px;">
+          <span style="width: 26px; height: 26px; border-radius: 50%; background: #F8B10F; color: #161E38; font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</span>
+          <span><strong>Your business</strong> <span style="color: #C3CDE6;">· verified details, recent answers, strong reviews</span></span>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center; padding: 0 14px; color: #9AA8CB;">
+          <span style="width: 26px; height: 26px; border-radius: 50%; background: #1E2A55; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</span>A competitor
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center; padding: 0 14px; color: #7482A8;">
+          <span style="width: 26px; height: 26px; border-radius: 50%; background: #18234A; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</span>Everyone else isn't mentioned
+        </div>
+      </div>
+      <span style="font-size: 12px; color: #7F8DB2;">Illustration</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES (Navy) ================= -->
+<section id="services" style="background: #161E38; color: #FFFFFF; position: relative; overflow: hidden;">
+  <div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 0; height: 1px; background: linear-gradient(90deg, rgba(248,177,15,0) 0%, rgba(248,177,15,0.55) 28%, rgba(72,99,181,0.8) 62%, rgba(76,192,168,0) 100%);"></div>
+  <div aria-hidden="true" style="position: absolute; width: 900px; height: 900px; right: -300px; top: -360px; border-radius: 50%; background: radial-gradient(circle, rgba(72,99,181,0.28) 0%, rgba(72,99,181,0) 62%); pointer-events: none;"></div>
+  <div style="position: relative; max-width: 1320px; margin: 0 auto; padding: 128px 28px; display: flex; flex-direction: column; gap: 56px;">
+    <div class="rv" style="display: flex; flex-wrap: wrap; gap: 28px 80px; align-items: flex-end; justify-content: space-between;">
+      <div style="flex: 1 1 600px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+        <span class="eb" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #A3B5F2;"><svg aria-hidden="true" width="12" height="12" viewBox="-6 -6 12 12"><path d="M0 -5L1.3 -1.3L5 0L1.3 1.3L0 5L-1.3 1.3L-5 0L-1.3 -1.3Z" fill="#F8B10F"></path></svg><span style="opacity: 0.55;">04</span><span aria-hidden="true" style="width: 22px; height: 1px; background: currentColor; opacity: 0.35;"></span>Services</span>
+        <h2 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: clamp(36px, 4.4vw, 62px); line-height: 1.03; letter-spacing: -0.03em;">Everything it takes to be found. <span style="display: block; font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: #A3B5F2;">One team runs it.</span></h2>
+      </div>
+      <p style="flex: 1 1 360px; min-width: 0; margin: 0; font-size: 18px; color: #C3CDE6;">Most agencies sell these as separate retainers. Every RSM plan includes all nine, run as one system, every day.</p>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 36px;">
+      <sc-for list="{{serviceGroups}}" as="g" hint-placeholder-count="3">
+        <div class="rv" style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <span style="display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 8px; border-radius: 99px; border: 1px solid {{g.hueBd}}; background: {{g.hueBg}};"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{g.hue}}; box-shadow: 0 0 10px {{g.hue}};"></span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #C9D3EE;">{{g.num}}</span><span style="font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 17px;">{{g.title}}</span></span>
+            <span style="flex: 1; height: 1px; background: rgba(255,255,255,0.1);"></span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+            <sc-for list="{{g.items}}" as="s" hint-placeholder-count="3">
+              <a class="lift-d svc" href="{{s.href}}" style="--hue: {{g.hue}}; text-decoration: none; color: #FFFFFF; background: linear-gradient(180deg, #212C52 0%, #1A2344 100%); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px; min-height: 196px; box-sizing: border-box;">
+                <span style="position: relative; width: 64px; height: 64px; border-radius: 50%; border: 1px solid {{g.hueBd}}; background: radial-gradient(circle at 50% 30%, {{g.hueBg}}, rgba(0,0,0,0) 72%); box-shadow: 0 0 28px {{g.hueBg}}; color: #EEF2FD; display: flex; align-items: center; justify-content: center;">
+                  <svg aria-hidden="true" width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="{{s.icon}}" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M0 -5L1.3 -1.3L5 0L1.3 1.3L0 5L-1.3 1.3L-5 0L-1.3 -1.3Z" transform="translate({{s.sx}} {{s.sy}})" fill="#F8B10F"></path></svg>
+                </span>
+                <span style="font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.2;">{{s.name}}</span>
+                <span style="font-size: 15px; color: #B6C1DD; flex-grow: 1;">{{s.long}}</span>
+                <span class="svc-go" style="font-size: 14px; font-weight: 600; color: #F8B10F;">Explore {{s.short}} →</span>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div class="rv" style="display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; padding: 28px 32px; border-radius: 20px; border: 1px solid rgba(163,181,242,0.16); background: linear-gradient(90deg, rgba(72,99,181,0.16), rgba(72,99,181,0.04));">
+      <span style="font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.2; flex: 0 1 300px;">Built for US businesses that live on being found.</span>
+      <div style="flex: 1 1 560px; display: flex; flex-wrap: wrap; gap: 8px;">
+        <sc-for list="{{industries}}" as="ind" hint-placeholder-count="20">
+          <a class="ind" href="/industries/">{{ind}}</a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LAUNCH SEQUENCE (Cloud) ================= -->
+<section id="launch" style="max-width: 1320px; margin: 0 auto; padding: 128px 28px 96px; display: flex; flex-direction: column; gap: 56px;">
+  <div class="rv" style="display: flex; flex-wrap: wrap; gap: 28px 80px; align-items: flex-end; justify-content: space-between;">
+    <div style="flex: 1 1 620px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+      <span class="eb" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #3A54A4;"><svg aria-hidden="true" width="12" height="12" viewBox="-6 -6 12 12"><path d="M0 -5L1.3 -1.3L5 0L1.3 1.3L0 5L-1.3 1.3L-5 0L-1.3 -1.3Z" fill="#F8B10F"></path></svg><span style="opacity: 0.55;">05</span><span aria-hidden="true" style="width: 22px; height: 1px; background: currentColor; opacity: 0.35;"></span>Launch sequence</span>
+      <h2 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: clamp(36px, 4.4vw, 62px); line-height: 1.03; letter-spacing: -0.03em;">Other agencies take 30 to 90 days to go live. <span style="display: block; font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: #4863B5;">We take five.</span></h2>
+    </div>
+    <p style="flex: 1 1 360px; min-width: 0; margin: 0; font-size: 18px; color: #45526F;">You give us thirty minutes on day one and one look at your search map on day two. After that, we run it.</p>
+  </div>
+
+  <div class="rv" style="position: relative;">
+    <div class="hide-md" style="position: absolute; left: 0; right: 0; top: 27px; height: 2px; background: #DCE4F2; border-radius: 2px; overflow: hidden;">
+      <div class="beam" style="position: absolute; inset: 0;"></div>
+    </div>
+    <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 20px; position: relative;">
+      <sc-for list="{{days}}" as="d" hint-placeholder-count="5">
+        <li style="display: flex; flex-direction: column; gap: 16px;">
+          <span style="width: 56px; height: 56px; border-radius: 50%; background: {{d.bg}}; color: {{d.fg}}; display: flex; align-items: center; justify-content: center; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 20px; box-shadow: 0 0 0 6px #F3F8FB;">{{d.n}}</span>
+          <div class="lift" style="background: #FFFFFF; border: 1px solid #DCE4F2; border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1;">
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.14em; color: #5A6785;">DAY {{d.n}}</span>
+            <span style="font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 22px;">{{d.title}}</span>
+            <span style="font-size: 15px; color: #45526F;">{{d.body}}</span>
+          </div>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+
+  <div class="rv" style="border-radius: 24px; padding: 36px; background: #FFFFFF; border: 1px solid #DCE4F2; display: flex; flex-direction: column; gap: 28px;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: baseline;">
+      <span style="font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 28px; letter-spacing: -0.01em;">Then every day after, weekends included.</span>
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #5A6785;">What to expect, honestly</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
+      <div style="display: flex; flex-direction: column; gap: 8px; border-top: 3px solid #161E38; padding-top: 16px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #45526F;">WEEK 1</span><strong style="font-family: 'Inter Tight', sans-serif; font-size: 20px;">Work you can see</strong><span style="font-size: 15px; color: #45526F;">Fixes and new pages go live, each logged with a link.</span></div>
+      <div style="display: flex; flex-direction: column; gap: 8px; border-top: 3px solid #4863B5; padding-top: 16px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #3A54A4;">DAY 30–60</span><strong style="font-family: 'Inter Tight', sans-serif; font-size: 20px;">Rankings start moving</strong><span style="font-size: 15px; color: #45526F;">Your mapped searches climb toward page one in your reports.</span></div>
+      <div style="display: flex; flex-direction: column; gap: 8px; border-top: 3px solid #4863B5; padding-top: 16px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #3A54A4;">DAY 60–90</span><strong style="font-family: 'Inter Tight', sans-serif; font-size: 20px;">Leads grow</strong><span style="font-size: 15px; color: #45526F;">Calls and forms counted, and what came in leads every report.</span></div>
+      <div style="display: flex; flex-direction: column; gap: 8px; border-top: 3px solid #F8B10F; padding-top: 16px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8A5E00;">MONTH 4</span><strong style="font-family: 'Inter Tight', sans-serif; font-size: 20px;">Half on page one</strong><span style="font-size: 15px; color: #45526F;">At least half your mapped searches, signed and in writing.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= UNIVERSE + LOG (navy cards on cloud) ================= -->
+<section style="max-width: 1320px; margin: 0 auto; padding: 32px 28px 128px; display: flex; flex-wrap: wrap; gap: 24px;">
+  <div class="rv" style="flex: 1 1 560px; min-width: 0; background: #FFFFFF; border: 1px solid #DCE4F2; border-radius: 24px; padding: 36px; display: flex; flex-direction: column; gap: 22px;">
+    <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #3A54A4;">Deep research, day 2</span>
+    <div style="display: flex; flex-direction: column; gap: 6px;">
+      <span style="font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: clamp(48px, 5.4vw, 76px); line-height: 1; letter-spacing: -0.03em; color: #3A54A4;">2,000+</span>
+      <span style="font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 22px;">customer searches mapped, in eight sections.</span>
+      <span style="font-size: 16px; color: #45526F;">Most agencies track 20 to 30. We map your whole market, then lock one search to one page.</span>
+    </div>
+    <div style="position: relative; height: 250px;">
+      <svg aria-hidden="true" viewBox="0 0 500 250" preserveAspectRatio="none" style="position: absolute; inset: 0; width: 100%; height: 100%;">
+        <g stroke="#C4CFEC" stroke-width="1">
+          <line x1="250" y1="125" x2="60" y2="40"></line><line x1="250" y1="125" x2="190" y2="20"></line>
+          <line x1="250" y1="125" x2="340" y2="30"></line><line x1="250" y1="125" x2="455" y2="60"></line>
+          <line x1="250" y1="125" x2="440" y2="200"></line><line x1="250" y1="125" x2="300" y2="230"></line>
+          <line x1="250" y1="125" x2="120" y2="220"></line><line x1="250" y1="125" x2="40" y2="140"></line>
+        </g>
+      </svg>
+      <span style="position: absolute; left: 50%; top: 50%; width: 46px; height: 46px; margin: -23px; border-radius: 50%; background: #161E38; display: flex; align-items: center; justify-content: center;"><span class="dot-pulse" style="width: 12px; height: 12px; border-radius: 50%; background: #F8B10F;"></span></span>
+      <span style="position: absolute; left: 12%; top: 16%; transform: translate(-50%,-50%); background: #EEF2FD; color: #22389A; border-radius: 99px; padding: 6px 12px; font-size: 13px; font-weight: 500; white-space: nowrap;">Primary services</span>
+      <span style="position: absolute; left: 38%; top: 8%; transform: translate(-50%,-50%); background: #EEF2FD; color: #22389A; border-radius: 99px; padding: 6px 12px; font-size: 13px; font-weight: 500; white-space: nowrap;">Secondary</span>
+      <span style="position: absolute; left: 68%; top: 12%; transform: translate(-50%,-50%); background: #EEF2FD; color: #22389A; border-radius: 99px; padding: 6px 12px; font-size: 13px; font-weight: 500; white-space: nowrap;">AI assistant asks</span>
+      <span style="position: absolute; left: 88%; top: 24%; transform: translate(-50%,-50%); background: #EEF2FD; color: #22389A; border-radius: 99px; padding: 6px 12px; font-size: 13px; font-weight: 500; white-space: nowrap;">Local</span>
+      <span style="position: absolute; left: 86%; top: 80%; transform: translate(-50%,-50%); background: #EEF2FD; color: #22389A; border-radius: 99px; padding: 6px 12px; font-size: 13px; font-weight: 500; white-space: nowrap;">Google AI answers</span>
+      <span style="position: absolute; left: 60%; top: 92%; transform: translate(-50%,-50%); background: #EEF2FD; color: #22389A; border-radius: 99px; padding: 6px 12px; font-size: 13px; font-weight: 500; white-space: nowrap;">Comparisons</span>
+      <span style="position: absolute; left: 24%; top: 88%; transform: translate(-50%,-50%); background: #EEF2FD; color: #22389A; border-radius: 99px; padding: 6px 12px; font-size: 13px; font-weight: 500; white-space: nowrap;">Trust and reviews</span>
+      <span style="position: absolute; left: 9%; top: 56%; transform: translate(-50%,-50%); background: #EEF2FD; color: #22389A; border-radius: 99px; padding: 6px 12px; font-size: 13px; font-weight: 500; white-space: nowrap;">Questions</span>
+    </div>
+  </div>
+  <div class="rv" style="flex: 1 1 520px; min-width: 0; background: #161E38; color: #FFFFFF; border-radius: 24px; padding: 36px; display: flex; flex-direction: column; gap: 22px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px;">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #A3B5F2; display: inline-flex; align-items: center; gap: 10px;"><span class="dot-pulse" style="width: 8px; height: 8px; border-radius: 50%; background: #4CC0A8;"></span>Live work log</span>
+      <span style="font-size: 12px; color: #8C9AC0;">Sample business · illustration</span>
+    </div>
+    <span style="font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: clamp(28px, 2.8vw, 38px); line-height: 1.1; letter-spacing: -0.02em;">You see every item, with its link, the day it goes live.</span>
+    <div style="position: relative; height: 250px; overflow: hidden; font-family: 'JetBrains Mono', monospace; font-size: 13.5px;">
+      <div class="logs" style="display: flex; flex-direction: column;">
+        <sc-for list="{{logRows}}" as="r" hint-placeholder-count="12">
+          <div class="logrow" style="display: grid; grid-template-columns: 64px minmax(0, 1fr) 88px; gap: 12px; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.07);">
+            <span style="color: #8C9AC0;">{{r.t}}</span><span style="color: #E3E9F7;">{{r.what}}</span><span style="color: {{r.c}}; text-align: right;">{{r.s}}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 0; height: 40px; background: linear-gradient(#161E38, rgba(22,30,56,0));"></div>
+      <div aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: 0; height: 60px; background: linear-gradient(rgba(22,30,56,0), #161E38);"></div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 14px;">
+      <span style="color: #9AA8CB; padding: 6px 0; margin-right: 6px;">Every 15 days:</span>
+      <span style="border: 1px solid rgba(255,255,255,0.18); border-radius: 99px; padding: 6px 12px;">Work done</span>
+      <span style="border: 1px solid rgba(255,255,255,0.18); border-radius: 99px; padding: 6px 12px;">What moved</span>
+      <span style="border: 1px solid rgba(255,255,255,0.18); border-radius: 99px; padding: 6px 12px;">Competitors</span>
+      <span style="border: 1px solid rgba(255,255,255,0.18); border-radius: 99px; padding: 6px 12px;">What came in</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMPARISON (white) ================= -->
+<section style="background: #FFFFFF; border-top: 1px solid #E1E8F2; border-bottom: 1px solid #E1E8F2;">
+  <div style="max-width: 1320px; margin: 0 auto; padding: 128px 28px; display: flex; flex-direction: column; gap: 48px;">
+    <div class="rv" style="display: flex; flex-direction: column; gap: 20px; max-width: 980px;">
+      <span class="eb" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #3A54A4;"><svg aria-hidden="true" width="12" height="12" viewBox="-6 -6 12 12"><path d="M0 -5L1.3 -1.3L5 0L1.3 1.3L0 5L-1.3 1.3L-5 0L-1.3 -1.3Z" fill="#F8B10F"></path></svg><span style="opacity: 0.55;">06</span><span aria-hidden="true" style="width: 22px; height: 1px; background: currentColor; opacity: 0.35;"></span>Why RSM</span>
+      <h2 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: clamp(36px, 4.4vw, 62px); line-height: 1.03; letter-spacing: -0.03em;">Agencies work on you once a month. Software makes you do it. <span style="display: block; font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: #4863B5;">We do it every day.</span></h2>
+    </div>
+    <div class="rv" style="overflow-x: auto; border-radius: 20px; border: 1px solid #DCE4F2;">
+      <table style="width: 100%; min-width: 820px; border-collapse: collapse; font-size: 16px;">
+        <thead>
+          <tr style="text-align: left;">
+            <th scope="col" style="padding: 20px 24px; width: 24%; background: #F7FAFC;"></th>
+            <th scope="col" style="padding: 20px 24px; font-weight: 600; color: #5A6785; background: #F7FAFC;">Typical agency</th>
+            <th scope="col" style="padding: 20px 24px; font-weight: 600; color: #5A6785; background: #F7FAFC;">DIY AI software</th>
+            <th scope="col" style="padding: 18px 24px; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 18px; color: #FFFFFF; background: #161E38; border-top: 3px solid #F8B10F;"><span style="display: inline-flex; align-items: center; gap: 10px;"><span style="width: 30px; height: 30px; border-radius: 50%; background: #FFFFFF; box-shadow: 0 0 0 1.5px #E2AE45; display: inline-flex; align-items: center; justify-content: center;"><img src="/_blob/f0ddc11df1deb86f300b7c52eb17b3ff" alt="" style="width: 20px; height: auto;"></span>Relevant Search Media</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <sc-for list="{{compare}}" as="c" hint-placeholder-count="7">
+            <tr style="border-top: 1px solid #E7ECF5;">
+              <th scope="row" style="padding: 18px 24px; text-align: left; font-weight: 600; color: #161E38;">{{c.k}}</th>
+              <td style="padding: 18px 24px; color: #6B7795;">{{c.a}}</td>
+              <td style="padding: 18px 24px; color: #5A6785;">{{c.b}}</td>
+              <td style="padding: 18px 24px; font-weight: 600; background: #EEF2FD; color: #161E38;"><span style="display: inline-flex; align-items: flex-start; gap: 10px;"><svg aria-hidden="true" width="13" height="13" viewBox="-6 -6 12 12" style="flex-shrink: 0; margin-top: 5px;"><path d="M0 -5L1.3 -1.3L5 0L1.3 1.3L0 5L-1.3 1.3L-5 0L-1.3 -1.3Z" fill="#E09A00"></path></svg>{{c.r}}</span></td>
+            </tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PLANS (Cloud) ================= -->
+<section id="plans" style="max-width: 1320px; margin: 0 auto; padding: 128px 28px; display: flex; flex-direction: column; gap: 56px;">
+  <div class="rv" style="display: flex; flex-wrap: wrap; gap: 28px 80px; align-items: flex-end; justify-content: space-between;">
+    <div style="flex: 1 1 600px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+      <span class="eb" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #3A54A4;"><svg aria-hidden="true" width="12" height="12" viewBox="-6 -6 12 12"><path d="M0 -5L1.3 -1.3L5 0L1.3 1.3L0 5L-1.3 1.3L-5 0L-1.3 -1.3Z" fill="#F8B10F"></path></svg><span style="opacity: 0.55;">07</span><span aria-hidden="true" style="width: 22px; height: 1px; background: currentColor; opacity: 0.35;"></span>Plans</span>
+      <h2 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: clamp(36px, 4.4vw, 62px); line-height: 1.03; letter-spacing: -0.03em;">Everything included. <span style="display: block; font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: #4863B5;">Month to month.</span></h2>
+    </div>
+    <p style="flex: 1 1 360px; min-width: 0; margin: 0; font-size: 18px; color: #45526F;">No setup fee. Nothing sold extra. The website, the content and every account are yours from day one.</p>
+  </div>
+  <div class="rv" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; align-items: stretch;">
+    <sc-for list="{{plans}}" as="p" hint-placeholder-count="3">
+      <div class="{{p.cls}}" style="border-radius: 22px; padding: 34px; display: flex; flex-direction: column; gap: 22px; background: {{p.bg}}; color: {{p.fg}}; border: 1px solid #DCE4F2;">
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <span style="align-self: flex-start; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: {{p.tagFg}}; background: {{p.tagBg}}; border-radius: 99px; padding: 5px 11px;">{{p.tag}}</span>
+          <span style="font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 30px; letter-spacing: -0.01em;">{{p.name}}</span>
+          <span style="font-size: 16px; color: {{p.sub}};">{{p.line}}</span>
+          <sc-if value="{{showPrices}}" hint-placeholder-val="{{ false }}">
+            <span style="font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 46px; letter-spacing: -0.02em; padding-top: 4px;">{{p.price}}<span style="font-size: 16px; font-weight: 500; color: {{p.sub}};"> / month</span></span>
+          </sc-if>
+        </div>
+        <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; font-size: 15px; flex-grow: 1;">
+          <sc-for list="{{p.items}}" as="i" hint-placeholder-count="6">
+            <li style="display: flex; gap: 12px; align-items: flex-start;">
+              <svg aria-hidden="true" width="14" height="14" viewBox="-6 -6 12 12" style="flex-shrink: 0; margin-top: 5px;"><path d="M0 -5L1.3 -1.3L5 0L1.3 1.3L0 5L-1.3 1.3L-5 0L-1.3 -1.3Z" fill="{{p.check}}"></path></svg>
+              <span>{{i}}</span>
+            </li>
+          </sc-for>
+        </ul>
+        <a class="btn-y" href="https://calendly.com/thomas-relevant-search-media/30min" style="text-align: center; text-decoration: none; font-weight: 700; padding: 16px; border-radius: 12px; background: {{p.btnBg}}; color: {{p.btnFg}}; border: 1.5px solid {{p.btnBd}};">Talk about {{p.name}}</a>
+      </div>
+    </sc-for>
+  </div>
+  <p style="margin: 0; font-size: 14px; color: #5A6785;">Plans with a new website carry a six-month minimum, which covers the build. <sc-if value="{{hidePrices}}" hint-placeholder-val="{{ true }}">Pricing is shared on your strategy call.</sc-if></p>
+</section>
+
+<!-- ================= PEOPLE (Navy) ================= -->
+<section id="about" style="background: #161E38; color: #FFFFFF; position: relative; overflow: hidden;">
+  <div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 0; height: 1px; background: linear-gradient(90deg, rgba(248,177,15,0) 0%, rgba(248,177,15,0.55) 28%, rgba(72,99,181,0.8) 62%, rgba(76,192,168,0) 100%);"></div>
+  <div style="max-width: 1320px; margin: 0 auto; padding: 128px 28px; display: flex; flex-direction: column; gap: 64px;">
+    <div class="rv" style="display: flex; flex-wrap: wrap; gap: 48px; align-items: center;">
+      <div style="flex: 1 1 600px; min-width: 0; aspect-ratio: 16 / 9; border-radius: 24px; position: relative; overflow: hidden; background: radial-gradient(circle at 30% 30%, #2A3D7E, #0B1430 70%); display: flex; align-items: center; justify-content: center;">
+        <span class="ringfx" aria-hidden="true" style="position: absolute; width: 120px; height: 120px; border-radius: 50%; border: 1px solid rgba(247,179,20,0.6);"></span>
+        <button type="button" aria-label="Play Thomas's introduction video" style="position: relative; width: 84px; height: 84px; border-radius: 50%; border: none; background: #F8B10F; color: #161E38; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          <svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+        </button>
+        <span style="position: absolute; left: 24px; bottom: 20px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #B6C1DD;">[Thomas intro · 60–90 sec · real footage]</span>
+      </div>
+      <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+        <span class="eb" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #A3B5F2;"><svg aria-hidden="true" width="12" height="12" viewBox="-6 -6 12 12"><path d="M0 -5L1.3 -1.3L5 0L1.3 1.3L0 5L-1.3 1.3L-5 0L-1.3 -1.3Z" fill="#F8B10F"></path></svg><span style="opacity: 0.55;">08</span><span aria-hidden="true" style="width: 22px; height: 1px; background: currentColor; opacity: 0.35;"></span>Real people</span>
+        <h2 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: clamp(34px, 3.8vw, 54px); line-height: 1.04; letter-spacing: -0.03em;">AI does the production. <span style="display: block; font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: #A3B5F2;">People sign their name to it.</span></h2>
+        <p style="margin: 0; font-size: 18px; color: #C3CDE6;">Thomas D'Souza, Senior Partner, is the person you talk to before you sign and after. Behind him, 100+ specialists on US hours check every piece before it goes live.</p>
+        <p style="margin: 0; font-size: 18px; color: #C3CDE6;">Thomas has worked in digital marketing since 2010. Relevant Search Media was founded in 2020 around one idea: relevance is what search rewards. Every engine since has proved it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ (white) ================= -->
+<section id="faq" style="background: #FFFFFF; border-top: 1px solid #E1E8F2;">
+  <div style="max-width: 1320px; margin: 0 auto; padding: 128px 28px; display: flex; flex-wrap: wrap; gap: 48px 96px;">
+    <div class="rv" style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+      <span class="eb" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #3A54A4;"><svg aria-hidden="true" width="12" height="12" viewBox="-6 -6 12 12"><path d="M0 -5L1.3 -1.3L5 0L1.3 1.3L0 5L-1.3 1.3L-5 0L-1.3 -1.3Z" fill="#F8B10F"></path></svg><span style="opacity: 0.55;">09</span><span aria-hidden="true" style="width: 22px; height: 1px; background: currentColor; opacity: 0.35;"></span>Questions owners ask</span>
+      <h2 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: clamp(36px, 4.4vw, 62px); line-height: 1.03; letter-spacing: -0.03em;">Straight <span style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: #4863B5;">answers.</span></h2>
+    </div>
+    <div class="rv" style="flex: 2 1 600px; min-width: 0; display: flex; flex-direction: column; border-top: 1px solid #DCE4F2;">
+      <details open style="border-bottom: 1px solid #DCE4F2; padding: 24px 0;">
+        <summary style="display: flex; justify-content: space-between; gap: 16px; font-family: 'Inter Tight', sans-serif; font-size: 22px; font-weight: 700;">How soon will I see results?<span class="pl" aria-hidden="true" style="color: #3A54A4; font-size: 28px; line-height: 1; transition: transform .2s;">+</span></summary>
+        <p style="margin: 14px 0 0; font-size: 17px; color: #45526F;">Live work goes up on day five. Rankings start moving between day 30 and day 60, and leads grow from day 60 to 90. By the end of month four, at least half your mapped customer searches are on page one of Google, or we keep working at no charge until they are.</p>
+      </details>
+      <details style="border-bottom: 1px solid #DCE4F2; padding: 24px 0;">
+        <summary style="display: flex; justify-content: space-between; gap: 16px; font-family: 'Inter Tight', sans-serif; font-size: 22px; font-weight: 700;">Can you get my business recommended by ChatGPT?<span class="pl" aria-hidden="true" style="color: #3A54A4; font-size: 28px; line-height: 1; transition: transform .2s;">+</span></summary>
+        <p style="margin: 14px 0 0; font-size: 17px; color: #45526F;">We do the work AI uses to choose a business: clear answers on your site, matching details everywhere, and mentions on sites AI trusts. No one can honestly promise a placement, so we track where you're named and report it every 15 days.</p>
+      </details>
+      <details style="border-bottom: 1px solid #DCE4F2; padding: 24px 0;">
+        <summary style="display: flex; justify-content: space-between; gap: 16px; font-family: 'Inter Tight', sans-serif; font-size: 22px; font-weight: 700;">Is AI-written content safe with Google?<span class="pl" aria-hidden="true" style="color: #3A54A4; font-size: 28px; line-height: 1; transition: transform .2s;">+</span></summary>
+        <p style="margin: 14px 0 0; font-size: 17px; color: #45526F;">Google judges whether content helps people, not how it was produced. Every piece we publish answers a real customer question, uses facts about your business, and is checked by an RSM specialist before it goes live.</p>
+      </details>
+      <details style="border-bottom: 1px solid #DCE4F2; padding: 24px 0;">
+        <summary style="display: flex; justify-content: space-between; gap: 16px; font-family: 'Inter Tight', sans-serif; font-size: 22px; font-weight: 700;">Will you also work with my competitors?<span class="pl" aria-hidden="true" style="color: #3A54A4; font-size: 28px; line-height: 1; transition: transform .2s;">+</span></summary>
+        <p style="margin: 14px 0 0; font-size: 17px; color: #45526F;">No. We take one business per trade per city. Two roofers in the same city can't both be the name AI gives, so your slot is yours for as long as you're with us.</p>
+      </details>
+      <details style="border-bottom: 1px solid #DCE4F2; padding: 24px 0;">
+        <summary style="display: flex; justify-content: space-between; gap: 16px; font-family: 'Inter Tight', sans-serif; font-size: 22px; font-weight: 700;">Can I cancel?<span class="pl" aria-hidden="true" style="color: #3A54A4; font-size: 28px; line-height: 1; transition: transform .2s;">+</span></summary>
+        <p style="margin: 14px 0 0; font-size: 17px; color: #45526F;">Yes. Every plan is month to month, and you cancel by email. Plans with a new website carry a six-month minimum that covers the build. Everything we create is yours.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA (Navy) ================= -->
+<section style="position: relative; overflow: hidden; background: #10172D; color: #FFFFFF;">
+  <div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 0; height: 1px; background: linear-gradient(90deg, rgba(248,177,15,0) 0%, rgba(248,177,15,0.55) 28%, rgba(72,99,181,0.8) 62%, rgba(76,192,168,0) 100%);"></div>
+  <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none;">
+    <div class="aur2" style="position: absolute; width: 900px; height: 900px; left: 50%; top: 50%; margin: -450px 0 0 -450px; border-radius: 50%; background: radial-gradient(circle, rgba(72,99,181,0.4) 0%, rgba(72,99,181,0) 60%);"></div>
+    <svg viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" style="position: absolute; inset: 0; width: 100%; height: 100%;">
+      <defs><linearGradient id="og" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#F8B10F"></stop><stop offset="0.45" stop-color="#4863B5"></stop><stop offset="0.75" stop-color="#1EA7E8"></stop><stop offset="1" stop-color="#4CC0A8"></stop></linearGradient></defs>
+      <ellipse cx="600" cy="250" rx="560" ry="150" fill="none" stroke="url(#og)" stroke-width="1.4" opacity="0.8" transform="rotate(-8 600 250)"></ellipse>
+      <ellipse cx="600" cy="250" rx="420" ry="105" fill="none" stroke="rgba(143,166,240,0.22)" stroke-width="1" transform="rotate(-8 600 250)"></ellipse>
+      <ellipse cx="600" cy="250" rx="300" ry="70" fill="none" stroke="rgba(143,166,240,0.16)" stroke-width="1" transform="rotate(14 600 250)"></ellipse>
+<g transform="rotate(-8 600 250)">
+      <circle r="9" fill="#4CC0A8"><animateMotion dur="34s" repeatCount="indefinite" path="M 40 250 A 560 150 0 1 1 1160 250 A 560 150 0 1 1 40 250" rotate="0"></animateMotion></circle>
+      <circle r="6" fill="#6F8CF0"><animateMotion dur="22s" repeatCount="indefinite" path="M 1020 250 A 420 105 0 1 1 180 250 A 420 105 0 1 1 1020 250"></animateMotion></circle>
+      </g>
+<g transform="rotate(14 600 250)">      <circle r="5" fill="#F8B10F"><animateMotion dur="16s" repeatCount="indefinite" path="M 300 250 A 300 70 0 1 1 900 250 A 300 70 0 1 1 300 250"></animateMotion></circle></g>
+    </svg>
+  </div>
+  <div class="rv" style="position: relative; max-width: 1000px; margin: 0 auto; padding: 160px 28px; display: flex; flex-direction: column; align-items: center; gap: 28px; text-align: center;">
+    <div style="width: 124px; height: 124px; border-radius: 50%; background: radial-gradient(circle at 40% 34%, #FFFFFF 0%, #FFFFFF 50%, #E6ECF8 100%); display: flex; align-items: center; justify-content: center; box-shadow: inset 0 -8px 18px rgba(72,99,181,0.2), 0 0 0 2px #E2AE45, 0 0 60px rgba(248,177,15,0.22), 0 0 140px rgba(72,99,181,0.6);">
+      <img class="core" src="/_blob/f0ddc11df1deb86f300b7c52eb17b3ff" alt="" style="width: 74px; height: auto;">
+    </div>
+    <h2 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: clamp(42px, 6vw, 88px); line-height: 0.98; letter-spacing: -0.035em;">Relevant traffic. Relevant leads. <span style="display: block; font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: #A3B5F2;">Starting in 5 days.</span></h2>
+    <p style="margin: 0; font-size: 20px; color: #C3CDE6; max-width: 640px;">Twenty minutes with Thomas. He'll show you who Google and AI name when your customers ask, and what your first five days look like.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;">
+      <a class="btn-y" href="https://calendly.com/thomas-relevant-search-media/30min" style="background: #F8B10F; color: #161E38; text-decoration: none; font-weight: 700; font-size: 18px; padding: 18px 30px; border-radius: 12px;">Book 20 minutes with Thomas</a>
+      <a href="tel:+12026096641" style="color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 18px; padding: 18px 28px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.25); background: rgba(16,23,45,0.85);">Call (202) 609-6641</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer style="background: #10172D; color: #9AA8CB;">
+  <div style="max-width: 1320px; margin: 0 auto; padding: 72px 28px 36px; display: flex; flex-direction: column; gap: 48px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 48px; justify-content: space-between;">
+      <div style="flex: 1 1 280px; display: flex; flex-direction: column; gap: 18px;">
+        <a href="#top" aria-label="Relevant Search Media home" style="align-self: flex-start; display: flex; align-items: center; gap: 12px; flex-shrink: 0; text-decoration: none; color: #FFFFFF;">
+        <span style="width: 46px; height: 46px; flex-shrink: 0; border-radius: 50%; background: radial-gradient(circle at 40% 34%, #FFFFFF 0%, #FFFFFF 52%, #E6ECF8 100%); box-shadow: 0 0 0 1.5px #E2AE45, 0 0 22px rgba(248,177,15,0.30), 0 0 40px rgba(72,99,181,0.45); display: flex; align-items: center; justify-content: center;"><img src="/_blob/f0ddc11df1deb86f300b7c52eb17b3ff" alt="" style="width: 31px; height: auto; transform: translate(1px, 0);"></span>
+        <span style="display: flex; flex-direction: column; line-height: 1.05;"><span style="font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 18px; letter-spacing: -0.01em; color: #FFFFFF;">Relevant Search Media</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #A3B5F2; margin-top: 5px;">Unified Search Visibility</span></span>
+      </a>
+        <p style="margin: 0; font-size: 15px; max-width: 300px;">Relevant traffic that gives you relevant leads, from Google and every AI search. Founded 2020.</p>
+        <div style="display: flex; flex-direction: column; gap: 6px; font-size: 15px;">
+          <a href="tel:+12026096641" style="color: #E3E9F7; text-decoration: none;">(202) 609-6641</a>
+          <a href="mailto:thomas@relevantsearchmedia.com" style="color: #E3E9F7; text-decoration: none;">thomas@relevantsearchmedia.com</a>
+        </div>
+      </div>
+      <nav aria-label="Footer" style="flex: 3 1 640px; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 28px; font-size: 15px;">
+        <sc-for list="{{serviceGroups}}" as="g" hint-placeholder-count="3">
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <strong style="color: #FFFFFF; font-weight: 600;">{{g.title}}</strong>
+            <sc-for list="{{g.items}}" as="s" hint-placeholder-count="3">
+              <a href="{{s.href}}" style="color: #9AA8CB; text-decoration: none;">{{s.name}}</a>
+            </sc-for>
+          </div>
+        </sc-for>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <strong style="color: #FFFFFF; font-weight: 600;">Company</strong>
+          <a href="#about" style="color: #9AA8CB; text-decoration: none;">About</a>
+          <a href="#launch" style="color: #9AA8CB; text-decoration: none;">How it works</a>
+          <a href="#commitment" style="color: #9AA8CB; text-decoration: none;">Our commitment</a>
+          <a href="/industries/" style="color: #9AA8CB; text-decoration: none;">Industries</a>
+          <a href="https://aiseousa.com" style="color: #9AA8CB; text-decoration: none;">AI SEO USA</a>
+        </div>
+      </nav>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; font-size: 13px;">
+      <span>© 2026 Relevant Search Media, a d/b/a of Silly Creators Corp.</span>
+      <span style="display: flex; gap: 20px;">
+        <a href="https://www.linkedin.com/company/relevant-search-media" style="color: #9AA8CB; text-decoration: none;">LinkedIn</a>
+        <a href="https://x.com/SearchRelevant_" style="color: #9AA8CB; text-decoration: none;">X</a>
+        <a href="https://www.instagram.com/_relevantsearchmedia" style="color: #9AA8CB; text-decoration: none;">Instagram</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"showPrices":{"editor":"boolean","default":false,"section":"Plans"},"showMegaMenu":{"editor":"boolean","default":false,"section":"Navigation"},"$preview":{"width":1440,"height":12400}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { qi: 0, ci: 0, hold: 0, mOpen: false };
+    this.queries = [
+      { q: 'best roofer near me in Austin, TX', e: 'Google AI Overview' },
+      { q: 'who can fix my AC today in Phoenix?', e: 'ChatGPT' },
+      { q: 'top-rated injury lawyer in Atlanta', e: 'Gemini' },
+      { q: 'emergency plumber open now in Plano', e: 'Google Maps' },
+      { q: 'best dentist for implants in San Diego', e: 'Perplexity' }
+    ];
+  }
+  componentDidMount() {
+    if (false) this.timer = setInterval(() => {
+      const cur = this.queries[this.state.qi].q;
+      if (this.state.ci < cur.length) {
+        this.setState({ ci: this.state.ci + 1 });
+      } else if (this.state.hold < 55) {
+        this.setState({ hold: this.state.hold + 1 });
+      } else {
+        this.setState({ qi: (this.state.qi + 1) % this.queries.length, ci: 0, hold: 0 });
+      }
+    }, 55);
+  }
+  componentWillUnmount() { clearInterval(this.timer); }
+  renderVals() {
+    const show = this.props.showPrices ?? false;
+    const cur = this.queries[this.state.qi];
+    const groups = [
+      { num: '01', title: 'Get found', hue: '#6F8CF0', hueBg: 'rgba(111,140,240,0.22)', hueBd: 'rgba(111,140,240,0.45)', items: [
+        { name: 'Google Search', short: 'Google Search', desc: 'Page one for the searches that bring buyers', long: 'Your whole market of customer searches mapped, one page locked to each, and page one committed in writing.', href: '/services/google-search/', icon: 'M17 27a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM24.4 24.4L33 33M8.5 19c3.2-2.6 10-5 16.6-4.2', sx: 30, sy: 8 },
+        { name: 'AI Overviews & AI Mode', short: 'AI Overviews', desc: 'Be the source Google’s AI quotes', long: 'Answer-first pages and verified facts that Google’s AI answers can quote and credit to you.', href: '/services/google-ai-overviews/', icon: 'M5 8h21v25H5zM10 14h11M10 19.5h11M10 25h6.5', sx: 31.5, sy: 8.5 },
+        { name: 'ChatGPT & AI Assistants', short: 'AI assistants', desc: 'Be the business AI recommends', long: 'One identity everywhere, open access for AI and mentions on the sites ChatGPT, Gemini, Perplexity and Copilot trust.', href: '/services/ai-search-visibility/', icon: 'M8 8h22a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H17l-7 6v-6H8a3 3 0 0 1-3-3V11a3 3 0 0 1 3-3zM12.5 17.5h.01M19 17.5h.01M25.5 17.5h.01', sx: 34, sy: 5.5 }
+      ]},
+      { num: '02', title: 'Earn trust', hue: '#4CC0A8', hueBg: 'rgba(76,192,168,0.20)', hueBd: 'rgba(76,192,168,0.45)', items: [
+        { name: 'Local & Google Maps', short: 'Local & Maps', desc: 'Own your city on Maps and your Google profile', long: 'Google profile posts and photos, matching listings and reviews, so you show up when they search nearby.', href: '/services/local-google-maps/', icon: 'M20 34s-10-8.6-10-16a10 10 0 0 1 20 0c0 7.4-10 16-10 16zM20 21.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z', sx: 32, sy: 7 },
+        { name: 'Content Engine', short: 'the Content Engine', desc: 'Daily pages that answer every customer question', long: 'Guides, articles, answer pages and expertise pages, published daily and checked by a specialist before they go live.', href: '/services/content/', icon: 'M11 5h13l7 7v23H11zM24 5v7h7M16 19h10M16 24h10M16 29h6', sx: 6, sy: 31 },
+        { name: 'Earned Mentions & PR', short: 'earned mentions', desc: 'Press, directories and forums that vouch for you', long: 'Press releases, trade directories, forum answers and reviews. Real mentions, never bought links.', href: '/services/earned-mentions/', icon: 'M10 12.5L20 19l10-8.5M20 19v11M7.5 12.5a2.5 2.5 0 1 0 5 0 2.5 2.5 0 1 0-5 0M27.5 10.5a2.5 2.5 0 1 0 5 0 2.5 2.5 0 1 0-5 0M17.5 31a2.5 2.5 0 1 0 5 0 2.5 2.5 0 1 0-5 0M17.5 19a2.5 2.5 0 1 0 5 0 2.5 2.5 0 1 0-5 0', sx: 31, sy: 29 }
+      ]},
+      { num: '03', title: 'Convert', hue: '#F8B10F', hueBg: 'rgba(248,177,15,0.18)', hueBd: 'rgba(248,177,15,0.45)', items: [
+        { name: 'Websites Built to Convert', short: 'websites', desc: 'A fast new site built for search and AI', long: 'A new website on Accelerate and Partnership, built to load fast, read clearly for AI and turn visits into calls.', href: '/services/websites/', icon: 'M4 8h32v22H4zM4 13.5h32M8 10.75h.01M11.5 10.75h.01M15 34h10M20 30v4', sx: 30, sy: 22 },
+        { name: 'Social & Video', short: 'social and video', desc: 'Daily posts and shorts that keep you active', long: 'Daily posts on the platforms your customers use, plus short video, all pointing back to the pages that convert.', href: '/services/social-media/', icon: 'M6 9h26v19H6zM16.5 14v9l7.5-4.5zM11 33h16', sx: 33.5, sy: 5.5 },
+        { name: 'Lead Tracking', short: 'lead tracking', desc: 'Every call and form counted to its source', long: 'A tracking number, form counts and one lead log with instant alerts, so you see exactly what came in.', href: '/services/lead-tracking/', icon: 'M5 33h30M7 27l7.5-7.5 6 5L31 13.5', sx: 31, sy: 10 }
+      ]}
+    ];
+    return {
+      orbitCard: 210,
+      heroCenter: 59,
+      ctaOffset: 215,
+      typed: cur.q.slice(0, this.state.ci),
+      answered: this.state.ci >= cur.q.length,
+      engine: cur.e,
+      showPrices: show,
+      hidePrices: !show,
+      menuClass: (this.props.showMegaMenu ?? false) ? 'pinned' : '',
+      serviceGroups: groups,
+      marqueeA: ['Google Search', 'AI Overviews', 'AI Mode', 'ChatGPT', 'Gemini', 'Perplexity', 'Copilot', 'Google Maps', 'Siri', 'Google profile'],
+      days: [
+        { n: '1', title: 'Discover', body: 'A 30-minute kickoff. We learn your business and collect access.', bg: '#161E38', fg: '#FFFFFF' },
+        { n: '2', title: 'Market study', body: 'Deep research on your niche and competitors, and every customer search mapped.', bg: '#161E38', fg: '#FFFFFF' },
+        { n: '3', title: '313-point check', body: 'Every page of your site checked, plus your AI Score against competitors.', bg: '#161E38', fg: '#FFFFFF' },
+        { n: '4', title: 'Growth plan', body: 'Your plan page by page, a 90-day calendar and a walkthrough call.', bg: '#161E38', fg: '#FFFFFF' },
+        { n: '5', title: 'Live', body: 'Highest-impact fixes go live and your work log opens.', bg: '#F8B10F', fg: '#161E38' }
+      ],
+      logRows: [
+        { t: 'Day 5', what: 'Fix: business details matched on site and Google profile', s: 'Live', c: '#4CC0A8' },
+        { t: 'Day 5', what: 'AI access opened and site fact sheet published', s: 'Live', c: '#4CC0A8' },
+        { t: 'Day 6', what: 'Answer page: water heater replacement cost', s: 'Live', c: '#4CC0A8' },
+        { t: 'Day 6', what: 'Earned mention: state trade directory', s: 'Live', c: '#4CC0A8' },
+        { t: 'Day 7', what: 'Guide: choosing a licensed plumber', s: 'In review', c: '#A3B5F2' },
+        { t: 'Day 7', what: 'Google profile post and two job photos', s: 'Scheduled', c: '#95A2C4' },
+        { t: 'Day 5', what: 'Fix: business details matched on site and Google profile', s: 'Live', c: '#4CC0A8' },
+        { t: 'Day 5', what: 'AI access opened and site fact sheet published', s: 'Live', c: '#4CC0A8' },
+        { t: 'Day 6', what: 'Answer page: water heater replacement cost', s: 'Live', c: '#4CC0A8' },
+        { t: 'Day 6', what: 'Earned mention: state trade directory', s: 'Live', c: '#4CC0A8' },
+        { t: 'Day 7', what: 'Guide: choosing a licensed plumber', s: 'In review', c: '#A3B5F2' },
+        { t: 'Day 7', what: 'Google profile post and two job photos', s: 'Scheduled', c: '#95A2C4' }
+      ],
+      compare: [
+        { k: 'Who does the work', a: 'An account manager', b: 'You do', r: 'AI agents run and checked by 100+ people' },
+        { k: 'How often', a: 'A few times a month', b: 'When you find time', r: 'Every day, weekends included' },
+        { k: 'First live work', a: 'Day 30 to 90', b: 'After you set it up', r: 'Day 5' },
+        { k: 'Customer searches tracked', a: '20 to 30', b: 'What you enter', r: '300 to 2,000+' },
+        { k: 'What you see', a: 'A monthly report', b: 'Dashboards to read', r: 'Live log and a report every 15 days' },
+        { k: 'Promise in writing', a: 'Rarely', b: 'None', r: 'Two, signed' },
+        { k: 'Your competitors', a: 'Often the same agency', b: 'Same software', r: 'One business per trade per city' }
+      ],
+      plans: [
+        { name: 'Essential', tag: 'Start here', tagFg: '#45526F', tagBg: '#EEF2F7', line: 'The full system on the site you already have.', price: '$399', cls: 'lift', bg: '#FFFFFF', fg: '#161E38', sub: '#5A6785', check: '#4863B5', btnBg: '#FFFFFF', btnFg: '#161E38', btnBd: '#161E38',
+          items: ['300 customer searches mapped', 'Your existing site fixed', '120 pieces published a month', '50 earned mentions a month', '1 social post a day', '150 of 300 on page one by month 4'] },
+        { name: 'Accelerate', tag: 'Most chosen', tagFg: '#161E38', tagBg: '#F8B10F', line: 'A new website, then double the system.', price: '$599', cls: 'gborder', bg: '#1E2849', fg: '#FFFFFF', sub: '#B6C1DD', check: '#F8B10F', btnBg: '#F8B10F', btnFg: '#161E38', btnBd: '#F8B10F',
+          items: ['600 customer searches mapped', 'A new website, built to convert', '240 pieces published a month', '100 earned mentions a month', '2 social posts a day on 6 platforms', '300 of 600 on page one by month 4'] },
+        { name: 'Partnership', tag: 'Your whole market', tagFg: '#22389A', tagBg: '#EEF2FD', line: 'Digital Growth Partnership, with a named lead.', price: '$999', cls: 'lift', bg: '#FFFFFF', fg: '#161E38', sub: '#5A6785', check: '#4863B5', btnBg: '#4863B5', btnFg: '#FFFFFF', btnBd: '#4863B5',
+          items: ['2,000+ customer searches mapped', 'New website and ongoing conversion work', '580 pieces published a month', '200 earned mentions a month', 'A named account lead, priority queue', '1,000 of 2,000 on page one by month 4'] }
+      ],
+      mOpen: this.state.mOpen, mOpenStr: this.state.mOpen ? 'true' : 'false', menuLabel: this.state.mOpen ? 'Close menu' : 'Open menu',
+      menuIcon: this.state.mOpen ? 'M6 6l12 12M18 6L6 18' : 'M4 7h16M4 12h16M4 17h16',
+      toggleMenu: () => this.setState({ mOpen: !this.state.mOpen }),
+      industryGroups: [
+        { title: 'Home services', hue: '#F8B10F', items: ['Plumbers', 'HVAC', 'Roofers', 'Electricians', 'Contractors', 'Painters'] },
+        { title: 'Property & outdoor', hue: '#4CC0A8', items: ['Landscapers', 'Cleaners', 'Pest control', 'Movers', 'Auto repair', 'Security firms'] },
+        { title: 'Health & care', hue: '#1EA7E8', items: ['Dentists', 'Medical clinics', 'Med spas'] },
+        { title: 'Professional', hue: '#A3B5F2', items: ['Law firms', 'Accountants', 'Realtors', 'Mortgage brokers', 'Insurance agents', 'IT services', 'Online stores'] }
+      ].map((g) => ({ title: g.title, hue: g.hue, items: g.items.map((n) => ({ name: n, href: '/industries/' + n.toLowerCase().replace(/[^a-z]+/g, '-') + '/' })) })),
+      learn: [
+        { tag: 'AI SEO', name: 'What is AI SEO?', desc: 'How search changed, and what gets a business named now', href: '/ai-seo/' },
+        { tag: 'AIO', name: 'AI Overviews, explained', desc: 'The answer box at the top of Google', href: '/ai-seo/ai-overviews/' },
+        { tag: 'AEO', name: 'What is AEO?', desc: 'Answer Engine Optimization in plain words', href: '/ai-seo/aeo/' },
+        { tag: 'GEO', name: 'What is GEO?', desc: 'Getting cited by ChatGPT, Gemini and Perplexity', href: '/ai-seo/geo/' },
+        { tag: 'SEO', name: 'AI SEO vs. classic SEO', desc: 'What stays the same and what is new', href: '/ai-seo/vs-seo/' },
+        { tag: 'USV', name: 'Unified Search Visibility', desc: 'One system for Google, Maps and every AI engine', href: '/unified-search-visibility/' },
+        { tag: 'E-E-A-T', name: 'Why AI trusts some businesses', desc: 'Proof, reviews and mentions that vouch for you', href: '/ai-seo/trust/' },
+        { tag: 'FAQ', name: 'Questions owners ask', desc: 'Straight answers on timing, safety and cancelling', href: '#faq' }
+      ],
+      industries: ['Plumbers', 'HVAC', 'Roofers', 'Electricians', 'Contractors', 'Law firms', 'Dentists', 'Medical clinics', 'Med spas', 'Realtors', 'Mortgage brokers', 'Insurance agents', 'Accountants', 'Painters', 'Cleaners', 'Landscapers', 'Pest control', 'Movers', 'Auto repair', 'Online stores', 'IT services', 'Security firms']
+    };
+  }
+}
+</script>
+</body>
+</html>

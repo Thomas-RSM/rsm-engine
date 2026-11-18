@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RSM System — hero</title>
+<script src="./support.js"></script>
+<script src="/_blob/6340bf10b289b30ddedd259dfcc27d12"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div style="position: relative; width: 720px; height: 640px; font-family: Inter, system-ui, sans-serif; color: #FFFFFF; background: transparent;">
+
+  <canvas aria-hidden="true" ref="{{setBg}}" width="1440" height="1280" style="position: absolute; left: 0; top: 0; width: 720px; height: 640px;"></canvas>
+
+  <!-- the sun: the brand, always the brightest thing here -->
+  <div style="position: absolute; left: 360px; top: 320px; width: 172px; height: 172px; transform: translate(-50%, -50%); z-index: 3; border-radius: 50%; opacity: {{sunO}}; background: radial-gradient(circle at 40% 34%, #FFFFFF 0%, #FFFFFF 50%, #E8EDF7 100%); box-shadow: inset 0 -10px 22px rgba(72,99,181,0.20), inset 0 4px 10px rgba(255,255,255,0.9), 0 0 0 2px #E2AE45, 0 0 0 3px rgba(255,236,190,0.4), 0 0 70px rgba(248,177,15,{{glowA}}), 0 0 160px rgba(72,99,181,0.55); display: flex; align-items: center; justify-content: center;">
+    <img src="/_blob/f0ddc11df1deb86f300b7c52eb17b3ff" alt="Relevant Search Media" style="width: 112px; height: auto; transform: translate(2px, 1px);">
+  </div>
+
+  <canvas aria-hidden="true" ref="{{setGl}}" style="position: absolute; left: 0; top: 0; width: 720px; height: 640px; z-index: 4; pointer-events: none;"></canvas>
+
+  <!-- quiet names for the five worlds -->
+  <sc-for list="{{labels}}" as="p" hint-placeholder-count="5">
+    <span style="position: absolute; left: {{p.x}}px; top: {{p.y}}px; transform: translate({{p.tx}}, -50%); z-index: 5; opacity: {{p.o}}; font: {{p.font}}; letter-spacing: 0.01em; color: rgba(255,255,255,0.78); white-space: nowrap; pointer-events: none;">{{p.name}}</span>
+  </sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":720,"height":640}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.cx = 360; this.cy = 320; this.RATIO = 0.46; this.INC = -14 * Math.PI / 180;
+    // three rings, five worlds; every ring shares one plane so the paths never cross
+    this.rings = [186, 250, 314];
+    this.items = [
+      { name: 'Google', r: 186, ph: 2.7, dia: 46, c: '#3D6BE8', d: '#14275E' },
+      { name: 'ChatGPT', r: 250, ph: 0.45, dia: 42, c: '#4CC0A8', d: '#0B4D41' },
+      { name: 'Gemini', r: 250, ph: 0.45 + Math.PI, dia: 36, c: '#1EA7E8', d: '#0A4567' },
+      { name: 'Perplexity', r: 314, ph: 5.2, dia: 34, c: '#A3B5F2', d: '#2A3A78' },
+      { name: 'Google Maps', r: 314, ph: 1.75, dia: 38, c: '#F8B10F', d: '#7A4E00' }
+    ];
+    // slow, constant, Kepler-like: the inner world takes about a minute to go round
+    this.items.forEach((p) => { p.sp = 0.105 * Math.pow(186 / p.r, 1.5); });
+    this.state = { t: 0, narrow: false };
+  }
+  componentDidMount() {
+    let s = 5; const rnd = () => { s = (s * 9301 + 49297) % 233280; return s / 233280; };
+    this.stars = []; for (let i = 0; i < 46; i++) this.stars.push({ x: rnd() * 720, y: rnd() * 640, r: rnd() * 1.0 + 0.3, tw: rnd() * 6.28, d: rnd() * 0.6 + 0.25 });
+    if (window.innerWidth < 760) this.setState({ narrow: true });
+    this.start = performance.now();
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const loop = (now) => {
+      const t = reduce ? 40 : (now - this.start) / 1000;
+      this.P = this.positions(t);
+      this.render3d(t); this.drawBg(t);
+      this.setState({ t: t });
+      if (!reduce) this.raf = requestAnimationFrame(loop);
+    };
+    this.raf = requestAnimationFrame(loop);
+  }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); if (this.gl3) this.gl3.renderer.dispose(); }
+  ease(x) { x = Math.max(0, Math.min(1, x)); return 1 - Math.pow(1 - x, 3); }
+  at(r, a) { const x = r * Math.cos(a), y = r * this.RATIO * Math.sin(a), c = Math.cos(this.INC), s = Math.sin(this.INC); return [this.cx + x * c - y * s, this.cy + x * s + y * c]; }
+  positions(t) {
+    return this.items.map((p) => { const a = p.ph + p.sp * t, q = this.at(p.r, a); return { X: q[0], Y: q[1], a: a, depth: Math.sin(a) }; });
+  }
+  init3d() {
+    const T = window.THREE; if (!T || !this.glCanvas || this.gl3) return;
+    const W = 720, H = 640;
+    const renderer = new T.WebGLRenderer({ canvas: this.glCanvas, alpha: true, antialias: true });
+    renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1)); renderer.setSize(W, H, false); renderer.setClearColor(0x000000, 0);
+    renderer.outputEncoding = T.sRGBEncoding; renderer.toneMapping = T.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.1;
+    const scene = new T.Scene();
+    const cam = new T.OrthographicCamera(-W / 2, W / 2, H / 2, -H / 2, -2000, 2000); cam.position.z = 1000;
+    const sx = this.cx - W / 2, sy = H / 2 - this.cy;
+    const sun = new T.PointLight(0xffe6bd, 2.6, 0, 0); sun.position.set(sx, sy, 0); scene.add(sun);
+    scene.add(new T.AmbientLight(0x5c6fb8, 0.36));
+    const fill = new T.DirectionalLight(0xdfe6ff, 0.4); fill.position.set(-0.3, 0.5, 1); scene.add(fill);
+    const occ = new T.Mesh(new T.SphereGeometry(88, 48, 48), new T.MeshBasicMaterial({ colorWrite: false })); occ.position.set(sx, sy, 0); occ.renderOrder = -1; scene.add(occ);
+    const rgb = (h) => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
+    const surface = (c1, c2, seed) => {
+      const cv = document.createElement('canvas'); cv.width = 256; cv.height = 128; const x = cv.getContext('2d'), a = rgb(c1), b = rgb(c2);
+      for (let y = 0; y < 128; y++) { const m = 0.5 + 0.32 * Math.sin(y * 0.16 + Math.sin(y * 0.045 + seed) * 2.4 + seed); x.fillStyle = 'rgb(' + Math.round(a[0] * m + b[0] * (1 - m)) + ',' + Math.round(a[1] * m + b[1] * (1 - m)) + ',' + Math.round(a[2] * m + b[2] * (1 - m)) + ')'; x.fillRect(0, y, 256, 1); }
+      const tx = new T.CanvasTexture(cv); tx.encoding = T.sRGBEncoding; return tx;
+    };
+    const glow = (() => { const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'), g = x.createRadialGradient(64, 64, 20, 64, 64, 64); g.addColorStop(0, 'rgba(255,255,255,0.45)'); g.addColorStop(0.5, 'rgba(255,255,255,0.12)'); g.addColorStop(1, 'rgba(255,255,255,0)'); x.fillStyle = g; x.fillRect(0, 0, 128, 128); return new T.CanvasTexture(c); })();
+    const worlds = this.items.map((p, i) => {
+      const grp = new T.Group(); scene.add(grp);
+      const body = new T.Mesh(new T.SphereGeometry(1, 48, 32), new T.MeshStandardMaterial({ map: surface(p.c, p.d, i * 1.7 + 0.6), roughness: 0.6, metalness: 0.04 }));
+      body.rotation.z = 0.3; grp.add(body);
+      const halo = new T.Sprite(new T.SpriteMaterial({ map: glow, color: new T.Color(p.c), transparent: true, opacity: 0.4, blending: T.AdditiveBlending, depthWrite: false }));
+      halo.scale.set(3.2, 3.2, 1); grp.add(halo);
+      return { grp: grp, body: body, halo: halo };
+    });
+    this.gl3 = { renderer: renderer, scene: scene, cam: cam, worlds: worlds, W: W, H: H };
+  }
+  diaOf(i) { const k = (this.P[i].depth + 1) / 2; return this.items[i].dia * (0.8 + 0.34 * k); }
+  render3d(t) {
+    if (!this.gl3) this.init3d();
+    const g = this.gl3; if (!g) return;
+    const fade = this.ease((t - 0.5) / 1.6);
+    g.worlds.forEach((w, i) => {
+      const q = this.P[i], k = (q.depth + 1) / 2;
+      w.grp.position.set(q.X - g.W / 2, g.H / 2 - q.Y, q.depth * 150);
+      w.grp.scale.setScalar(this.diaOf(i) / 2 * fade);
+      w.body.rotation.y = t * 0.12;
+      w.halo.material.opacity = (0.22 + 0.3 * k) * fade;
+    });
+    g.renderer.render(g.scene, g.cam);
+  }
+  drawBg(t) {
+    const ctx = this.bg; if (!ctx) return;
+    const cx = this.cx, cy = this.cy;
+    ctx.setTransform(2, 0, 0, 2, 0, 0); ctx.clearRect(0, 0, 720, 640);
+    const ui = this.ease((t - 0.2) / 1.8);
+    // a few still stars, breathing very slowly
+    for (const st of this.stars) { ctx.fillStyle = 'rgba(220,230,255,' + (st.d * (0.45 + 0.3 * Math.sin(t * 0.5 + st.tw))).toFixed(2) + ')'; ctx.beginPath(); ctx.arc(st.x, st.y, st.r, 0, 6.283); ctx.fill(); }
+    // soft light from the sun
+    ctx.globalCompositeOperation = 'lighter';
+    const g = ctx.createRadialGradient(cx, cy, 80, cx, cy, 330);
+    g.addColorStop(0, 'rgba(248,177,15,0.16)'); g.addColorStop(0.22, 'rgba(120,130,200,0.14)'); g.addColorStop(0.55, 'rgba(72,99,181,0.12)'); g.addColorStop(1, 'rgba(72,99,181,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, 330, 0, 6.283); ctx.fill();
+    // the rings: bright where they pass in front, fading as they go behind
+    const N = 160; ctx.lineCap = 'round';
+    this.rings.forEach((r, ri) => {
+      for (let k = 0; k < N; k++) {
+        const a0 = k / N * 6.2832, a1 = (k + 1) / N * 6.2832, d = (Math.sin((a0 + a1) / 2) + 1) / 2;
+        const p = this.at(r, a0), q = this.at(r, a1);
+        ctx.strokeStyle = 'rgba(190,205,250,' + ((0.07 + 0.3 * d * d) * ui).toFixed(3) + ')'; ctx.lineWidth = 0.7 + 0.5 * d;
+        ctx.beginPath(); ctx.moveTo(p[0], p[1]); ctx.lineTo(q[0], q[1]); ctx.stroke();
+      }
+    });
+    // each world leaves a short trace of light along its path
+    if (this.P) this.items.forEach((p, i) => {
+      const q = this.P[i], k = (q.depth + 1) / 2, c = p.c, R = parseInt(c.slice(1, 3), 16), G = parseInt(c.slice(3, 5), 16), B = parseInt(c.slice(5, 7), 16);
+      const S = 26, span = 0.62;
+      for (let j = 0; j < S; j++) {
+        const u0 = j / S, u1 = (j + 1) / S, p0 = this.at(p.r, q.a - span * u0), p1 = this.at(p.r, q.a - span * u1);
+        ctx.strokeStyle = 'rgba(' + R + ',' + G + ',' + B + ',' + ((1 - u0) * (1 - u0) * (0.18 + 0.5 * k) * ui).toFixed(3) + ')'; ctx.lineWidth = 1.6;
+        ctx.beginPath(); ctx.moveTo(p0[0], p0[1]); ctx.lineTo(p1[0], p1[1]); ctx.stroke();
+      }
+    });
+    ctx.globalCompositeOperation = 'source-over';
+  }
+  renderVals() {
+    const s = this.state, t = s.t, n = s.narrow, ui = this.ease((t - 1.2) / 1.4);
+    const P = this.P || this.positions(0);
+    const labels = this.items.map((p, i) => {
+      const q = P[i], half = (this.P ? this.diaOf(i) : p.dia) / 2, left = q.X < this.cx;
+      // names fade out as a world passes behind, or too close to the logo
+      const near = Math.min(1, Math.max(0, (Math.hypot(q.X - this.cx, q.Y - this.cy) - 130) / 40));
+      const vis = Math.min(1, Math.max(0, (q.depth + 0.35) / 0.5)) * near;
+      return { name: p.name, x: (q.X + (left ? -half - 10 : half + 10)).toFixed(1), y: q.Y.toFixed(1), tx: left ? '-100%' : '0', o: (vis * ui).toFixed(2), font: n ? '500 24px Inter, sans-serif' : '500 13px Inter, sans-serif' };
+    });
+    return {
+      setBg: (el) => { this.bg = el ? el.getContext('2d') : null; },
+      setGl: (el) => { this.glCanvas = el; },
+      labels: labels, sunO: this.ease(t / 1.0).toFixed(3),
+      glowA: (0.22 + 0.05 * Math.sin(t * 0.8)).toFixed(3)
+    };
+  }
+}
+</script>
+</body>
+</html>

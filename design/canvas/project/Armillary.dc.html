@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RSM Armillary — hero field</title>
+<script src="./support.js"></script>
+<script src="/_blob/6340bf10b289b30ddedd259dfcc27d12"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>body{margin:0}</style>
+</helmet>
+<div ref="{{setRoot}}" onMouseMove="{{onMove}}" onMouseLeave="{{onLeave}}" onClick="{{onClick}}" style="position: relative; width: 100%; height: 100%; min-height: 960px; overflow: hidden; background: #0B1230;">
+  <canvas aria-hidden="true" ref="{{setCanvas}}" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: block;"></canvas>
+  <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(85% 70% at 50% {{cyPct}}%, rgba(16,23,45,0) 40%, rgba(16,23,45,0.55) 75%, #10172D 100%);"></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"centerY":{"editor":"range","default":60,"min":40,"max":80,"unit":"%","section":"Layout"},"$preview":{"width":1440,"height":1080}}'>
+class Component extends DCLogic {
+  componentDidMount() {
+    if (!window.THREE || !this.cv || !this.root) return;
+    const T = window.THREE;
+    const renderer = new T.WebGLRenderer({ canvas: this.cv, antialias: true, powerPreference: 'high-performance' });
+    renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+    renderer.toneMapping = T.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+    renderer.outputEncoding = T.sRGBEncoding;
+    const scene = new T.Scene();
+    scene.background = new T.Color(0x0c1331);
+    scene.fog = new T.FogExp2(0x0c1331, 0.035);
+    const pm = new T.PMREMGenerator(renderer);
+    scene.environment = pm.fromScene(new T.RoomEnvironment(), 0.04).texture;
+    const camera = new T.PerspectiveCamera(30, 1, 0.1, 100);
+    camera.position.set(0, 0.35, 10.5);
+    // light: warm key from the core, cool rims
+    const key = new T.PointLight(0xffd58a, 3.2, 12, 2); scene.add(key);
+    const rimA = new T.DirectionalLight(0x8fa6ff, 0.9); rimA.position.set(-5, 4, -3); scene.add(rimA);
+    const rimB = new T.DirectionalLight(0x6fe0c8, 0.5); rimB.position.set(6, -2, -4); scene.add(rimB);
+    scene.add(new T.AmbientLight(0x22305e, 0.6));
+    const world = new T.Group(); scene.add(world);
+    const inst = new T.Group(); world.add(inst);
+    // the core: a dark navy glass sphere carrying the RSM mark
+    const core = new T.Mesh(new T.SphereGeometry(0.62, 64, 64), new T.MeshPhysicalMaterial({ color: 0x0f1a48, metalness: 0.2, roughness: 0.12, clearcoat: 1, clearcoatRoughness: 0.08, envMapIntensity: 1.4 }));
+    inst.add(core);
+    const halo = new T.Mesh(new T.TorusGeometry(0.66, 0.012, 16, 200), new T.MeshBasicMaterial({ color: 0xffc860, toneMapped: false }));
+    inst.add(halo);
+    const loader = new T.TextureLoader();
+    const glowTex = (() => { const c = document.createElement('canvas'); c.width = c.height = 256; const x = c.getContext('2d'); const g = x.createRadialGradient(128, 128, 0, 128, 128, 128); g.addColorStop(0, 'rgba(255,214,140,1)'); g.addColorStop(0.25, 'rgba(255,190,90,0.45)'); g.addColorStop(0.6, 'rgba(90,120,230,0.12)'); g.addColorStop(1, 'rgba(72,99,181,0)'); x.fillStyle = g; x.fillRect(0, 0, 256, 256); const t = new T.CanvasTexture(c); t.encoding = T.sRGBEncoding; return t; })();
+    const glow = new T.Sprite(new T.SpriteMaterial({ map: glowTex, blending: T.AdditiveBlending, depthWrite: false, transparent: true, toneMapped: false }));
+    glow.scale.set(5.2, 5.2, 1); glow.renderOrder = -1; world.add(glow);
+    const logo = new T.Sprite(new T.SpriteMaterial({ map: loader.load('/_blob/df8bb70e2a1d62ada3ebb847412f9dfb', (tx) => { tx.encoding = T.sRGBEncoding; }), transparent: true, toneMapped: false, depthTest: false }));
+    logo.scale.set(0.98, 0.98 * 479 / 541, 1); logo.position.z = 0.7; logo.renderOrder = 10; inst.add(logo);
+    // the rings of the armillary
+    const gold = new T.MeshStandardMaterial({ color: 0xe9b64c, metalness: 1, roughness: 0.2, envMapIntensity: 1.6 });
+    const goldSoft = new T.MeshStandardMaterial({ color: 0xc99631, metalness: 1, roughness: 0.32, envMapIntensity: 1.3 });
+    const blue = new T.MeshStandardMaterial({ color: 0x4863b5, metalness: 0.75, roughness: 0.28, envMapIntensity: 1.4 });
+    const teal = new T.MeshStandardMaterial({ color: 0x4cc0a8, metalness: 0.7, roughness: 0.3, envMapIntensity: 1.3 });
+    const engraved = (names, hue) => {
+      const c = document.createElement('canvas'); c.width = 4096; c.height = 128; const x = c.getContext('2d');
+      const g = x.createLinearGradient(0, 0, 0, 128); g.addColorStop(0, '#7a5200'); g.addColorStop(0.18, '#f6cf6e'); g.addColorStop(0.5, '#ffe9b0'); g.addColorStop(0.82, '#d9a33a'); g.addColorStop(1, '#6e4a00');
+      x.fillStyle = g; x.fillRect(0, 0, 4096, 128);
+      x.font = '600 56px Inter, Arial, sans-serif'; x.textBaseline = 'middle';
+      const txt = names.join('   ✦   ') + '   ✦   ';
+      let w = x.measureText(txt).width, px = 0;
+      while (px < 4096) { x.fillStyle = 'rgba(255,245,215,0.55)'; x.fillText(txt, px + 1.5, 66); x.fillStyle = 'rgba(70,44,0,0.92)'; x.fillText(txt, px, 64); px += w; }
+      const t = new T.CanvasTexture(c); t.encoding = T.sRGBEncoding; t.anisotropy = 8; t.wrapS = T.RepeatWrapping; return t;
+    };
+    const rings = [];
+    const mkRing = (R, tube, mat, tilt, speed, band) => {
+      const g = new T.Group();
+      const torus = new T.Mesh(new T.TorusGeometry(R, tube, 24, 260), mat); g.add(torus);
+      if (band) {
+        const cyl = new T.Mesh(new T.CylinderGeometry(R + tube * 0.4, R + tube * 0.4, 0.15, 260, 1, true), new T.MeshStandardMaterial({ map: engraved(band), metalness: 0.9, roughness: 0.28, envMapIntensity: 1.5, side: T.DoubleSide }));
+        cyl.rotation.x = Math.PI / 2; g.add(cyl);
+        const edgeA = new T.Mesh(new T.TorusGeometry(R + tube * 0.4, 0.012, 12, 260), gold); edgeA.position.z = 0.075; g.add(edgeA);
+        const edgeB = edgeA.clone(); edgeB.position.z = -0.075; g.add(edgeB);
+      }
+      g.rotation.set(tilt[0], tilt[1], tilt[2]);
+      const spin = new T.Group(); spin.add(g); inst.add(spin);
+      rings.push({ spin: spin, inner: g, speed: speed, R: R });
+      return g;
+    };
+    mkRing(1.18, 0.03, gold, [Math.PI / 2, 0, 0.35], 0.12, null);
+    mkRing(1.42, 0.022, blue, [0.25, 0.9, 0], -0.09, null);
+    mkRing(1.68, 0.03, gold, [Math.PI / 2 - 0.42, 0, -0.2], 0.05, ['GOOGLE', 'CHATGPT', 'AI OVERVIEWS', 'GEMINI', 'PERPLEXITY', 'AI MODE', 'GOOGLE MAPS', 'CLAUDE', 'COPILOT']);
+    mkRing(1.96, 0.02, teal, [1.1, -0.6, 0.4], 0.07, null);
+    const outer = mkRing(2.3, 0.034, goldSoft, [Math.PI / 2 - 0.18, 0.12, 0.08], -0.03, ['UNIFIED SEARCH VISIBILITY', 'AI SEARCH VISIBILITY', 'AIO', 'AEO', 'GEO', 'AI SEO', 'founded 2020']);
+    // dial ticks on the outer meridian, like a fine instrument
+    const tickGeo = new T.BoxGeometry(0.012, 0.09, 0.02);
+    const ticks = new T.InstancedMesh(tickGeo, gold, 120);
+    const dm = new T.Object3D();
+    for (let i = 0; i < 120; i++) { const a = i / 120 * Math.PI * 2, r = 2.3 + 0.13 + (i % 10 === 0 ? 0.03 : 0); dm.position.set(Math.cos(a) * r, Math.sin(a) * r, 0); dm.rotation.set(0, 0, a - Math.PI / 2); dm.scale.set(1, i % 10 === 0 ? 1.8 : 1, 1); dm.updateMatrix(); ticks.setMatrixAt(i, dm.matrix); }
+    outer.add(ticks);
+    // engines: points of light riding the rings
+    const beadMat = (c) => new T.MeshBasicMaterial({ color: c, toneMapped: false });
+    const beads = [];
+    [[0, 0xbfe9ff, 0], [0, 0xffd27a, 3.1], [1, 0x9fb4ff, 1.2], [2, 0xffe2a0, 2.2], [3, 0x8ff0dc, 4.4], [3, 0x8ff0dc, 1.0], [4, 0xffd27a, 5.2]].forEach((b) => {
+      const ring = rings[b[0]], m = new T.Mesh(new T.SphereGeometry(0.045, 20, 20), beadMat(b[1]));
+      ring.inner.add(m); beads.push({ m: m, ring: ring, a: b[2], sp: 0.25 + Math.random() * 0.2 });
+    });
+    // stardust with depth
+    const N = 1600, pos = new Float32Array(N * 3);
+    for (let i = 0; i < N; i++) { const r = 4 + Math.random() * 18, a = Math.random() * Math.PI * 2, y = (Math.random() - 0.5) * 14; pos[i * 3] = Math.cos(a) * r; pos[i * 3 + 1] = y; pos[i * 3 + 2] = Math.sin(a) * r - 6; }
+    const pg = new T.BufferGeometry(); pg.setAttribute('position', new T.BufferAttribute(pos, 3));
+    const stars = new T.Points(pg, new T.PointsMaterial({ color: 0xc8d4ff, size: 0.035, transparent: true, opacity: 0.75, depthWrite: false }));
+    scene.add(stars);
+    // the Om shockwave: a soft ring of light that leaves the core
+    const waveTex = (() => { const c = document.createElement('canvas'); c.width = c.height = 512; const x = c.getContext('2d'); const g = x.createRadialGradient(256, 256, 180, 256, 256, 256); g.addColorStop(0, 'rgba(255,210,130,0)'); g.addColorStop(0.75, 'rgba(255,210,130,0.9)'); g.addColorStop(1, 'rgba(255,210,130,0)'); x.fillStyle = g; x.fillRect(0, 0, 512, 512); const t = new T.CanvasTexture(c); return t; })();
+    const waves = [];
+    const addWave = (strength) => { const s = new T.Sprite(new T.SpriteMaterial({ map: waveTex, blending: T.AdditiveBlending, transparent: true, depthWrite: false, opacity: 0, toneMapped: false })); world.add(s); waves.push({ s: s, t0: this.t || 0, k: strength }); this.flash = 1; };
+    this.addWave = addWave;
+    // bloom
+    const composer = new T.EffectComposer(renderer);
+    composer.addPass(new T.RenderPass(scene, camera));
+    const bloom = new T.UnrealBloomPass(new T.Vector2(512, 512), 0.85, 0.55, 0.72);
+    composer.addPass(bloom);
+    this.m = { tx: 0, ty: 0, sx: 0, sy: 0 };
+    this.flash = 0;
+    const resize = () => {
+      const r = this.root.getBoundingClientRect(), w = Math.max(1, r.width), h = Math.max(1, r.height);
+      renderer.setSize(w, h, false); composer.setSize(w, h);
+      camera.aspect = w / h;
+      const fit = w < 700 ? 1.55 : 1;
+      camera.position.z = 10.5 * fit;
+      camera.updateProjectionMatrix();
+      const visH = 2 * Math.tan((camera.fov * Math.PI / 180) / 2) * camera.position.z;
+      world.position.y = -((this.props.centerY ?? 60) / 100 - 0.5) * visH;
+    };
+    resize();
+    if (window.ResizeObserver) { this.ro = new ResizeObserver(resize); this.ro.observe(this.root); }
+    const start = performance.now();
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let lastChant = -1;
+    const tick = () => {
+      const t = reduce ? 3 : (performance.now() - start) / 1000; this.t = t;
+      const m = this.m; m.sx += (m.tx - m.sx) * 0.04; m.sy += (m.ty - m.sy) * 0.04;
+      // the Om: a deep chant every 7 seconds
+      const OM = 7, ot = t % OM, cyc = Math.floor(t / OM);
+      const om = ot < 2 ? 0.15 * ot / 2 : ot < 5.4 ? 0.15 + 0.85 * Math.sin(Math.PI * Math.min(1, (ot - 2) / 0.7) / 2) : 1 - (ot - 5.4) / 1.6;
+      if (!reduce && ot > 2 && lastChant !== cyc) { lastChant = cyc; addWave(1); }
+      inst.rotation.y = t * 0.12 + m.sx * 0.5; inst.rotation.x = -0.12 + m.sy * 0.25;
+      rings.forEach((r) => { r.spin.rotation.z = t * r.speed; });
+      beads.forEach((b) => { b.a += 0.0045 * b.sp * 4; b.m.position.set(Math.cos(b.a) * b.ring.R, Math.sin(b.a) * b.ring.R, 0); });
+      logo.material.rotation = 0;
+      this.flash *= 0.965;
+      const energy = Math.max(this.flash, om);
+      halo.material.color.setRGB(1, 0.78 + 0.1 * energy, 0.38 + 0.2 * energy);
+      halo.scale.setScalar(1 + 0.03 * energy);
+      key.intensity = 2.6 + 3.2 * energy;
+      glow.material.opacity = 0.65 + 0.35 * energy; glow.scale.setScalar(4.8 + 1.4 * energy);
+      bloom.strength = 0.75 + 0.45 * energy;
+      stars.rotation.y = t * 0.01;
+      for (let i = waves.length - 1; i >= 0; i--) {
+        const w = waves[i], age = (t - w.t0) / 3.2;
+        if (age >= 1) { world.remove(w.s); w.s.material.dispose(); waves.splice(i, 1); continue; }
+        const sc = 1.6 + age * 9; w.s.scale.set(sc, sc, 1); w.s.material.opacity = 0.55 * w.k * Math.pow(1 - age, 1.8);
+      }
+      composer.render();
+      if (!reduce) this.raf = requestAnimationFrame(tick);
+    };
+    this.raf = requestAnimationFrame(tick);
+    this.dispose = () => { renderer.dispose(); };
+  }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); if (this.ro) this.ro.disconnect(); if (this.dispose) this.dispose(); }
+  renderVals() {
+    return {
+      cyPct: this.props.centerY ?? 60,
+      setRoot: (el) => { this.root = el; },
+      setCanvas: (el) => { this.cv = el; },
+      onMove: (ev) => { if (!this.root || !this.m) return; const r = this.root.getBoundingClientRect(); this.m.tx = ((ev.clientX - r.left) / r.width - 0.5) * 2; this.m.ty = ((ev.clientY - r.top) / r.height - 0.5) * 2; },
+      onLeave: () => { if (this.m) { this.m.tx = 0; this.m.ty = 0; } },
+      onClick: () => { if (this.addWave) this.addWave(1.4); }
+    };
+  }
+}
+</script>
+</body>
+</html>

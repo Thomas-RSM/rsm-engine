@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RSM Origin — hero field</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&amp;display=swap">
+<style>body{margin:0;background:#10172D}</style>
+</helmet>
+<div ref="{{setRoot}}" style="position: relative; width: 100%; height: {{h}}px; overflow: hidden; color: #FFFFFF; background: transparent; contain: layout paint;">
+  <div aria-hidden="true" ref="{{setLight}}" style="position: absolute; left: {{lt.x}}px; top: {{lt.y}}px; width: {{lt.d}}px; height: {{lt.d}}px; border-radius: 50%; background: {{lt.bg}}; opacity: 0.9; pointer-events: none; will-change: opacity;"></div>
+  <canvas aria-hidden="true" ref="{{setRayA}}" style="position: absolute; left: {{ry.x}}px; top: {{ry.y}}px; width: {{ry.d}}px; height: {{ry.d}}px; pointer-events: none; will-change: transform, opacity;"></canvas>
+  <canvas aria-hidden="true" ref="{{setRayB}}" style="position: absolute; left: {{ry.x}}px; top: {{ry.y}}px; width: {{ry.d}}px; height: {{ry.d}}px; pointer-events: none; will-change: transform, opacity;"></canvas>
+  <canvas aria-hidden="true" ref="{{setCv}}" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: block;"></canvas>
+
+  <!-- the origin: only the logo (static styles; its light is drawn on the canvas) -->
+  <div style="position: absolute; left: {{c.x}}px; top: {{c.y}}px; width: {{c.d}}px; height: {{c.d}}px; transform: translate(-50%, -50%); z-index: 3; border-radius: 50%; background: radial-gradient(circle at 42% 34%, #FBF7EC 0%, #F6EFDF 46%, #E9DFC8 82%, #DDD1B6 100%); box-shadow: inset 0 -12px 22px rgba(120,96,44,0.20), inset 0 2px 6px rgba(255,252,240,0.55), 0 0 0 1.5px rgba(226,174,69,0.95), 0 0 0 6px rgba(12,18,38,0.55), 0 0 0 7px rgba(190,205,250,0.22), 0 0 44px rgba(248,177,15,0.38), 0 18px 40px rgba(4,8,22,0.5); display: flex; align-items: center; justify-content: center;">
+    <img src="/_blob/f0ddc11df1deb86f300b7c52eb17b3ff" alt="Relevant Search Media" style="width: 66%; height: auto; transform: translate(2%, 1%);">
+  </div>
+
+  <!-- twenty platform tiles. Rendered once; each frame only moves them (transform) and fades their glow (opacity) -->
+  <sc-for list="{{tiles}}" as="i" hint-placeholder-count="20">
+    <div ref="{{i.ref}}" data-tile="1" style="position: absolute; left: 0; top: 0; transform: translate3d({{i.x}}px, {{i.y}}px, 0); width: {{i.s}}px; z-index: 5; display: flex; flex-direction: column; align-items: center; gap: {{i.gap}}px; pointer-events: none; will-change: transform; backface-visibility: hidden;">
+      <span ref="{{i.gref}}" aria-hidden="true" style="position: absolute; left: 50%; top: {{i.half}}px; width: {{i.gs}}px; height: {{i.gs}}px; margin: -{{i.gh}}px 0 0 -{{i.gh}}px; border-radius: 50%; background: {{i.glow}}; opacity: 0.4; pointer-events: none; will-change: opacity;"></span>
+      <span onMouseEnter="{{i.enter}}" onMouseLeave="{{i.leave}}" style="position: relative; width: {{i.s}}px; height: {{i.s}}px; flex-shrink: 0; overflow: hidden; pointer-events: auto; cursor: pointer; border-radius: {{i.rad}}px; background: {{i.bg}}; border: 1px solid {{i.bd}}; box-shadow: {{i.sh}}; display: flex; align-items: center; justify-content: center;">
+        <span aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 0; height: 52%; background: linear-gradient(180deg, rgba(255,255,255,0.17) 0%, rgba(255,255,255,0.04) 70%, rgba(255,255,255,0) 100%); pointer-events: none;"></span>
+        <span data-icon="1" style="position: relative; display: block; width: {{i.g}}px; height: {{i.g}}px; background: {{i.src}} center / contain no-repeat;"></span>
+      </span>
+      <span style="position: relative; font: 700 {{i.lf}}px 'JetBrains Mono', monospace; letter-spacing: {{i.ls}}px; margin-right: -{{i.ls}}px; text-transform: uppercase; color: #E6ECFB; white-space: nowrap; text-shadow: 0 1px 6px rgba(8,12,28,0.95);">{{i.name}}</span>
+    </div>
+  </sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":804}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    // the twenty icons of the original hero, in their original order
+    this.I = [{"name": "Google", "c": "#6F8CF0", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\"> <path d=\"M44 24.5c0-1.57-.14-3.09-.4-4.55H24v8.51h11.26c-.49 2.63-1.97 4.85-4.2 6.34v5.27h6.8c3.97-3.66 6.14-9.04 6.14-15.57z\" fill=\"#4285F4\" /> <path d=\"M24 46c5.7 0 10.49-1.89 13.99-5.13l-6.83-5.27c-1.89 1.27-4.31 2.01-7.16 2.01-5.5 0-10.16-3.71-11.83-8.7H5.14v5.44C8.7 41.35 15.84 46 24 46z\" fill=\"#34A853\" /> <path d=\"M12.17 28.91c-.88-2.55-.88-5.27 0-7.82V15.65H5.14C2.38 19.88 1 24.88 1 26s1.38 6.12 4.14 10.35l7.03-5.44z\" fill=\"#FBBC05\" /> <path d=\"M24 10.28c3.1 0 5.88 1.07 8.07 3.16l6.04-6.04C34.46 4.04 29.67 2 24 2 15.84 2 8.7 6.65 5.14 13.65l7.03 5.44c1.67-4.99 6.33-8.81 11.83-8.81z\" fill=\"#EA4335\" /> </svg>"}, {"name": "SEO", "c": "#6F8CF0", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\" fill=\"none\"> <circle cx=\"19\" cy=\"19\" r=\"13\" stroke=\"#6F8CF0\" stroke-width=\"3.5\" /> <line x1=\"28.5\" y1=\"28.5\" x2=\"43\" y2=\"43\" stroke=\"#6F8CF0\" stroke-width=\"4\" stroke-linecap=\"round\" /> </svg>"}, {"name": "AEO", "c": "#4CC0A8", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\" fill=\"none\"> <rect x=\"5\" y=\"7\" width=\"38\" height=\"34\" rx=\"5\" stroke=\"#4CC0A8\" stroke-width=\"2.5\" /> <circle cx=\"37\" cy=\"13\" r=\"6\" fill=\"#4CC0A8\" /> </svg>"}, {"name": "AIO", "c": "#A3B5F2", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\" fill=\"none\"> <path d=\"M24 3L5 13.5v21L24 45l19-10.5v-21L24 3z\" stroke=\"#A3B5F2\" stroke-width=\"2.5\" /> <circle cx=\"24\" cy=\"24\" r=\"6\" fill=\"#A3B5F2\" opacity=\".85\" /> </svg>"}, {"name": "E-E-A-T", "c": "#A3B5F2", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\" fill=\"none\"> <path d=\"M24 3l6 12.2L43 17.2l-9.5 9.3L35.7 40 24 33.8 12.3 40l2.2-13.5L5 17.2l13-2L24 3z\" fill=\"#A3B5F2\" opacity=\".85\" /> </svg>"}, {"name": "ChatGPT", "c": "#4CC0A8", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\"> <circle cx=\"24\" cy=\"24\" r=\"20\" fill=\"#10a37f\" /> <path d=\"M16 20c0-4.4 3.6-8 8-8s8 3.6 8 8\" stroke=\"#fff\" stroke-width=\"2.5\" fill=\"none\" stroke-linecap=\"round\" opacity=\".7\" /> <rect x=\"16\" y=\"23\" width=\"16\" height=\"10\" rx=\"2\" fill=\"#fff\" opacity=\".7\" /> </svg>"}, {"name": "Maps", "c": "#F8B10F", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\"> <path d=\"M24 2C14.6 2 7 9.4 7 18.5 7 31 24 46 24 46s17-15 17-27.5C41 9.4 33.4 2 24 2z\" fill=\"#EA4335\" /> <circle cx=\"24\" cy=\"18\" r=\"4.5\" fill=\"#fff\" /> </svg>"}, {"name": "Schema", "c": "#4CC0A8", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\" fill=\"none\"> <path d=\"M16 7L3 24l13 17\" stroke=\"#4CC0A8\" stroke-width=\"3.5\" stroke-linecap=\"round\" /> <path d=\"M32 7l13 17-13 17\" stroke=\"#4CC0A8\" stroke-width=\"3.5\" stroke-linecap=\"round\" /> </svg>"}, {"name": "Perplexity", "c": "#4CC0A8", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\" fill=\"none\"> <circle cx=\"24\" cy=\"24\" r=\"19\" stroke=\"#1a7f64\" stroke-width=\"2.5\" /> <path d=\"M12 24h10l4-8 4 16 4-8h10\" stroke=\"#1a7f64\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /> </svg>"}, {"name": "Copilot", "c": "#1EA7E8", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\"> <path d=\"M9 5v31l11 7 19-11.5v-8L22 17l-5 2.5V5H9z\" fill=\"#00a4ef\" /> </svg>"}, {"name": "Reddit", "c": "#F8B10F", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\"> <circle cx=\"24\" cy=\"24\" r=\"19\" fill=\"#FF4500\" /> <ellipse cx=\"24\" cy=\"28.5\" rx=\"11\" ry=\"7.5\" fill=\"#fff\" /> <circle cx=\"19.5\" cy=\"26.5\" r=\"2.5\" fill=\"#FF4500\" /> <circle cx=\"28.5\" cy=\"26.5\" r=\"2.5\" fill=\"#FF4500\" /> </svg>"}, {"name": "Gemini", "c": "#6F8CF0", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\" fill=\"none\"> <path d=\"M24 2C17 14 9 18 2 26c7 6 15 12 22 20 7-8 15-14 22-20C39 18 31 14 24 2z\" fill=\"url(#gem)\" /> <defs> <linearGradient id=\"gem\" x1=\"2\" y1=\"2\" x2=\"46\" y2=\"46\"> <stop stop-color=\"#4285F4\" /> <stop offset=\".33\" stop-color=\"#34A853\" /> <stop offset=\".66\" stop-color=\"#FBBC05\" /> <stop offset=\"1\" stop-color=\"#EA4335\" /> </linearGradient> </defs> </svg>"}, {"name": "Local SEO", "c": "#F8B10F", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\" fill=\"none\"> <circle cx=\"24\" cy=\"19\" r=\"15\" stroke=\"#F8B10F\" stroke-width=\"2.5\" /> <path d=\"M17 42l7-7 7 7\" stroke=\"#F8B10F\" stroke-width=\"3\" stroke-linecap=\"round\" /> </svg>"}, {"name": "GBP", "c": "#4CC0A8", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\" fill=\"none\"> <rect x=\"7\" y=\"9\" width=\"34\" height=\"30\" rx=\"4\" stroke=\"#34A853\" stroke-width=\"2.5\" /> <circle cx=\"24\" cy=\"21\" r=\"7\" stroke=\"#34A853\" stroke-width=\"2.5\" /> </svg>"}, {"name": "Citations", "c": "#A3B5F2", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\" fill=\"none\"> <path d=\"M9 11h30v32H9z\" stroke=\"#A3B5F2\" stroke-width=\"2.5\" /> <path d=\"M15 20h18M15 26.5h14\" stroke=\"#A3B5F2\" stroke-width=\"2.5\" stroke-linecap=\"round\" opacity=\".55\" /> </svg>"}, {"name": "Tech SEO", "c": "#F8B10F", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\" fill=\"none\"> <circle cx=\"24\" cy=\"24\" r=\"9\" stroke=\"#F8B10F\" stroke-width=\"3\" /> <path d=\"M24 3v7M24 38v7M3 24h7M38 24h7\" stroke=\"#F8B10F\" stroke-width=\"3\" stroke-linecap=\"round\" /> </svg>"}, {"name": "Links", "c": "#6F8CF0", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\" fill=\"none\"> <path d=\"M19 29l-5 5a6.4 6.4 0 010-9l9-9a6.4 6.4 0 019 0 6.4 6.4 0 010 9\" stroke=\"#6F8CF0\" stroke-width=\"3.5\" stroke-linecap=\"round\" /> <path d=\"M29 19l5-5a6.4 6.4 0 010 9l-9 9a6.4 6.4 0 01-9 0 6.4 6.4 0 010-9\" stroke=\"#6F8CF0\" stroke-width=\"3.5\" stroke-linecap=\"round\" /> </svg>"}, {"name": "Content", "c": "#A3B5F2", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\" fill=\"none\"> <path d=\"M7 5h26l8 8v30a2 2 0 01-2 2H9a2 2 0 01-2-2V7a2 2 0 012-2z\" stroke=\"#A3B5F2\" stroke-width=\"2.5\" /> </svg>"}, {"name": "Voice", "c": "#1EA7E8", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\" fill=\"none\"> <rect x=\"17\" y=\"5\" width=\"14\" height=\"24\" rx=\"7\" stroke=\"#1EA7E8\" stroke-width=\"2.5\" /> <path d=\"M11 24c0 7.2 5.8 13 13 13s13-5.8 13-13\" stroke=\"#1EA7E8\" stroke-width=\"2.5\" stroke-linecap=\"round\" /> </svg>"}, {"name": "Snippets", "c": "#F8B10F", "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\" fill=\"none\"> <rect x=\"5\" y=\"7\" width=\"38\" height=\"14\" rx=\"4\" stroke=\"#F8B10F\" stroke-width=\"2.5\" /> </svg>"}];
+    this.I.forEach((i) => { i.src = 'url("data:image/svg+xml;utf8,' + encodeURIComponent(i.svg).replace(/'/g, '%27').replace(/\(/g, '%28').replace(/\)/g, '%29') + '")'; });
+    // same three orbits and membership as the original: 5 + 7 + 8, inner fastest
+    this.RINGS = [{ ids: [0, 1, 2, 3, 4], spd: 8 }, { ids: [5, 6, 7, 8, 9, 10, 11], spd: 5 }, { ids: [12, 13, 14, 15, 16, 17, 18, 19], spd: 3 }];
+    this.META = new Array(20); this.RINGS.forEach((r, ri) => r.ids.forEach((id, i) => { this.META[id] = { ri: ri, i: i, n: r.ids.length }; }));
+    this.RGB = this.I.map((ic) => [parseInt(ic.c.slice(1, 3), 16), parseInt(ic.c.slice(3, 5), 16), parseInt(ic.c.slice(5, 7), 16)]);
+    this.state = { w: 1440 };
+  }
+  componentDidMount() {
+    const measure = () => { if (!this.root) return; const w = this.root.getBoundingClientRect().width; if (w && Math.abs(w - this.state.w) > 1) { this.sprites = null; this.setState({ w: w }); } };
+    measure(); if (window.ResizeObserver) { this.ro = new ResizeObserver(measure); this.ro.observe(this.root); }
+    this.boost = new Float32Array(20); this.hov = new Float32Array(20); this.hover = -1;
+    this.lastK = new Float32Array(20).fill(-1); this.lastG = new Float32Array(20).fill(-1); this.lastZ = new Int16Array(20).fill(-1);
+    this.t = 0; this.prev = 0; this.visible = true; this.fps = { n: 0, worst: 0, sum: 0 };
+    this.reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    // run only while the hero is on screen and the tab is in front
+    if (window.IntersectionObserver) { this.io = new IntersectionObserver((es) => { this.visible = es[0].isIntersecting; this.kick(); }, { rootMargin: '120px' }); this.io.observe(this.root); }
+    this.onVis = () => this.kick(); document.addEventListener('visibilitychange', this.onVis);
+    this.frame = (now) => {
+      this.raf = 0;
+      if (!this.visible || document.hidden) return;            // paused: no loop at all
+      // time advances by real frame deltas, capped, so a hiccup or tab switch can never cause a jump
+      const dt = this.prev ? Math.min(0.05, Math.max(0, (now - this.prev) / 1000)) : 0.016; this.prev = now;
+      this.t += dt; this.fps.n++; this.fps.sum += dt; if (dt > this.fps.worst) this.fps.worst = dt;
+      try { this.step(this.t, dt); } catch (err) { if (!this.warned) { this.warned = true; console.error('hero frame', err); } }
+      if (!this.reduce) this.raf = requestAnimationFrame(this.frame);
+    };
+    if (this.reduce) this.t = 20;
+    this.kick();
+  }
+  // exactly one loop, ever
+  kick() { if (!this.raf && this.frame) { this.prev = 0; this.raf = requestAnimationFrame(this.frame); } }
+  componentDidUpdate() { this.lastK.fill(-1); this.lastG.fill(-1); this.lastZ.fill(-1); if (this.reduce) this.kick(); }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); this.raf = 0; this.frame = null; if (this.ro) this.ro.disconnect(); if (this.io) this.io.disconnect(); document.removeEventListener('visibilitychange', this.onVis); }
+  geo() {
+    const w = this.state.w;
+    if (w < 820) { // phone and small tablet: tall orbits so all twenty stay clear of each other
+      const k = Math.min(1.6, w / 390), h = 800, sm = w < 480;
+      return { w: w, h: h, cx: w / 2, cy: h / 2 - 8, rx: (sm ? [58, 108, 160] : [62, 110, 158]).map((v) => v * k), ry: [126, 232, 330], tile: sm ? 36 : 40, icon: sm ? 19 : 21, lf: sm ? 6.5 : 7, ls: sm ? 0.6 : 1, gap: 5, logo: sm ? Math.min(72, w * 0.17) : Math.min(78, w * 0.18), Rc: Math.min(w / 2 - 6, h / 2 - 20) / 1.78 };
+    }
+    const tab = w < 1100, X = Math.min(540, w / 2 - 52), tile = tab ? 48 : 56, f = tab ? [0.5, 0.77, 1] : [0.52, 0.78, 1];
+    const ry = tab ? [130, 216, 302] : [144, 238, 336], h = tab ? 720 : 804;
+    return { w: w, h: h, cx: w / 2, cy: h / 2 - 8, rx: f.map((v) => v * X), ry: ry, tile: tile, icon: tab ? 24 : 28, lf: tab ? 8 : 10, ls: tab ? 1.5 : 2.5, gap: 6, logo: tab ? 128 : 150, Rc: Math.min(w / 2 - 10, h / 2 - 22) / 1.78 };
+  }
+  place(t) {
+    const g = this.geo(), out = new Array(20);
+    this.RINGS.forEach((ring, ri) => {
+      const n = ring.ids.length;
+      ring.ids.forEach((id, i) => {
+        const a = (i / n) * 6.2832 - 1.5708 + t * 0.011 * ring.spd;
+        out[id] = { x: g.cx + Math.cos(a) * g.rx[ri] + Math.sin(t * 0.18 + id * 1.7) * 4, y: g.cy + Math.sin(a) * g.ry[ri] + Math.cos(t * 0.18 + id * 2.1) * 3, a: a, d: (Math.sin(a) + 1) / 2 };
+      });
+    });
+    return out;
+  }
+  // the wavy path from the origin to an icon; particles use the very same curve
+  wave(u, id, t) { return Math.sin(u * 5 + t * 0.18 + id * 2) * 22 * (1 - Math.abs(u - 0.5) * 1.8) + Math.sin(u * 9 + t * 0.3 + id * 3) * 8 * u; }
+  onPath(x1, y1, x2, y2, u, id, t, amp) { const dx = x2 - x1, dy = y2 - y1, d = Math.hypot(dx, dy) || 1, w = this.wave(u, id, t) * amp; return [x1 + dx * u - dy / d * w, y1 + dy * u + dx / d * w]; }
+  pulseU(t, id) { const m = this.META[id], tp = t % 6.4, p = (tp - (0.5 + m.ri * 0.5 + m.i * 0.07)) / 1.5; return p > 0 && p < 1 ? p : -1; }
+  // lighting that never changes shape is painted once into sprites, then simply blitted each frame
+  RL(g) { return Math.min(g.rx[0] * 1.02, g.ry[1]) * 1.25; }
+  RA(g) { return Math.min(g.rx[2] * 1.05, g.h * 0.62); }
+  buildSprites(g, dpr) {
+    const L = g.logo / 2, mk = (size) => { const c = document.createElement('canvas'); c.width = c.height = Math.max(2, Math.round(size * dpr)); const x = c.getContext('2d'); x.scale(dpr, dpr); return [c, x]; };
+    let gr;
+    // the golden rays, split over two sprites that turn against each other so the light shimmers
+    const RL = this.RL(g), small = g.w < 820 ? 0.8 : 1; let sd = 17; const r = () => { sd = (sd * 9301 + 49297) % 233280; return sd / 233280; };
+    const rays = []; for (let i = 0; i < 34; i++) rays.push({ a: i / 34 * 6.2832 + (r() - 0.5) * 0.16, w: 0.022 + r() * 0.07, l: 1.9 + r() * 2.6, o: 0.5 + r() * 0.5 });
+    const mkRays = (pick, c) => { if (!c) return; c.width = c.height = Math.round(RL * 2 * dpr); const x = c.getContext('2d'); x.setTransform(dpr, 0, 0, dpr, 0, 0); x.clearRect(0, 0, RL * 2, RL * 2); x.globalCompositeOperation = 'lighter'; rays.forEach((ry, i) => { if (i % 2 !== pick) return; const len = Math.min(RL, L * ry.l * small), r0 = L * 0.7, rg = x.createRadialGradient(RL, RL, r0, RL, RL, len); rg.addColorStop(0, 'rgba(255,206,110,' + (0.17 * ry.o).toFixed(3) + ')'); rg.addColorStop(0.35, 'rgba(248,184,70,' + (0.085 * ry.o).toFixed(3) + ')'); rg.addColorStop(1, 'rgba(248,177,15,0)'); x.fillStyle = rg; x.beginPath(); x.moveTo(RL + Math.cos(ry.a - ry.w * 0.35) * r0, RL + Math.sin(ry.a - ry.w * 0.35) * r0); x.lineTo(RL + Math.cos(ry.a - ry.w) * len, RL + Math.sin(ry.a - ry.w) * len); x.arc(RL, RL, len, ry.a - ry.w, ry.a + ry.w); x.lineTo(RL + Math.cos(ry.a + ry.w * 0.35) * r0, RL + Math.sin(ry.a + ry.w * 0.35) * r0); x.closePath(); x.fill(); }); };
+    mkRays(0, this.rayA); mkRays(1, this.rayB);
+    // one soft spark, reused for every particle
+    const [sc, sx] = mk(32); gr = sx.createRadialGradient(16, 16, 0, 16, 16, 16); gr.addColorStop(0, 'rgba(255,246,214,1)'); gr.addColorStop(0.16, 'rgba(255,214,130,0.7)'); gr.addColorStop(1, 'rgba(248,177,15,0)'); sx.fillStyle = gr; sx.fillRect(0, 0, 32, 32);
+    const [bc, bx] = mk(16); gr = bx.createRadialGradient(8, 8, 0, 8, 8, 8); gr.addColorStop(0, 'rgba(214,226,255,0.6)'); gr.addColorStop(1, 'rgba(143,166,240,0)'); bx.fillStyle = gr; bx.fillRect(0, 0, 16, 16);
+    return { key: g.w + 'x' + dpr, spark: sc, blue: bc };
+  }
+  step(t, dt) {
+    const cv = this.cv; if (!cv) return;
+    const g = this.geo(), cx = g.cx, cy = g.cy, L = g.logo / 2;
+    // cap the pixel count: glow and thin lines do not need more, and fill cost grows with the square
+    const dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 2, Math.sqrt(2.2e6 / (g.w * g.h))));
+    if (cv.width !== Math.round(g.w * dpr) || cv.height !== Math.round(g.h * dpr)) { cv.width = Math.round(g.w * dpr); cv.height = Math.round(g.h * dpr); }
+    if (!this.sprites || this.sprites.key !== g.w + 'x' + dpr) this.sprites = this.buildSprites(g, dpr);
+    const S = this.sprites, P = this.P = this.place(t);
+    const x = this.ctx || (this.ctx = cv.getContext('2d')); x.setTransform(dpr, 0, 0, dpr, 0, 0); x.clearRect(0, 0, g.w, g.h);
+    const amp = g.w < 820 ? 0.55 : 1, N = 28, tp = t % 6.4, br = 0.5 + 0.5 * Math.sin(t * 0.8), kick = tp < 1.4 ? Math.sin(tp / 1.4 * Math.PI) : 0;
+    for (let i = 0; i < 20; i++) { this.boost[i] = Math.max(0, this.boost[i] - dt * 1.4); this.hov[i] += ((this.hover === i ? 1 : 0) - this.hov[i]) * Math.min(1, dt * 9); }
+    x.globalCompositeOperation = 'lighter'; x.lineCap = 'round'; x.lineJoin = 'round';
+
+    // 1 · ambient light and golden rays live in their own layers: the compositor fades and turns them
+    const sty = (el, key, prop, v) => { if (el && this[key] !== v) { el.style[prop] = v; this[key] = v; } };
+    sty(this.light, '_lo', 'opacity', Math.min(1, 0.84 + 0.12 * br + 0.1 * kick).toFixed(2));
+    if (this.rayA) { this.rayA.style.transform = 'rotate(' + (t * 0.69).toFixed(3) + 'deg)'; sty(this.rayA, '_ao', 'opacity', Math.min(1, 0.78 + 0.22 * Math.sin(t * 0.27) + 0.15 * kick).toFixed(2)); }
+    if (this.rayB) { this.rayB.style.transform = 'rotate(' + (-t * 0.52).toFixed(3) + 'deg)'; sty(this.rayB, '_bo', 'opacity', Math.min(1, 0.74 + 0.26 * Math.sin(t * 0.33 + 2.1) + 0.15 * kick).toFixed(2)); }
+
+    // 2 · a short comet of light behind each icon, along its orbit
+    for (let id = 0; id < 20; id++) {
+      const m = this.META[id], c = this.RGB[id], q = P[id], n = 7, span = 0.34 * (m.ri === 0 ? 1.3 : m.ri === 1 ? 1 : 0.8), rx = g.rx[m.ri], ry = g.ry[m.ri];
+      let px = cx + Math.cos(q.a) * rx, py = cy + Math.sin(q.a) * ry;
+      for (let j = 1; j <= n; j++) { const a1 = q.a - span * j / n, f = 1 - (j - 1) / n, nx = cx + Math.cos(a1) * rx, ny = cy + Math.sin(a1) * ry; x.strokeStyle = 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + (f * f * (0.16 + 0.34 * q.d)).toFixed(3) + ')'; x.lineWidth = 1 + 1.4 * f; x.beginPath(); x.moveTo(px, py); x.lineTo(nx, ny); x.stroke(); px = nx; py = ny; }
+    }
+
+    // 3 · faint links round each orbit, one batched stroke per ring
+    for (const ring of this.RINGS) { const n = ring.ids.length; x.beginPath(); for (let i = 0; i < n; i++) { const A = P[ring.ids[i]], B = P[ring.ids[(i + 1) % n]]; x.moveTo(A.x, A.y); for (let k = 1; k <= 12; k++) { const p = this.onPath(A.x, A.y, B.x, B.y, k / 12, ring.ids[i] + 20, t, amp * 0.8); x.lineTo(p[0], p[1]); } } x.strokeStyle = 'rgba(163,181,242,0.085)'; x.lineWidth = 0.8; x.stroke(); }
+
+    // 4 · the network, far paths first
+    const order = this.order || (this.order = Array.from({ length: 20 }, (_, i) => i)); order.sort((a, b) => P[a].d - P[b].d);
+    const buf = this.buf || (this.buf = new Float32Array((N + 1) * 2));
+    for (const id of order) {
+      const q = P[id], c = this.RGB[id], m = this.META[id], dx = q.x - cx, dy = q.y - cy, dist = Math.hypot(dx, dy) || 1, nx = -dy / dist, ny = dx / dist, hi = Math.min(1, this.boost[id] + this.hov[id]);
+      const u0 = L / dist, i0 = Math.min(N - 2, Math.ceil(u0 * N)), al = 0.26 + 0.34 * q.d + 0.4 * hi;
+      // one polyline per icon, built once and stroked in layers
+      const body = new Path2D(), echo = new Path2D();
+      for (let i = i0; i <= N; i++) { const u = i / N, w = this.wave(u, id, t) * amp, X = cx + dx * u + nx * w, Y = cy + dy * u + ny * w; buf[i * 2] = X; buf[i * 2 + 1] = Y; i === i0 ? body.moveTo(X, Y) : body.lineTo(X, Y); }
+      for (let i = 0; i <= 14; i++) { const u = u0 + (1 - u0) * i / 14, w = this.wave(u, id + 50, t * 0.8) * amp * 1.5, X = cx + dx * u + nx * w, Y = cy + dy * u + ny * w; i ? echo.lineTo(X, Y) : echo.moveTo(X, Y); }
+      x.strokeStyle = 'rgba(143,166,240,' + (0.05 + 0.07 * q.d).toFixed(3) + ')'; x.lineWidth = 0.8; x.stroke(echo);
+      x.strokeStyle = 'rgba(111,140,240,' + (0.045 + 0.06 * q.d + 0.1 * hi).toFixed(3) + ')'; x.lineWidth = 6; x.stroke(body);
+      const gr = x.createLinearGradient(cx, cy, q.x, q.y);
+      gr.addColorStop(0, 'rgba(255,214,140,' + Math.min(1, al * 1.15).toFixed(3) + ')'); gr.addColorStop(0.3, 'rgba(190,205,250,' + (al * 0.85).toFixed(3) + ')'); gr.addColorStop(1, 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + (al * 0.75).toFixed(3) + ')');
+      x.strokeStyle = gr; x.lineWidth = 1.3 + 1.1 * q.d + 0.8 * hi; x.stroke(body);
+      x.strokeStyle = 'rgba(255,255,255,' + (0.10 + 0.14 * q.d + 0.3 * hi).toFixed(3) + ')'; x.lineWidth = 0.6; x.stroke(body);
+      // flowing light: one tapered streak per path, staggered round each orbit
+      const per = 5.2 + m.ri * 1.3, h = ((t / per + m.i / m.n + m.ri * 0.33) % 1);
+      if (h > u0 + 0.02) { const edge = Math.min(1, (h - u0) / 0.08) * Math.min(1, (1 - h) / 0.1), T = 6, du = 0.024; let pv = this.onPath(cx, cy, q.x, q.y, h, id, t, amp); const hp = pv;
+        for (let j = 1; j <= T; j++) { const uu = h - j * du; if (uu < u0) break; const cur = this.onPath(cx, cy, q.x, q.y, uu, id, t, amp), f = 1 - (j - 1) / T; x.strokeStyle = 'rgba(214,226,255,' + (f * f * (0.34 + 0.26 * q.d) * edge).toFixed(3) + ')'; x.lineWidth = 0.8 + 1.5 * f; x.beginPath(); x.moveTo(pv[0], pv[1]); x.lineTo(cur[0], cur[1]); x.stroke(); pv = cur; }
+        x.globalAlpha = edge; x.drawImage(S.blue, hp[0] - 7, hp[1] - 7, 14, 14); x.globalAlpha = 1; }
+      // the coordinated pulse: a gold spark sent from the centre, ring by ring
+      const u = this.pulseU(t, id);
+      if (u > 0) {
+        const uu = Math.max(u0, u), sp = this.onPath(cx, cy, q.x, q.y, uu, id, t, amp), fade = u < 0.1 ? u / 0.1 : u > 0.86 ? (1 - u) / 0.14 : 1;
+        let pv = sp; for (let j = 1; j <= 5; j++) { const ut = uu - j * 0.022; if (ut < u0) break; const cur = this.onPath(cx, cy, q.x, q.y, ut, id, t, amp), f = 1 - (j - 1) / 5; x.strokeStyle = 'rgba(255,206,120,' + (f * 0.6 * fade).toFixed(3) + ')'; x.lineWidth = 0.6 + 2.4 * f; x.beginPath(); x.moveTo(pv[0], pv[1]); x.lineTo(cur[0], cur[1]); x.stroke(); pv = cur; }
+        x.globalAlpha = fade; x.drawImage(S.spark, sp[0] - 15, sp[1] - 15, 30, 30); x.globalAlpha = 1;
+        if (u > 0.86) this.boost[id] = Math.max(this.boost[id], Math.min(1, (u - 0.86) / 0.06));   // eased in, so the arrival glow never pops
+      }
+    }
+
+    // 5 · the origin: slow arcs of energy round the logo, and one soft ring per pulse
+    const sweep = (r, a0, len, col, al, w) => { const n = 10; for (let j = 0; j < n; j++) { const f = 1 - j / n, b0 = a0 - len * j / n, b1 = a0 - len * (j + 1) / n; x.strokeStyle = 'rgba(' + col + ',' + (al * f * f).toFixed(3) + ')'; x.lineWidth = w * (0.4 + 0.6 * f); x.beginPath(); x.arc(cx, cy, r, b1, b0); x.stroke(); } };
+    x.strokeStyle = 'rgba(190,205,250,0.10)'; x.lineWidth = 1; x.beginPath(); x.arc(cx, cy, L + 13, 0, 6.283); x.stroke();
+    sweep(L + 13, t * 0.42, 1.9, '255,206,120', 0.85, 2.2); sweep(L + 13, t * 0.42 + Math.PI, 1.2, '255,206,120', 0.45, 1.6);
+    sweep(L + 24, -t * 0.27 + 1.2, 1.5, '120,214,196', 0.5, 1.5); sweep(L + 24, -t * 0.27 + 1.2 + Math.PI, 1.0, '143,166,240', 0.5, 1.5);
+    if (tp < 2.2) { const k = tp / 2.2, r = L + 6 + (g.ry[0] * 0.95 - L) * (1 - Math.pow(1 - k, 2)); x.strokeStyle = 'rgba(255,214,140,' + (0.42 * (1 - k) * (1 - k)).toFixed(3) + ')'; x.lineWidth = 1.6; x.beginPath(); x.ellipse(cx, cy, r * (g.rx[0] / g.ry[0]) * 0.72 + r * 0.28, r, 0, 0, 6.283); x.stroke(); }
+    x.globalCompositeOperation = 'source-over';
+
+    // 6 · the tiles: compositor-only updates (transform and opacity), written only when they change
+    const els = this.els, gls = this.gls, s = g.tile; if (!els) return;
+    for (let id = 0; id < 20; id++) {
+      const el = els[id]; if (!el) continue;
+      const q = P[id], m = this.META[id], hv = this.hov[id], e = Math.min(1, this.boost[id] + hv), k = 0.9 + 0.1 * q.d + 0.1 * hv;
+      el.style.transform = 'translate3d(' + (q.x - s / 2).toFixed(2) + 'px,' + (q.y - s / 2).toFixed(2) + 'px,0) scale(' + k.toFixed(3) + ')';
+      const breath = 0.5 + 0.5 * Math.sin(t * 0.9 - m.i / m.n * 6.283 - m.ri * 1.1), gl = Math.min(1, 0.26 + 0.2 * q.d + 0.16 * breath + 0.5 * e);
+      if (gls[id] && Math.abs(gl - this.lastG[id]) > 0.008) { gls[id].style.opacity = gl.toFixed(3); this.lastG[id] = gl; }
+      const z = 5 + Math.round(q.d * 8) + (hv > 0.05 ? 20 : 0); if (z !== this.lastZ[id]) { el.style.zIndex = z; this.lastZ[id] = z; }
+    }
+  }
+  renderVals() {
+    const g = this.geo(), P = this.P || this.place(this.t || 0), s = g.tile, L = g.logo / 2, RA = this.RA(g), RL = this.RL(g);
+    this.els = this.els || new Array(20); this.gls = this.gls || new Array(20);
+    const tiles = this.I.map((ic, id) => {
+      const c = this.RGB[id], rgba = (a) => 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + a + ')';
+      return { name: ic.name, src: ic.src, x: (P[id].x - s / 2).toFixed(2), y: (P[id].y - s / 2).toFixed(2), s: s, half: s / 2, rad: Math.round(s * 0.3), g: g.icon, gap: g.gap, lf: g.lf, ls: g.ls,
+        gs: Math.round(s * 2.8), gh: Math.round(s * 1.4), glow: 'radial-gradient(circle, ' + rgba(0.62) + ' 0%, ' + rgba(0.26) + ' 30%, ' + rgba(0.08) + ' 52%, ' + rgba(0) + ' 70%)',
+        bg: 'linear-gradient(150deg, ' + rgba(0.22) + ' 0%, rgba(30,42,86,0.66) 34%, rgba(10,16,36,0.9) 100%)',
+        bd: 'rgba(' + Math.round(c[0] * 0.5 + 127) + ',' + Math.round(c[1] * 0.5 + 127) + ',' + Math.round(c[2] * 0.5 + 127) + ',0.42)',
+        sh: '0 8px 18px rgba(4,8,22,0.5), inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -' + Math.round(s * 0.2) + 'px ' + Math.round(s * 0.3) + 'px ' + rgba(0.12),
+        ref: (el) => { this.els[id] = el; }, gref: (el) => { this.gls[id] = el; },
+        enter: () => { this.hover = id; }, leave: () => { if (this.hover === id) this.hover = -1; } };
+    });
+    return { setRoot: (el) => { this.root = el; }, setCv: (el) => { this.cv = el; this.ctx = null; }, setLight: (el) => { this.light = el; this._lo = null; }, setRayA: (el) => { if (el !== this.rayA) { this.rayA = el; this.sprites = null; } }, setRayB: (el) => { if (el !== this.rayB) { this.rayB = el; this.sprites = null; } }, h: g.h, tiles: tiles,
+      lt: { x: (g.cx - RA).toFixed(1), y: (g.cy - RA).toFixed(1), d: (RA * 2).toFixed(1), bg: 'radial-gradient(circle, rgba(255,200,100,0.46) ' + (L * 0.9).toFixed(0) + 'px, rgba(248,184,70,0.17) ' + (L * 1.55).toFixed(0) + 'px, rgba(248,177,15,0) ' + (L * 2.6).toFixed(0) + 'px), radial-gradient(circle, rgba(111,140,240,0.29) 0%, rgba(72,99,181,0.15) 35%, rgba(48,70,150,0.05) 70%, rgba(48,70,150,0) 100%)' },
+      ry: { x: (g.cx - RL).toFixed(1), y: (g.cy - RL).toFixed(1), d: (RL * 2).toFixed(1) }, c: { x: g.cx.toFixed(1), y: g.cy.toFixed(1), d: g.logo } };
+  }
+}
+</script>
+</body>
+</html>

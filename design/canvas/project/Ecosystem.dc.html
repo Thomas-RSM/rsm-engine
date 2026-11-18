@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RSM Relevance Ecosystem — plate I</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div onMouseLeave="{{onLeave}}" style="position: relative; width: 720px; height: 760px; font-family: Inter, system-ui, sans-serif; color: #FFFFFF; background: transparent;">
+
+  <canvas aria-hidden="true" ref="{{setCv}}" width="1440" height="1520" style="position: absolute; left: 0; top: 0; width: 720px; height: 760px;"></canvas>
+
+  <!-- plate caption, like an engraver's sheet -->
+  <div aria-hidden="true" style="position: absolute; left: 22px; top: 14px; opacity: {{ui}}; display: flex; flex-direction: column; gap: 2px;">
+    <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(226,174,69,0.75);">Plate I</span>
+    <span style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 19px; color: rgba(255,255,255,0.78);">The Relevance Ecosystem</span>
+  </div>
+
+  <!-- the engines: where your customers ask -->
+  <sc-for list="{{engines}}" as="e" hint-placeholder-count="8">
+    <button type="button" onMouseEnter="{{e.hover}}" onFocus="{{e.hover}}" onClick="{{e.hover}}" aria-label="{{e.aria}}" style="position: absolute; left: {{e.x}}px; top: {{e.y}}px; transform: translate(-50%, -50%); width: 46px; height: 46px; border-radius: 50%; background: transparent; border: none; padding: 0; cursor: pointer; opacity: {{ui}};"></button>
+    <span aria-hidden="true" style="position: absolute; left: {{e.lx}}px; top: {{e.ly}}px; transform: translate({{e.tx}}, -50%); white-space: nowrap; pointer-events: none; opacity: {{e.o}}; font-family: 'Instrument Serif', serif; font-style: italic; font-size: 18px; color: {{e.fg}}; transition: color .3s ease;">{{e.name}}</span>
+  </sc-for>
+
+  <!-- what we grow around you -->
+  <sc-for list="{{nodes}}" as="n" hint-placeholder-count="6">
+    <span aria-hidden="true" style="position: absolute; left: {{n.lx}}px; top: {{n.ly}}px; transform: translate(-50%, -50%); white-space: nowrap; pointer-events: none; opacity: {{n.o}}; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: {{n.fg}}; padding: 3px 7px; border-radius: 4px; background: rgba(16,23,45,0.72);">{{n.name}}</span>
+  </sc-for>
+
+  <!-- annotation: the brain -->
+  <div aria-hidden="true" style="position: absolute; left: 470px; top: 372px; opacity: {{ui}}; display: flex; flex-direction: column; gap: 1px; pointer-events: none;">
+    <span style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 18px; color: #F3E3BF;">the RSM brain</span>
+    <span style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(226,174,69,0.8);">method sealed</span>
+  </div>
+
+  <!-- the sun: your business, powered by the brain -->
+  <div style="position: absolute; left: 360px; top: 318px; width: 132px; height: 132px; transform: translate(-50%, -50%) scale({{sunS}}); border-radius: 50%; background: radial-gradient(circle at 40% 34%, #FFFFFF 0%, #FFFFFF 50%, #E8EDF7 100%); box-shadow: inset 0 -8px 18px rgba(72,99,181,0.22), 0 0 0 1.5px #E2AE45, 0 0 0 5px rgba(16,23,45,0.9), 0 0 0 6px rgba(226,174,69,0.45), 0 0 50px rgba(248,177,15,{{glowA}}), 0 0 120px rgba(72,99,181,0.5); display: flex; align-items: center; justify-content: center; opacity: {{sunO}};">
+    <img src="/_blob/f0ddc11df1deb86f300b7c52eb17b3ff" alt="" style="width: 84px; height: auto; transform: translate(2px, 1px);">
+  </div>
+  <span aria-hidden="true" style="position: absolute; left: 360px; top: 404px; transform: translateX(-50%); font-family: 'Instrument Serif', serif; font-style: italic; font-size: 17px; color: rgba(255,255,255,0.82); opacity: {{ui}}; white-space: nowrap;">your business, at the center</span>
+
+  <!-- the well: leads in -->
+  <div style="position: absolute; left: 360px; top: 616px; transform: translateX(-50%); width: 400px; box-sizing: border-box; opacity: {{ui}}; background: rgba(14,21,44,0.82); backdrop-filter: blur(12px); border: 1px solid rgba(226,174,69,0.32); border-radius: 16px; padding: 14px 18px 12px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 24px 50px rgba(0,0,0,0.4);">
+    <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #E2AE45;">Leads in</span>
+      <span style="font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -0.02em; color: #FFFFFF;">{{count}} <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; color: #9AA8CB; letter-spacing: 0;">this week · illustration</span></span>
+    </div>
+    <sc-for list="{{rows}}" as="r" hint-placeholder-count="3">
+      <div style="display: flex; align-items: center; gap: 10px; font-size: 13.5px; opacity: {{r.o}};">
+        <span style="width: 7px; height: 7px; border-radius: 50%; background: {{r.c}}; box-shadow: 0 0 8px {{r.c}}; flex-shrink: 0;"></span>
+        <span style="color: #FFFFFF; font-weight: 600;">{{r.what}}</span>
+        <span style="color: #9AA8CB;">via {{r.src}}</span>
+        <span style="margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #7F8DB2;">{{r.ago}}</span>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":720,"height":760}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.cx = 360; this.cy = 318;
+    const D = Math.PI / 180;
+    // where your customers ask (outer ring)
+    this.E = [
+      { name: 'Google', a: 168, c: '#6F8CF0' },
+      { name: 'AI Overviews', a: 200, c: '#F8B10F' },
+      { name: 'ChatGPT', a: 232, c: '#4CC0A8' },
+      { name: 'Gemini', a: 262, c: '#1EA7E8' },
+      { name: 'Perplexity', a: 294, c: '#7DD3C0' },
+      { name: 'Copilot', a: 325, c: '#A3B5F2' },
+      { name: 'Google Maps', a: 356, c: '#E8955A' },
+      { name: 'Siri', a: 30, c: '#DCE4F7' }
+    ].map((e) => Object.assign(e, { x: this.cx + 300 * Math.cos(e.a * D), y: this.cy + 246 * Math.sin(e.a * D) }));
+    // what we grow around you (middle ring) — named, never explained
+    this.N = [
+      { name: 'Answer pages', a: 178 },
+      { name: 'Verified facts', a: 226 },
+      { name: 'Daily content', a: 270 },
+      { name: 'Earned mentions', a: 314 },
+      { name: 'Reviews & proof', a: 2 },
+      { name: 'Local profile', a: 140 }
+    ].map((n) => Object.assign(n, { x: this.cx + 186 * Math.cos(n.a * D), y: this.cy + 150 * Math.sin(n.a * D) }));
+    this.leadKinds = [
+      { what: 'Phone call', src: 'Google Maps', c: '#E8955A' },
+      { what: 'Quote request', src: 'ChatGPT', c: '#4CC0A8' },
+      { what: 'Booked job', src: 'Google', c: '#6F8CF0' },
+      { what: 'Form', src: 'AI Overviews', c: '#F8B10F' },
+      { what: 'Phone call', src: 'Gemini', c: '#1EA7E8' },
+      { what: 'Booking', src: 'Perplexity', c: '#7DD3C0' }
+    ];
+    this.state = { t: 0, focus: -1, count: 34, rows: [] };
+  }
+  componentDidMount() {
+    this.start = performance.now(); this.lastT = 0;
+    this.parts = []; this.drops = []; this.absorbed = 0; this.nextSpawn = 0; this.leadIdx = 0; this.rowsData = [];
+    // seeded wobble so the ink lines feel drawn by hand, the same every visit
+    let s = 7; this.rnd = () => { s = (s * 9301 + 49297) % 233280; return s / 233280; };
+    this.stars = []; for (let i = 0; i < 70; i++) this.stars.push({ x: this.rnd() * 720, y: this.rnd() * 600, r: this.rnd() * 1.1 + 0.2, tw: this.rnd() * 6.3 });
+    this.sph = this.E.map((e, i) => this.engrave(e.c, 15 + (i % 3) * 2, i));
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const loop = (now) => {
+      const t = reduce ? 9 : (now - this.start) / 1000;
+      const dt = Math.min(0.05, Math.max(0, t - this.lastT)); this.lastT = t;
+      if (!reduce) this.step(t, dt);
+      this.draw(t);
+      this.setState({ t: t });
+      if (!reduce) this.raf = requestAnimationFrame(loop);
+    };
+    if (reduce) this.seedRows();
+    this.raf = requestAnimationFrame(loop);
+  }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); }
+  ease(x) { x = Math.max(0, Math.min(1, x)); return 1 - Math.pow(1 - x, 3); }
+  seedRows() { this.rowsData = [0, 1, 2].map((k) => Object.assign({ born: -k * 20 }, this.leadKinds[k])); }
+  // an engraved sphere: ink outline, hatching that thickens away from the light
+  engrave(col, r, seed) {
+    const c = document.createElement('canvas'), S = 2, P = (r + 6) * 2 * S; c.width = c.height = P;
+    const x = c.getContext('2d'); x.scale(S, S); const o = r + 6;
+    x.fillStyle = '#121A33'; x.beginPath(); x.arc(o, o, r, 0, 6.283); x.fill();
+    x.save(); x.beginPath(); x.arc(o, o, r, 0, 6.283); x.clip();
+    const g = x.createRadialGradient(o - r * 0.4, o - r * 0.45, 1, o, o, r * 1.1);
+    g.addColorStop(0, col); g.addColorStop(0.55, col + '66'); g.addColorStop(1, 'rgba(0,0,0,0)');
+    x.fillStyle = g; x.fillRect(0, 0, o * 2, o * 2);
+    x.strokeStyle = 'rgba(243,227,191,0.55)'; x.lineWidth = 0.6;
+    for (let k = -r; k < r; k += 2.6) {
+      const shade = (k + r) / (2 * r);
+      if (shade < 0.35) continue;
+      x.globalAlpha = 0.25 + shade * 0.6;
+      x.beginPath(); x.moveTo(o - r, o + k - r * 0.3); x.lineTo(o + r, o + k + r * 0.3); x.stroke();
+    }
+    x.restore(); x.globalAlpha = 1;
+    x.strokeStyle = 'rgba(243,227,191,0.9)'; x.lineWidth = 1;
+    x.beginPath(); for (let a = 0; a <= 6.3; a += 0.12) { const rr = r + Math.sin(a * 3 + seed) * 0.35; const px = o + rr * Math.cos(a), py = o + rr * Math.sin(a); a ? x.lineTo(px, py) : x.moveTo(px, py); } x.closePath(); x.stroke();
+    x.strokeStyle = 'rgba(255,255,255,0.75)'; x.lineWidth = 1.2; x.beginPath(); x.arc(o, o, r - 3, 3.6, 4.6); x.stroke();
+    return { c: c, o: o };
+  }
+  // a hand-drawn ellipse: tiny wobble plus a second, lighter pass of the pen
+  inkEllipse(ctx, rx, ry, seed, prog, alpha) {
+    for (let pass = 0; pass < 2; pass++) {
+      ctx.strokeStyle = 'rgba(226,174,69,' + (alpha * (pass ? 0.45 : 1)).toFixed(3) + ')';
+      ctx.lineWidth = pass ? 0.6 : 0.9;
+      ctx.beginPath();
+      const end = 6.2832 * prog;
+      for (let a = 0; a <= end; a += 0.03) {
+        const w = 1 + 0.006 * Math.sin(a * 5 + seed + pass) + 0.004 * Math.sin(a * 11 + seed * 2);
+        const px = this.cx + rx * w * Math.cos(a - 1.5708), py = this.cy + ry * w * Math.sin(a - 1.5708) + pass * 0.6;
+        a ? ctx.lineTo(px, py) : ctx.moveTo(px, py);
+      }
+      ctx.stroke();
+    }
+  }
+  nearestNode(e) { let best = 0, bd = 1e9; this.N.forEach((n, i) => { const d = Math.hypot(n.x - e.x, n.y - e.y); if (d < bd) { bd = d; best = i; } }); return best; }
+  step(t, dt) {
+    if (t < 2.4) return;
+    if (t > this.nextSpawn) {
+      const ei = this.state.focus >= 0 && Math.random() < 0.55 ? this.state.focus : Math.floor(Math.random() * this.E.length);
+      const e = this.E[ei], ni = Math.random() < 0.7 ? this.nearestNode(e) : Math.floor(Math.random() * this.N.length);
+      this.parts.push({ e: ei, n: ni, u: 0, sp: 0.32 + Math.random() * 0.12, bend: (Math.random() - 0.5) * 80 });
+      this.nextSpawn = t + 0.32 + Math.random() * 0.3;
+    }
+    this.parts.forEach((p) => { p.u += p.sp * dt; });
+    const done = this.parts.filter((p) => p.u >= 2);
+    this.parts = this.parts.filter((p) => p.u < 2);
+    this.absorbed += done.length;
+    if (this.absorbed >= 6) { this.absorbed = 0; this.drops.push({ u: 0 }); }
+    this.drops.forEach((d) => { d.u += dt / 1.6; });
+    const landed = this.drops.filter((d) => d.u >= 1).length;
+    this.drops = this.drops.filter((d) => d.u < 1);
+    for (let k = 0; k < landed; k++) {
+      const kind = this.leadKinds[this.leadIdx++ % this.leadKinds.length];
+      this.rowsData.unshift(Object.assign({ born: t }, kind)); this.rowsData = this.rowsData.slice(0, 3);
+      this.setState({ count: this.state.count + 1 }); this.flash = t;
+    }
+    if (!this.rowsData.length && t > 2.6) this.seedRows();
+  }
+  pos(p) {
+    const e = this.E[p.e], n = this.N[p.n], cx = this.cx, cy = this.cy;
+    if (p.u < 1) {
+      const u = p.u, mx = (e.x + n.x) / 2, my = (e.y + n.y) / 2, dx = n.y - e.y, dy = e.x - n.x, L = Math.hypot(dx, dy) || 1;
+      const qx = mx + dx / L * p.bend, qy = my + dy / L * p.bend;
+      return [(1 - u) * (1 - u) * e.x + 2 * (1 - u) * u * qx + u * u * n.x, (1 - u) * (1 - u) * e.y + 2 * (1 - u) * u * qy + u * u * n.y];
+    }
+    const u = this.ease(p.u - 1);
+    return [n.x + (cx - n.x) * u, n.y + (cy - n.y) * u];
+  }
+  draw(t) {
+    const ctx = this.ctx; if (!ctx) return;
+    const cx = this.cx, cy = this.cy, foc = this.state.focus;
+    ctx.setTransform(2, 0, 0, 2, 0, 0); ctx.clearRect(0, 0, 720, 760);
+    // sky
+    for (const s of this.stars) { ctx.fillStyle = 'rgba(220,230,255,' + (0.18 + 0.4 * (0.5 + 0.5 * Math.sin(t * 1.1 + s.tw))).toFixed(2) + ')'; ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 6.283); ctx.fill(); }
+    const glow = ctx.createRadialGradient(cx, cy, 60, cx, cy, 330);
+    glow.addColorStop(0, 'rgba(248,177,15,0.13)'); glow.addColorStop(0.3, 'rgba(72,99,181,0.16)'); glow.addColorStop(1, 'rgba(72,99,181,0)');
+    ctx.fillStyle = glow; ctx.fillRect(0, 0, 720, 700);
+    // plate corner marks
+    const ui = this.ease((t - 0.2) / 1.2);
+    ctx.strokeStyle = 'rgba(226,174,69,' + (0.45 * ui).toFixed(2) + ')'; ctx.lineWidth = 1;
+    [[14, 60, 1, 1], [706, 60, -1, 1], [14, 600, 1, -1], [706, 600, -1, -1]].forEach((m) => { ctx.beginPath(); ctx.moveTo(m[0], m[1] + 18 * m[3]); ctx.lineTo(m[0], m[1]); ctx.lineTo(m[0] + 18 * m[2], m[1]); ctx.stroke(); });
+    // the rings, drawn on by the pen
+    const p1 = this.ease((t - 0.3) / 1.6), p2 = this.ease((t - 0.7) / 1.4);
+    this.inkEllipse(ctx, 300, 246, 1, p1, 0.32);
+    this.inkEllipse(ctx, 186, 150, 4, p2, 0.42);
+    // degree scale around the brain: the seal
+    ctx.save(); ctx.translate(cx, cy); ctx.rotate(t * 0.04);
+    for (let k = 0; k < 120; k++) {
+      const a = k / 120 * 6.283, L = k % 10 === 0 ? 9 : (k % 5 === 0 ? 6 : 3);
+      ctx.strokeStyle = 'rgba(226,174,69,' + ((k % 10 === 0 ? 0.7 : 0.35) * p2).toFixed(2) + ')'; ctx.lineWidth = 0.8;
+      ctx.beginPath(); ctx.moveTo(Math.cos(a) * 86, Math.sin(a) * 86); ctx.lineTo(Math.cos(a) * (86 + L), Math.sin(a) * (86 + L)); ctx.stroke();
+    }
+    ctx.restore();
+    // engraved rays of the sun
+    ctx.save(); ctx.translate(cx, cy); ctx.rotate(-t * 0.02);
+    for (let k = 0; k < 48; k++) { const a = k / 48 * 6.283, L = (k % 2 ? 14 : 26) * p2; ctx.strokeStyle = 'rgba(243,227,191,0.22)'; ctx.lineWidth = 0.7; ctx.beginPath(); ctx.moveTo(Math.cos(a) * 100, Math.sin(a) * 100); ctx.lineTo(Math.cos(a) * (100 + L), Math.sin(a) * (100 + L)); ctx.stroke(); }
+    ctx.restore();
+    // web between what we grow (an ecosystem, everything feeds everything)
+    const p3 = this.ease((t - 1.2) / 1.2);
+    ctx.lineWidth = 0.7;
+    this.N.forEach((n, i) => {
+      const m = this.N[(i + 2) % this.N.length];
+      ctx.strokeStyle = 'rgba(163,181,242,' + (0.16 * p3).toFixed(3) + ')';
+      ctx.beginPath(); ctx.moveTo(n.x, n.y); ctx.lineTo(n.x + (m.x - n.x) * p3, n.y + (m.y - n.y) * p3); ctx.stroke();
+      ctx.strokeStyle = 'rgba(226,174,69,' + (0.22 * p3).toFixed(3) + ')'; ctx.setLineDash([2, 4]);
+      ctx.beginPath(); ctx.moveTo(n.x, n.y); ctx.lineTo(n.x + (cx - n.x) * p3 * 0.62, n.y + (cy - n.y) * p3 * 0.62); ctx.stroke(); ctx.setLineDash([]);
+    });
+    // leader line for the brain annotation
+    ctx.strokeStyle = 'rgba(243,227,191,' + (0.5 * ui).toFixed(2) + ')'; ctx.lineWidth = 0.8;
+    ctx.beginPath(); ctx.moveTo(cx + 60, cy + 62); ctx.lineTo(cx + 84, cy + 74); ctx.lineTo(466, cy + 74); ctx.stroke();
+    ctx.fillStyle = 'rgba(243,227,191,0.9)'; ctx.beginPath(); ctx.arc(cx + 60, cy + 62, 2, 0, 6.283); ctx.fill();
+    // nodes: a four-point star, the same mark as everywhere on the site
+    this.N.forEach((n) => {
+      const s = 6 * p3;
+      ctx.fillStyle = '#F8B10F'; ctx.beginPath();
+      ctx.moveTo(n.x, n.y - s); ctx.lineTo(n.x + s * 0.26, n.y - s * 0.26); ctx.lineTo(n.x + s, n.y); ctx.lineTo(n.x + s * 0.26, n.y + s * 0.26);
+      ctx.lineTo(n.x, n.y + s); ctx.lineTo(n.x - s * 0.26, n.y + s * 0.26); ctx.lineTo(n.x - s, n.y); ctx.lineTo(n.x - s * 0.26, n.y - s * 0.26); ctx.closePath(); ctx.fill();
+    });
+    // the traffic: light gathered from every engine
+    ctx.globalCompositeOperation = 'lighter';
+    for (const p of this.parts) {
+      const e = this.E[p.e], hi = foc < 0 || foc === p.e;
+      const [x, y] = this.pos(p), q = this.pos({ e: p.e, n: p.n, u: Math.max(0, p.u - 0.06), bend: p.bend });
+      ctx.strokeStyle = e.c; ctx.globalAlpha = hi ? 0.85 : 0.18; ctx.lineWidth = 1.6; ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(q[0], q[1]); ctx.lineTo(x, y); ctx.stroke();
+      ctx.fillStyle = '#FFFFFF'; ctx.beginPath(); ctx.arc(x, y, 1.4, 0, 6.283); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    // the channel from the brain down to the leads, and the gold drops in it
+    const p4 = this.ease((t - 1.6) / 1.0);
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.strokeStyle = 'rgba(226,174,69,' + (0.5 * p4).toFixed(2) + ')'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(cx, cy + 112); ctx.lineTo(cx, cy + 112 + (612 - cy - 112) * p4); ctx.stroke();
+    ctx.globalCompositeOperation = 'lighter';
+    for (const d of this.drops) {
+      const y = cy + 112 + (612 - cy - 112) * this.ease(d.u);
+      const g = ctx.createRadialGradient(cx, y, 0, cx, y, 12); g.addColorStop(0, 'rgba(255,214,120,0.95)'); g.addColorStop(1, 'rgba(248,177,15,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, y, 12, 0, 6.283); ctx.fill();
+    }
+    if (this.flash && t - this.flash < 0.9) {
+      const k = (t - this.flash) / 0.9; ctx.strokeStyle = 'rgba(248,177,15,' + (0.7 * (1 - k)).toFixed(2) + ')'; ctx.lineWidth = 1.2;
+      ctx.beginPath(); ctx.ellipse(cx, 614, 30 + 160 * k, 6 + 10 * k, 0, 0, 6.283); ctx.stroke();
+    }
+    ctx.globalCompositeOperation = 'source-over';
+    // engines: engraved worlds, drawn last so traffic leaves from behind them
+    const p5 = this.ease((t - 0.9) / 1.2);
+    this.E.forEach((e, i) => {
+      const s = this.sph[i], k = (foc === i ? 1.18 : 1) * p5;
+      if (k <= 0.01) return;
+      ctx.drawImage(s.c, e.x - s.o * k, e.y - s.o * k, s.o * 2 * k, s.o * 2 * k);
+      if (foc === i) { ctx.strokeStyle = 'rgba(248,177,15,0.85)'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(e.x, e.y, s.o * k - 1, 0, 6.283); ctx.stroke(); }
+    });
+  }
+  renderVals() {
+    const s = this.state, t = s.t, ui = this.ease((t - 0.6) / 1.2), foc = s.focus;
+    const engines = this.E.map((e, i) => {
+      const edge = e.x < 140 || e.x > 580, left = !edge && e.x < this.cx - 40, right = !edge && e.x > this.cx + 40, out = 30;
+      const dx = e.x - this.cx, dy = e.y - this.cy, L = Math.hypot(dx, dy);
+      return { name: e.name, aria: 'Traffic from ' + e.name, x: e.x.toFixed(1), y: e.y.toFixed(1),
+        lx: (e.x + (left ? -out : right ? out : 0)).toFixed(1), ly: (e.y + (left || right ? 0 : (edge ? 32 : (dy < 0 ? -32 : 32)))).toFixed(1),
+        tx: left ? '-100%' : right ? '0' : '-50%',
+        o: (ui * (foc < 0 || foc === i ? 1 : 0.45)).toFixed(2), fg: foc === i ? '#F8B10F' : 'rgba(255,255,255,0.86)',
+        hover: () => { if (this.state.focus !== i) this.setState({ focus: i }); } };
+    });
+    const p3 = this.ease((t - 1.4) / 1.0);
+    const nodes = this.N.map((n) => {
+      const dx = n.x - this.cx, dy = n.y - this.cy, L = Math.hypot(dx, dy) || 1;
+      return { name: n.name, lx: (n.x + dx / L * 2).toFixed(1), ly: (n.y + (dy < -20 ? -17 : 17)).toFixed(1), o: p3.toFixed(2), fg: 'rgba(243,227,191,0.85)' };
+    });
+    const rows = (this.rowsData || []).map((r, k) => {
+      const ago = Math.max(0, Math.round((t - r.born) / 2));
+      return { what: r.what, src: r.src, c: r.c, o: (1 - k * 0.28).toFixed(2), ago: ago < 1 ? 'just now' : ago + 'm ago' };
+    });
+    return {
+      setCv: (el) => { this.ctx = el ? el.getContext('2d') : null; },
+      onLeave: () => this.setState({ focus: -1 }),
+      engines: engines, nodes: nodes, rows: rows, count: s.count,
+      ui: ui.toFixed(3), sunO: this.ease((t - 0.1) / 0.8).toFixed(3),
+      sunS: (1 + Math.sin(t * 2) * 0.01).toFixed(3), glowA: (0.18 + 0.08 * Math.sin(t * 1.6)).toFixed(2)
+    };
+  }
+}
+</script>
+</body>
+</html>

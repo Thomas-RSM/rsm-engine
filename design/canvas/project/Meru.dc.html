@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RSM Meru — hero field</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div ref="{{setRoot}}" onMouseMove="{{onMove}}" onMouseLeave="{{onLeave}}" onClick="{{onClick}}" style="position: relative; width: 100%; height: 100%; min-height: 960px; overflow: hidden; background: radial-gradient(80% 60% at 50% {{cyPct}}%, #1A2552 0%, #0E1534 48%, #10172D 100%); font-family: Inter, system-ui, sans-serif;">
+  <canvas aria-hidden="true" ref="{{setCanvas}}" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 1;"></canvas>
+  <img src="/_blob/df8bb70e2a1d62ada3ebb847412f9dfb" alt="" aria-hidden="true" style="position: absolute; left: 50%; top: {{cyPct}}%; width: {{mw}}px; height: auto; transform: translate(-50%, -54%); z-index: 2; filter: drop-shadow(0 0 30px rgba(255,220,150,0.45)) drop-shadow(0 0 2px rgba(255,255,255,0.6));">
+  <canvas aria-hidden="true" ref="{{setTop}}" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none;"></canvas>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"centerY":{"editor":"range","default":47,"min":35,"max":75,"unit":"%","section":"Layout"},"$preview":{"width":1440,"height":1080}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { narrow: false };
+    this.engines = ['GOOGLE', 'CHATGPT', 'AI OVERVIEWS', 'GEMINI', 'PERPLEXITY', 'GOOGLE MAPS', 'AI MODE', 'CLAUDE'];
+    this.m = { x: -9999, y: -9999, tx: 0, ty: 0, sx: 0, sy: 0 };
+    this.pulses = []; this.asc = null; this.lastAsc = 0; this.flash = 0; this.lastOm = -1;
+    this.build();
+  }
+  build() {
+    // Maha Meru: the Sri Yantra raised in tiers toward the bindu. Units: radius 1 = outer square half-width.
+    const L = []; // { pts:[[x,y,z]...], closed, tier, kind }
+    const sq = (h, y, notch) => {
+      const g = 0.16, d = 0.06, p = [];
+      const side = (ax, az, bx, bz, nx, nz) => {
+        // a gate (T opening) in the middle of each side
+        p.push([ax, y, az]);
+        const mx = (ax + bx) / 2, mz = (az + bz) / 2, tx = (bx - ax) / 2, tz = (bz - az) / 2, tl = Math.hypot(tx, tz), ux = tx / tl, uz = tz / tl;
+        if (notch) {
+          p.push([mx - ux * g, y, mz - uz * g]); p.push([mx - ux * g + nx * d, y, mz - uz * g + nz * d]);
+          p.push([mx + ux * g + nx * d, y, mz + uz * g + nz * d]); p.push([mx + ux * g, y, mz + uz * g]);
+        }
+      };
+      side(-h, -h, h, -h, 0, -1); side(h, -h, h, h, 1, 0); side(h, h, -h, h, 0, 1); side(-h, h, -h, -h, -1, 0);
+      return p;
+    };
+    L.push({ pts: sq(1.0, 0, true), closed: true, tier: 0, kind: 'blue' });
+    L.push({ pts: sq(0.955, 0, true), closed: true, tier: 0, kind: 'blue' });
+    L.push({ pts: sq(0.91, 0.02, true), closed: true, tier: 0, kind: 'blue' });
+    const circ = (r, y, n) => { const p = []; for (let k = 0; k < n; k++) { const a = k / n * 6.283; p.push([Math.cos(a) * r, y, Math.sin(a) * r]); } return p; };
+    L.push({ pts: circ(0.84, 0.05, 120), closed: true, tier: 1, kind: 'teal' });
+    L.push({ pts: circ(0.8, 0.06, 120), closed: true, tier: 1, kind: 'teal' });
+    const petals = (n, r1, r2, y1, y2, tier) => {
+      for (let k = 0; k < n; k++) {
+        const a0 = k / n * 6.283, a1 = (k + 1) / n * 6.283, am = (a0 + a1) / 2, p = [];
+        for (let s = 0; s <= 16; s++) {
+          const u = s / 16, a = a0 + (a1 - a0) * u, bulge = Math.sin(Math.PI * u);
+          const r = r1 + (r2 - r1) * Math.pow(bulge, 0.7), y = y1 + (y2 - y1) * bulge;
+          const aa = a + (am - a) * 0.15 * bulge;
+          p.push([Math.cos(aa) * r, y, Math.sin(aa) * r]);
+        }
+        L.push({ pts: p, closed: false, tier: tier, kind: 'teal' });
+      }
+    };
+    petals(16, 0.78, 0.92 * 0.78 / 0.62 * 0.62, 0.08, 0.12, 2);
+    L.push({ pts: circ(0.66, 0.13, 100), closed: true, tier: 2, kind: 'teal' });
+    petals(8, 0.62, 0.64, 0.16, 0.26, 3);
+    L.push({ pts: circ(0.52, 0.27, 90), closed: true, tier: 3, kind: 'gold' });
+    // nine interlocking triangles, rising tier by tier
+    const T = [[0.46, 1, 0.03], [0.38, 1, 0.01], [0.31, 1, -0.012], [0.24, 1, -0.03], [0.44, 0, -0.025], [0.36, 0, -0.008], [0.29, 0, 0.01], [0.22, 0, 0.03], [0.16, 0, 0.008]];
+    T.forEach((tr, k) => {
+      const y = 0.3 + (0.46 - tr[0]) * 1.5, p = [];
+      for (let j = 0; j < 3; j++) { const a = (tr[1] ? -Math.PI / 2 : Math.PI / 2) + j * 2.0944; p.push([Math.cos(a) * tr[0], y, Math.sin(a) * tr[0] + tr[2]]); }
+      L.push({ pts: p, closed: true, tier: 4 + Math.floor(k % 4), kind: 'gold' });
+    });
+    this.lines = L;
+    this.apex = [0, 0.95, 0];
+    this.stars = [];
+    for (let i = 0; i < 160; i++) this.stars.push({ x: Math.random(), y: Math.random(), r: Math.random() * 1.1 + 0.3, tw: Math.random() * 6.28 });
+  }
+  componentDidMount() {
+    this.resize = () => {
+      if (!this.root || !this.cv || !this.tp) return;
+      const rc = this.root.getBoundingClientRect();
+      this.dpr = Math.min(2, window.devicePixelRatio || 1); this.W = rc.width; this.H = rc.height;
+      for (const c of [this.cv, this.tp]) { c.width = Math.round(this.W * this.dpr); c.height = Math.round(this.H * this.dpr); }
+      const narrow = this.W < 700; if (narrow !== this.state.narrow) this.setState({ narrow: narrow });
+    };
+    this.resize();
+    if (window.ResizeObserver && this.root) { this.ro = new ResizeObserver(() => this.resize()); this.ro.observe(this.root); }
+    this.start = performance.now();
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const loop = (now) => { const t = (now - this.start) / 1000; this.frame(reduce ? 5 : t, reduce ? 0 : 1); if (!reduce) this.raf = requestAnimationFrame(loop); };
+    this.raf = requestAnimationFrame(loop);
+  }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); if (this.ro) this.ro.disconnect(); }
+  frame(t, live) {
+    const C = this.cv && this.cv.getContext('2d'), U = this.tp && this.tp.getContext('2d');
+    if (!C || !U || !this.W) return;
+    const W = this.W, H = this.H, dpr = this.dpr, m = this.m;
+    m.sx += (m.tx - m.sx) * 0.03; m.sy += (m.ty - m.sy) * 0.03;
+    const narrow = W < 700;
+    const S = narrow ? W * 0.66 : Math.min(W * 0.27, 390);
+    const yaw = t * 0.05 * live + m.sx * 0.3, pitch = 0.36 + m.sy * 0.06;
+    const cyaw = Math.cos(yaw), syaw = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch);
+    const f = 3.2, D = 4.2;
+    const proj0 = (p) => {
+      const x = p[0] * cyaw - p[2] * syaw, z = p[0] * syaw + p[2] * cyaw, y = p[1];
+      const y2 = y * cp - z * sp, z2 = y * sp + z * cp;
+      const k = f / (D + z2);
+      return [x * k * S, -y2 * k * S, z2];
+    };
+    const ap = proj0(this.apex), ax = W / 2, ay = H * ((this.props.centerY ?? 52) / 100);
+    const proj = (p) => { const q = proj0(p); return [ax + q[0] - ap[0], ay + q[1] - ap[1], q[2]]; };
+    // the Om: breath of light descending the tiers, then rising
+    const OM = 7.5, ot = t % OM, cyc = Math.floor(t / OM);
+    if (live && this.lastOm !== cyc && ot > 0.2) { this.lastOm = cyc; this.pulses.push({ t0: t }); this.flash = Math.max(this.flash, 0.9); }
+    this.pulses = this.pulses.filter((p) => t - p.t0 < 4);
+    const tierGlow = (tier) => { let g = 0; for (const p of this.pulses) { const pos = (t - p.t0) * 2.4, d = (7 - tier) - pos; g += Math.exp(-d * d / 0.8) * (1 - (t - p.t0) / 4); } return g; };
+    for (const X of [C, U]) { X.setTransform(dpr, 0, 0, dpr, 0, 0); X.clearRect(0, 0, W, H); }
+    // sky
+    for (const s of this.stars) { C.fillStyle = 'rgba(225,232,255,' + (0.2 + 0.45 * (0.5 + 0.5 * Math.sin(t * 0.7 + s.tw))).toFixed(3) + ')'; C.fillRect(s.x * W - m.sx * 8, s.y * H * 0.9 - m.sy * 6, s.r, s.r); }
+    C.globalCompositeOperation = 'lighter';
+    // aura of the bindu and a pillar of light rising from it
+    const aura = C.createRadialGradient(ax, ay, 20, ax, ay, S * 1.25);
+    aura.addColorStop(0, 'rgba(255,205,110,' + (0.32 + 0.25 * this.flash).toFixed(3) + ')'); aura.addColorStop(0.25, 'rgba(90,120,230,0.22)'); aura.addColorStop(1, 'rgba(72,99,181,0)');
+    C.fillStyle = aura; C.beginPath(); C.arc(ax, ay, S * 1.25, 0, 6.283); C.fill();
+    const pil = C.createLinearGradient(0, 0, 0, ay);
+    pil.addColorStop(0, 'rgba(255,220,150,0)'); pil.addColorStop(1, 'rgba(255,220,150,' + (0.05 + 0.08 * this.flash).toFixed(3) + ')');
+    C.fillStyle = pil; C.beginPath(); C.moveTo(ax - 2, ay); C.lineTo(ax - 26, 0); C.lineTo(ax + 26, 0); C.lineTo(ax + 2, ay); C.closePath(); C.fill();
+    // ground reflection glow under the Meru
+    const base = proj([0, 0, 0]);
+    const gr = C.createRadialGradient(base[0], base[1], 0, base[0], base[1], S * 1.3);
+    gr.addColorStop(0, 'rgba(72,99,181,0.22)'); gr.addColorStop(1, 'rgba(72,99,181,0)');
+    C.fillStyle = gr; C.beginPath(); C.ellipse(base[0], base[1], S * 1.3, S * 0.45, 0, 0, 6.283); C.fill();
+    // the Meru of light
+    const cols = { blue: [110, 140, 240], teal: [76, 200, 175], gold: [248, 190, 80] };
+    const mouseNear = (x, y) => { const d = Math.hypot(m.x - x, m.y - y); return d < 160 ? Math.pow(1 - d / 160, 2) : 0; };
+    this.lines.forEach((ln) => {
+      const P = ln.pts.map(proj);
+      const c = cols[ln.kind], g = tierGlow(ln.tier);
+      const zMid = P.reduce((a, b) => a + b[2], 0) / P.length;
+      const depth = Math.max(0.35, Math.min(1, 1.1 - zMid * 0.6));
+      const draw = (w, a) => {
+        C.strokeStyle = 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + Math.min(1, a).toFixed(3) + ')'; C.lineWidth = w; C.lineJoin = 'round'; C.lineCap = 'round';
+        C.beginPath(); P.forEach((q, i) => i ? C.lineTo(q[0], q[1]) : C.moveTo(q[0], q[1])); if (ln.closed) C.closePath(); C.stroke();
+      };
+      const base = (ln.kind === 'gold' ? 0.6 : ln.kind === 'blue' ? 0.16 : 0.3) * depth;
+      draw(9, ((ln.kind === 'blue' ? 0.0 : 0.03) + 0.12 * g) * depth);
+      draw(3.2, (0.07 + 0.25 * g) * depth);
+      draw(1.1, base + 0.5 * g);
+    });
+    // vertical threads: the axis of the Meru, tier to tier
+    C.strokeStyle = 'rgba(248,200,120,0.12)'; C.lineWidth = 1;
+    [[0.46, 0.28], [0.52, 0.24], [0.66, 0.13], [0.84, 0.05]].forEach((v) => {
+      for (let k = 0; k < 8; k++) { const a = k / 8 * 6.283 + 0.39; const p0 = proj([Math.cos(a) * v[0], v[1], Math.sin(a) * v[0]]), p1 = proj([Math.cos(a) * v[0] * 0.55, v[1] + 0.2, Math.sin(a) * v[0] * 0.55]); C.beginPath(); C.moveTo(p0[0], p0[1]); C.lineTo(p1[0], p1[1]); C.stroke(); }
+    });
+    // engines circle the base, and one by one ascend to the bindu
+    const ER = 1.32;
+    const eng = this.engines.map((nm, i) => {
+      const a = i / this.engines.length * 6.283 - t * 0.09 * live;
+      const w = [Math.cos(a) * ER, 0.02, Math.sin(a) * ER], p = proj(w);
+      return { nm: nm, w: w, p: p, a: a, i: i };
+    });
+    if (live && !this.asc && t - this.lastAsc > 2.6) {
+      const front = eng.filter((e) => e.p[2] < 0 && e.p[0] > 80 && e.p[0] < W - 80);
+      if (front.length) { const e = front[Math.floor(Math.random() * front.length)]; this.asc = { i: e.i, t0: t, from: e.w.slice() }; }
+    }
+    eng.slice().sort((a, b) => b.p[2] - a.p[2]).forEach((e) => {
+      const X = e.p[0], Y = e.p[1], near = e.p[2] < 0, dep = near ? 1 : 0.45;
+      const hl = mouseNear(X, Y);
+      const glow = C.createRadialGradient(X, Y, 0, X, Y, 22);
+      glow.addColorStop(0, 'rgba(160,190,255,' + (0.5 * dep + hl * 0.4).toFixed(3) + ')'); glow.addColorStop(1, 'rgba(160,190,255,0)');
+      C.fillStyle = glow; C.beginPath(); C.arc(X, Y, 22, 0, 6.283); C.fill();
+      C.fillStyle = 'rgba(255,255,255,' + (0.9 * dep).toFixed(3) + ')'; C.beginPath(); C.arc(X, Y, 2.6, 0, 6.283); C.fill();
+      if (near && X > 70 && X < W - 70) {
+        C.globalCompositeOperation = 'source-over';
+        C.font = '600 10.5px Inter, sans-serif'; C.textAlign = 'center'; C.textBaseline = 'top';
+        C.fillStyle = 'rgba(214,224,250,' + (0.55 + 0.35 * hl).toFixed(3) + ')';
+        C.fillText(e.nm.split('').join(String.fromCharCode(8202, 8202)), X, Y + 12);
+        C.globalCompositeOperation = 'lighter';
+      }
+    });
+    if (this.asc) {
+      const age = (t - this.asc.t0) / 2.2;
+      if (age >= 1) { this.asc = null; this.lastAsc = t; this.pulses.push({ t0: t }); this.flash = 1; }
+      else {
+        const from = this.asc.from, to = this.apex;
+        const at = (s) => { const e = s * s * (3 - 2 * s); const sw = Math.sin(Math.PI * s) * 0.35; const a = Math.atan2(from[2], from[0]) + sw; const r = Math.hypot(from[0], from[2]) * (1 - e); return proj([Math.cos(a) * r, from[1] + (to[1] - from[1]) * Math.pow(s, 0.8), Math.sin(a) * r]); };
+        const head = age, tail = Math.max(0, head - 0.35);
+        for (let k = 0; k < 28; k++) {
+          const s0 = tail + (head - tail) * k / 28, s1 = tail + (head - tail) * (k + 1) / 28, p0 = at(s0), p1 = at(s1), w = (k + 1) / 28;
+          U.globalCompositeOperation = 'lighter';
+          U.strokeStyle = 'rgba(248,190,80,' + (0.16 * w).toFixed(3) + ')'; U.lineWidth = 8 * w; U.lineCap = 'round'; U.beginPath(); U.moveTo(p0[0], p0[1]); U.lineTo(p1[0], p1[1]); U.stroke();
+          U.strokeStyle = 'rgba(255,242,215,' + (0.95 * w).toFixed(3) + ')'; U.lineWidth = 1.6 * w + 0.4; U.beginPath(); U.moveTo(p0[0], p0[1]); U.lineTo(p1[0], p1[1]); U.stroke();
+        }
+        const hp = at(head), hg = U.createRadialGradient(hp[0], hp[1], 0, hp[0], hp[1], 16);
+        hg.addColorStop(0, 'rgba(255,235,190,0.9)'); hg.addColorStop(1, 'rgba(255,235,190,0)');
+        U.fillStyle = hg; U.beginPath(); U.arc(hp[0], hp[1], 16, 0, 6.283); U.fill();
+        const nm = this.engines[this.asc.i];
+        if (head < 0.35) { U.globalCompositeOperation = 'source-over'; U.font = '600 11px Inter, sans-serif'; U.textAlign = 'center'; U.fillStyle = 'rgba(255,226,160,' + (1 - head / 0.35).toFixed(3) + ')'; U.fillText(nm.split('').join(String.fromCharCode(8202, 8202)), hp[0], hp[1] - 22); }
+      }
+    }
+    // the bindu receives: a halo ring around the mark
+    this.flash *= 0.96;
+    U.globalCompositeOperation = 'lighter';
+    const hr = narrow ? 70 : 96;
+    U.strokeStyle = 'rgba(255,220,150,' + (0.18 + 0.5 * this.flash).toFixed(3) + ')'; U.lineWidth = 1 + 2 * this.flash;
+    U.beginPath(); U.ellipse(ax, ay, hr + 10 * this.flash, (hr + 10 * this.flash) * 0.32, 0, 0, 6.283); U.stroke();
+    C.globalCompositeOperation = 'source-over'; U.globalCompositeOperation = 'source-over';
+  }
+  renderVals() {
+    return {
+      cyPct: this.props.centerY ?? 52,
+      mw: this.state.narrow ? 110 : 150,
+      setRoot: (el) => { this.root = el; },
+      setCanvas: (el) => { this.cv = el; },
+      setTop: (el) => { this.tp = el; },
+      onMove: (ev) => {
+        if (!this.root) return;
+        const r = this.root.getBoundingClientRect();
+        this.m.x = ev.clientX - r.left; this.m.y = ev.clientY - r.top;
+        this.m.tx = (this.m.x / r.width - 0.5) * 2; this.m.ty = (this.m.y / r.height - 0.5) * 2;
+      },
+      onLeave: () => { this.m.x = -9999; this.m.y = -9999; this.m.tx = 0; this.m.ty = 0; },
+      onClick: () => { const t = (performance.now() - this.start) / 1000; this.pulses.push({ t0: t }); this.flash = 1; }
+    };
+  }
+}
+</script>
+</body>
+</html>

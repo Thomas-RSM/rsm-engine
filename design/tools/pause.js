@@ -1,0 +1,15 @@
+const {chromium}=require('playwright');
+(async()=>{const b=await chromium.launch(); const p=await b.newPage({viewport:{width:1440,height:900}});
+ const errs=[]; p.on('pageerror',e=>errs.push(e.message));
+ const cdp=await p.context().newCDPSession(p); await cdp.send('Performance.enable');
+ const met=async()=>{const m=(await cdp.send('Performance.getMetrics')).metrics;const o={};m.forEach(x=>o[x.name]=x.value);return o};
+ await p.goto('http://localhost:8765/Main.dc.html'); await p.waitForTimeout(4000);
+ const pos=()=>p.evaluate(()=>document.querySelector('[data-tile]').style.transform);
+ let a=await met(); const p0=await pos(); await p.waitForTimeout(6000); let c=await met(); const p1=await pos();
+ const inView=(c.ScriptDuration-a.ScriptDuration)*1000/6;
+ await p.evaluate(()=>window.scrollTo(0,5000)); await p.waitForTimeout(1500);
+ a=await met(); const q0=await pos(); await p.waitForTimeout(6000); c=await met(); const q1=await pos();
+ const away=(c.ScriptDuration-a.ScriptDuration)*1000/6;
+ await p.evaluate(()=>window.scrollTo(0,0)); await p.waitForTimeout(1500); const r0=await pos(); await p.waitForTimeout(1000); const r1=await pos();
+ console.log(JSON.stringify({scriptMsPerSec_inView:+inView.toFixed(1),movingInView:p0!==p1,scriptMsPerSec_scrolledAway:+away.toFixed(1),movingWhileAway:q0!==q1,resumesOnReturn:r0!==r1,errs}));
+ await b.close();})();

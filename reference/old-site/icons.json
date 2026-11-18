@@ -1,0 +1,142 @@
+[
+{
+"id": 0,
+"name": "Google",
+"tip": "Search Engine Rankings",
+"glow": "#4285f4",
+"svg": "<svg viewBox=\"0 0 48 48\"> <path d=\"M44 24.5c0-1.57-.14-3.09-.4-4.55H24v8.51h11.26c-.49 2.63-1.97 4.85-4.2 6.34v5.27h6.8c3.97-3.66 6.14-9.04 6.14-15.57z\" fill=\"#4285F4\" /> <path d=\"M24 46c5.7 0 10.49-1.89 13.99-5.13l-6.83-5.27c-1.89 1.27-4.31 2.01-7.16 2.01-5.5 0-10.16-3.71-11.83-8.7H5.14v5.44C8.7 41.35 15.84 46 24 46z\" fill=\"#34A853\" /> <path d=\"M12.17 28.91c-.88-2.55-.88-5.27 0-7.82V15.65H5.14C2.38 19.88 1 24.88 1 26s1.38 6.12 4.14 10.35l7.03-5.44z\" fill=\"#FBBC05\" /> <path d=\"M24 10.28c3.1 0 5.88 1.07 8.07 3.16l6.04-6.04C34.46 4.04 29.67 2 24 2 15.84 2 8.7 6.65 5.14 13.65l7.03 5.44c1.67-4.99 6.33-8.81 11.83-8.81z\" fill=\"#EA4335\" /> </svg>"
+},
+{
+"id": 1,
+"name": "SEO",
+"tip": "Search Engine Optimization",
+"glow": "#4f8fff",
+"svg": "<svg viewBox=\"0 0 48 48\" fill=\"none\"> <circle cx=\"19\" cy=\"19\" r=\"13\" stroke=\"#4f8fff\" stroke-width=\"3.5\" /> <line x1=\"28.5\" y1=\"28.5\" x2=\"43\" y2=\"43\" stroke=\"#4f8fff\" stroke-width=\"4\" stroke-linecap=\"round\" /> </svg>"
+},
+{
+"id": 2,
+"name": "AEO",
+"tip": "Answer Engine Optimization",
+"glow": "#06d6a0",
+"svg": "<svg viewBox=\"0 0 48 48\" fill=\"none\"> <rect x=\"5\" y=\"7\" width=\"38\" height=\"34\" rx=\"5\" stroke=\"#06d6a0\" stroke-width=\"2.5\" /> <circle cx=\"37\" cy=\"13\" r=\"6\" fill=\"#06d6a0\" /> </svg>"
+},
+{
+"id": 3,
+"name": "AIO",
+"tip": "AI Overview Optimization",
+"glow": "#a855f7",
+"svg": "<svg viewBox=\"0 0 48 48\" fill=\"none\"> <path d=\"M24 3L5 13.5v21L24 45l19-10.5v-21L24 3z\" stroke=\"#a855f7\" stroke-width=\"2.5\" /> <circle cx=\"24\" cy=\"24\" r=\"6\" fill=\"#a855f7\" opacity=\".85\" /> </svg>"
+},
+{
+"id": 4,
+"name": "E-E-A-T",
+"tip": "Experience Expertise Authority Trust",
+"glow": "#ec4899",
+"svg": "<svg viewBox=\"0 0 48 48\" fill=\"none\"> <path d=\"M24 3l6 12.2L43 17.2l-9.5 9.3L35.7 40 24 33.8 12.3 40l2.2-13.5L5 17.2l13-2L24 3z\" fill=\"#ec4899\" opacity=\".85\" /> </svg>"
+},
+{
+"id": 5,
+"name": "ChatGPT",
+"tip": "AI Search Citations",
+"glow": "#10a37f",
+"svg": "<svg viewBox=\"0 0 48 48\"> <circle cx=\"24\" cy=\"24\" r=\"20\" fill=\"#10a37f\" /> <path d=\"M16 20c0-4.4 3.6-8 8-8s8 3.6 8 8\" stroke=\"#fff\" stroke-width=\"2.5\" fill=\"none\" stroke-linecap=\"round\" opacity=\".7\" /> <rect x=\"16\" y=\"23\" width=\"16\" height=\"10\" rx=\"2\" fill=\"#fff\" opacity=\".7\" /> </svg>"
+},
+{
+"id": 6,
+"name": "Maps",
+"tip": "Local Map Pack",
+"glow": "#ea4335",
+"svg": "<svg viewBox=\"0 0 48 48\"> <path d=\"M24 2C14.6 2 7 9.4 7 18.5 7 31 24 46 24 46s17-15 17-27.5C41 9.4 33.4 2 24 2z\" fill=\"#EA4335\" /> <circle cx=\"24\" cy=\"18\" r=\"4.5\" fill=\"#fff\" /> </svg>"
+},
+{
+"id": 7,
+"name": "Schema",
+"tip": "Structured Data Markup",
+"glow": "#14b8a6",
+"svg": "<svg viewBox=\"0 0 48 48\" fill=\"none\"> <path d=\"M16 7L3 24l13 17\" stroke=\"#14b8a6\" stroke-width=\"3.5\" stroke-linecap=\"round\" /> <path d=\"M32 7l13 17-13 17\" stroke=\"#14b8a6\" stroke-width=\"3.5\" stroke-linecap=\"round\" /> </svg>"
+},
+{
+"id": 8,
+"name": "Perplexity",
+"tip": "AI Search Discovery",
+"glow": "#1a7f64",
+"svg": "<svg viewBox=\"0 0 48 48\" fill=\"none\"> <circle cx=\"24\" cy=\"24\" r=\"19\" stroke=\"#1a7f64\" stroke-width=\"2.5\" /> <path d=\"M12 24h10l4-8 4 16 4-8h10\" stroke=\"#1a7f64\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /> </svg>"
+},
+{
+"id": 9,
+"name": "Copilot",
+"tip": "Microsoft AI Search",
+"glow": "#00a4ef",
+"svg": "<svg viewBox=\"0 0 48 48\"> <path d=\"M9 5v31l11 7 19-11.5v-8L22 17l-5 2.5V5H9z\" fill=\"#00a4ef\" /> </svg>"
+},
+{
+"id": 10,
+"name": "Reddit",
+"tip": "Community Trust Signals",
+"glow": "#ff4500",
+"svg": "<svg viewBox=\"0 0 48 48\"> <circle cx=\"24\" cy=\"24\" r=\"19\" fill=\"#FF4500\" /> <ellipse cx=\"24\" cy=\"28.5\" rx=\"11\" ry=\"7.5\" fill=\"#fff\" /> <circle cx=\"19.5\" cy=\"26.5\" r=\"2.5\" fill=\"#FF4500\" /> <circle cx=\"28.5\" cy=\"26.5\" r=\"2.5\" fill=\"#FF4500\" /> </svg>"
+},
+{
+"id": 11,
+"name": "Gemini",
+"tip": "Google AI Platform",
+"glow": "#4285f4",
+"svg": "<svg viewBox=\"0 0 48 48\" fill=\"none\"> <path d=\"M24 2C17 14 9 18 2 26c7 6 15 12 22 20 7-8 15-14 22-20C39 18 31 14 24 2z\" fill=\"url(#gem)\" /> <defs> <linearGradient id=\"gem\" x1=\"2\" y1=\"2\" x2=\"46\" y2=\"46\"> <stop stop-color=\"#4285F4\" /> <stop offset=\".33\" stop-color=\"#34A853\" /> <stop offset=\".66\" stop-color=\"#FBBC05\" /> <stop offset=\"1\" stop-color=\"#EA4335\" /> </linearGradient> </defs> </svg>"
+},
+{
+"id": 12,
+"name": "Local SEO",
+"tip": "Location-Based Rankings",
+"glow": "#f59e0b",
+"svg": "<svg viewBox=\"0 0 48 48\" fill=\"none\"> <circle cx=\"24\" cy=\"19\" r=\"15\" stroke=\"#f59e0b\" stroke-width=\"2.5\" /> <path d=\"M17 42l7-7 7 7\" stroke=\"#f59e0b\" stroke-width=\"3\" stroke-linecap=\"round\" /> </svg>"
+},
+{
+"id": 13,
+"name": "GBP",
+"tip": "Google Business Profile",
+"glow": "#34a853",
+"svg": "<svg viewBox=\"0 0 48 48\" fill=\"none\"> <rect x=\"7\" y=\"9\" width=\"34\" height=\"30\" rx=\"4\" stroke=\"#34A853\" stroke-width=\"2.5\" /> <circle cx=\"24\" cy=\"21\" r=\"7\" stroke=\"#34A853\" stroke-width=\"2.5\" /> </svg>"
+},
+{
+"id": 14,
+"name": "Citations",
+"tip": "Directory Listings",
+"glow": "#8b5cf6",
+"svg": "<svg viewBox=\"0 0 48 48\" fill=\"none\"> <path d=\"M9 11h30v32H9z\" stroke=\"#8b5cf6\" stroke-width=\"2.5\" /> <path d=\"M15 20h18M15 26.5h14\" stroke=\"#8b5cf6\" stroke-width=\"2.5\" stroke-linecap=\"round\" opacity=\".55\" /> </svg>"
+},
+{
+"id": 15,
+"name": "Tech SEO",
+"tip": "Site Speed & Crawling",
+"glow": "#f97316",
+"svg": "<svg viewBox=\"0 0 48 48\" fill=\"none\"> <circle cx=\"24\" cy=\"24\" r=\"9\" stroke=\"#f97316\" stroke-width=\"3\" /> <path d=\"M24 3v7M24 38v7M3 24h7M38 24h7\" stroke=\"#f97316\" stroke-width=\"3\" stroke-linecap=\"round\" /> </svg>"
+},
+{
+"id": 16,
+"name": "Links",
+"tip": "Backlink Authority",
+"glow": "#3b82f6",
+"svg": "<svg viewBox=\"0 0 48 48\" fill=\"none\"> <path d=\"M19 29l-5 5a6.4 6.4 0 010-9l9-9a6.4 6.4 0 019 0 6.4 6.4 0 010 9\" stroke=\"#3b82f6\" stroke-width=\"3.5\" stroke-linecap=\"round\" /> <path d=\"M29 19l5-5a6.4 6.4 0 010 9l-9 9a6.4 6.4 0 01-9 0 6.4 6.4 0 010-9\" stroke=\"#3b82f6\" stroke-width=\"3.5\" stroke-linecap=\"round\" /> </svg>"
+},
+{
+"id": 17,
+"name": "Content",
+"tip": "Content Strategy",
+"glow": "#e879f9",
+"svg": "<svg viewBox=\"0 0 48 48\" fill=\"none\"> <path d=\"M7 5h26l8 8v30a2 2 0 01-2 2H9a2 2 0 01-2-2V7a2 2 0 012-2z\" stroke=\"#e879f9\" stroke-width=\"2.5\" /> </svg>"
+},
+{
+"id": 18,
+"name": "Voice",
+"tip": "Voice Search Optimization",
+"glow": "#06b6d4",
+"svg": "<svg viewBox=\"0 0 48 48\" fill=\"none\"> <rect x=\"17\" y=\"5\" width=\"14\" height=\"24\" rx=\"7\" stroke=\"#06b6d4\" stroke-width=\"2.5\" /> <path d=\"M11 24c0 7.2 5.8 13 13 13s13-5.8 13-13\" stroke=\"#06b6d4\" stroke-width=\"2.5\" stroke-linecap=\"round\" /> </svg>"
+},
+{
+"id": 19,
+"name": "Snippets",
+"tip": "Featured Snippet Rankings",
+"glow": "#fbbf24",
+"svg": "<svg viewBox=\"0 0 48 48\" fill=\"none\"> <rect x=\"5\" y=\"7\" width=\"38\" height=\"14\" rx=\"4\" stroke=\"#fbbf24\" stroke-width=\"2.5\" /> </svg>"
+}
+]

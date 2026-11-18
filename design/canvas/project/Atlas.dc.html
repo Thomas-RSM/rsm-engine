@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RSM Search Atlas — plate I</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div style="position: relative; width: 720px; height: 760px; font-family: Inter, system-ui, sans-serif; color: #FFFFFF; background: transparent;">
+
+  <canvas aria-hidden="true" ref="{{setCv}}" width="1440" height="1520" style="position: absolute; left: 0; top: 0; width: 720px; height: 760px;"></canvas>
+
+  <!-- ask on any engine -->
+  <sc-for list="{{engines}}" as="e" hint-placeholder-count="8">
+    <button type="button" onClick="{{e.ask}}" aria-label="{{e.aria}}" style="position: absolute; left: {{e.x}}px; top: {{e.y}}px; transform: translate(-50%, -50%); width: 44px; height: 44px; border-radius: 50%; background: transparent; border: none; padding: 0; cursor: pointer;"></button>
+  </sc-for>
+
+  <!-- your business: the star everything is charted around -->
+  <div style="position: absolute; left: 360px; top: 322px; width: 118px; height: 118px; transform: translate(-50%, -50%) scale({{sunS}}); border-radius: 50%; background: radial-gradient(circle at 40% 34%, #FFFFFF 0%, #FFFFFF 50%, #E8EDF7 100%); box-shadow: inset 0 -8px 16px rgba(72,99,181,0.22), 0 0 0 1.5px #E2AE45, 0 0 46px rgba(248,177,15,{{glowA}}), 0 0 110px rgba(72,99,181,0.5); display: flex; align-items: center; justify-content: center; opacity: {{sunO}};">
+    <img src="/_blob/f0ddc11df1deb86f300b7c52eb17b3ff" alt="" style="width: 76px; height: auto; transform: translate(2px, 1px);">
+  </div>
+
+  <!-- one question, followed all the way through -->
+  <div style="position: absolute; left: 50%; top: {{card.top}}px; width: {{card.w}}px; height: {{card.h}}px; margin-left: -{{card.half}}px; box-sizing: border-box; opacity: {{ui}}; background: rgba(13,19,40,0.86); backdrop-filter: blur(14px); border: 1px solid rgba(226,174,69,0.34); border-radius: {{card.rad}}px; padding: {{card.pad}}; display: flex; flex-direction: column; justify-content: center; gap: {{card.gap}}px; box-shadow: 0 26px 54px rgba(0,0,0,0.45);">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span style="width: 9px; height: 9px; border-radius: 50%; background: {{s.c}}; box-shadow: 0 0 10px {{s.c}}; flex-shrink: 0;"></span>
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: {{card.f0}}px; letter-spacing: 0.18em; text-transform: uppercase; color: #C9B27A;">Asked on {{s.engine}}</span>
+      <span style="margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: {{card.f0}}px; letter-spacing: 0.14em; text-transform: uppercase; color: #6F7CA3;">Illustration</span>
+    </div>
+    <span style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: {{card.f1}}px; line-height: 1.15; color: #FFFFFF; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">“{{s.typed}}<span style="color: #F8B10F;">{{s.caret}}</span>”</span>
+    <div style="display: flex; align-items: center; gap: 12px; min-height: {{card.rowh}}px;">
+      <span style="opacity: {{s.ansO}}; font-size: {{card.f2}}px; line-height: 1.35; color: #C3CDE6; flex: 1; min-width: 0;">{{s.pre}}<strong style="color: #161E38; background: #F8B10F; padding: 1px 7px; border-radius: 5px; font-weight: 700; white-space: nowrap;">Your Business</strong>{{s.post}}</span>
+      <span style="opacity: {{s.leadO}}; transform: translateY({{s.leadY}}px); flex-shrink: 0; display: inline-flex; align-items: center; gap: 8px; font-size: {{card.f3}}px; font-weight: 600; color: #BFEDE2; border: 1px solid rgba(76,192,168,0.5); background: rgba(76,192,168,0.12); border-radius: 99px; padding: 6px 12px; white-space: nowrap;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #4CC0A8;"></span>{{s.lead}}</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":720,"height":760}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.cx = 360; this.cy = 322; this.RI = 258;
+    const D = Math.PI / 180;
+    this.E = [
+      { name: 'Google', c: '#6F8CF0' }, { name: 'AI Overviews', c: '#F8B10F' }, { name: 'ChatGPT', c: '#4CC0A8' }, { name: 'Gemini', c: '#1EA7E8' },
+      { name: 'Perplexity', c: '#7DD3C0' }, { name: 'Copilot', c: '#A3B5F2' }, { name: 'Google Maps', c: '#E8955A' }, { name: 'Siri', c: '#DCE4F7' }
+    ].map((e, i) => { const a = (-112 + i * 45) * D; return Object.assign(e, { a: a, x: this.cx + 291 * Math.cos(a), y: this.cy + 291 * Math.sin(a) }); });
+    // the eight regions of a search map; every star in them is one customer search
+    this.regions = ['Primary services', 'Local', 'Questions', 'Comparisons', 'Trust & reviews', 'AI assistant asks', 'Google AI answers', 'Secondary services'];
+    this.stories = [
+      { e: 0, q: 'emergency plumber open now', pre: 'Page one, first result: ', post: '.', lead: 'Phone call' },
+      { e: 2, q: 'who is the best roofer in Austin?', pre: '“I’d recommend ', post: ': licensed and well reviewed.”', lead: 'Quote request' },
+      { e: 6, q: 'ac repair near me', pre: 'Top of the map: ', post: ' · 4.9 ★', lead: 'Phone call' },
+      { e: 1, q: 'how much does a new roof cost?', pre: 'AI Overview quotes ', post: ' as its source.', lead: 'Form filled' },
+      { e: 3, q: 'top rated dentist for implants', pre: '“A trusted choice is ', post: '.”', lead: 'Booked visit' },
+      { e: 4, q: 'best injury lawyer, free consult', pre: 'Cited source: ', post: ', with a link.', lead: 'Consult booked' },
+      { e: 7, q: 'find an electrician close by', pre: '“The closest highly rated one is ', post: '.”', lead: 'Phone call' },
+      { e: 5, q: 'compare pest control companies', pre: 'Copilot lists ', post: ' first.', lead: 'Quote request' }
+    ];
+    this.state = { t: 0, k: 0, t0: 2.6, narrow: false };
+  }
+  componentDidMount() {
+    let s = 11; this.rnd = () => { s = (s * 9301 + 49297) % 233280; return s / 233280; };
+    this.gauss = () => (this.rnd() + this.rnd() + this.rnd() - 1.5) / 1.5;
+    this.build();
+    this.threads = [];
+    const narrow = window.innerWidth < 760; if (narrow) this.setState({ narrow: true });
+    const paint = () => { this.plate = this.renderPlate(); };
+    paint(); if (document.fonts && document.fonts.ready) document.fonts.ready.then(paint); setTimeout(paint, 1800);
+    this.start = performance.now();
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.newThread(0);
+    const loop = (now) => {
+      const t = reduce ? 30 : (now - this.start) / 1000;
+      let st = this.state;
+      if (!reduce && t - st.t0 > 7.6) { const k = (st.k + 1) % this.stories.length; this.newThread(k); this.setState({ k: k, t0: t, t: t }); }
+      else this.setState({ t: t, t0: reduce ? 20 : st.t0 });
+      this.draw(t);
+      if (!reduce) this.raf = requestAnimationFrame(loop);
+    };
+    this.raf = requestAnimationFrame(loop);
+  }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); }
+  ease(x) { x = Math.max(0, Math.min(1, x)); return 1 - Math.pow(1 - x, 3); }
+  build() {
+    const cx = this.cx, cy = this.cy;
+    this.clusters = this.regions.map((name, i) => {
+      const a = (-90 + 22 + i * 45) * Math.PI / 180, R = 168 + (i % 2) * 14;
+      const hx = cx + R * Math.cos(a), hy = cy + R * Math.sin(a), stars = [{ x: hx, y: hy, m: 1 }];
+      const n = 5 + Math.floor(this.rnd() * 3);
+      for (let k = 0; k < n; k++) {
+        const b = a + (k / n) * 6.283 + this.rnd() * 0.6, d = 26 + this.rnd() * 30;
+        let x = hx + d * Math.cos(b) * 1.15, y = hy + d * Math.sin(b);
+        const dc = Math.hypot(x - cx, y - cy); if (dc > 236) { x = cx + (x - cx) * 236 / dc; y = cy + (y - cy) * 236 / dc; } if (dc < 112) { x = cx + (x - cx) * 112 / dc; y = cy + (y - cy) * 112 / dc; }
+        stars.push({ x: x, y: y, m: this.rnd() < 0.35 ? 2 : 3 });
+      }
+      // figure: a chain round the hub with spokes to it, the way old charts join stars
+      const order = stars.slice(1).map((p, j) => ({ j: j + 1, an: Math.atan2(p.y - hy, p.x - hx) })).sort((p, q) => p.an - q.an).map((p) => p.j);
+      const lines = []; for (let k = 0; k < order.length - 1; k++) lines.push([order[k], order[k + 1]]);
+      lines.push([0, order[0]]); lines.push([0, order[Math.floor(order.length / 2)]]);
+      return { name: name, a: a, hx: hx, hy: hy, stars: stars, lines: lines };
+    });
+    this.field = [];
+    for (let i = 0; i < 170; i++) { const a = this.rnd() * 6.283, r = 100 + Math.sqrt(this.rnd()) * 150; this.field.push({ x: cx + r * Math.cos(a), y: cy + r * Math.sin(a), s: this.rnd(), tw: this.rnd() * 6.3 }); }
+  }
+  newThread(k) {
+    const st = this.stories[k], e = this.E[st.e], cx = this.cx, cy = this.cy;
+    let ci = 0, bd = 1e9; this.clusters.forEach((c, i) => { const d = Math.hypot(c.hx - e.x, c.hy - e.y) + Math.random() * 90; if (d < bd) { bd = d; ci = i; } });
+    const c = this.clusters[ci], si = 1 + Math.floor(Math.random() * (c.stars.length - 1)), sp = c.stars[si];
+    const a = Math.atan2(c.hy - cy, c.hx - cx), end = { x: cx + 70 * Math.cos(a), y: cy + 70 * Math.sin(a) };
+    const seg = (p, q, bend, n) => { const out = [], mx = (p.x + q.x) / 2, my = (p.y + q.y) / 2, dx = q.y - p.y, dy = p.x - q.x, L = Math.hypot(dx, dy) || 1, qx = mx + dx / L * bend, qy = my + dy / L * bend; for (let i = 0; i <= n; i++) { const u = i / n; out.push([(1 - u) * (1 - u) * p.x + 2 * (1 - u) * u * qx + u * u * q.x, (1 - u) * (1 - u) * p.y + 2 * (1 - u) * u * qy + u * u * q.y]); } return out; };
+    const pts = seg(e, sp, 26, 22).concat(seg(sp, { x: c.hx, y: c.hy }, 0, 10), seg({ x: c.hx, y: c.hy }, end, -14, 16));
+    this.threads.unshift({ pts: pts, c: e.c, star: sp, hub: c }); this.threads = this.threads.slice(0, 5);
+  }
+  star(x, X, Y, m, col) {
+    x.fillStyle = col;
+    if (m === 3) { x.beginPath(); x.arc(X, Y, 1.5, 0, 6.283); x.fill(); return; }
+    const L = m === 1 ? 8 : 5, w = m === 1 ? 1.5 : 1.1;
+    x.beginPath();
+    for (let k = 0; k < 8; k++) { const a = k * Math.PI / 4 - Math.PI / 2, r = k % 2 ? w : L; x.lineTo(X + r * Math.cos(a), Y + r * Math.sin(a)); }
+    x.closePath(); x.fill();
+    if (m === 1) { x.strokeStyle = col; x.lineWidth = 0.6; x.globalAlpha = 0.55; x.beginPath(); x.arc(X, Y, 11, 0, 6.283); x.stroke(); x.globalAlpha = 1; }
+  }
+  arcText(x, txt, R, mid, font, color, spacing) {
+    x.save(); x.font = font; x.fillStyle = color; x.textAlign = 'center'; x.textBaseline = 'middle';
+    const flip = Math.sin(mid) > 0.2, ch = txt.split(''), ws = ch.map((c) => x.measureText(c).width + spacing), tot = ws.reduce((a, b) => a + b, 0);
+    let a = mid + (flip ? 1 : -1) * tot / 2 / R;
+    ch.forEach((c, i) => {
+      const half = ws[i] / 2 / R; a += (flip ? -1 : 1) * half;
+      x.save(); x.translate(this.cx + R * Math.cos(a), this.cy + R * Math.sin(a)); x.rotate(a + (flip ? -Math.PI / 2 : Math.PI / 2)); x.fillText(c, 0, 0); x.restore();
+      a += (flip ? -1 : 1) * half;
+    });
+    x.restore();
+  }
+  sphere(x, X, Y, r, col, seed) {
+    x.save(); x.fillStyle = '#0F1630'; x.beginPath(); x.arc(X, Y, r + 4, 0, 6.283); x.fill();
+    x.beginPath(); x.arc(X, Y, r, 0, 6.283); x.clip();
+    const g = x.createRadialGradient(X - r * 0.4, Y - r * 0.45, 1, X, Y, r * 1.15);
+    g.addColorStop(0, col); g.addColorStop(0.6, col + '55'); g.addColorStop(1, 'rgba(0,0,0,0)');
+    x.fillStyle = g; x.fillRect(X - r, Y - r, r * 2, r * 2);
+    x.strokeStyle = 'rgba(243,227,191,0.6)'; x.lineWidth = 0.55;
+    for (let k = -r; k < r; k += 2.2) { const sh = (k + r) / (2 * r); if (sh < 0.3) continue; x.globalAlpha = 0.2 + sh * 0.65; x.beginPath(); x.moveTo(X - r, Y + k - r * 0.25); x.quadraticCurveTo(X, Y + k + r * 0.25, X + r, Y + k - r * 0.1); x.stroke(); }
+    x.restore();
+    x.strokeStyle = '#F3E3BF'; x.lineWidth = 1; x.beginPath(); x.arc(X, Y, r, 0, 6.283); x.stroke();
+    x.strokeStyle = 'rgba(226,174,69,0.9)'; x.lineWidth = 0.8; x.beginPath(); x.arc(X, Y, r + 4, 0, 6.283); x.stroke();
+  }
+  // the engraved plate, drawn once
+  renderPlate() {
+    const c = document.createElement('canvas'); c.width = 1440; c.height = 1520; const x = c.getContext('2d'); x.scale(2, 2);
+    const cx = this.cx, cy = this.cy, RI = this.RI, INK = '243,227,191', GOLD = '226,174,69';
+    // night inside the chart
+    const g = x.createRadialGradient(cx, cy, 40, cx, cy, RI + 50);
+    g.addColorStop(0, 'rgba(72,99,181,0.34)'); g.addColorStop(0.55, 'rgba(34,48,102,0.30)'); g.addColorStop(1, 'rgba(16,23,45,0)');
+    x.fillStyle = g; x.beginPath(); x.arc(cx, cy, RI + 50, 0, 6.283); x.fill();
+    x.save(); x.beginPath(); x.arc(cx, cy, RI, 0, 6.283); x.clip();
+    // graticule, tilted like the swoosh in the mark
+    x.translate(cx, cy); x.rotate(-18 * Math.PI / 180); x.lineWidth = 0.6; x.strokeStyle = 'rgba(' + GOLD + ',0.13)';
+    for (let k = 1; k <= 5; k++) { const f = Math.sin(k * Math.PI / 12); x.beginPath(); x.ellipse(0, 0, RI * f, RI, 0, 0, 6.283); x.stroke(); x.beginPath(); x.ellipse(0, 0, RI, RI * f, 0, 0, 6.283); x.stroke(); }
+    x.beginPath(); x.moveTo(-RI, 0); x.lineTo(RI, 0); x.moveTo(0, -RI); x.lineTo(0, RI); x.stroke();
+    x.rotate(18 * Math.PI / 180); x.translate(-cx, -cy);
+    // a river of faint searches, stippled dot by dot
+    for (let i = 0; i < 3200; i++) {
+      const u = this.rnd() * 2 - 1, n = this.gauss() * (34 + 22 * Math.sin(u * 5)), a = 34 * Math.PI / 180;
+      const X = cx + u * RI * Math.cos(a) - n * Math.sin(a) + 30 * Math.sin(u * 3), Y = cy + u * RI * Math.sin(a) + n * Math.cos(a);
+      if (Math.hypot(X - cx, Y - cy) < 92) continue;
+      x.fillStyle = 'rgba(' + INK + ',' + (0.06 + this.rnd() * 0.34).toFixed(2) + ')'; x.beginPath(); x.arc(X, Y, 0.3 + this.rnd() * 0.55, 0, 6.283); x.fill();
+    }
+    x.restore();
+    // the figures: searches joined into regions
+    this.clusters.forEach((cl) => {
+      x.strokeStyle = 'rgba(' + INK + ',0.5)'; x.lineWidth = 0.8;
+      cl.lines.forEach((ln) => { const p = cl.stars[ln[0]], q = cl.stars[ln[1]], L = Math.hypot(q.x - p.x, q.y - p.y); if (L < 16) return; const ux = (q.x - p.x) / L, uy = (q.y - p.y) / L, g0 = p.m === 1 ? 13 : 6, g1 = q.m === 1 ? 13 : 6; x.beginPath(); x.moveTo(p.x + ux * g0, p.y + uy * g0); x.lineTo(q.x - ux * g1, q.y - uy * g1); x.stroke(); });
+      // a dotted lead from each region to the centre
+      x.setLineDash([1.5, 4.5]); x.strokeStyle = 'rgba(' + GOLD + ',0.5)'; x.beginPath(); x.moveTo(cl.hx - Math.cos(cl.a) * 15, cl.hy - Math.sin(cl.a) * 15); x.lineTo(cx + Math.cos(cl.a) * 96, cy + Math.sin(cl.a) * 96); x.stroke(); x.setLineDash([]);
+      cl.stars.forEach((p) => this.star(x, p.x, p.y, p.m, p.m === 1 ? '#F8C24A' : '#F3E3BF'));
+      const lx = cl.hx + Math.cos(cl.a) * 6, ly = cl.hy + (Math.sin(cl.a) > 0 ? 58 : -56), dl = Math.hypot(lx - cx, ly - cy), k = dl > 232 ? 232 / dl : 1;
+      x.font = "italic 15px 'Instrument Serif', serif"; x.textAlign = 'center'; x.textBaseline = 'middle';
+      const tx = cx + (lx - cx) * k, ty = cy + (ly - cy) * k, w = x.measureText(cl.name).width;
+      x.fillStyle = 'rgba(16,23,45,0.7)'; x.fillRect(tx - w / 2 - 5, ty - 9, w + 10, 18);
+      x.fillStyle = 'rgba(' + INK + ',0.9)'; x.fillText(cl.name, tx, ty);
+    });
+    // the sun: engraved rays, straight and wavy by turns
+    for (let k = 0; k < 24; k++) {
+      const a = k / 24 * 6.283, r0 = 70, r1 = k % 2 ? 92 : 104, w = 0.085;
+      x.beginPath();
+      if (k % 2) { x.moveTo(cx + r0 * Math.cos(a - w), cy + r0 * Math.sin(a - w)); x.quadraticCurveTo(cx + (r0 + 10) * Math.cos(a + w), cy + (r0 + 10) * Math.sin(a + w), cx + r1 * Math.cos(a - w * 0.3), cy + r1 * Math.sin(a - w * 0.3)); x.quadraticCurveTo(cx + (r0 + 12) * Math.cos(a + w * 2), cy + (r0 + 12) * Math.sin(a + w * 2), cx + r0 * Math.cos(a + w), cy + r0 * Math.sin(a + w)); }
+      else { x.moveTo(cx + r0 * Math.cos(a - w), cy + r0 * Math.sin(a - w)); x.lineTo(cx + r1 * Math.cos(a), cy + r1 * Math.sin(a)); x.lineTo(cx + r0 * Math.cos(a + w), cy + r0 * Math.sin(a + w)); }
+      x.closePath(); x.fillStyle = 'rgba(248,177,15,' + (k % 2 ? 0.10 : 0.2) + ')'; x.fill(); x.strokeStyle = 'rgba(' + INK + ',0.75)'; x.lineWidth = 0.7; x.stroke();
+      if (!(k % 2)) { x.strokeStyle = 'rgba(' + INK + ',0.4)'; x.beginPath(); x.moveTo(cx + (r0 + 4) * Math.cos(a), cy + (r0 + 4) * Math.sin(a)); x.lineTo(cx + (r1 - 6) * Math.cos(a), cy + (r1 - 6) * Math.sin(a)); x.stroke(); }
+    }
+    this.arcText(x, 'YOUR BUSINESS', 121, Math.PI / 2, "500 9.5px 'JetBrains Mono', monospace", 'rgba(' + GOLD + ',0.95)', 3.2);
+    // the frame: inner rule, a degree scale, the band the engines ride in
+    x.strokeStyle = 'rgba(' + GOLD + ',0.75)'; x.lineWidth = 1; x.beginPath(); x.arc(cx, cy, RI, 0, 6.283); x.stroke();
+    x.lineWidth = 0.6; x.beginPath(); x.arc(cx, cy, RI + 4, 0, 6.283); x.stroke();
+    for (let k = 0; k < 360; k += 2) { const a = k * Math.PI / 180, L = k % 30 === 0 ? 10 : (k % 10 === 0 ? 7 : 3.5); x.strokeStyle = 'rgba(' + GOLD + ',' + (k % 10 === 0 ? 0.8 : 0.4) + ')'; x.lineWidth = 0.7; x.beginPath(); x.moveTo(cx + (RI + 4) * Math.cos(a), cy + (RI + 4) * Math.sin(a)); x.lineTo(cx + (RI + 4 + L) * Math.cos(a), cy + (RI + 4 + L) * Math.sin(a)); x.stroke(); }
+    x.strokeStyle = 'rgba(' + GOLD + ',0.55)'; x.lineWidth = 0.7; x.beginPath(); x.arc(cx, cy, RI + 17, 0, 6.283); x.stroke();
+    x.strokeStyle = 'rgba(' + GOLD + ',0.8)'; x.lineWidth = 1.1; x.beginPath(); x.arc(cx, cy, RI + 49, 0, 6.283); x.stroke();
+    this.E.forEach((e, i) => {
+      this.sphere(x, e.x, e.y, 13, e.c, i);
+      this.arcText(x, e.name.toUpperCase(), 291, e.a + (27 + e.name.length * 3.7) / 291, "400 12.5px 'Instrument Serif', serif", 'rgba(255,255,255,0.92)', 2.1);
+    });
+    // title cartouche, key and compass: the things a mapmaker signs a plate with
+    x.textAlign = 'left'; x.textBaseline = 'alphabetic';
+    x.font = "500 9.5px 'JetBrains Mono', monospace"; x.fillStyle = 'rgba(' + GOLD + ',0.9)'; x.fillText('P L A T E   I', 6, 22);
+    x.font = "italic 21px 'Instrument Serif', serif"; x.fillStyle = 'rgba(255,255,255,0.92)'; x.fillText('The Search Atlas', 6, 46);
+    x.font = "italic 13px 'Instrument Serif', serif"; x.fillStyle = 'rgba(' + INK + ',0.7)'; x.fillText('of one local business', 6, 63);
+    x.strokeStyle = 'rgba(' + GOLD + ',0.6)'; x.lineWidth = 0.7; x.beginPath(); x.moveTo(6, 71); x.lineTo(98, 71); x.stroke();
+    x.textAlign = 'right';
+    x.font = "italic 13px 'Instrument Serif', serif"; x.fillStyle = 'rgba(' + INK + ',0.8)'; x.fillText('one customer search', 714, 26);
+    this.star(x, 590, 21, 2, '#F3E3BF');
+    x.fillText('a region of the map', 714, 46); this.star(x, 594, 41, 1, '#F8C24A');
+    x.fillText('RSM · founded 2020', 714, 612);
+    const kx = 44, ky = 588; x.strokeStyle = 'rgba(' + GOLD + ',0.7)'; x.lineWidth = 0.7; x.beginPath(); x.arc(kx, ky, 20, 0, 6.283); x.stroke(); x.beginPath(); x.arc(kx, ky, 15, 0, 6.283); x.stroke();
+    for (let k = 0; k < 8; k++) { const a = k * Math.PI / 4 - Math.PI / 2, L = k % 2 ? 11 : 26; x.beginPath(); x.moveTo(kx + L * Math.cos(a), ky + L * Math.sin(a)); x.lineTo(kx + 3.2 * Math.cos(a + 1.571), ky + 3.2 * Math.sin(a + 1.571)); x.lineTo(kx + 3.2 * Math.cos(a - 1.571), ky + 3.2 * Math.sin(a - 1.571)); x.closePath(); x.fillStyle = k % 2 ? 'rgba(' + GOLD + ',0.3)' : (k === 0 ? '#F8B10F' : 'rgba(' + INK + ',0.6)'); x.fill(); x.stroke(); }
+    x.textAlign = 'center'; x.font = "500 8.5px 'JetBrains Mono', monospace"; x.fillStyle = 'rgba(' + GOLD + ',0.95)'; x.fillText('YOU', kx, ky - 31);
+    return c;
+  }
+  draw(t) {
+    const ctx = this.ctx; if (!ctx || !this.plate) return;
+    const cx = this.cx, cy = this.cy, st = this.state, lt = t - st.t0;
+    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, 1440, 1520);
+    // the plate inks itself outward from the business
+    const rev = this.ease((t - 0.2) / 2.2);
+    ctx.save(); ctx.beginPath(); ctx.arc(cx * 2, cy * 2, 20 + rev * 1100, 0, 6.283); ctx.clip(); ctx.globalAlpha = Math.min(1, rev * 1.6); ctx.drawImage(this.plate, 0, 0); ctx.restore(); ctx.globalAlpha = 1;
+    ctx.setTransform(2, 0, 0, 2, 0, 0);
+    // faint field stars breathe
+    for (const f of this.field) { ctx.fillStyle = 'rgba(243,227,191,' + (rev * (0.12 + 0.5 * f.s * (0.5 + 0.5 * Math.sin(t * 1.2 + f.tw)))).toFixed(2) + ')'; ctx.beginPath(); ctx.arc(f.x, f.y, 0.5 + f.s * 0.8, 0, 6.283); ctx.fill(); }
+    // threads: every answered question leaves a line of gold in the chart
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    this.threads.forEach((th, i) => {
+      const cur = i === 0, p = cur ? this.ease((lt - 1.5) / 1.9) : 1, n = Math.max(1, Math.floor(th.pts.length * p));
+      if (cur && lt < 1.5) return;
+      ctx.strokeStyle = cur ? '#F8C24A' : 'rgba(226,174,69,' + (0.34 - i * 0.06).toFixed(2) + ')'; ctx.lineWidth = cur ? 1.6 : 0.9;
+      if (cur) { ctx.shadowColor = '#F8B10F'; ctx.shadowBlur = 8; }
+      ctx.beginPath(); for (let k = 0; k < n; k++) { const q = th.pts[k]; k ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1]); } ctx.stroke(); ctx.shadowBlur = 0;
+      if (cur && p < 1) { const q = th.pts[n - 1]; const g = ctx.createRadialGradient(q[0], q[1], 0, q[0], q[1], 10); g.addColorStop(0, 'rgba(255,240,200,1)'); g.addColorStop(1, 'rgba(248,177,15,0)'); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(q[0], q[1], 10, 0, 6.283); ctx.fill(); }
+    });
+    const th = this.threads[0];
+    if (th) {
+      const e = this.E[this.stories[st.k].e];
+      // the engine that was asked
+      const a0 = this.ease(lt / 0.6) * (1 - this.ease((lt - 6.6) / 0.8));
+      ctx.strokeStyle = 'rgba(248,177,15,' + (0.95 * a0).toFixed(2) + ')'; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.arc(e.x, e.y, 20 + 2 * Math.sin(t * 4), 0, 6.283); ctx.stroke();
+      // the search it matched
+      if (lt > 2.0 && lt < 7) { const k = (lt - 2.0) / 1.2, al = Math.max(0, 1 - k); ctx.strokeStyle = 'rgba(255,230,170,' + al.toFixed(2) + ')'; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(th.star.x, th.star.y, 5 + 16 * k, 0, 6.283); ctx.stroke(); }
+      // the business answers
+      if (lt > 3.3 && lt < 5.4) { const k = (lt - 3.3) / 2.1; ctx.strokeStyle = 'rgba(248,190,90,' + (0.6 * (1 - k)).toFixed(2) + ')'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(cx, cy, 64 + 190 * this.ease(k), 0, 6.283); ctx.stroke(); }
+    }
+  }
+  renderVals() {
+    const s = this.state, t = s.t, n = s.narrow, lt = t - s.t0, st = this.stories[s.k], e = this.E[st.e];
+    const typedN = Math.max(0, Math.min(st.q.length, Math.floor((lt - 0.3) * 26)));
+    const ansO = this.ease((lt - 3.7) / 0.6), leadO = this.ease((lt - 4.8) / 0.5);
+    const card = n
+      ? { top: 596, w: 704, half: 352, h: 160, rad: 26, pad: '16px 24px', gap: 8, f0: 15, f1: 34, f2: 21, f3: 20, rowh: 40 }
+      : { top: 634, w: 500, half: 250, h: 122, rad: 16, pad: '14px 20px', gap: 7, f0: 10, f1: 23, f2: 14, f3: 13, rowh: 32 };
+    return {
+      setCv: (el) => { this.ctx = el ? el.getContext('2d') : null; },
+      engines: this.E.map((en, i) => ({ x: en.x.toFixed(1), y: en.y.toFixed(1), aria: 'Ask on ' + en.name,
+        ask: () => { const k = this.stories.findIndex((q) => q.e === i); if (k < 0) return; this.newThread(k); this.setState({ k: k, t0: this.state.t }); } })),
+      s: { engine: e.name, c: e.c, typed: st.q.slice(0, typedN), caret: typedN < st.q.length && Math.floor(t * 2.5) % 2 ? '|' : '',
+        pre: st.pre, post: st.post, ansO: ansO.toFixed(2), lead: '+1 lead · ' + st.lead, leadO: leadO.toFixed(2), leadY: ((1 - leadO) * 6).toFixed(1) },
+      card: card, ui: this.ease((t - 1.4) / 1.0).toFixed(3), sunO: this.ease(t / 0.8).toFixed(3),
+      sunS: (1 + Math.sin(t * 2) * 0.01 + (lt > 3.3 && lt < 3.9 ? 0.04 * Math.sin((lt - 3.3) / 0.6 * Math.PI) : 0)).toFixed(3),
+      glowA: (0.2 + 0.08 * Math.sin(t * 1.6)).toFixed(2)
+    };
+  }
+}
+</script>
+</body>
+</html>
