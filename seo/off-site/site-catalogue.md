@@ -218,3 +218,9 @@ rather than a week's.
 - Whether to buy BrightLocal or Yext for the aggregators or submit to each by hand.
 - Semrush has no API units at the moment, so layer 3 needs Ahrefs, a crawl, or units.
 - Rows marked "(verify)" above are from memory and need checking.
+
+## 9. Working files
+
+- `sites.csv`: the complete list, one row per site, with signup link, group, who does it, what it
+  needs, how posting works afterwards and the link type. This is the data file the engine grows.
+- `client-intake-template.md`: what RSM collects from a client once, so every signup is a copy job.
