@@ -10,20 +10,20 @@ id,site,signup_url,category,group,trades,who_does_it,needs,posting_after,link_ty
 9,Threads,https://www.threads.net,presence,B,all,comes with Instagram,none extra,API,nofollow,
 10,Nextdoor Business,https://business.nextdoor.com,citation,B/C,all,Claude on your Chrome,address verification,form,nofollow,Strong for home services
 11,Yellow Pages (YP),https://www.yellowpages.com/claim,citation,A/B,all,Claude (cloud or Chrome),email; sometimes phone,form,nofollow,
-12,Foursquare for Business,https://business.foursquare.com,citation,A,all,Claude from cloud,email,form,nofollow,Feeds Apple/Uber and many apps
+12,Foursquare for Business,https://business.foursquare.com,citation,A,all,"Claude on your Chrome (email only, no phone)",email,form,nofollow,Feeds Apple/Uber and many apps
 13,Chamber of Commerce (local),(city chamber site),citation,C,all,Owner (membership fee),fee,manual,often dofollow,One per launch city
-14,ChamberofCommerce.com,https://www.chamberofcommerce.com,citation,A,all,Claude from cloud,email,form,nofollow,
+14,ChamberofCommerce.com,https://www.chamberofcommerce.com,citation,A,all,"Claude on your Chrome (email only, no phone)",email,form,nofollow,
 15,Alignable,https://www.alignable.com,citation,B,all,Claude on your Chrome,email; sometimes phone,form,nofollow,
-16,MapQuest,https://www.mapquest.com,citation,A,all,Claude from cloud,via Yext/aggregators or form,form,nofollow,
-17,Superpages,https://www.superpages.com,citation,A,all,Claude from cloud,email,form,nofollow,
-18,Manta,https://www.manta.com,citation,A,all,Claude from cloud,email,form,nofollow,
-19,Hotfrog,https://www.hotfrog.com,citation,A,all,Claude from cloud,email,form,mixed,
-20,Brownbook,https://www.brownbook.net,citation,A,all,Claude from cloud,email,form,dofollow,
-21,Cylex,https://www.cylex.us.com,citation,A,all,Claude from cloud,email,form,mixed,
-22,Merchant Circle,https://www.merchantcircle.com,citation,A,all,Claude from cloud,email,form,nofollow,
-23,eLocal,https://www.elocal.com,citation,A,all,Claude from cloud,email,form,nofollow,
-24,Local.com,https://www.local.com,citation,A,all,Claude from cloud,email,form,nofollow,
-25,Citysearch,https://www.citysearch.com,citation,A,all,Claude from cloud,email,form,nofollow,
+16,MapQuest,https://www.mapquest.com,citation,A,all,"Claude on your Chrome (email only, no phone)",via Yext/aggregators or form,form,nofollow,
+17,Superpages,https://www.superpages.com,citation,A,all,"Claude on your Chrome (email only, no phone)",email,form,nofollow,
+18,Manta,https://www.manta.com,citation,A,all,"Claude on your Chrome (email only, no phone)",email,form,nofollow,
+19,Hotfrog,https://www.hotfrog.com,citation,A,all,"Claude on your Chrome (email only, no phone)",email,form,mixed,
+20,Brownbook,https://www.brownbook.net,citation,A,all,"Claude on your Chrome (email only, no phone)",email,form,dofollow,No captcha seen 19 Nov; works from cloud
+21,Cylex,https://www.cylex.us.com,citation,A,all,"Claude on your Chrome (email only, no phone)",email,form,mixed,
+22,Merchant Circle,https://www.merchantcircle.com,citation,A,all,"Claude on your Chrome (email only, no phone)",email,form,nofollow,
+23,eLocal,https://www.elocal.com,citation,A,all,"Claude on your Chrome (email only, no phone)",email,form,nofollow,
+24,Local.com,https://www.local.com,citation,A,all,"Claude on your Chrome (email only, no phone)",email,form,nofollow,
+25,Citysearch,https://www.citysearch.com,citation,A,all,"Claude on your Chrome (email only, no phone)",email,form,nofollow,
 26,Data aggregators (Data Axle / Neustar Localeze / Foursquare),https://www.brightlocal.com/citation-builder/,citation,D,all,Claude (paid tool),BrightLocal or Yext subscription,once,n/a,Pushes NAP to hundreds of small directories
 27,LinkedIn (owner profile + company page),https://www.linkedin.com/company/setup/new/,presence,B,all,Claude on your Chrome + phone,phone code; personal profile first,API (personal share); company page needs approval,nofollow,
 28,X,https://x.com/i/flow/signup,presence,B,all,Claude on your Chrome + phone,phone code,API free tier (posting),nofollow,Low value for trades; optional
@@ -34,29 +34,29 @@ id,site,signup_url,category,group,trades,who_does_it,needs,posting_after,link_ty
 33,TikTok Business,https://www.tiktok.com/signup,presence,B,all,Claude on your Chrome + phone,phone code,API (approval),nofollow,Optional
 34,Blogger,https://www.blogger.com,publishing,B,all,comes with Google account,none extra,API (Blogger v3),dofollow,
 35,Google Sites,https://sites.google.com,publishing,B,all,comes with Google account,none extra,manual,dofollow,One-page about site
-36,WordPress.com,https://wordpress.com/start,publishing,A,all,Claude from cloud,email,API (REST),dofollow,
-37,Tumblr,https://www.tumblr.com/register,publishing,A,all,Claude from cloud,email; captcha sometimes,API,nofollow,
+36,WordPress.com,https://wordpress.com/start,publishing,A,all,"Claude on your Chrome (email only, no phone)",email,API (REST),dofollow,
+37,Tumblr,https://www.tumblr.com/register,publishing,A,all,"Claude on your Chrome (email only, no phone)",email; captcha sometimes,API,nofollow,
 38,Medium,https://medium.com,publishing,A/B,all,Claude (cloud; Google login easier),email,manual,nofollow,Posting API closed
-39,Substack,https://substack.com,publishing,A,all,Claude from cloud,email,manual,nofollow,
-40,Weebly,https://www.weebly.com,publishing,A,all,Claude from cloud,email,form,dofollow,Second dofollow host
-41,Strikingly,https://www.strikingly.com,publishing,A,all,Claude from cloud,email,form,dofollow,Alternative to Weebly
-42,About.me,https://about.me,profile,A,all,Claude from cloud,email,form,nofollow,
+39,Substack,https://substack.com,publishing,A,all,"Claude on your Chrome (email only, no phone)",email,manual,nofollow,
+40,Weebly,https://www.weebly.com,publishing,A,all,"Claude on your Chrome (email only, no phone)",email,form,dofollow,Second dofollow host
+41,Strikingly,https://www.strikingly.com,publishing,A,all,"Claude on your Chrome (email only, no phone)",email,form,dofollow,Alternative to Weebly
+42,About.me,https://about.me,profile,A,all,"Claude on your Chrome (email only, no phone)",email,form,nofollow,
 43,Gravatar,https://gravatar.com,profile,A,all,comes with WordPress.com,none extra,form,nofollow,
-44,Issuu,https://issuu.com,documents,A,all,Claude from cloud,email,API/form,nofollow,Guides and checklists as PDF
-45,Scribd / SlideShare,https://www.scribd.com,documents,A,all,Claude from cloud,email,form,nofollow,
-46,Calameo,https://www.calameo.com,documents,A,all,Claude from cloud,email,form,dofollow,
-47,Yumpu,https://www.yumpu.com,documents,A,all,Claude from cloud,email,form,dofollow,
-48,Vimeo,https://vimeo.com/join,video,A,all,Claude from cloud,email,API,nofollow,
-49,Dailymotion,https://www.dailymotion.com,video,A,all,Claude from cloud,email,API,nofollow,
+44,Issuu,https://issuu.com,documents,A,all,"Claude on your Chrome (email only, no phone)",email,API/form,nofollow,Guides and checklists as PDF
+45,Scribd / SlideShare,https://www.scribd.com,documents,A,all,"Claude on your Chrome (email only, no phone)",email,form,nofollow,
+46,Calameo,https://www.calameo.com,documents,A,all,"Claude on your Chrome (email only, no phone)",email,form,dofollow,
+47,Yumpu,https://www.yumpu.com,documents,A,all,"Claude on your Chrome (email only, no phone)",email,form,dofollow,
+48,Vimeo,https://vimeo.com/join,video,A,all,"Claude on your Chrome (email only, no phone)",email,API,nofollow,
+49,Dailymotion,https://www.dailymotion.com,video,A,all,"Claude on your Chrome (email only, no phone)",email,API,nofollow,
 50,Spotify for Creators,https://creators.spotify.com,audio,B,all,Claude on your Chrome,Spotify account,form,nofollow,Only if the owner records audio
-51,PRLog,https://www.prlog.org,press,A,all,Claude from cloud,email,form,dofollow,Free press releases
-52,openPR,https://www.openpr.com,press,A,all,Claude from cloud,email,form,dofollow,
-53,PR.com,https://www.pr.com,press,A,all,Claude from cloud,email,form,nofollow,
+51,PRLog,https://www.prlog.org,press,A,all,"Claude on your Chrome (email only, no phone)",email,form,dofollow,Free press releases
+52,openPR,https://www.openpr.com,press,A,all,"Claude on your Chrome (email only, no phone)",email,form,dofollow,
+53,PR.com,https://www.pr.com,press,A,all,"Claude on your Chrome (email only, no phone)",email,form,nofollow,
 54,EIN Presswire,https://www.einpresswire.com,press,D,all,Claude (paid),fee per release,form,nofollow,For real news only
 55,Qwoted,https://www.qwoted.com,journalist requests,A,all,Claude from cloud (owner answers),email,manual,dofollow (editorial),
-56,Featured.com,https://featured.com,journalist requests,A,all,Claude from cloud,email,manual,dofollow (editorial),
-57,SourceBottle,https://www.sourcebottle.com,journalist requests,A,all,Claude from cloud,email,manual,dofollow (editorial),
-58,Help a B2B Writer,https://helpab2bwriter.com,journalist requests,A,B2B,Claude from cloud,email,manual,dofollow (editorial),
+56,Featured.com,https://featured.com,journalist requests,A,all,"Claude on your Chrome (email only, no phone)",email,manual,dofollow (editorial),
+57,SourceBottle,https://www.sourcebottle.com,journalist requests,A,all,"Claude on your Chrome (email only, no phone)",email,manual,dofollow (editorial),
+58,Help a B2B Writer,https://helpab2bwriter.com,journalist requests,A,B2B,"Claude on your Chrome (email only, no phone)",email,manual,dofollow (editorial),
 59,Angi (incl. HomeAdvisor),https://www.angi.com/pro,vertical,C,"plumbing,hvac,roofing,electrical,home",Owner,licence; background check; fees for leads,form,nofollow,Free listing exists
 60,Thumbtack,https://www.thumbtack.com/pro,vertical,C,"plumbing,hvac,roofing,electrical,home",Owner,phone; background check,form,nofollow,
 61,Houzz Pro,https://www.houzz.com/pro,vertical,B/C,"roofing,home,remodel",Claude on your Chrome then owner,email; phone,form,nofollow,
@@ -79,7 +79,7 @@ id,site,signup_url,category,group,trades,who_does_it,needs,posting_after,link_ty
 78,Nolo,https://www.nolo.com/lawyers,vertical,C/D,law,Owner,paid,form,nofollow,
 79,Super Lawyers,https://www.superlawyers.com,vertical,C,law,Owner,selection/nomination,manual,nofollow,
 80,LegalMatch,https://www.legalmatch.com,vertical,C/D,law,Owner,paid,form,nofollow,
-81,HG.org,https://www.hg.org,vertical,A/D,law,Claude from cloud,email; paid tiers,form,dofollow,
+81,HG.org,https://www.hg.org,vertical,A/D,law,"Claude on your Chrome (email only, no phone)",email; paid tiers,form,dofollow,
 82,State bar public directory,(state bar site),vertical,C,law,Owner,bar membership,manual,nofollow,Check it is correct
 83,Expertise.com,https://www.expertise.com,vertical,A,"law,home,dental",Claude from cloud (nomination),email,manual,nofollow,
 84,Healthgrades,https://www.healthgrades.com,vertical,C,dental,Owner (Claude prepares),NPI; identity,form,nofollow,Profiles auto-exist; claim
@@ -90,12 +90,12 @@ id,site,signup_url,category,group,trades,who_does_it,needs,posting_after,link_ty
 89,Dentistry.com,https://www.dentistry.com,vertical,A/C,dental,Claude then owner,email,form,nofollow,
 90,Opencare,https://www.opencare.com,vertical,C/D,dental,Owner,paid,form,nofollow,
 91,Insurer provider directories (Delta Dental/Cigna/Aetna),(insurer sites),vertical,C,dental,Owner,network membership,manual,nofollow,Correctness check
-92,Clutch,https://clutch.co/get-listed,vertical,A,B2B/agency,Claude from cloud,email; company verification,form,nofollow,For RSM itself
-93,GoodFirms,https://www.goodfirms.co,vertical,A,B2B/agency,Claude from cloud,email,form,nofollow,For RSM itself
-94,DesignRush,https://www.designrush.com,vertical,A,B2B/agency,Claude from cloud,email,form,nofollow,For RSM itself
-95,Crunchbase,https://www.crunchbase.com,vertical,A,B2B/agency,Claude from cloud,email,form,nofollow,For RSM itself
-96,UpCity,https://upcity.com,vertical,A,B2B/agency,Claude from cloud,email,form,nofollow,For RSM itself
-97,Patch (local),https://patch.com,local,A,all,Claude from cloud,email,form (posts allowed),nofollow,One per launch city
+92,Clutch,https://clutch.co/get-listed,vertical,A,B2B/agency,"Claude on your Chrome (email only, no phone)",email; company verification,form,nofollow,For RSM itself
+93,GoodFirms,https://www.goodfirms.co,vertical,A,B2B/agency,"Claude on your Chrome (email only, no phone)",email,form,nofollow,For RSM itself
+94,DesignRush,https://www.designrush.com,vertical,A,B2B/agency,"Claude on your Chrome (email only, no phone)",email,form,nofollow,For RSM itself
+95,Crunchbase,https://www.crunchbase.com,vertical,A,B2B/agency,"Claude on your Chrome (email only, no phone)",email,form,nofollow,For RSM itself
+96,UpCity,https://upcity.com,vertical,A,B2B/agency,"Claude on your Chrome (email only, no phone)",email,form,nofollow,For RSM itself
+97,Patch (local),https://patch.com,local,A,all,"Claude on your Chrome (email only, no phone)",email,form (posts allowed),nofollow,One per launch city
 98,Local subreddit (r/houston etc.),https://www.reddit.com,local,B,all,uses Reddit account,none extra,API,nofollow,Answers only
 99,Local trade association chapter,(varies),local,C,all,Owner,membership,manual,dofollow,
-100,Local newspaper business listings,(varies),local,A/C,all,Claude from cloud,email; sometimes fee,form,mixed,
+100,Local newspaper business listings,(varies),local,A/C,all,"Claude on your Chrome (email only, no phone)",email; sometimes fee,form,mixed,
