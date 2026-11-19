@@ -16,7 +16,7 @@ Start with **`docs/context-brief.md`**: the facts, decisions and plan in two pag
 | `design/assets/` | Logo files |
 | `design/tools/` | Playwright scripts that test the hero and header (see its README) |
 | `reference/old-site/` | The old relevantsearchmedia.com hero (HTML, JS, CSS, icons) and a screenshot, kept as the design reference |
-| `marketing/brand-profiles/` | Tracker of all 134 platforms where RSM should have a profile or business page, with priority, purpose and posting plan |
+| `marketing/brand-profiles/` | Tracker of all 143 platforms (ranked for winning the US market) where RSM should have a profile or business page, with priority, purpose and posting plan |
 | `seo/` | (to add) keyword plans, the 60-day calendar and the Problem Atlas from the keywords session |
 
 ## Company facts to use everywhere

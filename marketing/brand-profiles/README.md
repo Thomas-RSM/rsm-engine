@@ -1,31 +1,36 @@
 # Brand profiles and posting platforms
 
-Every platform where RSM should have a profile or business page, for the full marketing programme.
-134 platforms, grouped by category and ranked by priority.
+Every platform where RSM should have a profile or business page. RSM is based in New Delhi and the
+goal is to win the USA market, so the list is ranked for US buyers. 143 platforms, grouped by category.
 
 | File | What it is |
 |---|---|
-| `platforms.csv` | The tracker: category, platform, sign-up URL, priority, why it matters for RSM, what to post, notes, status, profile URL, owner |
+| `platforms.csv` | The tracker: category, platform, sign-up URL, priority, why it matters for RSM, what to post, notes, needs US presence, status, profile URL, owner |
 | `build_platforms.py` | Script that generates `platforms.csv`. Edit the list here and re-run `python3 build_platforms.py` |
 
-Google Sheet copy: https://docs.google.com/spreadsheets/d/1W3edv8_XXhO5KtitjuaZhlq297Q1iMmJcKGVzFwVa-c/edit
+Google Sheet copy (first version, before the US update): https://docs.google.com/spreadsheets/d/1W3edv8_XXhO5KtitjuaZhlq297Q1iMmJcKGVzFwVa-c/edit
 (created in thomas@relevantsearchmedia.com's Drive).
 
-## Priorities
+## Order of work
 
-- **P1 (23):** set up first. LinkedIn (company page, Pranay and Thomas profiles, newsletter), Facebook,
-  Instagram, YouTube, Reddit, Quora, Medium, Google Business Profile, Bing Places, Apple Business Connect,
-  Bing Webmaster Tools and Search Console, Clutch, GoodFirms, DesignRush, UpCity, Trustpilot,
-  Semrush Agency Partners, Google Partners, HubSpot Solutions Directory, Crunchbase, Featured.com.
-- **P2 (35):** second wave: X, Threads, Substack, Blogger, Google Sites, SlideShare, podcasts, G2, Yelp, BBB,
-  partner directories, employer profiles, Upwork, Bark, journalist-request platforms.
-- **P3 (76):** handle reservations, extra brand properties, US/Canada/Australia/India listings, freelance
-  marketplaces, press release sites.
+1. **US presence setup (do first):** US LLC + EIN, US phone number, staffed US office address, D-U-N-S.
+   The "Needs US presence" column marks the 18 platforms that stay locked until these exist.
+2. **P1 that work from Delhi now (22):** LinkedIn (company page, Pranay and Thomas profiles, newsletter),
+   Facebook, Instagram, YouTube, Reddit, Quora, Medium, Bing Places and Apple Business Connect (Delhi
+   location first), Bing Webmaster Tools and Search Console, Clutch, GoodFirms, DesignRush, UpCity,
+   Trustpilot, Semrush Agency Partners, Google Partners, HubSpot Solutions Directory, Crunchbase, Featured.com.
+3. **P1 once the US office exists:** Google Business Profile (US office), Yelp, BBB.
+4. **P2 (47):** second wave, including US citations, Alignable, local US Chamber of Commerce, Thumbtack,
+   US podcast guest spots, X, Threads, Substack, G2, partner directories, Upwork, Bark.
+5. **P3 (67):** handle reservations, extra brand properties, Canada/Australia listings, India listings
+   (Delhi hiring only), freelance marketplaces, press release sites.
 
 ## Rules for the team
 
 - Same business name, address, phone and description on every profile.
-- US listings (Yelp, BBB, Thumbtack, US citations) need a real US address.
+- US listings (Google, Yelp, BBB, Thumbtack, US citations) need a real US address. Google does not accept a
+  virtual office or mailbox; a coworking office counts only with signage, customer visits and RSM staff present.
+- Use the US phone number and US English on every US-facing profile; collect reviews from US clients first.
 - Reddit: build account history with helpful answers before any mention of RSM.
 - No self-created Wikipedia page; Wikidata only, factual and referenced.
 - Update the Status, Profile URL and Owner columns as each account goes live.

@@ -1,7 +1,15 @@
 import csv
 P=[]
-def a(cat,name,url,pri,why,post,note=""):
-    P.append([cat,name,url,pri,why,post,note])
+def a(cat,name,url,pri,why,post,note="",us="No"):
+    P.append([cat,name,url,pri,why,post,note,us])
+
+C="US presence setup (do first)"
+a(C,"US business entity (LLC) + EIN","irs.gov/businesses","P1","US buyers, BBB, Yelp, US directories and US payment accounts expect a US company. Unlocks most US-only rows below.","None (setup)","Confirm structure with a US accountant before filing","Prerequisite")
+a(C,"US business phone number (local area code)","google.com/voice","P1","US buyers call and trust a US number; required on most US profiles. Use one number everywhere.","None (setup)","Google Voice, RingCentral, OpenPhone or similar","Prerequisite")
+a(C,"US office address (staffed)","n/a","P1","Needed for US Google Business Profile, Bing, Apple Maps, Yelp, BBB and US citations.","None (setup)","Google does not allow a virtual office or mailbox. A coworking office counts only with signage, customer visits and your own staff present during listed hours","Prerequisite")
+a(C,"US mailing address (virtual mailbox)","n/a","P2","Acceptable for invoices, LLC filings and directories that do not need a storefront. Not for Google, Bing or Apple Maps listings.","None (setup)","Never use on Google Business Profile","Prerequisite")
+a(C,"Dun & Bradstreet (D-U-N-S)","dnb.com","P1","Business credibility record US enterprise buyers and vendor forms check.","Keep updated","Get it for the US entity","Yes")
+
 C="Core social"
 a(C,"LinkedIn Company Page","linkedin.com/company/setup/new","P1","Main B2B channel. LinkedIn is among the top sources AI assistants cite for agency and B2B questions.","3-4 posts a week, case results, carousels, short video")
 a(C,"LinkedIn personal profile (Pranay + Thomas)","linkedin.com","P1","Personal profiles get cited by ChatGPT and Google AI Mode more often than company pages. Founder voice sells.","Daily founder posts, client wins, opinions on AI search","Optimise headline, About, Featured section with RSM links")
@@ -19,11 +27,11 @@ a(C,"TikTok Business","tiktok.com/business","P3","Short video reach, younger own
 a(C,"Pinterest Business","business.pinterest.com","P3","Infographics get long-life traffic and links.","Infographics, checklists")
 a(C,"Mastodon","joinmastodon.org","P3","Reserve handle.","Cross-post")
 a(C,"Snapchat Public Profile","snapchat.com","P3","Reserve handle only.","Optional")
-a(C,"WhatsApp Business + Channel","business.whatsapp.com","P2","Direct client and lead communication, broadcast channel.","Updates, offers")
+a(C,"WhatsApp Business + Channel","business.whatsapp.com","P3","Useful for India and international clients; US buyers prefer phone, text and email.","Updates, offers")
 a(C,"Telegram Channel","telegram.org","P3","Broadcast channel, reserve handle.","Cross-post updates")
 
 C="Community / Q&A"
-a(C,"Reddit (brand account + founder account)","reddit.com","P1","Most-cited domain across ChatGPT, Perplexity, Gemini and Google AI. Threads get cited, not profiles.","Genuine answers in r/SEO, r/smallbusiness, r/marketing, r/Entrepreneur, r/PPC","No self-promo; build karma first, follow each subreddit's rules")
+a(C,"Reddit (brand account + founder account)","reddit.com","P1","Most-cited domain across ChatGPT, Perplexity, Gemini and Google AI. Threads get cited, not profiles.","Genuine answers in r/smallbusiness, r/Entrepreneur, r/SEO, r/marketing, r/PPC and US city/business subreddits","No self-promo; build karma first, follow each subreddit's rules")
 a(C,"Quora (profile + Quora Space)","quora.com","P1","Frequently cited by AI and ranks in Google.","3-5 detailed answers a week, own Space")
 a(C,"Stack Exchange (Webmasters)","webmasters.stackexchange.com","P3","Technical authority answers.","Technical answers")
 a(C,"Indie Hackers","indiehackers.com","P3","Founder audience.","Growth stories")
@@ -74,13 +82,14 @@ a(C,"Flickr","flickr.com","P3","Image hosting with links.","Infographics, team p
 a(C,"Visual.ly","visual.ly","P3","Infographic sharing.","Infographics")
 
 C="Search engine / map profiles"
-a(C,"Google Business Profile","business.google.com","P1","Core trust and local presence, feeds Google AI.","Weekly GBP posts, photos, reviews","Needs a real address (Delhi office, plus US address if one exists)")
-a(C,"Bing Places for Business","bingplaces.com","P1","Feeds Bing and Copilot, ChatGPT search uses Bing data.","Keep in sync with GBP")
-a(C,"Apple Business Connect","businessconnect.apple.com","P1","Apple Maps and Siri.","Showcases, photos")
+a(C,"Google Business Profile (US office)","business.google.com","P1","Shows RSM to US buyers in Google Maps and local results, feeds Google AI answers.","Weekly posts, photos, US client reviews","Only once the staffed US office exists","Yes")
+a(C,"Google Business Profile (New Delhi office)","business.google.com","P2","Verifies RSM as a real company with a real team; supports hiring and the brand entity.","Team photos, office posts","Set up now with the Delhi address")
+a(C,"Bing Places for Business","bingplaces.com","P1","Feeds Bing and Copilot; ChatGPT search draws on Bing data.","Keep in sync with GBP","List Delhi now, add the US location when staffed")
+a(C,"Apple Business Connect","businessconnect.apple.com","P1","Apple Maps and Siri, heavily used in the US.","Showcases, photos","List Delhi now, add the US location when staffed")
 a(C,"Bing Webmaster Tools + Google Search Console","bing.com/webmasters","P1","Not a profile, but required so new pages and posts get crawled fast.","Submit sitemaps")
 
 C="Agency directories / reviews"
-a(C,"Clutch","clutch.co","P1","Clutch appears in about 84.5% of AI-generated agency recommendations. Top priority.","Collect verified client reviews, portfolio")
+a(C,"Clutch","clutch.co","P1","Clutch appears in about 84.5% of AI-generated agency recommendations. Top priority.","Collect verified client reviews, portfolio","Prioritise reviews from US clients; list US service areas")
 a(C,"The Manifest","themanifest.com","P2","Clutch sister site, auto-populates from Clutch.","Same reviews")
 a(C,"GoodFirms","goodfirms.co","P1","Strong agency directory, often cited.","Reviews, portfolio")
 a(C,"DesignRush","designrush.com","P1","Agency directory, ranks for agency queries.","Profile, portfolio")
@@ -92,8 +101,8 @@ a(C,"Agency Vista","agencyvista.com","P2","Agency directory.","Profile")
 a(C,"Digital Agency Network","digitalagencynetwork.com","P3","Agency directory.","Profile")
 a(C,"G2 (services listing)","g2.com","P2","Perplexity cites G2 for B2B queries.","Reviews")
 a(C,"Trustpilot","trustpilot.com","P1","Review trust signal, shows in Google and AI answers.","Invite every happy client")
-a(C,"Yelp for Business","biz.yelp.com","P2","US trust signal, AI Mode cites Yelp.","Reviews","Needs US address")
-a(C,"Better Business Bureau (BBB)","bbb.org","P2","US trust badge.","Accreditation","Needs US/Canada business presence")
+a(C,"Yelp for Business","biz.yelp.com","P1","Main US review site; Google AI Mode cites Yelp.","US client reviews","Needs US address","Yes")
+a(C,"Better Business Bureau (BBB)","bbb.org","P1","US trust badge buyers recognise.","Accreditation","Needs US/Canada business presence","Yes")
 a(C,"Expertise.com","expertise.com","P3","Curated lists, invite-based.","Apply when eligible")
 
 C="Partner directories"
@@ -109,7 +118,6 @@ a(C,"Microsoft Advertising Partners","about.ads.microsoft.com","P3","Bing Ads pa
 C="Business data / entity profiles"
 a(C,"Crunchbase","crunchbase.com","P1","Company data used by AI models and journalists.","Keep updated")
 a(C,"Wikidata","wikidata.org","P2","Structured entity record AI models read.","Factual entry with references","Follow notability rules; no promotional text")
-a(C,"Dun & Bradstreet (D-U-N-S)","dnb.com","P2","Business credibility record.","Keep updated")
 a(C,"ZoomInfo (claim profile)","zoominfo.com","P3","B2B data profile.","Keep updated")
 a(C,"Owler","owler.com","P3","Company profile.","Keep updated")
 a(C,"Kompass","kompass.com","P3","B2B directory.","Profile")
@@ -131,30 +139,36 @@ a(C,"Fiverr Pro","fiverr.com","P3","Productised packages.","Gigs")
 a(C,"PeoplePerHour","peopleperhour.com","P3","UK leads.","Proposals")
 a(C,"Contra","contra.com","P3","Freelance profile.","Portfolio")
 a(C,"Guru","guru.com","P3","Freelance profile.","Portfolio")
-a(C,"Thumbtack","thumbtack.com","P3","US leads.","Needs US presence")
+a(C,"Thumbtack","thumbtack.com","P2","US small business leads.","Lead responses","Needs US presence","Yes")
 
 C="Earned mentions / PR"
 a(C,"Featured.com","featured.com","P1","Expert quotes in publications, earned mentions AI picks up.","Answer 3-5 queries a week")
-a(C,"Qwoted","qwoted.com","P2","Journalist requests.","Expert pitches")
-a(C,"Source of Sources","sourceofsources.com","P2","Journalist requests.","Expert pitches")
-a(C,"Help a B2B Writer","helpab2bwriter.com","P2","B2B journalist requests.","Expert pitches")
+a(C,"Qwoted","qwoted.com","P2","Journalist requests.","Expert pitches","Pitch US publications first")
+a(C,"Source of Sources","sourceofsources.com","P2","Journalist requests.","Expert pitches","Pitch US publications first")
+a(C,"Help a B2B Writer","helpab2bwriter.com","P2","B2B journalist requests.","Expert pitches","Pitch US publications first")
 a(C,"EIN Presswire","einpresswire.com","P3","Press release distribution.","Launch announcements")
 a(C,"PR.com (company profile)","pr.com","P3","Company profile + releases.","Releases")
 a(C,"OpenPR","openpr.com","P3","Free press releases.","Releases")
 
 C="US citations"
-for n,u in [("Yellow Pages","yellowpages.com"),("Manta","manta.com"),("Hotfrog","hotfrog.com"),("Foursquare","foursquare.com"),("MerchantCircle","merchantcircle.com"),("Brownbook","brownbook.net"),("Cylex","cylex.us.com"),("EZlocal","ezlocal.com"),("ShowMeLocal","showmelocal.com"),("Alignable","alignable.com"),("Chamber of Commerce","chamberofcommerce.com")]:
-    a(C,n,u,"P3","Consistent name, address, phone across the web.","Profile only","Needs US address; keep NAP identical")
+for n,u in [("Yellow Pages","yellowpages.com"),("Manta","manta.com"),("Hotfrog","hotfrog.com"),("Foursquare","foursquare.com"),("MerchantCircle","merchantcircle.com"),("Brownbook","brownbook.net"),("Cylex","cylex.us.com"),("EZlocal","ezlocal.com"),("ShowMeLocal","showmelocal.com"),("Chamber of Commerce","chamberofcommerce.com")]:
+    a(C,n,u,"P2","Consistent US name, address and phone across the web supports US map and AI visibility.","Profile only","Needs US address; keep NAP identical","Yes")
+C="US business networks"
+a(C,"Alignable","alignable.com","P2","Largest US small business network; referrals from US owners.","Weekly posts, Q&A","Needs US address","Yes")
+a(C,"Local US Chamber of Commerce membership","uschamber.com/co/chambers","P2","Membership listing and events in the target US city.","Events, member posts","Needs US address","Yes")
+a(C,"Nextdoor Business","business.nextdoor.com","P3","Local US neighbourhood reach.","Local offers","Needs US address","Yes")
+a(C,"Forbes Agency Council","councils.forbes.com/forbesagencycouncil","P3","Vetted, paid membership; bylined articles on Forbes, which ChatGPT cites often.","Expert articles","Paid and application-based")
+a(C,"US-based podcasts (guest appearances)","podmatch.com","P2","US audience hears the founder directly; episodes get cited and linked.","1-2 guest spots a month","PodMatch, MatchMaker.fm")
 C="Canada / Australia citations"
 for n,u,note in [("Yelp Canada","yelp.ca","Needs Canada address"),("Canada411 / YellowPages.ca","yellowpages.ca","Needs Canada address"),("Yellow Pages Australia","yellowpages.com.au","Needs AU address"),("True Local","truelocal.com.au","Needs AU address"),("Hotfrog Australia","hotfrog.com.au","Needs AU address")]:
-    a(C,n,u,"P3","Presence for Canada/Australia clients.","Profile only",note)
+    a(C,n,u,"P3","Presence for Canada/Australia clients (secondary markets).","Profile only",note)
 C="India listings"
 for n,u in [("Justdial","justdial.com"),("IndiaMART","indiamart.com"),("Sulekha","sulekha.com"),("TradeIndia","tradeindia.com")]:
-    a(C,n,u,"P3","Delhi office presence, hiring and local trust.","Profile only","Low priority since sales target US")
+    a(C,n,u,"P3","Delhi office presence and hiring only; not for US buyers.","Profile only","Do not spend posting time here")
 
 with open("platforms.csv","w",newline="") as f:
     w=csv.writer(f)
-    w.writerow(["#","Category","Platform","Sign-up / URL","Priority","Why it matters for RSM","What to post","Notes","Status","Profile URL","Owner"])
+    w.writerow(["#","Category","Platform","Sign-up / URL","Priority","Why it matters for RSM","What to post","Notes","Needs US presence","Status","Profile URL","Owner"])
     for i,r in enumerate(P,1):
         w.writerow([i]+r+["Not started","",""])
 from collections import Counter

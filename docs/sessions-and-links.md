@@ -11,7 +11,7 @@ session or document starts, so every Claude session (and every person) can find 
 | RSM Keywords Targeting | Discovery, SEO research report, keyword plans (114,718 keywords, 750 chains, specialist plan), 60-day calendar, Problem Atlas (encyclopedia). Spreadsheets live on that session's machine under `/home/user/rsm-keyword-universe-v5`. | https://claude.ai/code/session_01Pxdpdm3H1Pq2azEC9fprBY |
 | Thomas Lead Reply and Follow up | Lead reply and follow-up emails for Thomas | https://claude.ai/code/session_01PxdpdpLrH5MM3DGyFZ2TcG |
 | Email leads database organization | Ranked call list from the email lead database | https://claude.ai/code/session_01XYVGdxugr1mTjuRkEMbnAn |
-| RSM brand profiles and posting platforms | 134-platform tracker for RSM's profiles and business pages (social, communities, publishing, directories, reviews, PR). Source of `marketing/brand-profiles/`. | https://claude.ai/code/session_01Pxdpdnw41m2s9CshbKSqAi |
+| RSM brand profiles and posting platforms | 143-platform tracker, ranked for the US market, for RSM's profiles and business pages (social, communities, publishing, directories, reviews, PR). Source of `marketing/brand-profiles/`. | https://claude.ai/code/session_01Pxdpdnw41m2s9CshbKSqAi |
 
 ## Claude documents and artifacts
 
