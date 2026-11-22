@@ -7,7 +7,7 @@ Status words: **Not started** · **In progress** · **Awaiting approval** · **D
 
 | # | Step | What it settles | Deliverable | Done when | Status |
 |---|---|---|---|---|---|
-| 1 | Method | What RSM does that no one else does, stated so a stranger can follow and test it | `01-method/method.md` | Thomas approves the definition, the five parts and the name | **Awaiting approval** (draft v2) |
+| 1 | Method | What RSM does that no one else does, stated so a stranger can follow and test it | `01-method/method.md` | Thomas approves the definition, the five parts and the name | **Awaiting approval** (draft v3; name to choose) |
 | 2 | Facts | Every company fact, with its source, identical everywhere | `02-facts/fact-register.md` | Thomas signs each fact; outside systems that disagree are listed for correction | Not started |
 | 3 | Standard | The full check list and its public number | `03-standard/checks-v1.md` | Compared with the team's working checklist; number approved | In progress (413 drafted) |
 | 4 | Architecture | The page list (36 to 50), URLs, menu, internal links | `04-architecture/site-map.md` | Every page has a purpose, a URL, a parent and a place in the menu | Not started |

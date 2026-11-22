@@ -1,7 +1,7 @@
-# The method (draft v2, for approval)
+# The method (draft v3, for approval)
 
 Step 1 of the roadmap. 22 Nov 2026. Status: **awaiting Thomas's approval**.
-Proposed name: **Universal Relevance**. (Draft v1 used "Universal Engine Optimization"; see section 9 for why it changed.)
+Name: **to be chosen by Thomas, and named after him** (ruling of 22 Nov). Options are in section 9. Until then this file says "the theory" for the observation and "the method" for the work built on it. Where the text below says "Universal Relevance", read "the method".
 
 ## 1. Two observations everything rests on
 
@@ -76,45 +76,43 @@ Every term keeps its page and its keywords. Each is Universal Relevance applied 
 3. It can fail in public: the two written commitments say what happens when it does.
 4. RSM runs it on itself, with the log open.
 
-## 8. Origin: what can be shown, with dates
+## 8. Origin
 
-| Date | Record | Where |
-|---|---|---|
-| 2020 | The company is founded and named Relevant Search Media | Company record |
-| 29 Jul 2024 | Document "AI SEO Proposal" created | Thomas's Google Drive |
-| 25 Jul 2025 | Page drafts created, including "Fort Worth SEO Agency Built for AI, Voice Search & Google Rankings" and "…Elevate Your Visibility Across All Search Experiences" | Thomas's Google Drive |
-| 14 Aug 2025 | "ChatGPT SEO Optimization Fort Worth: Advanced Answer Engine Optimization Solutions" created | Thomas's Google Drive |
-| 27 Oct 2025 | Document "AI Optimization" created | Thomas's Google Drive |
-| Jul 2026 | Gartner publishes "Unified Search: Integrating SEO, AEO and GEO" | Gartner |
-| 2026 | The method is named and its standard published | This repository |
+The dated records are in `origin-evidence.md`. In short: the idea is in writing from June 2025
+("own the answers"), on page drafts from July 2025 ("across every search medium"), and in a named
+system from October 2025. Thomas states the work began in 2024; that year is not yet proven by a document.
+Gartner's "Unified Search" paper is dated July 2026.
 
-Limits. These are creation dates and titles read from Drive on 22 Nov 2026; the documents' contents
-have not been read yet. Drive dates are private proof. Public proof, such as archived copies of live
-pages from 2025, still has to be found before the timeline is published.
+## 9. The name
 
-What can be claimed: RSM built its name on relevance in 2020 and was doing combined Google, voice and
-AI search work by mid-2025, a year before Gartner's paper.
-What cannot be claimed: that RSM was first with the general idea of being found beyond Google. The phrase
-"search everywhere optimization" was in use before 2025.
+Rulings: not "Universal Relevance", not "Universal Engine Optimization". It is named after Thomas, it
+has zing, and it carries the service.
 
-## 9. Why the name changed from Universal Engine Optimization
+Two things need a name, and they are different things.
 
-- It named the engines, which is the part RSM does not control and the part that keeps changing.
-- It was one more acronym beside SEO, AEO, GEO and AIO, at a time when owners are tired of them.
-- An agency called SearchX already sells "Universal Search Optimization (USO)".
-- "Unified" is Gartner's word and "entity optimization" has been Kalicube's since 2015.
-- "Universal Relevance" was not found in use anywhere. It keeps "universal", and its second word has been
-  in the company's name since 2020. No competitor can say that.
+- **The theory**: the observation that engines change, the customer's question does not, and every engine picks the most relevant answer it can trust. This is what gets cited.
+- **The method**: the five parts and the checks RSM runs. This is what gets bought.
 
-Nearest neighbour to be aware of: iPullRank's "Relevance Engineering", an enterprise framework from 2025.
+Checked on 22 Nov 2026: no existing "D'Souza's Law", "D'Souza Method", "D'Souza Principle" or "D'Souza Framework" was found in any field.
 
-## 10. Open points for approval
+| Option | The theory | The method | Notes |
+|---|---|---|---|
+| A (recommended) | **D'Souza's Law of Search** | **The D'Souza Method** | A law is short, quotable and carries a name for good: Moore's Law, Murphy's Law. "Of Search" is the service. |
+| B | The D'Souza Principle | The D'Souza Method | Softer than a law. |
+| C | D'Souza's Law of Relevance | The D'Souza Relevance Method | Ties to the company name. Longer. |
+| D | Thomas's Law of Search | The Thomas Method | Avoid. "The Thomas theorem" is an established idea in sociology and "Michel Thomas Method" is a registered language-course name. |
 
-1. The name: Universal Relevance.
-2. The two observations and the one-sentence idea.
-3. The three proofs: Read, Confirm, Choose.
-4. The five parts.
-5. Permission to read the 2024 and 2025 Drive documents to build the origin timeline.
+Points to weigh before choosing:
+- In the United States the surname is widely associated with a political commentator of the same surname. The first name avoids that but runs into the two names in option D.
+- The apostrophe must be handled one way everywhere: "D'Souza's Law" in text, "dsouzas-law" in addresses, "DSouzasLaw" in tags.
+- The name will be registered and stamped in a legal owner's name. Decide which before Wave 1 of `stamp-plan.md`.
+
+## 10. To close Step 1
+
+1. Thomas chooses the name (section 9).
+2. Thomas confirms the two observations, the three proofs and the five parts.
+3. The 2024 start is either proven from version history or stated as "since 2025" in public.
+4. The stamping order in `stamp-plan.md` is approved.
 
 ## Sources
 

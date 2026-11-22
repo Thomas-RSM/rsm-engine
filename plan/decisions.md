@@ -118,3 +118,11 @@ Still to correct outside this repo: the auditor's offer file and the skills say 
 - **Proposed.** Method name changes from Universal Engine Optimization to **Universal Relevance**. Reasons in `01-method/method.md`, section 9.
 - **Stated by Thomas.** RSM has been thinking and working this way since 2025, before Gartner's July 2026 paper. Supporting records found in Drive (2024 and 2025 creation dates); contents not yet read.
 - Correction: an earlier note credited "search everywhere optimization" to Eric Siu and Neil Patel. SparkToro credits Ashley Liddell. Either way the phrase predates 2025.
+
+## Rulings from Thomas, 22 Nov 2026, late
+
+- **Fixed.** The name is not Universal Relevance. The theory is named after Thomas, with zing, and carries the service. Options in `01-method/method.md`, section 9.
+- **Fixed.** The two observations are accepted as the core idea.
+- **Fixed.** The theory is to be stamped: published with independent dated records before it is spread. Plan in `01-method/stamp-plan.md`.
+- **Stated by Thomas.** The work began in 2024 and has evolved since. Records read so far prove June 2025 onward; see `01-method/origin-evidence.md`.
+- **Fixed.** Thomas gave permission to read his Drive for the origin record.
