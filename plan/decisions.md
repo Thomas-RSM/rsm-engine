@@ -112,3 +112,9 @@ Still to correct outside this repo: the auditor's offer file and the skills say 
 - **Fixed.** The work proceeds one step at a time, each approved before the next, everything in git. See `ROADMAP.md`.
 - **Fixed.** The foundation may grow from 36 to as many as 50 pages. The list is settled in step 4.
 - **Fixed.** The method idea must be made rational before anything is built on it. Draft in `01-method/method.md`.
+
+## 22 Nov 2026, method draft v2
+
+- **Proposed.** Method name changes from Universal Engine Optimization to **Universal Relevance**. Reasons in `01-method/method.md`, section 9.
+- **Stated by Thomas.** RSM has been thinking and working this way since 2025, before Gartner's July 2026 paper. Supporting records found in Drive (2024 and 2025 creation dates); contents not yet read.
+- Correction: an earlier note credited "search everywhere optimization" to Eric Siu and Neil Patel. SparkToro credits Ashley Liddell. Either way the phrase predates 2025.

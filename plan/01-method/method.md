@@ -1,109 +1,126 @@
-# The method (draft v1, for approval)
+# The method (draft v2, for approval)
 
 Step 1 of the roadmap. 22 Nov 2026. Status: **awaiting Thomas's approval**.
-Working name: **Universal Engine Optimization (UEO)**.
+Proposed name: **Universal Relevance**. (Draft v1 used "Universal Engine Optimization"; see section 9 for why it changed.)
 
-## 1. The problem, in facts
+## 1. Two observations everything rests on
 
-A customer used to ask one search box. Today the same customer asks many machines, and each answers
-differently: Google results, Google Maps, Google's AI answers, ChatGPT, Gemini, Perplexity, Copilot,
-YouTube, the social networks, review sites and forums.
+**Every engine is a relevance machine.** Google, Maps, ChatGPT, Gemini, Perplexity, YouTube and the
+social networks look different, but each does the same job: it takes a person's question and chooses
+the most relevant answer it can trust. They differ in how they read. They do not differ in what they
+are looking for.
 
-The industry's response has been one new service per machine: SEO, local SEO, AEO, GEO, AIO, SMO.
-Each has its own vendor, its own report and its own facts about the business. The owner pays several
-times, and the machines receive several versions of the truth.
-
-Analysts have noticed. Gartner published "Unified Search: Integrating SEO, AEO and GEO" in July 2026,
-and Adobe and others use "search everywhere optimization". So "do them all together" is no longer a
-new idea, and it is not RSM's claim. It is advice for marketing departments. It names no starting
-point, no unit of work and no measure a business owner can check.
-
-To verify at the original source before publishing: studies reporting that only about a tenth of the
-sites cited by one AI assistant are cited by another, and that AI answers overlap with ordinary search
-results by roughly 8 to 12 percent.
+**Engines change. The customer's question does not.** The list of engines is different every year.
+What a homeowner asks when a pipe bursts is the same as it was ten years ago.
 
 ## 2. The idea in one sentence
 
-> Engines change. The customer's question does not. Universal Engine Optimization makes a business
-> the answer to every question its customers ask, on every machine that answers.
+> Universal Relevance is being the most relevant answer to every question your customers ask,
+> on every engine that answers them.
 
-This is the rational core. The method does not start from the engines, because the list of engines
-changes every year. It starts from the customer's questions, which change slowly, and treats every
-engine as one more reader of the same truth about the business.
+The industry optimises for an engine, so every new engine becomes a new service: SEO, then AEO, then
+GEO. Universal Relevance works on the one thing all engines share. A new engine is one more reader of
+the same relevant, verifiable business. This is why the method does not go stale.
 
-## 3. Definitions
+## 3. Relevance runs in two directions
 
-- **Engine**: any system that answers a customer's question. A search engine, a map, an AI assistant,
-  a video platform, a social network, a review site.
-- **Universal**: the list of engines is open. When a new one appears it is added as a row, not as a
-  new service. This is why the method does not go stale.
-- **Search map**: every question and search a business's customers make, of every kind, each assigned
-  to one page.
-- **Relevant**: of the business's real customers. A search no customer makes is not relevant. A visit
-  that cannot become a customer is not relevant. A lead the owner does not want is not relevant.
+- **Relevant to the question.** The engine must judge the business the best answer.
+- **Relevant to the business.** The search, the visitor and the lead must be ones the owner wants.
 
-## 4. The five parts
+Most search work measures only the first. The company's name states both: relevant searches, relevant
+traffic, relevant leads.
+
+## 4. The three proofs every engine looks for
+
+Whatever the engine, it decides relevance from the same three kinds of evidence.
+
+| Proof | The engine's question | Where the work happens |
+|---|---|---|
+| **Read** | Can I read plainly what this business is and what it answers? | The site: facts, answers, structure, markup |
+| **Confirm** | Do independent sources say the same thing? | Listings, reviews, mentions, profiles, press |
+| **Choose** | Do real people choose it? | Clicks, calls, reviews, repeat visits, engagement |
+
+To verify against primary sources before publishing: the public documentation of each engine on how it
+selects and cites sources.
+
+## 5. The five parts
 
 | Part | What it is | How it is checked |
 |---|---|---|
-| **One truth** | A single register of the business's facts. Every page, profile, listing and piece of markup is built from it, so every engine reads the same thing. | Fact integrity and verified-facts checks |
-| **One map** | Every kind of customer search, mapped in full: hiring, outcome, question, comparison, problem, cost, switching, AI prompts, spoken, other languages. Not ten or fifteen keywords. | Search map coverage checks |
-| **Every engine** | For each mapped search, the business is made the answer wherever that search is answered. The engine list today is in section 5. | The checks for each engine, and AI answer verification |
-| **One measure** | The share of the map on which the business is the answer, per engine, and the Relevance Rate: the share of leads the owner confirms were relevant. | Reported every 15 days |
-| **One loop** | Daily work in a log the client can read. The map is re-read every 30 days against real searches. New engines and new searches are added as they appear. | Publishing readiness, freshness checks |
+| **One truth** | A single register of the business's facts. Everything is built from it, so every engine reads the same thing. | Fact integrity and verified-facts checks |
+| **One map** | Every kind of customer question and search, mapped in full. Not ten or fifteen keywords. | Search map coverage checks |
+| **Every engine** | For each mapped question, the three proofs are built wherever that question is answered. | The checks per engine; AI answer verification |
+| **One measure** | Share of the map won on each engine, and the Relevance Rate: the share of leads the owner confirms were relevant. | Reported every 15 days |
+| **One loop** | Daily work in an open log. The map is re-read every 30 days. New engines and questions are added as rows. | Publishing and freshness checks |
 
-## 5. The engines today
+## 6. Where the existing terms sit
 
-| Engine | Industry's name for working on it |
+| Engine | The industry's name for working on it |
 |---|---|
 | Google and Bing results | SEO |
 | Google Maps and local results | Local SEO, Google Business Profile |
 | Answer boxes and voice assistants | AEO |
 | Google AI Overviews and AI Mode | AIO |
-| ChatGPT, Gemini, Perplexity, Copilot and other assistants | GEO, AI SEO, LLM SEO |
+| ChatGPT, Gemini, Perplexity, Copilot | GEO, AI SEO, LLM SEO |
 | YouTube and video search | Video SEO |
 | Social networks | SMO |
 | Review sites and directories | Reputation, listings |
 | Forums and communities | Community presence |
 
-Every existing term keeps its place. Each is the method applied to one engine. This is how the site
-targets every term clients search, and shows each one as a part of something larger.
+Every term keeps its page and its keywords. Each is Universal Relevance applied to one engine.
 
-## 6. Why it is a method and not a slogan
+## 7. Why it is a method and not a slogan
 
-A method can be followed, measured and shown to fail. This one can:
+1. It can be followed: five parts, three proofs, written checks.
+2. It can be measured: share of the map per engine, and the Relevance Rate.
+3. It can fail in public: the two written commitments say what happens when it does.
+4. RSM runs it on itself, with the log open.
 
-1. **It can be followed.** The steps are the five parts, and the checks are written out (413 in the draft standard).
-2. **It can be measured.** Coverage of the map per engine, and the Relevance Rate.
-3. **It can fail in public.** The two written commitments say what happens when it does.
-4. **It is run on RSM itself**, with the log open.
+## 8. Origin: what can be shown, with dates
 
-## 7. What is RSM's own in it
+| Date | Record | Where |
+|---|---|---|
+| 2020 | The company is founded and named Relevant Search Media | Company record |
+| 29 Jul 2024 | Document "AI SEO Proposal" created | Thomas's Google Drive |
+| 25 Jul 2025 | Page drafts created, including "Fort Worth SEO Agency Built for AI, Voice Search & Google Rankings" and "…Elevate Your Visibility Across All Search Experiences" | Thomas's Google Drive |
+| 14 Aug 2025 | "ChatGPT SEO Optimization Fort Worth: Advanced Answer Engine Optimization Solutions" created | Thomas's Google Drive |
+| 27 Oct 2025 | Document "AI Optimization" created | Thomas's Google Drive |
+| Jul 2026 | Gartner publishes "Unified Search: Integrating SEO, AEO and GEO" | Gartner |
+| 2026 | The method is named and its standard published | This repository |
 
-- It starts from the customer's questions and the business's facts, not from the engines.
-- The whole search map, not a short keyword list.
-- Relevance to the business as the measure: relevant searches, relevant traffic, relevant leads.
-- One business per trade per city.
-- Written for a business owner, by trade and by city, not for a marketing department.
-- The standard, the log and the commitments are public.
+Limits. These are creation dates and titles read from Drive on 22 Nov 2026; the documents' contents
+have not been read yet. Drive dates are private proof. Public proof, such as archived copies of live
+pages from 2025, still has to be found before the timeline is published.
 
-## 8. What it is not
+What can be claimed: RSM built its name on relevance in 2020 and was doing combined Google, voice and
+AI search work by mid-2025, a year before Gartner's paper.
+What cannot be claimed: that RSM was first with the general idea of being found beyond Google. The phrase
+"search everywhere optimization" was in use before 2025.
 
-- Not a claim that there is one machine called the universal engine.
-- Not a promise of a result on any single engine.
-- Not a replacement for the words SEO, AEO or GEO, which stay on every page.
+## 9. Why the name changed from Universal Engine Optimization
 
-## 9. Open points for approval
+- It named the engines, which is the part RSM does not control and the part that keeps changing.
+- It was one more acronym beside SEO, AEO, GEO and AIO, at a time when owners are tired of them.
+- An agency called SearchX already sells "Universal Search Optimization (USO)".
+- "Unified" is Gartner's word and "entity optimization" has been Kalicube's since 2015.
+- "Universal Relevance" was not found in use anywhere. It keeps "universal", and its second word has been
+  in the company's name since 2020. No competitor can say that.
 
-1. The one-sentence idea in section 2.
-2. The five parts in section 4.
-3. The name. "Universal Engine Optimization" fits the open engine list. If "universal" still feels too large,
-   the same letters can stand for "Unified Engine Optimization"; no one uses that phrase either, but
-   "unified search" is already Gartner's wording.
-4. The engine list in section 5: add, remove or reorder.
+Nearest neighbour to be aware of: iPullRank's "Relevance Engineering", an enterprise framework from 2025.
+
+## 10. Open points for approval
+
+1. The name: Universal Relevance.
+2. The two observations and the one-sentence idea.
+3. The three proofs: Read, Confirm, Choose.
+4. The five parts.
+5. Permission to read the 2024 and 2025 Drive documents to build the origin timeline.
 
 ## Sources
 
 - Gartner, "Unified Search: Integrating SEO, AEO and GEO to Improve Visibility", July 2026: https://www.gartner.com/en/documents/8110997
-- Adobe, "Search Everywhere Optimization playbook": https://business.adobe.com/blog/search-everywhere-optimization-playbook
-- Conductor, "How to Unify AEO, GEO, and SEO Search Strategies": https://www.conductor.com/academy/unified-aeo-geo-seo/
+- Search Engine Land, "Relevance is the new ranking signal": https://searchengineland.com/relevance-is-the-new-ranking-signal-how-ai-search-redefines-optimization-455316
+- SparkToro, "It's Still SEO: Search Everywhere Optimization": https://sparktoro.com/blog/its-still-seo-search-everywhere-optimization/
+- SearchX, Universal Search Optimization: https://www.valuespectrum.com/corporate_news/1268807-searchx-equips-businesses-to-lead-in-the-ai-search-era-with-breakthrough-seo-strategies
+- Kalicube, Entity Optimization: https://kalicube.com/entity/entity-optimization/
+- iPullRank, Relevance Engineering: https://ipullrank.com/relevance-engineering
