@@ -68,7 +68,7 @@ for pid in range(1,37):
     if not kws: rows.append([pid,names[pid][1],names[pid][0],"none","","",NOTES.get(pid,"")]); continue
     for i,k in enumerate(kws):
         rows.append([pid,names[pid][1],names[pid][0],"main" if i==0 else "supporting",k,res[k],NOTES.get(pid,"") if i==0 else ""])
-out="/home/user/rsm-engine/seo/foundation"; os.makedirs(out,exist_ok=True)
+out="/home/user/rsm-engine/plan/05-keywords"; os.makedirs(out,exist_ok=True)
 with open(f"{out}/keyword-map-v1.csv","w",newline="") as f:
     w=csv.writer(f); w.writerow(["page","layer","page_name","role","keyword","live_evidence_22_nov_2026","note"]); w.writerows(rows)
 from collections import Counter

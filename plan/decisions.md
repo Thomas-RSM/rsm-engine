@@ -102,7 +102,13 @@ Four menus worded for the owner: What's wrong? · The Standard · Look yourself 
 - **Fixed.** The site uses every term clients search: SEO, AI SEO, AEO, GEO, digital marketing, "seo agency miami" and the rest. These words are not avoided. Each page combines them with what RSM does and shows how that goes further. This overrides the vocabulary rule in the content skill for the RSM website.
 - **Fixed.** The call is a discovery call of 20 to 30 minutes. Every page must give the owner a reason to book it.
 - **Fixed.** The 313 may be expanded. The strategy is presented as one that keeps expanding and does not go stale.
-- **Proposed.** Audit structure: the 18 groups from the Deliverables document, which add up to 313, plus 9 new groups of 100 checks. 413 checks in 27 groups. Written out in `standard/checks-v1.md`.
+- **Proposed.** Audit structure: the 18 groups from the Deliverables document, which add up to 313, plus 9 new groups of 100 checks. 413 checks in 27 groups. Written out in `plan/03-standard/checks-v1.md`.
 - **Proposed.** Keywords per page: one intent per page. One lead keyword and two same-intent keywords are locked to the page. Up to three section keywords and five to eight real questions are woven in, unlocked. See the session of 22 Nov.
 
 Still to correct outside this repo: the auditor's offer file and the skills say "since 2006"; public profiles show Gurugram and Noida.
+
+## Rulings from Thomas, 22 Nov 2026, evening
+
+- **Fixed.** The work proceeds one step at a time, each approved before the next, everything in git. See `ROADMAP.md`.
+- **Fixed.** The foundation may grow from 36 to as many as 50 pages. The list is settled in step 4.
+- **Fixed.** The method idea must be made rational before anything is built on it. Draft in `01-method/method.md`.

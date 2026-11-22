@@ -10,6 +10,7 @@ Start with **`docs/context-brief.md`**: the facts, decisions and plan in two pag
 
 | Folder | What is in it |
 |---|---|
+| `plan/` | **Start here for the website build.** `ROADMAP.md` (the steps and their status), `decisions.md` (every decision, Fixed or Proposed) and one folder per step |
 | `docs/` | Context brief (facts and decisions), the business plan, and the index of sessions and documents |
 | `design/canvas/project/` | The home page design as Claude Design canvas files. `Main.dc.html` is the page; `Origin.dc.html` is the hero in use; the other `.dc.html` files are earlier hero versions kept for reference; `canvas.json` is the board index |
 | `design/canvas/support.js` | The canvas runtime, needed to open the `.dc.html` files in a browser |

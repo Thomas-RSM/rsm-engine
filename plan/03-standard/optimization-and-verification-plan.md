@@ -1,6 +1,6 @@
 # Optimization and verification plan for the 36 foundation pages
 
-Written 22 Nov 2026. Companion to `decisions.md` and `seo/foundation/keyword-map-v1.csv`.
+Written 22 Nov 2026. Companion to `plan/decisions.md` and `plan/05-keywords/keyword-map-v1.csv`.
 Status: **proposed**, for Thomas's approval. Nothing here has been applied to a page yet.
 
 ## 1. What was checked to write this, and what could not be
@@ -8,7 +8,7 @@ Status: **proposed**, for Thomas's approval. Nothing here has been applied to a 
 | Source | Read | Result |
 |---|---|---|
 | Keyword universe (both workbooks, live file of 18 Nov) | Yes | Used for candidates |
-| Google autocomplete, live, 22 Nov 2026 | Yes, 177 keywords tested by script | Raw answers saved in `seo/foundation/evidence/` |
+| Google autocomplete, live, 22 Nov 2026 | Yes, 177 keywords tested by script | Raw answers saved in `plan/05-keywords/evidence/` |
 | Skills: god-mode-seo, god-content-agent, rsm-audit, rsm-strategy | Yes, in full | Rules carried into section 4 |
 | "Relevant Search Media — Deliverables" document, audit section | Yes | The 313 points as 18 groups with counts |
 | `rsm-auditor-brain` repository | Yes, the audit and offer files | 16 family names, firm facts |
@@ -22,7 +22,7 @@ must be re-checked with volumes before a page is published.
 
 ## 2. Keyword map
 
-File: `seo/foundation/keyword-map-v1.csv`. One main keyword and at most two supporting per page.
+File: `plan/05-keywords/keyword-map-v1.csv`. One main keyword and at most two supporting per page.
 90 keywords on 33 pages; 3 pages have no search target by design (Ask, Open Board, Book 20 minutes).
 
 Evidence grades: **A** Google suggests it or knows it as a query (82). **B** weak signal (6).
@@ -131,10 +131,10 @@ neighbourhoods, state rules on the wrong state's page.
 
 ## 7. Order of work from here
 
-1. Thomas settles the seven conflicts and the open questions in `decisions.md`.
+1. Thomas settles the seven conflicts and the open questions in `plan/decisions.md`.
 2. Canon and rsm-standards made readable to this session.
 3. Fact register written and signed.
 4. The 313 checks written out; additions agreed; number decided.
 5. Volumes added to the keyword map; map locked.
 6. Page gate script built and tested on one page.
-7. First page drafted, gated, reviewed, signed. Then the rest, in the order set in `decisions.md`.
+7. First page drafted, gated, reviewed, signed. Then the rest, in the order set in `plan/decisions.md`.
