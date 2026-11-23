@@ -33,7 +33,7 @@ Status: **Signed** · **Open** (still needs an answer or a piece of work).
 | B5 | Legal name | Pranay Handa. Thomas D'Souza is his professional name. The biography page states "Pranay Handa, also known as Thomas D'Souza", and its markup carries it as an alternate name | Signed |
 | B6 | Owner on copyright and trademark registrations | Pranay Handa | Signed |
 | B7 | Photo and video | Thomas appears on camera and in photographs | Signed. Assets still to be supplied |
-| B8 | Biography | Draft in `author-biography.md` | Open: to approve |
+| B8 | Biography | `author-biography.md`, built from signed facts only | Accepted as the working version. Career detail, photo and video are added when Thomas supplies them |
 
 ## C. Numbers
 
@@ -41,7 +41,7 @@ Status: **Signed** · **Open** (still needs an answer or a piece of work).
 |---|---|---|---|
 | C1 | Businesses served | 900+ | Signed |
 | C2 | Team | 100+ specialists on US hours | Signed |
-| C3 | Project results | Roughly 400 projects, 90% successful | Signed as stated. Open: the one-line definition of "successful" that goes beside the number in public |
+| C3 | Project results | Roughly 400 projects, 90% successful | Signed. Working definition, set by default on 23 Nov: "successful" means the project reached page one of Google for the searches mapped for it. Thomas can change this wording at any time before it is published |
 | C4 | Customer searches mapped per client | 300, 600 or 2,000, by plan | Signed |
 | C5 | Free report | About 30 checks | Signed |
 | C6 | Client audit | 413 checks, and the list keeps growing. Each addition gets a version and a date | Signed. The old "313" is corrected wherever it appears |
@@ -73,7 +73,7 @@ Status: **Signed** · **Open** (still needs an answer or a piece of work).
 | E5 | Brand line | Relevant search, relevant traffic, relevant leads | Signed |
 | E6 | The measure | The Relevance Rate | Signed |
 | E7 | How RSM describes itself | It keeps evolving. The standard and the engine list grow with time and are never frozen | Signed |
-| E8 | Origin date used in public | Since 2025, proven from June 2025 | Open: 2024 if the version history of "AI SEO Proposal" proves it |
+| E8 | Origin date used in public | Since 2025, proven from June 2025 | Signed by default. Changes to 2024 only if a dated 2024 record is produced |
 
 ## F. Proof rules
 
@@ -83,7 +83,7 @@ Status: **Signed** · **Open** (still needs an answer or a piece of work).
 | F2 | Results stated by category and range of services | Signed |
 | F3 | Reviews and testimonials: real ones only, taken from RSM's own listings, the good ones chosen | Signed for real ones |
 | F4 | No written-up or invented reviews, quotes, clients or results, on the site or anywhere else | Held. See the note below |
-| F5 | Results with numbers but no client name, such as "within four months" | Open: explained again to Thomas on 23 Nov |
+| F5 | Results with numbers but no client name, such as "within four months" | Allowed, by default on 23 Nov. Each number must come from a real project record |
 
 Note on F4. Thomas said reviews may also be written for RSM. That part is not taken up. Invented reviews
 and testimonials are banned by a US Federal Trade Commission rule in force since 2024, with fines per
@@ -115,9 +115,7 @@ the whole plan is built on. The real reviews are collected instead, and a reques
 | H6 | July 2025 page drafts | Customer quotes and result figures with no support | Not used; any live copy checked |
 | H7 | `docs/context-brief.md` | Legal name never public · Silly Creators Corp explained once | As B5 and A11 |
 
-## Still open in Step 2
+## Closed
 
-1. C3: one line defining "successful" for the 90% figure.
-2. F5: yes or no to results with numbers and no client name.
-3. B8: approval of the biography draft.
-4. E8: the 2024 check.
+Step 2 closed on 23 Nov 2026. Four items were settled by default after Thomas said he had given
+everything needed: C3, F5, B8 and E8. Each default is marked in its row and can be changed here.

@@ -1,46 +1,56 @@
-# The audit checks, written out
+# The D'Souza Standard
 
-Version 1 draft, 22 Nov 2026. **313 existing checks in 18 groups, plus 100 proposed new checks in 9 groups: 413 in all.**
+Version 1.0, 23 Nov 2026. **413 checks in 27 groups.** The list is open: checks are added as search changes, and each addition gets a version and a date.
 
-The 313 follow the group names, descriptions and counts in "Relevant Search Media — Deliverables" (group C, Day 3).
-The individual checks were not itemised in any source available when this was written, so each one here is a draft
-to be confirmed against the team's working checklist. Checks 314 onward are proposed additions.
+The standard is the D'Souza Equation written out as checks: **Relevance = Read × Confirm × Choose**, for every question in the customer's search map.
+
+| Part of the equation | What it asks | Checks |
+|---|---|---|
+| The question | Is every search a customer makes mapped and assigned to a page? | 14 |
+| Read | Can every engine read plainly what the business is and what it answers? | 250 |
+| Confirm | Do independent sources say the same thing? | 99 |
+| Choose | Do real people, and the engines, choose it? | 50 |
+| **Total** | | **413** |
+
+RSM's free report runs about 30 of these. Every client's audit runs all of them.
+
+Checks 1 to 313 follow the group names and counts of the audit described in "Relevant Search Media — Deliverables". Their wording was written out on 22 Nov 2026. Checks 314 onward were added on that date.
 
 Scope: **Page** is checked on every page. **Site** is checked once for the whole site. **Beyond** is checked off the site.
 Every check ends as pass, fail or not testable with the reason.
 
-| Group | Checks | Numbers | Status |
+| Group | Equation | Checks | Numbers |
 |---|---|---|---|
-| Technical health | 36 | 1 to 36 | Existing |
-| Speed and stability | 24 | 37 to 60 | Existing |
-| Mobile experience | 14 | 61 to 74 | Existing |
-| Security | 10 | 75 to 84 | Existing |
-| Site structure | 18 | 85 to 102 | Existing |
-| Page titles and descriptions | 14 | 103 to 116 | Existing |
-| Headings and copy | 20 | 117 to 136 | Existing |
-| Images and media | 12 | 137 to 148 | Existing |
-| Verified facts | 20 | 149 to 168 | Existing |
-| AI readiness | 24 | 169 to 192 | Existing |
-| Local signals | 26 | 193 to 218 | Existing |
-| Google Business Profile | 22 | 219 to 240 | Existing |
-| Reviews and reputation | 10 | 241 to 250 | Existing |
-| Conversion elements | 22 | 251 to 272 | Existing |
-| Tracking and measurement | 12 | 273 to 284 | Existing |
-| Content inventory | 8 | 285 to 292 | Existing |
-| Off-site presence | 12 | 293 to 304 | Existing |
-| Social presence | 9 | 305 to 313 | Existing |
-| Search map coverage | 14 | 314 to 327 | Proposed |
-| Uniqueness and information gain | 12 | 328 to 339 | Proposed |
-| Fact integrity | 10 | 340 to 349 | Proposed |
-| Author and entity | 12 | 350 to 361 | Proposed |
-| AI answer verification | 16 | 362 to 377 | Proposed |
-| Accessibility | 12 | 378 to 389 | Proposed |
-| Video and visual search | 8 | 390 to 397 | Proposed |
-| Freshness and corrections | 8 | 398 to 405 | Proposed |
-| Publishing readiness | 8 | 406 to 413 | Proposed |
-| **Total** | **413** | | |
+| Technical health | Read | 36 | 1 to 36 |
+| Speed and stability | Read | 24 | 37 to 60 |
+| Mobile experience | Read | 14 | 61 to 74 |
+| Security | Read | 10 | 75 to 84 |
+| Site structure | Read | 18 | 85 to 102 |
+| Page titles and descriptions | Read | 14 | 103 to 116 |
+| Headings and copy | Read | 20 | 117 to 136 |
+| Images and media | Read | 12 | 137 to 148 |
+| Verified facts | Read | 20 | 149 to 168 |
+| AI readiness | Read | 24 | 169 to 192 |
+| Local signals | Confirm | 26 | 193 to 218 |
+| Google Business Profile | Confirm | 22 | 219 to 240 |
+| Reviews and reputation | Confirm | 10 | 241 to 250 |
+| Conversion elements | Choose | 22 | 251 to 272 |
+| Tracking and measurement | Choose | 12 | 273 to 284 |
+| Content inventory | Read | 8 | 285 to 292 |
+| Off-site presence | Confirm | 12 | 293 to 304 |
+| Social presence | Confirm | 9 | 305 to 313 |
+| Search map coverage | Question | 14 | 314 to 327 |
+| Uniqueness and information gain | Read | 12 | 328 to 339 |
+| Fact integrity | Read | 10 | 340 to 349 |
+| Author and entity | Confirm | 12 | 350 to 361 |
+| AI answer verification | Choose | 16 | 362 to 377 |
+| Accessibility | Read | 12 | 378 to 389 |
+| Video and visual search | Confirm | 8 | 390 to 397 |
+| Freshness and corrections | Read | 8 | 398 to 405 |
+| Publishing readiness | Read | 8 | 406 to 413 |
+| **Total** | | **413** | |
 
-## 1. Technical health (36)
+## 1. Technical health (36) · Read
 
 Can Google reach and read every page: indexing, sitemaps, redirects, errors, duplicate pages.
 
@@ -83,7 +93,7 @@ Can Google reach and read every page: indexing, sitemaps, redirects, errors, dup
 | 35 | Site | IndexNow is set up so Bing and other engines learn of changes at once |
 | 36 | Site | Crawl data or server logs confirm Googlebot reached every key page in the last 30 days |
 
-## 2. Speed and stability (24)
+## 2. Speed and stability (24) · Read
 
 Google's speed scores (Core Web Vitals) on phone and desktop, image weight, scripts, hosting response.
 
@@ -114,7 +124,7 @@ Google's speed scores (Core Web Vitals) on phone and desktop, image weight, scri
 | 59 | Page | Fonts are limited in number, preloaded and show fallback text while loading |
 | 60 | Site | Uptime is monitored and was 99.9% or better over the last 30 days |
 
-## 3. Mobile experience (14)
+## 3. Mobile experience (14) · Read
 
 Tap targets, viewport, menus, forms, click-to-call.
 
@@ -135,7 +145,7 @@ Tap targets, viewport, menus, forms, click-to-call.
 | 73 | Page | Tables and wide content stack or scroll inside their own container |
 | 74 | Page | Addresses open in maps and email addresses open a new message |
 
-## 4. Security (10)
+## 4. Security (10) · Read
 
 Secure connection and certificate, insecure elements, software versions, exposed files.
 
@@ -152,7 +162,7 @@ Secure connection and certificate, insecure elements, software versions, exposed
 | 83 | Site | Google Safe Browsing and blocklist checks show no malware or warnings |
 | 84 | Site | Forms are protected against spam and injection, and backups run automatically with a tested restore |
 
-## 5. Site structure (18)
+## 5. Site structure (18) · Read
 
 Navigation, depth, links between pages, pages nothing links to, breadcrumbs.
 
@@ -177,7 +187,7 @@ Navigation, depth, links between pages, pages nothing links to, breadcrumbs.
 | 101 | Site | On-site search, where present, works and its result pages are not indexed |
 | 102 | Site | The pages with the most internal links are the priority pages |
 
-## 6. Page titles and descriptions (14)
+## 6. Page titles and descriptions (14) · Read
 
 Every page's title and description against its assigned search.
 
@@ -198,7 +208,7 @@ Every page's title and description against its assigned search.
 | 115 | Page | Sharing tags are set: title, description and a 1200 by 630 image |
 | 116 | Site | The site name and icon display correctly in search results |
 
-## 7. Headings and copy (20)
+## 7. Headings and copy (20) · Read
 
 Headings, length, readability, service and area coverage, thin pages.
 
@@ -225,7 +235,7 @@ Headings, length, readability, service and area coverage, thin pages.
 | 135 | Page | No placeholder text, bracketed notes, outdated years or expired facts remain |
 | 136 | Page | The vocabulary is the trade's own: the words customers and practitioners really use |
 
-## 8. Images and media (12)
+## 8. Images and media (12) · Read
 
 Image descriptions, file names, size, formats, loading.
 
@@ -244,7 +254,7 @@ Image descriptions, file names, size, formats, loading.
 | 147 | Page | Photos of people, premises and work are real and belong to the business |
 | 148 | Page | The image shown when the page is shared is set and displays correctly |
 
-## 9. Verified facts (20)
+## 9. Verified facts (20) · Read
 
 The coded business facts Google and AI read (schema markup): business, service, FAQ, review, article, breadcrumb.
 
@@ -271,7 +281,7 @@ The coded business facts Google and AI read (schema markup): business, service, 
 | 167 | Page | Dates in the markup match the dates shown on the page |
 | 168 | Page | Specialised types are used where they fit: steps, video, product, event, defined term |
 
-## 10. AI readiness (24)
+## 10. AI readiness (24) · Read
 
 Answer-first copy, question coverage, a clear identity, the AI guide file (llms.txt), AI crawler access, citation-worthy facts.
 
@@ -302,7 +312,7 @@ Answer-first copy, question coverage, a clear identity, the AI guide file (llms.
 | 191 | Page | The business is named when the page's main question is asked in Perplexity and Gemini, recorded with the date |
 | 192 | Site | What AI assistants say about the business is checked for wrong facts, and each one is logged |
 
-## 11. Local signals (26)
+## 11. Local signals (26) · Confirm
 
 Name, address, phone consistency across site, profile and listings; service-area pages; map embed.
 
@@ -335,7 +345,7 @@ Name, address, phone consistency across site, profile and listings; service-area
 | 217 | Site | Local press, sponsorships and partners mention or link to the business |
 | 218 | Site | No virtual office or false address is used anywhere |
 
-## 12. Google Business Profile (22)
+## 12. Google Business Profile (22) · Confirm
 
 Categories, services, attributes, photos, posts, Q&A, hours, reviews.
 
@@ -364,7 +374,7 @@ Categories, services, attributes, photos, posts, Q&A, hours, reviews.
 | 239 | Beyond | Profile facts match the website and its markup |
 | 240 | Beyond | Calls, direction requests, website clicks and searches are recorded monthly |
 
-## 13. Reviews and reputation (10)
+## 13. Reviews and reputation (10) · Confirm
 
 Volume, rating, recency, response rate, platforms.
 
@@ -381,7 +391,7 @@ Volume, rating, recency, response rate, platforms.
 | 249 | Page | Real reviews are shown on the site with their source |
 | 250 | Beyond | No fake reviews exist, and a search for the brand shows no unanswered complaint on page one |
 
-## 14. Conversion elements (22)
+## 14. Conversion elements (22) · Choose
 
 Calls to action, forms, phone placement, trust badges, proof, offers, chat.
 
@@ -410,7 +420,7 @@ Calls to action, forms, phone placement, trust badges, proof, offers, chat.
 | 271 | Page | No competing actions or pop-ups pull the visitor from the primary action |
 | 272 | Site | The offer or commitment that removes the visitor's risk is stated |
 
-## 15. Tracking and measurement (12)
+## 15. Tracking and measurement (12) · Choose
 
 GA4, Search Console, call tracking, form tracking, conversions.
 
@@ -429,7 +439,7 @@ GA4, Search Console, call tracking, form tracking, conversions.
 | 283 | Site | Visits from ChatGPT, Perplexity, Gemini and Copilot are separated out in Analytics |
 | 284 | Site | Position and AI-mention tracking is set up for the mapped searches, with a starting baseline |
 
-## 16. Content inventory (8)
+## 16. Content inventory (8) · Read
 
 Every page listed with its purpose, search, status: keep, fix, merge, remove.
 
@@ -444,7 +454,7 @@ Every page listed with its purpose, search, status: keep, fix, merge, remove.
 | 291 | Site | Mapped searches with no page are listed as gaps |
 | 292 | Site | Every page to be merged or removed has a redirect target |
 
-## 17. Off-site presence (12)
+## 17. Off-site presence (12) · Confirm
 
 Listings, mentions, profiles, press, inconsistencies, duplicates.
 
@@ -463,7 +473,7 @@ Listings, mentions, profiles, press, inconsistencies, duplicates.
 | 303 | Beyond | The business appears on the lists and comparison pages that rank for "best" searches in its trade and area |
 | 304 | Beyond | The business is present where customers ask: Reddit, Quora and trade forums |
 
-## 18. Social presence (9)
+## 18. Social presence (9) · Confirm
 
 Channels, completeness, cadence, consistency with site.
 
@@ -479,7 +489,7 @@ Channels, completeness, cadence, consistency with site.
 | 312 | Site | The site links to each profile and each profile links to the site |
 | 313 | Beyond | Each key page on the site has been shared on the channels |
 
-## 19. Search map coverage (14)
+## 19. Search map coverage (14) · Question
 
 Every kind of search a customer makes is mapped, not a short keyword list.
 
@@ -500,7 +510,7 @@ Every kind of search a customer makes is mapped, not a short keyword list.
 | 326 | Site | Each mapped search carries dated evidence that people really make it |
 | 327 | Site | The map is compared with Search Console queries every 30 days and new searches are added |
 
-## 20. Uniqueness and information gain (12)
+## 20. Uniqueness and information gain (12) · Read
 
 Whether the page says something no other page says.
 
@@ -519,7 +529,7 @@ Whether the page says something no other page says.
 | 338 | Page | No text is copied from elsewhere on the web |
 | 339 | Page | The FAQ set is not reused on any other page |
 
-## 21. Fact integrity (10)
+## 21. Fact integrity (10) · Read
 
 Whether every claim on the page is true and traceable.
 
@@ -536,7 +546,7 @@ Whether every claim on the page is true and traceable.
 | 348 | Page | Regulated claims follow the rules of the field: legal, medical, financial |
 | 349 | Page | A named person signed the fact-check sheet before publishing |
 
-## 22. Author and entity (12)
+## 22. Author and entity (12) · Confirm
 
 Who stands behind the content and whether they can be verified.
 
@@ -555,7 +565,7 @@ Who stands behind the content and whether they can be verified.
 | 360 | Site | Named methods and terms are defined on their own page with defined-term markup |
 | 361 | Site | Asking AI assistants about the brand and the author returns an accurate description |
 
-## 23. AI answer verification (16)
+## 23. AI answer verification (16) · Choose
 
 Measured presence in AI answers, engine by engine, over repeated runs.
 
@@ -578,7 +588,7 @@ Measured presence in AI answers, engine by engine, over repeated runs.
 | 376 | Beyond | Raw answers are archived with their date |
 | 377 | Beyond | The change from the previous month is reported |
 
-## 24. Accessibility (12)
+## 24. Accessibility (12) · Read
 
 Whether everyone can use the page (WCAG 2.2 AA).
 
@@ -597,7 +607,7 @@ Whether everyone can use the page (WCAG 2.2 AA).
 | 388 | Page | Motion and autoplay can be paused and reduced-motion settings are respected |
 | 389 | Page | An automated scan shows no critical errors and a screen-reader pass was done on the template |
 
-## 25. Video and visual search (8)
+## 25. Video and visual search (8) · Confirm
 
 Presence where people search by watching and by image.
 
@@ -612,7 +622,7 @@ Presence where people search by watching and by image.
 | 396 | Beyond | Short versions are published on the short-video platforms |
 | 397 | Page | Original photos of real work carry enough context to appear in image and lens searches |
 
-## 26. Freshness and corrections (8)
+## 26. Freshness and corrections (8) · Read
 
 Whether the page stays true over time.
 
@@ -627,7 +637,7 @@ Whether the page stays true over time.
 | 404 | Site | Outdated pages are updated, merged or removed, never left standing |
 | 405 | Page | The modified date changes only when the content really changes |
 
-## 27. Publishing readiness (8)
+## 27. Publishing readiness (8) · Read
 
 The gate a page passes before and after it goes live.
 

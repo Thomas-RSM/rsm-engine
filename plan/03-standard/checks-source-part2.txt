@@ -1,4 +1,4 @@
-## AI readiness | 24 | core | Answer-first copy, question coverage, a clear identity, the AI guide file (llms.txt), AI crawler access, citation-worthy facts
+## AI readiness | 24 | core | Answer-first copy, question coverage, a clear identity, the AI guide file (llms.txt), AI crawler access, citation-worthy facts | Read
 P|The question is the heading and a direct answer of 40 to 60 words sits directly under it
 P|Every section opens with its own answer, so it can be quoted alone
 P|Sections make sense out of context, with no "as mentioned above"
@@ -24,7 +24,7 @@ P|The business is cited when the page's main question triggers a Google AI Overv
 P|The business is named when the page's main question is asked in Perplexity and Gemini, recorded with the date
 S|What AI assistants say about the business is checked for wrong facts, and each one is logged
 
-## Local signals | 26 | core | Name, address, phone consistency across site, profile and listings; service-area pages; map embed
+## Local signals | 26 | core | Name, address, phone consistency across site, profile and listings; service-area pages; map embed | Confirm
 S|The business name is identical on the site, the Google profile and every listing
 S|The address is identical everywhere, including its format
 S|The phone number is identical everywhere and is a local number where the business is local
@@ -52,7 +52,7 @@ S|Call tracking uses number swapping on the site only, so listed numbers stay co
 S|Local press, sponsorships and partners mention or link to the business
 S|No virtual office or false address is used anywhere
 
-## Google Business Profile | 22 | core | Categories, services, attributes, photos, posts, Q&A, hours, reviews
+## Google Business Profile | 22 | core | Categories, services, attributes, photos, posts, Q&A, hours, reviews | Confirm
 X|The profile is claimed and verified
 X|The profile is owned by the business's own account, with correct access roles
 X|The profile name is the real business name with no added search terms
@@ -76,7 +76,7 @@ X|No duplicate profile exists and none is suspended
 X|Profile facts match the website and its markup
 X|Calls, direction requests, website clicks and searches are recorded monthly
 
-## Reviews and reputation | 10 | core | Volume, rating, recency, response rate, platforms
+## Reviews and reputation | 10 | core | Volume, rating, recency, response rate, platforms | Confirm
 X|The Google review count is at or above the middle of the top three local competitors
 X|The average Google rating is 4.5 or higher
 X|At least one new review arrived in the last 30 days
@@ -88,7 +88,7 @@ X|Reviews mention services and places in the customers' own words
 P|Real reviews are shown on the site with their source
 X|No fake reviews exist, and a search for the brand shows no unanswered complaint on page one
 
-## Conversion elements | 22 | core | Calls to action, forms, phone placement, trust badges, proof, offers, chat
+## Conversion elements | 22 | core | Calls to action, forms, phone placement, trust badges, proof, offers, chat | Choose
 P|The page has one primary call to action, the same one throughout
 P|The call to action is visible without scrolling
 P|The call to action repeats after the proof section and at the end of the page
@@ -112,7 +112,7 @@ P|The page has no dead end: every section leads to a next step
 P|No competing actions or pop-ups pull the visitor from the primary action
 S|The offer or commitment that removes the visitor's risk is stated
 
-## Tracking and measurement | 12 | core | GA4, Search Console, call tracking, form tracking, conversions
+## Tracking and measurement | 12 | core | GA4, Search Console, call tracking, form tracking, conversions | Choose
 S|Google Analytics 4 is installed once on every page
 S|Key events are set in Analytics: form, call, booking and chat
 S|Search Console is verified for the whole domain, with owner access held by the business
@@ -126,7 +126,7 @@ S|Links from the profile, social posts and email carry a consistent tracking tag
 S|Visits from ChatGPT, Perplexity, Gemini and Copilot are separated out in Analytics
 S|Position and AI-mention tracking is set up for the mapped searches, with a starting baseline
 
-## Content inventory | 8 | core | Every page listed with its purpose, search, status: keep, fix, merge, remove
+## Content inventory | 8 | core | Every page listed with its purpose, search, status: keep, fix, merge, remove | Read
 S|Every URL on the site is listed in one inventory
 S|Each page has a stated purpose and reader
 S|Each page has one assigned search
@@ -136,7 +136,7 @@ S|Pages that already hold rankings, traffic or links are marked protected before
 S|Mapped searches with no page are listed as gaps
 S|Every page to be merged or removed has a redirect target
 
-## Off-site presence | 12 | core | Listings, mentions, profiles, press, inconsistencies, duplicates
+## Off-site presence | 12 | core | Listings, mentions, profiles, press, inconsistencies, duplicates | Confirm
 X|A search for the brand shows the business's own properties across page one
 X|Relevant industry sites mention the business, counted against competitors
 X|Real, relevant sites link to the business, counted against the top three competitors
@@ -150,7 +150,7 @@ X|Mentions of the brand without a link are identified
 X|The business appears on the lists and comparison pages that rank for "best" searches in its trade and area
 X|The business is present where customers ask: Reddit, Quora and trade forums
 
-## Social presence | 9 | core | Channels, completeness, cadence, consistency with site
+## Social presence | 9 | core | Channels, completeness, cadence, consistency with site | Confirm
 X|The right channels for the trade are identified and claimed
 X|Handles match the brand on every channel
 X|Each profile is complete: description, link, contact, category and images
@@ -161,7 +161,7 @@ X|Comments and messages are answered
 S|The site links to each profile and each profile links to the site
 X|Each key page on the site has been shared on the channels
 
-## Search map coverage | 14 | new | Every kind of search a customer makes is mapped, not a short keyword list
+## Search map coverage | 14 | new | Every kind of search a customer makes is mapped, not a short keyword list | Question
 S|Every service in every area served is mapped to the searches customers use for it
 S|Hiring searches are mapped: the words used when someone is ready to buy
 S|Outcome searches are mapped: the results customers ask for in their own words
@@ -177,7 +177,7 @@ S|Each mapped search is assigned to exactly one page
 S|Each mapped search carries dated evidence that people really make it
 S|The map is compared with Search Console queries every 30 days and new searches are added
 
-## Uniqueness and information gain | 12 | new | Whether the page says something no other page says
+## Uniqueness and information gain | 12 | new | Whether the page says something no other page says | Read
 P|The page contains at least one fact or number available nowhere else
 P|The page contains at least one first-hand finding from real work
 P|The named author states a clear position or verdict
@@ -191,7 +191,7 @@ P|Examples are specific and real
 P|No text is copied from elsewhere on the web
 P|The FAQ set is not reused on any other page
 
-## Fact integrity | 10 | new | Whether every claim on the page is true and traceable
+## Fact integrity | 10 | new | Whether every claim on the page is true and traceable | Read
 P|Every number traces to an entry in the fact register with its source
 P|Company facts match the fact register exactly
 P|No invented reviews, awards, clients or team members appear
@@ -203,7 +203,7 @@ P|Prices, timeframes and guarantees match what the business really offers
 P|Regulated claims follow the rules of the field: legal, medical, financial
 P|A named person signed the fact-check sheet before publishing
 
-## Author and entity | 12 | new | Who stands behind the content and whether they can be verified
+## Author and entity | 12 | new | Who stands behind the content and whether they can be verified | Confirm
 P|A named author is shown on the page
 S|The author has a page with experience, credentials and a photo
 S|The author's outside profiles are consistent and linked
@@ -217,7 +217,7 @@ S|Licences, memberships and awards shown are current and can be checked with the
 S|Named methods and terms are defined on their own page with defined-term markup
 S|Asking AI assistants about the brand and the author returns an accurate description
 
-## AI answer verification | 16 | new | Measured presence in AI answers, engine by engine, over repeated runs
+## AI answer verification | 16 | new | Measured presence in AI answers, engine by engine, over repeated runs | Choose
 S|A prompt set is defined: at least ten real prompts for each service and area
 X|Every prompt is run in ChatGPT and the answer recorded
 X|Every prompt is run in Gemini and the answer recorded
@@ -235,7 +235,7 @@ X|Citation links point to the right page
 X|Raw answers are archived with their date
 X|The change from the previous month is reported
 
-## Accessibility | 12 | new | Whether everyone can use the page (WCAG 2.2 AA)
+## Accessibility | 12 | new | Whether everyone can use the page (WCAG 2.2 AA) | Read
 P|Text contrast is at least 4.5 to 1
 P|Every function works from the keyboard alone
 P|Keyboard focus is always visible
@@ -249,7 +249,7 @@ P|Text can be enlarged to 200% without loss of content
 P|Motion and autoplay can be paused and reduced-motion settings are respected
 P|An automated scan shows no critical errors and a screen-reader pass was done on the template
 
-## Video and visual search | 8 | new | Presence where people search by watching and by image
+## Video and visual search | 8 | new | Presence where people search by watching and by image | Confirm
 X|A YouTube channel is claimed, branded and linked to the site
 X|A video exists for each priority service or question
 X|Video titles and descriptions match mapped searches and use chapters
@@ -259,7 +259,7 @@ X|Videos have custom thumbnails
 X|Short versions are published on the short-video platforms
 P|Original photos of real work carry enough context to appear in image and lens searches
 
-## Freshness and corrections | 8 | new | Whether the page stays true over time
+## Freshness and corrections | 8 | new | Whether the page stays true over time | Read
 P|The page shows its last review date and reviewer
 S|Each page type has a review cycle and no page is past it
 P|Time-sensitive facts are flagged for re-checking: prices, laws, product names, years
@@ -269,7 +269,7 @@ P|Dated predictions are revisited and marked right or wrong
 S|Outdated pages are updated, merged or removed, never left standing
 P|The modified date changes only when the content really changes
 
-## Publishing readiness | 8 | new | The gate a page passes before and after it goes live
+## Publishing readiness | 8 | new | The gate a page passes before and after it goes live | Read
 P|The page passed every applicable check and the result is recorded
 P|A second, independent reviewer signed it off
 P|The owner approved it where the rules require approval

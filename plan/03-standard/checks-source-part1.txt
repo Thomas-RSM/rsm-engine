@@ -1,4 +1,4 @@
-## Technical health | 36 | core | Can Google reach and read every page: indexing, sitemaps, redirects, errors, duplicate pages
+## Technical health | 36 | core | Can Google reach and read every page: indexing, sitemaps, redirects, errors, duplicate pages | Read
 S|robots.txt exists, returns status 200 and blocks no page that is meant to rank
 S|robots.txt names the location of the XML sitemap
 S|An XML sitemap exists, is valid and returns status 200
@@ -36,7 +36,7 @@ S|Staging and test copies of the site are blocked from indexing
 S|IndexNow is set up so Bing and other engines learn of changes at once
 S|Crawl data or server logs confirm Googlebot reached every key page in the last 30 days
 
-## Speed and stability | 24 | core | Google's speed scores (Core Web Vitals) on phone and desktop, image weight, scripts, hosting response
+## Speed and stability | 24 | core | Google's speed scores (Core Web Vitals) on phone and desktop, image weight, scripts, hosting response | Read
 P|Largest Contentful Paint is 2.5 seconds or less on mobile
 P|Largest Contentful Paint is 2.5 seconds or less on desktop
 P|Interaction to Next Paint is 200 milliseconds or less on mobile
@@ -62,7 +62,7 @@ S|HTTP/2 or HTTP/3 is enabled
 P|Fonts are limited in number, preloaded and show fallback text while loading
 S|Uptime is monitored and was 99.9% or better over the last 30 days
 
-## Mobile experience | 14 | core | Tap targets, viewport, menus, forms, click-to-call
+## Mobile experience | 14 | core | Tap targets, viewport, menus, forms, click-to-call | Read
 P|The viewport tag is set so the page fits the screen width
 P|No horizontal scrolling at a 390-pixel phone width
 P|The layout holds together at a 768-pixel tablet width
@@ -78,7 +78,7 @@ P|Sticky bars and buttons never cover content or other buttons
 P|Tables and wide content stack or scroll inside their own container
 P|Addresses open in maps and email addresses open a new message
 
-## Security | 10 | core | Secure connection and certificate, insecure elements, software versions, exposed files
+## Security | 10 | core | Secure connection and certificate, insecure elements, software versions, exposed files | Read
 S|The security certificate is valid and does not expire within 30 days
 S|Every http request redirects to https
 P|The page loads no insecure (http) images, scripts or styles
@@ -90,7 +90,7 @@ S|The admin login is protected: no default address or user, attempts limited, tw
 S|Google Safe Browsing and blocklist checks show no malware or warnings
 S|Forms are protected against spam and injection, and backups run automatically with a tested restore
 
-## Site structure | 18 | core | Navigation, depth, links between pages, pages nothing links to, breadcrumbs
+## Site structure | 18 | core | Navigation, depth, links between pages, pages nothing links to, breadcrumbs | Read
 S|Every page meant to rank is reachable within three clicks of the home page
 S|No orphan pages: every indexable page has at least one internal link pointing to it
 S|The main navigation is made of ordinary HTML links that work without scripts
@@ -110,7 +110,7 @@ S|Every hub page links to all of its child pages and every child links back
 S|On-site search, where present, works and its result pages are not indexed
 S|The pages with the most internal links are the priority pages
 
-## Page titles and descriptions | 14 | core | Every page's title and description against its assigned search
+## Page titles and descriptions | 14 | core | Every page's title and description against its assigned search | Read
 P|The page has exactly one title tag
 P|The title is 30 to 60 characters and is not cut off in results
 P|The title is unique across the site
@@ -126,7 +126,7 @@ P|The title Google displays in results matches the written title
 P|Sharing tags are set: title, description and a 1200 by 630 image
 S|The site name and icon display correctly in search results
 
-## Headings and copy | 20 | core | Headings, length, readability, service and area coverage, thin pages
+## Headings and copy | 20 | core | Headings, length, readability, service and area coverage, thin pages | Read
 P|The page has exactly one H1
 P|The H1 contains the assigned search or a natural paraphrase of it
 P|Headings run in order with no level skipped
@@ -148,7 +148,7 @@ P|Spelling, grammar, articles and the casing of acronyms and place names are cor
 P|No placeholder text, bracketed notes, outdated years or expired facts remain
 P|The vocabulary is the trade's own: the words customers and practitioners really use
 
-## Images and media | 12 | core | Image descriptions, file names, size, formats, loading
+## Images and media | 12 | core | Image descriptions, file names, size, formats, loading | Read
 P|Every meaningful image has alt text and decorative images have empty alt text
 P|Alt text describes what is actually in the image and is never a list of search terms
 P|Image file names are descriptive and hyphenated
@@ -162,7 +162,7 @@ S|Key images are included in the sitemap
 P|Photos of people, premises and work are real and belong to the business
 P|The image shown when the page is shared is set and displays correctly
 
-## Verified facts | 20 | core | The coded business facts Google and AI read (schema markup): business, service, FAQ, review, article, breadcrumb
+## Verified facts | 20 | core | The coded business facts Google and AI read (schema markup): business, service, FAQ, review, article, breadcrumb | Read
 S|Organization or LocalBusiness markup is present on the home page
 S|The organization markup's name, address, logo and contact details match the visible facts exactly
 S|The sameAs list names every official profile and every link in it works
