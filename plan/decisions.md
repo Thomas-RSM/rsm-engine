@@ -132,3 +132,8 @@ Still to correct outside this repo: the auditor's offer file and the skills say 
 - **Fixed.** The name is **The D'Souza Equation**: Relevance = Read × Confirm × Choose.
 - **Fixed.** Step 1 is closed and the work moves to Step 2. The strategy and the 12-step plan presented on 22 Nov stand as the working plan.
 - **Proposed.** Family names: D'Souza's Law of Search, the D'Souza Standard, the D'Souza Method.
+
+## Rulings from Thomas, 23 Nov 2026, fact register
+
+- **Fixed.** Thomas's title is Founder.
+- **Fixed.** The biography page states "Pranay Handa, also known as Thomas D'Souza". This overrides the 18 Nov rule that the legal name never appears in public. Bylines and the equation keep the name Thomas D'Souza.

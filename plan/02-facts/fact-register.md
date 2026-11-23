@@ -28,9 +28,10 @@ own material, needs a yes) · **Conflict** (sources disagree) · **Missing** (ne
 | ID | Fact | Value | Status | Source and note |
 |---|---|---|---|---|
 | B1 | Name and spelling | Thomas D'Souza | To sign | The Google account shows "Thomas Dsoouza". One spelling everywhere |
-| B2 | Title | | Conflict | "Senior partner" in the offer file. Founder? Choose one |
+| B2 | Title | Founder | Signed 23 Nov | Thomas. The offer file's "senior partner" is corrected in section G |
 | B3 | In digital marketing since | 2010 | Signed 22 Nov | Thomas |
-| B4 | The only named person in public | Yes | Signed (context brief, 18 Nov) | |
+| B4 | Name shown as author everywhere | Thomas D'Souza | Signed 23 Nov | Bylines, the equation's name, profiles and posts all use this name |
+| B4a | Legal name disclosure | The biography page states: Pranay Handa, also known as Thomas D'Souza | Signed 23 Nov | Thomas. This replaces the 18 Nov rule that the legal name is never public. Shown on the biography page and in its markup as an alternate name; not in bylines |
 | B5 | Photo and video | | Missing | Needed for the author page and the stamping plan |
 | B6 | Biography | | Missing | Written in this step once B1 to B3 are signed |
 | B7 | Owner named on registrations (copyright, trademark) | | Missing | The company or a person. Decide before the theory is stamped |
@@ -94,6 +95,8 @@ own material, needs a yes) · **Conflict** (sources disagree) · **Missing** (ne
 | G5 | Thomas's Google account name | Thomas Dsoouza | Thomas D'Souza |
 | G6 | July 2025 page drafts | Customer quotes and result figures with no support | Not used; any live copy checked |
 | G7 | Offer file | "Book 30 minutes" | One wording for the call everywhere |
+| G8 | Offer file | Senior partner | Founder |
+| G9 | `docs/context-brief.md` | "Pranay Handa" is never used in public content | Stated once, on the biography page |
 
 ## To close Step 2
 
