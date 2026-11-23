@@ -175,3 +175,10 @@ All recorded in `02-facts/fact-register.md` v1.0. The ones that change earlier d
 - **Fixed.** "100+ specialists on US hours", "900+ businesses served" and "about 400 projects, 90% successful" go on the site. Thomas states they are true and keeps the records himself. No client names or further detail are published or requested.
 - The concern was raised once (the public Clutch profile and the project sheet read differently) and Thomas reaffirmed. The hold of earlier today is lifted.
 - **To do.** Correct the Clutch and Manifest profiles so they match.
+
+## Ruling from Thomas, 23 Nov 2026: stop the proof work and build
+
+- **Fixed.** Thomas's statements about his own business are taken as given. No further checking of them against reviews or records.
+- **Fixed.** The review and proof work in Step 6 is set aside. The step is closed with the company figures released.
+- Unchanged: nothing invented is published. No written-up reviews, clients or results.
+- **Fixed by default.** Step 7 messaging v1 and Step 8 blueprints and heroes v1.
