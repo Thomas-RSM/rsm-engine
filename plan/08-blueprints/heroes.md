@@ -1,6 +1,6 @@
 # Heroes for every foundation page (v1)
 
-Step 8. 23 Nov 2026. 66 pages. Built and checked by `build_heroes.py`: every title is 60 characters or fewer and unique, every H1 is 12 words or fewer, and on home, situation, service and guide pages the lead keyword is in both.
+Step 8. 23 Nov 2026. 67 pages. Built and checked by `build_heroes.py`: every title is 60 characters or fewer and unique, every H1 is 12 words or fewer, and on home, situation, service and guide pages the lead keyword is in both.
 
 The primary button on every page is **Book a discovery call**.
 
@@ -133,6 +133,16 @@ The primary button on every page is **Book a discovery call**.
 - **Title:** SEO vs GEO vs AEO vs AIO: What Each One Is
 - **H1:** SEO vs GEO vs AEO vs AIO, and where each fits
 - **Subline:** Four names for one job done on four kinds of engine. Here is what each means and which you need.
+- **Lighter step:** See all 413 checks
+
+
+## Hub
+
+### `/elements/`
+
+- **Title:** SEO Ranking Factors: Every Element, Explained
+- **H1:** Every element of search, explained one by one
+- **Subline:** Title tags, reviews, citations, schema and 100 more. What each is, why engines care, and how to check yours.
 - **Lighter step:** See all 413 checks
 
 

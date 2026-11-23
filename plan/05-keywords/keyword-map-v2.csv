@@ -50,126 +50,129 @@ page,layer,page_name,url,role,keyword,live_grade
 17,Equation,"SEO vs AEO vs GEO vs AIO, and where each fits",/dsouza-equation/seo-vs-aeo-vs-geo/,lead,seo vs geo,A
 17,Equation,"SEO vs AEO vs GEO vs AIO, and where each fits",/dsouza-equation/seo-vs-aeo-vs-geo/,same intent,seo vs aeo,A
 17,Equation,"SEO vs AEO vs GEO vs AIO, and where each fits",/dsouza-equation/seo-vs-aeo-vs-geo/,same intent,seo vs aeo vs geo,A
-18,Service,SEO,/services/seo/,lead,seo services,A
-18,Service,SEO,/services/seo/,same intent,seo services company,A
-18,Service,SEO,/services/seo/,same intent,affordable seo services for small businesses,A
-19,Service,Local SEO,/services/local-seo/,lead,local seo services,A
-19,Service,Local SEO,/services/local-seo/,same intent,local seo agency,A
-19,Service,Local SEO,/services/local-seo/,same intent,google maps seo,A
-20,Service,AI SEO,/services/ai-seo/,lead,ai seo services,A
-20,Service,AI SEO,/services/ai-seo/,same intent,ai seo agency,A
-20,Service,AI SEO,/services/ai-seo/,same intent,ai search optimization,A
-21,Service,Answer Engine Optimization (AEO),/services/answer-engine-optimization/,lead,answer engine optimization,A
-21,Service,Answer Engine Optimization (AEO),/services/answer-engine-optimization/,same intent,aeo services,A
-21,Service,Answer Engine Optimization (AEO),/services/answer-engine-optimization/,same intent,answer engine optimization services,A
-22,Service,Generative Engine Optimization (GEO),/services/generative-engine-optimization/,lead,generative engine optimization,A
-22,Service,Generative Engine Optimization (GEO),/services/generative-engine-optimization/,same intent,generative engine optimization agency,A
-22,Service,Generative Engine Optimization (GEO),/services/generative-engine-optimization/,same intent,geo services,A
-23,Service,AI Overview Optimization (AIO),/services/ai-overview-optimization/,lead,ai overview optimization,A
-23,Service,AI Overview Optimization (AIO),/services/ai-overview-optimization/,same intent,how to show up in google ai overviews,A
-23,Service,AI Overview Optimization (AIO),/services/ai-overview-optimization/,same intent,google ai overview seo,B
-24,Service,ChatGPT and LLM SEO,/services/chatgpt-seo/,lead,chatgpt seo,A
-24,Service,ChatGPT and LLM SEO,/services/chatgpt-seo/,same intent,llm seo,A
-24,Service,ChatGPT and LLM SEO,/services/chatgpt-seo/,same intent,how to rank in chatgpt,A
-25,Service,Google Business Profile,/services/google-business-profile-optimization/,lead,google business profile optimization,A
-25,Service,Google Business Profile,/services/google-business-profile-optimization/,same intent,google my business optimization,A
-25,Service,Google Business Profile,/services/google-business-profile-optimization/,same intent,google business profile management,A
-26,Service,Technical SEO,/services/technical-seo/,lead,technical seo,A
-26,Service,Technical SEO,/services/technical-seo/,same intent,technical seo audit,A
-26,Service,Technical SEO,/services/technical-seo/,same intent,schema markup services,B
-27,Service,Content marketing,/services/content-marketing/,lead,content marketing agency,A
-27,Service,Content marketing,/services/content-marketing/,same intent,content marketing,A
-27,Service,Content marketing,/services/content-marketing/,same intent,seo content writing,A
-28,Service,Link building and earned mentions,/services/link-building/,lead,link building services,A
-28,Service,Link building and earned mentions,/services/link-building/,same intent,link building agency,A
-28,Service,Link building and earned mentions,/services/link-building/,same intent,backlinks for seo,A
-29,Service,Social media marketing (SMO),/services/social-media-marketing/,lead,social media marketing services,A
-29,Service,Social media marketing (SMO),/services/social-media-marketing/,same intent,social media optimization,A
-29,Service,Social media marketing (SMO),/services/social-media-marketing/,same intent,social media marketing for small business,A
-30,Service,Reputation and reviews,/services/reputation-management/,lead,reputation management company,A
-30,Service,Reputation and reviews,/services/reputation-management/,same intent,online reputation management,A
-30,Service,Reputation and reviews,/services/reputation-management/,same intent,review management services,A
-31,Service,Voice search,/services/voice-search-optimization/,lead,voice search optimization,A
-31,Service,Voice search,/services/voice-search-optimization/,same intent,voice search optimization services,A
-32,Service,Ecommerce SEO,/services/ecommerce-seo/,lead,ecommerce seo,A
-32,Service,Ecommerce SEO,/services/ecommerce-seo/,same intent,ecommerce seo services,A
-32,Service,Ecommerce SEO,/services/ecommerce-seo/,same intent,shopify seo,A
-33,Service,B2B SEO,/services/b2b-seo/,lead,b2b seo services,A
-33,Service,B2B SEO,/services/b2b-seo/,same intent,b2b seo agency,A
-33,Service,B2B SEO,/services/b2b-seo/,same intent,b2b seo strategy,A
-34,Service,Small business SEO,/services/small-business-seo/,lead,small business seo services,A
-34,Service,Small business SEO,/services/small-business-seo/,same intent,seo for small business,A
-34,Service,Small business SEO,/services/small-business-seo/,same intent,seo services for small businesses,A
-35,Service,Lead generation,/services/lead-generation/,lead,lead generation services,A
-35,Service,Lead generation,/services/lead-generation/,same intent,lead generation company,A
-35,Service,Lead generation,/services/lead-generation/,same intent,lead generation for small business,A
-36,Service,Digital marketing,/services/digital-marketing/,lead,digital marketing services,A
-36,Service,Digital marketing,/services/digital-marketing/,same intent,digital marketing agency,A
-36,Service,Digital marketing,/services/digital-marketing/,same intent,digital marketing agency usa,A
-37,Service,Web design,/services/web-design/,lead,web design services,A
-37,Service,Web design,/services/web-design/,same intent,web design company,A
-37,Service,Web design,/services/web-design/,same intent,website design services,A
-38,Service,Web development,/services/web-development/,lead,web development services,A
-38,Service,Web development,/services/web-development/,same intent,web development company,A
-38,Service,Web development,/services/web-development/,same intent,custom web development,A
-39,Service,App development,/services/app-development/,lead,app development services,A
-39,Service,App development,/services/app-development/,same intent,mobile app development company,A
-39,Service,App development,/services/app-development/,same intent,app development company,A
-40,Service,Custom CRM,/services/custom-crm/,lead,custom crm development,A
-40,Service,Custom CRM,/services/custom-crm/,same intent,custom crm software,A
-40,Service,Custom CRM,/services/custom-crm/,same intent,custom crm,A
-41,Service,Design services,/services/design/,lead,graphic design services,A
-41,Service,Design services,/services/design/,same intent,branding services,A
-41,Service,Design services,/services/design/,same intent,logo design services,A
-42,Hub,Services,/services/,none,,
-43,Guide,What is E-E-A-T,/guides/what-is-eeat/,lead,what is e-e-a-t,A
-43,Guide,What is E-E-A-T,/guides/what-is-eeat/,same intent,google e-e-a-t,A
-43,Guide,What is E-E-A-T,/guides/what-is-eeat/,same intent,e-e-a-t seo,A
-44,Guide,SEO keyword research: how we choose,/guides/seo-keyword-research/,lead,seo keyword research,A
-44,Guide,SEO keyword research: how we choose,/guides/seo-keyword-research/,same intent,how to do keyword research,A
-44,Guide,SEO keyword research: how we choose,/guides/seo-keyword-research/,same intent,keyword research,A
-45,Guide,How long SEO takes,/guides/how-long-does-seo-take/,lead,how long does seo take,A
-45,Guide,How long SEO takes,/guides/how-long-does-seo-take/,same intent,how long does it take to rank on google,A
-45,Guide,How long SEO takes,/guides/how-long-does-seo-take/,same intent,is seo worth it,A
-46,Guide,How to choose an SEO company,/guides/how-to-choose-an-seo-company/,lead,how to choose an seo company,A
-46,Guide,How to choose an SEO company,/guides/how-to-choose-an-seo-company/,same intent,how to choose an seo agency,A
-46,Guide,How to choose an SEO company,/guides/how-to-choose-an-seo-company/,same intent,how to find a good seo company,A
-47,Guide,Service business vs ecommerce vs B2B,/guides/service-vs-ecommerce-vs-b2b-seo/,lead,types of seo,A
-47,Guide,Service business vs ecommerce vs B2B,/guides/service-vs-ecommerce-vs-b2b-seo/,same intent,local seo vs seo,A
-47,Guide,Service business vs ecommerce vs B2B,/guides/service-vs-ecommerce-vs-b2b-seo/,same intent,types of seo in digital marketing,A
-48,Hub,Guides,/guides/,lead,seo guide,A
-48,Hub,Guides,/guides/,same intent,seo for beginners,A
-48,Hub,Guides,/guides/,same intent,how to do seo,A
-49,Mirror,Ask,/ask/,none,,
-50,Mirror,AI Recommendation Index,/ai-recommendation-index/,lead,how does chatgpt recommend businesses,A
-50,Mirror,AI Recommendation Index,/ai-recommendation-index/,same intent,how does chatgpt recommend products,A
-50,Mirror,AI Recommendation Index,/ai-recommendation-index/,same intent,how can chatgpt recommend my business,A
-51,Mirror,Open Board,/open-board/,none,,
-52,Mirror,Open Log,/open-log/,lead,seo report example,A
-52,Mirror,Open Log,/open-log/,same intent,what does an seo report look like,A
-52,Mirror,Open Log,/open-log/,same intent,seo progress report,A
-53,Mirror,Searches by trade and city,/searches/,lead,plumber seo keywords,A
-53,Mirror,Searches by trade and city,/searches/,same intent,plumbing seo keywords,A
-54,Mirror,Your Plan,/your-plan/,lead,seo plan,A
-54,Mirror,Your Plan,/your-plan/,same intent,seo plan template,A
-54,Mirror,Your Plan,/your-plan/,same intent,90 day seo plan,A
-55,Hub,Industries,/industries/,lead,seo by industry,B
-55,Hub,Industries,/industries/,same intent,industry specific seo,B
-55,Hub,Industries,/industries/,same intent,niche seo,A
-56,Hub,Cities,/cities/,lead,seo company near me,A
-56,Hub,Cities,/cities/,same intent,seo agency near me,A
-56,Hub,Cities,/cities/,same intent,seo services near me,A
-57,Identity,Origin: how the equation came about,/about/,lead,relevant search media,A
-58,Identity,Thomas D'Souza,/thomas-dsouza/,lead,thomas d'souza seo,own term
-59,Identity,The two commitments,/commitments/,lead,seo guarantee,B
-59,Identity,The two commitments,/commitments/,same intent,guaranteed seo services,A
-59,Identity,The two commitments,/commitments/,same intent,pay for performance seo,B
-60,Identity,Results and reviews,/results/,lead,relevant search media reviews,A
-60,Identity,Results and reviews,/results/,same intent,seo case studies,A
-60,Identity,Results and reviews,/results/,same intent,seo results,A
-61,Identity,How we write and check,/about/editorial-policy/,none,,
-62,Identity,Corrections,/about/corrections/,none,,
-63,Identity,Contact,/contact/,none,,
-64,Identity,Book a discovery call,/book/,none,,
-65,Legal,Privacy policy,/privacy/,none,,
-66,Legal,Terms,/terms/,none,,
+18,Hub,"Elements: every part of search, explained",/elements/,lead,seo ranking factors,A
+18,Hub,"Elements: every part of search, explained",/elements/,same intent,google ranking factors,A
+18,Hub,"Elements: every part of search, explained",/elements/,same intent,seo factors,A
+19,Service,SEO,/services/seo/,lead,seo services,A
+19,Service,SEO,/services/seo/,same intent,seo services company,A
+19,Service,SEO,/services/seo/,same intent,affordable seo services for small businesses,A
+20,Service,Local SEO,/services/local-seo/,lead,local seo services,A
+20,Service,Local SEO,/services/local-seo/,same intent,local seo agency,A
+20,Service,Local SEO,/services/local-seo/,same intent,google maps seo,A
+21,Service,AI SEO,/services/ai-seo/,lead,ai seo services,A
+21,Service,AI SEO,/services/ai-seo/,same intent,ai seo agency,A
+21,Service,AI SEO,/services/ai-seo/,same intent,ai search optimization,A
+22,Service,Answer Engine Optimization (AEO),/services/answer-engine-optimization/,lead,answer engine optimization,A
+22,Service,Answer Engine Optimization (AEO),/services/answer-engine-optimization/,same intent,aeo services,A
+22,Service,Answer Engine Optimization (AEO),/services/answer-engine-optimization/,same intent,answer engine optimization services,A
+23,Service,Generative Engine Optimization (GEO),/services/generative-engine-optimization/,lead,generative engine optimization,A
+23,Service,Generative Engine Optimization (GEO),/services/generative-engine-optimization/,same intent,generative engine optimization agency,A
+23,Service,Generative Engine Optimization (GEO),/services/generative-engine-optimization/,same intent,geo services,A
+24,Service,AI Overview Optimization (AIO),/services/ai-overview-optimization/,lead,ai overview optimization,A
+24,Service,AI Overview Optimization (AIO),/services/ai-overview-optimization/,same intent,how to show up in google ai overviews,A
+24,Service,AI Overview Optimization (AIO),/services/ai-overview-optimization/,same intent,google ai overview seo,B
+25,Service,ChatGPT and LLM SEO,/services/chatgpt-seo/,lead,chatgpt seo,A
+25,Service,ChatGPT and LLM SEO,/services/chatgpt-seo/,same intent,llm seo,A
+25,Service,ChatGPT and LLM SEO,/services/chatgpt-seo/,same intent,how to rank in chatgpt,A
+26,Service,Google Business Profile,/services/google-business-profile-optimization/,lead,google business profile optimization,A
+26,Service,Google Business Profile,/services/google-business-profile-optimization/,same intent,google my business optimization,A
+26,Service,Google Business Profile,/services/google-business-profile-optimization/,same intent,google business profile management,A
+27,Service,Technical SEO,/services/technical-seo/,lead,technical seo,A
+27,Service,Technical SEO,/services/technical-seo/,same intent,technical seo audit,A
+27,Service,Technical SEO,/services/technical-seo/,same intent,schema markup services,B
+28,Service,Content marketing,/services/content-marketing/,lead,content marketing agency,A
+28,Service,Content marketing,/services/content-marketing/,same intent,content marketing,A
+28,Service,Content marketing,/services/content-marketing/,same intent,seo content writing,A
+29,Service,Link building and earned mentions,/services/link-building/,lead,link building services,A
+29,Service,Link building and earned mentions,/services/link-building/,same intent,link building agency,A
+29,Service,Link building and earned mentions,/services/link-building/,same intent,backlinks for seo,A
+30,Service,Social media marketing (SMO),/services/social-media-marketing/,lead,social media marketing services,A
+30,Service,Social media marketing (SMO),/services/social-media-marketing/,same intent,social media optimization,A
+30,Service,Social media marketing (SMO),/services/social-media-marketing/,same intent,social media marketing for small business,A
+31,Service,Reputation and reviews,/services/reputation-management/,lead,reputation management company,A
+31,Service,Reputation and reviews,/services/reputation-management/,same intent,online reputation management,A
+31,Service,Reputation and reviews,/services/reputation-management/,same intent,review management services,A
+32,Service,Voice search,/services/voice-search-optimization/,lead,voice search optimization,A
+32,Service,Voice search,/services/voice-search-optimization/,same intent,voice search optimization services,A
+33,Service,Ecommerce SEO,/services/ecommerce-seo/,lead,ecommerce seo,A
+33,Service,Ecommerce SEO,/services/ecommerce-seo/,same intent,ecommerce seo services,A
+33,Service,Ecommerce SEO,/services/ecommerce-seo/,same intent,shopify seo,A
+34,Service,B2B SEO,/services/b2b-seo/,lead,b2b seo services,A
+34,Service,B2B SEO,/services/b2b-seo/,same intent,b2b seo agency,A
+34,Service,B2B SEO,/services/b2b-seo/,same intent,b2b seo strategy,A
+35,Service,Small business SEO,/services/small-business-seo/,lead,small business seo services,A
+35,Service,Small business SEO,/services/small-business-seo/,same intent,seo for small business,A
+35,Service,Small business SEO,/services/small-business-seo/,same intent,seo services for small businesses,A
+36,Service,Lead generation,/services/lead-generation/,lead,lead generation services,A
+36,Service,Lead generation,/services/lead-generation/,same intent,lead generation company,A
+36,Service,Lead generation,/services/lead-generation/,same intent,lead generation for small business,A
+37,Service,Digital marketing,/services/digital-marketing/,lead,digital marketing services,A
+37,Service,Digital marketing,/services/digital-marketing/,same intent,digital marketing agency,A
+37,Service,Digital marketing,/services/digital-marketing/,same intent,digital marketing agency usa,A
+38,Service,Web design,/services/web-design/,lead,web design services,A
+38,Service,Web design,/services/web-design/,same intent,web design company,A
+38,Service,Web design,/services/web-design/,same intent,website design services,A
+39,Service,Web development,/services/web-development/,lead,web development services,A
+39,Service,Web development,/services/web-development/,same intent,web development company,A
+39,Service,Web development,/services/web-development/,same intent,custom web development,A
+40,Service,App development,/services/app-development/,lead,app development services,A
+40,Service,App development,/services/app-development/,same intent,mobile app development company,A
+40,Service,App development,/services/app-development/,same intent,app development company,A
+41,Service,Custom CRM,/services/custom-crm/,lead,custom crm development,A
+41,Service,Custom CRM,/services/custom-crm/,same intent,custom crm software,A
+41,Service,Custom CRM,/services/custom-crm/,same intent,custom crm,A
+42,Service,Design services,/services/design/,lead,graphic design services,A
+42,Service,Design services,/services/design/,same intent,branding services,A
+42,Service,Design services,/services/design/,same intent,logo design services,A
+43,Hub,Services,/services/,none,,
+44,Guide,What is E-E-A-T,/guides/what-is-eeat/,lead,what is e-e-a-t,A
+44,Guide,What is E-E-A-T,/guides/what-is-eeat/,same intent,google e-e-a-t,A
+44,Guide,What is E-E-A-T,/guides/what-is-eeat/,same intent,e-e-a-t seo,A
+45,Guide,SEO keyword research: how we choose,/guides/seo-keyword-research/,lead,seo keyword research,A
+45,Guide,SEO keyword research: how we choose,/guides/seo-keyword-research/,same intent,how to do keyword research,A
+45,Guide,SEO keyword research: how we choose,/guides/seo-keyword-research/,same intent,keyword research,A
+46,Guide,How long SEO takes,/guides/how-long-does-seo-take/,lead,how long does seo take,A
+46,Guide,How long SEO takes,/guides/how-long-does-seo-take/,same intent,how long does it take to rank on google,A
+46,Guide,How long SEO takes,/guides/how-long-does-seo-take/,same intent,is seo worth it,A
+47,Guide,How to choose an SEO company,/guides/how-to-choose-an-seo-company/,lead,how to choose an seo company,A
+47,Guide,How to choose an SEO company,/guides/how-to-choose-an-seo-company/,same intent,how to choose an seo agency,A
+47,Guide,How to choose an SEO company,/guides/how-to-choose-an-seo-company/,same intent,how to find a good seo company,A
+48,Guide,Service business vs ecommerce vs B2B,/guides/service-vs-ecommerce-vs-b2b-seo/,lead,types of seo,A
+48,Guide,Service business vs ecommerce vs B2B,/guides/service-vs-ecommerce-vs-b2b-seo/,same intent,local seo vs seo,A
+48,Guide,Service business vs ecommerce vs B2B,/guides/service-vs-ecommerce-vs-b2b-seo/,same intent,types of seo in digital marketing,A
+49,Hub,Guides,/guides/,lead,seo guide,A
+49,Hub,Guides,/guides/,same intent,seo for beginners,A
+49,Hub,Guides,/guides/,same intent,how to do seo,A
+50,Mirror,Ask,/ask/,none,,
+51,Mirror,AI Recommendation Index,/ai-recommendation-index/,lead,how does chatgpt recommend businesses,A
+51,Mirror,AI Recommendation Index,/ai-recommendation-index/,same intent,how does chatgpt recommend products,A
+51,Mirror,AI Recommendation Index,/ai-recommendation-index/,same intent,how can chatgpt recommend my business,A
+52,Mirror,Open Board,/open-board/,none,,
+53,Mirror,Open Log,/open-log/,lead,seo report example,A
+53,Mirror,Open Log,/open-log/,same intent,what does an seo report look like,A
+53,Mirror,Open Log,/open-log/,same intent,seo progress report,A
+54,Mirror,Searches by trade and city,/searches/,lead,plumber seo keywords,A
+54,Mirror,Searches by trade and city,/searches/,same intent,plumbing seo keywords,A
+55,Mirror,Your Plan,/your-plan/,lead,seo plan,A
+55,Mirror,Your Plan,/your-plan/,same intent,seo plan template,A
+55,Mirror,Your Plan,/your-plan/,same intent,90 day seo plan,A
+56,Hub,Industries,/industries/,lead,seo by industry,B
+56,Hub,Industries,/industries/,same intent,industry specific seo,B
+56,Hub,Industries,/industries/,same intent,niche seo,A
+57,Hub,Cities,/cities/,lead,seo company near me,A
+57,Hub,Cities,/cities/,same intent,seo agency near me,A
+57,Hub,Cities,/cities/,same intent,seo services near me,A
+58,Identity,Origin: how the equation came about,/about/,lead,relevant search media,A
+59,Identity,Thomas D'Souza,/thomas-dsouza/,lead,thomas d'souza seo,own term
+60,Identity,The two commitments,/commitments/,lead,seo guarantee,B
+60,Identity,The two commitments,/commitments/,same intent,guaranteed seo services,A
+60,Identity,The two commitments,/commitments/,same intent,pay for performance seo,B
+61,Identity,Results and reviews,/results/,lead,relevant search media reviews,A
+61,Identity,Results and reviews,/results/,same intent,seo case studies,A
+61,Identity,Results and reviews,/results/,same intent,seo results,A
+62,Identity,How we write and check,/about/editorial-policy/,none,,
+63,Identity,Corrections,/about/corrections/,none,,
+64,Identity,Contact,/contact/,none,,
+65,Identity,Book a discovery call,/book/,none,,
+66,Legal,Privacy policy,/privacy/,none,,
+67,Legal,Terms,/terms/,none,,

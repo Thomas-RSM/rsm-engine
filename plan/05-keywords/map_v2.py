@@ -21,6 +21,7 @@ M={ # url: [lead, same-intent 1, same-intent 2]
 "/dsouza-equation/engines/":["ai search engines","best ai search engines","list of ai search engines"],
 "/dsouza-equation/how-search-works/":["how does google search work","how do ai overviews work","how does chatgpt search work"],
 "/dsouza-equation/seo-vs-aeo-vs-geo/":["seo vs geo","seo vs aeo","seo vs aeo vs geo"],
+"/elements/":["seo ranking factors","google ranking factors","seo factors"],
 "/services/seo/":["seo services","seo services company","affordable seo services for small businesses"],
 "/services/local-seo/":["local seo services","local seo agency","google maps seo"],
 "/services/ai-seo/":["ai seo services","ai seo agency","ai search optimization"],

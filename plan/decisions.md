@@ -9,7 +9,7 @@
 | Facts | `02-facts/fact-register.md` v1.0 is the only source |
 | Standard | 413 checks, versioned and growing. The free report runs about 30 |
 | Engines | All of them; open list in `02-facts/engine-register.md` |
-| Site | 66 foundation pages, five-menu header; then industries, cities, trade-in-city pages and the encyclopedia. Every city is targeted |
+| Site | 67 foundation pages, five-menu header; then 113 element pages, industries, cities, trade-in-city pages and the encyclopedia. Every city is targeted |
 | Keywords | Up to three locked per page, plus woven section keywords and questions. All existing terms are used |
 | Figures on the site | 900+ businesses served · 100+ specialists on US hours · about 400 projects, 90% successful · since 2010 · founded 2020 |
 | Proof | Thomas's statements are taken as given. No client names. Nothing invented is published |
@@ -203,3 +203,8 @@ All recorded in `02-facts/fact-register.md` v1.0. The ones that change earlier d
 - **Fixed.** The review and proof work in Step 6 is set aside. The step is closed with the company figures released.
 - Unchanged: nothing invented is published. No written-up reviews, clients or results.
 - **Fixed by default.** Step 7 messaging v1 and Step 8 blueprints and heroes v1.
+
+## Ruling from Thomas, 23 Nov 2026: element pages
+
+- **Fixed.** Every thing RSM analyses or does gets its own page: on the site, off the site, on listings and on social.
+- **Fixed by default.** 113 element pages, listed in `04-architecture/elements.md`, each tied to its group of the D'Souza Standard and its term of the equation, at `/elements/<name>/`. A hub at `/elements/` joins the foundation, which is now 67 pages. They are built after the foundation.

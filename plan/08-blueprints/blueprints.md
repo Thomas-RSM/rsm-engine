@@ -82,6 +82,21 @@ Build services (web design, web development, app development, custom CRM, design
 blueprint, with "how it works" as the build stages and section 3 explaining how a site or app is built
 so every engine can read it.
 
+## Blueprint: Element page
+
+One page for each thing RSM analyses or does: a title tag, a Google review, a local citation. The list is in `04-architecture/elements.md`.
+
+1. Hero: the element by the name people search.
+2. What it is, in 40 to 60 words.
+3. Why engines care: which part of the equation it serves.
+4. What good looks like, with a real example.
+5. Check yours in ten minutes.
+6. How everyone should do it, and how RSM does it.
+7. The checks: the numbered checks of the D'Souza Standard that cover it.
+8. Related elements, and the service that includes it.
+9. FAQ.
+10. Closing block. Lighter step: see all 413 checks.
+
 ## Blueprint: Guide page
 
 1. Hero: the question.
