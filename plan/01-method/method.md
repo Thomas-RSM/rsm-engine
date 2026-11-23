@@ -1,7 +1,12 @@
-# The method (draft v3, for approval)
+# The D'Souza Equation: the theory and the method (v1.0, locked)
 
-Step 1 of the roadmap. 22 Nov 2026. Status: **awaiting Thomas's approval**.
-Name: **to be chosen by Thomas, and named after him** (ruling of 22 Nov). Options are in section 9. Until then this file says "the theory" for the observation and "the method" for the work built on it. Where the text below says "Universal Relevance", read "the method".
+Step 1 of the roadmap. Locked by Thomas on 23 Nov 2026.
+Name: **The D'Souza Equation**, named after Thomas D'Souza.
+
+> **Relevance = Read × Confirm × Choose**
+
+The three terms multiply. If any one is zero, the result is zero: a business an engine can read but
+cannot confirm, or can confirm but no one chooses, is not the answer.
 
 ## 1. Two observations everything rests on
 
@@ -15,11 +20,11 @@ What a homeowner asks when a pipe bursts is the same as it was ten years ago.
 
 ## 2. The idea in one sentence
 
-> Universal Relevance is being the most relevant answer to every question your customers ask,
-> on every engine that answers them.
+> The business that is the most relevant answer to its customers' questions wins on every engine,
+> and every engine measures relevance the same way: Read × Confirm × Choose.
 
 The industry optimises for an engine, so every new engine becomes a new service: SEO, then AEO, then
-GEO. Universal Relevance works on the one thing all engines share. A new engine is one more reader of
+GEO. The D'Souza Equation describes the one thing all engines share. A new engine is one more reader of
 the same relevant, verifiable business. This is why the method does not go stale.
 
 ## 3. Relevance runs in two directions
@@ -30,7 +35,7 @@ the same relevant, verifiable business. This is why the method does not go stale
 Most search work measures only the first. The company's name states both: relevant searches, relevant
 traffic, relevant leads.
 
-## 4. The three proofs every engine looks for
+## 4. The three terms of the equation
 
 Whatever the engine, it decides relevance from the same three kinds of evidence.
 
@@ -67,7 +72,7 @@ selects and cites sources.
 | Review sites and directories | Reputation, listings |
 | Forums and communities | Community presence |
 
-Every term keeps its page and its keywords. Each is Universal Relevance applied to one engine.
+Every term keeps its page and its keywords. Each is the D'Souza Equation applied to one engine.
 
 ## 7. Why it is a method and not a slogan
 
@@ -85,34 +90,31 @@ Gartner's "Unified Search" paper is dated July 2026.
 
 ## 9. The name
 
-Rulings: not "Universal Relevance", not "Universal Engine Optimization". It is named after Thomas, it
-has zing, and it carries the service.
+**Locked: The D'Souza Equation** is the headline name (Thomas, 23 Nov 2026).
 
-Two things need a name, and they are different things.
+Proposed family around it, not yet locked:
 
-- **The theory**: the observation that engines change, the customer's question does not, and every engine picks the most relevant answer it can trust. This is what gets cited.
-- **The method**: the five parts and the checks RSM runs. This is what gets bought.
+| Name | What it names |
+|---|---|
+| D'Souza's Law of Search | The observation: engines change, the customer's question does not |
+| The D'Souza Standard | The written checks (413 in the draft) |
+| The D'Souza Method | The work: the five parts |
 
-Checked on 22 Nov 2026: no existing "D'Souza's Law", "D'Souza Method", "D'Souza Principle" or "D'Souza Framework" was found in any field.
+Writing rules: "D'Souza" always with the apostrophe in text; "dsouza-equation" in web addresses;
+"DSouzaEquation" in tags. Checked 22 Nov 2026: no existing use of the name was found in any field.
+This is a market check, not a trademark clearance.
 
-| Option | The theory | The method | Notes |
-|---|---|---|---|
-| A (recommended) | **D'Souza's Law of Search** | **The D'Souza Method** | A law is short, quotable and carries a name for good: Moore's Law, Murphy's Law. "Of Search" is the service. |
-| B | The D'Souza Principle | The D'Souza Method | Softer than a law. |
-| C | D'Souza's Law of Relevance | The D'Souza Relevance Method | Ties to the company name. Longer. |
-| D | Thomas's Law of Search | The Thomas Method | Avoid. "The Thomas theorem" is an established idea in sociology and "Michel Thomas Method" is a registered language-course name. |
+Names considered and set aside: Universal Engine Optimization, Universal Relevance, D'Souza's Razor,
+the D'Souza Constant, the D'Souza Doctrine, the Doubting Thomas Principle.
 
-Points to weigh before choosing:
-- In the United States the surname is widely associated with a political commentator of the same surname. The first name avoids that but runs into the two names in option D.
-- The apostrophe must be handled one way everywhere: "D'Souza's Law" in text, "dsouzas-law" in addresses, "DSouzasLaw" in tags.
-- The name will be registered and stamped in a legal owner's name. Decide which before Wave 1 of `stamp-plan.md`.
+Presentation rule: the equation is a model for understanding until each term is scored from the
+checks. Whether to score it is decided in Step 3.
 
-## 10. To close Step 1
+## 10. Carried forward from Step 1
 
-1. Thomas chooses the name (section 9).
-2. Thomas confirms the two observations, the three proofs and the five parts.
-3. The 2024 start is either proven from version history or stated as "since 2025" in public.
-4. The stamping order in `stamp-plan.md` is approved.
+1. Proof of the 2024 start: check the version history of the Drive document "AI SEO Proposal". Until proven, public wording is "since 2025".
+2. The stamping plan in `stamp-plan.md` starts once the paper is written and the facts in Step 2 are signed.
+3. The proposed family names in section 9 await a yes or no.
 
 ## Sources
 

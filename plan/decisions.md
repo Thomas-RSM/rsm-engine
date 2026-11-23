@@ -126,3 +126,9 @@ Still to correct outside this repo: the auditor's offer file and the skills say 
 - **Fixed.** The theory is to be stamped: published with independent dated records before it is spread. Plan in `01-method/stamp-plan.md`.
 - **Stated by Thomas.** The work began in 2024 and has evolved since. Records read so far prove June 2025 onward; see `01-method/origin-evidence.md`.
 - **Fixed.** Thomas gave permission to read his Drive for the origin record.
+
+## Locked by Thomas, 23 Nov 2026
+
+- **Fixed.** The name is **The D'Souza Equation**: Relevance = Read × Confirm × Choose.
+- **Fixed.** Step 1 is closed and the work moves to Step 2. The strategy and the 12-step plan presented on 22 Nov stand as the working plan.
+- **Proposed.** Family names: D'Souza's Law of Search, the D'Souza Standard, the D'Souza Method.
