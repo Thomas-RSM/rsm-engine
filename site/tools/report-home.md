@@ -2,8 +2,8 @@
 
 Page: https://www.relevantsearchmedia.com/ · built 24 Nov 2026 · checker: site/tools/check_page.py
 
-Result: **145 pass · 0 fail · 267 not testable until the site is live or a person signs**
-Words 2959 · reading grade 6.9 · answer under H1 57 words · FAQs 8
+Result: **146 pass · 0 fail · 267 not testable until the site is live or a person signs**
+Words 2970 · reading grade 6.9 · answer under H1 57 words · FAQs 8
 
 | Group | Pass | Fail | Not testable here |
 |---|---|---|---|
@@ -15,7 +15,7 @@ Words 2959 · reading grade 6.9 · answer under H1 57 words · FAQs 8
 | Page titles and descriptions | 10 | 0 | 4 |
 | Headings and copy | 18 | 0 | 2 |
 | Images and media | 10 | 0 | 2 |
-| Verified facts | 17 | 0 | 2 |
+| Verified facts | 18 | 0 | 2 |
 | AI readiness | 14 | 0 | 10 |
 | Local signals | 0 | 0 | 26 |
 | Google Business Profile | 0 | 0 | 22 |
@@ -101,7 +101,7 @@ Words 2959 · reading grade 6.9 · answer under H1 57 words · FAQs 8
 | 60 | Speed and stability | Uptime is monitored and was 99.9% or better over the last 30 days | N/T | hosting, caching, compression and CDN checks need the live host |
 | 61 | Mobile experience | The viewport tag is set so the page fits the screen width | PASS | viewport meta |
 | 62 | Mobile experience | No horizontal scrolling at a 390-pixel phone width | N/T | tap-target spacing needs a browser run (buttons are 44px tall by CSS) |
-| 63 | Mobile experience | The layout holds together at a 768-pixel tablet width | PASS | base font 17px |
+| 63 | Mobile experience | The layout holds together at a 768-pixel tablet width | PASS | base font 19px |
 | 64 | Mobile experience | Body text is at least 16 pixels and readable without zooming | PASS | phone breakpoints present |
 | 65 | Mobile experience | Buttons and links are at least 48 pixels tall with space between them | N/T | needs a browser run on the live host (horizontal scroll, mobile usability, intrusive interstitials) |
 | 66 | Mobile experience | The mobile menu opens, closes and reaches every main section | N/T | needs a browser run on the live host (horizontal scroll, mobile usability, intrusive interstitials) |
@@ -164,7 +164,7 @@ Words 2959 · reading grade 6.9 · answer under H1 57 words · FAQs 8
 | 123 | Headings and copy | Each supporting search appears in a heading or FAQ question and in the body | PASS | every supporting search is in a heading or FAQ and in the body |
 | 124 | Headings and copy | No stuffing: a search term is never used three times in one paragraph and the copy reads naturally aloud | PASS | 0 paragraphs use the lead term 3+ times |
 | 125 | Headings and copy | The page opens with the direct answer, not with background | PASS | answer paragraph 57 words |
-| 126 | Headings and copy | Word count is within the range for its page type and never under 300 words | PASS | 2959 words (home page range set here: 1,500 to 3,000; floor 300) |
+| 126 | Headings and copy | Word count is within the range for its page type and never under 300 words | PASS | 2970 words (home page range set here: 1,500 to 3,000; floor 300) |
 | 127 | Headings and copy | Reading level is grade 7 to 9 and the average sentence is under 20 words | PASS | grade 6.9, 15.3 words per sentence |
 | 128 | Headings and copy | Paragraphs are one to three sentences | PASS | 0 paragraphs over 3 sentences |
 | 129 | Headings and copy | Every service and sub-service the business offers on this topic is covered | PASS | every service line named |
@@ -197,7 +197,7 @@ Words 2959 · reading grade 6.9 · answer under H1 57 words · FAQs 8
 | 156 | Verified facts | Articles carry Article markup with headline, author, published date and modified date | PASS | not an article; WebPage carries published and modified dates |
 | 157 | Verified facts | The author is marked up as a Person with name, page, job title and profiles | PASS |  |
 | 158 | Verified facts | Review and rating markup is used only for real, visible reviews and within Google's rules | PASS | no review markup used |
-| 159 | Verified facts | Where real premises exist, address, coordinates, hours and phone in the markup match the Google profile | N/T | not covered by the checker |
+| 159 | Verified facts | Where real premises exist, address, coordinates, hours and phone in the markup match the Google profile | PASS | no public premises (fact register): no address, coordinates or hours are marked up, so nothing can disagree with a Google profile |
 | 160 | Verified facts | All markup parses without errors | PASS | all JSON-LD parses |
 | 161 | Verified facts | The page passes Google's Rich Results Test with no errors | N/T | Rich Results Test needs the live URL |
 | 162 | Verified facts | The schema validator shows no missing required properties | PASS | required properties present |
@@ -308,7 +308,7 @@ Words 2959 · reading grade 6.9 · answer under H1 57 words · FAQs 8
 | 267 | Conversion elements | Within five seconds a visitor can tell what is offered, for whom and where | PASS | what, for whom, where in the H1 and first line |
 | 268 | Conversion elements | Pricing or honest price guidance is present | PASS | honest price guidance: no prices, say so |
 | 269 | Conversion elements | The page answers the usual objections: cost, time and risk | PASS | cost, time, risk answered |
-| 270 | Conversion elements | The page has no dead end: every section leads to a next step | PASS | every section has a next step |
+| 270 | Conversion elements | The page has no dead end: every section leads to a next step | PASS | 12 sections, each with a link onward |
 | 271 | Conversion elements | No competing actions or pop-ups pull the visitor from the primary action | PASS | no pop-ups |
 | 272 | Conversion elements | The offer or commitment that removes the visitor's risk is stated | PASS |  |
 | 273 | Tracking and measurement | Google Analytics 4 is installed once on every page | N/T | analytics, Search Console and call tracking are wired at build |

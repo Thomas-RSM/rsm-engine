@@ -173,7 +173,8 @@ def run(site, path, keywords, extra):
     # 3 Mobile
     res(61,'PASS' if any(m.get('name')=='viewport' for m in p.metas) else 'FAIL','viewport meta')
     res(62,'N/T','tap-target spacing needs a browser run (buttons are 44px tall by CSS)')
-    res(63,'PASS' if 'font-size:17px' in open(os.path.join(site,'assets/site.css')).read() else 'FAIL','base font 17px')
+    bf=re.search(r'body\{[^}]*font-size:(\d+)px',open(os.path.join(site,'assets/site.css')).read())
+    res(63,'PASS' if bf and int(bf.group(1))>=17 else 'FAIL',f'base font {bf.group(1) if bf else "?"}px')
     res(64,'PASS' if '@media (max-width:480px)' in open(os.path.join(site,'assets/site.css')).read() else 'FAIL','phone breakpoints present')
     for n in range(65,75): res(n,'N/T','needs a browser run on the live host (horizontal scroll, mobile usability, intrusive interstitials)')
     # 4 Security
@@ -307,7 +308,8 @@ def run(site, path, keywords, extra):
     res(267,'PASS' if h1s and 'usa' in h1s[0].lower() and 'seo' in h1s[0].lower() else 'FAIL','what, for whom, where in the H1 and first line')
     res(268,'PASS' if 'Prices are discussed on the' in body_text else 'FAIL','honest price guidance: no prices, say so')
     res(269,'PASS' if all(s in low for s in ('day 5','month four','no charge')) else 'FAIL','cost, time, risk answered')
-    res(270,'PASS' if raw.count('→')>=10 else 'FAIL','every section has a next step')
+    sections=re.findall(r'<section[^>]*>.*?</section>',raw,re.S)
+    res(270,'PASS' if sections and all('href="/' in x for x in sections) else 'FAIL',f'{len(sections)} sections, each with a link onward')
     res(271,'PASS' if 'popup' not in low and 'modal' not in raw else 'FAIL','no pop-ups')
     res(272,'PASS' if 'that 15-day period is free' in body_text else 'FAIL')
     # 15 Tracking
