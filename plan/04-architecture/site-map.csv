@@ -1,67 +1,67 @@
-number,layer,page,url,parent,menu,main_keyword_v1
-1,Home,Home,/,,Logo,seo company in usa
-2,Situation,Nobody can find my business online,/problems/not-showing-up-on-google/,/problems/,What's wrong?,why is my business not showing up on google
-3,Situation,People find me but don't pick me,/problems/not-getting-leads/,/problems/,What's wrong?,how to get more leads for my business
-4,Situation,"Google shows me, AI doesn't",/problems/not-recommended-by-chatgpt/,/problems/,What's wrong?,how to get my business recommended by chatgpt
-5,Situation,I was ranking and I lost it,/problems/traffic-dropped/,/problems/,What's wrong?,website traffic dropped suddenly
-6,Situation,I'm being quoted and don't know if it's fair,/problems/seo-cost/,/problems/,What's wrong?,how much does seo cost
-7,Hub,Problems: the encyclopedia,/problems/,/,What's wrong?,seo problems
-8,Equation,The D'Souza Equation,/dsouza-equation/,/,The Equation,
-9,Equation,"D'Souza's Law of Search: engines change, the question does not",/dsouza-equation/law-of-search/,/dsouza-equation/,The Equation,
-10,Equation,Read: can every engine read your business,/dsouza-equation/read/,/dsouza-equation/,The Equation,
-11,Equation,Confirm: do others say the same,/dsouza-equation/confirm/,/dsouza-equation/,The Equation,
-12,Equation,Choose: do people and engines pick you,/dsouza-equation/choose/,/dsouza-equation/,The Equation,
-13,Equation,The D'Souza Standard: all 413 checks,/dsouza-equation/standard/,/dsouza-equation/,The Equation,seo audit
-14,Equation,The D'Souza Method: the first 15 days and every day after,/dsouza-equation/method/,/dsouza-equation/,The Equation,seo plan
-15,Equation,Every engine: the open list,/dsouza-equation/engines/,/dsouza-equation/,The Equation,
-16,Equation,How search works now,/dsouza-equation/how-search-works/,/dsouza-equation/,The Equation,how does google search work
-17,Equation,"SEO vs AEO vs GEO vs AIO, and where each fits",/dsouza-equation/seo-vs-aeo-vs-geo/,/dsouza-equation/,The Equation,universal engine optimization
-18,Service,SEO,/services/seo/,/services/,Services,seo services
-19,Service,Local SEO,/services/local-seo/,/services/,Services,local seo services
-20,Service,AI SEO,/services/ai-seo/,/services/,Services,ai seo services
-21,Service,Answer Engine Optimization (AEO),/services/answer-engine-optimization/,/services/,Services,answer engine optimization
-22,Service,Generative Engine Optimization (GEO),/services/generative-engine-optimization/,/services/,Services,generative engine optimization
-23,Service,AI Overview Optimization (AIO),/services/ai-overview-optimization/,/services/,Services,ai overview optimization
-24,Service,ChatGPT and LLM SEO,/services/chatgpt-seo/,/services/,Services,
-25,Service,Google Business Profile,/services/google-business-profile-optimization/,/services/,Services,google business profile optimization
-26,Service,Technical SEO,/services/technical-seo/,/services/,Services,technical seo
-27,Service,Content marketing,/services/content-marketing/,/services/,Services,
-28,Service,Link building and earned mentions,/services/link-building/,/services/,Services,
-29,Service,Social media marketing (SMO),/services/social-media-marketing/,/services/,Services,social media marketing services
-30,Service,Reputation and reviews,/services/reputation-management/,/services/,Services,
-31,Service,Voice search,/services/voice-search-optimization/,/services/,Services,
-32,Service,Ecommerce SEO,/services/ecommerce-seo/,/services/,Services,ecommerce seo
-33,Service,B2B SEO,/services/b2b-seo/,/services/,Services,
-34,Service,Small business SEO,/services/small-business-seo/,/services/,Services,
-35,Service,Lead generation,/services/lead-generation/,/services/,Services,
-36,Service,Digital marketing,/services/digital-marketing/,/services/,Services,
-37,Service,Web design,/services/web-design/,/services/,Services,
-38,Service,Web development,/services/web-development/,/services/,Services,
-39,Service,App development,/services/app-development/,/services/,Services,
-40,Service,Custom CRM,/services/custom-crm/,/services/,Services,
-41,Service,Design services,/services/design/,/services/,Services,
-42,Hub,Services,/services/,/,Services,
-43,Guide,What is E-E-A-T,/guides/what-is-eeat/,/guides/,What's wrong?,what is e-e-a-t
-44,Guide,SEO keyword research: how we choose,/guides/seo-keyword-research/,/guides/,What's wrong?,seo keyword research
-45,Guide,How long SEO takes,/guides/how-long-does-seo-take/,/guides/,What's wrong?,how long does seo take
-46,Guide,How to choose an SEO company,/guides/how-to-choose-an-seo-company/,/guides/,What's wrong?,how to choose an seo company
-47,Guide,Service business vs ecommerce vs B2B,/guides/service-vs-ecommerce-vs-b2b-seo/,/guides/,What's wrong?,
-48,Hub,Guides,/guides/,/,What's wrong?,
-49,Mirror,Ask,/ask/,/,Header field,
-50,Mirror,AI Recommendation Index,/ai-recommendation-index/,/,Look yourself up,how does chatgpt recommend businesses
-51,Mirror,Open Board,/open-board/,/,Look yourself up,
-52,Mirror,Open Log,/open-log/,/,Look yourself up,seo report example
-53,Mirror,Searches by trade and city,/searches/,/,Look yourself up,plumber seo keywords
-54,Mirror,Your Plan,/your-plan/,/,Look yourself up,
-55,Hub,Industries,/industries/,/,Look yourself up,seo by industry
-56,Hub,Cities,/cities/,/,Look yourself up,
-57,Identity,Origin: how the equation came about,/about/,/,Who's behind this,relevant search media
-58,Identity,Thomas D'Souza,/thomas-dsouza/,/about/,Who's behind this,thomas d'souza seo
-59,Identity,The two commitments,/commitments/,/about/,Who's behind this,seo guarantee
-60,Identity,Results and reviews,/results/,/about/,Who's behind this,relevant search media reviews
-61,Identity,How we write and check,/about/editorial-policy/,/about/,Footer,
-62,Identity,Corrections,/about/corrections/,/about/,Footer,
-63,Identity,Contact,/contact/,/,Footer,
-64,Identity,Book a discovery call,/book/,/,Button,
-65,Legal,Privacy policy,/privacy/,/,Footer,
-66,Legal,Terms,/terms/,/,Footer,
+number,layer,page,url,parent,menu
+1,Home,Home,/,,Logo
+2,Situation,Nobody can find my business online,/problems/not-showing-up-on-google/,/problems/,What's wrong?
+3,Situation,People find me but don't pick me,/problems/not-getting-leads/,/problems/,What's wrong?
+4,Situation,"Google shows me, AI doesn't",/problems/not-recommended-by-chatgpt/,/problems/,What's wrong?
+5,Situation,I was ranking and I lost it,/problems/traffic-dropped/,/problems/,What's wrong?
+6,Situation,I'm being quoted and don't know if it's fair,/problems/seo-cost/,/problems/,What's wrong?
+7,Hub,Problems: the encyclopedia,/problems/,/,What's wrong?
+8,Equation,The D'Souza Equation,/dsouza-equation/,/,The Equation
+9,Equation,"D'Souza's Law of Search: engines change, the question does not",/dsouza-equation/law-of-search/,/dsouza-equation/,The Equation
+10,Equation,Read: can every engine read your business,/dsouza-equation/read/,/dsouza-equation/,The Equation
+11,Equation,Confirm: do others say the same,/dsouza-equation/confirm/,/dsouza-equation/,The Equation
+12,Equation,Choose: do people and engines pick you,/dsouza-equation/choose/,/dsouza-equation/,The Equation
+13,Equation,The D'Souza Standard: all 413 checks,/dsouza-equation/standard/,/dsouza-equation/,The Equation
+14,Equation,The D'Souza Method: the first 15 days and every day after,/dsouza-equation/method/,/dsouza-equation/,The Equation
+15,Equation,Every engine: the open list,/dsouza-equation/engines/,/dsouza-equation/,The Equation
+16,Equation,How search works now,/dsouza-equation/how-search-works/,/dsouza-equation/,The Equation
+17,Equation,"SEO vs AEO vs GEO vs AIO, and where each fits",/dsouza-equation/seo-vs-aeo-vs-geo/,/dsouza-equation/,The Equation
+18,Service,SEO,/services/seo/,/services/,Services
+19,Service,Local SEO,/services/local-seo/,/services/,Services
+20,Service,AI SEO,/services/ai-seo/,/services/,Services
+21,Service,Answer Engine Optimization (AEO),/services/answer-engine-optimization/,/services/,Services
+22,Service,Generative Engine Optimization (GEO),/services/generative-engine-optimization/,/services/,Services
+23,Service,AI Overview Optimization (AIO),/services/ai-overview-optimization/,/services/,Services
+24,Service,ChatGPT and LLM SEO,/services/chatgpt-seo/,/services/,Services
+25,Service,Google Business Profile,/services/google-business-profile-optimization/,/services/,Services
+26,Service,Technical SEO,/services/technical-seo/,/services/,Services
+27,Service,Content marketing,/services/content-marketing/,/services/,Services
+28,Service,Link building and earned mentions,/services/link-building/,/services/,Services
+29,Service,Social media marketing (SMO),/services/social-media-marketing/,/services/,Services
+30,Service,Reputation and reviews,/services/reputation-management/,/services/,Services
+31,Service,Voice search,/services/voice-search-optimization/,/services/,Services
+32,Service,Ecommerce SEO,/services/ecommerce-seo/,/services/,Services
+33,Service,B2B SEO,/services/b2b-seo/,/services/,Services
+34,Service,Small business SEO,/services/small-business-seo/,/services/,Services
+35,Service,Lead generation,/services/lead-generation/,/services/,Services
+36,Service,Digital marketing,/services/digital-marketing/,/services/,Services
+37,Service,Web design,/services/web-design/,/services/,Services
+38,Service,Web development,/services/web-development/,/services/,Services
+39,Service,App development,/services/app-development/,/services/,Services
+40,Service,Custom CRM,/services/custom-crm/,/services/,Services
+41,Service,Design services,/services/design/,/services/,Services
+42,Hub,Services,/services/,/,Services
+43,Guide,What is E-E-A-T,/guides/what-is-eeat/,/guides/,What's wrong?
+44,Guide,SEO keyword research: how we choose,/guides/seo-keyword-research/,/guides/,What's wrong?
+45,Guide,How long SEO takes,/guides/how-long-does-seo-take/,/guides/,What's wrong?
+46,Guide,How to choose an SEO company,/guides/how-to-choose-an-seo-company/,/guides/,What's wrong?
+47,Guide,Service business vs ecommerce vs B2B,/guides/service-vs-ecommerce-vs-b2b-seo/,/guides/,What's wrong?
+48,Hub,Guides,/guides/,/,What's wrong?
+49,Mirror,Ask,/ask/,/,Header field
+50,Mirror,AI Recommendation Index,/ai-recommendation-index/,/,Look yourself up
+51,Mirror,Open Board,/open-board/,/,Look yourself up
+52,Mirror,Open Log,/open-log/,/,Look yourself up
+53,Mirror,Searches by trade and city,/searches/,/,Look yourself up
+54,Mirror,Your Plan,/your-plan/,/,Look yourself up
+55,Hub,Industries,/industries/,/,Look yourself up
+56,Hub,Cities,/cities/,/,Look yourself up
+57,Identity,Origin: how the equation came about,/about/,/,Who's behind this
+58,Identity,Thomas D'Souza,/thomas-dsouza/,/about/,Who's behind this
+59,Identity,The two commitments,/commitments/,/about/,Who's behind this
+60,Identity,Results and reviews,/results/,/about/,Who's behind this
+61,Identity,How we write and check,/about/editorial-policy/,/about/,Footer
+62,Identity,Corrections,/about/corrections/,/about/,Footer
+63,Identity,Contact,/contact/,/,Footer
+64,Identity,Book a discovery call,/book/,/,Button
+65,Legal,Privacy policy,/privacy/,/,Footer
+66,Legal,Terms,/terms/,/,Footer

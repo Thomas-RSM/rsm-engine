@@ -76,7 +76,7 @@ Every term keeps its page and its keywords. Each is the D'Souza Equation applied
 
 ## 7. Why it is a method and not a slogan
 
-1. It can be followed: five parts, three proofs, written checks.
+1. It can be followed: five parts, three terms, 413 written checks.
 2. It can be measured: share of the map per engine, and the Relevance Rate.
 3. It can fail in public: the two written commitments say what happens when it does.
 4. RSM runs it on itself, with the log open.
@@ -92,12 +92,12 @@ Gartner's "Unified Search" paper is dated July 2026.
 
 **Locked: The D'Souza Equation** is the headline name (Thomas, 23 Nov 2026).
 
-Proposed family around it, not yet locked:
+The family around it, signed by Thomas on 23 Nov 2026:
 
 | Name | What it names |
 |---|---|
 | D'Souza's Law of Search | The observation: engines change, the customer's question does not |
-| The D'Souza Standard | The written checks (413 in the draft) |
+| The D'Souza Standard | The written checks: 413 in version 1.0, and growing |
 | The D'Souza Method | The work: the five parts |
 
 Writing rules: "D'Souza" always with the apostrophe in text; "dsouza-equation" in web addresses;
@@ -107,14 +107,13 @@ This is a market check, not a trademark clearance.
 Names considered and set aside: Universal Engine Optimization, Universal Relevance, D'Souza's Razor,
 the D'Souza Constant, the D'Souza Doctrine, the Doubting Thomas Principle.
 
-Presentation rule: the equation is a model for understanding until each term is scored from the
-checks. Whether to score it is decided in Step 3.
+Presentation rule: every group of the D'Souza Standard is tied to one term of the equation. The
+equation is presented as a model for understanding; a numeric score per term has not been built.
 
 ## 10. Carried forward from Step 1
 
 1. Proof of the 2024 start: check the version history of the Drive document "AI SEO Proposal". Until proven, public wording is "since 2025".
-2. The stamping plan in `stamp-plan.md` starts once the paper is written and the facts in Step 2 are signed.
-3. The proposed family names in section 9 await a yes or no.
+2. The stamping plan in `stamp-plan.md` starts once the paper is written. The facts it needs are signed.
 
 ## Sources
 

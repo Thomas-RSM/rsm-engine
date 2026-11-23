@@ -77,9 +77,9 @@ Two things follow, so the site and the public record agree:
 The project tracking sheet holds client website logins and passwords in plain text. Anyone with access
 to the sheet has them. They should be moved to a password manager and the passwords changed.
 
-## Step 6 is done when
+## Status
 
-- Every public review has a reply.
-- The findings bank holds real, category-level results read from the project sheets.
-- The public profiles are corrected to match the fact register.
-- The reviews to reuse are matched to projects.
+Step 6 was closed on 23 Nov 2026 at Thomas's instruction: his statements about the business are taken
+as given and the review and proof work is set aside. The company figures in section 3 go on the site.
+The work listed in section 4 is not being done now. It remains available if he wants it later.
+Nothing invented is published.

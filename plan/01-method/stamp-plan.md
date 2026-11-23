@@ -52,11 +52,11 @@ places where people and AI engines will meet it. This adds to the 100-site catal
 ## For the AI engines
 
 - The definition page carries defined-term markup and is listed in llms.txt.
-- Each month the six engines are asked what the theory is and who wrote it. The answers go in the Open Log.
+- Each month the tracked engines in `02-facts/engine-register.md` are asked what the equation is and who wrote it. The answers go in the Open Log.
 
 ## Before any of this can start
 
-1. The name is chosen (see `method.md`).
-2. The paper is written, fact-checked and signed: about 1,500 to 2,500 words.
-3. The author's name, spelling and biography are fixed in the fact register (Step 2).
-4. The registrations in rows 6 and 7 are made in the name of the legal owner the business chooses.
+1. Done: the name is The D'Souza Equation.
+2. To do: the paper is written, checked against the fact register and signed. About 1,500 to 2,500 words.
+3. Done: the author's name, spelling and biography are in the fact register.
+4. Decided: the registrations in rows 6 and 7 are made in the name of Pranay Handa.

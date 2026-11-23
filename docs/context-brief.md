@@ -1,3 +1,10 @@
+> **Read `plan/` first.** Since 23 Nov 2026 the website build is run from `plan/ROADMAP.md`, and
+> company facts come only from `plan/02-facts/fact-register.md`. Where this brief differs, the plan is
+> newer. Known differences: the method is the D'Souza Equation; the audit is 413 checks, not 313; the
+> foundation is 66 pages, not 461; every engine is covered, not six; the call is "Book a discovery
+> call", 20 to 30 minutes; Silly Creators Corp is removed; the biography page states that Thomas
+> D'Souza is the professional name of Pranay Handa.
+
 # RSM — context brief (carried into the website session)
 
 ## Corrections from Pranay, 18 Nov 2026 (these override anything below)

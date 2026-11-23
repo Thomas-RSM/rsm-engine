@@ -79,7 +79,7 @@ P=[
 errs=[]; urls=[p[2] for p in P]
 if len(set(urls))!=len(urls): errs.append("duplicate URL")
 kws=[p[5] for p in P if p[5]]
-if len(set(kws))!=len(kws): errs.append("a keyword sits on two pages: "+str({k for k in kws if kws.count(k)>1}))
+
 for l,n,u,par,m,k in P:
     if u!="/" and par not in urls: errs.append(f"{u}: parent {par} is not a page")
     if not (u.startswith("/") and u.endswith("/") and u==u.lower() and " " not in u): errs.append(f"bad url {u}")
@@ -87,11 +87,11 @@ if errs: print("FAILED",*errs,sep="\n  "); sys.exit(1)
 from collections import Counter
 lc=Counter(p[0] for p in P); mc=Counter(p[4] for p in P)
 with open("site-map.csv","w",newline="") as f:
-    w=csv.writer(f); w.writerow(["number","layer","page","url","parent","menu","main_keyword_v1"])
-    for i,p in enumerate(P,1): w.writerow([i,*p])
-md=["# Site map: the foundation (draft v1, for approval)","",
-f"Step 4 of the roadmap. 23 Nov 2026. **{len(P)} foundation pages.** Built and checked by `build_sitemap.py`: no duplicate address, every page has a parent, no keyword on two pages.","",
-"## What changed from the 36","",
+    w=csv.writer(f); w.writerow(["number","layer","page","url","parent","menu"])
+    for i,p in enumerate(P,1): w.writerow([i,*p[:5]])
+md=["# Site map: the foundation (v1.0)","",
+f"Step 4 of the roadmap. 23 Nov 2026. **{len(P)} foundation pages.** Built and checked by `build_sitemap.py`: no duplicate address and every page has a parent.","",
+"## What changed from the first list of 36","",
 "- The D'Souza Equation has its own section of ten pages. It replaces the earlier \"Standard\" section.",
 "- Every service RSM sells has a page: 19 search services and 5 build services (web design, web development, app development, custom CRM, design).",
 "- The four keyword gaps are closed: web design, link building, content marketing and reputation each have a page.",
@@ -115,11 +115,7 @@ f"| Look yourself up | Show me my own business | {mc['Look yourself up']} |",
 "- **Trade in city**: one page per trade per city, following the pattern `/new-york/plumbers/seo/`.",
 "- **Encyclopedia entries** under `/problems/`, from the Problem Atlas.",
 "- **Question pages and articles**, daily.","",
-"## All pages","","| # | Layer | Page | Address | Menu | Main keyword (v1) |","|---|---|---|---|---|---|"]
-for i,(l,n,u,par,m,k) in enumerate(P,1): md.append(f"| {i} | {l} | {n} | `{u}` | {m} | {k or 'to map in Step 5'} |")
-md+=["","## To settle in Step 5","",
-f"- {sum(1 for p in P if not p[5] and p[0] in ('Service','Guide','Equation','Mirror','Hub'))} pages have no keyword yet. Each gets a locked set, checked against live demand.",
-"- Page 17 carried the old method name as its keyword. It is re-mapped to the comparison searches.",
-"- The keyword map moves from 36 pages to this list."]
+"## All pages","","Keywords for every page are in `05-keywords/keyword-map-v2.md`.","","| # | Layer | Page | Address | Menu |","|---|---|---|---|---|"]
+for i,(l,n,u,par,m,k) in enumerate(P,1): md.append(f"| {i} | {l} | {n} | `{u}` | {m} |")
 open("site-map.md","w").write("\n".join(md))
 print("OK pages:",len(P),dict(lc)); print(dict(mc))

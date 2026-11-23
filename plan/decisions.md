@@ -1,4 +1,25 @@
-# Foundation decisions
+# Decisions log
+
+## Current state, 23 Nov 2026 (read this first; everything below is the history)
+
+| Topic | Decision |
+|---|---|
+| Name | The D'Souza Equation: Relevance = Read × Confirm × Choose. Family: D'Souza's Law of Search, the D'Souza Standard, the D'Souza Method |
+| Core idea | Engines change. The customer's question does not |
+| Facts | `02-facts/fact-register.md` v1.0 is the only source |
+| Standard | 413 checks, versioned and growing. The free report runs about 30 |
+| Engines | All of them; open list in `02-facts/engine-register.md` |
+| Site | 66 foundation pages, five-menu header; then industries, cities, trade-in-city pages and the encyclopedia. Every city is targeted |
+| Keywords | Up to three locked per page, plus woven section keywords and questions. All existing terms are used |
+| Figures on the site | 900+ businesses served · 100+ specialists on US hours · about 400 projects, 90% successful · since 2010 · founded 2020 |
+| Proof | Thomas's statements are taken as given. No client names. Nothing invented is published |
+| Market | United States only. Located in New Delhi, India, stated once |
+| Call | "Book a discovery call", 20 to 30 minutes with Thomas |
+| How the work runs | Claude moves through the steps on its own judgment and records each default here |
+
+Superseded along the way and no longer in force: Universal Engine Optimization, Universal Relevance, the 36-page list, the 461 skeleton pages, "313", "six engines", "Book 20 minutes", the rule that the legal name is never public.
+
+## History
 
 Decisions made with Thomas in the foundation planning session, 21 to 22 Nov 2026.
 These add to `docs/context-brief.md`. Where the two differ, this file is newer.
