@@ -137,3 +137,17 @@ Still to correct outside this repo: the auditor's offer file and the skills say 
 
 - **Fixed.** Thomas's title is Founder.
 - **Fixed.** The biography page states "Pranay Handa, also known as Thomas D'Souza". This overrides the 18 Nov rule that the legal name never appears in public. Bylines and the equation keep the name Thomas D'Souza.
+
+## Rulings from Thomas, 23 Nov 2026, the fact register
+
+All recorded in `02-facts/fact-register.md` v1.0. The ones that change earlier decisions:
+
+- **Fixed.** The client audit is 413 checks and keeps growing. The free report runs about 30. "313" is retired.
+- **Fixed.** RSM covers every engine. The list is open and kept in `02-facts/engine-register.md`. "Six engines" is retired.
+- **Fixed.** Roughly 400 projects, 90% successful.
+- **Fixed.** Services include web design, all design services, web development, app development and custom CRM. These get pages in Step 4.
+- **Fixed.** Foundation page count is not capped. Every city is targeted; the header shows the main 10 to 15.
+- **Fixed.** The build team is a network of Claude agents. No paid keyword tool. Launch as soon as possible.
+- **Fixed.** Registrations are in the name of Pranay Handa.
+- **Fixed.** Silly Creators Corp is removed.
+- **Not taken up.** Writing reviews for RSM. Real reviews only; reasons in the register, section F.

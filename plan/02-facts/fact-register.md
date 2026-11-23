@@ -1,106 +1,123 @@
-# Fact register (draft v1, for Thomas to sign)
+# Fact register (v1.0)
 
-Step 2 of the roadmap. 23 Nov 2026. Every fact used on the site, in the paper, in profiles and in
-markup comes from this file and nowhere else. A fact that is not signed here is not used.
+Step 2 of the roadmap. Signed by Thomas on 22 and 23 Nov 2026 unless marked otherwise.
+Every fact used on the site, in the paper, in profiles and in markup comes from this file and nowhere
+else. A fact that is not here is not used. To change a fact, change it here first.
 
-Status: **Signed** (Thomas confirmed it in this session, with the date) · **To sign** (found in RSM's
-own material, needs a yes) · **Conflict** (sources disagree) · **Missing** (needed, not found).
+Status: **Signed** · **Open** (still needs an answer or a piece of work).
 
 ## A. Identity
 
-| ID | Fact | Value | Status | Source and note |
-|---|---|---|---|---|
-| A1 | Public company name | Relevant Search Media | To sign | All material |
-| A2 | Legal entity | Relevant Search Media Pvt. Ltd. | To sign | A 2026 service agreement in Drive; Google suggests "relevant search media pvt ltd" |
-| A3 | Other entity name | Silly Creators Corp | Missing | Named in the context brief as needing one public explanation. What is it, and is it shown at all? |
-| A4 | Founded | 2020 | Signed 22 Nov | Thomas. Outside systems still say 2006 and 2021: see section G |
-| A5 | Location | New Delhi, India | Signed 22 Nov | Thomas. Stated once. No Indian place is ever a search target |
-| A6 | Street address | | Missing | Needed for markup and profiles, or a decision to show city and country only |
-| A7 | Market served | United States only | Signed 22 Nov | Thomas |
-| A8 | US office | None. Never a virtual address | Signed (context brief, 18 Nov) | |
-| A9 | Website | https://www.relevantsearchmedia.com | To sign | Confirm the www form is the one to keep |
-| A10 | Phone | +1 202 609 6641 | To sign | Found in a July 2025 page draft. Is it current, and is it the one number used everywhere? |
-| A11 | Public email | | Missing | |
-| A12 | Working hours shown | US hours | To sign | Offer file: "specialists on US hours" |
+| ID | Fact | Value | Status |
+|---|---|---|---|
+| A1 | Public company name | Relevant Search Media | Signed |
+| A2 | Legal entity | Relevant Search Media Pvt. Ltd. | Signed |
+| A3 | Founded | 2020 | Signed |
+| A4 | Location, as shown | New Delhi, India. No street address. Stated once | Signed |
+| A5 | Market served | United States only. No Indian place is ever a search target | Signed |
+| A6 | US office | None. Never a virtual address | Signed |
+| A7 | Website | https://www.relevantsearchmedia.com. The new site replaces the current one on the same domain | Signed |
+| A8 | Phone | +1 202 609 6641 | Signed |
+| A9 | Public email | info@relevantsearchmedia.com | Signed. Thomas typed "relevantsaerchmedia"; recorded with the domain spelled as the website |
+| A10 | Working hours shown | US hours | Signed |
+| A11 | "Silly Creators Corp" | Removed. Not used anywhere | Signed |
 
 ## B. The author
 
-| ID | Fact | Value | Status | Source and note |
-|---|---|---|---|---|
-| B1 | Name and spelling | Thomas D'Souza | To sign | The Google account shows "Thomas Dsoouza". One spelling everywhere |
-| B2 | Title | Founder | Signed 23 Nov | Thomas. The offer file's "senior partner" is corrected in section G |
-| B3 | In digital marketing since | 2010 | Signed 22 Nov | Thomas |
-| B4 | Name shown as author everywhere | Thomas D'Souza | Signed 23 Nov | Bylines, the equation's name, profiles and posts all use this name |
-| B4a | Legal name disclosure | The biography page states: Pranay Handa, also known as Thomas D'Souza | Signed 23 Nov | Thomas. This replaces the 18 Nov rule that the legal name is never public. Shown on the biography page and in its markup as an alternate name; not in bylines |
-| B5 | Photo and video | | Missing | Needed for the author page and the stamping plan |
-| B6 | Biography | | Missing | Written in this step once B1 to B3 are signed |
-| B7 | Owner named on registrations (copyright, trademark) | | Missing | The company or a person. Decide before the theory is stamped |
+| ID | Fact | Value | Status |
+|---|---|---|---|
+| B1 | Name and spelling | Thomas D'Souza, with the apostrophe | Signed |
+| B2 | Title | Founder | Signed |
+| B3 | In digital marketing since | 2010 | Signed |
+| B4 | Name on bylines, the equation, profiles and posts | Thomas D'Souza | Signed |
+| B5 | Legal name | Pranay Handa. Thomas D'Souza is his professional name. The biography page states "Pranay Handa, also known as Thomas D'Souza", and its markup carries it as an alternate name | Signed |
+| B6 | Owner on copyright and trademark registrations | Pranay Handa | Signed |
+| B7 | Photo and video | Thomas appears on camera and in photographs | Signed. Assets still to be supplied |
+| B8 | Biography | Draft in `author-biography.md` | Open: to approve |
 
 ## C. Numbers
 
-| ID | Fact | Value | Status | Source and note |
-|---|---|---|---|---|
-| C1 | Businesses served | 900+ | Signed (context brief, 18 Nov) | Since 2020. Is there a record that supports the count? |
-| C2 | Team | 100+ specialists on US hours | To sign | Offer file. Asked on 22 Nov, not yet answered |
-| C3 | Share of projects reaching top results | 90% | Conflict | Stated by Thomas. Not usable until it is a count: how many projects, what counted as success, in how many months |
-| C4 | Customer searches mapped per client | 300, 600 or 2,000, by plan | To sign | Deliverables document. This is the figure behind "not 10 or 15 keywords" |
-| C5 | Audit checks | 313 today; 413 proposed | To sign | Deliverables document; `03-standard/`. Public number decided in Step 3 |
-| C6 | AI engines in the AI Score | | Conflict | The Deliverables document says "6 engines" and then lists seven: Google AI Overviews, Google AI Mode, ChatGPT, Gemini, Perplexity, Microsoft Copilot, Siri |
+| ID | Fact | Value | Status |
+|---|---|---|---|
+| C1 | Businesses served | 900+ | Signed |
+| C2 | Team | 100+ specialists on US hours | Signed |
+| C3 | Project results | Roughly 400 projects, 90% successful | Signed as stated. Open: the one-line definition of "successful" that goes beside the number in public |
+| C4 | Customer searches mapped per client | 300, 600 or 2,000, by plan | Signed |
+| C5 | Free report | About 30 checks | Signed |
+| C6 | Client audit | 413 checks, and the list keeps growing. Each addition gets a version and a date | Signed. The old "313" is corrected wherever it appears |
+| C7 | AI and search engines covered | All of them. The list is open and is kept in `engine-register.md` | Signed. "Six engines" is no longer used |
 
 ## D. How RSM works
 
-| ID | Fact | Value | Status | Source and note |
-|---|---|---|---|---|
-| D1 | Five-day launch | Day 1 discover · Day 2 market study · Day 3 full audit · Day 4 growth plan · Day 5 fixes go live | To sign | Offer file |
-| D2 | Daily work | Every day, each item logged with its link | To sign | Offer file |
-| D3 | Report | Every 15 days | To sign | Offer file |
-| D4 | Term | Month to month; the client owns everything created | To sign | Offer file |
-| D5 | Exclusivity | One business per trade per city | To sign | Offer file |
-| D6 | Work commitment | Every item in the plan ships and is logged. If a 15-day report shows a miss, that period is free | To sign | Deliverables document, exact wording |
-| D7 | Page-one commitment | At least half the customer searches in the map on page 1 of Google's organic results by the end of month 4, or work continues at no charge until they are | To sign | Deliverables document, exact wording |
-| D8 | Never offered | Free audit, free trial, free work, guaranteed rankings or AI placement, bought links | To sign | Skills and offer file |
-| D9 | The call | A discovery call of 20 to 30 minutes with Thomas | Signed 22 Nov | Booking link: calendly.com/thomas-relevant-search-media/30min. The booking page says 30 minutes |
-| D10 | Prices and plan names on the site | None shown | Signed (context brief, 18 Nov) | Internal only: Essential, Accelerate; a third plan appears in some documents |
+| ID | Fact | Value | Status |
+|---|---|---|---|
+| D1 | Five-day launch | Day 1 discover · Day 2 market study · Day 3 full audit · Day 4 growth plan · Day 5 fixes go live | Signed |
+| D2 | Daily work | Every day, each item logged with its link | Signed |
+| D3 | Report | Every 15 days | Signed |
+| D4 | Term | Month to month. The client owns everything created | Signed |
+| D5 | Exclusivity | One business per trade per city | Signed |
+| D6 | Work commitment | Every item in the plan ships and is logged. If a 15-day report shows a miss, that period is free | Signed |
+| D7 | Page-one commitment | At least half the customer searches in the map on page 1 of Google's organic results by the end of month 4, or the work continues at no charge until they are | Signed |
+| D8 | The call | "Book a discovery call", 20 to 30 minutes with Thomas. Booking link: calendly.com/thomas-relevant-search-media/30min | Signed |
+| D9 | Prices and plan names on the site | None shown | Signed |
+| D10 | Services sold | Search: SEO, local SEO, AI SEO, AEO, GEO, AIO, Google Business Profile, social media, content, links, reputation. Build: web design, all design services, web development, app development, custom CRM | Signed |
 
 ## E. The theory and its language
 
-| ID | Fact | Value | Status | Source and note |
-|---|---|---|---|---|
-| E1 | Name | The D'Souza Equation | Signed 23 Nov | Thomas |
-| E2 | The equation | Relevance = Read × Confirm × Choose | Signed 23 Nov | Thomas chose the name built on it |
-| E3 | The observation | Engines change. The customer's question does not | Signed 22 Nov | Thomas: "the observation that you did is good" |
-| E4 | Brand line | Relevant search, relevant traffic, relevant leads | To sign | Offer file. Matches Thomas's own words on 22 Nov |
-| E5 | The measure | The Relevance Rate | To sign | Proposed 22 Nov, never confirmed |
-| E6 | Family names | D'Souza's Law of Search · the D'Souza Standard · the D'Souza Method | To sign | Proposed |
-| E7 | Origin date used in public | Since 2025 | To sign | Proven from June 2025. 2024 if the version history proves it |
+| ID | Fact | Value | Status |
+|---|---|---|---|
+| E1 | Name | The D'Souza Equation | Signed |
+| E2 | The equation | Relevance = Read × Confirm × Choose | Signed |
+| E3 | The observation | Engines change. The customer's question does not | Signed |
+| E4 | Family names | D'Souza's Law of Search · the D'Souza Standard · the D'Souza Method | Signed |
+| E5 | Brand line | Relevant search, relevant traffic, relevant leads | Signed |
+| E6 | The measure | The Relevance Rate | Signed |
+| E7 | How RSM describes itself | It keeps evolving. The standard and the engine list grow with time and are never frozen | Signed |
+| E8 | Origin date used in public | Since 2025, proven from June 2025 | Open: 2024 if the version history of "AI SEO Proposal" proves it |
 
 ## F. Proof rules
 
 | ID | Rule | Status |
 |---|---|---|
-| F1 | No client names, no exact rankings, no client data in public | Signed 22 Nov |
-| F2 | Results stated by category and range of services | Signed 22 Nov |
-| F3 | No "works 100%" claim | Signed (recorded 22 Nov, not objected to) |
-| F4 | Numbers without a client name, such as months or share of searches: allowed? | Missing |
-| F5 | Named testimonials and public reviews: possible? | Missing |
+| F1 | No client names, no exact rankings, no client data in public | Signed |
+| F2 | Results stated by category and range of services | Signed |
+| F3 | Reviews and testimonials: real ones only, taken from RSM's own listings, the good ones chosen | Signed for real ones |
+| F4 | No written-up or invented reviews, quotes, clients or results, on the site or anywhere else | Held. See the note below |
+| F5 | Results with numbers but no client name, such as "within four months" | Open: explained again to Thomas on 23 Nov |
 
-## G. Outside systems that disagree and must be corrected
+Note on F4. Thomas said reviews may also be written for RSM. That part is not taken up. Invented reviews
+and testimonials are banned by a US Federal Trade Commission rule in force since 2024, with fines per
+violation, and Google removes them and can penalise the site. One discovered fake would undo the trust
+the whole plan is built on. The real reviews are collected instead, and a request goes to every happy client.
+
+## G. How the work is done
+
+| ID | Fact | Value | Status |
+|---|---|---|---|
+| G1 | Team for the build | A network of Claude agents built and run for this project: research, writing, fact-checking, the page gate, design, build | Signed. Designed in the operating model, before Step 10 |
+| G2 | Sign-off | Thomas approves facts and each step | Signed |
+| G3 | Paid keyword tools | None. Demand comes from Google autocomplete now and Search Console once access is given | Signed |
+| G4 | Access | Thomas will give Search Console and Analytics access | Signed. Access still to be set up |
+| G5 | Launch | As soon as possible, as one large launch | Signed |
+| G6 | Foundation page count | As many as the plan needs. Set in Step 4 | Signed |
+| G7 | Cities | The header menu shows the main 10 to 15. Every city is targeted; none is dropped | Signed |
+| G8 | The RSM canon | Not found in the GitHub account, 23 Nov. This register and `plan/` are the source of truth for the website | Signed |
+
+## H. Outside systems that disagree and must be corrected
 
 | # | Where | What it says | Should say |
 |---|---|---|---|
-| G1 | The auditor's offer file, used in every audit PDF and cold email | Since 2006 | Since 2020 |
-| G2 | The email and SEO skills, fallback text | Since 2006 | Since 2020 |
-| G3 | The Manifest profile | Launched 2021, Gurugram | Founded 2020, New Delhi |
-| G4 | Google autocomplete for the brand | "relevant search media noida" | Reflects an old listing somewhere; find and correct it |
-| G5 | Thomas's Google account name | Thomas Dsoouza | Thomas D'Souza |
-| G6 | July 2025 page drafts | Customer quotes and result figures with no support | Not used; any live copy checked |
-| G7 | Offer file | "Book 30 minutes" | One wording for the call everywhere |
-| G8 | Offer file | Senior partner | Founder |
-| G9 | `docs/context-brief.md` | "Pranay Handa" is never used in public content | Stated once, on the biography page |
+| H1 | The auditor's offer file, used in every audit PDF and cold email | Since 2006 · senior partner · 313 points · "Book 30 minutes" | Since 2020 · Founder · 413 · "Book a discovery call" |
+| H2 | The email and SEO skills, fallback text | Since 2006 · six engines · 313 | As this register |
+| H3 | The Manifest and Clutch profiles | Launched 2021, Gurugram | Founded 2020, New Delhi |
+| H4 | Google autocomplete for the brand | "relevant search media noida" | An old listing somewhere; find and correct it |
+| H5 | Thomas's Google account name | Thomas Dsoouza | Thomas D'Souza |
+| H6 | July 2025 page drafts | Customer quotes and result figures with no support | Not used; any live copy checked |
+| H7 | `docs/context-brief.md` | Legal name never public · Silly Creators Corp explained once | As B5 and A11 |
 
-## To close Step 2
+## Still open in Step 2
 
-1. Thomas answers every row marked To sign, Conflict or Missing.
-2. Signed values replace the draft ones and the file becomes v1.0.
-3. The corrections in section G are assigned and dated.
-4. The author biography (B6) is written from the signed facts and approved.
+1. C3: one line defining "successful" for the 90% figure.
+2. F5: yes or no to results with numbers and no client name.
+3. B8: approval of the biography draft.
+4. E8: the 2024 check.
