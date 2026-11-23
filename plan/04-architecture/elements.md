@@ -164,4 +164,4 @@ Live evidence for the lead keywords: 111 confirmed real searches, 1 weak signals
 
 ## Order of building
 
-The 66 foundation pages come first. Element pages follow in this order: the ones every service page links to, then the rest by group. Each passes the page gate before it goes live.
+The foundation pages come first. Element pages follow in this order: the ones every service page links to, then the rest by group. Each passes the page gate before it goes live.

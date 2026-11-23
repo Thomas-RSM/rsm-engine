@@ -167,7 +167,7 @@ f"Live evidence for the lead keywords: {g.get('A',0)} confirmed real searches, {
 "## All elements","","| # | Element | Where | Equation | Standard group | Lead keyword | Evidence |","|---|---|---|---|---|---|---|"]
 for r in rows: md.append(f"| {r[0]} | {r[4]} | {r[1]} | {r[2]} | {r[3]} | {r[6]} | {r[7]} |")
 md+=["","## Order of building","",
-"The 66 foundation pages come first. Element pages follow in this order: the ones every service page links to, then the rest by group. Each passes the page gate before it goes live."]
+"The foundation pages come first. Element pages follow in this order: the ones every service page links to, then the rest by group. Each passes the page gate before it goes live."]
 open(os.path.join(here,"elements.md"),"w").write("\n".join(md))
 print("OK elements:",len(rows),dict(wh),"grades:",dict(g))
 for r in rows:
