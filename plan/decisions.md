@@ -163,3 +163,9 @@ All recorded in `02-facts/fact-register.md` v1.0. The ones that change earlier d
 - Steps are closed as they are finished, without waiting for a separate approval. Every default is recorded here and can be changed.
 - **Fixed by default.** Step 4: the 66-page foundation site map.
 - **Fixed by default.** Step 5: keyword map v2. Three locked keywords per page at most, plus woven section keywords and questions.
+
+## 23 Nov 2026: proof
+
+- **Held from publication** until a record supports them: "100+ specialists", "900+ businesses served", "400 projects, 90% successful". Reasons and the records read are in `06-proof/proof-inventory.md`. They remain in the register as Thomas's statements.
+- **Withdrawn.** The default definition of "successful" set earlier today.
+- **Fixed by default.** Only reviews matched to a real project are reused. Every public review gets a reply.

@@ -39,9 +39,9 @@ Status: **Signed** · **Open** (still needs an answer or a piece of work).
 
 | ID | Fact | Value | Status |
 |---|---|---|---|
-| C1 | Businesses served | 900+ | Signed |
-| C2 | Team | 100+ specialists on US hours | Signed |
-| C3 | Project results | Roughly 400 projects, 90% successful | Signed. Working definition, set by default on 23 Nov: "successful" means the project reached page one of Google for the searches mapped for it. Thomas can change this wording at any time before it is published |
+| C1 | Businesses served | 900+ | Signed by Thomas. **Held from publication** until a client list or billing record gives the count. See `06-proof/proof-inventory.md` |
+| C2 | Team | 100+ specialists on US hours | Signed by Thomas. **Held from publication**: the public Clutch profile shows 2 to 9 employees. Published when a staff record supports it and the profile matches |
+| C3 | Project results | Roughly 400 projects, 90% successful | Signed by Thomas. **Held from publication**: the project records and public reviews read on 23 Nov do not support it. Replaced by the count the records prove |
 | C4 | Customer searches mapped per client | 300, 600 or 2,000, by plan | Signed |
 | C5 | Free report | About 30 checks | Signed |
 | C6 | Client audit | 413 checks, and the list keeps growing. Each addition gets a version and a date | Signed. The old "313" is corrected wherever it appears |

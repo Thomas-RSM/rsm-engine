@@ -7,7 +7,7 @@ supplied by Thomas, not written for him.
 
 Thomas D'Souza is the founder of Relevant Search Media and the author of the D'Souza Equation, which
 explains how every search engine and AI assistant decides which business to name. He has worked in
-digital marketing since 2010. Relevant Search Media, founded in 2020, has served more than 900 businesses.
+digital marketing since 2010. He founded Relevant Search Media in 2020.
 
 ## Long form, for the biography page
 
@@ -21,8 +21,7 @@ He is the author of the D'Souza Equation: Relevance = Read × Confirm × Choose.
 observation from his work: engines change, and the customer's question does not. Whatever the engine,
 it names the business it can read plainly, confirm from independent sources, and see real people choose.
 
-Relevant Search Media has served more than 900 businesses. Its team of more than 100 specialists works
-on US hours from New Delhi, India, for clients across the United States.
+Relevant Search Media works on US hours from New Delhi, India, for clients across the United States.
 
 Thomas D'Souza is the professional name of Pranay Handa.
 
