@@ -49,24 +49,25 @@ Four of the five-star reviews are dated within nine days of each other in Septem
 share nearly the same wording. A buyer or a competitor can see that pattern too. Only reviews RSM can
 tie to a client and a project are used.
 
-## 3. Three claims that are not yet supported
+## 3. Three company figures
 
-| Claim in the fact register | What the records show | Decision |
-|---|---|---|
-| 100+ specialists on US hours | Clutch shows 2 to 9 employees. The project sheet assigns work among about five named people | Held. Not published until a staff record supports it, and the Clutch profile is corrected to match |
-| 900+ businesses served | No record read supports or contradicts the count. The project sheet lists about 240 SEO projects and 145 assignments | Held until a client list or billing record gives the count |
-| Roughly 400 projects, 90% successful | The project sheet marks most sampled projects "Stopped" or "Pause", with notes such as "No ranking, the client is desperate for the ranking" beside others reading "Most of keywords are come in rank". Three of ten public reviews are one-star | Held. Not published. The default wording set earlier in the register is withdrawn |
+"100+ specialists on US hours", "900+ businesses served" and "about 400 projects, 90% successful".
 
-Why these are held and not softened. A US buyer checks Clutch in ten seconds. A number on the site
-that the public profile contradicts costs more trust than no number. US advertising rules also require
-a business to hold the evidence for a results claim before making it. Thomas signed these figures, and
-they stay in the register as his statement; they go on the site when a record stands behind them.
+These were held on 23 Nov because the records read did not support them: Clutch shows 2 to 9 employees,
+and the project sheet marks many sampled projects stopped or paused. Thomas then confirmed that all
+three are true and that he wants them on the site. He keeps the supporting records himself and does not
+wish to share names or further detail. That is his decision as the owner, and the figures are released
+for publication in his words.
+
+Two things follow, so the site and the public record agree:
+
+1. The Clutch and Manifest profiles are corrected to the same team size and founding year, since a buyer compares them.
+2. Thomas keeps the records where he can produce them if a client, a platform or a regulator asks. US advertising rules expect a business to hold the evidence for a results figure it publishes.
 
 ## 4. Proof that can be built honestly, starting now
 
 1. **Reply to every review**, the three one-star ones first: what happened, what was done about it, what has changed since. Thomas supplies the facts of each case; the reply is drafted from them.
 2. **Real findings from RSM's own project sheets.** The tracking sheet links a ranking sheet for most projects. Reading them gives true, category-level results: the trade, the range of services, what moved and in how long. No names. This is the findings bank.
-3. **The count that is true.** From the same sheets: how many projects have documented page-one results. Whatever the number is, it is published with its definition.
 4. **Ask for reviews** from the clients whose sheets show good results.
 5. **The public parts of the plan need no past record**: the D'Souza Standard, the two written commitments, and the Open Log, which starts at day one and shows RSM's own numbers moving.
 6. **The AI Recommendation Index.** The method and prompts are ready to write; running it needs a way to query ChatGPT, Gemini and Perplexity, which this session does not have.
@@ -80,5 +81,5 @@ to the sheet has them. They should be moved to a password manager and the passwo
 
 - Every public review has a reply.
 - The findings bank holds real, category-level results read from the project sheets.
-- Each of the three held claims is either supported by a record or replaced by the number that is true.
+- The public profiles are corrected to match the fact register.
 - The reviews to reuse are matched to projects.

@@ -169,3 +169,9 @@ All recorded in `02-facts/fact-register.md` v1.0. The ones that change earlier d
 - **Held from publication** until a record supports them: "100+ specialists", "900+ businesses served", "400 projects, 90% successful". Reasons and the records read are in `06-proof/proof-inventory.md`. They remain in the register as Thomas's statements.
 - **Withdrawn.** The default definition of "successful" set earlier today.
 - **Fixed by default.** Only reviews matched to a real project are reused. Every public review gets a reply.
+
+## Ruling from Thomas, 23 Nov 2026: the three company figures
+
+- **Fixed.** "100+ specialists on US hours", "900+ businesses served" and "about 400 projects, 90% successful" go on the site. Thomas states they are true and keeps the records himself. No client names or further detail are published or requested.
+- The concern was raised once (the public Clutch profile and the project sheet read differently) and Thomas reaffirmed. The hold of earlier today is lifted.
+- **To do.** Correct the Clutch and Manifest profiles so they match.

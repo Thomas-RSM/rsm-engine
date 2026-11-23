@@ -39,9 +39,9 @@ Status: **Signed** · **Open** (still needs an answer or a piece of work).
 
 | ID | Fact | Value | Status |
 |---|---|---|---|
-| C1 | Businesses served | 900+ | Signed by Thomas. **Held from publication** until a client list or billing record gives the count. See `06-proof/proof-inventory.md` |
-| C2 | Team | 100+ specialists on US hours | Signed by Thomas. **Held from publication**: the public Clutch profile shows 2 to 9 employees. Published when a staff record supports it and the profile matches |
-| C3 | Project results | Roughly 400 projects, 90% successful | Signed by Thomas. **Held from publication**: the project records and public reviews read on 23 Nov do not support it. Replaced by the count the records prove |
+| C1 | Businesses served | 900+ | Signed and released for the site by Thomas, 23 Nov. He states it is true and keeps the supporting records himself |
+| C2 | Team | 100+ specialists on US hours | Signed and released for the site by Thomas, 23 Nov. The Clutch profile (2 to 9 employees) is corrected to match: see section H |
+| C3 | Project results | About 400 projects, 90% successful | Signed and released for the site by Thomas, 23 Nov. Published in his words, with no client names or further detail |
 | C4 | Customer searches mapped per client | 300, 600 or 2,000, by plan | Signed |
 | C5 | Free report | About 30 checks | Signed |
 | C6 | Client audit | 413 checks, and the list keeps growing. Each addition gets a version and a date | Signed. The old "313" is corrected wherever it appears |
@@ -109,7 +109,7 @@ the whole plan is built on. The real reviews are collected instead, and a reques
 |---|---|---|---|
 | H1 | The auditor's offer file, used in every audit PDF and cold email | Since 2006 · senior partner · 313 points · "Book 30 minutes" | Since 2020 · Founder · 413 · "Book a discovery call" |
 | H2 | The email and SEO skills, fallback text | Since 2006 · six engines · 313 | As this register |
-| H3 | The Manifest and Clutch profiles | Launched 2021, Gurugram | Founded 2020, New Delhi |
+| H3 | The Manifest and Clutch profiles | Launched 2021, Gurugram, 2 to 9 employees | Founded 2020, New Delhi, team size as C2 |
 | H4 | Google autocomplete for the brand | "relevant search media noida" | An old listing somewhere; find and correct it |
 | H5 | Thomas's Google account name | Thomas Dsoouza | Thomas D'Souza |
 | H6 | July 2025 page drafts | Customer quotes and result figures with no support | Not used; any live copy checked |
