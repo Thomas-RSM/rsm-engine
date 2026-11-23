@@ -157,3 +157,9 @@ All recorded in `02-facts/fact-register.md` v1.0. The ones that change earlier d
 - Thomas said he had given everything needed. Four open items in the fact register were closed by default and are marked as such there.
 - **Fixed.** The checks are published as the D'Souza Standard v1.0: 413 checks, each group tied to a term of the equation (the question 14, Read 250, Confirm 99, Choose 50).
 - **Proposed.** The foundation site map: see `04-architecture/site-map.md`.
+
+## 23 Nov 2026: Thomas asked for the work to continue on Claude's judgment
+
+- Steps are closed as they are finished, without waiting for a separate approval. Every default is recorded here and can be changed.
+- **Fixed by default.** Step 4: the 66-page foundation site map.
+- **Fixed by default.** Step 5: keyword map v2. Three locked keywords per page at most, plus woven section keywords and questions.
