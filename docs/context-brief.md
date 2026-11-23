@@ -6,6 +6,13 @@ Equation (`01-method`), the signed fact register (`02-facts`), the 413-check D'S
 the 66-page site map with the five-menu header (`04-architecture`) and the keyword map (`05-keywords`).
 Where this brief and `plan/` differ, `plan/` wins.
 
+## Steps 6–8 are done (23 Nov, evening): proof inventory, messaging, blueprints and heroes for all 67 pages, 113 element pages
+- Home hero (heroes.md): H1 "The SEO company in the USA that makes you the answer"; subline "Engines change. Your customer's question does not. We make your business the most relevant answer to it, on Google and on every AI engine."; lighter step "Ask a question".
+- The record, released by Thomas: 900+ businesses · about 400 projects, 90% successful · 100+ specialists · in digital marketing since 2010.
+- Why book the call: who AI names for you · which searches you are missing · whether your trade is open.
+- Elements hub (113 element pages) sits in The Equation menu; foundation is 67 pages.
+- Design plan v2: `plan/09-design/vision.md` (the Console, two papers, Hyperframes films).
+
 ## What the home page design must change to match `plan/` (as of 23 Nov 2026)
 - The site describes the **owner, not the agency**. The five "What's wrong?" situations are the entry point.
 - **Header**: a live strip (Standard version and date · Open Log day count · open-or-taken check), then five
