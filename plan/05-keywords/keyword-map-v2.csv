@@ -1,0 +1,178 @@
+page,layer,page_name,url,role,keyword,live_grade
+1,Home,Home,/,lead,seo company in usa,A
+1,Home,Home,/,same intent,seo agency in usa,A
+1,Home,Home,/,same intent,seo company,A
+2,Situation,Nobody can find my business online,/problems/not-showing-up-on-google/,lead,why is my business not showing up on google,A
+2,Situation,Nobody can find my business online,/problems/not-showing-up-on-google/,same intent,why is my business not showing up on google maps,A
+2,Situation,Nobody can find my business online,/problems/not-showing-up-on-google/,same intent,how to get my business on google,A
+3,Situation,People find me but don't pick me,/problems/not-getting-leads/,lead,how to get more leads for my business,A
+3,Situation,People find me but don't pick me,/problems/not-getting-leads/,same intent,how to get more customers for my business,A
+3,Situation,People find me but don't pick me,/problems/not-getting-leads/,same intent,how to get more leads,A
+4,Situation,"Google shows me, AI doesn't",/problems/not-recommended-by-chatgpt/,lead,how to get my business recommended by chatgpt,A
+4,Situation,"Google shows me, AI doesn't",/problems/not-recommended-by-chatgpt/,same intent,how to get my business on chatgpt,A
+4,Situation,"Google shows me, AI doesn't",/problems/not-recommended-by-chatgpt/,same intent,how to show up in chatgpt,A
+5,Situation,I was ranking and I lost it,/problems/traffic-dropped/,lead,website traffic dropped suddenly,A
+5,Situation,I was ranking and I lost it,/problems/traffic-dropped/,same intent,google ranking dropped dramatically,A
+5,Situation,I was ranking and I lost it,/problems/traffic-dropped/,same intent,why has my website traffic dropped,A
+6,Situation,I'm being quoted and don't know if it's fair,/problems/seo-cost/,lead,how much does seo cost,A
+6,Situation,I'm being quoted and don't know if it's fair,/problems/seo-cost/,same intent,seo pricing,A
+6,Situation,I'm being quoted and don't know if it's fair,/problems/seo-cost/,same intent,seo cost for small business,A
+7,Hub,Problems: the encyclopedia,/problems/,lead,seo problems,A
+7,Hub,Problems: the encyclopedia,/problems/,same intent,common seo issues,A
+7,Hub,Problems: the encyclopedia,/problems/,same intent,seo issues,A
+8,Equation,The D'Souza Equation,/dsouza-equation/,lead,d'souza equation,own term
+8,Equation,The D'Souza Equation,/dsouza-equation/,same intent,how do search engines rank websites,B
+8,Equation,The D'Souza Equation,/dsouza-equation/,same intent,how does google rank websites,A
+9,Equation,"D'Souza's Law of Search: engines change, the question does not",/dsouza-equation/law-of-search/,lead,d'souza's law of search,own term
+9,Equation,"D'Souza's Law of Search: engines change, the question does not",/dsouza-equation/law-of-search/,same intent,is seo dead,A
+9,Equation,"D'Souza's Law of Search: engines change, the question does not",/dsouza-equation/law-of-search/,same intent,future of seo,A
+10,Equation,Read: can every engine read your business,/dsouza-equation/read/,lead,on page seo,A
+10,Equation,Read: can every engine read your business,/dsouza-equation/read/,same intent,what is on page seo,A
+10,Equation,Read: can every engine read your business,/dsouza-equation/read/,same intent,on page seo checklist,A
+11,Equation,Confirm: do others say the same,/dsouza-equation/confirm/,lead,off page seo,A
+11,Equation,Confirm: do others say the same,/dsouza-equation/confirm/,same intent,what is off page seo,A
+11,Equation,Confirm: do others say the same,/dsouza-equation/confirm/,same intent,off page seo techniques,A
+12,Equation,Choose: do people and engines pick you,/dsouza-equation/choose/,lead,conversion rate optimization,A
+12,Equation,Choose: do people and engines pick you,/dsouza-equation/choose/,same intent,what is conversion rate optimization,A
+12,Equation,Choose: do people and engines pick you,/dsouza-equation/choose/,same intent,conversion rate optimization examples,A
+13,Equation,The D'Souza Standard: all 413 checks,/dsouza-equation/standard/,lead,seo audit,A
+13,Equation,The D'Souza Standard: all 413 checks,/dsouza-equation/standard/,same intent,seo audit checklist,A
+13,Equation,The D'Souza Standard: all 413 checks,/dsouza-equation/standard/,same intent,website seo audit,A
+14,Equation,The D'Souza Method: the first 15 days and every day after,/dsouza-equation/method/,lead,seo strategy,A
+14,Equation,The D'Souza Method: the first 15 days and every day after,/dsouza-equation/method/,same intent,seo process,A
+14,Equation,The D'Souza Method: the first 15 days and every day after,/dsouza-equation/method/,same intent,how does seo work,A
+15,Equation,Every engine: the open list,/dsouza-equation/engines/,lead,ai search engines,A
+15,Equation,Every engine: the open list,/dsouza-equation/engines/,same intent,best ai search engines,A
+15,Equation,Every engine: the open list,/dsouza-equation/engines/,same intent,list of ai search engines,A
+16,Equation,How search works now,/dsouza-equation/how-search-works/,lead,how does google search work,A
+16,Equation,How search works now,/dsouza-equation/how-search-works/,same intent,how do ai overviews work,A
+16,Equation,How search works now,/dsouza-equation/how-search-works/,same intent,how does chatgpt search work,A
+17,Equation,"SEO vs AEO vs GEO vs AIO, and where each fits",/dsouza-equation/seo-vs-aeo-vs-geo/,lead,seo vs geo,A
+17,Equation,"SEO vs AEO vs GEO vs AIO, and where each fits",/dsouza-equation/seo-vs-aeo-vs-geo/,same intent,seo vs aeo,A
+17,Equation,"SEO vs AEO vs GEO vs AIO, and where each fits",/dsouza-equation/seo-vs-aeo-vs-geo/,same intent,seo vs aeo vs geo,A
+18,Hub,"Elements: every part of search, explained",/elements/,lead,seo ranking factors,A
+18,Hub,"Elements: every part of search, explained",/elements/,same intent,google ranking factors,A
+18,Hub,"Elements: every part of search, explained",/elements/,same intent,seo factors,A
+19,Service,SEO,/services/seo/,lead,seo services,A
+19,Service,SEO,/services/seo/,same intent,seo services company,A
+19,Service,SEO,/services/seo/,same intent,affordable seo services for small businesses,A
+20,Service,Local SEO,/services/local-seo/,lead,local seo services,A
+20,Service,Local SEO,/services/local-seo/,same intent,local seo agency,A
+20,Service,Local SEO,/services/local-seo/,same intent,google maps seo,A
+21,Service,AI SEO,/services/ai-seo/,lead,ai seo services,A
+21,Service,AI SEO,/services/ai-seo/,same intent,ai seo agency,A
+21,Service,AI SEO,/services/ai-seo/,same intent,ai search optimization,A
+22,Service,Answer Engine Optimization (AEO),/services/answer-engine-optimization/,lead,answer engine optimization,A
+22,Service,Answer Engine Optimization (AEO),/services/answer-engine-optimization/,same intent,aeo services,A
+22,Service,Answer Engine Optimization (AEO),/services/answer-engine-optimization/,same intent,answer engine optimization services,A
+23,Service,Generative Engine Optimization (GEO),/services/generative-engine-optimization/,lead,generative engine optimization,A
+23,Service,Generative Engine Optimization (GEO),/services/generative-engine-optimization/,same intent,generative engine optimization agency,A
+23,Service,Generative Engine Optimization (GEO),/services/generative-engine-optimization/,same intent,geo services,A
+24,Service,AI Overview Optimization (AIO),/services/ai-overview-optimization/,lead,ai overview optimization,A
+24,Service,AI Overview Optimization (AIO),/services/ai-overview-optimization/,same intent,how to show up in google ai overviews,A
+24,Service,AI Overview Optimization (AIO),/services/ai-overview-optimization/,same intent,google ai overview seo,B
+25,Service,ChatGPT and LLM SEO,/services/chatgpt-seo/,lead,chatgpt seo,A
+25,Service,ChatGPT and LLM SEO,/services/chatgpt-seo/,same intent,llm seo,A
+25,Service,ChatGPT and LLM SEO,/services/chatgpt-seo/,same intent,how to rank in chatgpt,A
+26,Service,Google Business Profile,/services/google-business-profile-optimization/,lead,google business profile optimization,A
+26,Service,Google Business Profile,/services/google-business-profile-optimization/,same intent,google my business optimization,A
+26,Service,Google Business Profile,/services/google-business-profile-optimization/,same intent,google business profile management,A
+27,Service,Technical SEO,/services/technical-seo/,lead,technical seo,A
+27,Service,Technical SEO,/services/technical-seo/,same intent,technical seo audit,A
+27,Service,Technical SEO,/services/technical-seo/,same intent,schema markup services,B
+28,Service,Content marketing,/services/content-marketing/,lead,content marketing agency,A
+28,Service,Content marketing,/services/content-marketing/,same intent,content marketing,A
+28,Service,Content marketing,/services/content-marketing/,same intent,seo content writing,A
+29,Service,Link building and earned mentions,/services/link-building/,lead,link building services,A
+29,Service,Link building and earned mentions,/services/link-building/,same intent,link building agency,A
+29,Service,Link building and earned mentions,/services/link-building/,same intent,backlinks for seo,A
+30,Service,Social media marketing (SMO),/services/social-media-marketing/,lead,social media marketing services,A
+30,Service,Social media marketing (SMO),/services/social-media-marketing/,same intent,social media optimization,A
+30,Service,Social media marketing (SMO),/services/social-media-marketing/,same intent,social media marketing for small business,A
+31,Service,Reputation and reviews,/services/reputation-management/,lead,reputation management company,A
+31,Service,Reputation and reviews,/services/reputation-management/,same intent,online reputation management,A
+31,Service,Reputation and reviews,/services/reputation-management/,same intent,review management services,A
+32,Service,Voice search,/services/voice-search-optimization/,lead,voice search optimization,A
+32,Service,Voice search,/services/voice-search-optimization/,same intent,voice search optimization services,A
+33,Service,Ecommerce SEO,/services/ecommerce-seo/,lead,ecommerce seo,A
+33,Service,Ecommerce SEO,/services/ecommerce-seo/,same intent,ecommerce seo services,A
+33,Service,Ecommerce SEO,/services/ecommerce-seo/,same intent,shopify seo,A
+34,Service,B2B SEO,/services/b2b-seo/,lead,b2b seo services,A
+34,Service,B2B SEO,/services/b2b-seo/,same intent,b2b seo agency,A
+34,Service,B2B SEO,/services/b2b-seo/,same intent,b2b seo strategy,A
+35,Service,Small business SEO,/services/small-business-seo/,lead,small business seo services,A
+35,Service,Small business SEO,/services/small-business-seo/,same intent,seo for small business,A
+35,Service,Small business SEO,/services/small-business-seo/,same intent,seo services for small businesses,A
+36,Service,Lead generation,/services/lead-generation/,lead,lead generation services,A
+36,Service,Lead generation,/services/lead-generation/,same intent,lead generation company,A
+36,Service,Lead generation,/services/lead-generation/,same intent,lead generation for small business,A
+37,Service,Digital marketing,/services/digital-marketing/,lead,digital marketing services,A
+37,Service,Digital marketing,/services/digital-marketing/,same intent,digital marketing agency,A
+37,Service,Digital marketing,/services/digital-marketing/,same intent,digital marketing agency usa,A
+38,Service,Web design,/services/web-design/,lead,web design services,A
+38,Service,Web design,/services/web-design/,same intent,web design company,A
+38,Service,Web design,/services/web-design/,same intent,website design services,A
+39,Service,Web development,/services/web-development/,lead,web development services,A
+39,Service,Web development,/services/web-development/,same intent,web development company,A
+39,Service,Web development,/services/web-development/,same intent,custom web development,A
+40,Service,App development,/services/app-development/,lead,app development services,A
+40,Service,App development,/services/app-development/,same intent,mobile app development company,A
+40,Service,App development,/services/app-development/,same intent,app development company,A
+41,Service,Custom CRM,/services/custom-crm/,lead,custom crm development,A
+41,Service,Custom CRM,/services/custom-crm/,same intent,custom crm software,A
+41,Service,Custom CRM,/services/custom-crm/,same intent,custom crm,A
+42,Service,Design services,/services/design/,lead,graphic design services,A
+42,Service,Design services,/services/design/,same intent,branding services,A
+42,Service,Design services,/services/design/,same intent,logo design services,A
+43,Hub,Services,/services/,none,,
+44,Guide,What is E-E-A-T,/guides/what-is-eeat/,lead,what is e-e-a-t,A
+44,Guide,What is E-E-A-T,/guides/what-is-eeat/,same intent,google e-e-a-t,A
+44,Guide,What is E-E-A-T,/guides/what-is-eeat/,same intent,e-e-a-t seo,A
+45,Guide,SEO keyword research: how we choose,/guides/seo-keyword-research/,lead,seo keyword research,A
+45,Guide,SEO keyword research: how we choose,/guides/seo-keyword-research/,same intent,how to do keyword research,A
+45,Guide,SEO keyword research: how we choose,/guides/seo-keyword-research/,same intent,keyword research,A
+46,Guide,How long SEO takes,/guides/how-long-does-seo-take/,lead,how long does seo take,A
+46,Guide,How long SEO takes,/guides/how-long-does-seo-take/,same intent,how long does it take to rank on google,A
+46,Guide,How long SEO takes,/guides/how-long-does-seo-take/,same intent,is seo worth it,A
+47,Guide,How to choose an SEO company,/guides/how-to-choose-an-seo-company/,lead,how to choose an seo company,A
+47,Guide,How to choose an SEO company,/guides/how-to-choose-an-seo-company/,same intent,how to choose an seo agency,A
+47,Guide,How to choose an SEO company,/guides/how-to-choose-an-seo-company/,same intent,how to find a good seo company,A
+48,Guide,Service business vs ecommerce vs B2B,/guides/service-vs-ecommerce-vs-b2b-seo/,lead,types of seo,A
+48,Guide,Service business vs ecommerce vs B2B,/guides/service-vs-ecommerce-vs-b2b-seo/,same intent,local seo vs seo,A
+48,Guide,Service business vs ecommerce vs B2B,/guides/service-vs-ecommerce-vs-b2b-seo/,same intent,types of seo in digital marketing,A
+49,Hub,Guides,/guides/,lead,seo guide,A
+49,Hub,Guides,/guides/,same intent,seo for beginners,A
+49,Hub,Guides,/guides/,same intent,how to do seo,A
+50,Mirror,Ask,/ask/,none,,
+51,Mirror,AI Recommendation Index,/ai-recommendation-index/,lead,how does chatgpt recommend businesses,A
+51,Mirror,AI Recommendation Index,/ai-recommendation-index/,same intent,how does chatgpt recommend products,A
+51,Mirror,AI Recommendation Index,/ai-recommendation-index/,same intent,how can chatgpt recommend my business,A
+52,Mirror,Open Board,/open-board/,none,,
+53,Mirror,Open Log,/open-log/,lead,seo report example,A
+53,Mirror,Open Log,/open-log/,same intent,what does an seo report look like,A
+53,Mirror,Open Log,/open-log/,same intent,seo progress report,A
+54,Mirror,Searches by trade and city,/searches/,lead,plumber seo keywords,A
+54,Mirror,Searches by trade and city,/searches/,same intent,plumbing seo keywords,A
+55,Mirror,Your Plan,/your-plan/,lead,seo plan,A
+55,Mirror,Your Plan,/your-plan/,same intent,seo plan template,A
+55,Mirror,Your Plan,/your-plan/,same intent,90 day seo plan,A
+56,Hub,Industries,/industries/,lead,seo by industry,B
+56,Hub,Industries,/industries/,same intent,industry specific seo,B
+56,Hub,Industries,/industries/,same intent,niche seo,A
+57,Hub,Cities,/cities/,lead,seo company near me,A
+57,Hub,Cities,/cities/,same intent,seo agency near me,A
+57,Hub,Cities,/cities/,same intent,seo services near me,A
+58,Identity,Origin: how the equation came about,/about/,lead,relevant search media,A
+59,Identity,Thomas D'Souza,/thomas-dsouza/,lead,thomas d'souza seo,own term
+60,Identity,The two commitments,/commitments/,lead,seo guarantee,B
+60,Identity,The two commitments,/commitments/,same intent,guaranteed seo services,A
+60,Identity,The two commitments,/commitments/,same intent,pay for performance seo,B
+61,Identity,Results and reviews,/results/,lead,relevant search media reviews,A
+61,Identity,Results and reviews,/results/,same intent,seo case studies,A
+61,Identity,Results and reviews,/results/,same intent,seo results,A
+62,Identity,How we write and check,/about/editorial-policy/,none,,
+63,Identity,Corrections,/about/corrections/,none,,
+64,Identity,Contact,/contact/,none,,
+65,Identity,Book a discovery call,/book/,none,,
+66,Legal,Privacy policy,/privacy/,none,,
+67,Legal,Terms,/terms/,none,,

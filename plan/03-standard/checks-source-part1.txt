@@ -1,0 +1,185 @@
+## Technical health | 36 | core | Can Google reach and read every page: indexing, sitemaps, redirects, errors, duplicate pages | Read
+S|robots.txt exists, returns status 200 and blocks no page that is meant to rank
+S|robots.txt names the location of the XML sitemap
+S|An XML sitemap exists, is valid and returns status 200
+S|The sitemap lists every indexable page and nothing else
+S|The sitemap contains no redirected, broken, noindexed or canonicalised-away URLs
+S|Sitemap last-modified dates are real and change only when the page changes
+S|The sitemap is submitted in Google Search Console and read without errors
+S|The sitemap is submitted in Bing Webmaster Tools and read without errors
+P|The page returns status 200
+P|The page is indexable: no noindex in the meta robots tag or the X-Robots-Tag header
+P|The page has exactly one canonical tag and it points to itself
+P|The canonical URL is absolute, returns status 200 and is itself indexable
+P|The page is indexed in Google, confirmed by URL inspection in Search Console
+P|The page is indexed in Bing, confirmed in Bing Webmaster Tools
+S|Only one host version is live: http, https, www and non-www all reach it in a single 301
+S|Trailing-slash and upper/lower-case variants of a URL resolve to one address
+S|No redirect chain is longer than one hop
+S|No redirect loops exist
+S|Permanent moves use a 301 or 308, never a 302 or a meta refresh
+S|No internal link points to a URL that redirects
+S|No internal link returns a 4xx error
+S|No page returns a 5xx error during a full crawl
+S|Missing pages return a true 404 status with a helpful 404 page, and no soft 404s exist
+S|No duplicate pages: the same content is not reachable at more than one indexable URL
+S|URL parameters for tracking, sorting and filtering do not create indexable duplicates
+S|Paginated series are crawlable and each page in the series is self-canonical
+P|The main content is in the HTML Google receives and does not depend on a click or scroll to appear
+S|The CSS and JavaScript needed to render pages are not blocked from crawlers
+S|Search Console shows no unresolved page-indexing errors for pages meant to rank
+S|Search Console shows no manual action and no security issue
+S|Search Console crawl stats show no rise in errors and no host problems
+P|The URL is lowercase, hyphenated, readable and free of session IDs
+S|Language and region tags (hreflang), where used, are valid and reciprocal
+S|Staging and test copies of the site are blocked from indexing
+S|IndexNow is set up so Bing and other engines learn of changes at once
+S|Crawl data or server logs confirm Googlebot reached every key page in the last 30 days
+
+## Speed and stability | 24 | core | Google's speed scores (Core Web Vitals) on phone and desktop, image weight, scripts, hosting response | Read
+P|Largest Contentful Paint is 2.5 seconds or less on mobile
+P|Largest Contentful Paint is 2.5 seconds or less on desktop
+P|Interaction to Next Paint is 200 milliseconds or less on mobile
+P|Interaction to Next Paint is 200 milliseconds or less on desktop
+P|Cumulative Layout Shift is 0.1 or less on mobile
+P|Cumulative Layout Shift is 0.1 or less on desktop
+S|The site passes the Core Web Vitals assessment in Search Console on real-user data
+P|Server response time (time to first byte) is 800 milliseconds or less
+P|PageSpeed Insights performance score is 80 or higher on mobile
+P|PageSpeed Insights performance score is 90 or higher on desktop
+P|Total page weight on first load is under 2 MB
+P|The largest above-the-fold element is prioritised and never lazy-loaded
+P|Images below the fold are lazy-loaded
+P|Images are served in a modern format such as WebP or AVIF
+P|No image is delivered larger than the size it is displayed at
+P|Images, videos and embeds reserve their space so nothing shifts while loading
+P|No script in the page head blocks rendering: scripts are deferred or asynchronous
+P|No single third-party script blocks the main thread for more than 250 milliseconds
+S|Text files are compressed with Brotli or gzip
+S|Static files are cached with long cache lifetimes
+S|A content delivery network serves static files
+S|HTTP/2 or HTTP/3 is enabled
+P|Fonts are limited in number, preloaded and show fallback text while loading
+S|Uptime is monitored and was 99.9% or better over the last 30 days
+
+## Mobile experience | 14 | core | Tap targets, viewport, menus, forms, click-to-call | Read
+P|The viewport tag is set so the page fits the screen width
+P|No horizontal scrolling at a 390-pixel phone width
+P|The layout holds together at a 768-pixel tablet width
+P|Body text is at least 16 pixels and readable without zooming
+P|Buttons and links are at least 48 pixels tall with space between them
+S|The mobile menu opens, closes and reaches every main section
+P|Phone numbers are tap-to-call links
+P|Forms are usable on a phone: correct keyboard per field, visible labels, working autofill
+P|No pop-up or overlay covers the content on arrival
+P|Mobile and desktop versions carry the same content, headings, links and structured data
+P|The primary call to action is visible on a phone without scrolling
+P|Sticky bars and buttons never cover content or other buttons
+P|Tables and wide content stack or scroll inside their own container
+P|Addresses open in maps and email addresses open a new message
+
+## Security | 10 | core | Secure connection and certificate, insecure elements, software versions, exposed files | Read
+S|The security certificate is valid and does not expire within 30 days
+S|Every http request redirects to https
+P|The page loads no insecure (http) images, scripts or styles
+S|The HSTS header is set
+S|Standard security headers are set: content security policy, content-type options, frame protection, referrer policy
+S|The CMS, theme and plugins run current, supported versions
+S|No backup files, repository folders, environment files, debug logs or open directory listings are exposed
+S|The admin login is protected: no default address or user, attempts limited, two-factor on
+S|Google Safe Browsing and blocklist checks show no malware or warnings
+S|Forms are protected against spam and injection, and backups run automatically with a tested restore
+
+## Site structure | 18 | core | Navigation, depth, links between pages, pages nothing links to, breadcrumbs | Read
+S|Every page meant to rank is reachable within three clicks of the home page
+S|No orphan pages: every indexable page has at least one internal link pointing to it
+S|The main navigation is made of ordinary HTML links that work without scripts
+S|Navigation labels are descriptive and each link's text matches the topic of its target
+S|The header links only to priority pages
+S|The footer carries a plain list of key pages, legal pages and contact details
+P|Breadcrumbs are visible on every page below the home page
+P|The breadcrumb shows the real hierarchy and matches the breadcrumb markup
+S|URL folders mirror the site hierarchy
+P|The page links up to its parent or hub page
+P|At least three related pages link to this page from within their content
+P|The page links to three to five related pages from within its content
+P|Internal link text is descriptive, never "click here", and varies naturally
+S|Each search is locked to one page, and every other mention of it on the site links to that page
+S|No two pages compete for the same search
+S|Every hub page links to all of its child pages and every child links back
+S|On-site search, where present, works and its result pages are not indexed
+S|The pages with the most internal links are the priority pages
+
+## Page titles and descriptions | 14 | core | Every page's title and description against its assigned search | Read
+P|The page has exactly one title tag
+P|The title is 30 to 60 characters and is not cut off in results
+P|The title is unique across the site
+P|The title leads with the page's assigned search
+P|The title matches what the page actually delivers
+P|The brand name sits at the end of the title in one consistent format
+P|The page has exactly one meta description
+P|The meta description is 110 to 155 characters
+P|The meta description is unique across the site
+P|The meta description is made of complete sentences, leads with the answer and gives a reason to click
+P|The meta description contains the assigned search or a close variant, naturally
+P|The title Google displays in results matches the written title
+P|Sharing tags are set: title, description and a 1200 by 630 image
+S|The site name and icon display correctly in search results
+
+## Headings and copy | 20 | core | Headings, length, readability, service and area coverage, thin pages | Read
+P|The page has exactly one H1
+P|The H1 contains the assigned search or a natural paraphrase of it
+P|Headings run in order with no level skipped
+P|At least two or three H2s are phrased as the reader's next questions
+P|Headings describe the content beneath them and are never used only for styling
+P|The assigned search appears in the first 100 words
+P|Each supporting search appears in a heading or FAQ question and in the body
+P|No stuffing: a search term is never used three times in one paragraph and the copy reads naturally aloud
+P|The page opens with the direct answer, not with background
+P|Word count is within the range for its page type and never under 300 words
+P|Reading level is grade 7 to 9 and the average sentence is under 20 words
+P|Paragraphs are one to three sentences
+P|Every service and sub-service the business offers on this topic is covered
+P|Areas served are stated accurately
+P|At least one table or list is used where the content is tabular or step-by-step
+P|No block of copy is shared with sibling pages beyond the agreed overlap limit
+P|No filler phrases and no superlatives without proof
+P|Spelling, grammar, articles and the casing of acronyms and place names are correct
+P|No placeholder text, bracketed notes, outdated years or expired facts remain
+P|The vocabulary is the trade's own: the words customers and practitioners really use
+
+## Images and media | 12 | core | Image descriptions, file names, size, formats, loading | Read
+P|Every meaningful image has alt text and decorative images have empty alt text
+P|Alt text describes what is actually in the image and is never a list of search terms
+P|Image file names are descriptive and hyphenated
+P|The page has at least one original image that is not stock
+P|No image file is over 200 KB without a stated reason
+P|Responsive images serve the right size for each screen
+P|Meaningful images are real image elements, not CSS backgrounds
+P|Videos have a title, a description and captions or a transcript
+P|Videos never autoplay with sound and load only when needed, behind a poster image
+S|Key images are included in the sitemap
+P|Photos of people, premises and work are real and belong to the business
+P|The image shown when the page is shared is set and displays correctly
+
+## Verified facts | 20 | core | The coded business facts Google and AI read (schema markup): business, service, FAQ, review, article, breadcrumb | Read
+S|Organization or LocalBusiness markup is present on the home page
+S|The organization markup's name, address, logo and contact details match the visible facts exactly
+S|The sameAs list names every official profile and every link in it works
+S|WebSite markup is present with the site name
+P|Breadcrumb markup is present and matches the visible breadcrumb
+P|Service pages carry Service markup with service type, provider and area served
+P|Where an FAQ is shown, FAQPage markup is present and identical to the visible questions and answers
+P|Articles carry Article markup with headline, author, published date and modified date
+P|The author is marked up as a Person with name, page, job title and profiles
+P|Review and rating markup is used only for real, visible reviews and within Google's rules
+S|Where real premises exist, address, coordinates, hours and phone in the markup match the Google profile
+P|All markup parses without errors
+P|The page passes Google's Rich Results Test with no errors
+P|The schema validator shows no missing required properties
+P|Markup describes only what is visible on the page
+S|One phone format, one logo address and one business name are used in all markup
+P|Entities are joined by identifiers: organization, website, page and author reference each other
+P|No duplicate or conflicting markup blocks are output by plugins
+P|Dates in the markup match the dates shown on the page
+P|Specialised types are used where they fit: steps, video, product, event, defined term
