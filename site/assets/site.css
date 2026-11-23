@@ -256,3 +256,18 @@ tbody td:last-child{color:var(--ink-3);font-family:var(--sans);font-size:13.5px;
 @media (max-width:1340px){.nav{display:none}.menu{display:block}.masthead{position:relative}}
 .brand{flex:none}
 @media (max-width:760px){.dateline span:nth-child(n+2){display:none}}
+/* Hero as a spread: the argument on the left page, the instrument on the right */
+@media (min-width:1100px){
+  .hero .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:0 80px;align-items:start}
+  .hero .wrap>*{grid-column:1}
+  .hero .console{grid-column:2;grid-row:1/span 8;margin:6px 0 0;padding-top:0;border-top:0}
+  .hero .readout{grid-template-columns:minmax(0,1fr)}
+  .hero .readout>div{border-right:0;border-bottom:1px solid var(--rule);padding:20px 0 14px}
+  .hero .readout>div:last-child{border-bottom:0;padding-bottom:4px}
+  .hero .readout .big{font-size:52px}
+  .hero .picker{gap:14px 22px}.hero .picker select{min-width:150px;font-size:24px}
+  .hero .picker .btn{margin-left:0;width:100%;margin-top:6px}
+  .hero .console-head{display:block}.hero .console-eq{display:block;margin-top:6px}
+  .hero{padding:72px 0 64px}
+}
+.section{padding:88px 0 0}.section>.wrap{padding-bottom:88px}
