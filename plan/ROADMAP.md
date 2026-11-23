@@ -8,9 +8,9 @@ Status words: **Not started** · **In progress** · **Awaiting approval** · **D
 | # | Step | What it settles | Deliverable | Done when | Status |
 |---|---|---|---|---|---|
 | 1 | Method | What RSM does that no one else does, stated so a stranger can follow and test it | `01-method/method.md` | Thomas approves the definition, the five parts and the name | **Done** 23 Nov 2026: The D'Souza Equation |
-| 2 | Facts | Every company fact, with its source, identical everywhere | `02-facts/fact-register.md` | Thomas signs each fact; outside systems that disagree are listed for correction | **In progress**: v1.0 signed, four items open |
-| 3 | Standard | The full check list and its public number | `03-standard/checks-v1.md` | Compared with the team's working checklist; number approved | In progress (413 drafted) |
-| 4 | Architecture | The page list (36 to 50), URLs, menu, internal links | `04-architecture/site-map.md` | Every page has a purpose, a URL, a parent and a place in the menu | Not started |
+| 2 | Facts | Every company fact, with its source, identical everywhere | `02-facts/fact-register.md` | Thomas signs each fact; outside systems that disagree are listed for correction | **Done** 23 Nov 2026: fact register v1.0 |
+| 3 | Standard | The full check list and its public number | `03-standard/dsouza-standard.md` | The checks are written out and the number is decided | **Done** 23 Nov 2026: the D'Souza Standard v1.0, 413 checks |
+| 4 | Architecture | The page list (36 to 50), URLs, menu, internal links | `04-architecture/site-map.md` | Every page has a purpose, a URL, a parent and a place in the menu | **Awaiting approval** (draft v1) |
 | 5 | Keywords | Locked and woven keywords per page, with volumes | `05-keywords/keyword-map.csv` | Every page has its keywords, each with evidence; no keyword on two pages | In progress (v1, no volumes) |
 | 6 | Proof | Findings, result statements, first Index run | `06-proof/` | 100 findings banked; result statements approved; Index run for the first trade | Not started |
 | 7 | Messaging | Positioning, hooks, reasons to call, calls to action, voice | `07-messaging/messaging.md` | One approved hook, reason to call and call to action per page type | Not started |
