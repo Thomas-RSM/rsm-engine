@@ -18,6 +18,7 @@ class P(HTMLParser):
         super().__init__(); s.stack=[]; s.tags=[]; s.text=[]; s.cur_text=[]; s.scripts=[]; s.in_script=None; s.headings=[]; s.links=[]; s.imgs=[]; s.metas=[]; s.title=None; s._title=False; s.forms=0; s.labels=[]; s.selects=[]; s.landmarks=Counter(); s.videos=[]; s.paras=[]; s._p=None; s.lists=0; s.tables=0; s.details=0; s.skip=False; s.lang=None; s.canon=[]; s.ld=[]; s.inline_styles=0; s.h1_text=''; s._h=None; s.first_words=[]; s.main_seen=False; s.summary=0
     def handle_starttag(s, tag, attrs):
         a=dict(attrs); s.tags.append(tag)
+        if tag=='svg': s.svg_depth=getattr(s,'svg_depth',0)+1
         if tag=='html': s.lang=a.get('lang')
         if tag=='title': s._title=True; s.title=''
         if tag=='meta': s.metas.append(a)
@@ -43,6 +44,7 @@ class P(HTMLParser):
         if a.get('style'): s.inline_styles+=1
         if tag=='a' and a.get('class')=='skip': s.skip=True
     def handle_endtag(s, tag):
+        if tag=='svg': s.svg_depth=max(0,getattr(s,'svg_depth',0)-1)
         if tag=='title': s._title=False
         if tag=='script': s.in_script=None
         if tag in ('h1','h2','h3','h4','h5','h6') and s._h: s.headings.append((s._h[0],' '.join(''.join(s._h[1]).split()))); s._h=None
@@ -54,6 +56,7 @@ class P(HTMLParser):
             if 'ld+json' in s.in_script and s.ld: s.ld[-1]+=d
             return
         if s.tags and s.tags[-1]=='style': return
+        if getattr(s,'svg_depth',0)>0: return
         if s._h: s._h[1].append(d)
         if s.links and isinstance(s.links[-1]['text'],list): s.links[-1]['text'].append(d)
         if s._p is not None: s._p.append(d)
@@ -274,7 +277,7 @@ def run(site, path, keywords, extra):
     res(170,'PASS' if len(qh2)>=5 else 'FAIL','sections open with their answer')
     res(171,'PASS' if 'as mentioned above' not in low and 'see above' not in low else 'FAIL')
     res(172,'PASS' if len(vis_faq)>=5 else 'FAIL')
-    faq_html=re.search(r'<div class="faq">(.*?)</div>',raw,re.S); fa=re.findall(r'<details[^>]*>.*?</details>',faq_html.group(1) if faq_html else '',re.S)
+    faq_html=re.search(r'<div class="faq[^"]*">(.*?)</div>',raw,re.S); fa=re.findall(r'<details[^>]*>.*?</details>',faq_html.group(1) if faq_html else '',re.S)
     fa_w=[len(words(re.sub('<[^>]+>',' ',re.search(r'</summary>(.*)',x,re.S).group(1)))) for x in fa]
     res(173,'PASS' if 5<=len(fa)<=8 and all(35<=w<=75 for w in fa_w) else 'FAIL',f'{len(fa)} FAQs, word counts {fa_w}')
     res(174,'PASS' if all(s in low for s in ('founded in 2020','new delhi','+1 (202) 609-6641')) else 'FAIL','who, what, where stated plainly')
@@ -330,7 +333,7 @@ def run(site, path, keywords, extra):
     res(334,'N/T','top-three comparison is a research step')
     res(335,'PASS' if p.tables>=1 else 'FAIL','original table (the record)')
     res(336,'PASS' if 'First check:' in body_text else 'FAIL','steps the reader can do')
-    res(337,'PASS' if 'plumber seo company miami' in low else 'FAIL','specific, real examples')
+    res(337,'PASS' if 'plumbing seo company miami' in low else 'FAIL','specific, real examples')
     res(338,'N/T','plagiarism check is an outside tool')
     res(339,'N/T','needs the other pages')
     # 21 Fact integrity
