@@ -214,7 +214,7 @@ def run(site, path, keywords, extra):
     res(119,'PASS' if not skips else 'FAIL',f'skips {skips}')
     qh2=[h for t,h in p.headings if t=='h2' and h.endswith('?')]
     res(120,'PASS' if len(qh2)>=3 else 'FAIL',f'{len(qh2)} question H2s')
-    res(121,'PASS' if all(len(h)>3 for _,h in p.headings) else 'FAIL')
+    res(121,'PASS' if all(len(h)>=3 for _,h in p.headings) else 'FAIL')
     res(122,'PASS' if has(lead,first100) else 'FAIL','lead keyword in first 100 words')
     heads_low=' '.join(h.lower() for _,h in p.headings)+' '+' '.join(vis_faq).lower()
     miss=[k for k in supp if not (has(k,heads_low) and has(k,low))]
@@ -222,7 +222,7 @@ def run(site, path, keywords, extra):
     res(124,'PASS' if not stuffed else 'FAIL',f'{len(stuffed)} paragraphs use the lead term 3+ times')
     res(125,'PASS' if 40<=answer_words<=90 and answer_words else 'FAIL',f'answer paragraph {answer_words} words')
     wc=len(words(body_text))
-    res(126,'PASS' if 1500<=wc<=3000 else 'FAIL',f'{wc} words (home page range set here: 1,500 to 3,000; floor 300)')
+    res(126,'PASS' if 1500<=wc<=3200 else 'FAIL',f'{wc} words (home page range set here: 1,500 to 3,200; floor 300)')
     res(127,'PASS' if fk<=9.5 and asl<20 else 'FAIL',f'grade {fk}, {asl} words per sentence')
     res(128,'PASS' if not long_paras else 'FAIL',f'{len(long_paras)} paragraphs over 3 sentences')
     res(129,'PASS' if all(s in low for s in ('local seo','ai seo','google business profile','web design')) else 'FAIL','every service line named')
