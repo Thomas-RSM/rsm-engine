@@ -268,9 +268,15 @@
     onScreen(lab, function (v) { visible = v; kick(); });
     read();
   })();
-  /* ---- the film rolls when it is on screen (muted, never with sound) ---- */
+  /* ---- the film: rolls muted when on screen, chapters jump, one button for sound ---- */
   (function () {
-    var v = document.querySelector('video[data-roll]'); if (!v || REDUCE || !window.IntersectionObserver) return;
-    new IntersectionObserver(function (es) { var on = es[0].isIntersecting && es[0].intersectionRatio > 0.45; if (on) { v.muted = true; var p = v.play(); if (p && p.catch) p.catch(function () {}); } else if (!v.paused) v.pause(); }, { threshold: [0, 0.45, 0.8] }).observe(v);
+    var v = document.querySelector('video[data-roll]'); if (!v) return;
+    var btn = document.getElementById('film-sound'), chaps = [].slice.call(document.querySelectorAll('.beats button'));
+    var play = function () { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
+    if (!REDUCE && window.IntersectionObserver) new IntersectionObserver(function (es) { var on = es[0].isIntersecting && es[0].intersectionRatio > 0.45; if (on) play(); else if (!v.paused) v.pause(); }, { threshold: [0, 0.45, 0.8] }).observe(v);
+    chaps.forEach(function (b) { b.addEventListener('click', function () { v.currentTime = parseFloat(b.getAttribute('data-t')) + 0.05; play(); }); });
+    v.addEventListener('timeupdate', function () { var cur = 0; chaps.forEach(function (b, i) { if (v.currentTime >= parseFloat(b.getAttribute('data-t'))) cur = i; }); chaps.forEach(function (b, i) { b.classList.toggle('on', i === cur); }); });
+    if (btn) { var sync = function () { var on = !v.muted; btn.setAttribute('aria-pressed', on ? 'true' : 'false'); btn.textContent = on ? 'Sound on' : 'Play with sound'; };
+      btn.addEventListener('click', function () { if (v.muted) { v.muted = false; v.currentTime = 0; play(); } else v.muted = true; sync(); }); v.addEventListener('volumechange', sync); }
   })();
 })();

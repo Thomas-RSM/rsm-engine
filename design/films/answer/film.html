@@ -1,124 +1,225 @@
 <!doctype html><html><head><meta charset="utf-8"><style>
 @font-face{font-family:"Archivo";font-weight:100 900;font-stretch:62% 125%;src:url(../../../site/assets/fonts/archivo.woff2)}
 @font-face{font-family:"JetBrains Mono";font-weight:400 800;src:url(../../../site/assets/fonts/jetbrains-mono.woff2)}
-html,body{margin:0;background:#070B18} svg{display:block} text{font-family:"Archivo",sans-serif} .mono{font-family:"JetBrains Mono",monospace;font-weight:700;letter-spacing:3px}
+html,body{margin:0;background:#0C1330} svg{display:block} text{font-family:"Archivo",sans-serif} .mono{font-family:"JetBrains Mono",monospace;font-weight:700;letter-spacing:2.5px}
 </style></head><body>
 <svg id="stage" width="1280" height="720" viewBox="0 0 1280 720">
 <defs>
-<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E1638"/><stop offset="1" stop-color="#070B18"/></linearGradient>
-<linearGradient id="tile" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3C5096" stop-opacity=".8"/><stop offset=".4" stop-color="#1E2A56"/><stop offset="1" stop-color="#0A1024"/></linearGradient>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#17225A"/><stop offset="1" stop-color="#0C1330"/></linearGradient>
+<linearGradient id="tile" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4760B4"/><stop offset=".45" stop-color="#243268"/><stop offset="1" stop-color="#101838"/></linearGradient>
+<linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2B3B80" stop-opacity=".9"/><stop offset=".5" stop-color="#18224E"/><stop offset="1" stop-color="#0E1533"/></linearGradient>
 <radialGradient id="gold"><stop offset="0" stop-color="#F8B10F" stop-opacity=".6"/><stop offset="1" stop-color="#F8B10F" stop-opacity="0"/></radialGradient>
-<radialGradient id="blue"><stop offset="0" stop-color="#6F8CF0" stop-opacity=".35"/><stop offset="1" stop-color="#6F8CF0" stop-opacity="0"/></radialGradient>
+<radialGradient id="blue"><stop offset="0" stop-color="#6F8CF0" stop-opacity=".4"/><stop offset="1" stop-color="#6F8CF0" stop-opacity="0"/></radialGradient>
+<pattern id="awn" width="48" height="60" patternUnits="userSpaceOnUse"><rect width="24" height="60" fill="#F8B10F"/><rect x="24" width="24" height="60" fill="#F6F1E6"/></pattern>
 </defs>
-<rect width="1280" height="720" fill="url(#bg)"/><circle cx="640" cy="260" r="520" fill="url(#blue)"/><circle cx="483" cy="155" r="0.8" fill="#A3B5F2" opacity="0.47"/><circle cx="980" cy="79" r="0.8" fill="#A3B5F2" opacity="0.18"/><circle cx="822" cy="281" r="1" fill="#A3B5F2" opacity="0.51"/><circle cx="120" cy="113" r="1.3" fill="#A3B5F2" opacity="0.39"/><circle cx="566" cy="399" r="0.8" fill="#A3B5F2" opacity="0.52"/><circle cx="536" cy="109" r="0.8" fill="#A3B5F2" opacity="0.52"/><circle cx="533" cy="409" r="1" fill="#A3B5F2" opacity="0.24"/><circle cx="634" cy="148" r="1.3" fill="#A3B5F2" opacity="0.54"/><circle cx="762" cy="44" r="1.3" fill="#A3B5F2" opacity="0.30"/><circle cx="794" cy="259" r="0.8" fill="#A3B5F2" opacity="0.23"/><circle cx="969" cy="143" r="0.8" fill="#A3B5F2" opacity="0.58"/><circle cx="1121" cy="153" r="0.8" fill="#A3B5F2" opacity="0.56"/><circle cx="1172" cy="360" r="1" fill="#A3B5F2" opacity="0.53"/><circle cx="1041" cy="99" r="1" fill="#A3B5F2" opacity="0.34"/><circle cx="590" cy="220" r="1" fill="#A3B5F2" opacity="0.22"/><circle cx="624" cy="132" r="0.8" fill="#A3B5F2" opacity="0.19"/><circle cx="947" cy="320" r="1" fill="#A3B5F2" opacity="0.38"/><circle cx="965" cy="358" r="1" fill="#A3B5F2" opacity="0.22"/><circle cx="400" cy="34" r="1" fill="#A3B5F2" opacity="0.56"/><circle cx="903" cy="141" r="0.8" fill="#A3B5F2" opacity="0.31"/><circle cx="1205" cy="164" r="1.3" fill="#A3B5F2" opacity="0.40"/><circle cx="662" cy="51" r="0.8" fill="#A3B5F2" opacity="0.47"/><circle cx="568" cy="391" r="1.3" fill="#A3B5F2" opacity="0.43"/><circle cx="486" cy="62" r="1" fill="#A3B5F2" opacity="0.57"/><circle cx="595" cy="235" r="0.8" fill="#A3B5F2" opacity="0.17"/><circle cx="169" cy="146" r="1.3" fill="#A3B5F2" opacity="0.45"/><circle cx="669" cy="9" r="1" fill="#A3B5F2" opacity="0.28"/><circle cx="313" cy="396" r="1.3" fill="#A3B5F2" opacity="0.33"/><circle cx="1270" cy="348" r="0.8" fill="#A3B5F2" opacity="0.28"/><circle cx="392" cy="227" r="1" fill="#A3B5F2" opacity="0.21"/><circle cx="781" cy="306" r="0.8" fill="#A3B5F2" opacity="0.30"/><circle cx="19" cy="186" r="0.8" fill="#A3B5F2" opacity="0.35"/><circle cx="747" cy="401" r="1" fill="#A3B5F2" opacity="0.60"/><circle cx="1170" cy="49" r="1" fill="#A3B5F2" opacity="0.59"/><circle cx="868" cy="106" r="0.8" fill="#A3B5F2" opacity="0.18"/><circle cx="113" cy="377" r="0.8" fill="#A3B5F2" opacity="0.42"/><circle cx="306" cy="310" r="0.8" fill="#A3B5F2" opacity="0.40"/><circle cx="1193" cy="127" r="1" fill="#A3B5F2" opacity="0.60"/><circle cx="250" cy="270" r="1" fill="#A3B5F2" opacity="0.50"/><circle cx="838" cy="333" r="0.8" fill="#A3B5F2" opacity="0.36"/><circle cx="495" cy="224" r="1" fill="#A3B5F2" opacity="0.37"/><circle cx="448" cy="215" r="1" fill="#A3B5F2" opacity="0.26"/><circle cx="876" cy="110" r="1" fill="#A3B5F2" opacity="0.23"/><circle cx="75" cy="130" r="1" fill="#A3B5F2" opacity="0.26"/><circle cx="426" cy="395" r="0.8" fill="#A3B5F2" opacity="0.34"/><circle cx="535" cy="72" r="1" fill="#A3B5F2" opacity="0.17"/><circle cx="644" cy="289" r="0.8" fill="#A3B5F2" opacity="0.60"/><circle cx="825" cy="334" r="1.3" fill="#A3B5F2" opacity="0.54"/><circle cx="82" cy="253" r="1" fill="#A3B5F2" opacity="0.19"/><circle cx="431" cy="293" r="0.8" fill="#A3B5F2" opacity="0.30"/><circle cx="965" cy="409" r="1.3" fill="#A3B5F2" opacity="0.29"/><circle cx="860" cy="270" r="0.8" fill="#A3B5F2" opacity="0.44"/><circle cx="549" cy="173" r="1" fill="#A3B5F2" opacity="0.58"/><circle cx="152" cy="143" r="1.3" fill="#A3B5F2" opacity="0.45"/><circle cx="91" cy="202" r="1.3" fill="#A3B5F2" opacity="0.21"/><circle cx="551" cy="341" r="0.8" fill="#A3B5F2" opacity="0.54"/><circle cx="951" cy="291" r="1" fill="#A3B5F2" opacity="0.49"/><circle cx="799" cy="111" r="0.8" fill="#A3B5F2" opacity="0.25"/><circle cx="321" cy="6" r="1.3" fill="#A3B5F2" opacity="0.54"/><circle cx="237" cy="202" r="1" fill="#A3B5F2" opacity="0.55"/><circle cx="1127" cy="27" r="0.8" fill="#A3B5F2" opacity="0.22"/><circle cx="1245" cy="169" r="1.3" fill="#A3B5F2" opacity="0.50"/><circle cx="965" cy="269" r="1" fill="#A3B5F2" opacity="0.16"/><circle cx="70" cy="356" r="1.3" fill="#A3B5F2" opacity="0.20"/><circle cx="1148" cy="131" r="1.3" fill="#A3B5F2" opacity="0.50"/><circle cx="84" cy="185" r="0.8" fill="#A3B5F2" opacity="0.50"/><circle cx="1071" cy="5" r="1" fill="#A3B5F2" opacity="0.53"/><circle cx="153" cy="43" r="1.3" fill="#A3B5F2" opacity="0.35"/><circle cx="420" cy="403" r="1" fill="#A3B5F2" opacity="0.32"/><circle cx="996" cy="204" r="0.8" fill="#A3B5F2" opacity="0.18"/><circle cx="1271" cy="408" r="1" fill="#A3B5F2" opacity="0.38"/><circle cx="888" cy="212" r="1.3" fill="#A3B5F2" opacity="0.50"/><circle cx="137" cy="321" r="0.8" fill="#A3B5F2" opacity="0.44"/><circle cx="980" cy="216" r="0.8" fill="#A3B5F2" opacity="0.51"/><circle cx="342" cy="190" r="0.8" fill="#A3B5F2" opacity="0.23"/><circle cx="305" cy="167" r="1" fill="#A3B5F2" opacity="0.54"/><circle cx="529" cy="277" r="0.8" fill="#A3B5F2" opacity="0.47"/><circle cx="11" cy="331" r="1" fill="#A3B5F2" opacity="0.20"/><circle cx="226" cy="249" r="1.3" fill="#A3B5F2" opacity="0.42"/><circle cx="1077" cy="38" r="1.3" fill="#A3B5F2" opacity="0.26"/><circle cx="600" cy="182" r="0.8" fill="#A3B5F2" opacity="0.50"/><circle cx="3" cy="346" r="0.8" fill="#A3B5F2" opacity="0.42"/><circle cx="641" cy="278" r="1" fill="#A3B5F2" opacity="0.50"/><circle cx="1163" cy="156" r="1.3" fill="#A3B5F2" opacity="0.50"/><circle cx="1255" cy="316" r="1" fill="#A3B5F2" opacity="0.33"/><circle cx="515" cy="394" r="1.3" fill="#A3B5F2" opacity="0.31"/><circle cx="696" cy="68" r="1" fill="#A3B5F2" opacity="0.19"/><circle cx="294" cy="345" r="1.3" fill="#A3B5F2" opacity="0.23"/><circle cx="761" cy="101" r="1.3" fill="#A3B5F2" opacity="0.51"/><circle cx="1271" cy="47" r="0.8" fill="#A3B5F2" opacity="0.33"/>
-<path d="M0 560 H1280" stroke="rgba(163,181,242,.35)" stroke-width="2"/>
+<rect width="1280" height="720" fill="url(#bg)"/><circle cx="640" cy="300" r="560" fill="url(#blue)"/><circle cx="483" cy="155" r="0.9" fill="#C9D4FA" opacity="0.47"/><circle cx="980" cy="79" r="0.9" fill="#C9D4FA" opacity="0.18"/><circle cx="822" cy="281" r="1.1" fill="#C9D4FA" opacity="0.51"/><circle cx="120" cy="113" r="1.5" fill="#C9D4FA" opacity="0.39"/><circle cx="566" cy="399" r="0.9" fill="#C9D4FA" opacity="0.52"/><circle cx="536" cy="109" r="0.9" fill="#C9D4FA" opacity="0.52"/><circle cx="533" cy="409" r="1.1" fill="#C9D4FA" opacity="0.24"/><circle cx="634" cy="148" r="1.5" fill="#C9D4FA" opacity="0.54"/><circle cx="762" cy="44" r="1.5" fill="#C9D4FA" opacity="0.30"/><circle cx="794" cy="259" r="0.9" fill="#C9D4FA" opacity="0.23"/><circle cx="969" cy="143" r="0.9" fill="#C9D4FA" opacity="0.58"/><circle cx="1121" cy="430" r="1.1" fill="#C9D4FA" opacity="0.15"/><circle cx="597" cy="293" r="1.5" fill="#C9D4FA" opacity="0.55"/><circle cx="1041" cy="99" r="1.1" fill="#C9D4FA" opacity="0.34"/><circle cx="590" cy="220" r="1.1" fill="#C9D4FA" opacity="0.22"/><circle cx="624" cy="132" r="0.9" fill="#C9D4FA" opacity="0.19"/><circle cx="947" cy="320" r="1.1" fill="#C9D4FA" opacity="0.38"/><circle cx="965" cy="358" r="1.1" fill="#C9D4FA" opacity="0.22"/><circle cx="400" cy="34" r="1.1" fill="#C9D4FA" opacity="0.56"/><circle cx="903" cy="141" r="0.9" fill="#C9D4FA" opacity="0.31"/><circle cx="1205" cy="164" r="1.5" fill="#C9D4FA" opacity="0.40"/><circle cx="662" cy="51" r="0.9" fill="#C9D4FA" opacity="0.47"/><circle cx="568" cy="391" r="1.5" fill="#C9D4FA" opacity="0.43"/><circle cx="486" cy="62" r="1.1" fill="#C9D4FA" opacity="0.57"/><circle cx="595" cy="235" r="0.9" fill="#C9D4FA" opacity="0.17"/><circle cx="169" cy="458" r="1.1" fill="#C9D4FA" opacity="0.48"/><circle cx="669" cy="9" r="1.1" fill="#C9D4FA" opacity="0.28"/><circle cx="313" cy="396" r="1.5" fill="#C9D4FA" opacity="0.33"/><circle cx="1270" cy="348" r="0.9" fill="#C9D4FA" opacity="0.28"/><circle cx="392" cy="457" r="1.1" fill="#C9D4FA" opacity="0.28"/><circle cx="512" cy="195" r="1.5" fill="#C9D4FA" opacity="0.58"/><circle cx="678" cy="293" r="0.9" fill="#C9D4FA" opacity="0.31"/><circle cx="931" cy="86" r="1.1" fill="#C9D4FA" opacity="0.50"/><circle cx="742" cy="148" r="1.5" fill="#C9D4FA" opacity="0.19"/><circle cx="424" cy="217" r="0.9" fill="#C9D4FA" opacity="0.20"/><circle cx="127" cy="28" r="1.5" fill="#C9D4FA" opacity="0.23"/><circle cx="306" cy="310" r="0.9" fill="#C9D4FA" opacity="0.40"/><circle cx="1193" cy="127" r="1.1" fill="#C9D4FA" opacity="0.60"/><circle cx="250" cy="427" r="1.5" fill="#C9D4FA" opacity="0.28"/><circle cx="838" cy="333" r="0.9" fill="#C9D4FA" opacity="0.36"/><circle cx="495" cy="224" r="1.1" fill="#C9D4FA" opacity="0.37"/><circle cx="448" cy="215" r="1.1" fill="#C9D4FA" opacity="0.26"/><circle cx="876" cy="425" r="0.9" fill="#C9D4FA" opacity="0.37"/><circle cx="64" cy="18" r="1.1" fill="#C9D4FA" opacity="0.26"/><circle cx="1076" cy="106" r="0.9" fill="#C9D4FA" opacity="0.34"/><circle cx="535" cy="72" r="1.1" fill="#C9D4FA" opacity="0.17"/><circle cx="644" cy="289" r="0.9" fill="#C9D4FA" opacity="0.60"/><circle cx="825" cy="334" r="1.5" fill="#C9D4FA" opacity="0.54"/><circle cx="82" cy="253" r="1.1" fill="#C9D4FA" opacity="0.19"/><circle cx="431" cy="447" r="1.5" fill="#C9D4FA" opacity="0.55"/><circle cx="338" cy="172" r="1.1" fill="#C9D4FA" opacity="0.45"/><circle cx="645" cy="417" r="1.1" fill="#C9D4FA" opacity="0.39"/><circle cx="549" cy="173" r="1.1" fill="#C9D4FA" opacity="0.58"/><circle cx="152" cy="439" r="1.1" fill="#C9D4FA" opacity="0.58"/><circle cx="391" cy="22" r="1.1" fill="#C9D4FA" opacity="0.55"/><circle cx="261" cy="392" r="1.1" fill="#C9D4FA" opacity="0.45"/><circle cx="123" cy="445" r="0.9" fill="#C9D4FA" opacity="0.46"/><circle cx="951" cy="291" r="1.1" fill="#C9D4FA" opacity="0.49"/><circle cx="799" cy="111" r="0.9" fill="#C9D4FA" opacity="0.25"/><circle cx="321" cy="6" r="1.5" fill="#C9D4FA" opacity="0.54"/><circle cx="237" cy="202" r="1.1" fill="#C9D4FA" opacity="0.55"/><circle cx="1127" cy="27" r="0.9" fill="#C9D4FA" opacity="0.22"/><circle cx="1245" cy="169" r="1.5" fill="#C9D4FA" opacity="0.50"/><circle cx="965" cy="269" r="1.1" fill="#C9D4FA" opacity="0.16"/><circle cx="70" cy="356" r="1.5" fill="#C9D4FA" opacity="0.20"/><circle cx="1148" cy="442" r="1.1" fill="#C9D4FA" opacity="0.42"/><circle cx="284" cy="21" r="1.1" fill="#C9D4FA" opacity="0.19"/><circle cx="1071" cy="5" r="1.1" fill="#C9D4FA" opacity="0.53"/><circle cx="153" cy="43" r="1.5" fill="#C9D4FA" opacity="0.35"/><circle cx="420" cy="403" r="1.1" fill="#C9D4FA" opacity="0.32"/><circle cx="996" cy="438" r="1.1" fill="#C9D4FA" opacity="0.19"/><circle cx="234" cy="317" r="1.1" fill="#C9D4FA" opacity="0.38"/><circle cx="888" cy="212" r="1.5" fill="#C9D4FA" opacity="0.50"/><circle cx="137" cy="321" r="0.9" fill="#C9D4FA" opacity="0.44"/><circle cx="980" cy="216" r="0.9" fill="#C9D4FA" opacity="0.51"/><circle cx="342" cy="190" r="0.9" fill="#C9D4FA" opacity="0.23"/><circle cx="305" cy="167" r="1.1" fill="#C9D4FA" opacity="0.54"/><circle cx="529" cy="277" r="0.9" fill="#C9D4FA" opacity="0.47"/><circle cx="11" cy="331" r="1.1" fill="#C9D4FA" opacity="0.20"/><circle cx="226" cy="249" r="1.5" fill="#C9D4FA" opacity="0.42"/><circle cx="1077" cy="38" r="1.5" fill="#C9D4FA" opacity="0.26"/><circle cx="600" cy="182" r="0.9" fill="#C9D4FA" opacity="0.50"/><circle cx="3" cy="346" r="0.9" fill="#C9D4FA" opacity="0.42"/><circle cx="641" cy="278" r="1.1" fill="#C9D4FA" opacity="0.50"/><circle cx="1163" cy="156" r="1.5" fill="#C9D4FA" opacity="0.50"/><circle cx="1255" cy="316" r="1.1" fill="#C9D4FA" opacity="0.33"/><circle cx="515" cy="394" r="1.5" fill="#C9D4FA" opacity="0.31"/><circle cx="696" cy="68" r="1.1" fill="#C9D4FA" opacity="0.19"/><circle cx="294" cy="345" r="1.5" fill="#C9D4FA" opacity="0.23"/><circle cx="761" cy="101" r="1.5" fill="#C9D4FA" opacity="0.51"/><circle cx="1271" cy="452" r="0.9" fill="#C9D4FA" opacity="0.18"/><circle cx="367" cy="168" r="1.5" fill="#C9D4FA" opacity="0.32"/><circle cx="357" cy="153" r="0.9" fill="#C9D4FA" opacity="0.42"/><circle cx="1073" cy="386" r="0.9" fill="#C9D4FA" opacity="0.51"/><circle cx="201" cy="81" r="0.9" fill="#C9D4FA" opacity="0.41"/><circle cx="1014" cy="338" r="1.5" fill="#C9D4FA" opacity="0.60"/><circle cx="157" cy="389" r="0.9" fill="#C9D4FA" opacity="0.23"/><circle cx="981" cy="345" r="1.5" fill="#C9D4FA" opacity="0.25"/><circle cx="620" cy="436" r="1.5" fill="#C9D4FA" opacity="0.33"/><circle cx="1226" cy="121" r="1.1" fill="#C9D4FA" opacity="0.47"/><circle cx="634" cy="188" r="0.9" fill="#C9D4FA" opacity="0.49"/><circle cx="1100" cy="320" r="1.5" fill="#C9D4FA" opacity="0.60"/><circle cx="819" cy="259" r="1.1" fill="#C9D4FA" opacity="0.59"/><circle cx="641" cy="145" r="1.1" fill="#C9D4FA" opacity="0.34"/><circle cx="26" cy="128" r="0.9" fill="#C9D4FA" opacity="0.55"/><circle cx="939" cy="354" r="1.5" fill="#C9D4FA" opacity="0.43"/><circle cx="746" cy="206" r="1.1" fill="#C9D4FA" opacity="0.43"/><circle cx="319" cy="261" r="0.9" fill="#C9D4FA" opacity="0.36"/><circle cx="711" cy="309" r="1.1" fill="#C9D4FA" opacity="0.56"/><circle cx="528" cy="247" r="0.9" fill="#C9D4FA" opacity="0.44"/>
 
-<!-- Sam's shop -->
-<g id="shop" fill="none" stroke="#A3B5F2" stroke-width="3" stroke-linejoin="round">
- <circle id="shopGlow" cx="240" cy="400" r="330" fill="url(#gold)" stroke="none" opacity="0"/>
- <rect x="90" y="330" width="300" height="230" fill="#0E1533"/>
- <path d="M76 330 h328 l-22 -44 h-284 z" fill="#131C40"/>
- <rect x="120" y="398" width="110" height="92" rx="4"/><path d="M175 398 v92 M120 444 h110"/>
- <rect x="286" y="408" width="70" height="152" rx="4"/><circle cx="342" cy="486" r="3" fill="#A3B5F2"/>
- <rect id="sign" x="120" y="346" width="240" height="38" rx="8" fill="#0B1123" stroke="#5A6AA8"/>
- <text id="signT" x="240" y="372" text-anchor="middle" class="mono" font-size="17" fill="#5A6AA8" stroke="none">SAM'S PLUMBING</text>
-</g>
-<g id="sam" transform="translate(452,560)" fill="none" stroke="#F6F1E6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-<circle cx="0" cy="-186" r="22" fill="#0B1123"/><path d="M-24 -206 q24 -22 48 0 l12 0" /><path d="M-24 -206 h48"/>
-<path id="sam-face" d="M-8 -180 q8 6 16 0" stroke-width="3"/>
-<path d="M-30 -66 v-64 q0 -28 30 -28 q30 0 30 28 v64 z" fill="#131C40"/>
-<path d="M-16 -66 v62 M16 -66 v62 M-16 -4 h-12 M16 -4 h12"/>
-<g id="sam-armL"><path d="M-28 -140 l-16 50"/></g>
-<g id="sam-armR" transform="rotate(0 28 -140)"><path d="M28 -140 l20 44 l-4 -30"/><rect x="36" y="-142" width="20" height="34" rx="5" fill="#0B1123" stroke="#A3B5F2" stroke-width="3" id="sam-phone"/></g>
-</g>
-<g id="calls" transform="translate(383,322)"><rect x="-6" y="-30" width="150" height="44" rx="22" fill="#0B1123" stroke="#5A6AA8" stroke-width="2" id="callsBox"/><text id="callsT" x="69" y="-1" text-anchor="middle" class="mono" font-size="15" fill="#8492B8">0 CALLS</text></g>
-<g id="ring" opacity="0" fill="none" stroke="#F8B10F" stroke-width="3" stroke-linecap="round"><path d="M518 398 q14 -14 0 -28" id="r1"/><path d="M530 408 q26 -24 0 -48" id="r2"/><path d="M542 418 q38 -34 0 -68" id="r3"/></g>
-
-<!-- customer + house -->
-<g id="cust">
- <g fill="none" stroke="#A3B5F2" stroke-width="3" stroke-linejoin="round"><path d="M940 560 v-150 l130 -70 l130 70 v150 z" fill="#0E1533"/><rect x="1040" y="450" width="60" height="110" rx="4"/><rect x="968" y="440" width="50" height="50" rx="4"/><path d="M1130 400 v70 q0 14 14 14 h30" stroke="#6F8CF0"/></g>
- <circle id="drip" cx="1174" cy="496" r="5" fill="#6F8CF0"/>
- <g id="cus" transform="translate(872,560)" fill="none" stroke="#F6F1E6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-<circle cx="0" cy="-186" r="22" fill="#0B1123"/><path d="M-20 -204 q20 -26 40 0"/>
-<path id="cus-face" d="M-8 -180 q8 6 16 0" stroke-width="3"/>
-<path d="M-30 -66 v-64 q0 -28 30 -28 q30 0 30 28 v64 z" fill="#131C40"/>
-<path d="M-16 -66 v62 M16 -66 v62 M-16 -4 h-12 M16 -4 h12"/>
-<g id="cus-armL"><path d="M-28 -140 l-16 50"/></g>
-<g id="cus-armR" transform="rotate(0 28 -140)"><path d="M28 -140 l20 44 l-4 -30"/><rect x="36" y="-142" width="20" height="34" rx="5" fill="#0B1123" stroke="#A3B5F2" stroke-width="3" id="cus-phone"/></g>
-</g>
- <g id="bubble" opacity="0"><path d="M700 236 h240 q16 0 16 16 v48 q0 16 -16 16 h-36 l-18 24 v-24 h-186 q-16 0 -16 -16 v-48 q0 -16 16 -16 z" fill="#131C40" stroke="#A3B5F2" stroke-width="2.5"/><text x="820" y="286" text-anchor="middle" font-size="24" font-weight="650" fill="#fff">“Who should I call?”</text></g>
+<!-- A: Sam and his quiet shop -->
+<g id="scA">
+ <circle id="shopGlow" cx="330" cy="380" r="420" fill="url(#gold)" opacity="0"/>
+ <rect x="0" y="600" width="1280" height="120" fill="#0A102A"/>
+ <rect x="90" y="250" width="480" height="350" fill="#1B2764"/><rect x="90" y="250" width="480" height="14" fill="#101838"/>
+ <path id="awning" d="M70 264 h520 l-20 62 h-480 z" fill="url(#awn)" opacity=".35"/>
+ <rect id="sign" x="150" y="186" width="360" height="58" rx="12" fill="#101838" stroke="#4A5AA0" stroke-width="3"/><text id="signT" x="330" y="225" text-anchor="middle" class="mono" font-size="24" fill="#5A6AA8">SAM'S PLUMBING</text>
+ <rect x="130" y="360" width="200" height="150" rx="8" fill="#0E1533" stroke="#4A5AA0" stroke-width="3"/><path d="M230 360 v150 M130 435 h200" stroke="#4A5AA0" stroke-width="3"/><rect id="win" x="134" y="364" width="192" height="142" rx="6" fill="#F8B10F" opacity="0"/>
+ <rect x="400" y="380" width="120" height="220" rx="8" fill="#101838" stroke="#4A5AA0" stroke-width="3"/><circle cx="500" cy="494" r="6" fill="#F8B10F"/>
+ <g id="samA" transform="translate(800,600)"><g id="sam">
+<rect x="-30" y="-112" width="24" height="112" rx="8" fill="#23306B"/><rect x="6" y="-112" width="24" height="112" rx="8" fill="#23306B"/><rect x="-40" y="-14" width="36" height="14" rx="7" fill="#0A0F24"/><rect x="4" y="-14" width="36" height="14" rx="7" fill="#0A0F24"/>
+<path d="M-58 -232 l-22 96" stroke="#F6F1E6" stroke-width="22" stroke-linecap="round"/><circle cx="-80" cy="-132" r="13" fill="#F1C9A5"/>
+<rect x="-56" y="-262" width="112" height="166" rx="30" fill="#4863B5"/><rect x="-30" y="-262" width="60" height="70" rx="10" fill="#3A52A0"/><circle cx="-18" cy="-250" r="5" fill="#F8B10F"/><circle cx="18" cy="-250" r="5" fill="#F8B10F"/>
+<rect x="-12" y="-268" width="24" height="18" fill="#E3B48C"/><circle cx="0" cy="-300" r="46" fill="#F1C9A5"/><path d="M-48 -312 a48 44 0 0 1 96 0 z" fill="#1E2A56"/><path d="M-50 -312 h126 q8 0 8 8 v2 h-134 z" fill="#F8B10F"/>
+<circle cx="-16" cy="-302" r="4.5" fill="#1B1F3A"/><circle cx="16" cy="-302" r="4.500" fill="#1B1F3A"/>
+<path id="sam-mouth" d="M-14 -280 q14 8 28 0" stroke="#1B1F3A" stroke-width="4" fill="none" stroke-linecap="round"/>
+<g id="sam-arm"><path d="M58 -232 l30 84" stroke="#F6F1E6" stroke-width="22" stroke-linecap="round"/><circle cx="90" cy="-144" r="13" fill="#F1C9A5"/><rect x="78" y="-196" width="34" height="58" rx="8" fill="#0A0F24" stroke="#A3B5F2" stroke-width="3"/><rect id="sam-scr" x="83" y="-190" width="24" height="42" rx="3" fill="#1E2A56"/></g>
+</g></g>
+ <g id="badgeA" transform="translate(900,330)"><rect width="230" height="56" rx="28" fill="#0E1533" stroke="#4A5AA0" stroke-width="2.5" id="badgeAr"/><text id="badgeAt" x="115" y="36" text-anchor="middle" class="mono" font-size="18" fill="#8492B8">0 CALLS TODAY</text></g>
+ <g id="ringA" fill="none" stroke="#F8B10F" stroke-width="5" stroke-linecap="round" opacity="0"><path d="M926 404 q22 -24 0 -48"/><path d="M946 420 q40 -40 0 -80"/><path d="M966 436 q58 -56 0 -112"/></g>
 </g>
 
-<!-- engines -->
-<g id="engines" opacity="0"><g class="eng" id="eng0"><rect x="410" y="80" width="60" height="60" rx="17" fill="url(#tile)" stroke="rgba(190,205,250,.5)"/><svg x="424" y="94" width="32" height="32" viewBox="0 0 48 48"> <path d="M44 24.5c0-1.57-.14-3.09-.4-4.55H24v8.51h11.26c-.49 2.63-1.97 4.85-4.2 6.34v5.27h6.8c3.97-3.66 6.14-9.04 6.14-15.57z" fill="#4285F4" /> <path d="M24 46c5.7 0 10.49-1.89 13.99-5.13l-6.83-5.27c-1.89 1.27-4.31 2.01-7.16 2.01-5.5 0-10.16-3.71-11.83-8.7H5.14v5.44C8.7 41.35 15.84 46 24 46z" fill="#34A853" /> <path d="M12.17 28.91c-.88-2.55-.88-5.27 0-7.82V15.65H5.14C2.38 19.88 1 24.88 1 26s1.38 6.12 4.14 10.35l7.03-5.44z" fill="#FBBC05" /> <path d="M24 10.28c3.1 0 5.88 1.07 8.07 3.16l6.04-6.04C34.46 4.04 29.67 2 24 2 15.84 2 8.7 6.65 5.14 13.65l7.03 5.44c1.67-4.99 6.33-8.81 11.83-8.81z" fill="#EA4335" /> </svg></g><g class="eng" id="eng1"><rect x="510" y="80" width="60" height="60" rx="17" fill="url(#tile)" stroke="rgba(190,205,250,.5)"/><svg x="524" y="94" width="32" height="32" viewBox="0 0 48 48"> <path d="M24 2C14.6 2 7 9.4 7 18.5 7 31 24 46 24 46s17-15 17-27.5C41 9.4 33.4 2 24 2z" fill="#EA4335" /> <circle cx="24" cy="18" r="4.5" fill="#fff" /> </svg></g><g class="eng" id="eng2"><rect x="610" y="80" width="60" height="60" rx="17" fill="url(#tile)" stroke="rgba(190,205,250,.5)"/><svg x="624" y="94" width="32" height="32" viewBox="0 0 48 48"> <circle cx="24" cy="24" r="20" fill="#10a37f" /> <path d="M16 20c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".7" /> <rect x="16" y="23" width="16" height="10" rx="2" fill="#fff" opacity=".7" /> </svg></g><g class="eng" id="eng3"><rect x="710" y="80" width="60" height="60" rx="17" fill="url(#tile)" stroke="rgba(190,205,250,.5)"/><svg x="724" y="94" width="32" height="32" viewBox="0 0 48 48" fill="none"> <path d="M24 2C17 14 9 18 2 26c7 6 15 12 22 20 7-8 15-14 22-20C39 18 31 14 24 2z" fill="url(#gemf)" /> <defs> <linearGradient id="gemf" x1="2" y1="2" x2="46" y2="46"> <stop stop-color="#4285F4" /> <stop offset=".33" stop-color="#34A853" /> <stop offset=".66" stop-color="#FBBC05" /> <stop offset="1" stop-color="#EA4335" /> </linearGradient> </defs> </svg></g><g class="eng" id="eng4"><rect x="810" y="80" width="60" height="60" rx="17" fill="url(#tile)" stroke="rgba(190,205,250,.5)"/><svg x="824" y="94" width="32" height="32" viewBox="0 0 48 48" fill="none"> <circle cx="24" cy="24" r="19" stroke="#1a7f64" stroke-width="2.5" /> <path d="M12 24h10l4-8 4 16 4-8h10" stroke="#1a7f64" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /> </svg></g></g>
-<path id="qPath" d="M820 232 C 810 190, 720 170, 640 150" fill="none" stroke="#DCE6FF" stroke-width="3" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
-<path id="wrongPath" d="M640 150 C 900 200, 1180 180, 1262 120" fill="none" stroke="#8492B8" stroke-width="3" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
-<g id="other" opacity="0"><rect x="1090" y="60" width="170" height="52" rx="14" fill="#131C40" stroke="#8492B8" stroke-width="2"/><text x="1175" y="93" text-anchor="middle" class="mono" font-size="14" fill="#B4C0E0">SOMEONE ELSE</text></g>
-<path id="aPath" d="M640 150 C 520 190, 300 200, 240 340" fill="none" stroke="#F8B10F" stroke-width="4" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
-
-<!-- three checks -->
-<g id="checks" opacity="0" transform="translate(640,214)">
- <g id="ck0" transform="translate(-170,0)"><rect x="-70" y="-24" width="140" height="48" rx="24" fill="#0B1123" stroke="#5A6AA8" stroke-width="2"/><text y="6" text-anchor="middle" class="mono" font-size="15" fill="#8492B8">READ  ✕</text></g>
- <g id="ck1"><rect x="-80" y="-24" width="160" height="48" rx="24" fill="#0B1123" stroke="#5A6AA8" stroke-width="2"/><text y="6" text-anchor="middle" class="mono" font-size="15" fill="#8492B8">CONFIRM  ✕</text></g>
- <g id="ck2" transform="translate(178,0)"><rect x="-74" y="-24" width="148" height="48" rx="24" fill="#0B1123" stroke="#5A6AA8" stroke-width="2"/><text y="6" text-anchor="middle" class="mono" font-size="15" fill="#8492B8">CHOOSE  ✕</text></g>
+<!-- B: the customer asks an engine -->
+<g id="scB" opacity="0">
+ <rect x="0" y="600" width="1280" height="120" fill="#0A102A"/>
+ <path d="M60 120 h200 v90" stroke="#6F8CF0" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle id="dripB" cx="260" cy="240" r="9" fill="#6F8CF0"/><ellipse cx="260" cy="602" rx="70" ry="10" fill="#6F8CF0" opacity=".5"/>
+ <g transform="translate(430,600)"><g id="cus">
+<rect x="-30" y="-112" width="24" height="112" rx="8" fill="#23306B"/><rect x="6" y="-112" width="24" height="112" rx="8" fill="#23306B"/><rect x="-40" y="-14" width="36" height="14" rx="7" fill="#0A0F24"/><rect x="4" y="-14" width="36" height="14" rx="7" fill="#0A0F24"/>
+<path d="M-58 -232 l-22 96" stroke="#F6F1E6" stroke-width="22" stroke-linecap="round"/><circle cx="-80" cy="-132" r="13" fill="#F1C9A5"/>
+<rect x="-56" y="-262" width="112" height="166" rx="30" fill="#2E9C88"/>
+<rect x="-12" y="-268" width="24" height="18" fill="#E3B48C"/><circle cx="0" cy="-300" r="46" fill="#F1C9A5"/><path d="M-50 -296 a50 52 0 0 1 100 0 q-20 -34 -100 0 z" fill="#1B1F3A"/><circle cx="34" cy="-352" r="20" fill="#1B1F3A"/>
+<circle cx="-16" cy="-302" r="4.5" fill="#1B1F3A"/><circle cx="16" cy="-302" r="4.500" fill="#1B1F3A"/>
+<path id="cus-mouth" d="M-14 -280 q14 8 28 0" stroke="#1B1F3A" stroke-width="4" fill="none" stroke-linecap="round"/>
+<g id="cus-arm"><path d="M58 -232 l30 84" stroke="#F6F1E6" stroke-width="22" stroke-linecap="round"/><circle cx="90" cy="-144" r="13" fill="#F1C9A5"/><rect x="78" y="-196" width="34" height="58" rx="8" fill="#0A0F24" stroke="#A3B5F2" stroke-width="3"/><rect id="cus-scr" x="83" y="-190" width="24" height="42" rx="3" fill="#1E2A56"/></g>
+</g></g>
+ <g transform="translate(700,70)"><rect width="460" height="520" rx="40" fill="#0E1533" stroke="#A3B5F2" stroke-width="3"/><rect x="170" y="18" width="120" height="10" rx="5" fill="#243268"/>
+  <text x="40" y="84" class="mono" font-size="15" fill="#A3B5F2">ASK ANYTHING</text>
+  <rect x="32" y="104" width="396" height="64" rx="32" fill="#18224E" stroke="#6F8CF0" stroke-width="2"/><text id="typed" x="58" y="144" font-size="23" font-weight="600" fill="#fff"></text>
+  <text x="40" y="226" class="mono" font-size="13" fill="#8492B8">ASKING</text><g class="eb" id="eb0"><rect x="38.0" y="246" width="64" height="64" rx="17.92" fill="url(#tile)" stroke="rgba(190,205,250,.5)" stroke-width="1.5"/><svg x="52.08" y="260.08" width="35.84" height="35.84" viewBox="0 0 48 48"> <path d="M44 24.5c0-1.57-.14-3.09-.4-4.55H24v8.51h11.26c-.49 2.63-1.97 4.85-4.2 6.34v5.27h6.8c3.97-3.66 6.14-9.04 6.14-15.57z" fill="#4285F4" /> <path d="M24 46c5.7 0 10.49-1.89 13.99-5.13l-6.83-5.27c-1.89 1.27-4.31 2.01-7.16 2.01-5.5 0-10.16-3.71-11.83-8.7H5.14v5.44C8.7 41.35 15.84 46 24 46z" fill="#34A853" /> <path d="M12.17 28.91c-.88-2.55-.88-5.27 0-7.82V15.65H5.14C2.38 19.88 1 24.88 1 26s1.38 6.12 4.14 10.35l7.03-5.44z" fill="#FBBC05" /> <path d="M24 10.28c3.1 0 5.88 1.07 8.07 3.16l6.04-6.04C34.46 4.04 29.67 2 24 2 15.84 2 8.7 6.65 5.14 13.65l7.03 5.44c1.67-4.99 6.33-8.81 11.83-8.81z" fill="#EA4335" /> </svg></g><g class="eb" id="eb1"><rect x="118.0" y="246" width="64" height="64" rx="17.92" fill="url(#tile)" stroke="rgba(190,205,250,.5)" stroke-width="1.5"/><svg x="132.08" y="260.08" width="35.84" height="35.84" viewBox="0 0 48 48"> <path d="M24 2C14.6 2 7 9.4 7 18.5 7 31 24 46 24 46s17-15 17-27.5C41 9.4 33.4 2 24 2z" fill="#EA4335" /> <circle cx="24" cy="18" r="4.5" fill="#fff" /> </svg></g><g class="eb" id="eb2"><rect x="198.0" y="246" width="64" height="64" rx="17.92" fill="url(#tile)" stroke="rgba(190,205,250,.5)" stroke-width="1.5"/><svg x="212.08" y="260.08" width="35.84" height="35.84" viewBox="0 0 48 48"> <circle cx="24" cy="24" r="20" fill="#10a37f" /> <path d="M16 20c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".7" /> <rect x="16" y="23" width="16" height="10" rx="2" fill="#fff" opacity=".7" /> </svg></g><g class="eb" id="eb3"><rect x="278.0" y="246" width="64" height="64" rx="17.92" fill="url(#tile)" stroke="rgba(190,205,250,.5)" stroke-width="1.5"/><svg x="292.08" y="260.08" width="35.84" height="35.84" viewBox="0 0 48 48" fill="none"> <path d="M24 2C17 14 9 18 2 26c7 6 15 12 22 20 7-8 15-14 22-20C39 18 31 14 24 2z" fill="url(#gem4)" /> <defs> <linearGradient id="gem4" x1="2" y1="2" x2="46" y2="46"> <stop stop-color="#4285F4" /> <stop offset=".33" stop-color="#34A853" /> <stop offset=".66" stop-color="#FBBC05" /> <stop offset="1" stop-color="#EA4335" /> </linearGradient> </defs> </svg></g><g class="eb" id="eb4"><rect x="358.0" y="246" width="64" height="64" rx="17.92" fill="url(#tile)" stroke="rgba(190,205,250,.5)" stroke-width="1.5"/><svg x="372.08" y="260.08" width="35.84" height="35.84" viewBox="0 0 48 48" fill="none"> <circle cx="24" cy="24" r="19" stroke="#1a7f64" stroke-width="2.5" /> <path d="M12 24h10l4-8 4 16 4-8h10" stroke="#1a7f64" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /> </svg></g>
+  <g id="think"><circle cx="210" cy="372" r="7" fill="#A3B5F2"/><circle cx="234" cy="372" r="7" fill="#A3B5F2"/><circle cx="258" cy="372" r="7" fill="#A3B5F2"/></g>
+  <g id="ansE" opacity="0"><rect x="32" y="340" width="396" height="150" rx="22" fill="rgba(248,177,15,.12)" stroke="#F8B10F" stroke-width="2.5"/><text x="56" y="382" class="mono" font-size="13" fill="#FFD98A">THE ANSWER</text><text x="56" y="420" font-size="30" font-weight="700" fill="#fff">Sam's Plumbing</text><g fill="#F8B10F"><path d="M66 440l4 8 9 1.300-6.500 6.300 1.500 9-8-4.200-8 4.200 1.500-9-6.500-6.300 9-1.300z"/><path d="M92 440l4 8 9 1.300-6.500 6.300 1.500 9-8-4.200-8 4.200 1.500-9-6.500-6.300 9-1.300z"/><path d="M118 440l4 8 9 1.300-6.500 6.300 1.500 9-8-4.200-8 4.200 1.500-9-6.500-6.300 9-1.300z"/><path d="M144 440l4 8 9 1.300-6.500 6.300 1.500 9-8-4.200-8 4.200 1.500-9-6.500-6.300 9-1.300z"/><path d="M170 440l4 8 9 1.300-6.500 6.300 1.500 9-8-4.200-8 4.200 1.500-9-6.500-6.300 9-1.300z"/></g><rect x="290" y="432" width="116" height="40" rx="20" fill="#F8B10F"/><text x="348" y="458" text-anchor="middle" class="mono" font-size="14" fill="#1A1200">CALL</text></g>
+ </g>
 </g>
 
-<!-- RSM rings -->
-<g id="rsm" opacity="0" transform="translate(640,372)">
- <circle r="210" fill="url(#gold)"/>
- <circle id="rg2" r="150" fill="none" stroke="#A3B5F2" stroke-width="3" opacity=".25"/><text id="rt2" y="-158" text-anchor="middle" class="mono" font-size="15" fill="#A3B5F2" opacity=".25">CHOOSE</text>
- <circle id="rg1" r="112" fill="none" stroke="#4CC0A8" stroke-width="3" opacity=".25"/><text id="rt1" y="-120" text-anchor="middle" class="mono" font-size="15" fill="#4CC0A8" opacity=".25">CONFIRM</text>
- <circle id="rg0" r="74" fill="none" stroke="#F8B10F" stroke-width="3" opacity=".25"/><text id="rt0" y="-82" text-anchor="middle" class="mono" font-size="15" fill="#F8B10F" opacity=".25">READ</text>
- <circle r="44" fill="#F6EFDF" stroke="#E2AE45" stroke-width="2"/><image href="../../../site/assets/rsm-logo-512.png" x="-30" y="-27" width="60" height="53"/>
+<!-- C/D: how an engine decides, then the fix -->
+<g id="scC" opacity="0">
+ <text id="cHead" x="640" y="84" text-anchor="middle" class="mono" font-size="22" fill="#fff">HOW AN ENGINE DECIDES</text>
+ <g id="card0" transform="translate(90,128)"><rect width="340" height="330" rx="26" fill="url(#glass)" stroke="#F8B10F" stroke-opacity=".55" stroke-width="2" id="cardr0"/>
+<text x="28" y="48" class="mono" font-size="17" fill="#F8B10F">READ</text>
+<text x="28" y="88" font-size="23" font-weight="650" fill="#fff">Can I read what</text><text x="28" y="118" font-size="23" font-weight="650" fill="#fff">this business does?</text>
+<g id="pic0" transform="translate(28,140)"><rect width="284" height="124" rx="12" fill="#0B1123" stroke="rgba(163,181,242,.3)"/><circle cx="16" cy="14" r="4" fill="#F8B10F"/><circle cx="30" cy="14" r="4" fill="#4CC0A8"/><path d="M0 28h284" stroke="rgba(163,181,242,.3)"/>
+<g id="p0fill"><rect x="16" y="40" width="150" height="12" rx="4" fill="#F8B10F"/><rect x="16" y="60" width="252" height="6" rx="3" fill="#A3B5F2"/><rect x="16" y="72" width="210" height="6" rx="3" fill="#A3B5F2"/>
+<g class="mono" font-size="11"><rect x="16" y="90" width="78" height="24" rx="12" fill="rgba(248,177,15,.18)" stroke="#F8B10F"/><text x="55" y="106" text-anchor="middle" fill="#FFD98A">PLUMBER</text><rect x="102" y="90" width="64" height="24" rx="12" fill="rgba(248,177,15,.18)" stroke="#F8B10F"/><text x="134" y="106" text-anchor="middle" fill="#FFD98A">MIAMI</text><rect x="174" y="90" width="94" height="24" rx="12" fill="rgba(248,177,15,.18)" stroke="#F8B10F"/><text x="221" y="106" text-anchor="middle" fill="#FFD98A">OPEN 24/7</text></g></g>
+<text id="p0q" x="142" y="84" text-anchor="middle" font-size="40" font-weight="700" fill="rgba(163,181,242,.35)">?</text></g>
+<rect x="28" y="286" width="230" height="10" rx="5" fill="rgba(163,181,242,.18)"/><rect id="m0" x="28" y="286" width="0" height="10" rx="5" fill="#F8B10F"/><text id="mv0" x="312" y="298" text-anchor="end" class="mono" font-size="19" fill="#fff">0</text></g>
+ <g id="card1" transform="translate(470,128)"><rect width="340" height="330" rx="26" fill="url(#glass)" stroke="#4CC0A8" stroke-opacity=".55" stroke-width="2" id="cardr1"/>
+<text x="28" y="48" class="mono" font-size="17" fill="#4CC0A8">CONFIRM</text>
+<text x="28" y="88" font-size="23" font-weight="650" fill="#fff">Do other sources</text><text x="28" y="118" font-size="23" font-weight="650" fill="#fff">confirm it?</text>
+<g id="pic1" transform="translate(28,140)"><g id="p1stars" fill="#4CC0A8"><path id="s0" d="M24 4l6 12.500 13.800 2-10 9.700 2.400 13.700-12.200-6.400-12.200 6.400 2.400-13.700-10-9.700 13.800-2z"/><path id="s1" d="M68 4l6 12.500 13.800 2-10 9.700 2.400 13.700-12.200-6.400-12.200 6.400 2.400-13.700-10-9.700 13.800-2z"/><path id="s2" d="M112 4l6 12.500 13.800 2-10 9.700 2.400 13.700-12.200-6.400-12.200 6.400 2.400-13.700-10-9.700 13.800-2z"/><path id="s3" d="M156 4l6 12.500 13.800 2-10 9.700 2.400 13.700-12.200-6.400-12.200 6.400 2.400-13.700-10-9.700 13.800-2z"/><path id="s4" d="M200 4l6 12.500 13.800 2-10 9.700 2.400 13.700-12.200-6.400-12.200 6.400 2.400-13.700-10-9.700 13.800-2z"/></g><g id="src0" class="mono" font-size="12"><rect x="0" y="66" width="88" height="50" rx="12" fill="#0B1123" stroke="#4CC0A8" stroke-opacity=".7"/><text x="44" y="88" text-anchor="middle" fill="#fff">LISTINGS</text><path d="M34 100l6 6 12-12" stroke="#4CC0A8" stroke-width="3" fill="none" stroke-linecap="round"/></g><g id="src1" class="mono" font-size="12"><rect x="96" y="66" width="88" height="50" rx="12" fill="#0B1123" stroke="#4CC0A8" stroke-opacity=".7"/><text x="140" y="88" text-anchor="middle" fill="#fff">REVIEWS</text><path d="M130 100l6 6 12-12" stroke="#4CC0A8" stroke-width="3" fill="none" stroke-linecap="round"/></g><g id="src2" class="mono" font-size="12"><rect x="192" y="66" width="88" height="50" rx="12" fill="#0B1123" stroke="#4CC0A8" stroke-opacity=".7"/><text x="236" y="88" text-anchor="middle" fill="#fff">MENTIONS</text><path d="M226 100l6 6 12-12" stroke="#4CC0A8" stroke-width="3" fill="none" stroke-linecap="round"/></g></g>
+<rect x="28" y="286" width="230" height="10" rx="5" fill="rgba(163,181,242,.18)"/><rect id="m1" x="28" y="286" width="0" height="10" rx="5" fill="#4CC0A8"/><text id="mv1" x="312" y="298" text-anchor="end" class="mono" font-size="19" fill="#fff">0</text></g>
+ <g id="card2" transform="translate(850,128)"><rect width="340" height="330" rx="26" fill="url(#glass)" stroke="#A3B5F2" stroke-opacity=".55" stroke-width="2" id="cardr2"/>
+<text x="28" y="48" class="mono" font-size="17" fill="#A3B5F2">CHOOSE</text>
+<text x="28" y="88" font-size="23" font-weight="650" fill="#fff">Do real people</text><text x="28" y="118" font-size="23" font-weight="650" fill="#fff">choose it?</text>
+<g id="pic2" transform="translate(28,140)"><rect x="0" y="8" width="284" height="54" rx="27" fill="#A3B5F2" id="callbtn"/><text x="142" y="43" text-anchor="middle" class="mono" font-size="17" fill="#0B1123">CALL SAM</text>
+<circle id="tap" cx="230" cy="36" r="10" fill="none" stroke="#fff" stroke-width="3"/><path d="M222 44l10 26 6-12 12-4z" fill="#fff" stroke="#0B1123" stroke-width="1.5"/>
+<g class="mono" font-size="13" fill="#B4C0E0"><text x="0" y="100">CALLS THIS WEEK</text></g><text id="callsN" x="284" y="106" text-anchor="end" font-size="34" font-weight="700" fill="#fff">0</text></g>
+<rect x="28" y="286" width="230" height="10" rx="5" fill="rgba(163,181,242,.18)"/><rect id="m2" x="28" y="286" width="0" height="10" rx="5" fill="#A3B5F2"/><text id="mv2" x="312" y="298" text-anchor="end" class="mono" font-size="19" fill="#fff">0</text></g>
+ <g id="eq" transform="translate(640,548)"><text id="eqT" x="-70" y="12" text-anchor="middle" font-size="40" font-weight="700" fill="#fff" letter-spacing="-1"></text><circle id="eqGlow" cx="330" cy="0" r="90" fill="url(#gold)" opacity="0"/><circle id="eqOrb" cx="330" cy="0" r="38" fill="#18224E" stroke="#4A5AA0" stroke-width="3"/><text id="eqN" x="330" y="13" text-anchor="middle" font-size="34" font-weight="700" fill="#8492B8">0</text></g>
+ <g id="else" opacity="0" transform="translate(640,548)"><rect x="-250" y="-34" width="500" height="68" rx="34" fill="#0E1533" stroke="#8492B8" stroke-width="2.5"/><text y="9" text-anchor="middle" class="mono" font-size="19" fill="#C9D4FA">THE ENGINE NAMES SOMEONE ELSE</text></g>
 </g>
 
-<!-- end card -->
-<g id="end" opacity="0"><rect width="1280" height="720" fill="#070B18"/><circle cx="640" cy="330" r="420" fill="url(#gold)" opacity=".5"/>
- <circle cx="640" cy="210" r="52" fill="#F6EFDF" stroke="#E2AE45" stroke-width="2"/><image href="../../../site/assets/rsm-logo-512.png" x="604" y="178" width="72" height="64"/>
- <text x="640" y="350" text-anchor="middle" font-size="58" font-weight="700" fill="#fff" letter-spacing="-2">Relevance <tspan fill="#F8B10F">=</tspan> Read <tspan fill="#F8B10F">×</tspan> Confirm <tspan fill="#F8B10F">×</tspan> Choose</text>
- <text x="640" y="420" text-anchor="middle" font-size="30" font-weight="600" fill="#FFD98A">Be the answer.</text>
- <text x="640" y="480" text-anchor="middle" class="mono" font-size="15" fill="#B4C0E0">RELEVANT SEARCH MEDIA</text></g>
+<!-- F: end card -->
+<g id="scF" opacity="0"><rect width="1280" height="720" fill="#0C1330"/><circle cx="640" cy="320" r="460" fill="url(#gold)" opacity=".55"/>
+ <circle cx="640" cy="196" r="58" fill="#F6EFDF" stroke="#E2AE45" stroke-width="2.5"/><image href="../../../site/assets/rsm-logo-512.png" x="600" y="161" width="80" height="71"/>
+ <text x="640" y="346" text-anchor="middle" font-size="60" font-weight="700" fill="#fff" letter-spacing="-2">Relevance <tspan fill="#F8B10F">=</tspan> <tspan id="fR">Read</tspan> <tspan fill="#F8B10F">×</tspan> <tspan id="fC">Confirm</tspan> <tspan fill="#F8B10F">×</tspan> <tspan id="fH">Choose</tspan></text>
+ <text id="fBe" x="640" y="426" text-anchor="middle" font-size="38" font-weight="700" fill="#FFD98A">Be the answer.</text>
+ <text x="640" y="492" text-anchor="middle" class="mono" font-size="16" fill="#C9D4FA">RELEVANT SEARCH MEDIA · THE D'SOUZA EQUATION</text></g>
 
-<!-- caption -->
-<rect id="capBg" x="140" y="622" width="1000" height="62" rx="31" fill="rgba(7,11,24,.82)" stroke="rgba(163,181,242,.25)"/>
-<text id="cap" x="640" y="662" text-anchor="middle" font-size="27" font-weight="600" fill="#fff"></text>
+<!-- chapter + caption -->
+<g id="chap"><rect x="36" y="28" width="340" height="38" rx="19" fill="rgba(10,16,42,.7)" stroke="rgba(163,181,242,.3)"/><circle cx="58" cy="47" r="5" fill="#F8B10F"/><text id="chapT" x="74" y="53" class="mono" font-size="14" fill="#fff"></text></g>
+<g id="capG"><rect id="capBg" x="120" y="622" width="1040" height="78" rx="22" fill="rgba(8,12,34,.86)" stroke="rgba(163,181,242,.25)"/><text id="cap1" x="640" y="655" text-anchor="middle" font-size="25" font-weight="600" fill="#fff"></text><text id="cap2" x="640" y="686" text-anchor="middle" font-size="25" font-weight="600" fill="#fff"></text></g>
 </svg>
 <script>
+const TL={
+ "total": 57.03,
+ "lines": [
+  {
+   "k": "a",
+   "cap": "This is Sam. He's the best plumber in town. But his phone is quiet.",
+   "s": 0.6,
+   "e": 4.71
+  },
+  {
+   "k": "b",
+   "cap": "When a customer has a leak, she doesn't call Sam. She asks Google, Maps or ChatGPT: who should I call?",
+   "s": 5.21,
+   "e": 12.304
+  },
+  {
+   "k": "c1",
+   "cap": "Every engine decides the same way. It asks three things.",
+   "s": 12.804,
+   "e": 16.519
+  },
+  {
+   "k": "c2",
+   "cap": "Can I read what this business does? Do other sources confirm it? Do real people choose it?",
+   "s": 17.019,
+   "e": 22.046
+  },
+  {
+   "k": "c3",
+   "cap": "The three multiply. If one is zero, the answer is zero. So the engine names someone else.",
+   "s": 22.546,
+   "e": 28.235
+  },
+  {
+   "k": "d1",
+   "cap": "We fix all three. Read: Sam's site now says plainly what he does, where, and for whom.",
+   "s": 28.735,
+   "e": 34.644
+  },
+  {
+   "k": "d2",
+   "cap": "Confirm: listings, reviews and mentions that say the same thing.",
+   "s": 35.144,
+   "e": 40.148
+  },
+  {
+   "k": "d3",
+   "cap": "Choose: a listing people pick, and calls that prove it.",
+   "s": 40.648,
+   "e": 43.469
+  },
+  {
+   "k": "e",
+   "cap": "Same question. Now every engine has a reason to name Sam.",
+   "s": 43.969,
+   "e": 48.439
+  },
+  {
+   "k": "f",
+   "cap": "That is the D'Souza Equation. Relevance = Read \u00d7 Confirm \u00d7 Choose. Be the answer.",
+   "s": 48.939,
+   "e": 55.127
+  }
+ ]
+}; const L={}; TL.lines.forEach(l=>L[l.k]=l); window.TOTAL=TL.total;
 const $=id=>document.getElementById(id), cl=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)), ease=u=>{u=cl(u);return u*u*(3-2*u)};
-const ramp=(t,a,b)=>ease((t-a)/(b-a)), win=(t,a,b,f=0.5)=>Math.min(ramp(t,a,a+f),1-ramp(t,b-f,b));
-const CAPS=[[0.3,5,"Sam fixes pipes better than anyone in town."],[5,10,"A customer has a leak. She doesn't ask Sam. She asks an engine."],[10,15.5,"The engines can't read him or confirm him. They name someone else."],[15.5,23,"We fix what engines read, what others confirm, what people choose."],[23,28,"Same question. Now the answer is Sam."]];
+const ramp=(t,a,b)=>ease((t-a)/(b-a)), win=(t,a,b,f=0.45)=>Math.min(ramp(t,a,a+f),1-ramp(t,b-f,b));
+const o=(id,v)=>$(id).setAttribute('opacity',cl(v).toFixed(3)), lerp=(a,b,k)=>a+(b-a)*k;
+function wrap(s){ if(s.length<=58) return [s,'']; let i=s.lastIndexOf(' ',Math.ceil(s.length/2)+6); return [s.slice(0,i),s.slice(i+1)]; }
+const A0=0,B0=L.b.s-0.35,C0=L.c1.s-0.4,D0=L.d1.s-0.3,E0=L.e.s-0.4,F0=L.f.s-0.35,END=TL.total;
+const CH=[[A0,'1 · THE PROBLEM'],[B0,'2 · THE QUESTION'],[C0,'3 · HOW ENGINES DECIDE'],[D0,'4 · THE FIX'],[E0,'5 · THE ANSWER'],[F0,'THE EQUATION']];
+window.CHAPTERS=CH;
 window.renderAt=function(t){
-  const o=(id,v)=>$(id).setAttribute('opacity',cl(v).toFixed(3));
-  // caption
-  let c=CAPS.find(c=>t>=c[0]&&t<c[1]); $('cap').textContent=c?c[2]:''; const co=c?win(t,c[0],c[1],0.4):0; o('cap',co); o('capBg',co);
-  // sam idle bob + arm
-  const bob=Math.sin(t*2)*2; const happy=ramp(t,26,26.8);
-  $('sam').setAttribute('transform','translate(452,'+(560+bob*(1-happy)-happy*8*Math.abs(Math.sin((t-26)*6)))+')');
-  $('sam-armR').setAttribute('transform','rotate('+(-happy*120)+' 28 -140)');
-  $('sam-face').setAttribute('d', happy>0.5?'M-10 -182 q10 12 20 0':(t<23?'M-8 -176 q8 -5 16 0':'M-8 -180 q8 6 16 0'));
-  // customer
-  o('cust', win(t,4.6,30,0.6)*(1-ramp(t,27.6,28.2)));
-  $('drip').setAttribute('cy', 496+((t*60)%64)); $('drip').setAttribute('opacity', t<24?1-(((t*60)%64)/64):0);
-  o('bubble', win(t,6,9.6,0.4)+win(t,23.3,25.2,0.4));
-  // engines
-  o('engines', ramp(t,7.4,8.2)*(1-ramp(t,27.6,28.2)));
-  for(let i=0;i<5;i++){ const p=(t>8.6&&t<15)||(t>24&&t<26.5)?1+0.06*Math.sin(t*6+i):1; $('eng'+i).setAttribute('transform','translate('+(440+i*100)*(1-p)+','+110*(1-p)+') scale('+p+')'); }
-  const q1=ramp(t,8,9.2)*(1-ramp(t,14.6,15.2)), q2=ramp(t,23.6,24.6)*(1-ramp(t,27.6,28.2));
-  $('qPath').setAttribute('stroke-dashoffset',1-Math.max(q1,q2));
-  // checks fail
-  o('checks', win(t,10.4,15,0.4)); for(let i=0;i<3;i++) $('ck'+i).setAttribute('opacity',ramp(t,10.6+i*0.7,11+i*0.7));
-  $('wrongPath').setAttribute('stroke-dashoffset',1-ramp(t,13,14.2)*(1-ramp(t,15,15.5))); o('other',win(t,13.8,15.4,0.4));
-  // rsm rings
-  o('rsm', win(t,15.6,23.2,0.6));
-  for(let i=0;i<3;i++){ const k=ramp(t,17+i*1.6,17.8+i*1.6); $('rg'+i).setAttribute('opacity',0.25+0.75*k); $('rt'+i).setAttribute('opacity',0.25+0.75*k); $('rg'+i).setAttribute('stroke-width',3+2*k); $('rg'+i).setAttribute('transform','rotate('+t*(8+i*5)+')'); $('rg'+i).setAttribute('stroke-dasharray', k<1?'6 10':(i==1?'2 8':'none')); }
-  // shop lights as rings complete
-  const lit=ramp(t,21.5,23); $('sign').setAttribute('stroke', lit>0.5?'#F8B10F':'#5A6AA8'); $('signT').setAttribute('fill', lit>0.5?'#FFD98A':'#5A6AA8'); o('shopGlow',lit*0.55*(1-ramp(t,27.6,28.2)));
-  // answer
-  $('aPath').setAttribute('stroke-dashoffset',1-ramp(t,24.8,25.9)*(1-ramp(t,27.6,28.2)));
-  const calls=t<26?0:t<26.7?1:t<27.3?2:3; $('callsT').textContent=calls+(calls==1?' CALL':' CALLS'); $('callsT').setAttribute('fill',calls?'#FFD98A':'#8492B8'); $('callsBox').setAttribute('stroke',calls?'#F8B10F':'#5A6AA8');
-  const rg=t>26?(0.5+0.5*Math.sin(t*14)):0; o('ring',rg*(1-ramp(t,27.6,28.2)));
-  // end
-  o('end', ramp(t,28,28.7));
+  // caption + chapter
+  const c=TL.lines.find(l=>t>=l.s-0.15&&t<l.e+0.3); const w=c?wrap(c.cap):['','']; $('cap1').textContent=w[0]; $('cap2').textContent=w[1]; $('cap1').setAttribute('y',w[1]?655:670);
+  o('capG',c?win(t,c.s-0.15,c.e+0.3,0.2):0);
+  let ch=CH[0]; CH.forEach(x=>{if(t>=x[0])ch=x}); $('chapT').textContent=ch[1]; o('chap',t<F0?1:1-ramp(t,F0,F0+0.4));
+  // scenes
+  const inA=t<B0+0.5, inE=t>=E0-0.5&&t<F0+0.5;
+  o('scA', Math.max(1-ramp(t,B0,B0+0.5), win(t,E0,F0+0.5,0.5)));
+  o('scB', Math.max(win(t,B0,C0+0.5,0.5), 0));
+  o('scC', win(t,C0,E0+0.5,0.5)); o('scF', ramp(t,F0,F0+0.6));
+  // A / E : Sam
+  const happy=ramp(t,E0+1.2,E0+1.9), lit=ramp(t,E0+0.2,E0+1.2);
+  const bob=Math.sin(t*2.2)*3, hop=happy*14*Math.abs(Math.sin((t-E0)*5));
+  $('samA').setAttribute('transform','translate(800,'+(600+bob*(1-happy)-hop)+')');
+  $('sam-arm').setAttribute('transform','rotate('+(-happy*118)+' 58 -232)');
+  $('sam-mouth').setAttribute('d', happy>0.5?'M-18 -284 q18 20 36 0':'M-14 -274 q14 -9 28 0');
+  $('sam-scr').setAttribute('fill', happy>0.5?'#F8B10F':'#1E2A56');
+  $('sign').setAttribute('stroke', lit>0.5?'#F8B10F':'#4A5AA0'); $('signT').setAttribute('fill', lit>0.5?'#FFD98A':'#5A6AA8');
+  o('awning',0.35+0.65*lit); o('win',0.55*lit); o('shopGlow',0.6*lit);
+  const calls=t<E0+1.6?0:t<E0+2.4?1:t<E0+3.2?2:3; $('badgeAt').textContent=calls+(calls==1?' CALL TODAY':' CALLS TODAY'); $('badgeAt').setAttribute('fill',calls?'#FFD98A':'#8492B8'); $('badgeAr').setAttribute('stroke',calls?'#F8B10F':'#4A5AA0');
+  o('ringA', t>E0+1.4&&t<F0+0.5?0.5+0.5*Math.sin(t*16):0);
+  // B : customer typing (second pass inside scene E is shown on A's side, so B shows only first ask)
+  const q='who should I call?'; const tp=cl((t-(L.b.s+3.4))/2.2); $('typed').textContent=q.slice(0,Math.round(q.length*tp))+(tp<1&&Math.floor(t*3)%2?'|':'');
+  $('dripB').setAttribute('cy',240+((t*220)%350)); o('dripB',1-((t*220)%350)/350);
+  for(let i=0;i<5;i++){ const act=t>L.b.s+3.2?1+0.07*Math.sin(t*7+i*1.3):1; const bb=$('eb'+i).getBBox(); $('eb'+i).setAttribute('transform','translate('+(bb.x+bb.width/2)*(1-act)+','+(bb.y+bb.height/2)*(1-act)+') scale('+act+')'); }
+  for(let i=0;i<3;i++) $('think').children[i].setAttribute('opacity', t>L.b.s+5.2?0.3+0.7*Math.abs(Math.sin(t*4-i*0.7)):0);
+  $('cus-mouth').setAttribute('d','M-12 -276 q12 -6 24 0');
+  // C : cards arrive with the three questions
+  const c2=L.c2, third=(c2.e-c2.s)/3;
+  $('cHead').textContent = t<D0?'HOW AN ENGINE DECIDES':'WHAT WE FIX';
+  const vals=[0,0,0], tgt=[90,85,80], fixS=[L.d1.s+1.6,L.d2.s+0.8,L.d3.s+0.6], fixE=[L.d1.e,L.d2.e,L.d3.e];
+  for(let i=0;i<3;i++){
+    const inn=ramp(t,c2.s+i*third-0.2,c2.s+i*third+0.4), k=ramp(t,fixS[i],fixE[i]-0.2); vals[i]=Math.round(tgt[i]*k);
+    const active = t>=D0 ? (t>=[L.d1.s,L.d2.s,L.d3.s][i]-0.2 ? 1 : 0.45) : 1;
+    $('card'+i).setAttribute('opacity',(inn*active).toFixed(3)); $('card'+i).setAttribute('transform','translate('+[90,470,850][i]+','+(128+(1-inn)*30)+')');
+    $('m'+i).setAttribute('width',230*vals[i]/100); $('mv'+i).textContent=vals[i]; $('cardr'+i).setAttribute('stroke-opacity',0.55+0.45*k); $('cardr'+i).setAttribute('stroke-width',2+2*k);
+  }
+  o('p0fill',ramp(t,fixS[0]-0.4,fixS[0]+1.2)); o('p0q',1-ramp(t,fixS[0]-0.4,fixS[0]+0.4));
+  for(let i=0;i<5;i++) $('s'+i).setAttribute('opacity', 0.18+0.82*ramp(t,fixS[1]+i*0.35,fixS[1]+i*0.35+0.3));
+  for(let i=0;i<3;i++) o('src'+i, 0.25+0.75*ramp(t,L.d2.s+1.6+i*0.6,L.d2.s+2+i*0.6));
+  const k2=ramp(t,fixS[2],fixE[2]); $('callbtn').setAttribute('fill',k2>0.05?'#F8B10F':'#A3B5F2'); $('callsN').textContent=Math.round(k2*14); const tp2=((t*1.6)%1); $('tap').setAttribute('r',10+tp2*22); o('tap',t>fixS[2]-0.3?(1-tp2):0);
+  // equation line
+  const prod=Math.round(vals[0]*vals[1]*vals[2]/10000), showEq=ramp(t,L.c3.s,L.c3.s+0.5);
+  o('eq', showEq*(1-win(t,L.c3.s+3.6,D0+0.2,0.35)));
+  $('eqT').textContent = (t<D0? 'Read 0  ×  Confirm 0  ×  Choose 0  =' : 'Read '+vals[0]+'  ×  Confirm '+vals[1]+'  ×  Choose '+vals[2]+'  =');
+  $('eqN').textContent=prod; $('eqN').setAttribute('fill',prod>0?'#1A1200':'#8492B8'); $('eqOrb').setAttribute('fill',prod>0?'#F8B10F':'#18224E'); $('eqOrb').setAttribute('stroke',prod>0?'#FFD98A':'#4A5AA0'); $('eqOrb').setAttribute('r',38+prod*0.22); o('eqGlow',prod/61*0.9);
+  o('else', win(t,L.c3.s+3.6,D0+0.2,0.35));
+  // E : the answer card appears inside scene A as an overlay phone? keep simple: show the answer panel from scene B's phone
+  o('ansE',0);
+  // F
+  const f=L.f; $('fR').setAttribute('fill',t>f.s+3.3?'#F8B10F':'#fff'); $('fC').setAttribute('fill',t>f.s+4.0?'#4CC0A8':'#fff'); $('fH').setAttribute('fill',t>f.s+4.7?'#A3B5F2':'#fff'); o('fBe',ramp(t,f.e-1.3,f.e-0.8));
 };
 renderAt(new URLSearchParams(location.search).get('t')*1||0);
 </script></body></html>
