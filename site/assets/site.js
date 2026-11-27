@@ -268,4 +268,9 @@
     onScreen(lab, function (v) { visible = v; kick(); });
     read();
   })();
+  /* ---- the film rolls when it is on screen (muted, never with sound) ---- */
+  (function () {
+    var v = document.querySelector('video[data-roll]'); if (!v || REDUCE || !window.IntersectionObserver) return;
+    new IntersectionObserver(function (es) { var on = es[0].isIntersecting && es[0].intersectionRatio > 0.45; if (on) { v.muted = true; var p = v.play(); if (p && p.catch) p.catch(function () {}); } else if (!v.paused) v.pause(); }, { threshold: [0, 0.45, 0.8] }).observe(v);
+  })();
 })();

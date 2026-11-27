@@ -3,7 +3,7 @@
 Page: https://www.relevantsearchmedia.com/ · built 27 Nov 2026 · checker: site/tools/check_page.py
 
 Result: **146 pass · 0 fail · 267 not testable until the site is live or a person signs**
-Words 3194 · reading grade 6.8 · answer under H1 57 words · FAQs 8
+Words 3179 · reading grade 6.7 · answer under H1 57 words · FAQs 8
 
 | Group | Pass | Fail | Not testable here |
 |---|---|---|---|
@@ -158,18 +158,18 @@ Words 3194 · reading grade 6.8 · answer under H1 57 words · FAQs 8
 | 117 | Headings and copy | The page has exactly one H1 | PASS | 1 H1 |
 | 118 | Headings and copy | The H1 contains the assigned search or a natural paraphrase of it | PASS | The SEO company in the USA that makes you the answer |
 | 119 | Headings and copy | Headings run in order with no level skipped | PASS | skips [] |
-| 120 | Headings and copy | At least two or three H2s are phrased as the reader's next questions | PASS | 10 question H2s |
+| 120 | Headings and copy | At least two or three H2s are phrased as the reader's next questions | PASS | 11 question H2s |
 | 121 | Headings and copy | Headings describe the content beneath them and are never used only for styling | PASS |  |
 | 122 | Headings and copy | The assigned search appears in the first 100 words | PASS | lead keyword in first 100 words |
 | 123 | Headings and copy | Each supporting search appears in a heading or FAQ question and in the body | PASS | every supporting search is in a heading or FAQ and in the body |
 | 124 | Headings and copy | No stuffing: a search term is never used three times in one paragraph and the copy reads naturally aloud | PASS | 0 paragraphs use the lead term 3+ times |
 | 125 | Headings and copy | The page opens with the direct answer, not with background | PASS | answer paragraph 57 words |
-| 126 | Headings and copy | Word count is within the range for its page type and never under 300 words | PASS | 3194 words (home page range set here: 1,500 to 3,200; floor 300) |
-| 127 | Headings and copy | Reading level is grade 7 to 9 and the average sentence is under 20 words | PASS | grade 6.8, 15.3 words per sentence |
+| 126 | Headings and copy | Word count is within the range for its page type and never under 300 words | PASS | 3179 words (home page range set here: 1,500 to 3,200; floor 300) |
+| 127 | Headings and copy | Reading level is grade 7 to 9 and the average sentence is under 20 words | PASS | grade 6.7, 15.1 words per sentence |
 | 128 | Headings and copy | Paragraphs are one to three sentences | PASS | 0 paragraphs over 3 sentences |
 | 129 | Headings and copy | Every service and sub-service the business offers on this topic is covered | PASS | every service line named |
 | 130 | Headings and copy | Areas served are stated accurately | PASS | US served, New Delhi base, stated |
-| 131 | Headings and copy | At least one table or list is used where the content is tabular or step-by-step | PASS | 1 tables, 18 lists |
+| 131 | Headings and copy | At least one table or list is used where the content is tabular or step-by-step | PASS | 1 tables, 19 lists |
 | 132 | Headings and copy | No block of copy is shared with sibling pages beyond the agreed overlap limit | N/T | overlap needs the sibling pages |
 | 133 | Headings and copy | No filler phrases and no superlatives without proof | PASS | filler: set() |
 | 134 | Headings and copy | Spelling, grammar, articles and the casing of acronyms and place names are correct | N/T | spelling needs a dictionary pass; British/US spelling is consistent by review |
@@ -308,7 +308,7 @@ Words 3194 · reading grade 6.8 · answer under H1 57 words · FAQs 8
 | 267 | Conversion elements | Within five seconds a visitor can tell what is offered, for whom and where | PASS | what, for whom, where in the H1 and first line |
 | 268 | Conversion elements | Pricing or honest price guidance is present | PASS | honest price guidance: no prices, say so |
 | 269 | Conversion elements | The page answers the usual objections: cost, time and risk | PASS | cost, time, risk answered |
-| 270 | Conversion elements | The page has no dead end: every section leads to a next step | PASS | 13 sections, each with a link onward |
+| 270 | Conversion elements | The page has no dead end: every section leads to a next step | PASS | 14 sections, each with a link onward |
 | 271 | Conversion elements | No competing actions or pop-ups pull the visitor from the primary action | PASS | no pop-ups |
 | 272 | Conversion elements | The offer or commitment that removes the visitor's risk is stated | PASS |  |
 | 273 | Tracking and measurement | Google Analytics 4 is installed once on every page | N/T | analytics, Search Console and call tracking are wired at build |
@@ -422,7 +422,7 @@ Words 3194 · reading grade 6.8 · answer under H1 57 words · FAQs 8
 | 381 | Accessibility | A skip-to-content link is present | PASS |  |
 | 382 | Accessibility | Every form field has a label and errors are announced | PASS | every select has a label |
 | 383 | Accessibility | The page language is declared | PASS | en-US |
-| 384 | Accessibility | Page regions use proper landmarks and semantic elements | PASS | {'header': 1, 'nav': 7, 'main': 1, 'section': 13, 'footer': 2} |
+| 384 | Accessibility | Page regions use proper landmarks and semantic elements | PASS | {'header': 1, 'nav': 7, 'main': 1, 'section': 14, 'footer': 2} |
 | 385 | Accessibility | Link text makes sense out of context | PASS |  |
 | 386 | Accessibility | No information is carried by colour alone | PASS | status chips carry words, not colour alone |
 | 387 | Accessibility | Text can be enlarged to 200% without loss of content | N/T | zoom test needs a browser run; layout is fluid |
