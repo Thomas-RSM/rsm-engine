@@ -3,7 +3,7 @@
 Page: https://www.relevantsearchmedia.com/ · built 28 Nov 2026 · checker: site/tools/check_page.py
 
 Result: **146 pass · 0 fail · 267 not testable until the site is live or a person signs**
-Words 3165 · reading grade 6.7 · answer under H1 57 words · FAQs 8
+Words 3178 · reading grade 6.7 · answer under H1 57 words · FAQs 8
 
 | Group | Pass | Fail | Not testable here |
 |---|---|---|---|
@@ -164,8 +164,8 @@ Words 3165 · reading grade 6.7 · answer under H1 57 words · FAQs 8
 | 123 | Headings and copy | Each supporting search appears in a heading or FAQ question and in the body | PASS | every supporting search is in a heading or FAQ and in the body |
 | 124 | Headings and copy | No stuffing: a search term is never used three times in one paragraph and the copy reads naturally aloud | PASS | 0 paragraphs use the lead term 3+ times |
 | 125 | Headings and copy | The page opens with the direct answer, not with background | PASS | answer paragraph 57 words |
-| 126 | Headings and copy | Word count is within the range for its page type and never under 300 words | PASS | 3165 words (home page range set here: 1,500 to 3,200; floor 300) |
-| 127 | Headings and copy | Reading level is grade 7 to 9 and the average sentence is under 20 words | PASS | grade 6.7, 15.1 words per sentence |
+| 126 | Headings and copy | Word count is within the range for its page type and never under 300 words | PASS | 3178 words (home page range set here: 1,500 to 3,200; floor 300) |
+| 127 | Headings and copy | Reading level is grade 7 to 9 and the average sentence is under 20 words | PASS | grade 6.7, 15.2 words per sentence |
 | 128 | Headings and copy | Paragraphs are one to three sentences | PASS | 0 paragraphs over 3 sentences |
 | 129 | Headings and copy | Every service and sub-service the business offers on this topic is covered | PASS | every service line named |
 | 130 | Headings and copy | Areas served are stated accurately | PASS | US served, New Delhi base, stated |

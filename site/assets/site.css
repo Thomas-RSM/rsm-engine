@@ -474,3 +474,34 @@ body{word-spacing:.03em}
 .lead,.card p,.faq details p{word-spacing:.04em}
 .plate .caption{padding:0 6px}
 .quote p{max-width:40rem;margin-left:auto;margin-right:auto}
+
+/* ---- equation section: text beside its picture, terms under their lenses ---- */
+.eq-top{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px 56px;align-items:center;margin-bottom:56px}
+.eq-top .intro{margin:0}
+.eq-top .engine-plate{margin:0}
+.lab{margin:0;padding:40px 36px 26px}
+.lab .formula{margin:0}
+.lab .formula-note{margin:10px 0 26px}
+.lab canvas{height:200px;border-radius:16px}
+.lab-terms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:6px}
+.lt{padding:24px 28px 22px;border-right:1px solid var(--line);display:flex;flex-direction:column;position:relative}
+.lt:first-child{padding-left:8px}.lt:last-child{border-right:0;padding-right:8px}
+.lt::before{content:"";position:absolute;left:50%;top:-6px;width:1px;height:22px;background:linear-gradient(180deg,var(--line-2),transparent)}
+.lt .k{font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px;text-align:center}
+.lt h3{font-size:26px;text-align:center;margin-bottom:10px}
+.lt .q{font-style:italic;color:var(--text);font-size:16px;margin-bottom:10px}
+.lt p{font-size:14.5px;color:var(--text-2);margin:0 0 14px}
+.lt p b{color:#fff}
+.lt .dial{grid-template-columns:minmax(0,1fr) 44px;margin:auto 0 14px;gap:14px}
+.lt .dial output{font-size:16px;font-weight:700}
+.lt .dial input[type=range]::-webkit-slider-thumb{border-color:var(--c)}
+.lt .more{font-size:14.5px}
+.lab-foot{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:18px 40px;align-items:center;margin-top:8px;padding-top:22px;border-top:1px solid var(--line)}
+.lab-foot .lab-out{margin:0;padding:0;border:0}
+.lab-foot .presets{margin:0;justify-content:flex-end}
+.lab>.caption{margin-top:16px}
+.quote{margin-top:56px}
+@media (max-width:1100px){.eq-top,.lab-foot{grid-template-columns:minmax(0,1fr)}.lab-foot .presets{justify-content:flex-start}}
+@media (max-width:760px){.lab{padding:26px 18px 20px}.lab canvas{height:150px}.lab-terms{grid-template-columns:minmax(0,1fr)}.lt{border-right:0;border-bottom:1px solid var(--line);padding:22px 4px}.lt:last-child{border-bottom:0}.lt::before{display:none}.lt .k,.lt h3{text-align:left}.eq-top{margin-bottom:36px}}
+.eq-top{grid-template-columns:minmax(0,4.6fr) minmax(0,7.4fr);gap:40px 40px}
+@media (max-width:1100px){.eq-top{grid-template-columns:minmax(0,1fr)}}
