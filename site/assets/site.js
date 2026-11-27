@@ -257,7 +257,7 @@
         x.strokeStyle = 'rgba(' + c + ',' + (0.3 + 0.7 * val).toFixed(3) + ')'; x.lineWidth = 1.6; x.beginPath(); x.ellipse(LX[i], cy, lr * 0.42, lr, 0, 0, 6.2832); x.stroke();
         x.strokeStyle = 'rgba(' + c + ',0.25)'; x.lineWidth = 1; x.beginPath(); x.ellipse(LX[i], cy, lr * 0.42 * val, lr * val, 0, 0, 6.2832); x.stroke();
         x.font = '700 11px "JetBrains Mono", monospace'; x.textAlign = 'center'; x.fillStyle = 'rgb(' + c + ')'; x.fillText(NAME[i], LX[i], cy + lr + 22);
-        if (i < 2) { x.fillStyle = 'rgba(248,177,15,0.9)'; x.font = '700 15px "Archivo", sans-serif'; x.fillText('×', (LX[i] + LX[i + 1]) / 2, cy + lr + 22); } }
+        if (i < 2) { x.fillStyle = 'rgba(248,177,15,0.9)'; x.font = '700 15px "Sora", sans-serif'; x.fillText('×', (LX[i] + LX[i + 1]) / 2, cy + lr + 22); } }
       x.font = '600 10px "JetBrains Mono", monospace'; x.fillStyle = 'rgba(180,192,224,0.9)'; x.textAlign = 'left'; x.fillText('THE QUESTION', x0, cy - lr - 10); x.textAlign = 'right'; x.fillText('THE ANSWER', w - 10, cy - lr - 10);
       var out = cur[0] * cur[1] * cur[2], ox = w * 0.9, orad = 10 + 16 * out, gl = x.createRadialGradient(ox, cy, 0, ox, cy, orad * 3.2); gl.addColorStop(0, 'rgba(255,214,140,' + (0.15 + 0.75 * out).toFixed(3) + ')'); gl.addColorStop(1, 'rgba(248,177,15,0)'); x.fillStyle = gl; x.beginPath(); x.arc(ox, cy, orad * 3.2, 0, 6.2832); x.fill();
       x.fillStyle = 'rgba(246,241,230,' + (0.25 + 0.75 * out).toFixed(3) + ')'; x.beginPath(); x.arc(ox, cy, orad, 0, 6.2832); x.fill(); x.strokeStyle = 'rgba(226,174,69,0.95)'; x.lineWidth = 1.5; x.stroke();

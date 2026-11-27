@@ -1,65 +1,65 @@
 {
- "total": 57.03,
+ "total": 57.88,
  "lines": [
   {
    "k": "a",
    "cap": "This is Sam. He's the best plumber in town. But his phone is quiet.",
    "s": 0.6,
-   "e": 4.71
+   "e": 4.87
   },
   {
    "k": "b",
    "cap": "When a customer has a leak, she doesn't call Sam. She asks Google, Maps or ChatGPT: who should I call?",
-   "s": 5.21,
-   "e": 12.304
+   "s": 5.37,
+   "e": 12.485
   },
   {
    "k": "c1",
    "cap": "Every engine decides the same way. It asks three things.",
-   "s": 12.804,
-   "e": 16.519
+   "s": 12.985,
+   "e": 16.959
   },
   {
    "k": "c2",
    "cap": "Can I read what this business does? Do other sources confirm it? Do real people choose it?",
-   "s": 17.019,
-   "e": 22.046
+   "s": 17.459,
+   "e": 22.992
   },
   {
    "k": "c3",
    "cap": "The three multiply. If one is zero, the answer is zero. So the engine names someone else.",
-   "s": 22.546,
-   "e": 28.235
+   "s": 23.492,
+   "e": 29.543
   },
   {
    "k": "d1",
    "cap": "We fix all three. Read: Sam's site now says plainly what he does, where, and for whom.",
-   "s": 28.735,
-   "e": 34.644
+   "s": 30.043,
+   "e": 35.703
   },
   {
    "k": "d2",
    "cap": "Confirm: listings, reviews and mentions that say the same thing.",
-   "s": 35.144,
-   "e": 40.148
+   "s": 36.203,
+   "e": 40.265
   },
   {
    "k": "d3",
    "cap": "Choose: a listing people pick, and calls that prove it.",
-   "s": 40.648,
-   "e": 43.469
+   "s": 40.765,
+   "e": 44.017
   },
   {
    "k": "e",
    "cap": "Same question. Now every engine has a reason to name Sam.",
-   "s": 43.969,
-   "e": 48.439
+   "s": 44.517,
+   "e": 48.768
   },
   {
    "k": "f",
    "cap": "That is the D'Souza Equation. Relevance = Read \u00d7 Confirm \u00d7 Choose. Be the answer.",
-   "s": 48.939,
-   "e": 55.127
+   "s": 49.268,
+   "e": 55.981
   }
  ]
 }

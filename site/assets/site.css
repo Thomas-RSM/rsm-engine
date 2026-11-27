@@ -1,11 +1,8 @@
 /* Relevant Search Media — the RSM universe.
    One dark sky, gold light, fine lines, glass. Every section is explained by a picture. */
 
-@font-face{font-family:"Archivo";font-style:normal;font-weight:100 900;font-stretch:62% 125%;font-display:swap;src:url(/assets/fonts/archivo.woff2) format("woff2")}
-@font-face{font-family:"Inter";font-weight:400;font-display:swap;src:url(/assets/fonts/inter-400.woff2) format("woff2")}
-@font-face{font-family:"Inter";font-weight:500;font-display:swap;src:url(/assets/fonts/inter-500.woff2) format("woff2")}
-@font-face{font-family:"Inter";font-weight:600;font-display:swap;src:url(/assets/fonts/inter-600.woff2) format("woff2")}
-@font-face{font-family:"Inter";font-weight:700;font-display:swap;src:url(/assets/fonts/inter-700.woff2) format("woff2")}
+@font-face{font-family:"Sora";font-style:normal;font-weight:100 800;font-display:swap;src:url(/assets/fonts/sora.woff2) format("woff2")}
+@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:200 800;font-display:swap;src:url(/assets/fonts/jakarta.woff2) format("woff2")}
 @font-face{font-family:"JetBrains Mono";font-weight:400 800;font-display:swap;src:url(/assets/fonts/jetbrains-mono.woff2) format("woff2")}
 
 :root{
@@ -13,7 +10,7 @@
   --glass:rgba(44,60,124,.42);--glass-2:rgba(24,34,78,.72);--line:rgba(163,181,242,.16);--line-2:rgba(163,181,242,.3);
   --gold:#F8B10F;--gold-2:#FFD98A;--peri:#A3B5F2;--blue:#6F8CF0;--teal:#4CC0A8;--ivory:#F6F1E6;
   --text:#E9EEFB;--text-2:#B4C0E0;--text-3:#8492B8;
-  --head:"Archivo","Inter",system-ui,sans-serif;--sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --head:"Sora",system-ui,sans-serif;--sans:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
   --r:18px;
 }
 *{box-sizing:border-box}
@@ -432,3 +429,48 @@ body{background:radial-gradient(1300px 760px at 78% 0%,rgba(96,124,214,.30),tran
 .path-plate{margin:0 0 28px;padding:18px 10px 6px}
 @media (max-width:760px){.path-plate{overflow-x:auto;padding:12px 0 0}.path-plate svg{min-width:760px}.sound{right:10px;top:10px;font-size:12px;padding:8px 12px 8px 30px}.sound::before{left:11px;width:12px;height:12px}}
 .beats li{counter-increment:none}
+
+/* ---- typeface and colour pass: Sora + Plus Jakarta Sans, a deeper and richer sky ---- */
+:root{--sky:#0B1033;--sky-2:#060919;--sky-3:#141C52;--line:rgba(150,170,255,.16);--line-2:rgba(150,170,255,.32);--text-2:#B9C4EA;--text-3:#8A97C4}
+html{background:#060919}
+body{font-size:17px;letter-spacing:-.003em;background:
+  radial-gradient(1100px 720px at 82% -4%,rgba(64,98,255,.34),transparent 62%),
+  radial-gradient(900px 640px at -6% 22%,rgba(124,77,255,.20),transparent 60%),
+  radial-gradient(1000px 700px at 100% 46%,rgba(30,167,232,.10),transparent 60%),
+  radial-gradient(1100px 760px at 10% 78%,rgba(64,98,255,.14),transparent 60%),
+  linear-gradient(180deg,#0C1238 0%,#080C26 45%,#060919 100%)}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;background-image:radial-gradient(rgba(200,214,255,.55) 1px,transparent 1.4px),radial-gradient(rgba(200,214,255,.35) 1px,transparent 1.3px);background-size:260px 260px,170px 170px;background-position:40px 60px,120px 10px}
+.site-header,main,.site-footer,.trust{position:relative;z-index:1}
+h1,h2,h3{font-stretch:normal}
+h1{font-weight:700;letter-spacing:-.045em;line-height:1.04}
+h2{font-weight:650;letter-spacing:-.04em;line-height:1.1;font-size:clamp(29px,3.1vw,44px)}
+h3{font-weight:600;letter-spacing:-.02em}
+.hero h1{font-size:clamp(36px,4.05vw,58px)}
+.eyebrow{font-family:var(--sans);font-size:12.5px;font-weight:700;letter-spacing:.18em}
+.lead{color:#C4CEF0}
+.btn{font-family:var(--sans);font-weight:700;letter-spacing:-.005em}
+.brand-name{font-weight:650;letter-spacing:-.03em}
+.nav a{font-weight:600}
+.glass{background:linear-gradient(160deg,rgba(72,96,214,.26) 0%,rgba(24,32,84,.72) 42%,rgba(10,14,42,.9) 100%);border-color:rgba(150,170,255,.18);box-shadow:0 26px 64px rgba(2,4,16,.55),inset 0 1px 0 rgba(255,255,255,.11)}
+.site-header{background:rgba(8,12,36,.78)}
+.trust{background:rgba(6,9,28,.5)}
+.trust b,.stats .n,tbody th,.readout .big,.sky-count b,.lab-out b{font-weight:650;letter-spacing:-.045em}
+.site-footer{background:#050716}
+.menu-panel{background:#0E1440}
+.hero::after{background:linear-gradient(180deg,transparent,rgba(7,10,30,.9))}
+.section:nth-of-type(even){background:linear-gradient(180deg,rgba(56,78,200,.09),rgba(56,78,200,0) 70%)}
+.sky{background:radial-gradient(circle at 50% 50%,rgba(64,98,255,.24),transparent 62%)}
+.card .pic,.lab canvas{background:rgba(5,8,26,.6)}
+.console-foot,thead th{background:rgba(6,9,28,.45)}
+.picker select{background-color:rgba(6,9,28,.6)}
+.closing::before{background:radial-gradient(circle,rgba(248,177,15,.22) 0%,rgba(64,98,255,.20) 30%,transparent 62%)}
+.formula{font-weight:650;letter-spacing:-.045em;font-size:clamp(26px,4vw,56px)}
+.quote p{font-weight:600;letter-spacing:-.03em}
+.clauses .roman{font-family:var(--head);font-weight:700}
+.beats button b{font-weight:600}
+.sound{background:rgba(8,12,36,.85)}
+.sound:not([aria-pressed="true"]){background:linear-gradient(180deg,#FFD05C,#F8B10F)}
+body{word-spacing:.03em}
+.lead,.card p,.faq details p{word-spacing:.04em}
+.plate .caption{padding:0 6px}
+.quote p{max-width:40rem;margin-left:auto;margin-right:auto}
