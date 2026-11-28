@@ -361,3 +361,20 @@ svg.eg-wide{display:none}svg.eg-tall{display:block;width:100%;max-width:400px;he
 .map-plate .caption{font-family:var(--sans);letter-spacing:0;font-size:13.5px;line-height:1.5}
 .map-key{font-size:13px;gap:14px}
 }
+
+/* 07: milestones wake as the traveller crosses them */
+.rs-path-sync.is-live .base{opacity:.5}
+.rs-path-sync.is-live .ms{opacity:.5;transition:opacity .6s}
+.rs-path-sync.is-live .ms.on{opacity:1}
+.rs-path-sync .ms-core{transition:stroke .5s,stroke-width .5s}
+.rs-path-sync.is-live .ms.on:not(.ms-live):not(.ms-report) .ms-core{stroke:#FFD98A;stroke-width:2.6}
+.rs-path-sync .ms-ring{transform-box:fill-box;transform-origin:center}
+.rs-path-sync .ms.at .ms-ring{animation:rsPing 1.5s ease-out 1}
+@keyframes rsPing{0%{opacity:.95;transform:scale(1)}100%{opacity:0;transform:scale(2.1)}}
+.rs-path-sync.is-live .tick{opacity:.35;transition:opacity .4s}
+.rs-path-sync.is-live .tick path{opacity:0;transition:opacity .3s}
+.rs-path-sync.is-live .tick.on{opacity:1}
+.rs-path-sync.is-live .tick.on path{opacity:1}
+.rs-path-sync.is-live .tick.on circle{fill:#16364A}
+.rs-path-sync.is-still .base,.rs-path-sync.is-still .ms,.rs-path-sync.is-still .tick,.rs-path-sync.is-still .tick path{opacity:1}
+.rs-journey .rs-day.done{border-color:rgba(248,177,15,.35)}

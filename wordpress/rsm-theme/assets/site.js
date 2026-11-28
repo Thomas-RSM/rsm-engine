@@ -391,18 +391,40 @@ window.RSMInit();
   window.addEventListener('load', pick);
 })();
 
-/* ---- 07: the step under the moving dot lights as the dot reaches it; after day 5 the rhythm below takes over ---- */
+/* ---- 07: the traveller crosses each milestone slowly, rests on it, and leaves it lit ---- */
 (function () {
-  function go() { var fig = document.querySelector('.rs-path-sync'); if (!fig || fig.__rsmJ) return; var svg = fig.querySelector('svg'), path = svg && svg.querySelector('path[id^="launch"]'); if (!path || !svg.getCurrentTime) return; fig.__rsmJ = 1;
-    if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-    var xs = []; try { xs = JSON.parse(fig.getAttribute('data-days')); } catch (e) {} if (xs.length < 6) return;
-    var L = path.getTotalLength(), fr = xs.map(function (x) { var lo = 0, hi = L; for (var k = 0; k < 24; k++) { var m = (lo + hi) / 2; if (path.getPointAtLength(m).x < x) lo = m; else hi = m; } return lo / L; });
-    var days = [].slice.call(document.querySelectorAll('.rs-journey .rs-day')), cad = [].slice.call(document.querySelectorAll('.rs-cadence .rs-cad')), D = 6, last = '';
-    setInterval(function () { if (window.innerWidth < 761) { if (last !== 'off') { days.concat(cad).forEach(function (c) { c.classList.remove('lit', 'done'); }); last = 'off'; } return; }
-      var t = (svg.getCurrentTime() % D) / D, cur = -1; for (var i = 0; i < 5; i++) if (t >= fr[i] - 0.012) cur = i;
-      var daily = t >= fr[4] + 0.03 && t < fr[5] - 0.03, report = t >= fr[5] - 0.03, key = cur + '|' + daily + '|' + report; if (key === last) return; last = key;
-      days.forEach(function (c, k) { c.classList.toggle('lit', k === cur && !(k === 4 && (daily || report)) || (k === 4 && cur === 4 && !daily && !report)); c.classList.toggle('done', k < cur || (k === 4 && (daily || report))); });
-      cad.forEach(function (c, k) { c.classList.toggle('lit', (k === 0 && daily) || (k === 1 && report)); }); }, 100); }
+  function go() { var fig = document.querySelector('.rs-path-sync'); if (!fig || fig.__rsmJ) return; var svg = fig.querySelector('svg'), path = svg && svg.querySelector('path.base'), trav = svg && svg.querySelector('.trav'); if (!path || !trav) return; fig.__rsmJ = 1;
+    var trail = svg.querySelector('.trail'), glow = svg.querySelector('.trail-glow'), ms = [].slice.call(svg.querySelectorAll('.ms')), ticks = [].slice.call(svg.querySelectorAll('.tick'));
+    var days = [].slice.call(document.querySelectorAll('.rs-journey .rs-day')), cad = [].slice.call(document.querySelectorAll('.rs-cadence .rs-cad'));
+    var L = path.getTotalLength(), lenAt = function (x) { var lo = 0, hi = L; for (var k = 0; k < 24; k++) { var m = (lo + hi) / 2; if (path.getPointAtLength(m).x < x) lo = m; else hi = m; } return lo; };
+    var stops = ms.map(function (g) { return lenAt(parseFloat(g.getAttribute('data-x'))); }), tl = ticks.map(function (g) { return lenAt(parseFloat(g.getAttribute('data-x'))); });
+    if (stops.length < 2) return;
+    [trail, glow].forEach(function (p) { if (p) { p.style.strokeDasharray = L + ' ' + L; p.style.strokeDashoffset = L; } });
+    fig.classList.add('is-live');
+    if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) { fig.classList.add('is-still'); ms.forEach(function (g) { g.classList.add('on'); }); ticks.forEach(function (g) { g.classList.add('on'); }); return; }
+    /* timeline: rest on a milestone, glide to the next */
+    var REST = 1.5, GLIDE = 2.1, LONG = 6.5, END = 3.2, FADE = 1.0, segs = [], T = 0;
+    for (var i = 0; i < stops.length; i++) { segs.push({ k: 'rest', i: i, t0: T, d: i === stops.length - 1 ? END : REST }); T += segs[segs.length - 1].d;
+      if (i < stops.length - 1) { var d = i === stops.length - 2 ? LONG : GLIDE; segs.push({ k: 'move', i: i, t0: T, d: d }); T += d; } }
+    segs.push({ k: 'fade', t0: T, d: FADE }); T += FADE;
+    var ease = function (u) { return u < 0.5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2; }, start = 0, raf = 0, vis = false, lastKey = '';
+    function set(len, op) { var p = path.getPointAtLength(len); trav.setAttribute('transform', 'translate(' + p.x.toFixed(1) + ',' + p.y.toFixed(1) + ')'); trav.setAttribute('opacity', op); [trail, glow].forEach(function (q, n) { if (q) { q.style.strokeDashoffset = (L - len).toFixed(1); q.setAttribute('opacity', (op * (n ? 0.5 : 0.95)).toFixed(2)); } }); }
+    function frame(now) { raf = 0; if (!vis) return; if (!start) start = now; var t = ((now - start) / 1000) % T, sg = segs[0]; for (var i = 0; i < segs.length; i++) if (t >= segs[i].t0) sg = segs[i];
+      var u = Math.min(1, (t - sg.t0) / sg.d), len, op = 1, at = -1, reached = -1, wide = window.innerWidth >= 761;
+      if (sg.k === 'rest') { len = stops[sg.i]; at = sg.i; reached = sg.i; if (sg.i === 0) op = Math.min(1, u * 3); }
+      else if (sg.k === 'move') { var last = sg.i === stops.length - 2; len = stops[sg.i] + (stops[sg.i + 1] - stops[sg.i]) * (last ? u : ease(u)); reached = sg.i; }
+      else { len = stops[stops.length - 1]; op = 1 - u; reached = u < 0.6 ? stops.length - 1 : -1; }
+      set(len, op);
+      var nt = 0; for (var k = 0; k < tl.length; k++) if (len >= tl[k] - 2 && reached >= 0) nt = k + 1;
+      var daily = sg.k === 'move' && sg.i === stops.length - 2, report = (sg.k === 'rest' && sg.i === stops.length - 1), key = [sg.k, at, reached, nt, wide].join('|');
+      if (key !== lastKey) { lastKey = key;
+        ms.forEach(function (g, k) { g.classList.toggle('on', k <= reached); g.classList.toggle('at', k === at); });
+        ticks.forEach(function (g, k) { g.classList.toggle('on', k < nt); });
+        days.forEach(function (c, k) { c.classList.toggle('lit', wide && k === at && k < 5); c.classList.toggle('done', wide && k <= reached && k !== at); });
+        cad.forEach(function (c, k) { c.classList.toggle('lit', wide && ((k === 0 && daily) || (k === 1 && report))); }); }
+      raf = requestAnimationFrame(frame); }
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { vis = es[0].isIntersecting; if (vis && !raf) raf = requestAnimationFrame(frame); }, { threshold: 0.15 }).observe(fig); else { vis = true; raf = requestAnimationFrame(frame); }
+  }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
   window.addEventListener('load', go);
 })();
