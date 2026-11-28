@@ -233,9 +233,52 @@ def make(h):
         trust(),
         closing('Google shows you. <span class="gold">AI names someone else.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He asks three assistants the question your customers ask, shows you who they name and why, and tells you what the first fifteen days would change.', 'No audit to buy first, no trial. One business per trade per city.'),
     ], parent='problems'))
+    # ------------------------------------------------------------------ /problems/traffic-dropped/
+    P.append(page('traffic-dropped', '/problems/traffic-dropped/', 'Website Traffic Dropped Suddenly | Relevant Search Media',
+        'Website traffic dropped suddenly? Date the drop and match it to a cause in ten minutes. Seven causes, the check for each, and what fixes it.', [
+        hero(crumb('Ranking, then lost it'), 'Problem 4 of 5', 'Website traffic dropped suddenly: how do I find the cause?',
+             'When website traffic dropped suddenly, the first job is to find the week it began. A drop with a start date has a cause: a Google update, a change made to the site, a lost listing, or tracking that broke. Match the date to what changed that week and the cause is usually plain within ten minutes.',
+             'Date it first. Everything else follows from the date.'),
+        sec('The ten-minute check', 'How do I check why my traffic dropped?', ['Do these four checks in order. Each one narrows the cause, and none needs a paid tool.'],
+            steps([('Check 1', 'Date the drop', 'In your analytics or call log, find the week the fall began. Write the date down.'),
+                   ('Check 2', 'See what fell', 'In Search Console, compare the weeks before and after. Is it every page, or a few? Search only, or all visits?'),
+                   ('Check 3', 'Match Google’s updates', 'Open Google’s Search Status Dashboard and look for a ranking update in that week.'),
+                   ('Check 4', 'List your own changes', 'A redesign, a new plugin, a host move, changed addresses, an edited listing: anything from that week.')]),
+            T('<p>For example, an HVAC company in Dallas whose calls fell in one week would check “hvac repair dallas” before and after that date. That is one search among many. Our own map holds 165 separate searches that HVAC owners in Dallas type when they want a company such as ours (v4, 18 Nov 2026).</p>', 'small rs-note', mt=22, mb=18),
+            B('Look up your own trade and city', '/searches/', 'rs-more', mb=0), eid='check'),
+        sec('Seven causes', 'Why have my Google rankings dropped?', ['When Google rankings dropped, one of seven things happened. The date and the pattern from your four checks point to the row.', 'Rule out the top three first. They are the ones an owner can cause by accident, and the quickest to put right.'],
+            table('Why traffic and rankings fall: the pattern, the cause and the fix', ('The pattern', 'Cause', 'What fixes it'), [
+                ('Every page fell on one day', 'The site was blocked or broken', 'Remove the noindex tag or robots block and ask Google to recrawl'),
+                ('It fell the week of a redesign or move', 'Addresses changed without redirects', 'Redirect every old address to its new one'),
+                ('Visits “fell” and calls did not', 'Tracking broke; traffic did not', 'Put the analytics tag back and compare with Search Console'),
+                ('It began the week of a Google update', 'Google re-weighed what it values', 'Compare the pages that fell with those that rose, and improve them'),
+                ('Map calls fell, the website held', 'The Business Profile was edited or suspended', 'Check its status and correct or reinstate it'),
+                ('A slow slide over months', 'Rivals improved while the site stood still', 'Refresh the pages that matter and earn new reviews and mentions'),
+                ('Search Console shows a notice', 'A manual action by Google', 'Fix what the notice names and request a review'),
+            ]), more=('See all 413 checks we run', '/dsouza-equation/standard/'), eid='causes'),
+        sec('After an update', 'What should I do if I lost rankings after an update?', ['First, do not undo things in a panic. Google says a page that falls after a core update has not necessarily done anything wrong, and that there may be nothing specific to fix.', 'What helps is honest comparison. Open the pages that rose for your searches and ask what they answer that yours does not. Improvements are often recognised over the following weeks and at later updates.'],
+            quote('A drop with a date is not bad luck. It is a cause you have not found yet.'),
+            more=('How the equation explains a drop', '/dsouza-equation/'), eid='update'),
+        sec('How long', 'How long does it take to recover lost traffic?', ['That turns on the cause. A block or a missing redirect is a one-day repair, and the pages come back as Google recrawls them over days or weeks.', 'A fall after an update is slower and nobody can promise its return. On our plans the first fixes go live by day 5 and the first report arrives on day 15.'],
+            steps([('Day 1', 'The date', 'On the first call we fix the week the fall began and get access to Search Console.'),
+                   ('Day 2 to 3', 'The diagnosis', 'Pages that fell are set beside pages that rose, and the 413 checks are run on both.'),
+                   ('Day 4', 'The order of repair', 'You are shown the cause and which fix comes first, second and third.'),
+                   ('Day 5', 'Repairs go live', 'The first fixes are published and each one is entered in your log.')]),
+            more=('See the first fifteen days', '/dsouza-equation/method/'), eid='how-long'),
+        faq('Questions about a drop', 'What do owners ask when traffic falls?', 'The five questions owners ask most once the numbers fall. Something else on your mind? Try the <a href="/ask/">Ask page</a>.', [
+            ('Why did my website traffic drop overnight?', 'An overnight fall across the whole site is usually technical: a noindex tag left on after a rebuild, a robots block, an expired certificate or a host problem.\nIf only search visits fell and the site works, look for a Google update or a change to your Business Profile on that date.'),
+            ('I lost rankings after an update. Will they come back?', 'Sometimes, and nobody can promise it. Google re-weighs what it values at each update, so pages can return when they improve or when the next update lands.\nIf you lost rankings after an update, compare your pages with the ones that rose and close the gap.'),
+            ('Can a website redesign cause a traffic drop?', 'Yes, and it is one of the most common causes. A redesign often changes page addresses, removes text Google relied on, or goes live with a noindex tag still in place.\nKeep the old addresses or redirect each one, and check indexing the day the new site launches.'),
+            ('How do I know if Google penalised my site?', 'Open Search Console and look at the Manual actions report. If Google has taken action, it says so there and names the reason.\nMost falls are not penalties. They are updates, technical mistakes or stronger rivals, and each is handled differently.'),
+            ('Should I pay for ads until my traffic recovers?', 'Ads can replace lost calls while the cause is fixed, and for some businesses that is the right bridge. They do not repair what caused the fall.\nFind and fix the cause first, or the ads become a permanent cost for a problem that had a cure.'),
+        ]),
+        trust(),
+        closing('Ranking, then gone? <span class="gold">Date it in one call.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He dates the drop with you, matches it against Google’s updates and your own changes, and shows you what the first fifteen days would fix.', 'Nothing to buy before the call. We take one business per trade in each city.'),
+    ], parent='problems'))
     return P
 
 GATE = {
+    '/problems/traffic-dropped/': {'kw': 'website traffic dropped suddenly;google rankings dropped;lost rankings after an update', 'type': 'problem', 'example': 'hvac repair dallas', 'original': '165;v4, 18 Nov 2026', 'trade': 'update;rankings;search console'},
     '/problems/not-recommended-by-chatgpt/': {'kw': 'get recommended by chatgpt;how to get my business recommended by chatgpt;show up in chatgpt;ai not recommending my business', 'type': 'problem', 'example': 'divorce lawyer in new york', 'original': '211;v4, 18 Nov 2026', 'trade': 'lawyer;sources;reviews'},
     '/problems/not-getting-leads/': {'kw': 'get more leads for my business;how to get more leads for my business;website not getting leads;more calls from google', 'type': 'problem', 'example': 'emergency dentist chicago', 'original': '186;v4, 18 Nov 2026', 'trade': 'dentist;reviews;listing'},
     '/problems/not-showing-up-on-google/': {'kw': 'business not showing up on google;business not on google;not on google maps;why is my business not showing up on google', 'type': 'problem', 'example': 'roof repair denver', 'original': '170;v4, 18 Nov 2026', 'trade': 'roofer;profile;listing'},  # what the gate is told about each page: keywords, page type, the specific example and the dated original figure it must carry
