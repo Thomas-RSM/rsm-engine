@@ -376,7 +376,7 @@ window.RSMInit();
     function on() { b.classList.toggle('show', window.scrollY > 420); } window.addEventListener('scroll', on, { passive: true }); on(); }
   function go() { dots(); bar(); }
   // rows that scroll sideways on a phone must be reachable by keyboard
-  function swipeable() { document.querySelectorAll('.e-con.e-grid, ul.kinds, .rs-plain-table').forEach(function (el) {
+  function swipeable() { document.querySelectorAll('.e-con.e-grid, .rs-plain-table').forEach(function (el) {
     var ox = getComputedStyle(el).overflowX, scrolls = (ox === 'auto' || ox === 'scroll') && el.scrollWidth > el.clientWidth + 2;
     if (scrolls) { el.setAttribute('tabindex', '0'); if (!el.getAttribute('role')) el.setAttribute('role', 'group'); if (!el.getAttribute('aria-label')) el.setAttribute('aria-label', 'Swipe or use the arrow keys for more'); }
     else if (el.getAttribute('aria-label') === 'Swipe or use the arrow keys for more') { el.removeAttribute('tabindex'); el.removeAttribute('role'); el.removeAttribute('aria-label'); } }); }
@@ -432,7 +432,7 @@ window.RSMInit();
     if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { vis = es[0].isIntersecting; if (vis && !raf) raf = requestAnimationFrame(frame); }, { threshold: 0.15 }).observe(fig); else { vis = true; raf = requestAnimationFrame(frame); }
   }
   // rows that scroll sideways on a phone must be reachable by keyboard
-  function swipeable() { document.querySelectorAll('.e-con.e-grid, ul.kinds, .rs-plain-table').forEach(function (el) {
+  function swipeable() { document.querySelectorAll('.e-con.e-grid, .rs-plain-table').forEach(function (el) {
     var ox = getComputedStyle(el).overflowX, scrolls = (ox === 'auto' || ox === 'scroll') && el.scrollWidth > el.clientWidth + 2;
     if (scrolls) { el.setAttribute('tabindex', '0'); if (!el.getAttribute('role')) el.setAttribute('role', 'group'); if (!el.getAttribute('aria-label')) el.setAttribute('aria-label', 'Swipe or use the arrow keys for more'); }
     else if (el.getAttribute('aria-label') === 'Swipe or use the arrow keys for more') { el.removeAttribute('tabindex'); el.removeAttribute('role'); el.removeAttribute('aria-label'); } }); }
@@ -464,7 +464,7 @@ window.RSMInit();
           .catch(function () { st.textContent = f.getAttribute('data-fail'); st.className = 'lf-status is-bad'; btn.disabled = false; }); }); });
   }
   // rows that scroll sideways on a phone must be reachable by keyboard
-  function swipeable() { document.querySelectorAll('.e-con.e-grid, ul.kinds, .rs-plain-table').forEach(function (el) {
+  function swipeable() { document.querySelectorAll('.e-con.e-grid, .rs-plain-table').forEach(function (el) {
     var ox = getComputedStyle(el).overflowX, scrolls = (ox === 'auto' || ox === 'scroll') && el.scrollWidth > el.clientWidth + 2;
     if (scrolls) { el.setAttribute('tabindex', '0'); if (!el.getAttribute('role')) el.setAttribute('role', 'group'); if (!el.getAttribute('aria-label')) el.setAttribute('aria-label', 'Swipe or use the arrow keys for more'); }
     else if (el.getAttribute('aria-label') === 'Swipe or use the arrow keys for more') { el.removeAttribute('tabindex'); el.removeAttribute('role'); el.removeAttribute('aria-label'); } }); }
