@@ -5,5 +5,6 @@ D = os.path.dirname(os.path.abspath(__file__)); subprocess.run(['node', os.path.
 tot = 0
 for f in sorted(glob.glob(os.path.join(D, '..', 'rsm-theme', 'assets', 'fig', '*.png'))):
     im = Image.open(f).convert('RGB'); im.save(f[:-4] + '.webp', 'WEBP', quality=82, method=6)
+    if f.endswith('-m.png'): os.remove(f); continue   # the phone version is only served as WebP
     im.quantize(colors=256, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE).save(f, optimize=True); tot += os.path.getsize(f[:-4] + '.webp')
 print('webp total %d KB' % (tot // 1024))

@@ -47,7 +47,7 @@ def make(h):
     def figure(key, spec, alt, cap):
         """An original diagram for this page, drawn from the page's own data. Also used as the page's share image."""
         FIG[key] = spec
-        return T('<figure class="rs-fig"><img src="{{assets}}/fig/%s.webp" alt="%s" width="1200" height="630" decoding="async"><figcaption>%s</figcaption></figure>' % (key, alt, cap), 'rs-figure rv', mb=0)
+        return T('<figure class="rs-fig"><picture><source media="(max-width:760px)" srcset="{{assets}}/fig/%s-m.webp" width="720" height="900"><img src="{{assets}}/fig/%s.webp" alt="%s" width="1200" height="630" decoding="async"></picture><figcaption>%s</figcaption></figure>' % (key, key, alt, cap), 'rs-figure rv', mb=0)
     def sec(eyebrow, h2, paras, *content, eid='', more=None):
         intro = [H(eyebrow, 'p', 'eyebrow'), H(h2, 'h2', mb=18)] + [T('<p>%s</p>' % p, 'lead' if i == 0 else '', mb=(0 if i == len(paras) - 1 and not more else None)) for i, p in enumerate(paras)]
         if more: intro.append(B(more[0], more[1], 'rs-more', mb=0))
@@ -76,7 +76,7 @@ def make(h):
                  T('<blockquote><p>“Engines change. Your customer’s question does not. Work on the question and every engine finds you.”</p><footer><cite>Thomas D’Souza</cite>, Founder, Relevant Search Media</footer></blockquote>', 'rs-trust-quote', mb=14),
                  B('About Thomas', '/thomas-dsouza/', 'rs-more', mb=0)], 'rs-trust-who')
         proof = C([T('<ul class="rs-proof"><li><b>900+</b> businesses served since 2020. <span>Fact register C1</span></li>'
-                     '<li><b>About 400</b> projects, 90% successful. <span>Fact register C3</span></li>'
+                     '<li><b>About 400</b> projects, 90% successful, by the founder’s own records. <span>Fact register C3</span></li>'
                      '<li><b>413</b> numbered checks, published in full. <span>The D’Souza Standard, v1.0, 23 Nov 2026</span></li></ul>', mb=16),
                    T('<p><b>Two commitments, in writing.</b> Everything ships, or that 15-day period is free. Half on page one by month four, or we keep working at no charge.</p>'
                      '<p>Live work by day 5 and a report every 15 days. Every plan is month to month. Prices are discussed on the call, not listed here.</p>', 'rs-trust-terms', mb=14),

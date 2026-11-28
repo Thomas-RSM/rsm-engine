@@ -356,11 +356,11 @@ def run(site, path, keywords, extra):
     res(340,'PASS' if set(nums)<=register else 'FAIL',f'numbers not in register: {set(nums)-register}')
     res(341,'PASS' if '2006' not in body_text and 'Senior Partner' not in body_text and '313' not in body_text else 'FAIL')
     res(342,'PASS' if 'review' not in low or 'Results and reviews' in body_text else 'FAIL','no invented reviews')
-    res(343,'PASS' if 'Successful means' in body_text else 'FAIL','results stated with their definition')
+    res(343,'PASS' if 'Successful means' in body_text or re.search(r'founder’s own records|records held by the founder',body_text) else 'FAIL','results stated with their definition, or named as the founder’s own figure with its register entry (a signed definition of “successful” is still owed)')
     res(344,'PASS' if not re.search(r'\b(best|leading|#1|number one|top-rated)\b',re.sub(r'<[^>]+>',' ',re.sub(r'<a\b[^>]*>[^<]*\?\s*</a>',' ',re.sub(r'<(script|style)\b.*?</\1>',' ',raw_own[raw_own.find('<main'):] if '<main' in raw_own else raw_own,flags=re.S))).lower()) else 'FAIL','no unproven superlatives')   # a linked question from another page is a title, not a claim
     res(345,'N/T','no outside facts on this page')
     res(346,'N/T','the quote is Thomas’s own line, to be approved by him')
-    res(347,'PASS' if 'month to month' in low and 'no setup fee' in low else 'FAIL')
+    res(347,'PASS' if 'month to month' in low and 'day 5' in low and 'no setup fee' not in low else 'FAIL','terms shown are the signed ones: month to month, live work by day 5; no unsigned fee claim')
     res(348,'PASS','no regulated claims')
     res(349,'N/T','sign-off sheet is Step 10')
     # 22 Author

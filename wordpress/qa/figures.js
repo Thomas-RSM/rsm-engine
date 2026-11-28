@@ -25,9 +25,18 @@ function body(f){
  if(f.kind==='pillars')return `<div class="pl"><div class="cols">${f.items.map(i=>`<div class="col"><b>${e(i[0])}</b><span>${e(i[1])}</span></div>`).join('')}</div><div class="base">${e(f.base)}</div></div>`;
  if(f.kind==='pairs')return `<div class="pr"><div class="row hd"><div>${e(f.heads[0])}</div><i>→</i><div>${e(f.heads[1])}</div></div>${f.items.map(i=>`<div class="row"><div class="a">${e(i[0])}</div><i>→</i><div class="b">${e(i[1])}</div></div>`).join('')}</div>`;
  return '';}
+const mcss=`body.m{width:720px;height:900px;padding:40px 40px 34px}body.m h1{font-size:40px;margin:20px 0 22px}body.m .brand{font-size:21px}body.m .eb{font-size:16px}body.m .foot{font-size:15px}body.m .foot span:last-child{display:none}
+body.m .body{flex-direction:column;gap:14px}body.m .lane{padding:14px 20px 12px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px}body.m .lane h2{font-size:28px;margin:0 8px 0 0}body.m .lane .q{min-height:0;margin:0;font-size:18px;flex:1 0 70%}body.m .chip,body.m .chip.sm{display:inline-block;margin:0;font-size:20px;padding:8px 14px}body.m .none{font-size:18px;margin:0}
+body.m .tl{flex-direction:column;align-items:stretch;justify-content:space-around}body.m .tl:before{left:21px;right:auto;top:20px;bottom:20px;width:3px;height:auto;background:linear-gradient(180deg,#6F8CF0,#F8B10F)}body.m .st{text-align:left;padding:0 0 0 62px;flex:1;display:flex;flex-direction:column;justify-content:center}body.m .st b{margin:0 0 4px;font-size:30px}body.m .st span{font-size:22px}body.m .st:before{left:22px;top:50%}
+body.m .stat{flex-direction:row;align-items:center;gap:24px;padding:18px 28px}body.m .stat b{font-size:76px;min-width:250px}body.m .stat span{margin:0;font-size:25px}
+body.m .cols{flex-direction:column;gap:12px}body.m .col{border-radius:18px;padding:14px 20px}body.m .col b{font-size:29px}body.m .col span{font-size:21px;margin-top:4px}body.m .base{font-size:25px;border-radius:18px}
+body.m .row{gap:10px}body.m .row div{font-size:22px;padding:12px 16px}body.m .hd div{font-size:14px}body.m .pr{gap:10px}`;
 (async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1200,height:630},deviceScaleFactor:1});
  for(const [k,f] of Object.entries(F)){const ttl=f.kind==='lanes'?f.title+': what the work serves':f.title;
   await p.setContent(`<style>${css}</style><div class="top"><span class="eb">${e(f.eyebrow)}</span><span class="brand"><img src="${logo}">Relevant Search Media</span></div><h1 style="${ttl.length>44?'font-size:38px':''}">${e(ttl)}</h1><div class="body">${body(f)}</div><div class="foot"><span>Relevance = Read × Confirm × Choose</span><span>relevantsearchmedia.com</span></div>`);
   await p.evaluate(()=>document.fonts.ready);const ov=await p.evaluate(()=>document.documentElement.scrollHeight>630||[...document.querySelectorAll('.lane,.col,.stat,.row div')].some(x=>x.scrollWidth>x.clientWidth+1));
-  await p.screenshot({path:path.join(OUT,k+'.png')});if(ov)console.log('OVERFLOW',k);}
+  await p.screenshot({path:path.join(OUT,k+'.png')});if(ov)console.log('OVERFLOW',k);
+  await p.setViewportSize({width:720,height:900});await p.evaluate(c=>{const st=document.createElement('style');st.textContent=c;document.head.appendChild(st);document.body.className='m';const h=document.querySelector('h1');h.style.fontSize='';},mcss);
+  const ov2=await p.evaluate(()=>document.documentElement.scrollHeight>900||document.documentElement.scrollWidth>720||[...document.querySelectorAll('.row div,.col,.stat')].some(x=>x.scrollWidth>x.clientWidth+1));
+  await p.screenshot({path:path.join(OUT,k+'-m.png')});if(ov2)console.log('OVERFLOW mobile',k);await p.setViewportSize({width:1200,height:630});}
  console.log(Object.keys(F).length,'figures');await b.close();})();
