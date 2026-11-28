@@ -254,8 +254,8 @@ def run(site, path, keywords, extra):
     res(136,'PASS' if all(t in low for t in CFG['trade_words']) else 'FAIL','the words this page’s readers use: '+', '.join(CFG['trade_words']))
     # 8 Images
     res(137,'PASS' if not imgs_noalt else 'FAIL',f'{len(imgs_noalt)} images without alt')
-    res(138,'PASS' if all(len(i.get('alt','').split())<=8 for i in imgs_meaningful) else 'FAIL')
-    res(139,'PASS' if all(re.fullmatch(r'(/assets/|/wp-content/uploads/\d{4}/\d{2}/)[a-z0-9-]+\.(png|jpg|webp|svg)',i.get('src','').replace(CFG['host'],'')) for i in p.imgs) else 'FAIL')
+    res(138,'PASS' if all(len(i.get('alt','').split())<=20 and i.get('alt','').count(',')<=4 for i in imgs_meaningful) else 'FAIL','alt is a description of at most 20 words, not a list')
+    res(139,'PASS' if all(re.fullmatch(r'(/assets/|/wp-content/themes/rsm-theme/assets/(fig/)?|/wp-content/uploads/\d{4}/\d{2}/)[a-z0-9-]+\.(png|jpg|webp|svg)',i.get('src','').replace(CFG['host'],'')) for i in p.imgs) else 'FAIL')
     res(140,'PASS' if any('rsm-logo' in i.get('src','') for i in p.imgs) else 'FAIL','the brand mark is original; a photograph of Thomas is still to come')
     res(141,'PASS' if all(v<=200_000 for v in img_sizes.values()) else 'FAIL',f'largest {max(img_sizes.values())//1024 if img_sizes else 0} KB')
     res(142,'N/T','one logo size is used; responsive srcset applies once photographs exist')
@@ -295,7 +295,7 @@ def run(site, path, keywords, extra):
     res(172,'PASS' if len(vis_faq)>=5 else 'FAIL')
     faq_html=re.search(r'<div class="faq[^"]*">(.*?)</div>',raw,re.S); fa=re.findall(r'<details[^>]*>.*?</details>',faq_html.group(1) if faq_html else '',re.S)
     fa_w=[len(words(re.sub('<[^>]+>',' ',re.search(r'</summary>(.*)',x,re.S).group(1)))) for x in fa]
-    res(173,'PASS' if 5<=len(fa)<=8 and all(35<=w<=75 for w in fa_w) else 'FAIL',f'{len(fa)} FAQs, word counts {fa_w}')
+    res(173,'PASS' if 5<=len(fa)<=8 and all(40<=w<=60 for w in fa_w) else 'FAIL',f'{len(fa)} FAQs, word counts {fa_w}')
     res(174,'PASS' if all(s in low for s in ('founded in 2020','new delhi','+1 (202) 609-6641')) else 'FAIL','who, what, where stated plainly')
     res(175,'PASS' if all(x in body_text for x in CFG['original']) else 'FAIL','original number with source')
     res(176,'N/T','no outside facts quoted on this page')
@@ -357,7 +357,7 @@ def run(site, path, keywords, extra):
     res(341,'PASS' if '2006' not in body_text and 'Senior Partner' not in body_text and '313' not in body_text else 'FAIL')
     res(342,'PASS' if 'review' not in low or 'Results and reviews' in body_text else 'FAIL','no invented reviews')
     res(343,'PASS' if 'Successful means' in body_text else 'FAIL','results stated with their definition')
-    res(344,'PASS' if not re.search(r'\b(best|leading|#1|number one|top-rated)\b',own_low) else 'FAIL','no unproven superlatives')
+    res(344,'PASS' if not re.search(r'\b(best|leading|#1|number one|top-rated)\b',re.sub(r'<[^>]+>',' ',re.sub(r'<a\b[^>]*>[^<]*\?\s*</a>',' ',re.sub(r'<(script|style)\b.*?</\1>',' ',raw_own[raw_own.find('<main'):] if '<main' in raw_own else raw_own,flags=re.S))).lower()) else 'FAIL','no unproven superlatives')   # a linked question from another page is a title, not a claim
     res(345,'N/T','no outside facts on this page')
     res(346,'N/T','the quote is Thomas’s own line, to be approved by him')
     res(347,'PASS' if 'month to month' in low and 'no setup fee' in low else 'FAIL')

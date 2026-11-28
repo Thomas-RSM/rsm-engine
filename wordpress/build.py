@@ -239,6 +239,7 @@ ICONS = _icons()
 
 def dump_gate():
     json.dump(PAGES.GATE, open(os.path.join(HERE, 'qa', 'gate-pages.json'), 'w'), indent=0)
+    json.dump(PAGES.FIG, open(os.path.join(HERE, 'qa', 'figs.json'), 'w'), indent=1, ensure_ascii=False)
 
 if __name__ == '__main__':
     sync_assets()

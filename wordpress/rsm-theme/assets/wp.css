@@ -500,3 +500,9 @@ svg.eg-wide{display:none}svg.eg-tall{display:block;width:100%;max-width:400px;he
 .rs-heroform .lf-grid{grid-template-columns:minmax(0,1fr)}
 .rs-heroform .lead-form input[type=text],.rs-heroform .lead-form input[type=email],.rs-heroform .lead-form input[type=tel]{min-height:48px;padding:11px 16px}
 @media (max-width:1024px){.rs-heroform{max-width:560px}}
+/* page figures */
+.rs-figure{margin-top:26px}
+.rs-fig{margin:0 0 28px;max-width:1040px}
+.rs-fig img{display:block;width:100%;height:auto;aspect-ratio:1200/630;border-radius:22px;border:1px solid rgba(163,181,242,.22);box-shadow:0 24px 60px -30px rgba(0,0,0,.7)}
+.rs-fig figcaption{font-size:14.5px;color:var(--text-3);margin-top:12px}
+@media (max-width:760px){.rs-fig img{border-radius:14px}}

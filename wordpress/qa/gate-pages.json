@@ -460,5 +460,89 @@
 "example": "roofer in denver",
 "original": "413;v1.0, 23 Nov 2026",
 "trade": "log;report;checks"
+},
+"/industries/plumbers/": {
+"kw": "seo for plumbers;plumber seo;plumbing seo",
+"type": "service",
+"example": "plumber in miami",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "leak;drain;water heater"
+},
+"/industries/hvac/": {
+"kw": "hvac seo;seo for hvac companies;hvac marketing",
+"type": "service",
+"example": "hvac company in dallas",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "furnace;ac;season"
+},
+"/industries/roofers/": {
+"kw": "roofing seo;seo for roofers;roofer seo",
+"type": "service",
+"example": "roofer in denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "storm;shingles;licence"
+},
+"/industries/electricians/": {
+"kw": "seo for electricians;electrician seo;electrician marketing",
+"type": "service",
+"example": "electrician in phoenix",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "panel;wiring;licence"
+},
+"/industries/dentists/": {
+"kw": "dental seo;seo for dentists;dentist seo",
+"type": "service",
+"example": "dentist in chicago",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "patients;treatment;insurance"
+},
+"/industries/law-firms/": {
+"kw": "law firm seo;seo for lawyers;attorney seo",
+"type": "service",
+"example": "law firm in new york",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "clients;practice area;case"
+},
+"/industries/contractors/": {
+"kw": "contractor seo;seo for contractors;general contractor seo",
+"type": "service",
+"example": "contractor in atlanta",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "remodel;project;permit"
+},
+"/industries/landscapers/": {
+"kw": "landscaping seo;seo for landscapers;lawn care seo",
+"type": "service",
+"example": "landscaper in portland",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "lawn;design;season"
+},
+"/industries/auto-repair/": {
+"kw": "auto repair seo;seo for auto repair shops;auto shop marketing",
+"type": "service",
+"example": "auto repair shop in houston",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "drivers;brakes;make"
+},
+"/industries/realtors/": {
+"kw": "real estate seo;seo for realtors;realtor seo",
+"type": "service",
+"example": "realtor in austin",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "neighbourhood;listings;sellers"
+},
+"/industries/medical-clinics/": {
+"kw": "medical seo;healthcare seo;seo for doctors",
+"type": "service",
+"example": "medical clinic in phoenix",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "patients;doctor;appointment"
+},
+"/industries/accountants/": {
+"kw": "seo for accountants;accounting seo;cpa seo",
+"type": "service",
+"example": "accountant in seattle",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "tax;clients;deadline"
 }
 }
