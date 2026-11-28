@@ -173,5 +173,19 @@
 "example": "law firm in new york",
 "original": "413;v1.0, 23 Nov 2026",
 "trade": "assistant;sources;mentions"
+},
+"/services/ai-overview-optimization/": {
+"kw": "ai overview optimization;how to show up in google ai overviews;google ai overview seo",
+"type": "service",
+"example": "roofer in denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "overview;index;summary"
+},
+"/services/chatgpt-seo/": {
+"kw": "chatgpt seo;llm seo;how to rank in chatgpt",
+"type": "service",
+"example": "contractor in atlanta",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "chatgpt;sources;reviews"
 }
 }
