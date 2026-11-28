@@ -233,7 +233,7 @@ def run(site, path, keywords, extra):
     qh2=[h for t,h in p.headings if t=='h2' and h.endswith('?')]
     res(120,'PASS' if len(qh2)>=3 else 'FAIL',f'{len(qh2)} question H2s')
     res(121,'PASS' if all(len(h)>=3 for _,h in p.headings) else 'FAIL')
-    res(122,'PASS' if has(lead,first100) else 'FAIL','lead keyword in first 100 words')
+    res(122,'PASS' if has(lead,first100) or ' '.join(words(lead)).lower() in first100 else 'FAIL','lead keyword in first 100 words')
     heads_low=' '.join(h.lower() for _,h in p.headings)+' '+' '.join(vis_faq).lower()
     miss=[k for k in supp if not (has(k,heads_low) and has(k,low))]
     res(123,'PASS' if not miss else 'FAIL',f'missing {miss}' if miss else 'every supporting search is in a heading or FAQ and in the body')

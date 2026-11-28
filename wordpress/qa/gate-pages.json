@@ -306,5 +306,47 @@
 "example": "cafe in portland",
 "original": "413;v1.0, 23 Nov 2026",
 "trade": "logo;colours;brand"
+},
+"/guides/": {
+"kw": "seo guide;seo for beginners;how to do seo",
+"type": "hub",
+"example": "plumber in miami",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "searches;guide;owner"
+},
+"/guides/what-is-eeat/": {
+"kw": "what is e-e-a-t;google e-e-a-t;e-e-a-t seo",
+"type": "pillar",
+"example": "electrician in phoenix",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "trust;raters;author"
+},
+"/guides/seo-keyword-research/": {
+"kw": "seo keyword research;how to do keyword research;keyword research",
+"type": "pillar",
+"example": "plumber in miami",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "searches;map;autocomplete"
+},
+"/guides/how-long-does-seo-take/": {
+"kw": "how long does seo take;how long does it take to rank on google;is seo worth it",
+"type": "pillar",
+"example": "dentist in chicago",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "weeks;months;page one"
+},
+"/guides/how-to-choose-an-seo-company/": {
+"kw": "how to choose an seo company;how to choose an seo agency;how to find a good seo company",
+"type": "pillar",
+"example": "roofer in denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "contract;report;log"
+},
+"/guides/service-vs-ecommerce-vs-b2b-seo/": {
+"kw": "types of seo;local seo vs seo;types of seo in digital marketing",
+"type": "pillar",
+"example": "hvac company in dallas",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "store;buyers;map"
 }
 }
