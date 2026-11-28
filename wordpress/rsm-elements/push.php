@@ -1,0 +1,146 @@
+<?php
+/**
+ * Push: lets a signed-in administrator send pages, header, footer, menus and extra styles
+ * to the site over the REST API. Administrators only. Nothing here is public.
+ *
+ * @package rsm-elements
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+function rsm_push_find( $type, $key ) {
+	$q = get_posts( array( 'post_type' => $type, 'post_status' => 'any', 'meta_key' => '_rsm_import_key', 'meta_value' => $key, 'posts_per_page' => 1, 'fields' => 'ids', 'no_found_rows' => true ) ); // phpcs:ignore WordPress.DB.SlowDBQuery
+	return $q ? (int) $q[0] : 0;
+}
+function rsm_push_tokens( $json ) {
+	$json = strtr( $json, array( '{{home}}' => untrailingslashit( home_url() ), '{{assets}}' => untrailingslashit( get_template_directory_uri() . '/assets' ) ) );
+	return preg_replace_callback( '/\{\{(media|mediaid):([a-z0-9_-]+)\}\}/', function ( $m ) {
+		$id = rsm_push_find( 'attachment', $m[2] );
+		if ( 'mediaid' === $m[1] ) { return (string) $id; }
+		return $id ? str_replace( '/', '\/', wp_get_attachment_url( $id ) ) : '';
+	}, $json );
+}
+function rsm_push_doc( $type, $doc, $overwrite ) {
+	$key = sanitize_key( $doc['key'] ?? ( $doc['slug'] ?? '' ) );
+	if ( ! $key || empty( $doc['title'] ) || ! isset( $doc['data'] ) || ! is_array( $doc['data'] ) ) { return array( 0, 'invalid' ); }
+	$id = rsm_push_find( $type, $key );
+	if ( ! $id && 'page' === $type && ! empty( $doc['slug'] ) ) { $p = get_page_by_path( sanitize_title( $doc['slug'] ) ); if ( $p && ! get_post_meta( $p->ID, '_rsm_import_key', true ) && ! empty( $doc['adopt'] ) ) { $id = (int) $p->ID; } }
+	if ( $id && ! $overwrite ) { return array( $id, 'kept' ); }
+	$args = array( 'post_type' => $type, 'post_title' => sanitize_text_field( $doc['title'] ), 'post_name' => sanitize_title( $doc['slug'] ?? $key ), 'post_status' => in_array( $doc['status'] ?? 'publish', array( 'publish', 'draft', 'private' ), true ) ? ( $doc['status'] ?? 'publish' ) : 'publish', 'post_content' => '' );
+	if ( 'page' === $type && ! empty( $doc['parent'] ) ) { $pp = get_page_by_path( sanitize_text_field( $doc['parent'] ) ); if ( $pp ) { $args['post_parent'] = (int) $pp->ID; } }
+	if ( $id ) { $args['ID'] = $id; wp_update_post( $args ); $state = 'updated'; } else { $id = wp_insert_post( $args ); $state = 'created'; }
+	if ( is_wp_error( $id ) || ! $id ) { return array( 0, 'failed' ); }
+	update_post_meta( $id, '_rsm_import_key', $key );
+	update_post_meta( $id, '_elementor_edit_mode', 'builder' );
+	update_post_meta( $id, '_elementor_template_type', 'page' === $type ? 'wp-page' : 'wp-post' );
+	update_post_meta( $id, '_elementor_version', defined( 'ELEMENTOR_VERSION' ) ? ELEMENTOR_VERSION : '3.0.0' );
+	update_post_meta( $id, '_elementor_data', wp_slash( rsm_push_tokens( wp_json_encode( $doc['data'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) ) ) );
+	delete_post_meta( $id, '_elementor_css' ); delete_post_meta( $id, '_elementor_element_cache' );
+	foreach ( (array) ( $doc['seo'] ?? array() ) as $k => $v ) { if ( is_array( $v ) ) { $v = wp_json_encode( array_map( 'esc_url_raw', array_map( 'rsm_push_tokens', array_map( 'strval', $v ) ) ) ); update_post_meta( $id, '_rsm_' . sanitize_key( $k ), wp_slash( $v ) ); continue; } update_post_meta( $id, '_rsm_' . sanitize_key( $k ), sanitize_text_field( rsm_push_tokens( (string) $v ) ) ); }
+	return array( $id, $state );
+}
+function rsm_push_menu_items( $menu_id, $items, $parent = 0 ) {
+	foreach ( (array) $items as $it ) {
+		$url = (string) ( $it['url'] ?? '#' ); if ( 0 === strpos( $url, '/' ) ) { $url = home_url( $url ); }
+		$id = wp_update_nav_menu_item( $menu_id, 0, array( 'menu-item-title' => wp_kses_post( $it['title'] ?? '' ), 'menu-item-url' => esc_url_raw( $url ), 'menu-item-description' => sanitize_text_field( $it['description'] ?? '' ), 'menu-item-classes' => sanitize_text_field( $it['classes'] ?? '' ), 'menu-item-parent-id' => $parent, 'menu-item-type' => 'custom', 'menu-item-status' => 'publish' ) );
+		if ( ! is_wp_error( $id ) && ! empty( $it['children'] ) ) { rsm_push_menu_items( $menu_id, $it['children'], $id ); }
+	}
+}
+
+add_action( 'rest_api_init', function () {
+	$admin = function () { return current_user_can( 'manage_options' ); };
+
+	register_rest_route( 'rsm/v1', '/state', array( 'methods' => 'GET', 'permission_callback' => $admin, 'callback' => function () {
+		$out = array( 'version' => RSM_EL_VERSION, 'theme' => wp_get_theme()->get( 'Version' ), 'front' => (int) get_option( 'page_on_front' ), 'docs' => array(), 'menus' => array(), 'css_bytes' => strlen( (string) get_option( 'rsm_extra_css', '' ) ) );
+		foreach ( get_posts( array( 'post_type' => array( 'page', 'rsm_part' ), 'post_status' => 'any', 'posts_per_page' => 500 ) ) as $p ) {
+			$out['docs'][] = array( 'id' => $p->ID, 'type' => $p->post_type, 'slug' => $p->post_name, 'status' => $p->post_status, 'key' => get_post_meta( $p->ID, '_rsm_import_key', true ), 'modified' => $p->post_modified_gmt, 'url' => get_permalink( $p ) );
+		}
+		foreach ( wp_get_nav_menus() as $m ) { $out['menus'][] = array( 'slug' => $m->slug, 'items' => (int) $m->count ); }
+		return $out;
+	} ) );
+
+	register_rest_route( 'rsm/v1', '/push', array( 'methods' => 'POST', 'permission_callback' => $admin, 'callback' => function ( WP_REST_Request $req ) {
+		$b = $req->get_json_params(); if ( ! is_array( $b ) ) { return new WP_Error( 'rsm_bad_body', 'JSON body expected.', array( 'status' => 400 ) ); }
+		if ( ! class_exists( '\Elementor\Plugin' ) ) { return new WP_Error( 'rsm_no_elementor', 'Elementor is not active.', array( 'status' => 409 ) ); }
+		$over = ! empty( $b['overwrite'] ); $log = array();
+		foreach ( (array) ( $b['parts'] ?? array() ) as $slot => $doc ) { $slot = sanitize_key( $slot ); list( $id, $st ) = rsm_push_doc( 'rsm_part', $doc, $over ); if ( $id ) { update_option( 'rsm_part_' . $slot, $id ); } $log[] = array( 'part' => $slot, 'id' => $id, 'state' => $st ); }
+		foreach ( (array) ( $b['pages'] ?? array() ) as $doc ) { list( $id, $st ) = rsm_push_doc( 'page', $doc, $over );
+			if ( $id && ! empty( $doc['front'] ) ) { update_option( 'show_on_front', 'page' ); update_option( 'page_on_front', $id ); }
+			if ( $id && ! empty( $doc['posts_page'] ) ) { update_option( 'page_for_posts', $id ); }
+			$log[] = array( 'page' => $doc['slug'] ?? '', 'id' => $id, 'state' => $st, 'url' => $id ? get_permalink( $id ) : '' ); }
+		foreach ( (array) ( $b['menus'] ?? array() ) as $menu ) {
+			$slug = sanitize_title( $menu['slug'] ?? '' ); if ( ! $slug ) { continue; }
+			$obj = wp_get_nav_menu_object( $slug );
+			if ( $obj ) { foreach ( (array) wp_get_nav_menu_items( $obj->term_id ) as $it ) { wp_delete_post( $it->ID, true ); } $mid = $obj->term_id; }
+			else { $mid = wp_create_nav_menu( sanitize_text_field( $menu['name'] ?? $slug ) ); if ( is_wp_error( $mid ) ) { $log[] = array( 'menu' => $slug, 'state' => 'failed' ); continue; } wp_update_term( $mid, 'nav_menu', array( 'slug' => $slug ) ); }
+			rsm_push_menu_items( $mid, $menu['items'] ?? array() ); $log[] = array( 'menu' => $slug, 'state' => 'written' );
+		}
+		if ( isset( $b['css'] ) ) { update_option( 'rsm_extra_css', wp_strip_all_tags( (string) $b['css'] ), false ); $log[] = array( 'css' => strlen( (string) $b['css'] ) ); }
+		if ( isset( $b['schema_graph'] ) && is_array( $b['schema_graph'] ) ) { update_option( 'rsm_schema_graph', rsm_push_tokens( wp_json_encode( $b['schema_graph'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) ) ); $log[] = array( 'schema' => 'written' ); }
+		if ( isset( $b['llms'] ) ) { update_option( 'rsm_llms_txt', sanitize_textarea_field( (string) $b['llms'] ), false ); $log[] = array( 'llms' => 'written' ); }
+		/* a short list of settings an administrator may set from here: this plugin's own, and the cache plugin's speed switches */
+		foreach ( (array) ( $b['options'] ?? array() ) as $k => $v ) { $k = (string) $k; if ( preg_match( '/^(rsm_[a-z0-9_]+|litespeed\.conf\.(optm|cache|media|css|js)[a-z0-9_.-]*)$/', $k ) && is_scalar( $v ) ) { update_option( $k, $v ); $log[] = array( 'option' => $k ); } }
+		foreach ( (array) ( $b['trash'] ?? array() ) as $key ) { $id = rsm_push_find( 'page', sanitize_key( $key ) ); if ( $id ) { wp_trash_post( $id ); $log[] = array( 'trashed' => $key ); } }
+		\Elementor\Plugin::$instance->files_manager->clear_cache();
+		do_action( 'rsm_after_push' );
+		do_action( 'litespeed_purge_all' );
+		return array( 'ok' => true, 'log' => $log, 'llms_file' => file_exists( ABSPATH . 'llms.txt' ) ? ( is_writable( ABSPATH . 'llms.txt' ) ? 'synced' : 'not writable' ) : 'none' );
+	} ) );
+} );
+
+/* Styles sent with a push, added after the theme's own. */
+add_action( 'wp_enqueue_scripts', function () {
+	$css = (string) get_option( 'rsm_extra_css', '' );
+	if ( '' === $css ) { return; }
+	wp_register_style( 'rsm-extra', false, array(), RSM_EL_VERSION ); wp_enqueue_style( 'rsm-extra' ); wp_add_inline_style( 'rsm-extra', $css );
+}, 30 );
+
+/* Deploy: installs a new copy of this plugin or the RSM theme from a ZIP already in the media library. Administrators only. */
+function rsm_deploy_zip( $attachment_id, $kind ) {
+	$file = get_attached_file( (int) $attachment_id );
+	if ( ! $file || ! file_exists( $file ) || 'zip' !== strtolower( pathinfo( $file, PATHINFO_EXTENSION ) ) ) { return new WP_Error( 'rsm_no_zip', 'That media item is not a ZIP file.', array( 'status' => 400 ) ); }
+	$want = 'theme' === $kind ? 'rsm-theme' : 'rsm-elements';
+	$zip = new ZipArchive(); if ( true !== $zip->open( $file ) ) { return new WP_Error( 'rsm_bad_zip', 'The ZIP could not be opened.', array( 'status' => 400 ) ); }
+	for ( $i = 0; $i < $zip->numFiles; $i++ ) { if ( 0 !== strpos( $zip->getNameIndex( $i ), $want . '/' ) ) { $zip->close(); return new WP_Error( 'rsm_wrong_zip', 'The ZIP must contain only the ' . $want . ' folder.', array( 'status' => 400 ) ); } }
+	$zip->close();
+	require_once ABSPATH . 'wp-admin/includes/file.php'; require_once ABSPATH . 'wp-admin/includes/misc.php'; require_once ABSPATH . 'wp-admin/includes/plugin.php'; require_once ABSPATH . 'wp-admin/includes/theme.php'; require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+	$skin = new Automatic_Upgrader_Skin();
+	$up = 'theme' === $kind ? new Theme_Upgrader( $skin ) : new Plugin_Upgrader( $skin );
+	$res = $up->install( $file, array( 'overwrite_package' => true ) );
+	if ( is_wp_error( $res ) ) { return $res; }
+	if ( ! $res ) { $e = $skin->get_errors(); return new WP_Error( 'rsm_deploy_failed', $e->has_errors() ? $e->get_error_message() : 'The install did not complete.', array( 'status' => 500, 'log' => $skin->get_upgrade_messages() ) ); }
+	if ( function_exists( 'opcache_reset' ) ) { @opcache_reset(); } // phpcs:ignore
+	wp_delete_attachment( (int) $attachment_id, true );
+	do_action( 'litespeed_purge_all' );
+	return array( 'ok' => true, 'kind' => $kind );
+}
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'rsm/v1', '/deploy', array( 'methods' => 'POST', 'permission_callback' => function () { return current_user_can( 'install_plugins' ) && current_user_can( 'install_themes' ); }, 'callback' => function ( WP_REST_Request $req ) {
+		return rsm_deploy_zip( (int) $req->get_param( 'media' ), 'theme' === $req->get_param( 'kind' ) ? 'theme' : 'plugin' );
+	} ) );
+} );
+
+
+/* ---------- enquiries: stored on this site and emailed to the owner ---------- */
+add_action( 'init', function () {
+	register_post_type( 'rsm_lead', array( 'label' => __( 'Enquiries', 'rsm-elements' ), 'labels' => array( 'name' => __( 'Enquiries', 'rsm-elements' ), 'singular_name' => __( 'Enquiry', 'rsm-elements' ) ),
+		'public' => false, 'show_ui' => true, 'show_in_menu' => true, 'menu_icon' => 'dashicons-email-alt', 'menu_position' => 26, 'supports' => array( 'title', 'editor' ), 'capability_type' => 'page', 'map_meta_cap' => true, 'capabilities' => array( 'create_posts' => 'do_not_allow' ) ) );
+} );
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'rsm/v1', '/lead', array( 'methods' => 'POST', 'permission_callback' => '__return_true', 'callback' => function ( WP_REST_Request $req ) {
+		$g = function ( $k, $max = 120 ) use ( $req ) { return mb_substr( sanitize_text_field( (string) $req->get_param( $k ) ), 0, $max ); };
+		if ( '' !== (string) $req->get_param( 'website' ) ) { return array( 'ok' => true ); } // a filled trap field is a robot; answer as if it worked
+		$name = $g( 'name' ); $email = sanitize_email( (string) $req->get_param( 'email' ) );
+		if ( '' === $name || ! is_email( $email ) ) { return new WP_Error( 'rsm_lead_invalid', 'A name and a valid email are needed.', array( 'status' => 400 ) ); }
+		$ip = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : ''; $key = 'rsm_lead_' . md5( $ip ); $n = (int) get_transient( $key );
+		if ( $n >= 5 ) { return new WP_Error( 'rsm_lead_slow', 'Too many requests. Please call or email instead.', array( 'status' => 429 ) ); } set_transient( $key, $n + 1, HOUR_IN_SECONDS );
+		$rows = array( 'Kind' => $g( 'kind' ), 'Name' => $name, 'Business' => $g( 'business' ), 'Email' => $email, 'Phone' => $g( 'phone', 40 ), 'Trade' => $g( 'trade' ), 'City' => $g( 'city' ), 'Page' => esc_url_raw( (string) $req->get_param( 'page' ) ), 'Message' => mb_substr( sanitize_textarea_field( (string) $req->get_param( 'message' ) ), 0, 2000 ) );
+		$body = ''; foreach ( $rows as $k => $v ) { if ( '' !== $v ) { $body .= $k . ': ' . $v . "\n"; } }
+		$id = wp_insert_post( array( 'post_type' => 'rsm_lead', 'post_status' => 'private', 'post_title' => wp_strip_all_tags( ( $rows['Kind'] ? $rows['Kind'] . ': ' : '' ) . $name . ( $rows['Business'] ? ', ' . $rows['Business'] : '' ) ), 'post_content' => $body ) );
+		if ( is_wp_error( $id ) || ! $id ) { return new WP_Error( 'rsm_lead_store', 'Could not store the enquiry.', array( 'status' => 500 ) ); }
+		$to = (string) get_option( 'rsm_lead_email', get_option( 'admin_email' ) );
+		$sent = wp_mail( $to, '[' . wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES ) . '] ' . ( $rows['Kind'] ? $rows['Kind'] : 'Enquiry' ) . ' from ' . $name, $body, array( 'Reply-To: ' . $name . ' <' . $email . '>' ) );
+		update_post_meta( $id, '_rsm_mailed', $sent ? 'yes' : 'no' );
+		return array( 'ok' => true );
+	} ) );
+} );

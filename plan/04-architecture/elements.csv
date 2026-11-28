@@ -1,0 +1,114 @@
+number,where,equation_term,standard_group,element,url,lead_keyword,live_grade
+1,On the site,Read,Technical health,Robots.txt,/elements/robots-txt/,robots.txt,A
+2,On the site,Read,Technical health,XML sitemap,/elements/xml-sitemap/,xml sitemap,A
+3,On the site,Read,Technical health,Canonical tags,/elements/canonical-tags/,canonical url,A
+4,On the site,Read,Technical health,Redirects,/elements/301-redirects/,301 redirect,A
+5,On the site,Read,Technical health,404 pages and broken links,/elements/broken-links/,broken links,A
+6,On the site,Read,Technical health,Indexing,/elements/google-indexing/,google indexing,A
+7,On the site,Read,Technical health,Crawling,/elements/crawl-errors/,crawl errors,A
+8,On the site,Read,Technical health,Duplicate pages,/elements/duplicate-content/,duplicate content,A
+9,On the site,Read,Technical health,URL structure,/elements/url-structure/,url structure,A
+10,On the site,Read,Technical health,IndexNow,/elements/indexnow/,indexnow,A
+11,On the site,Read,Speed and stability,Core Web Vitals,/elements/core-web-vitals/,core web vitals,A
+12,On the site,Read,Speed and stability,Page speed,/elements/page-speed/,page speed,A
+13,On the site,Read,Speed and stability,Largest Contentful Paint,/elements/largest-contentful-paint/,largest contentful paint,A
+14,On the site,Read,Speed and stability,Interaction to Next Paint,/elements/interaction-to-next-paint/,interaction to next paint,A
+15,On the site,Read,Speed and stability,Cumulative Layout Shift,/elements/cumulative-layout-shift/,cumulative layout shift,A
+16,On the site,Read,Speed and stability,Image compression,/elements/image-compression/,image compression,A
+17,On the site,Read,Speed and stability,Lazy loading,/elements/lazy-loading/,lazy loading,A
+18,On the site,Read,Speed and stability,Website hosting and uptime,/elements/website-uptime/,website uptime,A
+19,On the site,Read,Mobile experience,Mobile-friendly pages,/elements/mobile-friendly-website/,mobile friendly website,A
+20,On the site,Read,Mobile experience,Click-to-call,/elements/click-to-call/,click to call,A
+21,On the site,Read,Security,HTTPS and SSL,/elements/ssl-certificate/,ssl certificate,A
+22,On the site,Read,Security,Security headers,/elements/security-headers/,security headers,A
+23,On the site,Read,Security,Website backups,/elements/website-backup/,website backup,A
+24,On the site,Read,Site structure,Site structure,/elements/site-structure/,website structure,A
+25,On the site,Read,Site structure,Internal links,/elements/internal-linking/,internal linking,A
+26,On the site,Read,Site structure,Navigation menu,/elements/website-navigation/,website navigation,A
+27,On the site,Read,Site structure,Breadcrumbs,/elements/breadcrumbs/,breadcrumbs seo,A
+28,On the site,Read,Site structure,Orphan pages,/elements/orphan-pages/,orphan pages,A
+29,On the site,Read,Site structure,Keyword cannibalization,/elements/keyword-cannibalization/,keyword cannibalization,A
+30,On the site,Read,Page titles and descriptions,Title tags,/elements/title-tag/,title tag,A
+31,On the site,Read,Page titles and descriptions,Meta descriptions,/elements/meta-description/,meta description,A
+32,On the site,Read,Page titles and descriptions,Open Graph tags,/elements/open-graph-tags/,open graph tags,A
+33,On the site,Read,Headings and copy,H1 and heading tags,/elements/heading-tags/,heading tags,A
+34,On the site,Read,Headings and copy,Keyword placement,/elements/keyword-density/,keyword density,A
+35,On the site,Read,Headings and copy,Thin content,/elements/thin-content/,thin content,A
+36,On the site,Read,Headings and copy,Readability,/elements/readability/,readability score,A
+37,On the site,Read,Headings and copy,Service pages,/elements/service-pages/,service page,A
+38,On the site,Read,Images and media,Image alt text,/elements/alt-text/,alt text,A
+39,On the site,Read,Images and media,Image file names,/elements/image-seo/,image seo,A
+40,On the site,Read,Verified facts,Schema markup,/elements/schema-markup/,schema markup,A
+41,On the site,Read,Verified facts,Local business schema,/elements/local-business-schema/,local business schema,A
+42,On the site,Read,Verified facts,FAQ schema,/elements/faq-schema/,faq schema,A
+43,On the site,Read,Verified facts,Organization schema,/elements/organization-schema/,organization schema,A
+44,On the site,Read,Verified facts,Review schema,/elements/review-schema/,review schema,A
+45,On the site,Read,Verified facts,Breadcrumb schema,/elements/breadcrumb-schema/,breadcrumb schema,A
+46,On the site,Read,AI readiness,Answer blocks,/elements/featured-snippets/,featured snippets,A
+47,On the site,Read,AI readiness,FAQ sections,/elements/faq-page/,faq page,A
+48,On the site,Read,AI readiness,llms.txt,/elements/llms-txt/,llms.txt,A
+49,On the site,Read,AI readiness,AI crawler access,/elements/ai-crawlers/,ai crawlers,A
+50,On the site,Read,AI readiness,People Also Ask,/elements/people-also-ask/,people also ask,A
+51,On the site,Read,Content inventory,Content audit,/elements/content-audit/,content audit,A
+52,On the site,Read,Content inventory,Content pruning,/elements/content-pruning/,content pruning,A
+53,On the site,Read,Uniqueness and information gain,Original content,/elements/information-gain/,information gain seo,A
+54,On the site,Read,Uniqueness and information gain,Doorway pages,/elements/doorway-pages/,doorway pages,A
+55,On the site,Read,Fact integrity,Fact checking,/elements/fact-checking/,fact checking,A
+56,On the site,Read,Accessibility,Website accessibility,/elements/website-accessibility/,website accessibility,A
+57,On the site,Read,Accessibility,Color contrast,/elements/color-contrast/,color contrast checker,A
+58,On the site,Read,Freshness and corrections,Content freshness,/elements/content-freshness/,content freshness,A
+59,On the site,Read,Publishing readiness,Publishing checklist,/elements/seo-checklist/,seo checklist,A
+60,On the site,Choose,Conversion elements,Calls to action,/elements/call-to-action/,call to action,A
+61,On the site,Choose,Conversion elements,Contact forms,/elements/contact-form/,contact form,A
+62,On the site,Choose,Conversion elements,Landing pages,/elements/landing-page/,landing page,A
+63,On the site,Choose,Conversion elements,Trust badges,/elements/trust-badges/,trust badges,A
+64,On the site,Choose,Conversion elements,Live chat,/elements/live-chat/,live chat for website,A
+65,On the site,Choose,Conversion elements,Speed to lead,/elements/speed-to-lead/,speed to lead,A
+66,On the site,Choose,Conversion elements,Pricing pages,/elements/pricing-page/,pricing page,A
+67,Listings,Confirm,Local signals,NAP consistency,/elements/nap-consistency/,nap consistency,A
+68,Listings,Confirm,Local signals,Local citations,/elements/local-citations/,local citations,A
+69,Listings,Confirm,Local signals,Business directories,/elements/business-directories/,business directories,A
+70,Listings,Confirm,Local signals,Service area pages,/elements/service-area-pages/,service area business,A
+71,Listings,Confirm,Local signals,Apple Business Connect,/elements/apple-business-connect/,apple business connect,A
+72,Listings,Confirm,Local signals,Bing Places,/elements/bing-places/,bing places,A
+73,Listings,Confirm,Local signals,Duplicate listings,/elements/duplicate-listings/,duplicate listings,B
+74,Listings,Confirm,Google Business Profile,Google Business Profile categories,/elements/google-business-profile-categories/,google business profile categories,A
+75,Listings,Confirm,Google Business Profile,Google Business Profile posts,/elements/google-business-profile-posts/,google business profile posts,A
+76,Listings,Confirm,Google Business Profile,Google Business Profile photos,/elements/google-business-profile-photos/,google business profile photos,A
+77,Listings,Confirm,Google Business Profile,Google Business Profile services,/elements/google-business-profile-services/,google business profile services,A
+78,Listings,Confirm,Google Business Profile,Google Business Profile suspension,/elements/google-business-profile-suspended/,google business profile suspended,A
+79,Listings,Confirm,Google Business Profile,Google Maps ranking,/elements/google-maps-ranking/,google maps ranking,A
+80,Listings,Confirm,Reviews and reputation,Google reviews,/elements/google-reviews/,how to get google reviews,A
+81,Listings,Confirm,Reviews and reputation,Responding to reviews,/elements/respond-to-reviews/,how to respond to google reviews,A
+82,Listings,Confirm,Reviews and reputation,Negative reviews,/elements/negative-reviews/,how to respond to negative reviews,A
+83,Off the site,Confirm,Off-site presence,Backlinks,/elements/backlinks/,backlinks,A
+84,Off the site,Confirm,Off-site presence,Brand mentions,/elements/brand-mentions/,brand mentions,A
+85,Off the site,Confirm,Off-site presence,Press releases,/elements/press-release/,press release,A
+86,Off the site,Confirm,Off-site presence,Guest posts,/elements/guest-posting/,guest posting,A
+87,Off the site,Confirm,Off-site presence,Toxic links,/elements/toxic-backlinks/,toxic backlinks,A
+88,Off the site,Confirm,Off-site presence,Anchor text,/elements/anchor-text/,anchor text,A
+89,Off the site,Confirm,Off-site presence,Digital PR,/elements/digital-pr/,digital pr agency,A
+90,Off the site,Confirm,Off-site presence,Reddit and forums,/elements/reddit-marketing/,reddit marketing,A
+91,Off the site,Confirm,Author and entity,Author pages,/elements/author-bio/,author bio,A
+92,Off the site,Confirm,Author and entity,Knowledge panel,/elements/google-knowledge-panel/,google knowledge panel,A
+93,Off the site,Confirm,Author and entity,Entity SEO,/elements/entity-seo/,entity seo,A
+94,Off the site,Confirm,Video and visual search,YouTube SEO,/elements/youtube-seo/,youtube seo,A
+95,Off the site,Confirm,Video and visual search,Video SEO,/elements/video-seo/,video seo,C
+96,Social,Confirm,Social presence,Facebook business page,/elements/facebook-business-page/,facebook business page,A
+97,Social,Confirm,Social presence,Instagram for business,/elements/instagram-for-business/,instagram for business,A
+98,Social,Confirm,Social presence,LinkedIn company page,/elements/linkedin-company-page/,linkedin company page,A
+99,Social,Confirm,Social presence,TikTok for business,/elements/tiktok-for-business/,tiktok for business,A
+100,Social,Confirm,Social presence,Social media posting schedule,/elements/social-media-posting-schedule/,social media posting schedule,A
+101,Social,Confirm,Social presence,Social media profiles,/elements/social-media-profiles/,social media profiles,A
+102,Research,Question,Search map coverage,Search intent,/elements/search-intent/,search intent,A
+103,Research,Question,Search map coverage,Keyword mapping,/elements/keyword-mapping/,keyword mapping,A
+104,Research,Question,Search map coverage,Long-tail keywords,/elements/long-tail-keywords/,long tail keywords,A
+105,Research,Question,Search map coverage,Competitor analysis,/elements/seo-competitor-analysis/,seo competitor analysis,A
+106,Measurement,Choose,Tracking and measurement,Google Analytics 4,/elements/google-analytics-4/,google analytics 4,A
+107,Measurement,Choose,Tracking and measurement,Google Search Console,/elements/google-search-console/,google search console,A
+108,Measurement,Choose,Tracking and measurement,Call tracking,/elements/call-tracking/,call tracking,A
+109,Measurement,Choose,Tracking and measurement,UTM tracking,/elements/utm-parameters/,utm parameters,A
+110,Measurement,Choose,Tracking and measurement,Rank tracking,/elements/rank-tracking/,rank tracker,A
+111,Measurement,Choose,Tracking and measurement,SEO reporting,/elements/seo-report/,seo report,A
+112,Measurement,Choose,AI answer verification,AI visibility tracking,/elements/ai-visibility/,ai visibility,A
+113,Measurement,Choose,AI answer verification,AI citations,/elements/ai-citations/,ai citations,A

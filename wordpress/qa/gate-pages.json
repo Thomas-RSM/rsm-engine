@@ -1,0 +1,548 @@
+{
+"/dsouza-equation/how-search-works/": {
+"kw": "how does google search work;how do ai overviews work;how does chatgpt search work",
+"type": "pillar",
+"example": "ac repair dallas",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "crawl;index;engine"
+},
+"/dsouza-equation/seo-vs-aeo-vs-geo/": {
+"kw": "seo vs geo;seo vs aeo;seo vs aeo vs geo",
+"type": "pillar",
+"example": "roofer in denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "engine;assistant;invoice"
+},
+"/elements/": {
+"kw": "seo ranking factors;google ranking factors;seo factors",
+"type": "hub",
+"example": "plumber in miami",
+"original": "113;v1.0, 23 Nov 2026",
+"trade": "title tag;reviews;listings"
+},
+"/dsouza-equation/law-of-search/": {
+"kw": "d'souza's law of search;is seo dead;future of seo",
+"type": "pillar",
+"example": "when a pipe bursts",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "engine;question;customers"
+},
+"/dsouza-equation/engines/": {
+"kw": "ai search engines;best ai search engines;list of ai search engines",
+"type": "pillar",
+"example": "dentist in chicago",
+"original": "engine register;23 Nov 2026",
+"trade": "engine;assistant;customers"
+},
+"/dsouza-equation/method/": {
+"kw": "seo strategy;seo process;how does seo work",
+"type": "pillar",
+"example": "plumber in miami",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "log;report;day 5"
+},
+"/dsouza-equation/standard/": {
+"kw": "seo audit;seo audit checklist;website seo audit",
+"type": "reference",
+"example": "the title is 30 to 60 characters",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "checks;page;site"
+},
+"/dsouza-equation/read/": {
+"kw": "on page seo;what is on page seo;on page seo checklist",
+"type": "pillar",
+"example": "law firm in new york",
+"original": "250;v1.0, 23 Nov 2026",
+"trade": "crawl;index;markup"
+},
+"/dsouza-equation/confirm/": {
+"kw": "off page seo;what is off page seo;off page seo techniques",
+"type": "pillar",
+"example": "contractor in atlanta",
+"original": "99;v1.0, 23 Nov 2026",
+"trade": "listings;reviews;mentions"
+},
+"/dsouza-equation/choose/": {
+"kw": "conversion rate optimization;what is conversion rate optimization;conversion rate optimization examples",
+"type": "pillar",
+"example": "dentist in chicago",
+"original": "50;v1.0, 23 Nov 2026",
+"trade": "reviews;listing;call"
+},
+"/dsouza-equation/": {
+"kw": "d'souza equation;how do search engines rank websites;how does google rank websites",
+"type": "pillar",
+"example": "who fixes a burst pipe",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "engine;customers;reviews"
+},
+"/ask/": {
+"kw": "getting found online",
+"type": "tool",
+"example": "why did my reviews disappear",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "question;answer;page"
+},
+"/book/": {
+"kw": "book a discovery call",
+"type": "tool",
+"example": "roofing company denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "call;plumber;dentist"
+},
+"/problems/seo-cost/": {
+"kw": "how much does seo cost;seo pricing;seo cost for small business",
+"type": "problem",
+"example": "kitchen remodel atlanta",
+"original": "177;v4, 18 Nov 2026",
+"trade": "quote;contract;month to month"
+},
+"/problems/traffic-dropped/": {
+"kw": "website traffic dropped suddenly;google ranking dropped dramatically;why has my website traffic dropped",
+"type": "problem",
+"example": "hvac repair dallas",
+"original": "165;v4, 18 Nov 2026",
+"trade": "update;rankings;search console"
+},
+"/problems/not-recommended-by-chatgpt/": {
+"kw": "how to get my business recommended by chatgpt;how to get my business on chatgpt;how to show up in chatgpt",
+"type": "problem",
+"example": "divorce lawyer in new york",
+"original": "211;v4, 18 Nov 2026",
+"trade": "lawyer;sources;reviews"
+},
+"/problems/not-getting-leads/": {
+"kw": "how to get more leads for my business;how to get more customers for my business;how to get more leads",
+"type": "problem",
+"example": "emergency dentist chicago",
+"original": "186;v4, 18 Nov 2026",
+"trade": "dentist;reviews;listing"
+},
+"/problems/not-showing-up-on-google/": {
+"kw": "why is my business not showing up on google;why is my business not showing up on google maps;how to get my business on google",
+"type": "problem",
+"example": "roof repair denver",
+"original": "170;v4, 18 Nov 2026",
+"trade": "roofer;profile;listing"
+},
+"/problems/": {
+"kw": "seo problems;common seo issues;seo issues",
+"type": "hub",
+"example": "emergency plumber miami",
+"original": "166;v4, 18 Nov 2026",
+"trade": "plumber;roofer;dentist"
+},
+"/services/": {
+"kw": "",
+"type": "hub",
+"example": "dentist in chicago",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "services;engine;plan"
+},
+"/services/seo/": {
+"kw": "seo services;seo services company;affordable seo services for small businesses",
+"type": "service",
+"example": "electrician in phoenix",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "searches;log;report"
+},
+"/services/local-seo/": {
+"kw": "local seo services;local seo agency;google maps seo",
+"type": "service",
+"example": "hvac company in dallas",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "map;listing;reviews"
+},
+"/services/ai-seo/": {
+"kw": "ai seo services;ai seo agency;ai search optimization",
+"type": "service",
+"example": "landscaper in houston",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "assistant;sources;answer"
+},
+"/services/answer-engine-optimization/": {
+"kw": "answer engine optimization;aeo services;answer engine optimization services",
+"type": "service",
+"example": "dentist in chicago",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "question;answer;quoted"
+},
+"/services/generative-engine-optimization/": {
+"kw": "generative engine optimization;generative engine optimization agency;geo services",
+"type": "service",
+"example": "law firm in new york",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "assistant;sources;mentions"
+},
+"/services/ai-overview-optimization/": {
+"kw": "ai overview optimization;how to show up in google ai overviews;google ai overview seo",
+"type": "service",
+"example": "roofer in denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "overview;index;summary"
+},
+"/services/chatgpt-seo/": {
+"kw": "chatgpt seo;llm seo;how to rank in chatgpt",
+"type": "service",
+"example": "contractor in atlanta",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "chatgpt;sources;reviews"
+},
+"/services/google-business-profile-optimization/": {
+"kw": "google business profile optimization;google my business optimization;google business profile management",
+"type": "service",
+"example": "dentist in phoenix",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "profile;categories;reviews"
+},
+"/services/technical-seo/": {
+"kw": "technical seo;technical seo audit;schema markup services",
+"type": "service",
+"example": "law firm in dallas",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "crawl;markup;speed"
+},
+"/services/content-marketing/": {
+"kw": "content marketing agency;content marketing;seo content writing",
+"type": "service",
+"example": "hvac company in chicago",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "pages;guides;answers"
+},
+"/services/link-building/": {
+"kw": "link building services;link building agency;backlinks for seo",
+"type": "service",
+"example": "plumber in seattle",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "mentions;links;sources"
+},
+"/services/social-media-marketing/": {
+"kw": "social media marketing services;social media optimization;social media marketing for small business",
+"type": "service",
+"example": "restaurant in austin",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "profiles;posts;networks"
+},
+"/services/reputation-management/": {
+"kw": "reputation management company;online reputation management;review management services",
+"type": "service",
+"example": "roofer in tampa",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "reviews;replies;ratings"
+},
+"/services/voice-search-optimization/": {
+"kw": "voice search optimization;voice search optimization services",
+"type": "service",
+"example": "locksmith in houston",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "spoken;assistant;listings"
+},
+"/services/ecommerce-seo/": {
+"kw": "ecommerce seo;ecommerce seo services;shopify seo",
+"type": "service",
+"example": "furniture store in portland",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "products;categories;store"
+},
+"/services/b2b-seo/": {
+"kw": "b2b seo services;b2b seo agency;b2b seo strategy",
+"type": "service",
+"example": "software firm in boston",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "buyers;research;suppliers"
+},
+"/services/small-business-seo/": {
+"kw": "small business seo services;seo for small business;seo services for small businesses",
+"type": "service",
+"example": "bakery in nashville",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "owner;month;report"
+},
+"/services/lead-generation/": {
+"kw": "lead generation services;lead generation company;lead generation for small business",
+"type": "service",
+"example": "remodeler in charlotte",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "calls;inquiries;forms"
+},
+"/services/digital-marketing/": {
+"kw": "digital marketing services;digital marketing agency;digital marketing agency usa",
+"type": "service",
+"example": "dental practice in san diego",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "channels;plan;engine"
+},
+"/services/web-design/": {
+"kw": "web design services;web design company;website design services",
+"type": "service",
+"example": "law office in denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "layout;pages;phone"
+},
+"/services/web-development/": {
+"kw": "web development services;web development company;custom web development",
+"type": "service",
+"example": "clinic in miami",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "code;server;build"
+},
+"/services/app-development/": {
+"kw": "app development services;mobile app development company;app development company",
+"type": "service",
+"example": "gym in columbus",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "users;screens;release"
+},
+"/services/custom-crm/": {
+"kw": "custom crm development;custom crm software;custom crm",
+"type": "service",
+"example": "contractor in phoenix",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "inquiries;quotes;follow-up"
+},
+"/services/design/": {
+"kw": "graphic design services;branding services;logo design services",
+"type": "service",
+"example": "cafe in portland",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "logo;colors;brand"
+},
+"/guides/": {
+"kw": "seo guide;seo for beginners;how to do seo",
+"type": "hub",
+"example": "plumber in miami",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "searches;guide;owner"
+},
+"/guides/what-is-eeat/": {
+"kw": "what is e-e-a-t;google e-e-a-t;e-e-a-t seo",
+"type": "pillar",
+"example": "electrician in phoenix",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "trust;raters;author"
+},
+"/guides/seo-keyword-research/": {
+"kw": "seo keyword research;how to do keyword research;keyword research",
+"type": "pillar",
+"example": "plumber in miami",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "searches;map;autocomplete"
+},
+"/guides/how-long-does-seo-take/": {
+"kw": "how long does seo take;how long does it take to rank on google;is seo worth it",
+"type": "pillar",
+"example": "dentist in chicago",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "weeks;months;page one"
+},
+"/guides/how-to-choose-an-seo-company/": {
+"kw": "how to choose an seo company;how to choose an seo agency;how to find a good seo company",
+"type": "pillar",
+"example": "roofer in denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "contract;report;log"
+},
+"/guides/service-vs-ecommerce-vs-b2b-seo/": {
+"kw": "types of seo;local seo vs seo;types of seo in digital marketing",
+"type": "pillar",
+"example": "hvac company in dallas",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "store;buyers;map"
+},
+"/about/": {
+"kw": "relevant search media",
+"type": "about",
+"example": "roofer in denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "founded;equation;relevant"
+},
+"/thomas-dsouza/": {
+"kw": "thomas d'souza",
+"type": "about",
+"example": "dentist in chicago",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "founder;equation;call"
+},
+"/commitments/": {
+"kw": "seo guarantee;guaranteed seo services;pay for performance seo",
+"type": "about",
+"example": "roofer in denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "log;report;page one"
+},
+"/results/": {
+"kw": "relevant search media reviews;seo case studies;seo results",
+"type": "about",
+"example": "dentist in chicago",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "figures;clients;record"
+},
+"/about/editorial-policy/": {
+"kw": "",
+"type": "about",
+"example": "plumber in miami",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "register;checks;reviewed"
+},
+"/about/corrections/": {
+"kw": "",
+"type": "legal",
+"example": "dentist in chicago",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "corrected;date;error"
+},
+"/contact/": {
+"kw": "",
+"type": "tool",
+"example": "roofing company in denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "email;phone;message"
+},
+"/privacy/": {
+"kw": "",
+"type": "legal",
+"example": "plumber in miami",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "details;form;cookies"
+},
+"/terms/": {
+"kw": "",
+"type": "legal",
+"example": "electrician in phoenix",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "terms;content;agreement"
+},
+"/industries/": {
+"kw": "seo by industry;industry specific seo;niche seo",
+"type": "hub",
+"example": "plumber in miami",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "trade;customers;reviews"
+},
+"/cities/": {
+"kw": "seo company near me;seo agency near me;seo services near me",
+"type": "hub",
+"example": "roofer in denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "city;trade;map"
+},
+"/searches/": {
+"kw": "plumber seo keywords;plumbing seo keywords",
+"type": "tool",
+"example": "plumber in miami",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "searches;trade;city"
+},
+"/your-plan/": {
+"kw": "seo plan;seo plan template;90 day seo plan",
+"type": "tool",
+"example": "electrician in phoenix",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "day;map;log"
+},
+"/open-board/": {
+"kw": "",
+"type": "tool",
+"example": "roofer in denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "trade;city;open"
+},
+"/ai-recommendation-index/": {
+"kw": "how does chatgpt recommend businesses;how does chatgpt recommend products;how can chatgpt recommend my business",
+"type": "tool",
+"example": "dentist in chicago",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "assistant;sources;names"
+},
+"/open-log/": {
+"kw": "seo report example;what does an seo report look like;seo progress report",
+"type": "tool",
+"example": "roofer in denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "log;report;checks"
+},
+"/industries/plumbers/": {
+"kw": "seo for plumbers;plumber seo;plumbing seo",
+"type": "service",
+"example": "plumber in miami",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "leak;drain;water heater"
+},
+"/industries/hvac/": {
+"kw": "hvac seo;seo for hvac companies;hvac marketing",
+"type": "service",
+"example": "hvac company in dallas",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "furnace;ac;season"
+},
+"/industries/roofers/": {
+"kw": "roofing seo;seo for roofers;roofer seo",
+"type": "service",
+"example": "roofer in denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "storm;shingles;license"
+},
+"/industries/electricians/": {
+"kw": "seo for electricians;electrician seo;electrician marketing",
+"type": "service",
+"example": "electrician in phoenix",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "panel;wiring;license"
+},
+"/industries/dentists/": {
+"kw": "dental seo;seo for dentists;dentist seo",
+"type": "service",
+"example": "dentist in chicago",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "patients;treatment;insurance"
+},
+"/industries/law-firms/": {
+"kw": "law firm seo;seo for lawyers;attorney seo",
+"type": "service",
+"example": "law firm in new york",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "clients;practice area;case"
+},
+"/industries/contractors/": {
+"kw": "contractor seo;seo for contractors;general contractor seo",
+"type": "service",
+"example": "contractor in atlanta",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "remodel;project;permit"
+},
+"/industries/landscapers/": {
+"kw": "landscaping seo;seo for landscapers;lawn care seo",
+"type": "service",
+"example": "landscaper in portland",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "lawn;design;season"
+},
+"/industries/auto-repair/": {
+"kw": "auto repair seo;seo for auto repair shops;auto shop marketing",
+"type": "service",
+"example": "auto repair shop in houston",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "drivers;brakes;make"
+},
+"/industries/realtors/": {
+"kw": "real estate seo;seo for realtors;realtor seo",
+"type": "service",
+"example": "realtor in austin",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "neighborhood;listings;sellers"
+},
+"/industries/medical-clinics/": {
+"kw": "medical seo;healthcare seo;seo for doctors",
+"type": "service",
+"example": "medical clinic in phoenix",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "patients;doctor;appointment"
+},
+"/industries/accountants/": {
+"kw": "seo for accountants;accounting seo;cpa seo",
+"type": "service",
+"example": "accountant in seattle",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "tax;clients;deadline"
+}
+}

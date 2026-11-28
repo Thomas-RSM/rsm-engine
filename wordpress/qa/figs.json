@@ -1,0 +1,1412 @@
+{
+ "seo": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "SEO",
+  "items": [
+   [
+    "The search map",
+    "The question"
+   ],
+   [
+    "Technical health",
+    "Read"
+   ],
+   [
+    "Pages and copy",
+    "Read"
+   ],
+   [
+    "Listings and mentions",
+    "Confirm"
+   ],
+   [
+    "Conversion",
+    "Choose"
+   ],
+   [
+    "Tracking and reports",
+    "Choose"
+   ]
+  ]
+ },
+ "local-seo": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "Local SEO",
+  "items": [
+   [
+    "Google Business Profile",
+    "Confirm"
+   ],
+   [
+    "Reviews",
+    "Confirm and Choose"
+   ],
+   [
+    "Local listings",
+    "Confirm"
+   ],
+   [
+    "Local pages",
+    "Read"
+   ],
+   [
+    "Local markup",
+    "Read"
+   ],
+   [
+    "Call tracking",
+    "Choose"
+   ]
+  ]
+ },
+ "ai-seo": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "AI SEO",
+  "items": [
+   [
+    "AI answer tracking",
+    "Choose"
+   ],
+   [
+    "Quotable facts",
+    "Read"
+   ],
+   [
+    "Answer blocks and questions",
+    "Read"
+   ],
+   [
+    "Crawler access and llms.txt",
+    "Read"
+   ],
+   [
+    "Independent mentions",
+    "Confirm"
+   ],
+   [
+    "Accuracy fixes",
+    "Confirm"
+   ]
+  ]
+ },
+ "answer-engine-optimization": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "Answer engine optimization",
+  "items": [
+   [
+    "The question list",
+    "The question"
+   ],
+   [
+    "Answer blocks",
+    "Read"
+   ],
+   [
+    "Question sections",
+    "Read"
+   ],
+   [
+    "Question markup",
+    "Read"
+   ],
+   [
+    "Verified facts",
+    "Read"
+   ],
+   [
+    "Answer checks",
+    "Choose"
+   ]
+  ]
+ },
+ "generative-engine-optimization": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "Generative engine optimization",
+  "items": [
+   [
+    "A facts page",
+    "Read"
+   ],
+   [
+    "Original figures",
+    "Read"
+   ],
+   [
+    "Entity consistency",
+    "Confirm"
+   ],
+   [
+    "Earned mentions",
+    "Confirm"
+   ],
+   [
+    "Review presence",
+    "Confirm"
+   ],
+   [
+    "Citation tracking",
+    "Choose"
+   ]
+  ]
+ },
+ "ai-overview-optimization": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "AI Overview optimization",
+  "items": [
+   [
+    "Indexing",
+    "Read"
+   ],
+   [
+    "Direct answers",
+    "Read"
+   ],
+   [
+    "Structured facts",
+    "Read"
+   ],
+   [
+    "Supporting sources",
+    "Confirm"
+   ],
+   [
+    "Overview tracking",
+    "Choose"
+   ],
+   [
+    "Page upkeep",
+    "Read"
+   ]
+  ]
+ },
+ "chatgpt-seo": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "ChatGPT SEO",
+  "items": [
+   [
+    "Crawler access",
+    "Read"
+   ],
+   [
+    "A page it can lift from",
+    "Read"
+   ],
+   [
+    "Bing presence",
+    "Read"
+   ],
+   [
+    "Mentions that match",
+    "Confirm"
+   ],
+   [
+    "Recent reviews",
+    "Confirm and Choose"
+   ],
+   [
+    "Prompt tracking",
+    "Choose"
+   ]
+  ]
+ },
+ "google-business-profile-optimization": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "Google Business Profile optimization",
+  "items": [
+   [
+    "Categories",
+    "Read"
+   ],
+   [
+    "Services and areas",
+    "Read"
+   ],
+   [
+    "Name, address, phone",
+    "Confirm"
+   ],
+   [
+    "Photos",
+    "Choose"
+   ],
+   [
+    "Posts and questions",
+    "Choose"
+   ],
+   [
+    "Reviews",
+    "Confirm and Choose"
+   ]
+  ]
+ },
+ "technical-seo": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "Technical SEO",
+  "items": [
+   [
+    "Crawling",
+    "Read"
+   ],
+   [
+    "Indexing",
+    "Read"
+   ],
+   [
+    "Speed",
+    "Read and Choose"
+   ],
+   [
+    "Mobile layout",
+    "Choose"
+   ],
+   [
+    "Structure",
+    "Read"
+   ],
+   [
+    "Markup",
+    "Read"
+   ]
+  ]
+ },
+ "content-marketing": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "Content marketing",
+  "items": [
+   [
+    "The keyword map",
+    "Read"
+   ],
+   [
+    "Service pages",
+    "Read and Choose"
+   ],
+   [
+    "Guides",
+    "Read"
+   ],
+   [
+    "Answer blocks",
+    "Read"
+   ],
+   [
+    "A fact register",
+    "Confirm"
+   ],
+   [
+    "Upkeep",
+    "Read"
+   ]
+  ]
+ },
+ "link-building": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "Link building",
+  "items": [
+   [
+    "A link audit",
+    "Confirm"
+   ],
+   [
+    "Listings",
+    "Confirm"
+   ],
+   [
+    "Local mentions",
+    "Confirm"
+   ],
+   [
+    "Trade mentions",
+    "Confirm"
+   ],
+   [
+    "Something worth citing",
+    "Read and Confirm"
+   ],
+   [
+    "Unlinked mentions",
+    "Confirm"
+   ]
+  ]
+ },
+ "social-media-marketing": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "Social media marketing",
+  "items": [
+   [
+    "Network choice",
+    "Choose"
+   ],
+   [
+    "Complete profiles",
+    "Confirm"
+   ],
+   [
+    "A posting rhythm",
+    "Choose"
+   ],
+   [
+    "Searchable captions",
+    "Read"
+   ],
+   [
+    "Replies",
+    "Choose"
+   ],
+   [
+    "Short video",
+    "Read and Choose"
+   ]
+  ]
+ },
+ "reputation-management": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "Reputation management",
+  "items": [
+   [
+    "The ask",
+    "Choose"
+   ],
+   [
+    "The platforms",
+    "Confirm"
+   ],
+   [
+    "Replies",
+    "Choose"
+   ],
+   [
+    "Bad reviews",
+    "Choose"
+   ],
+   [
+    "Fake reviews",
+    "Confirm"
+   ],
+   [
+    "What they say",
+    "Choose"
+   ]
+  ]
+ },
+ "voice-search-optimization": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "Voice search optimization",
+  "items": [
+   [
+    "Google Business Profile",
+    "Confirm"
+   ],
+   [
+    "Apple Business Connect",
+    "Confirm"
+   ],
+   [
+    "Bing Places and Yelp",
+    "Confirm"
+   ],
+   [
+    "Spoken questions",
+    "Read"
+   ],
+   [
+    "Opening hours",
+    "Read"
+   ],
+   [
+    "Speed on phones",
+    "Read"
+   ]
+  ]
+ },
+ "ecommerce-seo": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "Ecommerce SEO",
+  "items": [
+   [
+    "Category pages",
+    "Read"
+   ],
+   [
+    "Product pages",
+    "Read and Choose"
+   ],
+   [
+    "Filters and duplicates",
+    "Read"
+   ],
+   [
+    "Product markup",
+    "Read"
+   ],
+   [
+    "Merchant Center",
+    "Confirm"
+   ],
+   [
+    "Buyer questions",
+    "Read and Choose"
+   ]
+  ]
+ },
+ "b2b-seo": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "B2B SEO",
+  "items": [
+   [
+    "The buying map",
+    "Read"
+   ],
+   [
+    "Problem pages",
+    "Read"
+   ],
+   [
+    "Solution pages",
+    "Read and Choose"
+   ],
+   [
+    "Comparison pages",
+    "Read and Choose"
+   ],
+   [
+    "Proof",
+    "Confirm"
+   ],
+   [
+    "Industry mentions",
+    "Confirm"
+   ]
+  ]
+ },
+ "small-business-seo": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "Small business SEO",
+  "items": [
+   [
+    "A keyword map",
+    "Read"
+   ],
+   [
+    "Site fixes",
+    "Read"
+   ],
+   [
+    "Service pages",
+    "Read and Choose"
+   ],
+   [
+    "Google Business Profile",
+    "Confirm"
+   ],
+   [
+    "Listings and reviews",
+    "Confirm and Choose"
+   ],
+   [
+    "AI answers",
+    "Choose"
+   ]
+  ]
+ },
+ "lead-generation": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "Lead generation",
+  "items": [
+   [
+    "Relevant searches",
+    "Read"
+   ],
+   [
+    "Landing pages",
+    "Read and Choose"
+   ],
+   [
+    "Google Business Profile",
+    "Confirm"
+   ],
+   [
+    "The contact path",
+    "Choose"
+   ],
+   [
+    "Call and form tracking",
+    "Choose"
+   ],
+   [
+    "Your verdict",
+    "Choose"
+   ]
+  ]
+ },
+ "digital-marketing": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "Digital marketing",
+  "items": [
+   [
+    "Search",
+    "Read"
+   ],
+   [
+    "AI answers",
+    "Read and Confirm"
+   ],
+   [
+    "Google Business Profile",
+    "Confirm"
+   ],
+   [
+    "Social profiles",
+    "Confirm and Choose"
+   ],
+   [
+    "Reviews",
+    "Choose"
+   ],
+   [
+    "The website",
+    "Read and Choose"
+   ]
+  ]
+ },
+ "web-design": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "Web design",
+  "items": [
+   [
+    "The site map",
+    "Read"
+   ],
+   [
+    "Page layouts",
+    "Choose"
+   ],
+   [
+    "The words",
+    "Read"
+   ],
+   [
+    "Phone-first design",
+    "Choose"
+   ],
+   [
+    "The contact path",
+    "Choose"
+   ],
+   [
+    "Accessibility",
+    "Read and Choose"
+   ]
+  ]
+ },
+ "web-development": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "Web development",
+  "items": [
+   [
+    "Clean markup",
+    "Read"
+   ],
+   [
+    "Speed",
+    "Read and Choose"
+   ],
+   [
+    "Content system",
+    "Read"
+   ],
+   [
+    "Structured data",
+    "Read"
+   ],
+   [
+    "Forms and tracking",
+    "Choose"
+   ],
+   [
+    "Launch and redirects",
+    "Read"
+   ]
+  ]
+ },
+ "app-development": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "App development",
+  "items": [
+   [
+    "The task list",
+    "Choose"
+   ],
+   [
+    "Screen designs",
+    "Choose"
+   ],
+   [
+    "The build",
+    "Choose"
+   ],
+   [
+    "Store listings",
+    "Read"
+   ],
+   [
+    "A public web page",
+    "Read"
+   ],
+   [
+    "Maintenance",
+    "Choose"
+   ]
+  ]
+ },
+ "custom-crm": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "Custom CRM",
+  "items": [
+   [
+    "Your process, written down",
+    "Choose"
+   ],
+   [
+    "Lead capture",
+    "Choose"
+   ],
+   [
+    "Source tracking",
+    "Choose"
+   ],
+   [
+    "Follow-up reminders",
+    "Choose"
+   ],
+   [
+    "Review requests",
+    "Confirm and Choose"
+   ],
+   [
+    "Reports",
+    "Choose"
+   ]
+  ]
+ },
+ "design": {
+  "kind": "lanes",
+  "eyebrow": "Service",
+  "title": "Graphic design",
+  "items": [
+   [
+    "The logo",
+    "Choose"
+   ],
+   [
+    "Colors and type",
+    "Choose"
+   ],
+   [
+    "A brand sheet",
+    "Confirm"
+   ],
+   [
+    "Profile images",
+    "Confirm"
+   ],
+   [
+    "Website graphics",
+    "Read and Choose"
+   ],
+   [
+    "Print",
+    "Choose"
+   ]
+  ]
+ },
+ "what-is-eeat": {
+  "kind": "pillars",
+  "eyebrow": "Guide",
+  "title": "E-E-A-T: three qualities that hold up trust",
+  "items": [
+   [
+    "Experience",
+    "You have done the work"
+   ],
+   [
+    "Expertise",
+    "You know the subject"
+   ],
+   [
+    "Authoritativeness",
+    "Others point to you"
+   ]
+  ],
+  "base": "Trust: accurate, honest, safe"
+ },
+ "seo-keyword-research": {
+  "kind": "pairs",
+  "eyebrow": "Guide",
+  "title": "One search, one page",
+  "heads": [
+   "The search",
+   "The page that answers it"
+  ],
+  "items": [
+   [
+    "emergency plumber miami",
+    "Emergency plumbing"
+   ],
+   [
+    "water heater leaking from bottom",
+    "Water heater repair"
+   ],
+   [
+    "plumber coral gables",
+    "Areas we serve: Coral Gables"
+   ],
+   [
+    "how much to repipe a house",
+    "Repiping cost guide"
+   ]
+  ]
+ },
+ "how-long-does-seo-take": {
+  "kind": "timeline",
+  "eyebrow": "Guide",
+  "title": "What moves when",
+  "items": [
+   [
+    "Days",
+    "Fixes go live"
+   ],
+   [
+    "2 to 6 weeks",
+    "Google re-reads the site"
+   ],
+   [
+    "1 to 3 months",
+    "Easier searches move"
+   ],
+   [
+    "4 to 12 months",
+    "Contested searches shift"
+   ]
+  ]
+ },
+ "how-to-choose-an-seo-company": {
+  "kind": "pairs",
+  "eyebrow": "Guide",
+  "title": "Six questions, and the answer to expect",
+  "heads": [
+   "Ask",
+   "Expect"
+  ],
+  "items": [
+   [
+    "What will you do each month?",
+    "A list of tasks"
+   ],
+   [
+    "How will I see the work?",
+    "A log, with links"
+   ],
+   [
+    "Which searches?",
+    "A map of real ones"
+   ],
+   [
+    "Who owns the accounts?",
+    "You do"
+   ],
+   [
+    "How long am I tied in?",
+    "Month to month"
+   ],
+   [
+    "What can you promise?",
+    "The work, and a remedy"
+   ]
+  ]
+ },
+ "service-vs-ecommerce-vs-b2b-seo": {
+  "kind": "pillars",
+  "eyebrow": "Guide",
+  "title": "One method, three maps",
+  "items": [
+   [
+    "Service business",
+    "A trade and a place"
+   ],
+   [
+    "Online store",
+    "A product or category"
+   ],
+   [
+    "B2B firm",
+    "A problem, then a supplier"
+   ]
+  ],
+  "base": "Relevance = Read × Confirm × Choose"
+ },
+ "about": {
+  "kind": "timeline",
+  "eyebrow": "About",
+  "title": "From one idea to a published method",
+  "items": [
+   [
+    "2010",
+    "Thomas D’Souza starts in digital marketing"
+   ],
+   [
+    "2020",
+    "Relevant Search Media is founded"
+   ],
+   [
+    "2025",
+    "The D’Souza Equation in public use"
+   ],
+   [
+    "2026",
+    "413 checks published in full"
+   ]
+  ]
+ },
+ "commitments": {
+  "kind": "pairs",
+  "eyebrow": "In writing",
+  "title": "Two commitments, and the remedy for each",
+  "heads": [
+   "We commit to",
+   "If we miss"
+  ],
+  "items": [
+   [
+    "Every item in the plan ships and is logged",
+    "That 15-day period is free"
+   ],
+   [
+    "Half your mapped searches on page one by the end of month 4",
+    "We keep working at no charge"
+   ]
+  ]
+ },
+ "results": {
+  "kind": "stats",
+  "eyebrow": "The record",
+  "title": "The record in three figures",
+  "items": [
+   [
+    "900+",
+    "businesses served since 2020"
+   ],
+   [
+    "About 400",
+    "projects"
+   ],
+   [
+    "90%",
+    "successful"
+   ]
+  ]
+ },
+ "searches": {
+  "kind": "pairs",
+  "eyebrow": "Searches",
+  "title": "Six kinds of customer search",
+  "heads": [
+   "Kind",
+   "A plumber in Miami hears it as"
+  ],
+  "items": [
+   [
+    "Emergency",
+    "“emergency plumber miami”"
+   ],
+   [
+    "By fault",
+    "“water heater leaking from bottom”"
+   ],
+   [
+    "By service",
+    "“drain cleaning miami”"
+   ],
+   [
+    "By place",
+    "“plumber coral gables”"
+   ],
+   [
+    "By price",
+    "“how much to replace a water heater”"
+   ],
+   [
+    "By trust",
+    "“licensed plumber miami reviews”"
+   ]
+  ]
+ },
+ "your-plan": {
+  "kind": "timeline",
+  "eyebrow": "Your plan",
+  "title": "The first fifteen days",
+  "items": [
+   [
+    "Day 1",
+    "Discover"
+   ],
+   [
+    "Day 2",
+    "Market study"
+   ],
+   [
+    "Day 3",
+    "Full audit"
+   ],
+   [
+    "Day 4",
+    "Growth plan"
+   ],
+   [
+    "Day 5",
+    "Fixes go live"
+   ],
+   [
+    "Day 15",
+    "First report"
+   ]
+  ]
+ },
+ "ai-recommendation-index": {
+  "kind": "timeline",
+  "eyebrow": "The Index",
+  "title": "How an assistant arrives at a name",
+  "items": [
+   [
+    "It searches",
+    "the web, for the question"
+   ],
+   [
+    "It reads",
+    "pages, listings, reviews"
+   ],
+   [
+    "It compares",
+    "facts across sources"
+   ],
+   [
+    "It names",
+    "two or three businesses"
+   ]
+  ]
+ },
+ "open-log": {
+  "kind": "stats",
+  "eyebrow": "Open Log",
+  "title": "This website, 28 Nov 2026",
+  "items": [
+   [
+    "67",
+    "pages published"
+   ],
+   [
+    "413",
+    "checks run on each page"
+   ],
+   [
+    "0",
+    "checks failed"
+   ]
+  ]
+ },
+ "plumbers": {
+  "kind": "pairs",
+  "eyebrow": "Industry",
+  "title": "A plumber’s customers, in five searches",
+  "heads": [
+   "The customer wants",
+   "So they type"
+  ],
+  "items": [
+   [
+    "Help now",
+    "emergency plumber near me"
+   ],
+   [
+    "A fault explained",
+    "toilet keeps running"
+   ],
+   [
+    "One named job",
+    "water heater replacement"
+   ],
+   [
+    "Someone local",
+    "plumber coral gables"
+   ],
+   [
+    "A fair price",
+    "cost to repipe a house"
+   ]
+  ]
+ },
+ "hvac": {
+  "kind": "pairs",
+  "eyebrow": "Industry",
+  "title": "An HVAC customer, in five searches",
+  "heads": [
+   "The customer wants",
+   "So they type"
+  ],
+  "items": [
+   [
+    "It stopped working",
+    "ac not cooling"
+   ],
+   [
+    "A repair nearby",
+    "ac repair dallas"
+   ],
+   [
+    "A new system",
+    "new ac unit cost"
+   ],
+   [
+    "Regular care",
+    "ac tune up"
+   ],
+   [
+    "Air quality",
+    "duct cleaning"
+   ]
+  ]
+ },
+ "roofers": {
+  "kind": "pairs",
+  "eyebrow": "Industry",
+  "title": "A roofing customer, in five searches",
+  "heads": [
+   "The customer wants",
+   "So they type"
+  ],
+  "items": [
+   [
+    "Storm damage",
+    "roof repair after hail"
+   ],
+   [
+    "A leak",
+    "roof leak repair near me"
+   ],
+   [
+    "A new roof",
+    "roof replacement cost"
+   ],
+   [
+    "Insurance help",
+    "does insurance cover roof damage"
+   ],
+   [
+    "A roofer to trust",
+    "licensed roofer denver reviews"
+   ]
+  ]
+ },
+ "electricians": {
+  "kind": "pairs",
+  "eyebrow": "Industry",
+  "title": "An electrician’s customer, in five searches",
+  "heads": [
+   "The customer wants",
+   "So they type"
+  ],
+  "items": [
+   [
+    "A fault now",
+    "power out in half the house"
+   ],
+   [
+    "A named job",
+    "panel upgrade"
+   ],
+   [
+    "Is it safe?",
+    "is aluminum wiring dangerous"
+   ],
+   [
+    "Someone licensed",
+    "licensed electrician near me"
+   ],
+   [
+    "A price",
+    "cost to rewire a house"
+   ]
+  ]
+ },
+ "dentists": {
+  "kind": "pairs",
+  "eyebrow": "Industry",
+  "title": "A new dental patient, in five searches",
+  "heads": [
+   "The customer wants",
+   "So they type"
+  ],
+  "items": [
+   [
+    "Relief today",
+    "emergency dentist near me"
+   ],
+   [
+    "One treatment",
+    "dental implants chicago"
+   ],
+   [
+    "Their insurance",
+    "dentist that takes delta dental"
+   ],
+   [
+    "A family practice",
+    "family dentist near me"
+   ],
+   [
+    "A cost",
+    "how much is a crown"
+   ]
+  ]
+ },
+ "law-firms": {
+  "kind": "pairs",
+  "eyebrow": "Industry",
+  "title": "A legal client, in five searches",
+  "heads": [
+   "The customer wants",
+   "So they type"
+  ],
+  "items": [
+   [
+    "What do I do?",
+    "what to do after a car accident"
+   ],
+   [
+    "A kind of lawyer",
+    "divorce lawyer new york"
+   ],
+   [
+    "What it costs",
+    "how much does a divorce cost"
+   ],
+   [
+    "Do I have a case?",
+    "can I sue my landlord"
+   ],
+   [
+    "Someone trusted",
+    "family lawyer near me reviews"
+   ]
+  ]
+ },
+ "contractors": {
+  "kind": "pairs",
+  "eyebrow": "Industry",
+  "title": "A remodeling customer, in five searches",
+  "heads": [
+   "The customer wants",
+   "So they type"
+  ],
+  "items": [
+   [
+    "Ideas",
+    "small kitchen remodel ideas"
+   ],
+   [
+    "A cost",
+    "bathroom remodel cost atlanta"
+   ],
+   [
+    "A project",
+    "kitchen remodeling contractor"
+   ],
+   [
+    "The process",
+    "do I need a permit to remodel"
+   ],
+   [
+    "Someone proven",
+    "licensed general contractor near me reviews"
+   ]
+  ]
+ },
+ "landscapers": {
+  "kind": "pairs",
+  "eyebrow": "Industry",
+  "title": "A landscaping customer, in five searches",
+  "heads": [
+   "The customer wants",
+   "So they type"
+  ],
+  "items": [
+   [
+    "Regular care",
+    "lawn care service near me"
+   ],
+   [
+    "A project",
+    "paver patio installation"
+   ],
+   [
+    "A design",
+    "backyard landscape design ideas"
+   ],
+   [
+    "A cost",
+    "how much does sod cost"
+   ],
+   [
+    "A seasonal job",
+    "spring cleanup"
+   ]
+  ]
+ },
+ "auto-repair": {
+  "kind": "pairs",
+  "eyebrow": "Industry",
+  "title": "A driver with a problem, in five searches",
+  "heads": [
+   "The customer wants",
+   "So they type"
+  ],
+  "items": [
+   [
+    "A symptom",
+    "car shaking when braking"
+   ],
+   [
+    "A repair",
+    "brake pad replacement"
+   ],
+   [
+    "Their make",
+    "honda mechanic houston"
+   ],
+   [
+    "A price",
+    "how much to replace brake pads"
+   ],
+   [
+    "Someone honest",
+    "honest mechanic near me reviews"
+   ]
+  ]
+ },
+ "realtors": {
+  "kind": "pairs",
+  "eyebrow": "Industry",
+  "title": "Buyers and sellers, in five searches",
+  "heads": [
+   "The customer wants",
+   "So they type"
+  ],
+  "items": [
+   [
+    "A place to live",
+    "living in east austin"
+   ],
+   [
+    "Homes in an area",
+    "homes for sale in zilker"
+   ],
+   [
+    "A home’s value",
+    "what is my house worth"
+   ],
+   [
+    "How it works",
+    "how to sell a house fast"
+   ],
+   [
+    "An agent",
+    "top realtor in austin reviews"
+   ]
+  ]
+ },
+ "medical-clinics": {
+  "kind": "pairs",
+  "eyebrow": "Industry",
+  "title": "A patient seeking care, in five searches",
+  "heads": [
+   "The customer wants",
+   "So they type"
+  ],
+  "items": [
+   [
+    "What is wrong?",
+    "sore throat that won’t go away"
+   ],
+   [
+    "Care nearby",
+    "urgent care near me"
+   ],
+   [
+    "A service",
+    "sports physical"
+   ],
+   [
+    "A doctor",
+    "female primary care doctor near me"
+   ],
+   [
+    "Insurance",
+    "clinic that accepts medicaid"
+   ]
+  ]
+ },
+ "accountants": {
+  "kind": "pairs",
+  "eyebrow": "Industry",
+  "title": "An accounting client, in five searches",
+  "heads": [
+   "The customer wants",
+   "So they type"
+  ],
+  "items": [
+   [
+    "A service",
+    "small business bookkeeping"
+   ],
+   [
+    "A problem",
+    "received an irs notice"
+   ],
+   [
+    "Their situation",
+    "accountant for contractors"
+   ],
+   [
+    "A question",
+    "llc or s corp"
+   ],
+   [
+    "A cost",
+    "how much does a cpa charge"
+   ]
+  ]
+ }
+}

@@ -1,4 +1,31 @@
-# RSM — context brief (carried into the website session)
+# RSM — context brief (website session)
+
+**Read `plan/` first.** Since 21–23 Nov 2026 the "Website content and SEO strategy" session has built the
+source of truth for the site in `plan/` (branch `claude/wizardly-bell-fs4zov` until merged): the D'Souza
+Equation (`01-method`), the signed fact register (`02-facts`), the 413-check D'Souza Standard (`03-standard`),
+the 66-page site map with the five-menu header (`04-architecture`) and the keyword map (`05-keywords`).
+Where this brief and `plan/` differ, `plan/` wins.
+
+## Steps 6–8 are done (23 Nov, evening): proof inventory, messaging, blueprints and heroes for all 67 pages, 113 element pages
+- Home hero (heroes.md): H1 "The SEO company in the USA that makes you the answer"; subline "Engines change. Your customer's question does not. We make your business the most relevant answer to it, on Google and on every AI engine."; lighter step "Ask a question".
+- The record, released by Thomas: 900+ businesses · about 400 projects, 90% successful · 100+ specialists · in digital marketing since 2010.
+- Why book the call: who AI names for you · which searches you are missing · whether your trade is open.
+- Elements hub (113 element pages) sits in The Equation menu; foundation is 67 pages.
+- Design plan v2: `plan/09-design/vision.md` (the Console, two papers, Hyperframes films).
+
+## What the home page design must change to match `plan/` (as of 23 Nov 2026)
+- The site describes the **owner, not the agency**. The five "What's wrong?" situations are the entry point.
+- **Header**: a live strip (Standard version and date · Open Log day count · open-or-taken check), then five
+  menus — What's wrong? · The Equation · Services · Look yourself up · Who's behind this — the Ask field and
+  one button, "Book a discovery call".
+- **Method**: The D'Souza Equation, Relevance = Read × Confirm × Choose; "Engines change. The customer's
+  question does not." Brand line: relevant search, relevant traffic, relevant leads.
+- **Facts**: founded 2020 · Thomas D'Souza, Founder, in digital marketing since 2010 · 900+ businesses ·
+  100+ specialists on US hours · **413** checks (not 313) · all engines (never "six") · New Delhi, no address ·
+  info@relevantsearchmedia.com · no "Silly Creators Corp" · no prices or plan names on the site.
+- **Mirror pages** to surface: Ask, AI Recommendation Index, Open Board, Open Log, Searches, Your Plan.
+- The Sri Yantra is background for understanding only: not in the name, the graphics or the public copy.
+- No client names, rankings or invented reviews; results by category and range only.
 
 ## Corrections from Pranay, 18 Nov 2026 (these override anything below)
 - **Founded 2020** (not 2006).
