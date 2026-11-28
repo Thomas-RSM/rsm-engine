@@ -159,5 +159,19 @@
 "example": "landscaper in houston",
 "original": "413;v1.0, 23 Nov 2026",
 "trade": "assistant;sources;answer"
+},
+"/services/answer-engine-optimization/": {
+"kw": "answer engine optimization;aeo services;answer engine optimization services",
+"type": "service",
+"example": "dentist in chicago",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "question;answer;quoted"
+},
+"/services/generative-engine-optimization/": {
+"kw": "generative engine optimization;generative engine optimization agency;geo services",
+"type": "service",
+"example": "law firm in new york",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "assistant;sources;mentions"
 }
 }
