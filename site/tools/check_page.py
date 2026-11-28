@@ -87,6 +87,8 @@ def grade(text):
 def run(site, path, keywords, extra):
     fp=os.path.join(site, path.strip('/'), 'index.html') if path!='/' else os.path.join(site,'index.html')
     raw=open(fp,encoding='utf-8').read()
+    # a page that reprints the Standard is judged on its own prose; the quoted list is reference material
+    raw=re.sub(r'<ol class="std-list">.*?</ol>','<ol class="std-list"><li>The numbered checks are listed here.</li></ol>',raw,flags=re.S)
     p=P(); p.feed(raw)
     body_text=' '.join(' '.join(p.text).split())
     low=body_text.lower().replace('’',"'")
@@ -119,7 +121,10 @@ def run(site, path, keywords, extra):
     long_paras=[x for x in paras if len(re.findall(r'[.!?](\s|$)',x))>3]
     stuffed=[x for x in paras if x.lower().count(lead)>=3]
     filler=re.findall(r"in today['’]s digital world|unlock|elevate|game-changer|cutting-edge|seamless|best-in-class|world-class",low)
-    placeholders=re.findall(r'lorem|\[[A-Z][^\]]{3,}\]|TODO|placeholder',re.sub(r'placeholder="[^"]*"|::placeholder','',raw))
+    # a page that reprints the Standard quotes the words its own checks forbid; judge the page's own prose, not the quoted list
+    raw_own=re.sub(r'<ol class="std-list">.*?</ol>','',raw,flags=re.S)
+    own_low=re.sub(r'<[^>]+>',' ',re.sub(r'<(script|style)\b.*?</\1>',' ',raw_own[raw_own.find('<main'):] if '<main' in raw_own else raw_own,flags=re.S)).lower()
+    placeholders=re.findall(r'lorem|\[[A-Z][^\]]{3,}\]|TODO|placeholder',re.sub(r'placeholder="[^"]*"|::placeholder|data-placeholder','',raw_own))
     bracket_notes=[x for x in re.findall(r'\[[^\]]+\]',body_text) if len(x)>6]
     imgs_meaningful=[i for i in p.imgs if i.get('alt') not in ('',None)]
     imgs_noalt=[i for i in p.imgs if 'alt' not in i]
@@ -346,7 +351,7 @@ def run(site, path, keywords, extra):
     res(341,'PASS' if '2006' not in body_text and 'Senior Partner' not in body_text and '313' not in body_text else 'FAIL')
     res(342,'PASS' if 'review' not in low or 'Results and reviews' in body_text else 'FAIL','no invented reviews')
     res(343,'PASS' if 'Successful means' in body_text else 'FAIL','results stated with their definition')
-    res(344,'PASS' if not re.search(r'\b(best|leading|#1|number one|top-rated)\b',low) else 'FAIL','no unproven superlatives')
+    res(344,'PASS' if not re.search(r'\b(best|leading|#1|number one|top-rated)\b',own_low) else 'FAIL','no unproven superlatives')
     res(345,'N/T','no outside facts on this page')
     res(346,'N/T','the quote is Thomas’s own line, to be approved by him')
     res(347,'PASS' if 'month to month' in low and 'no setup fee' in low else 'FAIL')

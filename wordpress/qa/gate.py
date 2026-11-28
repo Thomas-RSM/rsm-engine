@@ -33,6 +33,7 @@ class Text(HTMLParser):
         if s.boil and tag == 'div': s.boil += 1
         if not s.boil and tag == 'div' and 'rs-boiler' in (a.get('class') or ''): s.boil = 1
         if tag in ('script', 'style', 'svg', 'noscript', 'template', 'select'): s.skip += 1
+        if tag == 'ol' and 'std-list' in (a.get('class') or ''): s.skip += 1; s.std = 1
         if tag == 'title' and not s.skip and not s.title: s._t = 1
         if tag in ('h1', 'h2', 'h3'): s._h = [tag, '']
         if tag == 'img': s.imgs.append(a)
@@ -42,6 +43,7 @@ class Text(HTMLParser):
         if tag == 'link' and a.get('rel') == 'canonical': s.canon = a.get('href', '')
     def handle_endtag(s, tag):
         if tag in ('script', 'style', 'svg', 'noscript', 'template', 'select'): s.skip = max(0, s.skip - 1)
+        if tag == 'ol' and getattr(s, 'std', 0): s.skip = max(0, s.skip - 1); s.std = 0
         if tag == 'title': s._t = 0
         if tag in ('h1', 'h2', 'h3') and s._h: s.h.append((s._h[0], ' '.join(s._h[1].split()))); s._h = None
         if tag == 'main': s.main = 0
@@ -90,7 +92,7 @@ def main():
     cfg = {'host': base, 'cwv_lab': False, 'lead': lead}
     if arg('--trade'): cfg['trade_words'] = [x for x in arg('--trade').split(';') if x]
     if mt: cfg['modified'] = '%s-%02d-%02d' % (mt.group(3), mon.get(mt.group(2), 0), int(mt.group(1))); cfg['modified_text'] = '%d %s %s' % (int(mt.group(1)), mt.group(2), mt.group(3))
-    rng = {'home': [1500, 3500], 'hub': [600, 2200], 'problem': [900, 2600], 'pillar': [1200, 3200], 'service': [900, 2600], 'tool': [300, 8000], 'about': [500, 2400], 'legal': [300, 4000]}
+    rng = {'home': [1500, 3500], 'hub': [600, 2200], 'problem': [900, 2600], 'pillar': [1200, 3200], 'service': [900, 2600], 'tool': [300, 8000], 'reference': [1200, 14000], 'about': [500, 2400], 'legal': [300, 4000]}
     cfg['words'] = rng.get(arg('--type', 'home'), [300, 3200])
     if arg('--example'): cfg['example'] = arg('--example')
     if arg('--original'): cfg['original'] = [x for x in arg('--original').split(';') if x]

@@ -573,9 +573,50 @@ def make(h):
         trust(),
         closing('Seen, but not chosen? <span class="gold">Find the moment in one call.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He walks through the four moments with your business on a phone, shows you where people leave, and tells you what the first fifteen days would change.', 'No audit to buy first, no trial. One business per trade per city.'),
     ], parent='dsouza-equation'))
+    # ------------------------------------------------------------------ /dsouza-equation/standard/
+    P.append(page('standard', '/dsouza-equation/standard/', 'SEO Checklist: All 413 Checks | Relevant Search Media',
+        'This SEO checklist is the D’Souza Standard: 413 numbered checks, published in full. Use it on your own site, or hold any agency to it.', [
+        hero(eq('The Standard'), 'The D’Souza Standard', "SEO checklist: the D'Souza Standard, all 413 checks",
+             'This SEO checklist is the D’Souza Standard: 413 numbered checks, version 1.0, dated 23 Nov 2026, published here in full. Every page we build and every client site we take on is run through all of them. You can use the list on your own site, or hold any agency, including us, to it.',
+             'Most agencies keep the method private. This is ours, in the open.', ctas=(('Book a discovery call', '/book/'), ('Ask a question', '/ask/'))),
+        sec('How it is built', 'How is this SEO audit checklist organised?', ['The SEO audit checklist follows the D’Souza Equation. Every check belongs to one of its terms, so a failed check tells you which part of the equation it weakens.', 'The 413 checks sit in 27 groups. Of them, 193 apply to every page, 149 to the whole site and 71 to places beyond the site, such as listings and reviews.'],
+            table('The 413 checks by equation term', ('Equation term', 'What it covers', 'Groups and checks'), [
+                ('Read', 'Whether an engine can read the site: health, speed, structure, copy, facts, AI readiness', '16 groups, 250 checks'),
+                ('Confirm', 'Whether others say the same: listings, the Business Profile, reviews, mentions, the author', '7 groups, 99 checks'),
+                ('Choose', 'Whether people pick you: the call to action, tracking, what AI answers say', '3 groups, 50 checks'),
+                ('The question', 'Whether the right customer searches were mapped to begin with', '1 group, 14 checks'),
+            ]), more=('How the equation works', '/dsouza-equation/'), eid='organised'),
+        sec('The list', 'The 413 SEO checks, group by group', ['All 413 SEO checks are below, numbered and worded exactly as we use them. Open a group to read its checks, or type a word to find the ones that mention it.', 'For example, check 104 reads: “The title is 30 to 60 characters and is not cut off in results.” This page was held to it, and to the other 412.'],
+            W('rsm-standard', {}, 'rv'),
+            B('See how the checks are applied in the first fifteen days', '/dsouza-equation/method/', 'rs-more', mt=22, mb=0), eid='list'),
+        sec('Scoring', 'How is a page scored against the checklist?', ['Each check ends one of three ways: pass, fail, or not testable yet. A page is published only with no failed check.', 'Not testable yet is used honestly. Some checks need Search Console data, a second reviewer’s signature or seven days to pass, and they are listed as open until that exists. They are never counted as passes.'],
+            G([card('clause', number='1', title='Pass.', text='The page was measured and met the check. The measurement is recorded with the date.'),
+               card('clause', number='2', title='Fail.', text='The page did not meet it. It is fixed and measured again before anything is published.'),
+               card('clause', number='3', title='Not testable yet.', text='The check needs data or a person that the page alone cannot supply. It stays open, by name.')], 3, 1, 1),
+            quote('A method is only worth something if it can fail in public. So here it is, all of it, with a number on every line.'),
+            more=('See our own results in the Open Log', '/open-log/'), eid='scoring'),
+        sec('Use it', 'Can I use this checklist on my own site?', ['Yes. Nothing here is behind a form. An owner can work through the groups that apply to one page in an afternoon, and the checks say plainly what to look for.', 'Where it gets heavy is scale: 413 checks across every page, every listing and every AI answer, repeated as engines change. That is the work a team does.'],
+            steps([('Step 1', 'Pick one page', 'Start with the page that should bring the most customers, usually the home page or a main service.'),
+                   ('Step 2', 'Open the page groups', 'Titles and descriptions, headings and copy, images and conversion elements all apply to a single page.'),
+                   ('Step 3', 'Mark each line', 'Pass, fail or cannot tell. Be strict: a check you are unsure of is a fail until shown otherwise.'),
+                   ('Step 4', 'Fix the fails in order', 'Work from the top of the list. The early groups decide whether the later ones matter.')]),
+            more=('What to check first, by problem', '/problems/'), eid='use'),
+        sec('Versions', 'How often does the Standard change?', ['It is versioned and dated. This is version 1.0 of 23 Nov 2026. When a new engine or a new kind of question matters, checks are added as numbered rows and the version moves.', 'A check is never quietly reworded. Changes are recorded on the corrections page.'],
+            more=('See the corrections record', '/about/corrections/'), eid='versions'),
+        faq('Questions about the Standard', 'What do people ask about the checklist?', 'Short answers. For anything else, use the <a href="/ask/">Ask page</a>.', [
+            ('Why publish the whole checklist?', 'Because a method you cannot see cannot be checked. Publishing all 413 lines lets a client hold us to them, and lets anyone compare another agency’s work with the same list.\nIt also means we cannot quietly skip the hard ones.'),
+            ('Do all 413 checks apply to every page?', 'No. 193 apply to every page, 149 to the site as a whole and 71 to things beyond the site, such as listings, reviews and profiles.\nA single page is held to the page checks; the site and off-site checks are run once and re-run on a schedule.'),
+            ('What does “not testable yet” mean?', 'It means the answer is not in the page. A check that needs real-visitor speed data, a second reviewer’s sign-off or a week of indexing cannot be judged at publish time.\nThose checks stay open and are closed, by name, when the data arrives.'),
+            ('Is this the same as an SEO audit?', 'An audit is one run of a checklist on one day. The Standard is the checklist itself, run on day three and then kept running.\nAn audit that is never acted on changes nothing, which is why our plans ship fixes from day 5.'),
+            ('Can I download the checklist?', 'It is all on this page, in plain text you can copy, with every check numbered. We have not put it behind an email form.\nIf you would like it applied to your site, a discovery call is the next step.'),
+        ]),
+        trust(),
+        closing('413 checks. <span class="gold">See how your site scores.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He runs a sample of the checks on your site while you watch, shows you which term of the equation is weakest, and tells you what the first fifteen days would fix.', 'No audit to buy first, no trial. One business per trade per city.'),
+    ], parent='dsouza-equation'))
     return P
 
 GATE = {
+    '/dsouza-equation/standard/': {'kw': 'seo checklist;seo audit checklist;413 seo checks', 'type': 'reference', 'example': 'the title is 30 to 60 characters', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'checks;page;site'},
     '/dsouza-equation/read/': {'kw': 'can search engines read my website;on-page seo explained;crawlable website', 'type': 'pillar', 'example': 'law firm in new york', 'original': '250;v1.0, 23 Nov 2026', 'trade': 'crawl;index;markup'},
     '/dsouza-equation/confirm/': {'kw': 'search engine trust signals;off-page seo explained;citations and mentions', 'type': 'pillar', 'example': 'contractor in atlanta', 'original': '99;v1.0, 23 Nov 2026', 'trade': 'listings;reviews;mentions'},
     '/dsouza-equation/choose/': {'kw': 'user signals in seo;click-through rate;calls and visits', 'type': 'pillar', 'example': 'dentist in chicago', 'original': '50;v1.0, 23 Nov 2026', 'trade': 'reviews;listing;call'},

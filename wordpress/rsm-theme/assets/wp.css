@@ -460,3 +460,21 @@ svg.eg-wide{display:none}svg.eg-tall{display:block;width:100%;max-width:400px;he
 .lf-status.is-ok{color:#8EE3D0}.lf-status.is-bad{color:#FFB4A8}
 .lead-form.is-done .lf-grid,.lead-form.is-done .lf-field,.lead-form.is-done .lf-send,.lead-form.is-done .lf-note,.lead-form.is-done .lf-intro{display:none}
 @media (max-width:760px){.ask-groups,.lf-grid{grid-template-columns:minmax(0,1fr)}.rsm .ask,.rsm .lead-form{padding:20px 18px}.lf-title{font-size:22px}}
+
+/* the Standard, in full */
+.rsm .std{padding:28px 30px;border-radius:22px}
+.std-group{border-top:1px solid var(--line)}
+.std-group:first-of-type{margin-top:22px}
+.std-group summary{display:flex;align-items:center;gap:14px;padding:16px 4px;cursor:pointer;list-style:none}
+.std-group summary::-webkit-details-marker{display:none}
+.std-group summary::before{content:"+";flex:none;width:26px;height:26px;border-radius:50%;border:1px solid var(--line-2);display:flex;align-items:center;justify-content:center;color:var(--gold-2);font-weight:600}
+.std-group[open] summary::before{content:"–"}
+.std-group h3{margin:0;font-size:18.5px;flex:1}
+.std-term{font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:999px;border:1px solid var(--line-2);color:var(--peri)}
+.std-term.t-read{color:var(--gold-2);border-color:rgba(248,177,15,.4)}.std-term.t-confirm{color:#8EE3D0;border-color:rgba(76,192,168,.4)}
+.std-n{font-family:var(--head);font-weight:650;font-size:18px;color:#fff;min-width:2ch;text-align:right}
+.std-list{margin:0 0 18px;padding:0 4px 0 64px;display:grid;gap:8px}
+.std-list li{font-size:15.5px;line-height:1.5;color:var(--text);padding-left:6px}
+.std-list li::marker{font-family:var(--mono);font-size:12.5px;color:var(--text-3)}
+.std-list li i{font-style:normal;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--text-3);white-space:nowrap;margin-left:6px}
+@media (max-width:760px){.rsm .std{padding:20px 16px}.std-list{padding-left:44px}.std-group h3{font-size:16.5px}.std-term{display:none}.std-list li i{display:block;margin:2px 0 0;font-size:12px}}

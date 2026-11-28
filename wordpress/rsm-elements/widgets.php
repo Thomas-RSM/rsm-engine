@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 use Elementor\Controls_Manager as CM;
 
 function rsm_widget_classes() {
-	return array( 'RSM_W_Brand', 'RSM_W_Nav', 'RSM_W_Mobile_Menu', 'RSM_W_Link_List', 'RSM_W_Orbit', 'RSM_W_Stat', 'RSM_W_Chapters', 'RSM_W_Film', 'RSM_W_Engines', 'RSM_W_Lab', 'RSM_W_Console', 'RSM_W_Card', 'RSM_W_Seal', 'RSM_W_US_Map', 'RSM_W_Table', 'RSM_W_Path', 'RSM_W_Chips', 'RSM_W_Portrait', 'RSM_W_FAQ', 'RSM_W_Ask', 'RSM_W_Form' );
+	return array( 'RSM_W_Brand', 'RSM_W_Nav', 'RSM_W_Mobile_Menu', 'RSM_W_Link_List', 'RSM_W_Orbit', 'RSM_W_Stat', 'RSM_W_Chapters', 'RSM_W_Film', 'RSM_W_Engines', 'RSM_W_Lab', 'RSM_W_Console', 'RSM_W_Card', 'RSM_W_Seal', 'RSM_W_US_Map', 'RSM_W_Table', 'RSM_W_Path', 'RSM_W_Chips', 'RSM_W_Portrait', 'RSM_W_FAQ', 'RSM_W_Ask', 'RSM_W_Form', 'RSM_W_Standard' );
 }
 function rsm_menu_options() { $o = array( '' => __( 'Choose a menu', 'rsm-elements' ) ); foreach ( wp_get_nav_menus() as $m ) { $o[ $m->slug ] = $m->name; } return $o; }
 function rsm_data( $file ) { $p = RSM_EL_DIR . 'data/' . $file; return file_exists( $p ) ? json_decode( file_get_contents( $p ), true ) : array(); } // phpcs:ignore WordPress.WP.AlternativeFunctions
@@ -711,5 +711,28 @@ class RSM_W_Form extends RSM_Widget {
 			<?php if ( $s['note'] ) : ?><p class="lf-note"><?php echo esc_html( $s['note'] ); ?></p><?php endif; ?>
 			<p class="lf-status" role="status" aria-live="polite"></p>
 		</form>
+	<?php }
+}
+
+/** The D'Souza Standard, printed in full from its own data file: every group, every numbered check. */
+class RSM_W_Standard extends RSM_Widget {
+	public function get_name() { return 'rsm-standard'; }
+	public function get_title() { return __( 'RSM The Standard: all checks', 'rsm-elements' ); }
+	public function get_icon() { return 'eicon-checkbox'; }
+	protected function style_targets() { return array( 'title' => '.std-group h3', 'text' => '.std-list li', 'accent' => '.std-term' ); }
+	protected function fields() { return array(
+		array( 'label', __( 'Label above the filter', 'rsm-elements' ), 'text', 'Find a check' ),
+		array( 'placeholder', __( 'Text in the empty box', 'rsm-elements' ), 'text', 'Type a word, such as: title, reviews, sitemap' ),
+		array( 'count', __( 'Line under the box ({n} checks, {g} groups)', 'rsm-elements' ), 'text', '{n} checks in {g} groups. Open a group, or type to narrow them.' ),
+		array( 'open_first', __( 'Open the first group', 'rsm-elements' ), 'switch', 'yes' ),
+	); }
+	protected function render() { $s = $this->s(); $groups = (array) rsm_data( 'standard.json' ); $n = 0; foreach ( $groups as $g ) { $n += count( $g['checks'] ); } $id = 'std-' . $this->get_id(); ?>
+		<div class="std glass">
+			<label class="ask-label" for="<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $s['label'] ); ?></label>
+			<input class="ask-input std-input" id="<?php echo esc_attr( $id ); ?>" type="search" autocomplete="off" placeholder="<?php echo esc_attr( $s['placeholder'] ); ?>">
+			<p class="ask-count std-count" aria-live="polite"><?php echo esc_html( str_replace( array( '{n}', '{g}' ), array( (string) $n, (string) count( $groups ) ), $s['count'] ) ); ?></p>
+			<?php foreach ( $groups as $i => $g ) : ?><details class="std-group"<?php echo 0 === $i && 'yes' === $s['open_first'] ? ' open' : ''; ?>><summary><h3><?php echo esc_html( $g['name'] ); ?></h3><span class="std-term t-<?php echo esc_attr( strtolower( $g['term'] ) ); ?>"><?php echo esc_html( $g['term'] ); ?></span><span class="std-n"><?php echo esc_html( count( $g['checks'] ) ); ?></span></summary>
+				<ol class="std-list"><?php foreach ( $g['checks'] as $c ) { echo '<li value="' . (int) $c[0] . '" id="check-' . (int) $c[0] . '">' . esc_html( $c[1] ) . ' <i>' . esc_html( $c[2] ) . '</i></li>'; } ?></ol></details><?php endforeach; ?>
+		</div>
 	<?php }
 }
