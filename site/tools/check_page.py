@@ -89,7 +89,7 @@ def run(site, path, keywords, extra):
     raw=open(fp,encoding='utf-8').read()
     p=P(); p.feed(raw)
     body_text=' '.join(' '.join(p.text).split())
-    low=body_text.lower()
+    low=body_text.lower().replace('’',"'")
     lead=keywords[0].lower(); supp=[k.lower() for k in keywords[1:]]
     def variants(k): return [k, k.replace(' in usa',' in the usa'), k.replace(' in usa',' in the united states')]
     def has(k,text): return any(v in text for v in variants(k))
@@ -108,7 +108,7 @@ def run(site, path, keywords, extra):
     faq=[g for g in graph if g.get('@type')=='FAQPage']
     faq_q=[q['name'] for q in (faq[0]['mainEntity'] if faq else [])]
     vis_faq=[h for t,h in p.headings if t=='h3' and h.endswith('?')]
-    h1s=[h for t,h in p.headings if t=='h1']
+    h1s=[h.replace('’',"'") for t,h in p.headings if t=='h1']
     levels=[int(t[1]) for t,_ in p.headings]
     skips=[(a,b) for a,b in zip(levels,levels[1:]) if b>a+1]
     internal=[l for l in p.links if l['href'].startswith('/') and not l['href'].startswith('//')]

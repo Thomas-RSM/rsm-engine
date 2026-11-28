@@ -393,9 +393,61 @@ def make(h):
         trust(),
         closing('One conversation. <span class="gold">Then you decide.</span>', 'The call is 20 to 30 minutes with Thomas. He looks at who Google, Maps and the AI engines name when your customers ask, tells you what he sees, and shows you what the first fifteen days would be.', 'No audit to buy first, no trial. One business per trade per city.'),
     ]))
+    # ================================================================== THE EQUATION
+    eq = lambda name: [('Home', '/'), ('The Equation', '/dsouza-equation/'), (name, '')]
+    def terms(items, cols=3):
+        return G([card('look', tag=k, status=st, title=t, text=x, link_text=lt, link=link(u)) for k, st, t, x, lt, u in items], cols, 2, 1)
+
+    P.append(page('dsouza-equation', '/dsouza-equation/', "D'Souza Equation, Explained | Relevant Search Media",
+        "The D'Souza Equation explains how every search engine and AI assistant picks a business. Relevance equals Read times Confirm times Choose.", [
+        hero([('Home', '/'), ('The Equation', '')], 'The D’Souza Equation', "The D'Souza Equation: how every engine decides which business to name",
+             "The D'Souza Equation says Relevance = Read × Confirm × Choose. A search engine or an AI assistant names a business when it can read plainly what the business is, when independent sources confirm it, and when real people choose it. The three are multiplied, so a business that fails one check is not named.",
+             'One equation. Every engine obeys it.'),
+        sec('Try it', "What is the D'Souza Equation?", ['It is a way of seeing what every engine has to decide before it names a business. Google, Maps, ChatGPT, Gemini and Perplexity look different, but each takes a person’s question and names the most relevant business it can trust.', 'Move the three dials below. The lights are customers asking, and the number is how many of every hundred are sent to you.'],
+            W('rsm-lab', {'logo': {'url': '{{media:logo}}', 'id': '{{mediaid:logo}}'}, 'plain': 'Out of 100 people who ask, the engine sends roughly {n} your way. Let one check fall to nothing and it sends none.', 'terms': [
+                {'_id': h['uid'](), 'k': 'Check one', 'name': 'Read', 'q': 'Is it plain from the site itself who this is and which questions it settles?', 'where_label': 'Raised by:', 'where': 'clear facts, direct answers, clean structure and markup on your own pages.', 'more': 'How Read works', 'link': link('/dsouza-equation/read/'), 'value': 80, 'color': '#F8B10F', 'ask': 'Can it read you?'},
+                {'_id': h['uid'](), 'k': 'Check two', 'name': 'Confirm', 'q': 'Does the rest of the web describe the business the same way?', 'where_label': 'Raised by:', 'where': 'matching listings, real reviews, mentions and press on other sites.', 'more': 'How Confirm works', 'link': link('/dsouza-equation/confirm/'), 'value': 70, 'color': '#4CC0A8', 'ask': 'Do others back you up?'},
+                {'_id': h['uid'](), 'k': 'Check three', 'name': 'Choose', 'q': 'When shown this business, do searchers pick it?', 'where_label': 'Raised by:', 'where': 'a listing and a first screen that win the click, the call and the return visit.', 'more': 'How Choose works', 'link': link('/dsouza-equation/choose/'), 'value': 75, 'color': '#A3B5F2', 'ask': 'Do people pick you?'}]}, 'rv'),
+            T('<p>For example, when a customer asks “who fixes a burst pipe?”, the engine reads each plumber’s site, checks what others say, and looks at who people chose. With Read at 80, Confirm at 70 and Choose at 75, about 42 in 100 are sent to you.</p>', 'small rs-note', mt=22, mb=18),
+            B('See the five problems the equation explains', '/problems/', 'rs-more', mb=0), eid='try'),
+        sec('Three checks', 'How search engines choose a business: three checks', ['This is how search engines choose a business, and how AI assistants do. Each check is a question the engine asks, and each has a place where the work is done.'],
+            terms([('Term one', 'gold', 'Read', 'The engine has to understand the business from its own pages: who it is, what it does, where, and which questions it settles.', 'How Read works', '/dsouza-equation/read/'),
+                   ('Term two', 'green', 'Confirm', 'The engine then looks elsewhere. If directories, review sites and other publishers describe the business the same way, it trusts what it read.', 'How Confirm works', '/dsouza-equation/confirm/'),
+                   ('Term three', 'green', 'Choose', 'Last, the engine watches behaviour. A business that searchers click, call and come back to is shown to the next searcher.', 'How Choose works', '/dsouza-equation/choose/')]),
+            eid='checks'),
+        sec('Why multiply', 'Why is the relevance equation a multiplication?', ['Because the checks depend on each other. In a sum, a strong score could cover for a weak one. In the relevance equation it cannot: a low score in any term pulls the whole result down, and a zero ends it.', 'The table shows four businesses. The figures are an illustration of the arithmetic, not a measurement of any site.'],
+            table('Four illustrative businesses scored on Read, Confirm and Choose', ('The business', 'Read × Confirm × Choose', 'Sent to it, in 100'), [
+                ('A fine website nobody vouches for', '90 × 20 × 60', '11'),
+                ('Well known, hard to read', '30 × 80 × 70', '17'),
+                ('Read and confirmed, not chosen', '85 × 80 × 25', '17'),
+                ('All three in good order', '85 × 80 × 80', '54'),
+            ]),
+            quote('You cannot add your way out of a zero. A business the engine cannot read is not named, however good its reviews.'),
+            more=('See which check to raise first', '/problems/'), eid='multiply'),
+        sec('Every engine', 'Does the equation hold for AI assistants as well as Google?', ['Yes. An AI assistant cannot name a business it cannot read, will not vouch for one nobody else mentions, and learns from what people chose. The engines differ in how they read; they agree on what they are looking for.', 'That is why the same work moves a business on Google, on Maps and in an AI answer at once, and why we do not sell a separate method for each.'],
+            more=('See every engine we cover', '/dsouza-equation/engines/'), eid='engines'),
+        sec('In practice', 'How is the equation used on a real business?', ['It becomes a checklist. The D’Souza Standard turns the three terms into 413 numbered checks, and every client site is run through all of them in the first three days.', 'The weakest term is raised first, because that is where the multiplication gains most.'],
+            steps([('Day 1', 'Score the three terms', 'After one conversation, the business gets a first reading on Read, Confirm and Choose.'),
+                   ('Day 2', 'Find the searches', 'The questions customers really type are listed, so each term is scored against real demand.'),
+                   ('Day 3', 'Run the Standard', 'All 413 checks are applied, and each failed check is filed under the term it weakens.'),
+                   ('Day 4 to 5', 'Raise the weakest term', 'The plan starts where the multiplication gains most, and the first fixes are published.')]),
+            more=('Read all 413 checks', '/dsouza-equation/standard/'), eid='practice'),
+        sec('Where it came from', 'Who wrote the equation, and when?', ['Thomas D’Souza, the founder of Relevant Search Media, who has worked in digital marketing since 2010. The company was founded in 2020 and the equation has been in writing since 2025.', 'It was written to answer one question owners kept asking: why does the engine name them and not me?'],
+            more=('How the equation came about', '/about/'), eid='origin'),
+        faq('Questions about the equation', "What do people ask about the D'Souza Equation?", 'Short answers. For anything else, use the <a href="/ask/">Ask page</a>.', [
+            ("Is the D'Souza Equation Google's ranking formula?", 'No. Nobody outside Google has that, and it changes. The equation is a model of what every engine has to decide before it names a business.\nIt is useful because it stays true when an algorithm changes: an engine still has to read you, confirm you and see you chosen.'),
+            ('Which of the three should I raise first?', 'The weakest one. Because the terms are multiplied, lifting the lowest score moves the result more than polishing the highest.\nFor most businesses that is Read at the start, then Confirm. The checks on the <a href="/problems/">problems page</a> show which is yours in about ten minutes.'),
+            ('Can a business score 100?', 'Not in practice. The dials are an illustration, and no site is perfectly readable, confirmed everywhere and always chosen.\nWhat matters is the comparison with the other businesses the engine could name for the same search, in the same city.'),
+            ('How is it different from E-E-A-T?', 'E-E-A-T is Google’s shorthand for how its quality raters judge experience, expertise, authority and trust. It describes one part of the picture, for one engine.\nThe equation covers reading, confirmation and choice across every engine. Most of E-E-A-T sits inside Confirm.'),
+            ('Does it apply to Maps and voice search?', 'Yes. A map result and a voice answer are the same decision with less room: the engine names fewer businesses, so each check counts for more.\nA listing that is read, confirmed and chosen wins on Maps for the same reasons a page wins in search.'),
+        ]),
+        trust(),
+        closing('See the equation <span class="gold">applied to your business.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He scores your business on Read, Confirm and Choose while you watch, tells you which term is holding you back, and shows you what the first fifteen days would raise.', 'No audit to buy first, no trial. One business per trade per city.'),
+    ]))
     return P
 
 GATE = {
+    '/dsouza-equation/': {'kw': "d'souza equation;how search engines choose a business;relevance equation", 'type': 'pillar', 'example': 'who fixes a burst pipe', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'engine;customers;reviews'},
     '/ask/': {'kw': 'ask an seo question;seo questions answered;seo help', 'type': 'tool', 'example': 'why did my reviews disappear', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'question;answer;page'},
     '/book/': {'kw': 'book a discovery call;seo consultation;free seo consultation call', 'type': 'tool', 'example': 'roofing company denver', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'call;plumber;dentist'},
     '/problems/seo-cost/': {'kw': 'how much does seo cost;is my seo quote fair;seo pricing', 'type': 'problem', 'example': 'kitchen remodel atlanta', 'original': '177;v4, 18 Nov 2026', 'trade': 'quote;contract;month to month'},

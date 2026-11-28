@@ -56,7 +56,7 @@ class Text(HTMLParser):
 def parse(html):
     p = Text(); p.feed(html); p.text = ' '.join(' '.join(p.out).split()); p.own = ' '.join(' '.join(p.uniq).split()); return p
 
-def words(t): return re.findall(r"[a-z0-9'’]+", t.lower())
+def words(t): return re.findall(r"[a-z0-9']+", t.lower().replace('’', "'"))
 def shingles(t, n=8):
     w = words(t); return {' '.join(w[i:i + n]) for i in range(0, max(0, len(w) - n + 1))}
 
