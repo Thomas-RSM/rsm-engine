@@ -91,3 +91,28 @@ add_action( 'wp_enqueue_scripts', function () {
 	if ( '' === $css ) { return; }
 	wp_register_style( 'rsm-extra', false, array(), RSM_EL_VERSION ); wp_enqueue_style( 'rsm-extra' ); wp_add_inline_style( 'rsm-extra', $css );
 }, 30 );
+
+/* Deploy: installs a new copy of this plugin or the RSM theme from a ZIP already in the media library. Administrators only. */
+function rsm_deploy_zip( $attachment_id, $kind ) {
+	$file = get_attached_file( (int) $attachment_id );
+	if ( ! $file || ! file_exists( $file ) || 'zip' !== strtolower( pathinfo( $file, PATHINFO_EXTENSION ) ) ) { return new WP_Error( 'rsm_no_zip', 'That media item is not a ZIP file.', array( 'status' => 400 ) ); }
+	$want = 'theme' === $kind ? 'rsm-theme' : 'rsm-elements';
+	$zip = new ZipArchive(); if ( true !== $zip->open( $file ) ) { return new WP_Error( 'rsm_bad_zip', 'The ZIP could not be opened.', array( 'status' => 400 ) ); }
+	for ( $i = 0; $i < $zip->numFiles; $i++ ) { if ( 0 !== strpos( $zip->getNameIndex( $i ), $want . '/' ) ) { $zip->close(); return new WP_Error( 'rsm_wrong_zip', 'The ZIP must contain only the ' . $want . ' folder.', array( 'status' => 400 ) ); } }
+	$zip->close();
+	require_once ABSPATH . 'wp-admin/includes/file.php'; require_once ABSPATH . 'wp-admin/includes/misc.php'; require_once ABSPATH . 'wp-admin/includes/plugin.php'; require_once ABSPATH . 'wp-admin/includes/theme.php'; require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+	$skin = new Automatic_Upgrader_Skin();
+	$up = 'theme' === $kind ? new Theme_Upgrader( $skin ) : new Plugin_Upgrader( $skin );
+	$res = $up->install( $file, array( 'overwrite_package' => true ) );
+	if ( is_wp_error( $res ) ) { return $res; }
+	if ( ! $res ) { $e = $skin->get_errors(); return new WP_Error( 'rsm_deploy_failed', $e->has_errors() ? $e->get_error_message() : 'The install did not complete.', array( 'status' => 500, 'log' => $skin->get_upgrade_messages() ) ); }
+	if ( function_exists( 'opcache_reset' ) ) { @opcache_reset(); } // phpcs:ignore
+	wp_delete_attachment( (int) $attachment_id, true );
+	do_action( 'litespeed_purge_all' );
+	return array( 'ok' => true, 'kind' => $kind );
+}
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'rsm/v1', '/deploy', array( 'methods' => 'POST', 'permission_callback' => function () { return current_user_can( 'install_plugins' ) && current_user_can( 'install_themes' ); }, 'callback' => function ( WP_REST_Request $req ) {
+		return rsm_deploy_zip( (int) $req->get_param( 'media' ), 'theme' === $req->get_param( 'kind' ) ? 'theme' : 'plugin' );
+	} ) );
+} );
