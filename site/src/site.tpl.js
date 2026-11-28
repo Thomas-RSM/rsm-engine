@@ -235,6 +235,7 @@
     var cv = lab.querySelector('canvas'), ins = [].slice.call(lab.querySelectorAll('input[type=range]')), outs = [].slice.call(lab.querySelectorAll('.dial output')), big = lab.querySelector('[data-rel]'), say = lab.querySelector('[data-say]');
     var cols = [].slice.call(lab.querySelectorAll('.lt')), live = [lab.querySelector('[data-v0]'), lab.querySelector('[data-v1]'), lab.querySelector('[data-v2]')], live2 = lab.querySelector('[data-rel2]');
     var COL = ['248,177,15', '76,192,168', '163,181,242'], cur = [0.8, 0.7, 0.75], tgt = cur.slice(), t = 0, prev = 0, raf = 0, visible = false, ctx = null, CW = 0, CH = 0;
+    var logo = new Image(); logo.onload = function () { kick(); }; logo.src = BASE + 'rsm-logo-512.png';
     var sd = 11, rnd = function () { sd = (sd * 9301 + 49297) % 233280; return sd / 233280; };
     var parts = []; for (var i = 0; i < 90; i++) parts.push({ u: rnd(), y: rnd() - 0.5, s: 0.7 + rnd() * 0.6, th: [rnd(), rnd(), rnd()], r: 1 + rnd() * 1.4 });
     function read() {
@@ -247,39 +248,60 @@
       kick(); }
     function draw(now) { raf = 0; if (!visible || document.hidden) return;
       var dt = prev ? Math.min(0.05, (now - prev) / 1000) : 0.016; prev = now; t += dt;
-      var moving = false, i; for (i = 0; i < 3; i++) { var dv = tgt[i] - cur[i]; if (Math.abs(dv) > 0.002) moving = true; cur[i] += dv * Math.min(1, dt * 7); }
+      var moving = false, i, k; for (i = 0; i < 3; i++) { var dv = tgt[i] - cur[i]; if (Math.abs(dv) > 0.002) moving = true; cur[i] += dv * Math.min(1, dt * 7); }
       var r = cv.getBoundingClientRect(), w = r.width, h = r.height, dpr = Math.min(window.devicePixelRatio || 1, 2);
       if (CW !== Math.round(w * dpr) || CH !== Math.round(h * dpr)) { CW = cv.width = Math.round(w * dpr); CH = cv.height = Math.round(h * dpr); ctx = null; }
       var x = ctx || (ctx = cv.getContext('2d')); x.setTransform(dpr, 0, 0, dpr, 0, 0); x.clearRect(0, 0, w, h);
-      var cy = h * 0.5, x0 = w * 0.015, x1 = w * 0.955, LX = [1 / 6, 0.5, 5 / 6].map(function (f) { return w * f; }), lr = Math.min(h * 0.38, 104), lw = lr * 0.36, span = x1 - x0;
-      // the path, faint
-      x.strokeStyle = 'rgba(163,181,242,0.16)'; x.lineWidth = 1; x.setLineDash([2, 7]); x.beginPath(); x.moveTo(x0, cy); x.lineTo(x1, cy); x.stroke(); x.setLineDash([]);
-      // beam: brighter where more light survives
-      var seg = [x0].concat(LX, [x1]), v = 1;
-      x.globalCompositeOperation = 'lighter'; x.lineCap = 'round';
-      for (i = 0; i < 4; i++) { if (i > 0) v *= cur[i - 1]; var bh = 3 + lr * 0.34 * v, bg = x.createLinearGradient(0, cy - bh, 0, cy + bh); bg.addColorStop(0, 'rgba(248,177,15,0)'); bg.addColorStop(0.5, 'rgba(255,214,140,' + (0.05 + 0.3 * v).toFixed(3) + ')'); bg.addColorStop(1, 'rgba(248,177,15,0)'); x.fillStyle = bg; x.fillRect(seg[i], cy - bh, seg[i + 1] - seg[i], bh * 2); x.strokeStyle = 'rgba(255,236,190,' + (0.1 + 0.75 * v).toFixed(3) + ')'; x.lineWidth = 1.4; x.beginPath(); x.moveTo(seg[i], cy); x.lineTo(seg[i + 1], cy); x.stroke(); }
-      // the lights: each one must get through every lens
-      var arrived = 0;
-      for (i = 0; i < parts.length; i++) { var p = parts[i], u = REDUCE ? p.u : (p.u + t * 0.11 * p.s) % 1, px = x0 + span * u, stop = -1, k;
-        for (k = 0; k < 3; k++) if (p.th[k] >= cur[k]) { stop = k; break; }
-        var sv = 1; for (k = 0; k < 3; k++) if (px > LX[k]) sv *= cur[k];
-        var py = cy + p.y * (10 + lr * 0.9 * (0.25 + 0.75 * sv)), al = 0.95;
-        if (stop >= 0 && px > LX[stop]) { var d = px - LX[stop]; al = Math.max(0, 0.8 - d / (w * 0.07)); py += (p.y >= 0 ? 1 : -1) * d * 0.9; if (al <= 0) continue; x.fillStyle = 'rgba(' + COL[stop] + ',' + al.toFixed(3) + ')'; }
-        else { if (stop < 0 && u > 0.9) arrived++; x.fillStyle = 'rgba(255,232,176,' + al + ')'; }
-        x.beginPath(); x.arc(px, py, p.r, 0, 6.2832); x.fill(); }
+      var small = w < 620, cy = h * 0.5, R = Math.min(h * 0.27, w * 0.074, 88), LX = [1 / 8, 3 / 8, 5 / 8].map(function (f) { return w * f; });
+      var RD = R * 0.92, xs = small ? 6 : w * 0.02, xe = w * 7 / 8;
+      var P = [xs].concat(LX, [xe]), C = ['214,226,255'].concat(COL, ['255,214,140']), out = cur[0] * cur[1] * cur[2];
+      // ---- ribbons of light: fewer and fainter strands survive each medallion
+      x.globalCompositeOperation = 'lighter'; x.lineCap = 'round'; x.lineJoin = 'round';
+      var v = 1, STR = 9;
+      for (i = 0; i < 4; i++) { if (i > 0) v *= cur[i - 1];
+        var a = P[i] + (i ? R * 0.96 : 0), b = P[i + 1] - (i < 3 ? R * 0.96 : RD * 0.9), len = b - a; if (len <= 4) continue;
+        var g = x.createLinearGradient(a, 0, b, 0); g.addColorStop(0, 'rgba(' + C[i] + ',1)'); g.addColorStop(1, 'rgba(' + C[i + 1] + ',1)');
+        var amp = Math.min(R * 0.5, len * 0.22) * (0.35 + 0.65 * v);
+        for (k = 0; k < STR; k++) { var keep = Math.max(0, Math.min(1, v * STR - k + 0.35)); if (keep <= 0.02 && k > 0) continue; if (k === 0) keep = Math.max(keep, 0.16);
+          var off = (k === 0 ? 0 : (k % 2 ? 1 : -1) * Math.ceil(k / 2) / (STR / 2));
+          x.beginPath(); for (var s = 0; s <= 28; s++) { var u = s / 28, env = Math.sin(u * Math.PI), px = a + len * u, py = cy + env * (off * amp + Math.sin(u * 6.2 + t * 1.1 + k * 1.7 + i * 2.3) * amp * 0.28); s ? x.lineTo(px, py) : x.moveTo(px, py); }
+          x.globalAlpha = keep * (k === 0 ? 0.9 : 0.42); x.strokeStyle = g; x.lineWidth = k === 0 ? 2.2 : 1.2; x.stroke();
+          if (k === 0) { x.globalAlpha = keep * 0.16; x.lineWidth = 8 + 16 * v; x.stroke(); }
+          // a pulse travelling along the strand
+          if (!REDUCE && keep > 0.3) { var pu = ((t * (0.22 + k * 0.013) + k * 0.31 + i * 0.17) % 1), env2 = Math.sin(pu * Math.PI), qx = a + len * pu, qy = cy + env2 * (off * amp + Math.sin(pu * 6.2 + t * 1.1 + k * 1.7 + i * 2.3) * amp * 0.28);
+            x.globalAlpha = keep * env2; var pg = x.createRadialGradient(qx, qy, 0, qx, qy, 9); pg.addColorStop(0, 'rgba(255,246,214,1)'); pg.addColorStop(0.3, 'rgba(255,214,130,.6)'); pg.addColorStop(1, 'rgba(248,177,15,0)'); x.fillStyle = pg; x.beginPath(); x.arc(qx, qy, 9, 0, 6.2832); x.fill(); } }
+        x.globalAlpha = 1; }
+      // ---- the answer: rays behind the disc
+      var rays = 18, rl = RD * (1.2 + 1.5 * out);
+      for (i = 0; i < rays; i++) { var an = i / rays * 6.2832 + t * 0.12 * (i % 2 ? 1 : -1), wd = 0.05 + 0.05 * ((i * 7) % 5) / 5, rg = x.createRadialGradient(xe, cy, RD * 0.7, xe, cy, rl); rg.addColorStop(0, 'rgba(255,206,110,' + (0.03 + 0.2 * out).toFixed(3) + ')'); rg.addColorStop(1, 'rgba(248,177,15,0)'); x.fillStyle = rg; x.beginPath(); x.moveTo(xe + Math.cos(an - wd * 0.3) * RD * 0.7, cy + Math.sin(an - wd * 0.3) * RD * 0.7); x.arc(xe, cy, rl, an - wd, an + wd); x.closePath(); x.fill(); }
+      var hg = x.createRadialGradient(xe, cy, 0, xe, cy, RD * 2.6); hg.addColorStop(0, 'rgba(255,200,100,' + (0.06 + 0.5 * out).toFixed(3) + ')'); hg.addColorStop(1, 'rgba(248,177,15,0)'); x.fillStyle = hg; x.beginPath(); x.arc(xe, cy, RD * 2.6, 0, 6.2832); x.fill();
+      // medallion glows
+      for (i = 0; i < 3; i++) { var gg = x.createRadialGradient(LX[i], cy, R * 0.6, LX[i], cy, R * 2.1); gg.addColorStop(0, 'rgba(' + COL[i] + ',' + (0.05 + 0.3 * cur[i]).toFixed(3) + ')'); gg.addColorStop(1, 'rgba(' + COL[i] + ',0)'); x.fillStyle = gg; x.beginPath(); x.arc(LX[i], cy, R * 2.1, 0, 6.2832); x.fill(); }
       x.globalCompositeOperation = 'source-over';
-      // lenses: a gauge ring that fills with the term
-      for (i = 0; i < 3; i++) { var c = COL[i], val = cur[i];
-        var g = x.createRadialGradient(LX[i], cy, 0, LX[i], cy, lr); g.addColorStop(0, 'rgba(' + c + ',' + (0.05 + 0.2 * val).toFixed(3) + ')'); g.addColorStop(1, 'rgba(' + c + ',0.02)');
-        x.fillStyle = g; x.beginPath(); x.ellipse(LX[i], cy, lw, lr, 0, 0, 6.2832); x.fill();
-        x.strokeStyle = 'rgba(' + c + ',0.28)'; x.lineWidth = 1.5; x.beginPath(); x.ellipse(LX[i], cy, lw, lr, 0, 0, 6.2832); x.stroke();
-        x.strokeStyle = 'rgb(' + c + ')'; x.lineWidth = 4; x.lineCap = 'round'; x.shadowColor = 'rgba(' + c + ',0.9)'; x.shadowBlur = 12; x.beginPath(); x.ellipse(LX[i], cy, lw, lr, 0, -Math.PI / 2, -Math.PI / 2 + 6.2832 * Math.max(0.004, val)); x.stroke(); x.shadowBlur = 0;
-        x.font = '700 ' + Math.round(Math.max(13, lr * 0.2)) + 'px "Sora", sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillStyle = '#fff'; x.fillText(Math.round(val * 100), LX[i], cy - lr - 16);
-        if (i < 2) { x.fillStyle = 'rgba(248,177,15,0.95)'; x.font = '700 22px "Sora", sans-serif'; x.fillText('×', (LX[i] + LX[i + 1]) / 2, cy - lr - 16); } }
-      x.textBaseline = 'alphabetic'; x.font = '600 10.5px "JetBrains Mono", monospace'; x.fillStyle = 'rgba(190,200,234,0.9)'; x.textAlign = 'left'; x.fillText('THE QUESTION', x0 + 4, cy + lr + 4); x.textAlign = 'right'; x.fillText('THE ANSWER', w - 8, cy + lr + 4);
-      // the answer
-      var out = cur[0] * cur[1] * cur[2], ox = w * 0.955, orad = 9 + lr * 0.3 * out, gl = x.createRadialGradient(ox, cy, 0, ox, cy, orad * 3.4); gl.addColorStop(0, 'rgba(255,214,140,' + (0.12 + 0.78 * out).toFixed(3) + ')'); gl.addColorStop(1, 'rgba(248,177,15,0)'); x.fillStyle = gl; x.beginPath(); x.arc(ox, cy, orad * 3.4, 0, 6.2832); x.fill();
-      x.fillStyle = 'rgba(246,241,230,' + (0.22 + 0.78 * out).toFixed(3) + ')'; x.beginPath(); x.arc(ox, cy, orad, 0, 6.2832); x.fill(); x.strokeStyle = 'rgba(226,174,69,0.95)'; x.lineWidth = 1.5; x.stroke();
+      // ---- the question, at the source
+      var pr = 5 + 2 * Math.sin(t * 3); x.fillStyle = 'rgba(214,226,255,.9)'; x.beginPath(); x.arc(xs, cy, small ? 4 : 6, 0, 6.2832); x.fill(); x.strokeStyle = 'rgba(214,226,255,.35)'; x.lineWidth = 1.5; x.beginPath(); x.arc(xs, cy, (small ? 6 : 10) + pr, 0, 6.2832); x.stroke();
+      // ---- three medallions: glass disc, gauge ring, icon, number
+      for (i = 0; i < 3; i++) { var c = COL[i], val = cur[i], X = LX[i];
+        var bg = x.createLinearGradient(X - R, cy - R, X + R, cy + R); bg.addColorStop(0, 'rgba(58,78,170,1)'); bg.addColorStop(0.45, 'rgba(24,32,84,1)'); bg.addColorStop(1, 'rgba(9,13,40,1)');
+        x.fillStyle = bg; x.beginPath(); x.arc(X, cy, R * 0.9, 0, 6.2832); x.fill();
+        var tint = x.createRadialGradient(X, cy + R * 0.5, 0, X, cy + R * 0.5, R * 1.1); tint.addColorStop(0, 'rgba(' + c + ',' + (0.06 + 0.26 * val).toFixed(3) + ')'); tint.addColorStop(1, 'rgba(' + c + ',0)'); x.fillStyle = tint; x.beginPath(); x.arc(X, cy, R * 0.9, 0, 6.2832); x.fill();
+        x.save(); x.beginPath(); x.arc(X, cy, R * 0.9, 0, 6.2832); x.clip(); var hl = x.createLinearGradient(0, cy - R, 0, cy); hl.addColorStop(0, 'rgba(255,255,255,.16)'); hl.addColorStop(1, 'rgba(255,255,255,0)'); x.fillStyle = hl; x.fillRect(X - R, cy - R, R * 2, R); x.restore();
+        x.strokeStyle = 'rgba(150,170,255,.22)'; x.lineWidth = Math.max(4, R * 0.085); x.beginPath(); x.arc(X, cy, R, 0, 6.2832); x.stroke();
+        x.strokeStyle = 'rgb(' + c + ')'; x.shadowColor = 'rgba(' + c + ',.95)'; x.shadowBlur = 16; x.lineCap = 'round'; x.beginPath(); x.arc(X, cy, R, -Math.PI / 2, -Math.PI / 2 + 6.2832 * Math.max(0.006, val)); x.stroke(); x.shadowBlur = 0;
+        var ea = -Math.PI / 2 + 6.2832 * Math.max(0.006, val); x.fillStyle = '#fff'; x.beginPath(); x.arc(X + Math.cos(ea) * R, cy + Math.sin(ea) * R, Math.max(3, R * 0.06), 0, 6.2832); x.fill();
+        // icon
+        var s = R * 0.3, iy = cy - R * 0.36; x.strokeStyle = 'rgb(' + c + ')'; x.lineWidth = Math.max(1.6, R * 0.035); x.lineJoin = 'round'; x.beginPath();
+        if (i === 0) { x.rect(X - s * 0.62, iy - s * 0.8, s * 1.24, s * 1.6); x.moveTo(X - s * 0.32, iy - s * 0.36); x.lineTo(X + s * 0.32, iy - s * 0.36); x.moveTo(X - s * 0.32, iy); x.lineTo(X + s * 0.32, iy); x.moveTo(X - s * 0.32, iy + s * 0.36); x.lineTo(X + s * 0.1, iy + s * 0.36); }
+        else if (i === 1) { x.moveTo(X, iy - s * 0.9); x.lineTo(X + s * 0.75, iy - s * 0.55); x.lineTo(X + s * 0.75, iy + s * 0.05); x.quadraticCurveTo(X + s * 0.7, iy + s * 0.65, X, iy + s * 0.92); x.quadraticCurveTo(X - s * 0.7, iy + s * 0.65, X - s * 0.75, iy + s * 0.05); x.lineTo(X - s * 0.75, iy - s * 0.55); x.closePath(); x.moveTo(X - s * 0.32, iy); x.lineTo(X - s * 0.06, iy + s * 0.28); x.lineTo(X + s * 0.36, iy - s * 0.26); }
+        else { x.moveTo(X - s * 0.5, iy - s * 0.85); x.lineTo(X - s * 0.5, iy + s * 0.55); x.lineTo(X - s * 0.1, iy + s * 0.2); x.lineTo(X + s * 0.2, iy + s * 0.85); x.lineTo(X + s * 0.45, iy + s * 0.72); x.lineTo(X + s * 0.16, iy + s * 0.1); x.lineTo(X + s * 0.68, iy + s * 0.1); x.closePath(); }
+        x.stroke();
+        x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillStyle = '#fff'; x.font = '700 ' + Math.round(R * 0.56) + 'px "Sora", sans-serif'; x.fillText(Math.round(val * 100), X, cy + R * 0.3);
+        if (i < 2) { x.fillStyle = 'rgba(248,177,15,.95)'; x.font = '700 ' + (small ? 16 : 24) + 'px "Sora", sans-serif'; x.fillText('×', (LX[i] + LX[i + 1]) / 2, cy - R - (small ? 4 : 2)); } }
+      // ---- the answer disc with the mark
+      var dR = RD * (0.8 + 0.2 * out); x.globalAlpha = 0.35 + 0.65 * out; var dg = x.createRadialGradient(xe - dR * 0.2, cy - dR * 0.3, 0, xe, cy, dR); dg.addColorStop(0, '#FBF7EC'); dg.addColorStop(0.6, '#F1E8D4'); dg.addColorStop(1, '#DDD1B6'); x.fillStyle = dg; x.beginPath(); x.arc(xe, cy, dR, 0, 6.2832); x.fill();
+      if (logo.complete && logo.naturalWidth) { var lw = dR * 1.3, lh = lw * logo.naturalHeight / logo.naturalWidth; x.drawImage(logo, xe - lw / 2 + dR * 0.03, cy - lh / 2, lw, lh); }
+      x.globalAlpha = 1; x.strokeStyle = 'rgba(226,174,69,' + (0.4 + 0.6 * out).toFixed(2) + ')'; x.lineWidth = 2; x.beginPath(); x.arc(xe, cy, dR, 0, 6.2832); x.stroke();
+      x.textBaseline = 'alphabetic'; x.font = '700 ' + (small ? 9 : 11) + 'px "JetBrains Mono", monospace'; x.fillStyle = 'rgba(190,200,234,.9)'; x.textAlign = 'left'; x.fillText('THE QUESTION', small ? 4 : xs - 6, cy + R + (small ? 16 : 30)); x.textAlign = 'right'; x.fillStyle = 'rgba(255,217,138,' + (0.5 + 0.5 * out).toFixed(2) + ')'; x.textAlign = 'center'; x.fillText('THE ANSWER', xe, cy + R + (small ? 16 : 30));
       if (!REDUCE || moving) raf = requestAnimationFrame(draw); }
     function kick() { if (!raf) { prev = 0; raf = requestAnimationFrame(draw); } }
     ins.forEach(function (el) { el.addEventListener('input', read); });
