@@ -187,5 +187,33 @@
 "example": "contractor in atlanta",
 "original": "413;v1.0, 23 Nov 2026",
 "trade": "chatgpt;sources;reviews"
+},
+"/services/google-business-profile-optimization/": {
+"kw": "google business profile optimization;google my business optimization;google business profile management",
+"type": "service",
+"example": "dentist in phoenix",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "profile;categories;reviews"
+},
+"/services/technical-seo/": {
+"kw": "technical seo;technical seo audit;schema markup services",
+"type": "service",
+"example": "law firm in dallas",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "crawl;markup;speed"
+},
+"/services/content-marketing/": {
+"kw": "content marketing agency;content marketing;seo content writing",
+"type": "service",
+"example": "hvac company in chicago",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "pages;guides;answers"
+},
+"/services/link-building/": {
+"kw": "link building services;link building agency;backlinks for seo",
+"type": "service",
+"example": "plumber in seattle",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "mentions;links;sources"
 }
 }
