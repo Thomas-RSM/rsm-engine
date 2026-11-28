@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 use Elementor\Controls_Manager as CM;
 
 function rsm_widget_classes() {
-	return array( 'RSM_W_Brand', 'RSM_W_Nav', 'RSM_W_Mobile_Menu', 'RSM_W_Link_List', 'RSM_W_Orbit', 'RSM_W_Stat', 'RSM_W_Chapters', 'RSM_W_Film', 'RSM_W_Engines', 'RSM_W_Lab', 'RSM_W_Console', 'RSM_W_Card', 'RSM_W_Seal', 'RSM_W_US_Map', 'RSM_W_Table', 'RSM_W_Path', 'RSM_W_Chips', 'RSM_W_Portrait', 'RSM_W_FAQ' );
+	return array( 'RSM_W_Brand', 'RSM_W_Nav', 'RSM_W_Mobile_Menu', 'RSM_W_Link_List', 'RSM_W_Orbit', 'RSM_W_Stat', 'RSM_W_Chapters', 'RSM_W_Film', 'RSM_W_Engines', 'RSM_W_Lab', 'RSM_W_Console', 'RSM_W_Card', 'RSM_W_Seal', 'RSM_W_US_Map', 'RSM_W_Table', 'RSM_W_Path', 'RSM_W_Chips', 'RSM_W_Portrait', 'RSM_W_FAQ', 'RSM_W_Ask', 'RSM_W_Form' );
 }
 function rsm_menu_options() { $o = array( '' => __( 'Choose a menu', 'rsm-elements' ) ); foreach ( wp_get_nav_menus() as $m ) { $o[ $m->slug ] = $m->name; } return $o; }
 function rsm_data( $file ) { $p = RSM_EL_DIR . 'data/' . $file; return file_exists( $p ) ? json_decode( file_get_contents( $p ), true ) : array(); } // phpcs:ignore WordPress.WP.AlternativeFunctions
@@ -640,4 +640,76 @@ class RSM_W_FAQ extends RSM_Widget {
 		echo '</div>';
 		if ( 'yes' === $s['schema'] && $ents ) { rsm_schema_push( array( '@type' => 'FAQPage', 'mainEntity' => $ents ) ); }
 	}
+}
+
+/** Every question answered on the site, searchable in the page. Reads the questions straight from the published pages. */
+class RSM_W_Ask extends RSM_Widget {
+	public function get_name() { return 'rsm-ask'; }
+	public function get_title() { return __( 'RSM Ask: find the answer', 'rsm-elements' ); }
+	public function get_icon() { return 'eicon-search'; }
+	protected function is_dynamic_content(): bool { return true; }
+	protected function style_targets() { return array( 'title' => '.ask-title', 'text' => '.ask-list a', 'accent' => '.ask-count' ); }
+	protected function fields() { return array(
+		array( 'label', __( 'Label above the box', 'rsm-elements' ), 'text', 'Your question' ),
+		array( 'placeholder', __( 'Text in the empty box', 'rsm-elements' ), 'text', 'Type a question, such as: why did my reviews disappear' ),
+		array( 'count', __( 'Line under the box ({n} is the number of questions)', 'rsm-elements' ), 'text', '{n} questions answered so far. Type to narrow them.' ),
+		array( 'skip', __( 'Pages to leave out (slugs, comma separated)', 'rsm-elements' ), 'text', 'book,contact,privacy,terms' ),
+		array( 'none', __( 'Shown when nothing matches', 'rsm-elements' ), 'text', 'No page answers that yet. Send it to us and it gets one.' ),
+		array( 'none_link', __( 'Link shown with it', 'rsm-elements' ), 'url', '/contact/' ),
+		array( 'none_text', __( 'Link text', 'rsm-elements' ), 'text', 'Send your question' ),
+	); }
+	private function walk( $els, &$out ) { foreach ( (array) $els as $e ) { if ( isset( $e['widgetType'] ) && 'rsm-faq' === $e['widgetType'] ) { foreach ( (array) ( $e['settings']['items'] ?? array() ) as $it ) { if ( ! empty( $it['q'] ) ) { $out[] = (string) $it['q']; } } } if ( ! empty( $e['elements'] ) ) { $this->walk( $e['elements'], $out ); } } }
+	protected function render() { $s = $this->s(); $groups = array(); $n = 0; $self = get_the_ID();
+		foreach ( get_posts( array( 'post_type' => 'page', 'post_status' => 'publish', 'posts_per_page' => 500, 'orderby' => 'menu_order title', 'order' => 'ASC' ) ) as $p ) {
+			if ( $p->ID === $self || get_post_meta( $p->ID, '_rsm_noindex', true ) || in_array( $p->post_name, array_map( 'trim', explode( ',', (string) $s['skip'] ) ), true ) ) { continue; }
+			$qs = array(); $data = json_decode( (string) get_post_meta( $p->ID, '_elementor_data', true ), true ); if ( is_array( $data ) ) { $this->walk( $data, $qs ); }
+			$h1 = wp_strip_all_tags( get_the_title( $p ) ); $groups[] = array( 'title' => $h1, 'url' => get_permalink( $p ), 'desc' => (string) get_post_meta( $p->ID, '_rsm_description', true ), 'qs' => $qs ); $n += count( $qs ) + 1; }
+		$id = 'ask-' . $this->get_id(); ?>
+		<div class="ask glass" data-none="<?php echo esc_attr( $s['none'] ); ?>">
+			<label class="ask-label" for="<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $s['label'] ); ?></label>
+			<input class="ask-input" id="<?php echo esc_attr( $id ); ?>" type="search" autocomplete="off" placeholder="<?php echo esc_attr( $s['placeholder'] ); ?>">
+			<p class="ask-count" aria-live="polite"><?php echo esc_html( str_replace( '{n}', (string) $n, $s['count'] ) ); ?></p>
+			<p class="ask-none" hidden><?php echo esc_html( $s['none'] ); ?> <a href="<?php echo rsm_url( $s['none_link'] ); ?>"><?php echo esc_html( $s['none_text'] ); ?></a></p>
+			<div class="ask-groups">
+			<?php foreach ( $groups as $g ) : ?><div class="ask-group"><p class="ask-title"><a href="<?php echo esc_url( $g['url'] ); ?>"><?php echo esc_html( $g['title'] ); ?></a></p><?php if ( $g['desc'] ) : ?><p class="ask-desc"><?php echo esc_html( $g['desc'] ); ?></p><?php endif; ?>
+				<?php if ( $g['qs'] ) : ?><ul class="ask-list"><?php foreach ( $g['qs'] as $q ) { echo '<li><a href="' . esc_url( $g['url'] ) . '#questions">' . esc_html( $q ) . '</a></li>'; } ?></ul><?php endif; ?></div><?php endforeach; ?>
+			</div>
+		</div>
+	<?php }
+}
+
+/** The enquiry form. Posts to this site, stores the enquiry under "Enquiries" in the dashboard and emails the owner. */
+class RSM_W_Form extends RSM_Widget {
+	public function get_name() { return 'rsm-form'; }
+	public function get_title() { return __( 'RSM Enquiry form', 'rsm-elements' ); }
+	public function get_icon() { return 'eicon-form-horizontal'; }
+	protected function style_targets() { return array( 'title' => '.lf-title', 'text' => '.lead-form label', 'accent' => '.lead-form button' ); }
+	protected function fields() { return array(
+		array( 'title', __( 'Heading', 'rsm-elements' ), 'text', 'Book a discovery call' ),
+		array( 'intro', __( 'Line under the heading', 'rsm-elements' ), 'textarea', '20 to 30 minutes with Thomas. Tell us your trade and city and we reply within one working day with times.' ),
+		array( 'kind', __( 'What this form is for (stored with each enquiry)', 'rsm-elements' ), 'text', 'Discovery call' ),
+		array( 'ask_business', __( 'Ask for the business name', 'rsm-elements' ), 'switch', 'yes' ),
+		array( 'ask_phone', __( 'Ask for a phone number', 'rsm-elements' ), 'switch', 'yes' ),
+		array( 'ask_place', __( 'Ask for trade and city', 'rsm-elements' ), 'switch', 'yes' ),
+		array( 'ask_message', __( 'Ask for a message', 'rsm-elements' ), 'switch', 'yes' ),
+		array( 'message_label', __( 'Label of the message box', 'rsm-elements' ), 'text', 'What is the problem? (optional)' ),
+		array( 'button', __( 'Button', 'rsm-elements' ), 'text', 'Request my call' ),
+		array( 'note', __( 'Small line under the button', 'rsm-elements' ), 'text', 'No audit to buy first. We use these details only to reply to you.' ),
+		array( 'done', __( 'Shown after sending', 'rsm-elements' ), 'textarea', 'Thank you. Your request is with Thomas, and you will hear back within one working day.' ),
+		array( 'fail', __( 'Shown if sending fails', 'rsm-elements' ), 'text', 'That did not send. Please call +1 (202) 609-6641 or email info@relevantsearchmedia.com.' ),
+	); }
+	protected function render() { $s = $this->s(); $u = 'f' . $this->get_id(); $f = function ( $name, $label, $type = 'text', $req = false, $auto = '' ) use ( $u ) {
+			printf( '<p class="lf-field"><label for="%1$s-%2$s">%3$s%4$s</label><input id="%1$s-%2$s" name="%2$s" type="%5$s"%6$s%7$s maxlength="120"></p>', esc_attr( $u ), esc_attr( $name ), esc_html( $label ), $req ? ' <span aria-hidden="true">*</span>' : '', esc_attr( $type ), $req ? ' required' : '', $auto ? ' autocomplete="' . esc_attr( $auto ) . '"' : '' ); }; ?>
+		<form class="lead-form glass" method="post" action="<?php echo esc_url( rest_url( 'rsm/v1/lead' ) ); ?>" data-done="<?php echo esc_attr( $s['done'] ); ?>" data-fail="<?php echo esc_attr( $s['fail'] ); ?>" data-kind="<?php echo esc_attr( $s['kind'] ); ?>" data-page="<?php echo esc_url( get_permalink() ); ?>" novalidate>
+			<p class="lf-title"><?php echo esc_html( $s['title'] ); ?></p><?php if ( $s['intro'] ) : ?><p class="lf-intro"><?php echo esc_html( $s['intro'] ); ?></p><?php endif; ?>
+			<div class="lf-grid"><?php $f( 'name', __( 'Your name', 'rsm-elements' ), 'text', true, 'name' ); if ( 'yes' === $s['ask_business'] ) { $f( 'business', __( 'Business name', 'rsm-elements' ), 'text', false, 'organization' ); }
+				$f( 'email', __( 'Email', 'rsm-elements' ), 'email', true, 'email' ); if ( 'yes' === $s['ask_phone'] ) { $f( 'phone', __( 'Phone', 'rsm-elements' ), 'tel', false, 'tel' ); }
+				if ( 'yes' === $s['ask_place'] ) { $f( 'trade', __( 'Your trade', 'rsm-elements' ) ); $f( 'city', __( 'Your city', 'rsm-elements' ), 'text', false, 'address-level2' ); } ?></div>
+			<?php if ( 'yes' === $s['ask_message'] ) : ?><p class="lf-field"><label for="<?php echo esc_attr( $u ); ?>-message"><?php echo esc_html( $s['message_label'] ); ?></label><textarea id="<?php echo esc_attr( $u ); ?>-message" name="message" rows="4" maxlength="2000"></textarea></p><?php endif; ?>
+			<p class="lf-trap" aria-hidden="true"><label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label></p>
+			<button type="submit" class="lf-send"><?php echo esc_html( $s['button'] ); ?></button>
+			<?php if ( $s['note'] ) : ?><p class="lf-note"><?php echo esc_html( $s['note'] ); ?></p><?php endif; ?>
+			<p class="lf-status" role="status" aria-live="polite"></p>
+		</form>
+	<?php }
 }

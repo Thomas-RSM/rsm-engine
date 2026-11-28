@@ -303,7 +303,7 @@ def run(site, path, keywords, extra):
     for n in range(193,251): res(n,'N/T','listings, Google Business Profile and reviews are checked off the site')
     # 14 Conversion
     res(251,'PASS' if cta_count>=3 and all(l['text']=='Book a discovery call' for l in p.links if l['href']=='/book/') else 'FAIL',f'{cta_count} identical primary CTAs')
-    res(252,'PASS' if 0<raw.find('href="/book/"') and re.search(r'<main.*?href="/book/".*?<h2',raw,re.S) else 'FAIL','call to action in the header and before the first H2')
+    res(252,'PASS' if 0<raw.find('href="/book/') and re.search(r'<main.*?href="/book/[^"]*".*?<h2',raw,re.S) else 'FAIL','call to action in the header and before the first H2')
     res(253,'PASS' if cta_count>=3 else 'FAIL')
     res(254,'PASS' if 'Book a discovery call' in raw and '20 to 30 minutes' in body_text else 'FAIL')
     res(255,'PASS' if 'href="tel:+12026096641"' in raw.split('<main')[0] else 'FAIL','phone in header, tappable')

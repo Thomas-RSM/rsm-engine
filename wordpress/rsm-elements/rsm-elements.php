@@ -2,7 +2,7 @@
 /**
  * Plugin Name: RSM Elements
  * Description: Elementor widgets, editable header and footer templates, and search basics for the Relevant Search Media theme. Works with Elementor Free.
- * Version: 1.5.2
+ * Version: 1.6.1
  * Author: Relevant Search Media
  * Requires at least: 6.4
  * Requires PHP: 7.4
@@ -10,7 +10,7 @@
  * License: GPL-2.0-or-later
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
-define( 'RSM_EL_VERSION', '1.5.2' );
+define( 'RSM_EL_VERSION', '1.6.1' );
 require_once plugin_dir_path( __FILE__ ) . 'push.php';
 define( 'RSM_EL_DIR', plugin_dir_path( __FILE__ ) );
 

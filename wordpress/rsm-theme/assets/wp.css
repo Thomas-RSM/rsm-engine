@@ -428,3 +428,35 @@ svg.eg-wide{display:none}svg.eg-tall{display:block;width:100%;max-width:400px;he
 @media (max-width:760px){.rsm .rs-trust-proof{padding:20px 18px}.rs-proof span{font-size:12px}}
 
 @media (max-width:760px){.rsm .rs-plain-table .record-table tbody th{width:auto!important}}
+
+/* ask and enquiry form */
+.rsm .ask{padding:28px 30px;border-radius:22px}
+.ask-label,.lead-form label{display:block;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:8px}
+.ask-input,.lead-form input[type=text],.lead-form input[type=email],.lead-form input[type=tel],.lead-form textarea{width:100%;box-sizing:border-box;min-height:54px;padding:14px 18px;border-radius:14px;border:1px solid var(--line-2);background:rgba(6,9,28,.6);color:#fff;font:500 17px var(--sans)}
+.lead-form textarea{min-height:110px;resize:vertical}
+.ask-input:focus,.lead-form input:focus,.lead-form textarea:focus{outline:3px solid var(--gold);outline-offset:2px;border-color:var(--gold)}
+.ask-input::placeholder{color:var(--text-3)}
+.ask-count,.ask-none{font-size:14.5px;color:var(--text-3);margin:12px 0 0}
+.ask-none{color:var(--gold-2)}.ask-none a{color:#fff;font-weight:600}
+.ask-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 40px;margin-top:26px;padding-top:26px;border-top:1px solid var(--line)}
+.ask-title{font-family:var(--head);font-weight:650;font-size:19px;letter-spacing:-.02em;margin:0 0 6px}.ask-title a{color:#fff;text-decoration:none}.ask-title a:hover{color:var(--gold-2)}
+.ask-desc{font-size:14.5px;color:var(--text-3);margin:0 0 10px;line-height:1.5}
+.ask-list{list-style:none;margin:0;padding:0}
+.ask-list li{border-top:1px solid var(--line)}
+.ask-list a{display:block;padding:10px 0;color:var(--text);text-decoration:none;font-size:15.5px;line-height:1.4}
+.ask-list a::after{content:" →";color:var(--gold-2)}
+.ask-list a:hover{color:var(--gold-2)}
+.rsm .lead-form{padding:30px 30px 26px;border-radius:24px;border-color:rgba(248,177,15,.35)}
+.lf-title{font-family:var(--head);font-weight:650;letter-spacing:-.02em;color:#fff;font-size:26px;line-height:1.2;margin:0 0 8px}
+.lf-intro{font-size:15.5px;color:var(--text-2);margin:0 0 20px;line-height:1.55}
+.lf-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px}
+.lf-field{margin:0 0 16px}
+.lead-form label span{color:var(--gold)}
+.lf-trap{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.lf-send{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 30px;border:0;border-radius:999px;background:linear-gradient(180deg,#FFD05C,#F8B10F);color:#1A1200;font:700 16.5px var(--sans);cursor:pointer;box-shadow:0 10px 30px rgba(248,177,15,.28);transition:transform .15s}
+.lf-send:hover{transform:translateY(-2px)}.lf-send:disabled{opacity:.6;cursor:default;transform:none}
+.lf-note{font-size:13.5px;color:var(--text-3);margin:14px 0 0}
+.lf-status{margin:12px 0 0;font-size:15.5px;font-weight:600;min-height:1.4em}
+.lf-status.is-ok{color:#8EE3D0}.lf-status.is-bad{color:#FFB4A8}
+.lead-form.is-done .lf-grid,.lead-form.is-done .lf-field,.lead-form.is-done .lf-send,.lead-form.is-done .lf-note,.lead-form.is-done .lf-intro{display:none}
+@media (max-width:760px){.ask-groups,.lf-grid{grid-template-columns:minmax(0,1fr)}.rsm .ask,.rsm .lead-form{padding:20px 18px}.lf-title{font-size:22px}}

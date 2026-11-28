@@ -119,3 +119,28 @@ add_action( 'rest_api_init', function () {
 		return rsm_deploy_zip( (int) $req->get_param( 'media' ), 'theme' === $req->get_param( 'kind' ) ? 'theme' : 'plugin' );
 	} ) );
 } );
+
+
+/* ---------- enquiries: stored on this site and emailed to the owner ---------- */
+add_action( 'init', function () {
+	register_post_type( 'rsm_lead', array( 'label' => __( 'Enquiries', 'rsm-elements' ), 'labels' => array( 'name' => __( 'Enquiries', 'rsm-elements' ), 'singular_name' => __( 'Enquiry', 'rsm-elements' ) ),
+		'public' => false, 'show_ui' => true, 'show_in_menu' => true, 'menu_icon' => 'dashicons-email-alt', 'menu_position' => 26, 'supports' => array( 'title', 'editor' ), 'capability_type' => 'page', 'map_meta_cap' => true, 'capabilities' => array( 'create_posts' => 'do_not_allow' ) ) );
+} );
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'rsm/v1', '/lead', array( 'methods' => 'POST', 'permission_callback' => '__return_true', 'callback' => function ( WP_REST_Request $req ) {
+		$g = function ( $k, $max = 120 ) use ( $req ) { return mb_substr( sanitize_text_field( (string) $req->get_param( $k ) ), 0, $max ); };
+		if ( '' !== (string) $req->get_param( 'website' ) ) { return array( 'ok' => true ); } // a filled trap field is a robot; answer as if it worked
+		$name = $g( 'name' ); $email = sanitize_email( (string) $req->get_param( 'email' ) );
+		if ( '' === $name || ! is_email( $email ) ) { return new WP_Error( 'rsm_lead_invalid', 'A name and a valid email are needed.', array( 'status' => 400 ) ); }
+		$ip = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : ''; $key = 'rsm_lead_' . md5( $ip ); $n = (int) get_transient( $key );
+		if ( $n >= 5 ) { return new WP_Error( 'rsm_lead_slow', 'Too many requests. Please call or email instead.', array( 'status' => 429 ) ); } set_transient( $key, $n + 1, HOUR_IN_SECONDS );
+		$rows = array( 'Kind' => $g( 'kind' ), 'Name' => $name, 'Business' => $g( 'business' ), 'Email' => $email, 'Phone' => $g( 'phone', 40 ), 'Trade' => $g( 'trade' ), 'City' => $g( 'city' ), 'Page' => esc_url_raw( (string) $req->get_param( 'page' ) ), 'Message' => mb_substr( sanitize_textarea_field( (string) $req->get_param( 'message' ) ), 0, 2000 ) );
+		$body = ''; foreach ( $rows as $k => $v ) { if ( '' !== $v ) { $body .= $k . ': ' . $v . "\n"; } }
+		$id = wp_insert_post( array( 'post_type' => 'rsm_lead', 'post_status' => 'private', 'post_title' => wp_strip_all_tags( ( $rows['Kind'] ? $rows['Kind'] . ': ' : '' ) . $name . ( $rows['Business'] ? ', ' . $rows['Business'] : '' ) ), 'post_content' => $body ) );
+		if ( is_wp_error( $id ) || ! $id ) { return new WP_Error( 'rsm_lead_store', 'Could not store the enquiry.', array( 'status' => 500 ) ); }
+		$to = (string) get_option( 'rsm_lead_email', get_option( 'admin_email' ) );
+		$sent = wp_mail( $to, '[' . wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES ) . '] ' . ( $rows['Kind'] ? $rows['Kind'] : 'Enquiry' ) . ' from ' . $name, $body, array( 'Reply-To: ' . $name . ' <' . $email . '>' ) );
+		update_post_meta( $id, '_rsm_mailed', $sent ? 'yes' : 'no' );
+		return array( 'ok' => true );
+	} ) );
+} );

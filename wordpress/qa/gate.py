@@ -90,7 +90,7 @@ def main():
     cfg = {'host': base, 'cwv_lab': False, 'lead': lead}
     if arg('--trade'): cfg['trade_words'] = [x for x in arg('--trade').split(';') if x]
     if mt: cfg['modified'] = '%s-%02d-%02d' % (mt.group(3), mon.get(mt.group(2), 0), int(mt.group(1))); cfg['modified_text'] = '%d %s %s' % (int(mt.group(1)), mt.group(2), mt.group(3))
-    rng = {'home': [1500, 3500], 'hub': [600, 2200], 'problem': [900, 2600], 'pillar': [1200, 3200], 'service': [900, 2600], 'tool': [300, 1800], 'about': [500, 2400], 'legal': [300, 4000]}
+    rng = {'home': [1500, 3500], 'hub': [600, 2200], 'problem': [900, 2600], 'pillar': [1200, 3200], 'service': [900, 2600], 'tool': [300, 8000], 'about': [500, 2400], 'legal': [300, 4000]}
     cfg['words'] = rng.get(arg('--type', 'home'), [300, 3200])
     if arg('--example'): cfg['example'] = arg('--example')
     if arg('--original'): cfg['original'] = [x for x in arg('--original').split(';') if x]

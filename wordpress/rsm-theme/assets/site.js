@@ -428,3 +428,26 @@ window.RSMInit();
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
   window.addEventListener('load', go);
 })();
+
+/* ---- ask: narrow the questions as you type; enquiry form: send without leaving the page ---- */
+(function () {
+  function go() {
+    document.querySelectorAll('.ask').forEach(function (box) { if (box.__rsm) return; box.__rsm = 1; var inp = box.querySelector('.ask-input'), none = box.querySelector('.ask-none'), groups = [].slice.call(box.querySelectorAll('.ask-group')), stop = /^(the|a|an|and|or|of|to|in|on|for|my|is|are|do|does|i|how|what|why|can|it|me|with|not)$/;
+      inp.addEventListener('input', function () { var ws = inp.value.toLowerCase().split(/[^a-z0-9]+/).filter(function (w) { return w.length > 1 && !stop.test(w); }), shown = 0;
+        groups.forEach(function (g) { var items = [].slice.call(g.querySelectorAll('li')), head = (g.querySelector('.ask-title').textContent + ' ' + ((g.querySelector('.ask-desc') || {}).textContent || '')).toLowerCase(), any = 0;
+          var hm = !ws.length || ws.some(function (w) { return head.indexOf(w) >= 0; });
+          items.forEach(function (li) { var t = li.textContent.toLowerCase(), m = !ws.length || ws.every(function (w) { return t.indexOf(w) >= 0; }) || (ws.length > 1 && ws.filter(function (w) { return t.indexOf(w) >= 0; }).length >= Math.ceil(ws.length * 0.6)); li.hidden = !m; if (m) any++; });
+          var show = any > 0 || hm; if (!any && hm) items.forEach(function (li) { li.hidden = false; }); g.hidden = !show; if (show) shown++; });
+        none.hidden = shown > 0; }); });
+    document.querySelectorAll('form.lead-form').forEach(function (f) { if (f.__rsm) return; f.__rsm = 1; var st = f.querySelector('.lf-status'), btn = f.querySelector('.lf-send');
+      f.addEventListener('submit', function (e) { e.preventDefault(); var d = {}, bad = null; [].slice.call(f.elements).forEach(function (el) { if (el.name) d[el.name] = el.value.trim(); if (!bad && el.required && !el.value.trim()) bad = el; }); d.kind = f.getAttribute('data-kind') || ''; d.page = f.getAttribute('data-page') || location.href;
+        if (!bad && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email || '')) bad = f.elements.email;
+        if (bad) { bad.focus(); st.textContent = 'Please fill in your name and a valid email.'; st.className = 'lf-status is-bad'; return; }
+        btn.disabled = true; st.textContent = 'Sending…'; st.className = 'lf-status';
+        fetch(f.action, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok && j && j.ok, j: j }; }); })
+          .then(function (r) { if (!r.ok) throw new Error(); f.classList.add('is-done'); st.textContent = f.getAttribute('data-done'); st.className = 'lf-status is-ok'; f.reset(); })
+          .catch(function () { st.textContent = f.getAttribute('data-fail'); st.className = 'lf-status is-bad'; btn.disabled = false; }); }); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
+  window.addEventListener('load', go);
+})();
