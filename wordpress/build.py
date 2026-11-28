@@ -118,22 +118,22 @@ def home():
     for a in w.select('a.card'):
         tag = a.select_one('.tag')
         cards.append(card('problem', svg=str(a.svg), tag=txt(tag) if tag else '', title=inner(a.h3), text=inner(a.p), link_text=txt(a.select_one('.go')), link=link(a['href']), highlight='yes' if 'feature' in a['class'] else ''))
-    E.append(S([intro(w), G(cards, 3, 2, 1)], eid='whats-wrong'))
+    E.append(S([intro(w), G(cards, 3, 2, 1, cls='rs-pick')], eid='whats-wrong'))
     # machine
     mc = soup.select_one('#machine')
-    E.append(S([intro(mc), G([card('stat', number=txt(a.select_one('.n')), tag=txt(a.select_one('.k')), text=inner(a.select_one('.d')), link_text=txt(a.select_one('.go')), link=link(a['href'])) for a in mc.select('.stats a')], 3, 2, 1)], eid='machine'))
+    E.append(S([intro(mc), G([card('stat', number=txt(a.select_one('.n')), tag=txt(a.select_one('.k')), text=inner(a.select_one('.d')), link_text=txt(a.select_one('.go')), link=link(a['href'])) for a in mc.select('.stats a')], 3, 2, 1, cls='rs-machine')], eid='machine'))
     # look yourself up
     lk = soup.select_one('#look'); fig = lk.select_one('figure')
     look_cards = [card('look', tag=txt(a.select_one('.status')), status='green' if 'green' in a.select_one('.status')['class'] else 'gold', title=inner(a.h3), text=inner(a.p), link_text=txt(a.select_one('.go')), link=link(a['href'])) for a in lk.select('a.card')]
     it = intro(lk, mb=0)
-    E.append(S([G([it, W('rsm-us-map', {'caption': txt(fig.figcaption), 'label': fig.svg['aria-label']}, 'rv')], 'minmax(0,5fr) minmax(0,7fr)', 'minmax(0,1fr)', 'minmax(0,1fr)', g=(48, 64), align='center'), G(look_cards, 4, 2, 1, mt=48)], eid='look'))
+    E.append(S([it, W('rsm-us-map', {}, 'rv rs-bigmap'), G(look_cards, 4, 2, 1, mt=20)], eid='look'))
     # record
     r = soup.select_one('#record'); rows = [{'_id': uid(), 'a': txt(tr.th), 'b': txt(tr.find_all('td')[0]), 'c': txt(tr.find_all('td')[1])} for tr in r.select('tbody tr')]; ths = r.select('thead th')
     E.append(S([intro(r), W('rsm-table', {'caption': txt(r.caption), 'h1': txt(ths[0]), 'h2': txt(ths[1]), 'h3': txt(ths[2]), 'rows': rows}, 'rv'), T('<p>%s</p>' % inner(r.select_one('.record-foot')), 'small', mt=16, mb=0)], eid='record'))
     # method
     me = soup.select_one('#method'); days = me.select('.days li'); cad = me.select('.cadence li'); acts = me.select('.actions a')
-    E.append(S([intro(me), W('rsm-path', {}, 'rv', mb=28),
-                G([card('day', number=txt(li.select_one('.day-n')), title=inner(li.h3), text=inner(li.p), highlight='yes' if i == len(days) - 1 else '') for i, li in enumerate(days)], 5, 2, 1, g=(16, 16)),
+    E.append(S([intro(me), W('rsm-path', {}, 'rv', mb=0),
+                G([card('day', number=txt(li.select_one('.day-n')), title=inner(li.h3), text=inner(li.p), highlight='yes' if i == len(days) - 1 else '') for i, li in enumerate(days)] + [card('day', number='Day 6 to 15', title='First report', text='Work ships and is logged every day. Your first report lands on day 15.')], 6, 3, 1, g=(12, 12), cls='rs-journey'),
                 G([card('cadence', number=txt(li.select_one('.k')), title=inner(li.h3), text=inner(li.p)) for li in cad], 4, 2, 1, mt=24),
                 C([B(txt(acts[0]), acts[0]['href']), B(txt(acts[1]), acts[1]['href'], 'rs-more')], 'rs-actions', 'row', flex_gap=gap(14), flex_wrap='wrap', flex_align_items='center', margin=box(30, 0, 0, 0))], eid='method'))
     # services
