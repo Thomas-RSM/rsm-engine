@@ -39,6 +39,7 @@ window.RSMInit = function () {
     });
     var W = 0, G = null, sprites = null, ctx = null, t = REDUCE ? 20 : 0, prev = 0, raf = 0, visible = true, order = null, buf = null, P = null;
     function geo(w) {
+      if (w < 480) { var kk = w / 390; return { w: w, h: 500, cx: w / 2, cy: 246, rx: [62, 112, 162].map(function (v) { return v * kk; }), ry: [84, 150, 214], tile: 38, icon: 20, lf: 8, ls: 0.3, gap: 4, logo: Math.min(70, w * 0.17) }; }
       if (w < 820) { var k = Math.min(1.6, w / 390), h = 800, sm = w < 480;
         return { w: w, h: h, cx: w / 2, cy: h / 2 - 8, rx: (sm ? [58, 108, 160] : [62, 110, 158]).map(function (v) { return v * k; }), ry: [126, 232, 330], tile: sm ? 36 : 40, icon: sm ? 19 : 21, lf: sm ? 6.5 : 7, ls: sm ? 0.6 : 1, gap: 5, logo: sm ? Math.min(72, w * 0.17) : Math.min(78, w * 0.18) }; }
       var tab = w < 1100, X = Math.min(540, w / 2 - 52), tile = tab ? 48 : 56, f = tab ? [0.5, 0.77, 1] : [0.52, 0.78, 1];
@@ -257,7 +258,7 @@ window.RSMInit = function () {
       var r = cv.getBoundingClientRect(), w = r.width, h = r.height, dpr = Math.min(window.devicePixelRatio || 1, 2);
       if (CW !== Math.round(w * dpr) || CH !== Math.round(h * dpr)) { CW = cv.width = Math.round(w * dpr); CH = cv.height = Math.round(h * dpr); ctx = null; }
       var x = ctx || (ctx = cv.getContext('2d')); x.setTransform(dpr, 0, 0, dpr, 0, 0); x.clearRect(0, 0, w, h);
-      var small = w < 620, cy = h * (small ? 0.44 : 0.45), R = Math.min(h * 0.2, w * 0.07, 76), LX = [1 / 8, 3 / 8, 5 / 8].map(function (f) { return w * f; });
+      var small = w < 620, cy = h * (small ? 0.44 : 0.45), R = small ? Math.min(h * 0.15, w * 0.1) : Math.min(h * 0.2, w * 0.07, 76), LX = [1 / 8, 3 / 8, 5 / 8].map(function (f) { return w * f; });
       var RD = R * 0.95, xs = small ? 4 : w * 0.015, xe = w * 7 / 8, railY = h - (small ? 16 : 30), out = cur[0] * cur[1] * cur[2];
       var ASK = (ASKW && ASKW.length === 3) ? ASKW : ['Can it read you?', 'Do others back you up?', 'Do people pick you?'], word = function (v) { return v >= 0.75 ? 'Yes' : v >= 0.45 ? 'Partly' : v >= 0.15 ? 'Hardly' : 'No'; };
       var mono = function (px) { return '700 ' + px + 'px "JetBrains Mono", monospace'; }, sora = function (px, wt) { return (wt || 700) + ' ' + px + 'px "Sora", sans-serif'; };
@@ -318,16 +319,17 @@ window.RSMInit = function () {
   /* ---------- 4 · five engines: change the question, tap an engine, the answer follows the dials ---------- */
   (function () {
     var q1 = document.getElementById('eg-q1'); if (!q1) return; if (q1.__rsm) return; q1.__rsm = 1;
-    var q2 = document.getElementById('eg-q2'), ans = document.getElementById('eg-ans'), ansr = document.getElementById('eg-ansr'), ansl = document.getElementById('eg-ansl'), glow = document.getElementById('eg-glowc'), cap = document.getElementById('eg-cap');
-    var outs = [].slice.call(document.querySelectorAll('.eg-o')), btns = [].slice.call(document.querySelectorAll('.eg-controls button')), input = document.getElementById('eg-input'), base = cap ? cap.textContent : '';
-    function setQ(text) { text = (text || '').trim() || 'Who should I call?'; var w = text.split(' '), a = '', b = ''; w.forEach(function (x) { if (!b && (a + ' ' + x).trim().length <= 14) a = (a + ' ' + x).trim(); else b = (b + ' ' + x).trim(); }); q1.textContent = '“' + a + (b ? '' : '”'); q2.textContent = b ? b + '”' : ''; }
+    var all = function (c) { return [].slice.call(document.querySelectorAll('.' + c)); };
+    var Q1 = all('eg-q1'), Q2 = all('eg-q2'), ANS = all('eg-ans'), ANSR = all('eg-ansr'), ANSL = all('eg-ansl'), GLOW = all('eg-glowc'), cap = document.getElementById('eg-cap');
+    var outs = all('eg-o'), btns = [].slice.call(document.querySelectorAll('.eg-controls button')), input = document.getElementById('eg-input'), base = cap ? cap.textContent : '';
+    function setQ(text) { text = (text || '').trim() || 'Who should I call?'; var w = text.split(' '), a = '', b = ''; w.forEach(function (x) { if (!b && (a + ' ' + x).trim().length <= 14) a = (a + ' ' + x).trim(); else b = (b + ' ' + x).trim(); }); Q1.forEach(function (e) { e.textContent = '\u201C' + a + (b ? '' : '\u201D'); }); Q2.forEach(function (e) { e.textContent = b ? b + '\u201D' : ''; }); }
     btns.forEach(function (b) { b.addEventListener('click', function () { btns.forEach(function (o) { o.classList.toggle('on', o === b); }); if (input) input.value = ''; setQ(b.getAttribute('data-q')); }); });
     if (input) input.addEventListener('input', function () { btns.forEach(function (o) { o.classList.remove('on'); }); setQ(input.value); });
-    [].slice.call(document.querySelectorAll('.eg-tile')).forEach(function (g) { var show = function () { if (cap) cap.textContent = g.getAttribute('data-info'); }, hide = function () { if (cap) cap.textContent = base; };
+    all('eg-tile').forEach(function (g) { var show = function () { if (cap) cap.textContent = g.getAttribute('data-info'); }, hide = function () { if (cap) cap.textContent = base; };
       g.addEventListener('mouseenter', show); g.addEventListener('focus', show); g.addEventListener('click', show); g.addEventListener('mouseleave', hide); g.addEventListener('blur', hide); });
     document.addEventListener('rsm:relevance', function (e) { var p = e.detail, you = p >= 30, k = Math.max(0.12, Math.min(1, p / 60));
-      ans.textContent = you ? (ans.getAttribute('data-yes') || 'You.') : (ans.getAttribute('data-no') || 'Someone else.'); ans.setAttribute('font-size', you ? 23 : 19); ans.setAttribute('fill', you ? '#fff' : '#B9C4EA');
-      ansr.setAttribute('stroke', you ? 'rgba(248,177,15,.8)' : 'rgba(150,170,255,.35)'); ansl.setAttribute('fill', you ? '#FFD98A' : '#8A97C4'); glow.setAttribute('opacity', you ? k : 0.05);
+      ANS.forEach(function (ans) { ans.textContent = you ? (ans.getAttribute('data-yes') || 'You.') : (ans.getAttribute('data-no') || 'Someone else.'); ans.setAttribute('font-size', you ? (ans.id ? 23 : 22) : 18); ans.setAttribute('fill', you ? '#fff' : '#B9C4EA'); });
+      ANSR.forEach(function (r) { r.setAttribute('stroke', you ? 'rgba(248,177,15,.8)' : 'rgba(150,170,255,.35)'); }); ANSL.forEach(function (l) { l.setAttribute('fill', you ? '#FFD98A' : '#8A97C4'); }); GLOW.forEach(function (g) { g.setAttribute('opacity', you ? k : 0.05); });
       outs.forEach(function (o) { o.setAttribute('opacity', k); }); });
   })();
 
@@ -352,4 +354,25 @@ window.RSMInit = function () {
 window.RSMInit();
 (function () { var T; function again() { clearTimeout(T); T = setTimeout(window.RSMInit, 180); }
   if (window.jQuery) window.jQuery(window).on('elementor/frontend/init', function () { if (window.elementorFrontend && elementorFrontend.hooks) elementorFrontend.hooks.addAction('frontend/element_ready/widget', again); });
+})();
+
+/* ---- phones: dots under swipe rows, and the bottom bar appears once the first screen is passed ---- */
+(function () {
+  function dots() {
+    if (!window.matchMedia('(max-width:760px)').matches) return;
+    document.querySelectorAll('.e-grid').forEach(function (g) {
+      if (g.__rsmDots || !g.querySelector(':scope > .elementor-widget-rsm-card .problems, :scope > .elementor-widget-rsm-card .days, :scope > .elementor-widget-rsm-card .status')) return;
+      var kids = g.querySelectorAll(':scope > .elementor-widget'); if (kids.length < 2) return; g.__rsmDots = 1;
+      var d = document.createElement('div'); d.className = 'rs-dots'; d.setAttribute('aria-hidden', 'true');
+      for (var i = 0; i < kids.length; i++) d.appendChild(document.createElement('i'));
+      g.parentNode.insertBefore(d, g.nextSibling);
+      function mark() { var best = 0, bd = 1e9, x = g.scrollLeft; for (var i = 0; i < kids.length; i++) { var dx = Math.abs(kids[i].offsetLeft - g.offsetLeft - x - 16 + 16); if (dx < bd) { bd = dx; best = i; } } if (g.scrollLeft + g.clientWidth >= g.scrollWidth - 4) best = kids.length - 1; for (var j = 0; j < d.children.length; j++) d.children[j].className = j === best ? 'on' : ''; }
+      g.addEventListener('scroll', function () { window.requestAnimationFrame(mark); }, { passive: true }); mark();
+    });
+  }
+  function bar() { var b = document.querySelector('.rs-mobilebar'); if (!b || b.__rsm) return; b.__rsm = 1;
+    function on() { b.classList.toggle('show', window.scrollY > 420); } window.addEventListener('scroll', on, { passive: true }); on(); }
+  function go() { dots(); bar(); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
+  window.addEventListener('load', go);
 })();

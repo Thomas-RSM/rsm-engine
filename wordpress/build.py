@@ -185,7 +185,9 @@ def footer(foot):
     about = T(''.join(str(p) for p in fb.find_all('p')) + str(fb.address), 'rs-footer-about')
     grid = G([C([brand, about], 'footer-brand')] + [W('rsm-link-list', {'heading': n, 'menu': s}) for n, s in foot], 'minmax(0,2.2fr) repeat(5,minmax(0,1fr))', 'repeat(3,minmax(0,1fr))', 'repeat(2,minmax(0,1fr))', g=(36, 28), cls='rs-footer-grid')
     bottom = C([T('<p>%s</p>' % inner(btm[0])), T('<p>%s</p>' % inner(btm[1]))], 'footer-bottom rs-footer-bottom', 'row', flex_justify_content='space-between', flex_wrap='wrap', flex_gap=gap(10, 24), margin=box(44, 0, 0, 0))
-    return [S([grid, bottom], 'rs-footer', pad=(60, 36), pad_m=(48, 30), tag='div')]
+    ph = soup.select_one('header.site-header .phone'); cta = soup.select_one('header.site-header .nav-right .btn')
+    mbar = C([B('Call', ph['href'], 'rsm-btn rsm-btn-ghost'), B(txt(cta), cta['href'], 'rsm-btn')], 'rs-mobilebar', 'row', top=True)
+    return [S([grid, bottom], 'rs-footer', pad=(60, 36), pad_m=(48, 30), tag='div'), mbar]
 
 def site():
     mn, foot = menus(); head = soup.head
