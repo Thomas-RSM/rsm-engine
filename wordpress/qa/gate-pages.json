@@ -215,5 +215,33 @@
 "example": "plumber in seattle",
 "original": "413;v1.0, 23 Nov 2026",
 "trade": "mentions;links;sources"
+},
+"/services/social-media-marketing/": {
+"kw": "social media marketing services;social media optimization;social media marketing for small business",
+"type": "service",
+"example": "restaurant in austin",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "profiles;posts;networks"
+},
+"/services/reputation-management/": {
+"kw": "reputation management company;online reputation management;review management services",
+"type": "service",
+"example": "roofer in tampa",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "reviews;replies;ratings"
+},
+"/services/voice-search-optimization/": {
+"kw": "voice search optimization;voice search optimization services",
+"type": "service",
+"example": "locksmith in houston",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "spoken;assistant;listings"
+},
+"/services/ecommerce-seo/": {
+"kw": "ecommerce seo;ecommerce seo services;shopify seo",
+"type": "service",
+"example": "furniture store in portland",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "products;categories;store"
 }
 }
