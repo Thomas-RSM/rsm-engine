@@ -1,0 +1,149 @@
+{
+"/dsouza-equation/how-search-works/": {
+"kw": "how does google search work;how do ai overviews work;how does chatgpt search work",
+"type": "pillar",
+"example": "ac repair dallas",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "crawl;index;engine"
+},
+"/dsouza-equation/seo-vs-aeo-vs-geo/": {
+"kw": "seo vs geo;seo vs aeo;seo vs aeo vs geo",
+"type": "pillar",
+"example": "roofer in denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "engine;assistant;invoice"
+},
+"/elements/": {
+"kw": "seo ranking factors;google ranking factors;seo factors",
+"type": "hub",
+"example": "plumber in miami",
+"original": "113;v1.0, 23 Nov 2026",
+"trade": "title tag;reviews;listings"
+},
+"/dsouza-equation/law-of-search/": {
+"kw": "d'souza's law of search;is seo dead;future of seo",
+"type": "pillar",
+"example": "when a pipe bursts",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "engine;question;customers"
+},
+"/dsouza-equation/engines/": {
+"kw": "ai search engines;best ai search engines;list of ai search engines",
+"type": "pillar",
+"example": "dentist in chicago",
+"original": "engine register;23 Nov 2026",
+"trade": "engine;assistant;customers"
+},
+"/dsouza-equation/method/": {
+"kw": "seo strategy;seo process;how does seo work",
+"type": "pillar",
+"example": "plumber in miami",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "log;report;day 5"
+},
+"/dsouza-equation/standard/": {
+"kw": "seo audit;seo audit checklist;website seo audit",
+"type": "reference",
+"example": "the title is 30 to 60 characters",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "checks;page;site"
+},
+"/dsouza-equation/read/": {
+"kw": "on page seo;what is on page seo;on page seo checklist",
+"type": "pillar",
+"example": "law firm in new york",
+"original": "250;v1.0, 23 Nov 2026",
+"trade": "crawl;index;markup"
+},
+"/dsouza-equation/confirm/": {
+"kw": "off page seo;what is off page seo;off page seo techniques",
+"type": "pillar",
+"example": "contractor in atlanta",
+"original": "99;v1.0, 23 Nov 2026",
+"trade": "listings;reviews;mentions"
+},
+"/dsouza-equation/choose/": {
+"kw": "conversion rate optimization;what is conversion rate optimization;conversion rate optimization examples",
+"type": "pillar",
+"example": "dentist in chicago",
+"original": "50;v1.0, 23 Nov 2026",
+"trade": "reviews;listing;call"
+},
+"/dsouza-equation/": {
+"kw": "d'souza equation;how do search engines rank websites;how does google rank websites",
+"type": "pillar",
+"example": "who fixes a burst pipe",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "engine;customers;reviews"
+},
+"/ask/": {
+"kw": "getting found online",
+"type": "tool",
+"example": "why did my reviews disappear",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "question;answer;page"
+},
+"/book/": {
+"kw": "book a discovery call",
+"type": "tool",
+"example": "roofing company denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "call;plumber;dentist"
+},
+"/problems/seo-cost/": {
+"kw": "how much does seo cost;seo pricing;seo cost for small business",
+"type": "problem",
+"example": "kitchen remodel atlanta",
+"original": "177;v4, 18 Nov 2026",
+"trade": "quote;contract;month to month"
+},
+"/problems/traffic-dropped/": {
+"kw": "website traffic dropped suddenly;google ranking dropped dramatically;why has my website traffic dropped",
+"type": "problem",
+"example": "hvac repair dallas",
+"original": "165;v4, 18 Nov 2026",
+"trade": "update;rankings;search console"
+},
+"/problems/not-recommended-by-chatgpt/": {
+"kw": "how to get my business recommended by chatgpt;how to get my business on chatgpt;how to show up in chatgpt",
+"type": "problem",
+"example": "divorce lawyer in new york",
+"original": "211;v4, 18 Nov 2026",
+"trade": "lawyer;sources;reviews"
+},
+"/problems/not-getting-leads/": {
+"kw": "how to get more leads for my business;how to get more customers for my business;how to get more leads",
+"type": "problem",
+"example": "emergency dentist chicago",
+"original": "186;v4, 18 Nov 2026",
+"trade": "dentist;reviews;listing"
+},
+"/problems/not-showing-up-on-google/": {
+"kw": "why is my business not showing up on google;why is my business not showing up on google maps;how to get my business on google",
+"type": "problem",
+"example": "roof repair denver",
+"original": "170;v4, 18 Nov 2026",
+"trade": "roofer;profile;listing"
+},
+"/problems/": {
+"kw": "seo problems;common seo issues;seo issues",
+"type": "hub",
+"example": "emergency plumber miami",
+"original": "166;v4, 18 Nov 2026",
+"trade": "plumber;roofer;dentist"
+},
+"/services/": {
+"kw": "",
+"type": "hub",
+"example": "dentist in chicago",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "services;engine;plan"
+},
+"/services/seo/": {
+"kw": "seo services;seo services company;affordable seo services for small businesses",
+"type": "service",
+"example": "electrician in phoenix",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "searches;log;report"
+}
+}

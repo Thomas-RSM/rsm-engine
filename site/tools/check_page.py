@@ -15,7 +15,7 @@ STANDARD = os.path.join(os.path.dirname(ROOT), 'plan', '03-standard', 'dsouza-st
 # Per-page facts the checks compare against. Defaults are the home page as first built; the gate passes the real ones.
 CFG = {'host': 'https://www.relevantsearchmedia.com', 'modified': '2026-11-24', 'modified_text': '24 Nov 2026', 'words': [1500, 3200],
        'example': 'plumbing seo company miami', 'original': ['113,720', 'v4, 18 Nov 2026'], 'cwv_lab': False,
-       'trade_words': ['plumber', 'roofer', 'dentist'], 'lead': 'seo company in usa'}
+       'trade_words': ['plumber', 'roofer', 'dentist'], 'lead': 'seo company in usa', 'no_lead': False}
 if os.environ.get('RSM_GATE_CFG'): CFG.update(json.loads(os.environ['RSM_GATE_CFG']))
 
 class P(HTMLParser):
@@ -395,6 +395,8 @@ def run(site, path, keywords, extra):
     # 27 Publishing readiness
     res(406,'PASS','this report is the record')
     for n in (407,408,409,410,411,412,413): res(n,'N/T','sign-off, publish and day-seven steps')
+    if CFG.get('no_lead'):   # pages the keyword map gives no search to (hubs of our own, contact, legal): keyword rules do not apply
+        for n in (106,107,113,118,122,123,124,267): R[n]=('N/T','the keyword map assigns no search to this page')
     return R, {'words':wc,'grade':fk,'sentence':asl,'answer_words':answer_words,'title':p.title,'h1':h1s,'faq':len(fa)}
 
 def main():

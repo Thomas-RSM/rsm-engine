@@ -65,10 +65,10 @@ def shingles(t, n=8):
     w = words(t); return {' '.join(w[i:i + n]) for i in range(0, max(0, len(w) - n + 1))}
 
 def main():
-    a = sys.argv[1:]; path = a[0]; base = 'https://relevantsearchmedia.com'; kws = ['']
+    a = sys.argv[1:]; path = a[0]; base = 'https://relevantsearchmedia.com'; kws = []
     if '--base' in a: base = a[a.index('--base') + 1].rstrip('/')
     if '--keywords' in a: kws = [k.strip() for k in a[a.index('--keywords') + 1].split(';') if k.strip()]
-    lead = kws[0].lower(); fails = []; notes = []
+    lead = kws[0].lower() if kws else ''; fails = []; notes = []
     def gate(name, ok, detail=''):
         (notes if ok else fails).append(f"{'PASS' if ok else 'FAIL'} · {name}" + (f" · {detail}" if detail else ''))
     url = base + path
@@ -91,7 +91,7 @@ def main():
     out = os.path.join(d, 'result.json')
     arg = lambda k, dflt=None: a[a.index(k) + 1] if k in a else dflt
     mt = re.search(r'Last reviewed\s+(\d{1,2})\s(\w{3})\w*\s(\d{4})', p.text); mon = dict(Jan=1, Feb=2, Mar=3, Apr=4, May=5, Jun=6, Jul=7, Aug=8, Sep=9, Oct=10, Nov=11, Dec=12)
-    cfg = {'host': base, 'cwv_lab': False, 'lead': lead}
+    cfg = {'host': base, 'cwv_lab': False, 'lead': lead, 'no_lead': not lead}
     if arg('--trade'): cfg['trade_words'] = [x for x in arg('--trade').split(';') if x]
     if mt: cfg['modified'] = '%s-%02d-%02d' % (mt.group(3), mon.get(mt.group(2), 0), int(mt.group(1))); cfg['modified_text'] = '%d %s %s' % (int(mt.group(1)), mt.group(2), mt.group(3))
     rng = {'home': [1500, 3500], 'hub': [600, 2200], 'problem': [900, 2600], 'pillar': [1200, 3200], 'service': [900, 2600], 'tool': [300, 8000], 'reference': [1200, 14000], 'about': [500, 2400], 'legal': [300, 4000]}
@@ -109,7 +109,7 @@ def main():
         gate('phone: no text under 12px in the copy', ph.get('small', 0) == 0, str(ph.get('small'))); gate('desktop: largest paint under 2.5 s', dk.get('lcp', 9e9) < 2500, f"{dk.get('lcp')} ms"); gate('phone: largest paint under 2.5 s', ph.get('lcp', 9e9) < 2500, f"{ph.get('lcp')} ms")
         gate('layout shift under 0.1 at every size', all(v.get('cls', 1) < 0.1 for v in render['sizes'].values()), ', '.join(f"{k} {v.get('cls')}" for k, v in render['sizes'].items()))
         cfg['cwv_lab'] = dk.get('lcp', 9e9) < 2500 and ph.get('lcp', 9e9) < 2500 and all(v.get('cls', 1) < 0.1 for v in render['sizes'].values())
-    r = subprocess.run([sys.executable, '-I', CHECKER, d, path, '--keywords', ';'.join(kws), '--json', out], capture_output=True, text=True, env=dict(os.environ, RSM_GATE_CFG=json.dumps(cfg)))
+    r = subprocess.run([sys.executable, '-I', CHECKER, d, path, '--keywords', ';'.join(kws) or 'relevant search media', '--json', out], capture_output=True, text=True, env=dict(os.environ, RSM_GATE_CFG=json.dumps(cfg)))
     print(r.stdout.strip() or r.stderr.strip()[-800:])
     std = json.load(open(out)) if os.path.exists(out) else {'results': {}, 'stats': {}}
     sfail = [n for n, v in std['results'].items() if v['status'] == 'FAIL']

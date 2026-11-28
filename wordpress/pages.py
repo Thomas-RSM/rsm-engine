@@ -4,6 +4,28 @@ Rules every spec follows: one lead keyword (qa/keyword-map.csv), a 40 to 60 word
 facts only from the signed register, one specific example, a dated original figure, FAQs of 40 to 60 words, a clear next step."""
 PUB = ('2026-11-28', '28 Nov 2026')
 
+GATE = {
+    '/dsouza-equation/how-search-works/': {'kw': 'how does google search work;how do ai overviews work;how does chatgpt search work', 'type': 'pillar', 'example': 'ac repair dallas', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'crawl;index;engine'},
+    '/dsouza-equation/seo-vs-aeo-vs-geo/': {'kw': 'seo vs geo;seo vs aeo;seo vs aeo vs geo', 'type': 'pillar', 'example': 'roofer in denver', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'engine;assistant;invoice'},
+    '/elements/': {'kw': 'seo ranking factors;google ranking factors;seo factors', 'type': 'hub', 'example': 'plumber in miami', 'original': '113;v1.0, 23 Nov 2026', 'trade': 'title tag;reviews;listings'},
+    '/dsouza-equation/law-of-search/': {'kw': "d'souza's law of search;is seo dead;future of seo", 'type': 'pillar', 'example': 'when a pipe bursts', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'engine;question;customers'},
+    '/dsouza-equation/engines/': {'kw': 'ai search engines;best ai search engines;list of ai search engines', 'type': 'pillar', 'example': 'dentist in chicago', 'original': 'engine register;23 Nov 2026', 'trade': 'engine;assistant;customers'},
+    '/dsouza-equation/method/': {'kw': 'seo strategy;seo process;how does seo work', 'type': 'pillar', 'example': 'plumber in miami', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'log;report;day 5'},
+    '/dsouza-equation/standard/': {'kw': 'seo audit;seo audit checklist;website seo audit', 'type': 'reference', 'example': 'the title is 30 to 60 characters', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'checks;page;site'},
+    '/dsouza-equation/read/': {'kw': 'on page seo;what is on page seo;on page seo checklist', 'type': 'pillar', 'example': 'law firm in new york', 'original': '250;v1.0, 23 Nov 2026', 'trade': 'crawl;index;markup'},
+    '/dsouza-equation/confirm/': {'kw': 'off page seo;what is off page seo;off page seo techniques', 'type': 'pillar', 'example': 'contractor in atlanta', 'original': '99;v1.0, 23 Nov 2026', 'trade': 'listings;reviews;mentions'},
+    '/dsouza-equation/choose/': {'kw': 'conversion rate optimization;what is conversion rate optimization;conversion rate optimization examples', 'type': 'pillar', 'example': 'dentist in chicago', 'original': '50;v1.0, 23 Nov 2026', 'trade': 'reviews;listing;call'},
+    '/dsouza-equation/': {'kw': "d'souza equation;how do search engines rank websites;how does google rank websites", 'type': 'pillar', 'example': 'who fixes a burst pipe', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'engine;customers;reviews'},
+    '/ask/': {'kw': 'getting found online', 'type': 'tool', 'example': 'why did my reviews disappear', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'question;answer;page'},
+    '/book/': {'kw': 'book a discovery call', 'type': 'tool', 'example': 'roofing company denver', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'call;plumber;dentist'},
+    '/problems/seo-cost/': {'kw': 'how much does seo cost;seo pricing;seo cost for small business', 'type': 'problem', 'example': 'kitchen remodel atlanta', 'original': '177;v4, 18 Nov 2026', 'trade': 'quote;contract;month to month'},
+    '/problems/traffic-dropped/': {'kw': 'website traffic dropped suddenly;google ranking dropped dramatically;why has my website traffic dropped', 'type': 'problem', 'example': 'hvac repair dallas', 'original': '165;v4, 18 Nov 2026', 'trade': 'update;rankings;search console'},
+    '/problems/not-recommended-by-chatgpt/': {'kw': 'how to get my business recommended by chatgpt;how to get my business on chatgpt;how to show up in chatgpt', 'type': 'problem', 'example': 'divorce lawyer in new york', 'original': '211;v4, 18 Nov 2026', 'trade': 'lawyer;sources;reviews'},
+    '/problems/not-getting-leads/': {'kw': 'how to get more leads for my business;how to get more customers for my business;how to get more leads', 'type': 'problem', 'example': 'emergency dentist chicago', 'original': '186;v4, 18 Nov 2026', 'trade': 'dentist;reviews;listing'},
+    '/problems/not-showing-up-on-google/': {'kw': 'why is my business not showing up on google;why is my business not showing up on google maps;how to get my business on google', 'type': 'problem', 'example': 'roof repair denver', 'original': '170;v4, 18 Nov 2026', 'trade': 'roofer;profile;listing'},  # what the gate is told about each page: keywords, page type, the specific example and the dated original figure it must carry
+    '/problems/': {'kw': 'seo problems;common seo issues;seo issues', 'type': 'hub', 'example': 'emergency plumber miami', 'original': '166;v4, 18 Nov 2026', 'trade': 'plumber;roofer;dentist'},
+}
+
 def make(h):
     W, H, T, B, C, G, S, card, link, box, gap = (h[k] for k in ('W', 'H', 'T', 'B', 'C', 'G', 'S', 'card', 'link', 'box', 'gap'))
     ART = h['PROBLEM_ART']
@@ -875,26 +897,149 @@ def make(h):
         trust(),
         closing('113 elements. <span class="gold">Which are holding you back?</span>', 'A discovery call is 20 to 30 minutes with Thomas. He shows you who AI names for your trade in your city, which customer searches you are missing, and which elements he would put right first.', 'No audit to buy first, no trial. One business per trade per city.'),
     ]))
+    # ================================================================== SERVICES
+    def svc(d):
+        """One service page, in the order the plan's service blueprint sets."""
+        name = d['name']; crumbs = [('Home', '/'), ('Services', '/services/'), (name, '')]
+        body = [
+            hero(crumbs, d.get('eyebrow', 'Service'), d['h1'], d['answer'], d['subline'], ctas=(('Book a discovery call', '/book/'), d.get('lighter', ('Ask a question', '/ask/')))),
+            sec('What is included', d['included_h2'], d['included_p'], table(d['included_caption'], ('What is included', 'What it does', 'Part of the equation'), d['included']), more=d['included_more'], eid='included'),
+            sec('In the equation', d['equation_h2'], d['equation_p'], terms(d['terms']), eid='equation'),
+            sec('How it works', d['works_h2'], d['works_p'], steps(d['days']), more=('Our SEO strategy, day by day', '/dsouza-equation/method/'), eid='works'),
+            sec('Two ways to do it', d['ways_h2'], d['ways_p'], table(d['ways_caption'], ('The job', 'How everyone should do it', 'How we do it'), d['ways']), more=('See all 413 checks', '/dsouza-equation/standard/'), eid='ways'),
+            sec('What it costs', d['cost_h2'], d['cost_p'], more=('How much does SEO cost?', '/problems/seo-cost/'), eid='cost'),
+            sec('Check yourself', d['check_h2'], d['check_p'], steps(d['checks']), T('<p>%s</p>' % d['example_p'], 'small rs-note', mt=22, mb=18), B(d['check_more'][0], d['check_more'][1], 'rs-more', mb=0), eid='check'),
+            sec('By trade and city', d['where_h2'], d['where_p'],
+                C([B('SEO by industry', '/industries/', 'rsm-btn rsm-btn-ghost'), B('Cities we serve', '/cities/', 'rsm-btn rsm-btn-ghost'), B('Check if your trade is open in your city', '/open-board/', 'rs-more')], 'rs-actions', 'row', flex_gap=gap(14), flex_wrap='wrap', flex_align_items='center', margin=box(0, 0, 0, 0)), eid='where'),
+            faq('Questions about ' + d['faq_about'], d['faq_h2'], 'Short answers. For anything else, use the <a href="/ask/">Ask page</a>.', d['faqs']),
+            trust(),
+            closing(d['closing_h2'], d['closing_p'], 'No audit to buy first, no trial. One business per trade per city.'),
+        ]
+        P.append(page(d['key'], d['path'], d['title'], d['desc'], body, parent='services'))
+        GATE[d['path']] = {'kw': d['kw'], 'type': 'service', 'example': d['example'], 'original': '413;v1.0, 23 Nov 2026', 'trade': d['trade']}
+    T3 = lambda on: [('Term one', 'gold' if on == 'read' else 'green', 'Read', 'Can every engine read plainly what the business is, what it does and where?', 'On page SEO', '/dsouza-equation/read/'),
+                     ('Term two', 'gold' if on == 'confirm' else 'green', 'Confirm', 'Do listings, reviews and mentions elsewhere say the same thing?', 'Off page SEO', '/dsouza-equation/confirm/'),
+                     ('Term three', 'gold' if on == 'choose' else 'green', 'Choose', 'When people are shown the business, do they pick it?', 'Conversion rate optimization', '/dsouza-equation/choose/')]
+
+    SERVICES = [  # (name, path, one line, group)
+        ('SEO', '/services/seo/', 'Be the business Google names for every search in your map.', 'found'),
+        ('Local SEO', '/services/local-seo/', 'The map pack, the listing and the reviews that make the choice.', 'found'),
+        ('AI SEO', '/services/ai-seo/', 'Be named by ChatGPT, Gemini, Perplexity and Google’s AI answers.', 'found'),
+        ('Answer engine optimization', '/services/answer-engine-optimization/', 'The question answered plainly, so an engine can quote it.', 'found'),
+        ('Generative engine optimization', '/services/generative-engine-optimization/', 'The facts, sources and mentions generative engines check.', 'found'),
+        ('AI Overview optimization', '/services/ai-overview-optimization/', 'Appear in the summaries Google writes above its results.', 'found'),
+        ('ChatGPT SEO', '/services/chatgpt-seo/', 'How a business comes to be recommended by an assistant.', 'found'),
+        ('Google Business Profile', '/services/google-business-profile-optimization/', 'The listing done right: categories, photos, answers, posts, reviews.', 'found'),
+        ('Voice search optimization', '/services/voice-search-optimization/', 'Be the one answer a phone or a speaker reads out.', 'found'),
+        ('Technical SEO', '/services/technical-seo/', 'Make every engine able to fetch, read and index the site.', 'more'),
+        ('Content marketing', '/services/content-marketing/', 'Pages that answer the questions your customers ask.', 'more'),
+        ('Link building', '/services/link-building/', 'Mentions and links earned from sites that matter to your trade.', 'more'),
+        ('Social media marketing', '/services/social-media-marketing/', 'Profiles that are alive and say the same thing as your site.', 'more'),
+        ('Reputation management', '/services/reputation-management/', 'Real reviews, asked for, answered and shown.', 'more'),
+        ('Lead generation', '/services/lead-generation/', 'Leads from relevant searches, counted and confirmed.', 'more'),
+        ('Small business SEO', '/services/small-business-seo/', 'The same method, sized to one trade in one city.', 'more'),
+        ('Ecommerce SEO', '/services/ecommerce-seo/', 'Product and category pages that are found and bought from.', 'more'),
+        ('B2B SEO', '/services/b2b-seo/', 'Search work for long sales cycles and several decision makers.', 'more'),
+        ('Digital marketing', '/services/digital-marketing/', 'Search, content, social and reviews run as one engine.', 'more'),
+        ('Web design', '/services/web-design/', 'What they find when they click: fast, plain, built to be read.', 'build'),
+        ('Web development', '/services/web-development/', 'Sites built so every engine can read them.', 'build'),
+        ('App development', '/services/app-development/', 'Web and mobile apps for the way your business works.', 'build'),
+        ('Custom CRM', '/services/custom-crm/', 'A lead and customer system that fits how you sell.', 'build'),
+        ('Graphic design', '/services/design/', 'Brand, logo and everything you publish.', 'build'),
+    ]
+    def _svc_cards(group):
+        I = h['ICONS']
+        def icon(n, g):
+            if n in I: return I[n]
+            if n == 'Answer engine optimization': return I.get('Answer Engine Optimization', '')
+            if n == 'Generative engine optimization': return I.get('Generative Engine Optimization', '')
+            if n in ('AI Overview optimization', 'ChatGPT SEO', 'Voice search optimization'): return I.get('AI SEO', '')
+            if g == 'build': return I.get('Web design and development', '')
+            return I.get('All services', I.get('SEO', ''))
+        return G([card('service', svg=icon(n, g), title=n, text=x, link=link(u)) for n, u, x, g in SERVICES if g == group], 4, 2, 1, g=(16, 16))
+    P.append(page('services', '/services/', 'Services | Relevant Search Media',
+        'Everything Relevant Search Media does, by its common name: search services, and the sites and systems behind them. One method runs through all of it.', [
+        hero([('Home', '/'), ('Services', '')], 'Services', 'Everything we do, by its common name',
+             'We do two kinds of work: search work makes a business the one that Google, Maps and the AI engines name when its customers ask, and build work makes what they find when they click. That means the site, the app and the system behind it. Both follow one method, the D’Souza Equation, so each service below is the same idea applied to one job.',
+             'Call it SEO, AEO, GEO or AI SEO: it is one body of work.', ctas=(('Book a discovery call', '/book/'), ('Ask a question', '/ask/'))),
+        sec('Search: be the one named', 'Which search services do we offer?', ['Nine services under the names people search for. Each is the same equation applied to one engine, and none is sold as a separate method.'],
+            _svc_cards('found'), more=('SEO vs GEO vs AEO vs AIO, compared', '/dsouza-equation/seo-vs-aeo-vs-geo/'), eid='found'),
+        sec('More search work', 'What else does the search work cover?', ['Ten more, by the part of the job they do or the kind of business they suit. They are parts of one plan, not ten projects.'],
+            _svc_cards('more'), more=('Every element of search, explained', '/elements/'), eid='more'),
+        sec('Build: what they find', 'What do we build?', ['Five build services, for the moment after the click. A site, an app or a system is built so that every engine can read it and every visitor can act.'],
+            _svc_cards('build'), more=('On page SEO: can every engine read you?', '/dsouza-equation/read/'), eid='build'),
+        sec('How they fit', 'How do the services fit together?', ['Every engine names the business it can read plainly, confirm from other sources and see real people choose. That is the D’Souza Equation: Relevance = Read × Confirm × Choose.', 'The table shows which services mainly serve which term. A plan draws on whichever of them your weakest term needs first.'],
+            table('Which services serve which term of the equation', ('Term', 'What it needs', 'Services that mainly serve it'), [
+                ('Read', 'A site every engine can fetch and understand', 'SEO, technical SEO, content marketing, web design, web development'),
+                ('Confirm', 'Others saying the same thing', 'Local SEO, Google Business Profile, link building, reputation management, social media'),
+                ('Choose', 'People picking you', 'Lead generation, web design, reputation management'),
+                ('Every engine', 'The same work, checked everywhere', 'AI SEO, answer engine optimization, generative engine optimization, voice search'),
+            ]), more=('How the equation works', '/dsouza-equation/'), eid='fit'),
+        sec('Where to start', 'Which service do I need first?', ['Usually not the one you came for. Start from what is wrong, not from a service name, and the right work follows.'],
+            steps([('Step 1', 'Name the problem', 'Pick the one of five problems that sounds like you.'),
+                   ('Step 2', 'Run its ten-minute check', 'Each problem page has a check you can do yourself, today.'),
+                   ('Step 3', 'See the weakest term', 'The check shows whether Read, Confirm or Choose is holding you back.'),
+                   ('Step 4', 'Book the call', 'Thomas looks at your trade and city and tells you what he would do first.')]),
+            T('<p>For example, a dentist in Chicago who asks for “SEO” often has a readable site and a thin Google listing. The work that helps is on the listing, whatever name is on the invoice.</p>', 'small rs-note', mt=22, mb=18),
+            B('Find which of the five problems is yours', '/problems/', 'rs-more', mb=0), eid='start'),
+        faq('Questions about our services', 'What do owners ask about the services?', 'Short answers. For anything else, use the <a href="/ask/">Ask page</a>.', [
+            ('Do I have to choose one service?', 'No. The names are there because people search by them. A plan is built from your search map and your weakest term, and it uses whichever services that calls for.\nYou are not sold SEO, then AEO, then GEO as three purchases.'),
+            ('Do you only work with certain kinds of business?', 'We work with US businesses that depend on being found: trades, practices, firms, stores. We take one business per trade per city.\nIf your trade is already taken in your city, we tell you on the call and do not sell you a plan.'),
+            ('Why are there no prices on the service pages?', 'Because the price depends on your trade, your city and how many searches have to be won. A figure without that would be a guess.\nThomas gives the price on the discovery call. Every plan is month to month, with no setup fee.'),
+            ('Is the build work separate from the search work?', 'It can be bought alone, and it is built the same way: so that every engine can read it. A site that looks good and cannot be read does not get found.\nMany clients start with search work and rebuild the site once the map shows what it has to say.'),
+            ('Who does the work?', 'A team of more than 100 specialists, working US hours from New Delhi, India. Thomas D’Souza, the founder, takes the discovery call and approves each plan.\nEvery item that ships is logged with its link, so you can see who did what and when.'),
+        ]),
+        trust(),
+        closing('Not sure which one? <span class="gold">Start with the problem.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He shows you who AI names for your trade in your city, which customer searches you are missing, and whether your trade is still open.', 'No audit to buy first, no trial. One business per trade per city.'),
+    ]))
+    GATE['/services/'] = {'kw': '', 'type': 'hub', 'example': 'dentist in chicago', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'services;engine;plan'}
+    svc(dict(key='seo', path='/services/seo/', name='SEO', title='SEO Services | Relevant Search Media',
+        desc='SEO services that start with a map of every search your customers make. Live work by day 5. Two commitments in writing.',
+        kw='seo services;seo services company;affordable seo services for small businesses', example='electrician in phoenix', trade='searches;log;report',
+        h1='SEO services that make you the answer on Google',
+        answer='SEO services are the work of making a business the one a search engine names for the searches its customers make. Ours begin with a map of every one of those searches, 300, 600 or 2,000 by plan, and then fix what stops engines reading, confirming and choosing the business. Live work starts on day 5 and every item is logged.',
+        subline='Every search your customers make, mapped and worked. Not ten keywords.',
+        included_h2='What do our SEO services include?', included_caption='What our SEO services include and the part of the equation each serves',
+        included_p=['SEO services, in their plain meaning, cover everything that decides whether a search engine names your business. We group the work in six parts, and each one answers to a term of the D’Souza Equation.'],
+        included=[('The search map', 'Every search your customers make, grouped by what the person wants', 'The question'),
+                  ('Technical health', 'Crawling, indexing, speed, mobile and security put right', 'Read'),
+                  ('Pages and copy', 'Titles, headings, direct answers, verified facts and markup', 'Read'),
+                  ('Listings and mentions', 'The Business Profile, citations, reviews and earned links', 'Confirm'),
+                  ('Conversion', 'Calls to action, forms and proof beside the button', 'Choose'),
+                  ('Tracking and reports', 'Calls and forms counted properly, reported every 15 days', 'Choose')],
+        included_more=('Every element of search, explained', '/elements/'),
+        equation_h2='Where does this work sit in the D’Souza Equation?',
+        equation_p=['Across all of it. The D’Souza Equation is Relevance = Read × Confirm × Choose, and a search engine applies all three before it names a business.', 'Most SEO work on offer covers Read and stops. We raise whichever of the three is weakest first, because the terms multiply.'],
+        terms=T3('read'),
+        works_h2='What happens in the first fifteen days?', works_p=['The same way on every plan. You give one conversation, and by day 5 work is live on your site.'],
+        days=[('Day 1', 'Discover', 'One conversation about the jobs you want more of, and access is collected.'),
+              ('Day 2', 'Map', 'The searches behind those jobs are found and grouped: 300, 600 or 2,000 of them.'),
+              ('Day 3', 'Audit', 'All 413 checks are run and the failed ones are ranked by what they cost you.'),
+              ('Day 4 to 5', 'Plan, then live', 'You are walked through the plan, and the first fixes are published and logged.')],
+        ways_h2='What should an SEO services company actually do?', ways_caption='How SEO should be done by anyone, and how we do it',
+        ways_p=['An SEO services company should be judged on five jobs. The middle column is what any honest provider does. The right-hand column is how we do it, in writing.'],
+        ways=[('Choosing the searches', 'Research what customers ask, not what is easy to rank', 'Every search mapped, 300, 600 or 2,000 by plan'),
+              ('Auditing the site', 'Check it against a written list', '413 numbered checks, published in full'),
+              ('Doing the work', 'Ship changes; do not only report on them', 'Live by day 5, each item logged with its link'),
+              ('Reporting', 'Show what changed and what came in', 'Every 15 days, with the Relevance Rate'),
+              ('The agreement', 'Let the client leave and keep the work', 'Month to month; you own everything')],
+        cost_h2='How much should I pay for SEO services?',
+        cost_p=['What the work costs depends on how many searches have to be won, how hard your market is and how much is already in place. A one-trade business in one city needs a smaller map than a company serving several.', 'We do not list prices here. Thomas gives the price on the discovery call, once he has looked at your searches. What you should get for any price is the map, the list of what ships, and the terms in writing.'],
+        check_h2='How do I check the SEO I have now?', check_p=['Four checks, ten minutes. They tell you whether the search work you are paying for is reaching the engine.'],
+        checks=[('Check 1', 'Search three customer phrases', 'In a private window, type three things a customer would. Note where you appear for each.'),
+                ('Check 2', 'Count your pages in Google', 'Search site: and your domain. Compare the number with the pages you have.'),
+                ('Check 3', 'Read your title', 'Look at the browser tab on your home page. It should say what you do and where.'),
+                ('Check 4', 'Ask for last month’s log', 'A provider doing the work can list what shipped, with links.')],
+        example_p='For example, an electrician in Phoenix would run Check 1 with “panel upgrade phoenix”, “emergency electrician” and “ev charger installer near me”. Three searches, three different customers, and often three different results.',
+        check_more=('Why is my business not showing up on Google?', '/problems/not-showing-up-on-google/'),
+        where_h2='Which trades and cities do we work in?', where_p=['Any US business that depends on being found. We work from New Delhi, India, on US hours, and take one business per trade per city.'],
+        faq_about='this service', faq_h2='What do owners ask about SEO services?',
+        faqs=[('What are SEO services, in plain words?', 'They are the work that gets a business named when someone searches for what it sells. That means a site engines can read, other sources that confirm it, and a listing people choose.\nA report alone is not a service. The service is the changes that ship.'),
+              ('Are there affordable SEO services for small businesses?', 'Yes, when the work is sized to the business. A small business in one city needs a smaller search map and less work than a company in ten.\nAffordable means worth what it costs and visible to you. Ours is month to month, with no setup fee.'),
+              ('Are SEO services worth it?', 'They are when the work reaches customers you want, and you can see it being done. They are not when the only output is a monthly chart.\nJudge by what shipped and by the leads you confirm were relevant, which is what our 15-day report shows.'),
+              ('What is an SEO service provider responsible for?', 'For doing the work and showing it. A provider should name the searches it is working on, ship changes to the site and listings, and report what happened.\nIt is not responsible for a ranking nobody can promise, which is why our commitments are about work shipped and page-one share.'),
+              ('How long before results show?', 'On our plans, live work goes up by day 5 and the first report arrives on day 15. Rankings usually start moving between day 30 and day 60.\nBy the end of month four, at least half the searches in your map reach page one of Google, or we keep working at no charge.')],
+        closing_h2='Every search, mapped. <span class="gold">Then worked, every day.</span>',
+        closing_p='A discovery call is 20 to 30 minutes with Thomas. He shows you who AI names for your trade in your city, which customer searches you are missing, and whether your trade is still open.'))
     return P
 
-GATE = {
-    '/dsouza-equation/how-search-works/': {'kw': 'how does google search work;how do ai overviews work;how does chatgpt search work', 'type': 'pillar', 'example': 'ac repair dallas', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'crawl;index;engine'},
-    '/dsouza-equation/seo-vs-aeo-vs-geo/': {'kw': 'seo vs geo;seo vs aeo;seo vs aeo vs geo', 'type': 'pillar', 'example': 'roofer in denver', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'engine;assistant;invoice'},
-    '/elements/': {'kw': 'seo ranking factors;google ranking factors;seo factors', 'type': 'hub', 'example': 'plumber in miami', 'original': '113;v1.0, 23 Nov 2026', 'trade': 'title tag;reviews;listings'},
-    '/dsouza-equation/law-of-search/': {'kw': "d'souza's law of search;is seo dead;future of seo", 'type': 'pillar', 'example': 'when a pipe bursts', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'engine;question;customers'},
-    '/dsouza-equation/engines/': {'kw': 'ai search engines;best ai search engines;list of ai search engines', 'type': 'pillar', 'example': 'dentist in chicago', 'original': 'engine register;23 Nov 2026', 'trade': 'engine;assistant;customers'},
-    '/dsouza-equation/method/': {'kw': 'seo strategy;seo process;how does seo work', 'type': 'pillar', 'example': 'plumber in miami', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'log;report;day 5'},
-    '/dsouza-equation/standard/': {'kw': 'seo audit;seo audit checklist;website seo audit', 'type': 'reference', 'example': 'the title is 30 to 60 characters', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'checks;page;site'},
-    '/dsouza-equation/read/': {'kw': 'on page seo;what is on page seo;on page seo checklist', 'type': 'pillar', 'example': 'law firm in new york', 'original': '250;v1.0, 23 Nov 2026', 'trade': 'crawl;index;markup'},
-    '/dsouza-equation/confirm/': {'kw': 'off page seo;what is off page seo;off page seo techniques', 'type': 'pillar', 'example': 'contractor in atlanta', 'original': '99;v1.0, 23 Nov 2026', 'trade': 'listings;reviews;mentions'},
-    '/dsouza-equation/choose/': {'kw': 'conversion rate optimization;what is conversion rate optimization;conversion rate optimization examples', 'type': 'pillar', 'example': 'dentist in chicago', 'original': '50;v1.0, 23 Nov 2026', 'trade': 'reviews;listing;call'},
-    '/dsouza-equation/': {'kw': "d'souza equation;how do search engines rank websites;how does google rank websites", 'type': 'pillar', 'example': 'who fixes a burst pipe', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'engine;customers;reviews'},
-    '/ask/': {'kw': 'getting found online', 'type': 'tool', 'example': 'why did my reviews disappear', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'question;answer;page'},
-    '/book/': {'kw': 'book a discovery call', 'type': 'tool', 'example': 'roofing company denver', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'call;plumber;dentist'},
-    '/problems/seo-cost/': {'kw': 'how much does seo cost;seo pricing;seo cost for small business', 'type': 'problem', 'example': 'kitchen remodel atlanta', 'original': '177;v4, 18 Nov 2026', 'trade': 'quote;contract;month to month'},
-    '/problems/traffic-dropped/': {'kw': 'website traffic dropped suddenly;google ranking dropped dramatically;why has my website traffic dropped', 'type': 'problem', 'example': 'hvac repair dallas', 'original': '165;v4, 18 Nov 2026', 'trade': 'update;rankings;search console'},
-    '/problems/not-recommended-by-chatgpt/': {'kw': 'how to get my business recommended by chatgpt;how to get my business on chatgpt;how to show up in chatgpt', 'type': 'problem', 'example': 'divorce lawyer in new york', 'original': '211;v4, 18 Nov 2026', 'trade': 'lawyer;sources;reviews'},
-    '/problems/not-getting-leads/': {'kw': 'how to get more leads for my business;how to get more customers for my business;how to get more leads', 'type': 'problem', 'example': 'emergency dentist chicago', 'original': '186;v4, 18 Nov 2026', 'trade': 'dentist;reviews;listing'},
-    '/problems/not-showing-up-on-google/': {'kw': 'why is my business not showing up on google;why is my business not showing up on google maps;how to get my business on google', 'type': 'problem', 'example': 'roof repair denver', 'original': '170;v4, 18 Nov 2026', 'trade': 'roofer;profile;listing'},  # what the gate is told about each page: keywords, page type, the specific example and the dated original figure it must carry
-    '/problems/': {'kw': 'seo problems;common seo issues;seo issues', 'type': 'hub', 'example': 'emergency plumber miami', 'original': '166;v4, 18 Nov 2026', 'trade': 'plumber;roofer;dentist'},
-}

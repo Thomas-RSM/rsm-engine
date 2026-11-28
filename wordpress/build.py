@@ -230,6 +230,16 @@ def sync_assets():
     css = open(os.path.join(ROOT, 'site/assets/site.css'), encoding='utf-8').read().replace('url(/assets/', 'url(')
     open(os.path.join(HERE, 'rsm-theme/assets/site.css'), 'w', encoding='utf-8').write(css)
 
+def _icons():
+    d = {}
+    for a in soup.select('#services .services a'):
+        if a.h3 and a.svg: d[txt(a.h3)] = str(a.svg)
+    return d
+ICONS = _icons()
+
+def dump_gate():
+    json.dump(PAGES.GATE, open(os.path.join(HERE, 'qa', 'gate-pages.json'), 'w'), indent=0)
+
 if __name__ == '__main__':
     sync_assets()
     data = site()
@@ -242,3 +252,4 @@ if __name__ == '__main__':
     shutil.copy(os.path.join(HERE, 'rsm-theme/plugins/rsm-elements.zip'), os.path.join(HERE, 'dist/rsm-elements.zip'))
     zipdir(os.path.join(HERE, 'rsm-theme'), os.path.join(HERE, 'dist/rsm-theme.zip'), 'rsm-theme')
     for f in ('rsm-theme.zip', 'rsm-elements.zip'): print(f, os.path.getsize(os.path.join(HERE, 'dist', f)) // 1024, 'KB')
+    dump_gate()
