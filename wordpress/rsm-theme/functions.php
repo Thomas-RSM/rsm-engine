@@ -24,6 +24,11 @@ add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_script( 'rsm-site', $uri . 'site.js', array(), filemtime( $dir . 'site.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	wp_add_inline_script( 'rsm-site', 'window.RSM_BASE=' . wp_json_encode( $uri ) . ';', 'before' );
 }, 20 );
+/* The header and footer are drawn after the head has closed; load their layout styles in the head so nothing jumps. */
+add_action( 'wp_enqueue_scripts', function () {
+	if ( ! function_exists( 'rsm_part_id' ) || ! class_exists( '\Elementor\Core\Files\CSS\Post' ) ) { return; }
+	foreach ( array( 'header', 'footer' ) as $slot ) { $id = (int) rsm_part_id( $slot ); if ( $id ) { \Elementor\Core\Files\CSS\Post::create( $id )->enqueue(); } }
+}, 30 );
 add_action( 'wp_head', function () {
 	$uri = get_template_directory_uri() . '/assets/fonts/';
 	foreach ( array( 'sora.woff2', 'jakarta.woff2' ) as $f ) { printf( "<link rel=\"preload\" href=\"%s\" as=\"font\" type=\"font/woff2\" crossorigin>\n", esc_url( $uri . $f ) ); }

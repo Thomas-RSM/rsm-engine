@@ -36,7 +36,7 @@ function rsm_push_doc( $type, $doc, $overwrite ) {
 	update_post_meta( $id, '_elementor_version', defined( 'ELEMENTOR_VERSION' ) ? ELEMENTOR_VERSION : '3.0.0' );
 	update_post_meta( $id, '_elementor_data', wp_slash( rsm_push_tokens( wp_json_encode( $doc['data'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) ) ) );
 	delete_post_meta( $id, '_elementor_css' ); delete_post_meta( $id, '_elementor_element_cache' );
-	foreach ( (array) ( $doc['seo'] ?? array() ) as $k => $v ) { update_post_meta( $id, '_rsm_' . sanitize_key( $k ), sanitize_text_field( rsm_push_tokens( (string) $v ) ) ); }
+	foreach ( (array) ( $doc['seo'] ?? array() ) as $k => $v ) { if ( is_array( $v ) ) { $v = wp_json_encode( array_map( 'esc_url_raw', array_map( 'rsm_push_tokens', array_map( 'strval', $v ) ) ) ); update_post_meta( $id, '_rsm_' . sanitize_key( $k ), wp_slash( $v ) ); continue; } update_post_meta( $id, '_rsm_' . sanitize_key( $k ), sanitize_text_field( rsm_push_tokens( (string) $v ) ) ); }
 	return array( $id, $state );
 }
 function rsm_push_menu_items( $menu_id, $items, $parent = 0 ) {
@@ -77,11 +77,14 @@ add_action( 'rest_api_init', function () {
 		}
 		if ( isset( $b['css'] ) ) { update_option( 'rsm_extra_css', wp_strip_all_tags( (string) $b['css'] ), false ); $log[] = array( 'css' => strlen( (string) $b['css'] ) ); }
 		if ( isset( $b['schema_graph'] ) && is_array( $b['schema_graph'] ) ) { update_option( 'rsm_schema_graph', rsm_push_tokens( wp_json_encode( $b['schema_graph'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) ) ); $log[] = array( 'schema' => 'written' ); }
-		if ( isset( $b['llms'] ) ) { update_option( 'rsm_llms_txt', sanitize_textarea_field( (string) $b['llms'] ) ); $log[] = array( 'llms' => 'written' ); }
+		if ( isset( $b['llms'] ) ) { update_option( 'rsm_llms_txt', sanitize_textarea_field( (string) $b['llms'] ), false ); $log[] = array( 'llms' => 'written' ); }
+		/* a short list of settings an administrator may set from here: this plugin's own, and the cache plugin's speed switches */
+		foreach ( (array) ( $b['options'] ?? array() ) as $k => $v ) { $k = (string) $k; if ( preg_match( '/^(rsm_[a-z0-9_]+|litespeed\.conf\.(optm|cache|media|css|js)[a-z0-9_.-]*)$/', $k ) && is_scalar( $v ) ) { update_option( $k, $v ); $log[] = array( 'option' => $k ); } }
 		foreach ( (array) ( $b['trash'] ?? array() ) as $key ) { $id = rsm_push_find( 'page', sanitize_key( $key ) ); if ( $id ) { wp_trash_post( $id ); $log[] = array( 'trashed' => $key ); } }
 		\Elementor\Plugin::$instance->files_manager->clear_cache();
+		do_action( 'rsm_after_push' );
 		do_action( 'litespeed_purge_all' );
-		return array( 'ok' => true, 'log' => $log );
+		return array( 'ok' => true, 'log' => $log, 'llms_file' => file_exists( ABSPATH . 'llms.txt' ) ? ( is_writable( ABSPATH . 'llms.txt' ) ? 'synced' : 'not writable' ) : 'none' );
 	} ) );
 } );
 

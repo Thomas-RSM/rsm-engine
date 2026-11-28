@@ -205,6 +205,7 @@ class RSM_W_Chapters extends RSM_Widget {
 	<?php }
 }
 class RSM_W_Film extends RSM_Widget {
+	protected function is_dynamic_content(): bool { return true; }
 	public function get_name() { return 'rsm-film'; }
 	public function get_title() { return __( 'RSM Film', 'rsm-elements' ); }
 	public function get_icon() { return 'eicon-youtube'; }
@@ -420,7 +421,11 @@ class RSM_W_Console extends RSM_Widget {
 	private function tok( $text, $names ) { $h = esc_html( $text ); foreach ( $names as $k => $v ) { $h = str_replace( '{' . $k . '}', $v, $h ); } return $h; }
 	protected function render() { $s = $this->s(); $tn = ''; $cn = '';
 		foreach ( (array) $s['trades'] as $t ) { if ( $t['slug'] === $s['trade'] ) { $tn = $t['label']; } } foreach ( (array) $s['cities'] as $c ) { if ( $c['slug'] === $s['city'] ) { $cn = $c['label']; } }
-		$sp = array( 'trade' => '<span data-trade-name>' . esc_html( strtolower( $tn ) ) . '</span>', 'city' => '<span data-city-name>' . esc_html( $cn ) . '</span>', 'ex1' => '<span data-ex1></span>', 'ex2' => '<span data-ex2></span>', 'kinds' => '<span data-kinds></span>' );
+		/* first paint carries the real figures for the default trade and city; the script takes over on change */
+		$first = array( 'n' => '', 'ex' => array( '', '' ), 'k' => '' ); $cf = get_template_directory() . '/assets/console-data.json';
+		if ( is_readable( $cf ) ) { $cd = json_decode( (string) file_get_contents( $cf ), true ); if ( isset( $cd[ $s['trade'] ]['c'][ $s['city'] ] ) ) { $first = array_merge( $first, $cd[ $s['trade'] ]['c'][ $s['city'] ] ); } } // phpcs:ignore WordPress.WP.AlternativeFunctions
+		ob_start();
+		$sp = array( 'trade' => '<span data-trade-name>' . esc_html( strtolower( $tn ) ) . '</span>', 'city' => '<span data-city-name>' . esc_html( $cn ) . '</span>', 'ex1' => '<span data-ex1>' . esc_html( $first['ex'][0] ?? '' ) . '</span>', 'ex2' => '<span data-ex2>' . esc_html( $first['ex'][1] ?? '' ) . '</span>', 'kinds' => '<span data-kinds>' . esc_html( (string) $first['k'] ) . '</span>' );
 		$sel = function ( $name, $rows, $cur ) { $o = '<select name="' . $name . '" id="' . $name . '">'; foreach ( (array) $rows as $r ) { $o .= sprintf( '<option value="%s"%s>%s</option>', esc_attr( $r['slug'] ), selected( $r['slug'], $cur, false ), esc_html( $r['label'] ) ); } return $o . '</select>'; }; ?>
 		<form class="console glass" action="<?php echo rsm_url( $s['action'] ); ?>" method="get" aria-labelledby="console-h" data-first="<?php echo esc_attr( $s['trade'] ); ?>" data-c="<?php echo esc_attr( wp_json_encode( array( 'note' => $s['c_note'], 'noteOther' => $s['c_note_other'], 'big' => $s['c_big'], 'bigOther' => $s['c_big_other'], 'line' => $s['c_line'], 'lineOther' => $s['c_line_other'] ) ) ); ?>">
 			<div class="console-head"><h2 id="console-h" class="console-title"><?php echo esc_html( $s['title'] ); ?></h2><span class="console-eq"><?php echo esc_html( $s['eq'] ); ?></span></div>
@@ -438,7 +443,8 @@ class RSM_W_Console extends RSM_Widget {
 			<ul class="kinds" id="kinds" aria-label="Kinds of search in this map"></ul>
 			<?php if ( $s['foot'] ) : ?><p class="console-foot"><?php echo esc_html( $s['foot'] ); ?></p><?php endif; ?>
 		</form>
-	<?php }
+	<?php $html = ob_get_clean(); $n = $first['n'] ? number_format( (int) $first['n'] ) : ''; echo str_replace( array( '<b data-count></b>', '<span data-count></span>' ), array( '<b data-count>' . esc_html( $n ) . '</b>', '<span data-count>' . esc_html( $n ) . '</span>' ), $html ); // phpcs:ignore WordPress.Security.EscapeOutput
+	}
 }
 
 /* ============================== cards ============================== */
@@ -527,7 +533,7 @@ class RSM_W_US_Map extends RSM_Widget {
 		$cities = array_values( (array) $s['cities'] ); usort( $cities, function ( $a, $b ) { return (int) ! empty( $a['launch'] ) - (int) ! empty( $b['launch'] ); } ); $li = 0;
 		foreach ( $cities as $c ) { $x = round( ( (float) $c['lon'] + 125 ) * cos( deg2rad( 38 ) ) * 13.2 + 40 ); $y = round( ( 50 - (float) $c['lat'] ) * 16.6 ); $L = ! empty( $c['launch'] ); $gap = $L ? 11 : 8;
 			$pos = array( 'r' => array( $x + $gap, $y + 3.5, 'start' ), 'l' => array( $x - $gap, $y + 3.5, 'end' ), 't' => array( $x, $y - $gap - 1, 'middle' ), 'b' => array( $x, $y + $gap + 9, 'middle' ) ); $p = $pos[ $c['side'] ] ?? $pos['r'];
-			$o .= '<g class="city' . ( $L ? ' launch' : '' ) . '"' . ( $L ? ' style="--d:' . number_format( $li++ * 0.35, 2 ) . 's"' : '' ) . '>' . ( $L ? '<circle class="halo" cx="' . $x . '" cy="' . $y . '" r="5"/>' : '' ) . '<circle class="pin" cx="' . $x . '" cy="' . $y . '" r="' . ( $L ? '4.5' : '2.8' ) . '"/>' . ( ! empty( $c['show'] ) ? '<text x="' . $p[0] . '" y="' . $p[1] . '" text-anchor="' . $p[2] . '">' . esc_html( $c['name'] ) . '</text>' : '<title>' . esc_html( $c['name'] ) . '</title>' ) . '</g>'; }
+			$o .= '<g class="city' . ( $L ? ' launch' : '' ) . '" aria-label="' . esc_attr( $c['name'] ) . '"' . ( $L ? ' style="--d:' . number_format( $li++ * 0.35, 2 ) . 's"' : '' ) . '>' . ( $L ? '<circle class="halo" cx="' . $x . '" cy="' . $y . '" r="5"/>' : '' ) . '<circle class="pin" cx="' . $x . '" cy="' . $y . '" r="' . ( $L ? '4.5' : '2.8' ) . '"/>' . ( ! empty( $c['show'] ) ? '<text x="' . $p[0] . '" y="' . $p[1] . '" text-anchor="' . $p[2] . '">' . esc_html( $c['name'] ) . '</text>' : '' ) . '</g>'; }
 		$key = '<ul class="map-key"><li class="kl">' . esc_html( $s['k_launch'] ) . '</li><li class="km">' . esc_html( $s['k_mapped'] ) . '</li></ul>';
 		echo '<figure class="plate glass map-plate">' . $o . '</svg><div class="map-foot">' . ( $s['caption'] ? '<figcaption class="caption">' . esc_html( $s['caption'] ) . '</figcaption>' : '' ) . $key . '</div></figure>'; // phpcs:ignore
 	}
@@ -617,6 +623,7 @@ class RSM_W_Portrait extends RSM_Widget {
 	<?php }
 }
 class RSM_W_FAQ extends RSM_Widget {
+	protected function is_dynamic_content(): bool { return true; }
 	public function get_name() { return 'rsm-faq'; }
 	public function get_title() { return __( 'RSM Questions and answers', 'rsm-elements' ); }
 	public function get_icon() { return 'eicon-help-o'; }

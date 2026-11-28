@@ -84,8 +84,9 @@
 .admin-bar .site-header{top:32px}
 @media (max-width:782px){.admin-bar .site-header{top:46px}}
 @media (max-width:1460px){.rs-nav-right{--gap:12px;gap:12px}.rs-cta .elementor-button{padding:0 16px;font-size:14px}}
-@media (max-width:1339px){.rs-masthead .elementor-widget-rsm-nav{display:none}}
-@media (min-width:1340px){.rs-masthead .elementor-widget-rsm-mobile-menu{display:none}}
+@media (max-width:1179px){.rs-masthead .elementor-widget-rsm-nav{display:none}}
+@media (min-width:1180px){.rs-masthead .elementor-widget-rsm-mobile-menu{display:none}}
+@media (min-width:1180px) and (max-width:1339px){.rs-masthead .nav{display:block!important}.rs-masthead .menu{display:none!important}.rs-masthead .rs-phone,.rs-masthead .brand-tag{display:none!important}.rs-masthead>.e-con-inner{gap:18px!important}.rs-masthead .nav>ul{gap:2px}.rs-masthead .nav .top{font-size:14.5px;padding-left:10px;padding-right:10px}}
 @media (max-width:1100px){.rs-phone{display:none}}
 @media (max-width:900px){.rs-nav-right{display:none}}
 
@@ -152,7 +153,6 @@ svg.eg-tall{display:none}
 .rs-hero .rs-actions .elementor-button{min-height:48px;padding:0 20px;font-size:15px}
 /* the engines picture: its tall drawing */
 svg.eg-wide{display:none}svg.eg-tall{display:block;width:100%;max-width:400px;height:auto;margin:0 auto}
-.rs-orbit-w .orbit{height:500px}
 /* film first, chapters after; photo after the words */
 .e-con:has(>.elementor-widget-rsm-chapters){display:contents!important}
 .e-con:has(>.e-con>.elementor-widget-rsm-chapters)>.elementor-widget-rsm-film{order:1!important;margin-bottom:22px!important}
@@ -378,3 +378,20 @@ svg.eg-wide{display:none}svg.eg-tall{display:block;width:100%;max-width:400px;he
 .rs-path-sync.is-live .tick.on circle{fill:#16364A}
 .rs-path-sync.is-still .base,.rs-path-sync.is-still .ms,.rs-path-sync.is-still .tick,.rs-path-sync.is-still .tick path{opacity:1}
 .rs-journey .rs-day.done{border-color:rgba(248,177,15,.35)}
+
+/* intros never wider than their column */
+.rsm .rs-intro{max-width:100%}
+
+.rsm .quote blockquote{margin:0;padding:0;border:0;font:inherit;color:inherit;quotes:none}
+.rsm .quote blockquote footer{font-size:14px;font-family:var(--sans);font-weight:500;color:var(--text-3);margin-top:8px}
+
+/* ---- nothing jumps while the page loads ---- */
+.site-header{min-height:75px}
+.site-header .rs-masthead{--flex-direction:row;--align-items:center;--justify-content:space-between;--flex-wrap:nowrap;--min-height:74px;--gap:28px;--row-gap:28px;--column-gap:28px}
+.site-header .rs-masthead,.site-header .rs-masthead>.e-con-inner{display:flex;flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:nowrap;min-height:74px}
+.site-header .rs-nav-right{--flex-direction:row;--align-items:center;display:flex;flex-direction:row;align-items:center}
+.rs-orbit-w .orbit{height:840px}
+@media (max-width:1099px){.rs-orbit-w .orbit{height:720px}}
+@media (max-width:819px){.rs-orbit-w .orbit{height:800px}}
+@media (max-width:479px){.rs-orbit-w .orbit{height:500px}}
+@media (max-width:760px){.rsm .lab .lab-out span{font-size:12px!important}}

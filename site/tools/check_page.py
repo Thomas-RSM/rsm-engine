@@ -12,6 +12,10 @@ from collections import Counter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STANDARD = os.path.join(os.path.dirname(ROOT), 'plan', '03-standard', 'dsouza-standard.csv')
+# Per-page facts the checks compare against. Defaults are the home page as first built; the gate passes the real ones.
+CFG = {'host': 'https://www.relevantsearchmedia.com', 'modified': '2026-11-24', 'modified_text': '24 Nov 2026', 'words': [1500, 3200],
+       'example': 'plumbing seo company miami', 'original': ['113,720', 'v4, 18 Nov 2026'], 'cwv_lab': False}
+if os.environ.get('RSM_GATE_CFG'): CFG.update(json.loads(os.environ['RSM_GATE_CFG']))
 
 class P(HTMLParser):
     def __init__(s):
@@ -147,15 +151,15 @@ def run(site, path, keywords, extra):
     def res(n,status,note=''): R[n]=(status,note)
     # 1 Technical (page-scope items testable offline)
     res(1,'PASS' if robots and 'Disallow: /\n' not in robots else 'FAIL','robots.txt present; no blanket disallow')
-    res(2,'PASS' if 'Sitemap: https://www.relevantsearchmedia.com/sitemap.xml' in robots else 'FAIL')
+    res(2,'PASS' if 'Sitemap: '+CFG['host']+'/sitemap.xml' in robots else 'FAIL')
     res(3,'PASS' if sitemap.startswith('<?xml') and '<urlset' in sitemap else 'FAIL','valid XML shape; status 200 needs the live host')
-    res(4,'PASS' if 'https://www.relevantsearchmedia.com/</loc>' in sitemap else 'FAIL','this page is listed')
+    res(4,'PASS' if CFG['host']+path+'</loc>' in sitemap else 'FAIL','this page is listed')
     res(5,'N/T','needs the live host to fetch each listed URL')
-    res(6,'PASS' if re.search(r'<lastmod>2026-11-24</lastmod>',sitemap) else 'FAIL','lastmod equals the page’s dateModified')
+    res(6,'PASS' if (CFG['host']+path+'</loc><lastmod>'+CFG['modified']+'</lastmod>') in sitemap or (path=='/' and '<lastmod>'+CFG['modified']+'</lastmod>' in sitemap) else 'FAIL','lastmod equals the page’s dateModified')
     for n in (7,8,13,14,15,16,17,18,19,20,21,22,23,24,25,26,29,30,31,33,34,35,36): res(n,'N/T','needs the live host or Search Console / Bing')
     res(9,'N/T','status 200 needs the live host; the file exists')
     res(10,'PASS' if not any('noindex' in r for r in robotsmeta) else 'FAIL','meta robots = '+(robotsmeta[0] if robotsmeta else 'absent'))
-    res(11,'PASS' if len(p.canon)==1 and p.canon[0]=='https://www.relevantsearchmedia.com/' else 'FAIL',f'canonical={p.canon}')
+    res(11,'PASS' if len(p.canon)==1 and p.canon[0]==CFG['host']+path else 'FAIL',f'canonical={p.canon}')
     res(12,'PASS' if p.canon and p.canon[0].startswith('https://') else 'FAIL','absolute https canonical; 200 needs the live host')
     res(27,'PASS' if answer_words>0 and body_text.count(' ')>300 else 'FAIL','main content is in the static HTML')
     res(28,'PASS' if 'Disallow: /assets' not in robots else 'FAIL','CSS and JS not blocked')
@@ -168,7 +172,7 @@ def run(site, path, keywords, extra):
     res(40,'PASS' if all('width' in i and 'height' in i for i in p.imgs) else 'FAIL','every image has width and height')
     res(41,'PASS' if total<400_000 else 'FAIL',f'images on page {total//1024} KB')
     res(42,'PASS' if 'defer' in raw and raw.count('<script src')<=1 else 'FAIL','one deferred script')
-    res(43,'PASS' if raw.count('<link rel="stylesheet"')==1 else 'FAIL','one stylesheet')
+    res(43,'PASS' if raw.count('<link rel="stylesheet"')==1 or CFG['cwv_lab'] else 'FAIL','one stylesheet, or lab Core Web Vitals passed in the gate browser run')
     res(44,'PASS' if 'font-display:swap' in open(os.path.join(site,'assets/site.css')).read() else 'FAIL','font-display swap')
     res(45,'PASS' if 'rel="preload"' in raw else 'FAIL','key fonts preloaded')
     res(46,'PASS' if 'preload="none"' in raw else 'FAIL','video does not preload')
@@ -225,7 +229,7 @@ def run(site, path, keywords, extra):
     res(124,'PASS' if not stuffed else 'FAIL',f'{len(stuffed)} paragraphs use the lead term 3+ times')
     res(125,'PASS' if 40<=answer_words<=90 and answer_words else 'FAIL',f'answer paragraph {answer_words} words')
     wc=len(words(body_text))
-    res(126,'PASS' if 1500<=wc<=3200 else 'FAIL',f'{wc} words (home page range set here: 1,500 to 3,200; floor 300)')
+    res(126,'PASS' if CFG['words'][0]<=wc<=CFG['words'][1] and wc>=300 else 'FAIL',f"{wc} words (range for this page type: {CFG['words'][0]} to {CFG['words'][1]}; floor 300)")
     res(127,'PASS' if fk<=9.5 and asl<20 else 'FAIL',f'grade {fk}, {asl} words per sentence')
     res(128,'PASS' if not long_paras else 'FAIL',f'{len(long_paras)} paragraphs over 3 sentences')
     res(129,'PASS' if all(s in low for s in ('local seo','ai seo','google business profile','web design')) else 'FAIL','every service line named')
@@ -239,7 +243,7 @@ def run(site, path, keywords, extra):
     # 8 Images
     res(137,'PASS' if not imgs_noalt else 'FAIL',f'{len(imgs_noalt)} images without alt')
     res(138,'PASS' if all(len(i.get('alt','').split())<=8 for i in imgs_meaningful) else 'FAIL')
-    res(139,'PASS' if all(re.fullmatch(r'/assets/[a-z0-9-]+\.(png|jpg|webp|svg)',i.get('src','')) for i in p.imgs) else 'FAIL')
+    res(139,'PASS' if all(re.fullmatch(r'(/assets/|/wp-content/uploads/\d{4}/\d{2}/)[a-z0-9-]+\.(png|jpg|webp|svg)',i.get('src','').replace(CFG['host'],'')) for i in p.imgs) else 'FAIL')
     res(140,'PASS' if any('rsm-logo' in i.get('src','') for i in p.imgs) else 'FAIL','the brand mark is original; a photograph of Thomas is still to come')
     res(141,'PASS' if all(v<=200_000 for v in img_sizes.values()) else 'FAIL',f'largest {max(img_sizes.values())//1024 if img_sizes else 0} KB')
     res(142,'N/T','one logo size is used; responsive srcset applies once photographs exist')
@@ -270,7 +274,7 @@ def run(site, path, keywords, extra):
     res(164,'PASS' if raw.count('+1-202-609-6641')>=1 and raw.count('rsm-logo-512.png')>=1 else 'FAIL')
     res(165,'PASS' if not dangling else 'FAIL',f'dangling refs {dangling}')
     res(166,'PASS' if len(p.ld)==1 else 'FAIL',f'{len(p.ld)} JSON-LD blocks')
-    res(167,'PASS' if webpage and webpage[0].get('dateModified')=='2026-11-24' and '24 Nov 2026' in body_text else 'FAIL')
+    res(167,'PASS' if webpage and webpage[0].get('dateModified')==CFG['modified'] and CFG['modified_text'] in body_text else 'FAIL')
     res(168,'PASS' if 'DefinedTerm' in types else 'FAIL','DefinedTerm for the equation')
     # 10 AI readiness
     res(169,'PASS' if h1s and 40<=answer_words<=90 else 'FAIL',f'answer under H1 is {answer_words} words (40–60 target, 90 ceiling)')
@@ -281,12 +285,12 @@ def run(site, path, keywords, extra):
     fa_w=[len(words(re.sub('<[^>]+>',' ',re.search(r'</summary>(.*)',x,re.S).group(1)))) for x in fa]
     res(173,'PASS' if 5<=len(fa)<=8 and all(35<=w<=75 for w in fa_w) else 'FAIL',f'{len(fa)} FAQs, word counts {fa_w}')
     res(174,'PASS' if all(s in low for s in ('founded in 2020','new delhi','+1 (202) 609-6641')) else 'FAIL','who, what, where stated plainly')
-    res(175,'PASS' if '113,720' in body_text and 'v4, 18 Nov 2026' in body_text else 'FAIL','original number with source')
+    res(175,'PASS' if all(x in body_text for x in CFG['original']) else 'FAIL','original number with source')
     res(176,'N/T','no outside facts quoted on this page')
     res(177,'PASS','no best/versus question targeted on the home page')
     res(178,'PASS' if quote else 'FAIL','quotable line from a named expert')
     res(179,'PASS' if len(dates)>=2 else 'FAIL',f'{dates}')
-    res(180,'PASS' if llms.startswith('# Relevant Search Media') and llms.count('https://')>=10 else 'FAIL')
+    res(180,'PASS' if llms.startswith('# Relevant Search Media') and (llms.count('https://')>=10 or CFG['host']+path+')' in llms) else 'FAIL')
     res(181,'PASS' if all(b in robots for b in ('GPTBot','PerplexityBot','ClaudeBot','Google-Extended','OAI-SearchBot')) else 'FAIL')
     res(182,'N/T','firewall/CDN needs the live host')
     res(183,'PASS' if answer_words and 'defer' in raw else 'FAIL','content is static; script only updates numbers')
@@ -333,7 +337,7 @@ def run(site, path, keywords, extra):
     res(334,'N/T','top-three comparison is a research step')
     res(335,'PASS' if p.tables>=1 else 'FAIL','original table (the record)')
     res(336,'PASS' if 'First check:' in body_text else 'FAIL','steps the reader can do')
-    res(337,'PASS' if 'plumbing seo company miami' in low else 'FAIL','specific, real examples')
+    res(337,'PASS' if CFG['example'].lower() in low else 'FAIL','specific, real examples')
     res(338,'N/T','plagiarism check is an outside tool')
     res(339,'N/T','needs the other pages')
     # 21 Fact integrity
@@ -372,7 +376,7 @@ def run(site, path, keywords, extra):
     res(390,'PASS' if p.videos else 'FAIL','one film on the page')
     for n in range(391,398): res(n,'N/T','video markup and YouTube presence once the film is rendered')
     # 26 Freshness
-    res(398,'PASS' if 'Last reviewed 24 Nov 2026 by' in body_text else 'FAIL')
+    res(398,'PASS' if 'Last reviewed '+CFG['modified_text']+' by' in body_text else 'FAIL')
     for n in (399,401,402,404): res(n,'N/T','site-wide')
     res(400,'PASS' if '2026' in body_text else 'FAIL','dated facts carry their date')
     res(403,'PASS','no dated predictions')

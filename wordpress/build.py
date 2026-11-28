@@ -107,7 +107,7 @@ def home():
                 'minmax(0,6fr) minmax(0,6fr)', 'minmax(0,1fr)', 'minmax(0,1fr)', g=(24, 64), align='end', cls='rs-eq-head rv')
     eq_head['settings']['margin'] = box(0, 0, 36, 0)
     E.append(S([eq_head, W('rsm-engines', {'logo': {'url': '{{media:logo}}', 'id': '{{mediaid:logo}}'}}, 'rv', mb=28), W('rsm-lab', {'logo': {'url': '{{media:logo}}', 'id': '{{mediaid:logo}}'}}, 'rv'),
-                T('<p>%s</p><footer>%s</footer>' % (inner(bq.p), inner(bq.footer)), 'quote rv', mt=56)], eid='equation'))
+                T('<blockquote><p>%s</p><footer>%s</footer></blockquote>' % (inner(bq.p), inner(bq.footer)), 'quote rv', mt=56)], eid='equation'))
     # map
     m = soup.select_one('#map')
     E.append(S([intro(m), W('rsm-console', {'foot': txt(m.select_one('.console-foot'))}, 'rv')], eid='map'))
@@ -211,9 +211,9 @@ def site():
             'space_between_widgets': {'unit': 'px', 'size': 0, 'column': '0', 'row': '0', 'sizes': [], 'isLinked': True}, 'active_breakpoints': ['viewport_mobile', 'viewport_tablet'], 'viewport_mobile': 760, 'viewport_tablet': 1100,
         },
         'parts': {'header': {'key': 'header', 'title': 'Site header', 'slug': 'site-header', 'data': header()}, 'footer': {'key': 'footer', 'title': 'Site footer', 'slug': 'site-footer', 'data': footer(foot)}},
-        'pages': [{'key': 'home', 'title': 'Home', 'slug': 'home', 'front': True, 'seo': {'title': txt(head.title), 'description': head.find('meta', attrs={'name': 'description'})['content'], 'image': '{{media:og}}'}, 'data': home()}],
+        'pages': [{'key': 'home', 'title': 'Home', 'slug': 'home', 'front': True, 'seo': {'title': txt(head.title), 'description': head.find('meta', attrs={'name': 'description'})['content'], 'image': '{{media:og}}', 'published': '2026-11-24', 'reviewed': '2026-11-24', 'images': ['{{media:og}}', '{{media:logo}}']}, 'data': home()}],
         'schema_graph': json.loads(gs),
-        'llms': open(os.path.join(ROOT, 'site/llms.txt'), encoding='utf-8').read().replace(DOMAIN, '{{home}}'),
+        'llms': open(os.path.join(ROOT, 'site/llms.txt'), encoding='utf-8').read().split('## Start here')[0].replace(DOMAIN, '{{home}}').rstrip() + '\n\n## Pages\n{{pages}}\n\n## Site files\n- [Sitemap]({{home}}/sitemap.xml)\n',
     }
 
 def zipdir(src, dest, top):

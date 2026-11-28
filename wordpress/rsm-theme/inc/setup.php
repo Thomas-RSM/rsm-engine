@@ -105,7 +105,7 @@ function rsm_import_doc( $type, $doc, $reset, $tokens ) {
 	update_post_meta( $id, '_elementor_version', defined( 'ELEMENTOR_VERSION' ) ? ELEMENTOR_VERSION : '3.0.0' );
 	update_post_meta( $id, '_elementor_data', wp_slash( $json ) );
 	delete_post_meta( $id, '_elementor_css' ); delete_post_meta( $id, '_elementor_element_cache' );
-	foreach ( (array) ( $doc['seo'] ?? array() ) as $k => $v ) { update_post_meta( $id, '_rsm_' . $k, strtr( $v, $tokens ) ); }
+	foreach ( (array) ( $doc['seo'] ?? array() ) as $k => $v ) { if ( is_array( $v ) ) { $v = wp_slash( wp_json_encode( array_map( function ( $x ) use ( $tokens ) { return strtr( (string) $x, $tokens ); }, $v ) ) ); update_post_meta( $id, '_rsm_' . $k, $v ); continue; } update_post_meta( $id, '_rsm_' . $k, strtr( $v, $tokens ) ); }
 	return array( $id, $state );
 }
 /** Imports everything. Safe to run again: anything already imported is kept, never duplicated. */
