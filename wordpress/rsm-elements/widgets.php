@@ -48,14 +48,14 @@ abstract class RSM_Widget extends \Elementor\Widget_Base {
 			$this->add_field( $this, $f );
 		}
 		if ( $open ) { $this->end_controls_section(); }
-		// Style tab: colours and type for the three kinds of text every widget uses.
-		$this->start_controls_section( 'sec_style', array( 'label' => __( 'Colours and type', 'rsm-elements' ), 'tab' => CM::TAB_STYLE ) );
+		// Style tab: colors and type for the three kinds of text every widget uses.
+		$this->start_controls_section( 'sec_style', array( 'label' => __( 'Colors and type', 'rsm-elements' ), 'tab' => CM::TAB_STYLE ) );
 		$t = $this->style_targets();
-		$this->add_control( 'st_title_color', array( 'label' => __( 'Heading colour', 'rsm-elements' ), 'type' => CM::COLOR, 'selectors' => array( '{{WRAPPER}} ' . $t['title'] => 'color: {{VALUE}};' ) ) );
+		$this->add_control( 'st_title_color', array( 'label' => __( 'Heading color', 'rsm-elements' ), 'type' => CM::COLOR, 'selectors' => array( '{{WRAPPER}} ' . $t['title'] => 'color: {{VALUE}};' ) ) );
 		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), array( 'name' => 'st_title_type', 'label' => __( 'Heading type', 'rsm-elements' ), 'selector' => '{{WRAPPER}} ' . $t['title'] ) );
-		$this->add_control( 'st_text_color', array( 'label' => __( 'Text colour', 'rsm-elements' ), 'type' => CM::COLOR, 'selectors' => array( '{{WRAPPER}} ' . $t['text'] => 'color: {{VALUE}};' ) ) );
+		$this->add_control( 'st_text_color', array( 'label' => __( 'Text color', 'rsm-elements' ), 'type' => CM::COLOR, 'selectors' => array( '{{WRAPPER}} ' . $t['text'] => 'color: {{VALUE}};' ) ) );
 		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), array( 'name' => 'st_text_type', 'label' => __( 'Text type', 'rsm-elements' ), 'selector' => '{{WRAPPER}} ' . $t['text'] ) );
-		$this->add_control( 'st_accent_color', array( 'label' => __( 'Accent colour', 'rsm-elements' ), 'type' => CM::COLOR, 'selectors' => array( '{{WRAPPER}} ' . $t['accent'] => 'color: {{VALUE}};' ) ) );
+		$this->add_control( 'st_accent_color', array( 'label' => __( 'Accent color', 'rsm-elements' ), 'type' => CM::COLOR, 'selectors' => array( '{{WRAPPER}} ' . $t['accent'] => 'color: {{VALUE}};' ) ) );
 		$this->end_controls_section();
 	}
 	protected function s() { return $this->get_settings_for_display(); }
@@ -156,11 +156,11 @@ class RSM_W_Orbit extends RSM_Widget {
 	public function get_title() { return __( 'RSM Orbit', 'rsm-elements' ); }
 	public function get_icon() { return 'eicon-globe'; }
 	protected function fields() { return array(
-		array( 'logo', __( 'Centre logo', 'rsm-elements' ), 'media', rsm_asset( 'rsm-logo-512.png' ) ),
-		array( 'label', __( 'Description for screen readers', 'rsm-elements' ), 'textarea', 'Your business at the centre, with the places customers look for it in orbit.' ),
+		array( 'logo', __( 'Center logo', 'rsm-elements' ), 'media', rsm_asset( 'rsm-logo-512.png' ) ),
+		array( 'label', __( 'Description for screen readers', 'rsm-elements' ), 'textarea', 'Your business at the center, with the places customers look for it in orbit.' ),
 		array( 'tiles', __( 'Tiles (inner ring first)', 'rsm-elements' ), 'repeater', rsm_data( 'icons.json' ), array( 'title' => '{{{ name }}}', 'fields' => array(
 			array( 'name', __( 'Name', 'rsm-elements' ), 'text', '' ),
-			array( 'c', __( 'Glow colour', 'rsm-elements' ), 'color', '#6F8CF0' ),
+			array( 'c', __( 'Glow color', 'rsm-elements' ), 'color', '#6F8CF0' ),
 			array( 'svg', __( 'Icon (SVG code, 48 by 48)', 'rsm-elements' ), 'code', '' ),
 		) ) ),
 	); }
@@ -339,7 +339,7 @@ class RSM_W_Lab extends RSM_Widget {
 			array( 'where_label', __( 'Bold lead-in', 'rsm-elements' ), 'text', '' ), array( 'where', __( 'Where the work happens', 'rsm-elements' ), 'textarea', '' ),
 			array( 'more', __( 'Link text', 'rsm-elements' ), 'text', '' ), array( 'link', __( 'Link', 'rsm-elements' ), 'url', '' ),
 			array( 'value', __( 'Starting strength (0 to 100)', 'rsm-elements' ), 'number', 75, array( 'min' => 0, 'max' => 100 ) ),
-			array( 'color', __( 'Colour', 'rsm-elements' ), 'color', '#F8B10F' ),
+			array( 'color', __( 'Color', 'rsm-elements' ), 'color', '#F8B10F' ),
 		) ) ),
 		array( 'result', __( 'Result column and foot', 'rsm-elements' ), 'section' ),
 		array( 'r_k', __( 'Small label', 'rsm-elements' ), 'text', 'The result' ),
@@ -458,7 +458,7 @@ class RSM_W_Card extends RSM_Widget {
 		array( 'svg', __( 'Picture or icon (SVG code)', 'rsm-elements' ), 'code', '', array( 'condition' => array( 'variant' => array( 'problem', 'service' ) ) ) ),
 		array( 'number', __( 'Figure, numeral or small label', 'rsm-elements' ), 'text', '', array( 'condition' => array( 'variant' => array( 'stat', 'clause', 'day', 'cadence' ) ) ) ),
 		array( 'tag', __( 'Tag or status', 'rsm-elements' ), 'text', '', array( 'condition' => array( 'variant' => array( 'problem', 'look', 'stat' ) ) ) ),
-		array( 'status', __( 'Status colour', 'rsm-elements' ), 'select', 'green', array( 'options' => array( 'green' => __( 'Green', 'rsm-elements' ), 'gold' => __( 'Gold', 'rsm-elements' ) ), 'condition' => array( 'variant' => 'look' ) ) ),
+		array( 'status', __( 'Status color', 'rsm-elements' ), 'select', 'green', array( 'options' => array( 'green' => __( 'Green', 'rsm-elements' ), 'gold' => __( 'Gold', 'rsm-elements' ) ), 'condition' => array( 'variant' => 'look' ) ) ),
 		array( 'title', __( 'Title', 'rsm-elements' ), 'text', 'Title' ),
 		array( 'text', __( 'Text (bold with <b>)', 'rsm-elements' ), 'textarea', '' ),
 		array( 'link_text', __( 'Link text', 'rsm-elements' ), 'text', '' ),
@@ -678,16 +678,16 @@ class RSM_W_Ask extends RSM_Widget {
 	<?php }
 }
 
-/** The enquiry form. Posts to this site, stores the enquiry under "Enquiries" in the dashboard and emails the owner. */
+/** The inquiry form. Posts to this site, stores the inquiry under "Inquiries" in the dashboard and emails the owner. */
 class RSM_W_Form extends RSM_Widget {
 	public function get_name() { return 'rsm-form'; }
-	public function get_title() { return __( 'RSM Enquiry form', 'rsm-elements' ); }
+	public function get_title() { return __( 'RSM Inquiry form', 'rsm-elements' ); }
 	public function get_icon() { return 'eicon-form-horizontal'; }
 	protected function style_targets() { return array( 'title' => '.lf-title', 'text' => '.lead-form label', 'accent' => '.lead-form button' ); }
 	protected function fields() { return array(
 		array( 'title', __( 'Heading', 'rsm-elements' ), 'text', 'Book a discovery call' ),
 		array( 'intro', __( 'Line under the heading', 'rsm-elements' ), 'textarea', '20 to 30 minutes with Thomas. Tell us your trade and city and we reply with times.' ),
-		array( 'kind', __( 'What this form is for (stored with each enquiry)', 'rsm-elements' ), 'text', 'Discovery call' ),
+		array( 'kind', __( 'What this form is for (stored with each inquiry)', 'rsm-elements' ), 'text', 'Discovery call' ),
 		array( 'ask_business', __( 'Ask for the business name', 'rsm-elements' ), 'switch', 'yes' ),
 		array( 'ask_phone', __( 'Ask for a phone number', 'rsm-elements' ), 'switch', 'yes' ),
 		array( 'ask_place', __( 'Ask for trade and city', 'rsm-elements' ), 'switch', 'yes' ),

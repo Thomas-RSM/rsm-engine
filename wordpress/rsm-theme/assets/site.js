@@ -429,7 +429,7 @@ window.RSMInit();
   window.addEventListener('load', go);
 })();
 
-/* ---- ask: narrow the questions as you type; enquiry form: send without leaving the page ---- */
+/* ---- ask: narrow the questions as you type; inquiry form: send without leaving the page ---- */
 (function () {
   function go() {
     document.querySelectorAll('.ask').forEach(function (box) { if (box.__rsm) return; box.__rsm = 1; var inp = box.querySelector('.ask-input'), none = box.querySelector('.ask-none'), groups = [].slice.call(box.querySelectorAll('.ask-group')), stop = /^(the|a|an|and|or|of|to|in|on|for|my|is|are|do|does|i|how|what|why|can|it|me|with|not)$/;

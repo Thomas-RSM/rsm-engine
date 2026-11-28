@@ -6,8 +6,8 @@
    "desc": "AI Overview optimization helps your pages become what Google\u2019s AI answer draws on. It starts with being indexed, clear and confirmed.",
    "canonical": "https://relevantsearchmedia.com/services/ai-overview-optimization/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -95,8 +95,8 @@
    "desc": "AI SEO services for being named by ChatGPT, Gemini and Google\u2019s AI answers. Readable facts, sources that confirm them, and monthly tracking.",
    "canonical": "https://relevantsearchmedia.com/services/ai-seo/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -143,8 +143,8 @@
    "desc": "Answer engine optimization makes your page the one that gets quoted. Questions as headings, direct answers under them, and markup to match.",
    "canonical": "https://relevantsearchmedia.com/services/answer-engine-optimization/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -156,7 +156,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 87,
+   "kb": 88,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -189,8 +189,8 @@
    "desc": "App development services for web and mobile. Each app is planned around what your customers need to do, then built and maintained by one team.",
    "canonical": "https://relevantsearchmedia.com/services/app-development/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -202,7 +202,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 86,
+   "kb": 87,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -249,7 +249,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 135,
+   "kb": 146,
    "main_links": [
     "/",
     "/about/",
@@ -279,6 +279,18 @@
     "/guides/service-vs-ecommerce-vs-b2b-seo/",
     "/guides/what-is-eeat/",
     "/industries/",
+    "/industries/accountants/",
+    "/industries/auto-repair/",
+    "/industries/contractors/",
+    "/industries/dentists/",
+    "/industries/electricians/",
+    "/industries/hvac/",
+    "/industries/landscapers/",
+    "/industries/law-firms/",
+    "/industries/medical-clinics/",
+    "/industries/plumbers/",
+    "/industries/realtors/",
+    "/industries/roofers/",
     "/open-board/",
     "/open-log/",
     "/problems/",
@@ -324,14 +336,14 @@
    "order_ok": true,
    "ext": []
   },
-  "/services/b2b-seo/": {
+  "/industries/auto-repair/": {
    "status": 200,
-   "title": "B2B SEO Services | Relevant Search Media",
-   "desc": "B2B SEO services for long sales cycles. Buyers research for months before they call. We make you the answer at each step of that research.",
-   "canonical": "https://relevantsearchmedia.com/services/b2b-seo/",
+   "title": "Auto Repair SEO | Relevant Search Media",
+   "desc": "Auto repair SEO brings drivers who search a fault, a make or a price. Be the shop Google, Maps and AI assistants name when a warning light comes on.",
+   "canonical": "https://relevantsearchmedia.com/industries/auto-repair/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -343,7 +355,50 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 86,
+   "kb": 81,
+   "main_links": [
+    "/",
+    "/about/editorial-policy/",
+    "/ask/",
+    "/book/",
+    "/commitments/",
+    "/dsouza-equation/method/",
+    "/industries/",
+    "/open-board/",
+    "/problems/not-recommended-by-chatgpt/",
+    "/problems/not-showing-up-on-google/",
+    "/searches/",
+    "/services/google-business-profile-optimization/",
+    "/services/reputation-management/",
+    "/thomas-dsouza/"
+   ],
+   "lang": true,
+   "viewport": true,
+   "noindex": false,
+   "og": true,
+   "order_ok": true,
+   "ext": []
+  },
+  "/services/b2b-seo/": {
+   "status": 200,
+   "title": "B2B SEO Services | Relevant Search Media",
+   "desc": "B2B SEO services for long sales cycles. Buyers research for months before they call. We make you the answer at each step of that research.",
+   "canonical": "https://relevantsearchmedia.com/services/b2b-seo/",
+   "h1": 1,
+   "imgs": 4,
+   "main_imgs": 2,
+   "noalt": 0,
+   "nodim": 0,
+   "types": [
+    "BreadcrumbList",
+    "DefinedTerm",
+    "FAQPage",
+    "Organization",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ],
+   "kb": 87,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -417,8 +472,8 @@
    "desc": "ChatGPT SEO is the work that decides whether ChatGPT says your name. Three things matter: what it can read, who confirms you, and who chose you.",
    "canonical": "https://relevantsearchmedia.com/services/chatgpt-seo/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -430,7 +485,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 86,
+   "kb": 87,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -503,8 +558,8 @@
    "desc": "A content marketing agency that writes for the searches in your map. Every page answers a real customer question and is checked before it goes live.",
    "canonical": "https://relevantsearchmedia.com/services/content-marketing/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -516,7 +571,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 86,
+   "kb": 87,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -534,6 +589,49 @@
     "/problems/not-getting-leads/",
     "/problems/seo-cost/",
     "/services/",
+    "/thomas-dsouza/"
+   ],
+   "lang": true,
+   "viewport": true,
+   "noindex": false,
+   "og": true,
+   "order_ok": true,
+   "ext": []
+  },
+  "/industries/contractors/": {
+   "status": 200,
+   "title": "Contractor SEO | Relevant Search Media",
+   "desc": "Contractor SEO brings homeowners planning a kitchen, a bathroom or an addition. Be the contractor Google and AI assistants name in your city.",
+   "canonical": "https://relevantsearchmedia.com/industries/contractors/",
+   "h1": 1,
+   "imgs": 4,
+   "main_imgs": 2,
+   "noalt": 0,
+   "nodim": 0,
+   "types": [
+    "BreadcrumbList",
+    "DefinedTerm",
+    "FAQPage",
+    "Organization",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ],
+   "kb": 81,
+   "main_links": [
+    "/",
+    "/about/editorial-policy/",
+    "/ask/",
+    "/book/",
+    "/commitments/",
+    "/dsouza-equation/method/",
+    "/industries/",
+    "/open-board/",
+    "/problems/not-recommended-by-chatgpt/",
+    "/problems/not-showing-up-on-google/",
+    "/searches/",
+    "/services/lead-generation/",
+    "/services/web-design/",
     "/thomas-dsouza/"
    ],
    "lang": true,
@@ -627,8 +725,8 @@
    "desc": "Custom CRM development that fits your business. The system is shaped to how you take leads, quote and follow up, so that no enquiry is lost.",
    "canonical": "https://relevantsearchmedia.com/services/custom-crm/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -640,7 +738,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 86,
+   "kb": 87,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -709,14 +807,57 @@
    "order_ok": true,
    "ext": []
   },
+  "/industries/dentists/": {
+   "status": 200,
+   "title": "Dental SEO | Relevant Search Media",
+   "desc": "Dental SEO brings new patients who search by treatment, by insurance and in an emergency. Be the practice Google and AI assistants name.",
+   "canonical": "https://relevantsearchmedia.com/industries/dentists/",
+   "h1": 1,
+   "imgs": 4,
+   "main_imgs": 2,
+   "noalt": 0,
+   "nodim": 0,
+   "types": [
+    "BreadcrumbList",
+    "DefinedTerm",
+    "FAQPage",
+    "Organization",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ],
+   "kb": 81,
+   "main_links": [
+    "/",
+    "/about/editorial-policy/",
+    "/ask/",
+    "/book/",
+    "/commitments/",
+    "/dsouza-equation/method/",
+    "/guides/what-is-eeat/",
+    "/industries/",
+    "/open-board/",
+    "/problems/not-recommended-by-chatgpt/",
+    "/problems/not-showing-up-on-google/",
+    "/searches/",
+    "/services/reputation-management/",
+    "/thomas-dsouza/"
+   ],
+   "lang": true,
+   "viewport": true,
+   "noindex": false,
+   "og": true,
+   "order_ok": true,
+   "ext": []
+  },
   "/services/digital-marketing/": {
    "status": 200,
    "title": "Digital Marketing Services | Relevant Search Media",
    "desc": "Digital marketing services run as one engine. Search, AI answers, your Google profile, social and your website work from one plan and one set of facts.",
    "canonical": "https://relevantsearchmedia.com/services/digital-marketing/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -761,8 +902,8 @@
    "desc": "Ecommerce SEO for online stores. Category pages, product pages and the questions buyers ask before they pay are mapped and worked in order.",
    "canonical": "https://relevantsearchmedia.com/services/ecommerce-seo/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -774,7 +915,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 86,
+   "kb": 87,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -808,8 +949,8 @@
    "desc": "Generative engine optimization makes your business a source AI assistants draw on. Facts they can read, and other sites that confirm them.",
    "canonical": "https://relevantsearchmedia.com/services/generative-engine-optimization/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -821,7 +962,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 87,
+   "kb": 88,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -855,8 +996,8 @@
    "desc": "Google Business Profile optimization keeps your categories, services, photos, posts and reviews complete and current. Local customers see it first.",
    "canonical": "https://relevantsearchmedia.com/services/google-business-profile-optimization/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -868,7 +1009,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 87,
+   "kb": 88,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -902,8 +1043,8 @@
    "desc": "Graphic design services for brand, logo and everything you publish. One look across your site, your profiles and your print, so customers know you.",
    "canonical": "https://relevantsearchmedia.com/services/design/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -915,7 +1056,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 86,
+   "kb": 87,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -1043,8 +1184,8 @@
    "desc": "How does ChatGPT recommend businesses? It names those it can read, confirm and see chosen. Our Index records who it names, by trade and city.",
    "canonical": "https://relevantsearchmedia.com/ai-recommendation-index/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -1056,7 +1197,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 79,
+   "kb": 80,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -1125,11 +1266,11 @@
   "/guides/how-long-does-seo-take/": {
    "status": 200,
    "title": "How Long Does SEO Take? An Honest Timeline",
-   "desc": "How long does SEO take? Fixes can go live in days. Rankings move in weeks to months. Here is what to expect, and what we commit to by month 4.",
+   "desc": "How long does SEO take? Fixes go live in days, and rankings move in weeks to months. Here is what to expect, and what we commit to by month 4.",
    "canonical": "https://relevantsearchmedia.com/guides/how-long-does-seo-take/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -1141,7 +1282,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 84,
+   "kb": 85,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -1210,8 +1351,8 @@
    "desc": "Relevant Search Media was founded in 2020 on one idea: relevant search, relevant traffic, relevant leads. This is how the D\u2019Souza Equation began.",
    "canonical": "https://relevantsearchmedia.com/about/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -1223,7 +1364,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 84,
+   "kb": 85,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -1255,8 +1396,8 @@
    "desc": "How to choose an SEO company comes down to six questions. Here are the answers to expect, and the two things to get in writing first.",
    "canonical": "https://relevantsearchmedia.com/guides/how-to-choose-an-seo-company/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -1268,7 +1409,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 84,
+   "kb": 85,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -1408,14 +1549,14 @@
    "order_ok": true,
    "ext": []
   },
-  "/services/lead-generation/": {
+  "/industries/hvac/": {
    "status": 200,
-   "title": "Lead Generation Services | Relevant Search Media",
-   "desc": "Lead generation services built on relevant searches. The leads come from searches your customers make. We count the ones you confirm were relevant.",
-   "canonical": "https://relevantsearchmedia.com/services/lead-generation/",
+   "title": "HVAC SEO | Relevant Search Media",
+   "desc": "HVAC SEO follows the weather. Be the company found when the AC stops in July and the furnace fails in January, on Google and in AI answers.",
+   "canonical": "https://relevantsearchmedia.com/industries/hvac/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -1427,7 +1568,135 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 86,
+   "kb": 81,
+   "main_links": [
+    "/",
+    "/about/editorial-policy/",
+    "/ask/",
+    "/book/",
+    "/commitments/",
+    "/dsouza-equation/method/",
+    "/industries/",
+    "/open-board/",
+    "/problems/not-recommended-by-chatgpt/",
+    "/problems/not-showing-up-on-google/",
+    "/searches/",
+    "/services/content-marketing/",
+    "/services/link-building/",
+    "/thomas-dsouza/"
+   ],
+   "lang": true,
+   "viewport": true,
+   "noindex": false,
+   "og": true,
+   "order_ok": true,
+   "ext": []
+  },
+  "/industries/landscapers/": {
+   "status": 200,
+   "title": "Landscaping SEO | Relevant Search Media",
+   "desc": "Landscaping SEO brings homeowners searching for design, lawn care and outdoor projects. Be the landscaper Google and AI assistants name locally.",
+   "canonical": "https://relevantsearchmedia.com/industries/landscapers/",
+   "h1": 1,
+   "imgs": 4,
+   "main_imgs": 2,
+   "noalt": 0,
+   "nodim": 0,
+   "types": [
+    "BreadcrumbList",
+    "DefinedTerm",
+    "FAQPage",
+    "Organization",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ],
+   "kb": 81,
+   "main_links": [
+    "/",
+    "/about/editorial-policy/",
+    "/ask/",
+    "/book/",
+    "/commitments/",
+    "/dsouza-equation/method/",
+    "/guides/how-long-does-seo-take/",
+    "/industries/",
+    "/open-board/",
+    "/problems/not-recommended-by-chatgpt/",
+    "/problems/not-showing-up-on-google/",
+    "/searches/",
+    "/services/google-business-profile-optimization/",
+    "/thomas-dsouza/"
+   ],
+   "lang": true,
+   "viewport": true,
+   "noindex": false,
+   "og": true,
+   "order_ok": true,
+   "ext": []
+  },
+  "/industries/law-firms/": {
+   "status": 200,
+   "title": "Law Firm SEO | Relevant Search Media",
+   "desc": "Law firm SEO brings clients who search their legal problem in plain words. Be the firm Google and AI assistants name for it in your city.",
+   "canonical": "https://relevantsearchmedia.com/industries/law-firms/",
+   "h1": 1,
+   "imgs": 4,
+   "main_imgs": 2,
+   "noalt": 0,
+   "nodim": 0,
+   "types": [
+    "BreadcrumbList",
+    "DefinedTerm",
+    "FAQPage",
+    "Organization",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ],
+   "kb": 81,
+   "main_links": [
+    "/",
+    "/about/editorial-policy/",
+    "/ask/",
+    "/book/",
+    "/commitments/",
+    "/dsouza-equation/method/",
+    "/guides/seo-keyword-research/",
+    "/industries/",
+    "/open-board/",
+    "/problems/not-recommended-by-chatgpt/",
+    "/problems/not-showing-up-on-google/",
+    "/searches/",
+    "/thomas-dsouza/"
+   ],
+   "lang": true,
+   "viewport": true,
+   "noindex": false,
+   "og": true,
+   "order_ok": true,
+   "ext": []
+  },
+  "/services/lead-generation/": {
+   "status": 200,
+   "title": "Lead Generation Services | Relevant Search Media",
+   "desc": "Lead generation services built on relevant searches. The leads come from searches your customers make. We count the ones you confirm were relevant.",
+   "canonical": "https://relevantsearchmedia.com/services/lead-generation/",
+   "h1": 1,
+   "imgs": 4,
+   "main_imgs": 2,
+   "noalt": 0,
+   "nodim": 0,
+   "types": [
+    "BreadcrumbList",
+    "DefinedTerm",
+    "FAQPage",
+    "Organization",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ],
+   "kb": 87,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -1461,8 +1730,8 @@
    "desc": "Link building services that earn mentions on real, relevant sites. No bought links and no spam. Earned mentions are how engines confirm a business.",
    "canonical": "https://relevantsearchmedia.com/services/link-building/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -1474,7 +1743,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 86,
+   "kb": 87,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -1507,8 +1776,8 @@
    "desc": "Local SEO services for businesses that serve a city. The map, your Google profile, reviews and local pages, worked together.",
    "canonical": "https://relevantsearchmedia.com/services/local-seo/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -1520,7 +1789,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 87,
+   "kb": 88,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -1539,6 +1808,48 @@
     "/problems/seo-cost/",
     "/services/",
     "/services/google-business-profile-optimization/",
+    "/thomas-dsouza/"
+   ],
+   "lang": true,
+   "viewport": true,
+   "noindex": false,
+   "og": true,
+   "order_ok": true,
+   "ext": []
+  },
+  "/industries/medical-clinics/": {
+   "status": 200,
+   "title": "Medical SEO | Relevant Search Media",
+   "desc": "Medical SEO brings patients who search a symptom, a service or a doctor nearby. Be the clinic Google and AI assistants name, with accuracy first.",
+   "canonical": "https://relevantsearchmedia.com/industries/medical-clinics/",
+   "h1": 1,
+   "imgs": 4,
+   "main_imgs": 2,
+   "noalt": 0,
+   "nodim": 0,
+   "types": [
+    "BreadcrumbList",
+    "DefinedTerm",
+    "FAQPage",
+    "Organization",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ],
+   "kb": 81,
+   "main_links": [
+    "/",
+    "/about/editorial-policy/",
+    "/ask/",
+    "/book/",
+    "/commitments/",
+    "/dsouza-equation/method/",
+    "/guides/what-is-eeat/",
+    "/industries/",
+    "/open-board/",
+    "/problems/not-recommended-by-chatgpt/",
+    "/problems/not-showing-up-on-google/",
+    "/searches/",
     "/thomas-dsouza/"
    ],
    "lang": true,
@@ -1647,7 +1958,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 77,
+   "kb": 78,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -1675,8 +1986,8 @@
    "desc": "An SEO report example you can check: our own. We run our method on this website and publish what was done, what passed and what is still unknown.",
    "canonical": "https://relevantsearchmedia.com/open-log/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -1688,7 +1999,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 77,
+   "kb": 78,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -1714,8 +2025,8 @@
    "desc": "Plumber SEO keywords, and the same patterns for every trade. See the kinds of search customers make before they hire, by trade and by city.",
    "canonical": "https://relevantsearchmedia.com/searches/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -1727,7 +2038,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 77,
+   "kb": 78,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -1777,6 +2088,50 @@
     "/book/",
     "/commitments/",
     "/contact/",
+    "/terms/",
+    "/thomas-dsouza/"
+   ],
+   "lang": true,
+   "viewport": true,
+   "noindex": false,
+   "og": true,
+   "order_ok": true,
+   "ext": []
+  },
+  "/industries/realtors/": {
+   "status": 200,
+   "title": "Real Estate SEO | Relevant Search Media",
+   "desc": "Real estate SEO brings buyers and sellers who search by neighbourhood. Be the agent Google and AI assistants name for the streets you know.",
+   "canonical": "https://relevantsearchmedia.com/industries/realtors/",
+   "h1": 1,
+   "imgs": 4,
+   "main_imgs": 2,
+   "noalt": 0,
+   "nodim": 0,
+   "types": [
+    "BreadcrumbList",
+    "DefinedTerm",
+    "FAQPage",
+    "Organization",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ],
+   "kb": 81,
+   "main_links": [
+    "/",
+    "/about/editorial-policy/",
+    "/ask/",
+    "/book/",
+    "/commitments/",
+    "/dsouza-equation/confirm/",
+    "/dsouza-equation/method/",
+    "/industries/",
+    "/open-board/",
+    "/problems/not-recommended-by-chatgpt/",
+    "/problems/not-showing-up-on-google/",
+    "/searches/",
+    "/services/content-marketing/",
     "/thomas-dsouza/"
    ],
    "lang": true,
@@ -1789,11 +2144,11 @@
   "/results/": {
    "status": 200,
    "title": "Relevant Search Media Reviews and Results",
-   "desc": "Relevant Search Media reviews and results, stated plainly. 900+ businesses served. About 400 projects, 90% successful. No client is named.",
+   "desc": "Relevant Search Media reviews and results, stated plainly: 900+ businesses served, about 400 projects, 90% successful. No client is named.",
    "canonical": "https://relevantsearchmedia.com/results/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -1805,7 +2160,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 78,
+   "kb": 79,
    "main_links": [
     "/",
     "/about/",
@@ -1832,8 +2187,8 @@
    "desc": "A reputation management company for real reviews. They are asked for after every job and answered every time. Reviews decide who gets picked.",
    "canonical": "https://relevantsearchmedia.com/services/reputation-management/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -1845,7 +2200,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 86,
+   "kb": 87,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -1863,6 +2218,49 @@
     "/problems/not-getting-leads/",
     "/problems/seo-cost/",
     "/services/",
+    "/thomas-dsouza/"
+   ],
+   "lang": true,
+   "viewport": true,
+   "noindex": false,
+   "og": true,
+   "order_ok": true,
+   "ext": []
+  },
+  "/industries/roofers/": {
+   "status": 200,
+   "title": "Roofing SEO | Relevant Search Media",
+   "desc": "Roofing SEO puts you in front of homeowners after a storm and before a replacement. Be the roofer Google and AI assistants name in your city.",
+   "canonical": "https://relevantsearchmedia.com/industries/roofers/",
+   "h1": 1,
+   "imgs": 4,
+   "main_imgs": 2,
+   "noalt": 0,
+   "nodim": 0,
+   "types": [
+    "BreadcrumbList",
+    "DefinedTerm",
+    "FAQPage",
+    "Organization",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ],
+   "kb": 81,
+   "main_links": [
+    "/",
+    "/about/editorial-policy/",
+    "/ask/",
+    "/book/",
+    "/commitments/",
+    "/dsouza-equation/method/",
+    "/guides/what-is-eeat/",
+    "/industries/",
+    "/open-board/",
+    "/problems/not-recommended-by-chatgpt/",
+    "/problems/not-showing-up-on-google/",
+    "/searches/",
+    "/services/reputation-management/",
     "/thomas-dsouza/"
    ],
    "lang": true,
@@ -1931,7 +2329,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 79,
+   "kb": 80,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -1972,7 +2370,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 79,
+   "kb": 80,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -1993,14 +2391,14 @@
    "order_ok": true,
    "ext": []
   },
-  "/commitments/": {
+  "/industries/accountants/": {
    "status": 200,
-   "title": "SEO Guarantee? Our Two Written Commitments",
-   "desc": "An SEO guarantee worth having covers the work and a remedy. Ours is two written commitments. Both are set out here in full, in plain words.",
-   "canonical": "https://relevantsearchmedia.com/commitments/",
+   "title": "SEO for Accountants | Relevant Search Media",
+   "desc": "SEO for accountants brings owners and households who search a tax problem or a service. Be the firm Google and AI assistants name in your city.",
+   "canonical": "https://relevantsearchmedia.com/industries/accountants/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -2012,7 +2410,136 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 78,
+   "kb": 81,
+   "main_links": [
+    "/",
+    "/about/editorial-policy/",
+    "/ask/",
+    "/book/",
+    "/commitments/",
+    "/dsouza-equation/method/",
+    "/guides/what-is-eeat/",
+    "/industries/",
+    "/open-board/",
+    "/problems/not-recommended-by-chatgpt/",
+    "/problems/not-showing-up-on-google/",
+    "/searches/",
+    "/services/b2b-seo/",
+    "/thomas-dsouza/"
+   ],
+   "lang": true,
+   "viewport": true,
+   "noindex": false,
+   "og": true,
+   "order_ok": true,
+   "ext": []
+  },
+  "/industries/electricians/": {
+   "status": 200,
+   "title": "SEO for Electricians | Relevant Search Media",
+   "desc": "SEO for electricians turns safety worries and job searches into calls. Be the licensed electrician Google and AI assistants name in your city.",
+   "canonical": "https://relevantsearchmedia.com/industries/electricians/",
+   "h1": 1,
+   "imgs": 4,
+   "main_imgs": 2,
+   "noalt": 0,
+   "nodim": 0,
+   "types": [
+    "BreadcrumbList",
+    "DefinedTerm",
+    "FAQPage",
+    "Organization",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ],
+   "kb": 81,
+   "main_links": [
+    "/",
+    "/about/editorial-policy/",
+    "/ask/",
+    "/book/",
+    "/commitments/",
+    "/dsouza-equation/confirm/",
+    "/dsouza-equation/method/",
+    "/guides/seo-keyword-research/",
+    "/industries/",
+    "/open-board/",
+    "/problems/not-recommended-by-chatgpt/",
+    "/problems/not-showing-up-on-google/",
+    "/searches/",
+    "/thomas-dsouza/"
+   ],
+   "lang": true,
+   "viewport": true,
+   "noindex": false,
+   "og": true,
+   "order_ok": true,
+   "ext": []
+  },
+  "/industries/plumbers/": {
+   "status": 200,
+   "title": "SEO for Plumbers | Relevant Search Media",
+   "desc": "SEO for plumbers starts with the emergency call. Be the plumber Google, Maps and AI assistants name when a pipe bursts in your city.",
+   "canonical": "https://relevantsearchmedia.com/industries/plumbers/",
+   "h1": 1,
+   "imgs": 4,
+   "main_imgs": 2,
+   "noalt": 0,
+   "nodim": 0,
+   "types": [
+    "BreadcrumbList",
+    "DefinedTerm",
+    "FAQPage",
+    "Organization",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ],
+   "kb": 81,
+   "main_links": [
+    "/",
+    "/about/editorial-policy/",
+    "/ask/",
+    "/book/",
+    "/commitments/",
+    "/dsouza-equation/method/",
+    "/industries/",
+    "/open-board/",
+    "/problems/not-recommended-by-chatgpt/",
+    "/problems/not-showing-up-on-google/",
+    "/searches/",
+    "/services/local-seo/",
+    "/services/reputation-management/",
+    "/thomas-dsouza/"
+   ],
+   "lang": true,
+   "viewport": true,
+   "noindex": false,
+   "og": true,
+   "order_ok": true,
+   "ext": []
+  },
+  "/commitments/": {
+   "status": 200,
+   "title": "SEO Guarantee? Our Two Written Commitments",
+   "desc": "An SEO guarantee worth having covers the work and a remedy. Ours is two written commitments. Both are set out here in full, in plain words.",
+   "canonical": "https://relevantsearchmedia.com/commitments/",
+   "h1": 1,
+   "imgs": 4,
+   "main_imgs": 2,
+   "noalt": 0,
+   "nodim": 0,
+   "types": [
+    "BreadcrumbList",
+    "DefinedTerm",
+    "FAQPage",
+    "Organization",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ],
+   "kb": 79,
    "main_links": [
     "/",
     "/about/",
@@ -2087,8 +2614,8 @@
    "desc": "SEO keyword research is finding the searches your customers make. We map every one of them and give each a single page. Here is how.",
    "canonical": "https://relevantsearchmedia.com/guides/seo-keyword-research/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -2100,7 +2627,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 84,
+   "kb": 85,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -2214,8 +2741,8 @@
    "desc": "SEO services that start with a map of every search your customers make. Live work by day 5. Two commitments in writing.",
    "canonical": "https://relevantsearchmedia.com/services/seo/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -2227,7 +2754,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 87,
+   "kb": 88,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -2408,11 +2935,11 @@
   "/services/small-business-seo/": {
    "status": 200,
    "title": "Small Business SEO Services | Relevant Search Media",
-   "desc": "Small business SEO services that fit how you work. Month to month. Live work by day 5. A report every 15 days that takes five minutes to read.",
+   "desc": "Small business SEO services that fit how you work: month to month, live work by day 5. A report every 15 days takes five minutes to read.",
    "canonical": "https://relevantsearchmedia.com/services/small-business-seo/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -2424,7 +2951,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 86,
+   "kb": 87,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -2457,8 +2984,8 @@
    "desc": "Social media marketing services that support search. Your profiles are kept complete, active and saying the same thing as your website.",
    "canonical": "https://relevantsearchmedia.com/services/social-media-marketing/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -2503,8 +3030,8 @@
    "desc": "Technical SEO makes a website readable by every search engine and AI assistant. Speed, structure, markup and crawling come before anything else.",
    "canonical": "https://relevantsearchmedia.com/services/technical-seo/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -2516,7 +3043,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 86,
+   "kb": 87,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -2562,7 +3089,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 75,
+   "kb": 76,
    "main_links": [
     "/",
     "/about/corrections/",
@@ -2600,7 +3127,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 85,
+   "kb": 83,
    "main_links": [
     "/",
     "/about/",
@@ -2671,8 +3198,8 @@
    "desc": "Types of SEO, sorted by the kind of business you run. Service businesses, online stores and B2B firms need different maps. Here is what changes.",
    "canonical": "https://relevantsearchmedia.com/guides/service-vs-ecommerce-vs-b2b-seo/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -2684,7 +3211,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 84,
+   "kb": 85,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -2714,8 +3241,8 @@
    "desc": "Voice search optimization prepares your business to be the answer an assistant reads out. A voice assistant gives one answer. We build yours.",
    "canonical": "https://relevantsearchmedia.com/services/voice-search-optimization/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -2727,7 +3254,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 87,
+   "kb": 88,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -2762,8 +3289,8 @@
    "desc": "Web design services for sites that get found. Each site is designed for your customer and built so that every engine can read it from day one.",
    "canonical": "https://relevantsearchmedia.com/services/web-design/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -2775,7 +3302,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 86,
+   "kb": 87,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -2809,8 +3336,8 @@
    "desc": "Web development services built to be read by every engine. Fast, clean and structured. The build decides how well a site can ever rank.",
    "canonical": "https://relevantsearchmedia.com/services/web-development/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -2822,7 +3349,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 86,
+   "kb": 87,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -2896,8 +3423,8 @@
    "desc": "What is E-E-A-T? It stands for experience, expertise, authoritativeness and trust. Here is what Google looks for and how a local business shows it.",
    "canonical": "https://relevantsearchmedia.com/guides/what-is-eeat/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -2909,7 +3436,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 84,
+   "kb": 85,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -2980,8 +3507,8 @@
    "desc": "See the SEO plan we would run for you. The first 15 days are set out here item by item, from the first call to the first report.",
    "canonical": "https://relevantsearchmedia.com/your-plan/",
    "h1": 1,
-   "imgs": 3,
-   "main_imgs": 1,
+   "imgs": 4,
+   "main_imgs": 2,
    "noalt": 0,
    "nodim": 0,
    "types": [
@@ -2993,7 +3520,7 @@
     "WebPage",
     "WebSite"
    ],
-   "kb": 77,
+   "kb": 78,
    "main_links": [
     "/",
     "/about/editorial-policy/",
@@ -3021,59 +3548,7 @@
  },
  "findings": [
   [
-   "/industries/accountants/",
-   "linked from ['/'] but returns 404"
-  ],
-  [
-   "/industries/auto-repair/",
-   "linked from ['/'] but returns 404"
-  ],
-  [
-   "/industries/contractors/",
-   "linked from ['/'] but returns 404"
-  ],
-  [
-   "/industries/dentists/",
-   "linked from ['/', '/about/', '/about/corrections/'] but returns 404"
-  ],
-  [
-   "/industries/electricians/",
-   "linked from ['/'] but returns 404"
-  ],
-  [
-   "/industries/hvac/",
-   "linked from ['/', '/about/', '/about/corrections/'] but returns 404"
-  ],
-  [
-   "/industries/landscapers/",
-   "linked from ['/'] but returns 404"
-  ],
-  [
-   "/industries/law-firms/",
-   "linked from ['/', '/about/', '/about/corrections/'] but returns 404"
-  ],
-  [
-   "/industries/medical-clinics/",
-   "linked from ['/'] but returns 404"
-  ],
-  [
-   "/industries/plumbers/",
-   "linked from ['/', '/about/', '/about/corrections/'] but returns 404"
-  ],
-  [
-   "/industries/realtors/",
-   "linked from ['/'] but returns 404"
-  ],
-  [
-   "/industries/roofers/",
-   "linked from ['/', '/about/', '/about/corrections/'] but returns 404"
-  ],
-  [
    "/contact/",
-   "only 2 body links point here"
-  ],
-  [
-   "/guides/how-long-does-seo-take/",
    "only 2 body links point here"
   ],
   [
@@ -3081,8 +3556,56 @@
    "only 2 body links point here"
   ],
   [
+   "/industries/accountants/",
+   "only 2 body links point here"
+  ],
+  [
+   "/industries/auto-repair/",
+   "only 2 body links point here"
+  ],
+  [
+   "/industries/contractors/",
+   "only 2 body links point here"
+  ],
+  [
+   "/industries/dentists/",
+   "only 2 body links point here"
+  ],
+  [
+   "/industries/electricians/",
+   "only 2 body links point here"
+  ],
+  [
+   "/industries/hvac/",
+   "only 2 body links point here"
+  ],
+  [
+   "/industries/landscapers/",
+   "only 2 body links point here"
+  ],
+  [
+   "/industries/law-firms/",
+   "only 2 body links point here"
+  ],
+  [
+   "/industries/medical-clinics/",
+   "only 2 body links point here"
+  ],
+  [
+   "/industries/plumbers/",
+   "only 2 body links point here"
+  ],
+  [
+   "/industries/realtors/",
+   "only 2 body links point here"
+  ],
+  [
+   "/industries/roofers/",
+   "only 2 body links point here"
+  ],
+  [
    "/terms/",
-   "orphan: no link from any page body"
+   "only 1 body links point here"
   ],
   [
    "/your-plan/",
@@ -3098,27 +3621,27 @@
   ]
  ],
  "inbound": {
-  "/": 66,
-  "/about/editorial-policy/": 66,
+  "/": 78,
+  "/about/editorial-policy/": 78,
   "/ai-recommendation-index/": 12,
-  "/ask/": 66,
-  "/book/": 66,
+  "/ask/": 78,
+  "/book/": 78,
   "/cities/": 28,
-  "/commitments/": 66,
+  "/commitments/": 78,
   "/dsouza-equation/choose/": 34,
-  "/dsouza-equation/confirm/": 37,
+  "/dsouza-equation/confirm/": 39,
   "/dsouza-equation/how-search-works/": 6,
-  "/dsouza-equation/method/": 41,
+  "/dsouza-equation/method/": 53,
   "/dsouza-equation/read/": 36,
   "/dsouza-equation/standard/": 49,
-  "/industries/": 29,
-  "/open-board/": 32,
-  "/problems/not-showing-up-on-google/": 18,
+  "/industries/": 41,
+  "/open-board/": 44,
+  "/problems/not-showing-up-on-google/": 30,
   "/problems/seo-cost/": 32,
   "/services/": 27,
-  "/thomas-dsouza/": 66,
+  "/thomas-dsouza/": 78,
   "/dsouza-equation/": 22,
-  "/problems/not-recommended-by-chatgpt/": 11,
+  "/problems/not-recommended-by-chatgpt/": 23,
   "/services/ai-seo/": 7,
   "/dsouza-equation/engines/": 10,
   "/dsouza-equation/seo-vs-aeo-vs-geo/": 6,
@@ -3130,51 +3653,52 @@
   "/dsouza-equation/law-of-search/": 3,
   "/elements/": 6,
   "/guides/": 7,
-  "/guides/how-long-does-seo-take/": 2,
+  "/guides/how-long-does-seo-take/": 3,
   "/guides/how-to-choose-an-seo-company/": 6,
-  "/guides/seo-keyword-research/": 5,
+  "/guides/seo-keyword-research/": 7,
   "/guides/service-vs-ecommerce-vs-b2b-seo/": 2,
-  "/guides/what-is-eeat/": 3,
+  "/guides/what-is-eeat/": 7,
+  "/industries/accountants/": 2,
+  "/industries/auto-repair/": 2,
+  "/industries/contractors/": 2,
+  "/industries/dentists/": 2,
+  "/industries/electricians/": 2,
+  "/industries/hvac/": 2,
+  "/industries/landscapers/": 2,
+  "/industries/law-firms/": 2,
+  "/industries/medical-clinics/": 2,
+  "/industries/plumbers/": 2,
+  "/industries/realtors/": 2,
+  "/industries/roofers/": 2,
   "/open-log/": 5,
   "/problems/": 19,
   "/problems/traffic-dropped/": 7,
   "/results/": 3,
-  "/searches/": 10,
+  "/searches/": 22,
   "/services/ai-overview-optimization/": 4,
   "/services/answer-engine-optimization/": 4,
   "/services/app-development/": 3,
-  "/services/b2b-seo/": 4,
+  "/services/b2b-seo/": 5,
   "/services/chatgpt-seo/": 4,
-  "/services/content-marketing/": 4,
+  "/services/content-marketing/": 6,
   "/services/custom-crm/": 3,
   "/services/design/": 3,
   "/services/digital-marketing/": 3,
   "/services/ecommerce-seo/": 4,
   "/services/generative-engine-optimization/": 4,
-  "/services/google-business-profile-optimization/": 8,
-  "/services/lead-generation/": 7,
-  "/services/link-building/": 4,
-  "/services/local-seo/": 7,
-  "/services/reputation-management/": 5,
+  "/services/google-business-profile-optimization/": 10,
+  "/services/lead-generation/": 8,
+  "/services/link-building/": 5,
+  "/services/local-seo/": 8,
+  "/services/reputation-management/": 9,
   "/services/seo/": 6,
   "/services/small-business-seo/": 4,
   "/services/social-media-marketing/": 3,
   "/services/technical-seo/": 6,
   "/services/voice-search-optimization/": 3,
-  "/services/web-design/": 4,
+  "/services/web-design/": 5,
   "/your-plan/": 2,
   "/privacy/": 6,
-  "/industries/accountants/": 1,
-  "/industries/auto-repair/": 1,
-  "/industries/contractors/": 1,
-  "/industries/dentists/": 1,
-  "/industries/electricians/": 1,
-  "/industries/hvac/": 1,
-  "/industries/landscapers/": 1,
-  "/industries/law-firms/": 1,
-  "/industries/medical-clinics/": 1,
-  "/industries/plumbers/": 1,
-  "/industries/realtors/": 1,
-  "/industries/roofers/": 1
+  "/terms/": 1
  }
 }

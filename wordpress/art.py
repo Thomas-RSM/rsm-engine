@@ -1,4 +1,4 @@
-"""Pictures for the problem cards: filled, lit panels in the site's own colours (no thin wireframes)."""
+"""Pictures for the problem cards: filled, lit panels in the site's own colors (no thin wireframes)."""
 M = 'font-family="JetBrains Mono, monospace"'
 S = 'font-family="Sora, sans-serif"'
 

@@ -263,7 +263,7 @@
 "type": "service",
 "example": "remodeler in charlotte",
 "original": "413;v1.0, 23 Nov 2026",
-"trade": "calls;enquiries;forms"
+"trade": "calls;inquiries;forms"
 },
 "/services/digital-marketing/": {
 "kw": "digital marketing services;digital marketing agency;digital marketing agency usa",
@@ -298,14 +298,14 @@
 "type": "service",
 "example": "contractor in phoenix",
 "original": "413;v1.0, 23 Nov 2026",
-"trade": "enquiries;quotes;follow-up"
+"trade": "inquiries;quotes;follow-up"
 },
 "/services/design/": {
 "kw": "graphic design services;branding services;logo design services",
 "type": "service",
 "example": "cafe in portland",
 "original": "413;v1.0, 23 Nov 2026",
-"trade": "logo;colours;brand"
+"trade": "logo;colors;brand"
 },
 "/guides/": {
 "kw": "seo guide;seo for beginners;how to do seo",
@@ -480,14 +480,14 @@
 "type": "service",
 "example": "roofer in denver",
 "original": "413;v1.0, 23 Nov 2026",
-"trade": "storm;shingles;licence"
+"trade": "storm;shingles;license"
 },
 "/industries/electricians/": {
 "kw": "seo for electricians;electrician seo;electrician marketing",
 "type": "service",
 "example": "electrician in phoenix",
 "original": "413;v1.0, 23 Nov 2026",
-"trade": "panel;wiring;licence"
+"trade": "panel;wiring;license"
 },
 "/industries/dentists/": {
 "kw": "dental seo;seo for dentists;dentist seo",
@@ -529,7 +529,7 @@
 "type": "service",
 "example": "realtor in austin",
 "original": "413;v1.0, 23 Nov 2026",
-"trade": "neighbourhood;listings;sellers"
+"trade": "neighborhood;listings;sellers"
 },
 "/industries/medical-clinics/": {
 "kw": "medical seo;healthcare seo;seo for doctors",
