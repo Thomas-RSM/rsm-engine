@@ -145,5 +145,19 @@
 "example": "electrician in phoenix",
 "original": "413;v1.0, 23 Nov 2026",
 "trade": "searches;log;report"
+},
+"/services/local-seo/": {
+"kw": "local seo services;local seo agency;google maps seo",
+"type": "service",
+"example": "hvac company in dallas",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "map;listing;reviews"
+},
+"/services/ai-seo/": {
+"kw": "ai seo services;ai seo agency;ai search optimization",
+"type": "service",
+"example": "landscaper in houston",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "assistant;sources;answer"
 }
 }
