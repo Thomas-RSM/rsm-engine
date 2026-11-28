@@ -271,5 +271,40 @@
 "example": "dental practice in san diego",
 "original": "413;v1.0, 23 Nov 2026",
 "trade": "channels;plan;engine"
+},
+"/services/web-design/": {
+"kw": "web design services;web design company;website design services",
+"type": "service",
+"example": "law office in denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "layout;pages;phone"
+},
+"/services/web-development/": {
+"kw": "web development services;web development company;custom web development",
+"type": "service",
+"example": "clinic in miami",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "code;server;build"
+},
+"/services/app-development/": {
+"kw": "app development services;mobile app development company;app development company",
+"type": "service",
+"example": "gym in columbus",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "users;screens;release"
+},
+"/services/custom-crm/": {
+"kw": "custom crm development;custom crm software;custom crm",
+"type": "service",
+"example": "contractor in phoenix",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "enquiries;quotes;follow-up"
+},
+"/services/design/": {
+"kw": "graphic design services;branding services;logo design services",
+"type": "service",
+"example": "cafe in portland",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "logo;colours;brand"
 }
 }
