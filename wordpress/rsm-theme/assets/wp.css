@@ -478,3 +478,8 @@ svg.eg-wide{display:none}svg.eg-tall{display:block;width:100%;max-width:400px;he
 .std-list li::marker{font-family:var(--mono);font-size:12.5px;color:var(--text-3)}
 .std-list li i{font-style:normal;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--text-3);white-space:nowrap;margin-left:6px}
 @media (max-width:760px){.rsm .std{padding:20px 16px}.std-list{padding-left:44px}.std-group h3{font-size:16.5px}.std-term{display:none}.std-list li i{display:block;margin:2px 0 0;font-size:12px}}
+
+.rs-herofacts ul.facts{margin:0;padding-top:18px;border-top:1px solid var(--line)}
+.rsm .rs-trust-quote blockquote{margin:0;padding:14px 0 14px 18px;border-left:3px solid var(--gold);font:inherit;quotes:none}
+.rs-trust-quote blockquote p{font-family:var(--head);font-size:18px;font-weight:600;line-height:1.4;color:#fff;margin:0 0 6px}
+.rs-trust-quote footer{font-size:13.5px;color:var(--text-3)}.rs-trust-quote cite{font-style:normal;color:var(--gold-2);font-weight:600}

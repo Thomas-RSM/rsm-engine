@@ -96,6 +96,7 @@ def main():
     cfg['words'] = rng.get(arg('--type', 'home'), [300, 3200])
     if arg('--example'): cfg['example'] = arg('--example')
     if arg('--original'): cfg['original'] = [x for x in arg('--original').split(';') if x]
+    for _ in range(3): get(url)   # measure the page as visitors get it: from a warm cache
     rr = subprocess.run(['node', os.path.join(HERE, 'gate_render.js'), url], capture_output=True, text=True); render = {}
     try: render = json.loads(rr.stdout.strip().splitlines()[-1])
     except Exception: fails.append('FAIL · browser run did not finish · ' + (rr.stderr or rr.stdout)[-200:])
@@ -119,10 +120,12 @@ def main():
         gate('lead keyword present in copy', hits >= 1, f'{hits} uses in {n} words')
         gate('lead keyword density at or under 2%', dens <= 2.0, f'{dens:.2f}%')
         gate('lead keyword in title', all(x in p.title.lower() for x in lw), p.title.strip()[:70])
+        first = w[:110]; gate('lead keyword in the first 100 words', any(first[i:i + len(f)] == f for i in range(len(first)) for f in forms), ' '.join(first[:14]) + '…')
+        h2s = [words(x) for k, x in p.h if k == 'h2']; gate('lead keyword in one H2', any(hh[i:i + len(f)] == f for hh in h2s for i in range(len(hh)) for f in forms), f'{len(h2s)} H2s')
         h1 = [t for k, t in p.h if k == 'h1']; gate('one H1, carrying the lead keyword', len(h1) == 1 and all(x in h1[0].lower() for x in lw), ' | '.join(h1)[:90])
         top = Counter_top(w); gate('no single content word over 3% of the copy', top[1] <= 3.0, f'{top[0]} {top[1]:.2f}%')
     gate('title 30 to 60 characters', 30 <= len(p.title.strip()) <= 60, f'{len(p.title.strip())}')
-    gate('description 110 to 160 characters', 110 <= len(p.desc) <= 160, f'{len(p.desc)}')
+    gate('description 110 to 155 characters', 110 <= len(p.desc) <= 155, f'{len(p.desc)}')
     gate('canonical points to itself', p.canon.rstrip('/') == url.rstrip('/'), p.canon)
     gate('indexable', 'noindex' not in p.robots, p.robots)
     gate('at least 300 words of copy', n >= 300, f'{n}')

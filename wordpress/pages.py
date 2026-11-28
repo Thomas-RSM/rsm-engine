@@ -13,12 +13,14 @@ def make(h):
         els = [T('<nav aria-label="Breadcrumb"><p>%s</p></nav>' % trail, 'rs-crumbs', mb=18), H(eyebrow, 'p', 'eyebrow'), H(h1, 'h1', mb=22), T('<p>%s</p>' % answer, 'lead', mb=0, eid='answer')]
         if after: els.append(T('<p>%s</p>' % after, 'lead-after', mt=18))
         btns = [B(ctas[0][0], ctas[0][1])] + [B(t, u, 'rsm-btn rsm-btn-ghost') for t, u in ctas[1:]]
-        els += [C(btns, 'rs-actions', 'row', flex_gap=gap(14), flex_wrap='wrap', margin=box(28, 0, 12, 0)), T('<p>%s</p>' % note, 'small', mb=0)]
+        els += [C(btns, 'rs-actions', 'row', flex_gap=gap(14), flex_wrap='wrap', margin=box(28, 0, 12, 0)), T('<p>%s</p>' % note, 'small', mb=0),
+                T('<ul class="facts"><li><b>900+</b> businesses served</li><li><b>100+</b> specialists on US hours</li><li>In digital marketing <b>since 2010</b></li></ul>', 'rs-facts rs-herofacts', mt=26, mb=0)]
         return S([C(els, 'rs-pagehero-in')], 'rs-sec rs-pagehero', pad=(72, 72), pad_m=(44, 48))
 
     def sec(eyebrow, h2, paras, *content, eid='', more=None):
         intro = [H(eyebrow, 'p', 'eyebrow'), H(h2, 'h2', mb=18)] + [T('<p>%s</p>' % p, 'lead' if i == 0 else '', mb=(0 if i == len(paras) - 1 and not more else None)) for i, p in enumerate(paras)]
         if more: intro.append(B(more[0], more[1], 'rs-more', mb=0))
+        content = [c for c in content if c]
         return S([C(intro, 'rs-intro rv', margin=box(0, 0, 40 if content else 0, 0), width={'unit': 'px', 'size': 800, 'sizes': []})] + list(content), eid=eid)
 
     def faq(eyebrow, h2, lead, items):
@@ -32,14 +34,15 @@ def make(h):
                    T('<p>%s</p>' % small, 'small'), T('<p>%s</p>' % meta, 'small rs-meta', mt=40)], 'rs-closing-in', flex_align_items='center')], 'rs-closing', pad=(110, 110), pad_m=(72, 72))
 
     def quote(text):
-        """The author's verdict for this page, as a quotation an assistant can lift."""
-        return T('<blockquote><p>“%s”</p><footer><cite>Thomas D’Souza</cite>, Founder, Relevant Search Media</footer></blockquote>' % text, 'quote rv', mt=48)
+        """Retired: the fact register allows only Thomas's signed line to be quoted (rule F4). It now sits in the trust block."""
+        return None
 
     def trust():
         """Who wrote this, what stands behind it, what it costs to try. The same on every inner page by design (class rs-boiler)."""
         who = C([H('Who is behind this page', 'p', 'eyebrow'), H('Written and checked by Thomas D’Souza', 'h2', mb=14),
                  T('<p>Thomas D’Souza is the founder of Relevant Search Media and the author of the D’Souza Equation. He has worked in digital marketing since 2010.</p>'
                    '<p>Relevant Search Media was founded in 2020. The team works from New Delhi, India, on US hours, for businesses across the United States. Call <a href="tel:+12026096641">+1 (202) 609-6641</a>.</p>', mb=14),
+                 T('<blockquote><p>“Engines change. Your customer’s question does not. Work on the question and every engine finds you.”</p><footer><cite>Thomas D’Souza</cite>, Founder, Relevant Search Media</footer></blockquote>', 'rs-trust-quote', mb=14),
                  B('About Thomas', '/thomas-dsouza/', 'rs-more', mb=0)], 'rs-trust-who')
         proof = C([T('<ul class="rs-proof"><li><b>900+</b> businesses served since 2020. <span>Fact register C1</span></li>'
                      '<li><b>About 400</b> projects, 90% successful. Successful means the mapped searches reached page one of Google. <span>Fact register C3</span></li>'
@@ -65,15 +68,15 @@ def make(h):
         ('“I was ranking, and I lost it.”', 'Calls fell from one week to the next. <b>What it means:</b> a drop with a start date has a cause that can be found.', '/problems/traffic-dropped/'),
         ('“I’m being quoted and don’t know if it’s fair.”', 'Two agencies, two very different prices. <b>What it means:</b> the work has not been written down, so it cannot be compared.', '/problems/seo-cost/'),
     ]
-    P.append(page('problems', '/problems/', 'SEO Problems: Find Yours, Check It | Relevant Search Media',
+    P.append(page('problems', '/problems/', 'SEO Problems: Every Common Issue, Explained',
         'The five SEO problems business owners bring us, and how to tell which one is yours. Each comes with a first check you can run yourself in ten minutes.', [
-        hero([('Home', '/'), ('What’s wrong?', '')], 'What’s wrong?', 'SEO problems: find yours and the first thing to check',
+        hero([('Home', '/'), ('What’s wrong?', '')], 'What’s wrong?', 'SEO problems, explained one by one',
              'Most SEO problems are one of five: nobody can find the business, people find it and pick someone else, Google shows it and AI does not, rankings were lost, or a quote cannot be judged. Each has a first check you can run yourself in ten minutes, before you pay anyone.',
              'Start with the one that sounds like you.'),
         sec('The five problems', 'Which of the five SEO problems is yours?', ['Owners describe the same five search marketing problems in their own words. Each card goes to a page that answers that problem completely, in plain language.'],
             G([card('problem', svg=ART[i], title=t, text=x, link_text='Read the full answer', link=link(u)) for i, (t, x, u) in enumerate(five)]
               + [card('problem', svg=ART[5], tag='Something else?', title='A narrower problem than these five.', text='A suspended listing, a page Google will not index, reviews that vanished. Ask it in your own words and we point you to the answer.', link_text='Ask a question', link=link('/ask/'), highlight='yes')], 3, 2, 1, cls='rs-probs'), eid='five'),
-        sec('Tell them apart', 'How do I tell which SEO problem I have?', ['Go by what you see, not by what you were told. The table matches each symptom to the likely problem and to the first thing worth checking.', 'One business can have two of these at once. Fix them in the order shown, because being found comes before being chosen.'],
+        sec('Tell them apart', 'Common SEO issues: which one do you have?', ['Common SEO issues look alike from the inside, so go by what you see, not by what you were told. The table matches each symptom to the likely problem and to the first thing worth checking.', 'One business can have two of these at once. Fix them in the order shown, because being found comes before being chosen.'],
             table('Symptoms of the five SEO problems, the likely cause and the first check', ('What you see', 'Likely problem', 'First check'), [
                 ('You search your trade and city and you are not there', 'Engines cannot read the business yet', 'Search in a private window, on a phone, from inside your service area'),
                 ('You show up, the phone stays quiet', 'The listing or page does not win the choice', 'Compare your photos, reviews and answers with the top three'),
@@ -81,7 +84,7 @@ def make(h):
                 ('Calls fell from one week to the next', 'A drop with a date', 'Match the start date to Google’s published updates'),
                 ('Two quotes, very different prices', 'The work is not written down', 'Ask what is mapped, what ships first and what is in writing'),
             ]), more=('See how the first fifteen days fix them', '/dsouza-equation/method/'), eid='tell'),
-        sec('Three causes', 'Why is my SEO not working? Three causes.', ['When an owner asks “why is my SEO not working?”, the answer is nearly always one of three failed checks. Every engine takes a person’s question and names the most relevant business it can trust, and it decides with the same three checks.', 'Those checks are the D’Souza Equation: Relevance = Read × Confirm × Choose. That is why one fix works on Google, on Maps and in an AI answer.'],
+        sec('Three causes', 'Why is my SEO not working?', ['When an owner asks “why is my SEO not working?”, the answer is nearly always one of three failed checks. Every engine takes a person’s question and names the most relevant business it can trust, and it decides with the same three checks.', 'Those checks are the D’Souza Equation: Relevance = Read × Confirm × Choose. That is why one fix works on Google, on Maps and in an AI answer.'],
             G([card('clause', number='1', title='Read fails: you cannot be found.', text='The engine cannot tell plainly what the business is, where it works and what it answers. Nothing else counts until this passes.'),
                card('clause', number='2', title='Confirm fails: AI names someone else.', text='Your own site says it, but listings, reviews and mentions elsewhere do not say the same thing. The engine will not vouch for you.'),
                card('clause', number='3', title='Choose fails: found, then passed over.', text='People see you and then click, call or book someone else. Engines watch that choice and move the chosen business up.')], 3, 1, 1),
@@ -112,8 +115,8 @@ def make(h):
         return G([card('day', number=n, title=t, text=x) for n, t, x in items], cols, 2, 1, g=(16, 16))
     crumb = lambda name: [('Home', '/'), ('What’s wrong?', '/problems/'), (name, '')]
 
-    P.append(page('not-showing-up-on-google', '/problems/not-showing-up-on-google/', 'Business Not Showing Up on Google | Relevant Search Media',
-        'Business not showing up on Google? Run four checks to find the cause in ten minutes. Six causes, each with the fix that works.', [
+    P.append(page('not-showing-up-on-google', '/problems/not-showing-up-on-google/', 'Why Is My Business Not Showing Up on Google?',
+        'Why is my business not showing up on Google? It is nearly always one of six causes. Four checks find yours in ten minutes.', [
         hero(crumb('Not showing up on Google'), 'Problem 1 of 5', 'Why is my business not showing up on Google?',
              'Your business is not showing up on Google because Google cannot yet read plainly what it is, where it works and what it answers, or cannot confirm that from anywhere else. The usual causes are an unverified or incomplete Business Profile, a website Google has not indexed, and details that differ from one listing to the next.',
              'Four checks tell you which cause is yours.'),
@@ -124,7 +127,7 @@ def make(h):
                    ('Check 4', 'Open your Business Profile', 'Sign in and look at its status: verified, pending, suspended or duplicate.')]),
             T('<p>For example, a roofer in Denver would run Check 2 with “roof repair denver” and “roofing company denver”. Owners search in many ways too: our own map counts 170 different searches roofers in Denver make when they look for a company like ours (v4, 18 Nov 2026).</p>', 'small rs-note', mt=22, mb=18),
             B('See the searches for your trade and city', '/searches/', 'rs-more', mb=0), eid='check'),
-        sec('Six causes', 'What are the reasons a business is not on Google?', ['A business not on Google has one of six causes. Match what the four checks showed you to the row, then to the fix.', 'More than one row can apply. Work from the top, because Google has to know the business exists before it can rank it.'],
+        sec('Six causes', 'Why is my business not showing up on Google, cause by cause?', ['A business not on Google has one of six causes. Match what the four checks showed you to the row, then to the fix.', 'More than one row can apply. Work from the top, because Google has to know the business exists before it can rank it.'],
             table('Why a business does not show up on Google: what you find, the cause and the fix', ('What you find', 'Cause', 'What fixes it'), [
                 ('Your name search shows nothing', 'No verified Business Profile', 'Create or claim the profile and complete Google’s verification'),
                 ('The profile says suspended', 'A guideline or address problem', 'Correct the profile, then file a reinstatement request'),
@@ -133,7 +136,7 @@ def make(h):
                 ('You are in search results, not on the map', 'The profile is thin next to nearby rivals', 'Right category, full services, photos, and reviews you reply to'),
                 ('Name, address or phone differ between listings', 'Nothing confirms the business', 'Make all three identical on every listing and on the site'),
             ]), more=('How “Read” works in the equation', '/dsouza-equation/read/'), eid='causes'),
-        sec('Search and Maps', 'Why is my business not on Google Maps when it shows in search?', ['Search results and the map are ranked separately. Google says local results turn mainly on relevance, distance and prominence: how well the profile matches the search, how far the business is from the searcher, and how well known it is.', 'A business not on Google Maps usually has a profile with the wrong primary category, missing services or few recent reviews. The website can rank while the profile stays invisible.'],
+        sec('Search and Maps', 'Why is my business not showing up on Google Maps when it shows in search?', ['Search results and the map are ranked separately. Google says local results turn mainly on relevance, distance and prominence: how well the profile matches the search, how far the business is from the searcher, and how well known it is.', 'A business not on Google Maps usually has a profile with the wrong primary category, missing services or few recent reviews. The website can rank while the profile stays invisible.'],
             quote('If Google cannot say in one sentence what you do and where, it will not show you. Fix that sentence first.'),
             more=('What we do for Google Business Profile', '/services/google-business-profile-optimization/'), eid='maps'),
         sec('How long', 'How long does it take to show up on Google?', ['It depends on the cause. A verified, completed profile can appear within days. A new website takes longer: Google says crawling can take from a few days to a few weeks.', 'On our plans the first fixes go live by day 5 and the first report arrives on day 15. Rankings usually start moving between day 30 and day 60.'],
@@ -144,6 +147,7 @@ def make(h):
             more=('See the first fifteen days', '/dsouza-equation/method/'), eid='how-long'),
         faq('Questions about not showing up', 'What do owners ask when their business is not on Google?', 'Asked on discovery calls, answered here the same way. For anything else, use the <a href="/ask/">Ask page</a>.', [
             ('Why is my business not on Google when I have a website?', 'Having a website is not the same as being indexed. Google has to find the site, be allowed to read it and decide the pages are worth keeping.\nRun the site: search above. If it returns nothing, the site is blocked, too new, or carries a noindex tag.'),
+            ('How to get my business on Google if it is brand new?', 'Create a Google Business Profile and verify it, then publish a site that states plainly what you do and where. Add the business to the directories your trade uses, with the same name, address and phone.\nA new business usually appears for its own name first, then for trade searches as reviews and mentions build.'),
             ('Why did my business disappear from Google?', 'A business that was showing and then vanished usually has a suspended profile, a site change that blocked Google, or a drop after an update. Each leaves a date.\nCheck the profile status first, then see our page on <a href="/problems/traffic-dropped/">traffic that dropped</a>.'),
             ('Do I have to pay Google to show up?', 'No. Organic results and Maps listings are free, and they are earned by being readable, confirmed and chosen. Ads are a separate, paid placement marked as sponsored.\nA Business Profile costs nothing to create or verify, so a business not on Google is never there for lack of a fee.'),
             ('Is a business not on Google also missing from AI answers?', 'Usually. AI assistants draw on the same sources search engines read: your site, your listings and what others say about you.\nA business Google cannot read is rarely named by ChatGPT, Gemini or Perplexity. No one can promise an AI placement, so we track it monthly.'),
@@ -153,9 +157,9 @@ def make(h):
         closing('Not on Google? <span class="gold">Find out why in one call.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He runs these four checks on your business while you watch, tells you which of the six causes he sees, and shows you what the first fifteen days would fix.', 'No audit to buy first, no trial. One business per trade per city.'),
     ], parent='problems'))
     # ------------------------------------------------------------------ /problems/not-getting-leads/
-    P.append(page('not-getting-leads', '/problems/not-getting-leads/', 'Get More Leads for My Business | Relevant Search Media',
+    P.append(page('not-getting-leads', '/problems/not-getting-leads/', 'How to Get More Leads for My Business',
         'How to get more leads for my business when people find it and still pick a rival. Four checks show what loses the choice, and what to fix first.', [
-        hero(crumb('Found, not picked'), 'Problem 2 of 5', 'How do I get more leads for my business from search?',
+        hero(crumb('Found, not picked'), 'Problem 2 of 5', 'How to get more leads for my business from search',
              'You get more leads when the listing and the page people already see win the choice. If your business is found and the phone still stays quiet, the cause is almost always what a searcher sees in the first ten seconds: the photos, the reviews, the answers, and how easy it is to call you.',
              'Being found is the engine’s job. Being picked is yours.'),
         sec('The ten-minute check', 'How do I check why people find me and do not pick me?', ['Look at your business the way a stranger does, on a phone, next to the three businesses shown beside you. These four checks take about ten minutes.'],
@@ -165,7 +169,7 @@ def make(h):
                    ('Check 4', 'Read your first screen', 'Open your page. Without scrolling, it should say what you do, where, and what to do next.')]),
             T('<p>For example, a dentist in Chicago would run Check 2 against the three practices shown for “emergency dentist chicago”. Owners look for help in many ways as well: our own map counts 186 different searches dentists in Chicago make when they look for a company like ours (v4, 18 Nov 2026).</p>', 'small rs-note', mt=22, mb=18),
             B('See the searches for your trade and city', '/searches/', 'rs-more', mb=0), eid='check'),
-        sec('Six causes', 'Why is my website not getting leads?', ['A website not getting leads is losing people at one of six points. Match what you see to the row, then to the fix.', 'Start at the top. The listing is seen before the website, so it loses more people than any page does.'],
+        sec('Six causes', 'How to get more leads for my business: where are the six leaks?', ['A website not getting leads is losing people at one of six points. Match what you see to the row, then to the fix.', 'Start at the top. The listing is seen before the website, so it loses more people than any page does.'],
             table('Why a business is found and not chosen: what you see, the cause and the fix', ('What you see', 'Cause', 'What fixes it'), [
                 ('Many views of the listing, few calls', 'The listing loses the side-by-side comparison', 'Recent photos, every service listed, reviews you reply to'),
                 ('Visits to the site, no enquiries', 'The first screen does not say what, where and what next', 'One plain sentence and one clear action above the fold'),
@@ -174,7 +178,7 @@ def make(h):
                 ('Only the cheapest work comes in', 'Nothing shows why you are worth more', 'Proof beside the button: results, guarantees, licences'),
                 ('Good reviews, all of them old', 'A rival’s latest review is from this week', 'Ask every customer, and reply to each review'),
             ]), more=('How “Choose” works in the equation', '/dsouza-equation/choose/'), eid='causes'),
-        sec('The call button', 'How do I get more calls from Google?', ['Most local searches end on the listing, not on a website. To get more calls from Google, the Business Profile has to answer the three things a caller checks: are you open, do you do this job, and do other people trust you.', 'That means correct hours, the right primary category, every service named, and recent reviews with replies. Engines then watch who gets chosen and show that business more often.'],
+        sec('The call button', 'How to get more customers for my business from Google?', ['Most local searches end on the listing, not on a website. To get more calls from Google, the Business Profile has to answer the three things a caller checks: are you open, do you do this job, and do other people trust you.', 'That means correct hours, the right primary category, every service named, and recent reviews with replies. Engines then watch who gets chosen and show that business more often.'],
             quote('Being found is the engine’s job. Being picked is yours. The engine only keeps showing the business that people pick.'),
             more=('What we do for Google Business Profile', '/services/google-business-profile-optimization/'), eid='calls'),
         sec('Counting leads', 'What counts as a lead, and how is it measured?', ['A lead is a call, a form or a message from someone who wants the work you do, in the area you serve. Clicks and impressions are not leads.', 'On our plans every item that ships is logged with its link. Every 15 days you get a report with the Relevance Rate: the share of leads you confirm were relevant.'],
@@ -194,19 +198,19 @@ def make(h):
         closing('Found, but not picked? <span class="gold">See why in one call.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He opens your listing beside the three businesses shown next to you, tells you where the choice is being lost, and shows you what the first fifteen days would fix.', 'No audit to buy first, no trial. One business per trade per city.'),
     ], parent='problems'))
     # ------------------------------------------------------------------ /problems/not-recommended-by-chatgpt/
-    P.append(page('not-recommended-by-chatgpt', '/problems/not-recommended-by-chatgpt/', 'Get Recommended by ChatGPT | Relevant Search Media',
-        'Get recommended by ChatGPT by giving it facts it can read and sources that confirm them. Four checks show why AI names a rival, and what to fix.', [
-        hero(crumb('Google shows me, AI doesn’t'), 'Problem 3 of 5', 'How do I get recommended by ChatGPT as a local business?',
+    P.append(page('not-recommended-by-chatgpt', '/problems/not-recommended-by-chatgpt/', 'How to Get My Business Recommended by ChatGPT',
+        'How to get my business recommended by ChatGPT: give it facts it can read and sources that confirm them. Four checks show why AI names a rival.', [
+        hero(crumb('Google shows me, AI doesn’t'), 'Problem 3 of 5', 'How to get my business recommended by ChatGPT',
              'To get recommended by ChatGPT, a business needs facts an assistant can read and independent sources that say the same thing. When Google shows you and an AI assistant names a rival, the cause is nearly always the second part: nothing outside your own website confirms who you are and what you do.',
              'Ask it yourself first. It takes ten minutes.'),
-        sec('The ten-minute check', 'How do I check whether I show up in ChatGPT?', ['Ask the assistants what a customer would ask, and read the answers the way a customer would. Use a fresh chat each time so earlier questions do not steer the reply.'],
+        sec('The ten-minute check', 'How to show up in ChatGPT: where do you stand today?', ['Ask the assistants what a customer would ask, and read the answers the way a customer would. Use a fresh chat each time so earlier questions do not steer the reply.'],
             steps([('Check 1', 'Ask the customer’s question', 'In ChatGPT, type the question a customer would, with your trade and city. Note every business it names.'),
                    ('Check 2', 'Ask two more assistants', 'Put the same question to Gemini and Perplexity. One answer proves little; three show a pattern.'),
                    ('Check 3', 'Ask about your business by name', 'Type “What do you know about” and your business name. Write down anything wrong or missing.'),
                    ('Check 4', 'Read the sources', 'Where an assistant shows its sources, open them. Those are the places you need to be named.')]),
             T('<p>For example, a lawyer in New York would run Check 1 with “divorce lawyer in new york” and note who is named. Owners ask in many ways too: our own map counts 211 different searches law firms in New York make when they look for a company like ours (v4, 18 Nov 2026).</p>', 'small rs-note', mt=22, mb=18),
             B('See who AI names, by trade and city', '/ai-recommendation-index/', 'rs-more', mb=0), eid='check'),
-        sec('Six causes', 'Why is AI not recommending my business?', ['When AI is not recommending my business, owners often assume the assistant is random. It is not: each of these six answers points to a cause.', 'Match what the assistant said to the row. The fix is rarely on your own website alone.'],
+        sec('Six causes', 'How to get my business recommended by ChatGPT when it names a rival?', ['When an assistant names a rival, owners often assume it is random. It is not: each of these six answers points to a cause.', 'Match what the assistant said to the row. The fix is rarely on your own website alone.'],
             table('Why an AI assistant names another business: what it says, the cause and the fix', ('What the assistant does', 'Cause', 'What fixes it'), [
                 ('Names rivals and never you', 'Few independent sources mention you', 'Be listed and mentioned where it reads: directories, review sites, local press, trade bodies'),
                 ('Names you with wrong details', 'The web holds conflicting facts about you', 'Make name, address, phone and services identical everywhere'),
@@ -224,9 +228,9 @@ def make(h):
         sec('No guarantees', 'Can anyone guarantee a ChatGPT recommendation?', ['No. Nobody outside the companies that build these assistants controls what they answer, and the same question can return different names on different days. Anyone selling a guaranteed AI placement is selling something they do not own.', 'What can be done is the work the assistants draw on, and honest tracking. Our AI Recommendation Index records who ChatGPT, Gemini and Perplexity name for each trade in each city, and is re-run every month.'],
             C([B('Open the AI Recommendation Index', '/ai-recommendation-index/'), B('Read the two commitments', '/commitments/', 'rs-more')], 'rs-actions', 'row', flex_gap=gap(14), flex_wrap='wrap', flex_align_items='center', margin=box(0, 0, 0, 0)), eid='guarantee'),
         faq('Questions about AI answers', 'What do owners ask about being named by AI?', 'Asked on discovery calls, answered here the same way. For anything else, use the <a href="/ask/">Ask page</a>.', [
-            ('How to get my business recommended by ChatGPT if it is new?', 'Start with what the assistant can read and check. Publish a plain facts page, complete your Google Business Profile, and get listed on the directories and review sites your trade uses.\nA new business has few mentions, so consistency matters most: the same name, address, phone and services everywhere.'),
+            ('How to get my business on ChatGPT if it is new?', 'Start with what the assistant can read and check. Publish a plain facts page, complete your Google Business Profile, and get listed on the directories and review sites your trade uses.\nA new business has few mentions, so consistency matters most: the same name, address, phone and services everywhere.'),
             ('Does ChatGPT use Google rankings?', 'Not directly. ChatGPT can search the web when a question needs current information, and it also draws on what many sources say about a business.\nRanking well makes it more likely your pages are among those it reads. It is not the same as being named in the answer.'),
-            ('Do I need an llms.txt file?', 'It helps and costs little. An llms.txt file is a plain text page that tells AI systems what your site is and where its key pages are.\nIt is not a ranking switch, and not every assistant reads it. We publish one on this site and on every client site.'),
+            ('Do I need an llms.txt file?', 'It helps and costs little. An llms.txt file is a plain text page that tells AI systems what your site is and where its key pages are.\nIt is not a ranking switch, and not every assistant reads it. We publish one on this site, and you can read it at /llms.txt.'),
             ('How often do AI answers change?', 'Often. The same question can name different businesses on different days, and for different people. That is why one screenshot proves very little.\nWe put the same questions to the same assistants every month, so the trend is visible and one lucky answer is not mistaken for progress.'),
             ('What is the AI Recommendation Index?', 'It is our public record of who ChatGPT, Gemini and Perplexity name for each trade in each city, re-run every month. The first run covers plumbing in the ten launch cities.\nIt shows where a business stands today, and whether the work is moving the answer.'),
         ]),
@@ -234,19 +238,19 @@ def make(h):
         closing('Google shows you. <span class="gold">AI names someone else.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He asks three assistants the question your customers ask, shows you who they name and why, and tells you what the first fifteen days would change.', 'No audit to buy first, no trial. One business per trade per city.'),
     ], parent='problems'))
     # ------------------------------------------------------------------ /problems/traffic-dropped/
-    P.append(page('traffic-dropped', '/problems/traffic-dropped/', 'Website Traffic Dropped Suddenly | Relevant Search Media',
+    P.append(page('traffic-dropped', '/problems/traffic-dropped/', 'Website Traffic Dropped Suddenly? Find the Cause',
         'Website traffic dropped suddenly? Date the drop and match it to a cause in ten minutes. Seven causes, the check for each, and what fixes it.', [
-        hero(crumb('Ranking, then lost it'), 'Problem 4 of 5', 'Website traffic dropped suddenly: how do I find the cause?',
+        hero(crumb('Ranking, then lost it'), 'Problem 4 of 5', 'Website traffic dropped suddenly: how to find the cause',
              'When website traffic dropped suddenly, the first job is to find the week it began. A drop with a start date has a cause: a Google update, a change made to the site, a lost listing, or tracking that broke. Match the date to what changed that week and the cause is usually plain within ten minutes.',
              'Date it first. Everything else follows from the date.'),
-        sec('The ten-minute check', 'How do I check why my traffic dropped?', ['Do these four checks in order. Each one narrows the cause, and none needs a paid tool.'],
+        sec('The ten-minute check', 'Website traffic dropped suddenly: what do I check first?', ['Do these four checks in order. Each one narrows the cause, and none needs a paid tool.'],
             steps([('Check 1', 'Date the drop', 'In your analytics or call log, find the week the fall began. Write the date down.'),
                    ('Check 2', 'See what fell', 'In Search Console, compare the weeks before and after. Is it every page, or a few? Search only, or all visits?'),
                    ('Check 3', 'Match Google’s updates', 'Open Google’s Search Status Dashboard and look for a ranking update in that week.'),
                    ('Check 4', 'List your own changes', 'A redesign, a new plugin, a host move, changed addresses, an edited listing: anything from that week.')]),
             T('<p>For example, an HVAC company in Dallas whose calls fell in one week would check “hvac repair dallas” before and after that date. That is one search among many. Our own map holds 165 separate searches that HVAC owners in Dallas type when they want a company such as ours (v4, 18 Nov 2026).</p>', 'small rs-note', mt=22, mb=18),
             B('Look up your own trade and city', '/searches/', 'rs-more', mb=0), eid='check'),
-        sec('Seven causes', 'Why have my Google rankings dropped?', ['When Google rankings dropped, one of seven things happened. The date and the pattern from your four checks point to the row.', 'Rule out the top three first. They are the ones an owner can cause by accident, and the quickest to put right.'],
+        sec('Seven causes', 'Google ranking dropped dramatically: which of seven causes is it?', ['When a Google ranking dropped dramatically, one of seven things happened. The date and the pattern from your four checks point to the row.', 'Rule out the top three first. They are the ones an owner can cause by accident, and the quickest to put right.'],
             table('Why traffic and rankings fall: the pattern, the cause and the fix', ('The pattern', 'Cause', 'What fixes it'), [
                 ('Every page fell on one day', 'The site was blocked or broken', 'Remove the noindex tag or robots block and ask Google to recrawl'),
                 ('It fell the week of a redesign or move', 'Addresses changed without redirects', 'Redirect every old address to its new one'),
@@ -266,7 +270,7 @@ def make(h):
                    ('Day 5', 'Repairs go live', 'The first fixes are published and each one is entered in your log.')]),
             more=('See the first fifteen days', '/dsouza-equation/method/'), eid='how-long'),
         faq('Questions about a drop', 'What do owners ask when traffic falls?', 'The five questions owners ask most once the numbers fall. Something else on your mind? Try the <a href="/ask/">Ask page</a>.', [
-            ('Why did my website traffic drop overnight?', 'An overnight fall across the whole site is usually technical: a noindex tag left on after a rebuild, a robots block, an expired certificate or a host problem.\nIf only search visits fell and the site works, look for a Google update or a change to your Business Profile on that date.'),
+            ('Why has my website traffic dropped overnight?', 'An overnight fall across the whole site is usually technical: a noindex tag left on after a rebuild, a robots block, an expired certificate or a host problem.\nIf only search visits fell and the site works, look for a Google update or a change to your Business Profile on that date.'),
             ('I lost rankings after an update. Will they come back?', 'Sometimes, and nobody can promise it. Google re-weighs what it values at each update, so pages can return when they improve or when the next update lands.\nIf you lost rankings after an update, compare your pages with the ones that rose and close the gap.'),
             ('Can a website redesign cause a traffic drop?', 'Yes, and it is one of the most common causes. A redesign often changes page addresses, removes text Google relied on, or goes live with a noindex tag still in place.\nKeep the old addresses or redirect each one, and check indexing the day the new site launches.'),
             ('How do I know if Google penalised my site?', 'Open Search Console and look at the Manual actions report. If Google has taken action, it says so there and names the reason.\nMost falls are not penalties. They are updates, technical mistakes or stronger rivals, and each is handled differently.'),
@@ -276,9 +280,9 @@ def make(h):
         closing('Ranking, then gone? <span class="gold">Date it in one call.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He dates the drop with you, matches it against Google’s updates and your own changes, and shows you what the first fifteen days would fix.', 'Nothing to buy before the call. We take one business per trade in each city.'),
     ], parent='problems'))
     # ------------------------------------------------------------------ /problems/seo-cost/
-    P.append(page('seo-cost', '/problems/seo-cost/', 'How Much Does SEO Cost? | Relevant Search Media',
+    P.append(page('seo-cost', '/problems/seo-cost/', 'How Much Does SEO Cost? What You Should Get',
         'How much does SEO cost? It depends on what is mapped, what ships and what is in writing. Four questions show whether a quote is fair.', [
-        hero(crumb('Is this quote fair?'), 'Problem 5 of 5', 'How much does SEO cost, and is my quote fair?',
+        hero(crumb('Is this quote fair?'), 'Problem 5 of 5', 'How much does SEO cost, and what should you get for it',
              'How much SEO costs depends on three things: how many searches are mapped, how much work ships each month, and what is promised in writing. A price means little until those are stated. A fair quote tells you what will be mapped, what ships in the first fifteen days, and what happens if it does not.',
              'Judge the quote, not the number.'),
         sec('The ten-minute check', 'How do I check an SEO quote in ten minutes?', ['Put these four questions to whoever sent the quote, in writing. A company that does the work answers all four the same day.'],
@@ -297,33 +301,33 @@ def make(h):
                 ('A ranking guarantee', 'A promise', 'For which searches, on which engine, and what if it is missed?'),
                 ('A long contract with a setup fee', 'A commitment from you', 'What do I keep, and what do I owe, if I leave?'),
             ]), more=('How we work, day by day', '/dsouza-equation/method/'), eid='models'),
-        sec('What moves the price', 'What makes SEO cost more or less?', ['Three things move the price of honest work. None of them is the agency’s office or its sales deck.'],
+        sec('What moves the price', 'How much does SEO cost, and what decides it?', ['Three things move the price of honest work. None of them is the agency’s office or its sales deck.'],
             G([card('clause', number='1', title='The size of the map.', text='How many customer searches the work must win. Our plans map 300, 600 or 2,000 of them.'),
                card('clause', number='2', title='The contest in your trade and city.', text='A dentist in Chicago faces more rivals than a dentist in a small town, and each rival is also doing the work.'),
                card('clause', number='3', title='What is already in place.', text='A sound site, complete listings and recent reviews mean less to build. A blocked site or a suspended listing means more.')], 3, 1, 1),
             more=('See all 413 checks', '/dsouza-equation/standard/'), eid='drivers'),
-        sec('The fair-quote test', 'Is my SEO quote fair? Three questions.', ['Is my SEO quote fair? It is if it answers three questions: what will be mapped, what ships in the first fifteen days, and what is in writing. A quote that answers all three can be compared with any other.', 'Ours puts two commitments in writing on every plan. Everything ships or that period is free, and half the mapped searches reach page one by month four or we work on at no charge.'],
+        sec('The fair-quote test', 'Is my SEO quote fair?', ['Is my SEO quote fair? It is if it answers three questions: what will be mapped, what ships in the first fifteen days, and what is in writing. A quote that answers all three can be compared with any other.', 'Ours puts two commitments in writing on every plan. Everything ships or that period is free, and half the mapped searches reach page one by month four or we work on at no charge.'],
             quote('A fair quote is one you can check. If you cannot tell what will ship in the first fifteen days, you are not being quoted. You are being sold.'),
             more=('Read the two commitments', '/commitments/'), eid='fair'),
         sec('No price list', 'Why are there no prices on this page?', ['Because a price without a map is a guess. What a plan costs depends on your trade, your city and how many searches have to be won, and we take only one business per trade per city.', 'The price is given on the discovery call, after Thomas has looked at your searches. The call takes 20 to 30 minutes and there is no audit to buy first.'],
             C([B('Book a discovery call', '/book/'), B('Check whether your city is open', '/open-board/', 'rs-more')], 'rs-actions', 'row', flex_gap=gap(14), flex_wrap='wrap', flex_align_items='center', margin=box(0, 0, 0, 0)), eid='no-prices'),
         faq('Questions about cost', 'What do owners ask about the cost of SEO?', 'The questions that come up once a quote is on the table. For anything else, use the <a href="/ask/">Ask page</a>.', [
-            ('How much does SEO cost for a small business?', 'It depends on how many searches the business needs to win and how hard its market is. A one-trade business in one city needs a smaller map than a company serving several.\nCompare quotes by what will be mapped and what ships each month, not by the monthly figure alone.'),
+            ('What is a fair SEO cost for small business owners?', 'It depends on how many searches the business needs to win and how hard its market is. A one-trade business in one city needs a smaller map than a company serving several.\nCompare quotes by what will be mapped and what ships each month, not by the monthly figure alone.'),
             ('Is cheap SEO worth it?', 'Sometimes a low price buys real work on a small map, and that can be right for a small business. Often it buys a monthly report and little else.\nAsk the four questions on this page. Cheap work that ships and is logged beats expensive work that cannot be shown.'),
             ('Why do SEO quotes vary so much?', 'Because they are rarely quoting the same thing. One agency prices a large map and daily work; another prices a few pages and a report.\nUntil each states what is mapped, what ships and what is in writing, the two numbers cannot be compared.'),
             ('Do I have to sign a long contract?', 'Not with us. Every plan is month to month, with no setup fee, and you cancel by email.\nYou keep the website, the content, the listings and every account from day one. Nothing is held back and nothing is charged to leave.'),
             ('What should an SEO proposal include?', 'The list of searches it targets, the items that ship in the first fifteen days, what is promised in writing, how the work is logged, and what you keep if you leave.\nA proposal missing any of the five is missing the part that lets you hold the agency to it.'),
         ]),
         trust(),
-        closing('Holding a quote? <span class="gold">Check it in one call.</span>', 'A discovery call is 20 to 30 minutes with Thomas. Bring the quote you were given. He tells you what it covers, what it leaves out, and what the first fifteen days of real work would look like for your trade and city.', 'Nothing to pay for the call. One business per trade per city.'),
+        closing('Holding a quote? <span class="gold">Check it in one call.</span>', 'A discovery call is 20 to 30 minutes with Thomas. Bring the quote you were given. He tells you what it covers, what it leaves out, and what the first fifteen days of real work would look like for your trade and city.', 'No audit to buy first, no trial. One business per trade per city.'),
     ], parent='problems'))
     # ------------------------------------------------------------------ /ask/
-    P.append(page('ask', '/ask/', 'Ask an SEO Question | Relevant Search Media',
-        'Ask an SEO question in your own words. This page finds the answer among every question answered on the site, each one checked by Thomas D’Souza.', [
-        hero([('Home', '/'), ('What’s wrong?', '/problems/'), ('Ask a question', '')], 'Ask', 'Ask an SEO question and find the page that answers it',
-             'Ask an SEO question in your own words and this page points you to the answer. Every answer on this site is written once, checked against one signed fact register and reviewed by Thomas D’Souza. If no page answers your question yet, send it to us and it gets one.',
+    P.append(page('ask', '/ask/', 'Ask Anything About Getting Found Online',
+        'Ask anything about getting found online, in your own words. This page finds the answer among every question answered on the site.', [
+        hero([('Home', '/'), ('What’s wrong?', '/problems/'), ('Ask a question', '')], 'Ask', 'Ask anything about getting found online',
+             'Ask anything about getting found online, in your own words, and this page points you to the answer. Every answer on this site is written once, checked against one signed fact register and reviewed by Thomas D’Souza. If no page answers your question yet, send it to us and it gets one.',
              'Type below. Nothing is sent anywhere until you choose to send it.', ctas=(('Book a discovery call', '/book/'), ('Ask a question', '#ask'))),
-        sec('Find the answer', 'What is your question?', ['Type it the way you would say it. The list narrows as you type, and each line opens the page that answers it.'],
+        sec('Find the answer', 'What do you want to ask about getting found online?', ['Type it the way you would say it. The list narrows as you type, and each line opens the page that answers it.'],
             steps([('Step 1', 'Type it your way', 'A few plain words are enough: “reviews disappeared”, “not on maps”, “quote too high”.'),
                    ('Step 2', 'Open the page', 'Each line opens the page that answers it, at the question.'),
                    ('Step 3', 'Not there? Send it', 'If nothing matches, send the question. A person replies, and it gets a page.')], 3),
@@ -344,12 +348,12 @@ def make(h):
                card('clause', number='3', title='Signed.', text='Each page names who reviewed it and when. On this site that is Thomas D’Souza, the founder.')], 3, 1, 1),
             quote('If a question has two answers on one site, at least one of them is wrong. We answer it once and keep it right.'),
             more=('How we write and check', '/about/editorial-policy/'), eid='checked'),
-        sec('Not here yet', 'Where do I get SEO help if my question is not here?', ['Send it. For SEO help with a question this page cannot answer, call or email and a person replies, usually within one working day. Questions that come up more than once get their own page.', 'If the question is about your own business, a discovery call is quicker: Thomas looks at your trade and city while you talk.'],
+        sec('Not here yet', 'Where do I get SEO help if my question is not here?', ['Send it. For SEO help with a question this page cannot answer, call or email and a person replies. Questions that come up more than once get their own page.', 'If the question is about your own business, a discovery call is quicker: Thomas looks at your trade and city while you talk.'],
             C([B('Book a discovery call', '/book/'), B('Email info@relevantsearchmedia.com', 'mailto:info@relevantsearchmedia.com', 'rsm-btn rsm-btn-ghost')], 'rs-actions', 'row', flex_gap=gap(14), flex_wrap='wrap', flex_align_items='center', margin=box(0, 0, 0, 0)), eid='help'),
         faq('About this page', 'What do people ask about asking?', 'Short answers about how this page works. For the questions owners ask most, start with <a href="/problems/">the five problems</a>.', [
-            ('Is it free to ask an SEO question?', 'Yes. Reading every answer on this site is free, and so is sending a question we have not answered yet. Nothing here sits behind a form or a sign-up.\nThe discovery call is also free: 20 to 30 minutes with Thomas, with no audit to buy first.'),
-            ('Who answers the questions?', 'The team writes the answers and Thomas D’Souza, the founder, reviews each one before it is published. His name and the review date are on every page.\nHe has worked in digital marketing since 2010 and wrote the D’Souza Equation that the answers follow.'),
-            ('How quickly will I get a reply?', 'A question sent by email or phone gets a reply from a person, usually within one working day. The team works US hours.\nIf many owners ask the same thing, it becomes a page on this site, so the next person finds it without waiting.'),
+            ('Do I have to sign up to ask a question?', 'No. Every answer on this site is open to read, and you can send a question we have not answered yet without creating an account. Nothing here sits behind a sign-up.\nIf you want someone to look at your own business, the discovery call is 20 to 30 minutes with Thomas, with no audit to buy first.'),
+            ('Who answers the questions?', 'Each answer is checked against the signed fact register, and Thomas D’Souza, the founder, approves it before it is published. His name and the review date are on every page.\nHe has worked in digital marketing since 2010 and wrote the D’Souza Equation that the answers follow.'),
+            ('What happens to a question I send?', 'A question sent by email or phone is read by a person on the team, which works US hours, and gets a reply.\nIf many owners ask the same thing, it becomes a page on this site, so the next person finds it without having to ask.'),
             ('Can I ask about my own website?', 'Yes, and a discovery call is the better place for it. A page can answer a general question, but your site, your listings and your city need someone to look.\nOn the call Thomas checks who Google, Maps and the AI engines name for your trade.'),
             ('What if the answer on a page is wrong?', 'Tell us. Every factual claim comes from one signed register, and when one turns out to be wrong we fix the page and record the change on the corrections page.\nWe would rather be corrected in public than stay wrong quietly.'),
         ]),
@@ -361,8 +365,9 @@ def make(h):
         'Book a discovery call: 20 to 30 minutes with Thomas D’Souza. See who engines name for your trade and city, and what fifteen days would fix.', [
         hero([('Home', '/'), ('Book a discovery call', '')], 'Start here', 'Book a discovery call with Thomas',
              'Book a discovery call and you get 20 to 30 minutes with Thomas D’Souza. He looks at who Google, Maps and the AI engines name when your customers ask, tells you plainly what he sees, and shows you what the first fifteen days would be. There is no audit to buy first and no trial.',
-             'Fill in the form and we reply with times within one working day.', ctas=(('Request my call', '/book/#form'), ('Ask a question', '/ask/')), note='Prefer the phone? Call +1 (202) 609-6641.'),
-        S([G([W('rsm-form', {'title': 'Tell us where to reach you', 'intro': 'Your trade and city are enough for Thomas to prepare. We reply within one working day with times.'}, 'rv', eid='form'),
+             'Pick a time on the calendar, or fill in the form and we reply with times.', ctas=(('Book a discovery call', '/book/#form'), ('Ask a question', '/ask/')), note='Prefer the phone? Call +1 (202) 609-6641.'),
+        S([G([C([W('rsm-form', {'title': 'Tell us where to reach you', 'intro': 'Your trade and city are enough for Thomas to prepare. We reply with times.', 'done': 'Thank you. Your request is with Thomas, and we will reply with times.'}, 'rv', eid='form'),
+                 T('<p>Or choose a time yourself on Thomas’s calendar.</p>', 'small', mt=20, mb=10), B('Pick a time now', 'https://calendly.com/thomas-relevant-search-media/30min', 'rsm-btn rsm-btn-ghost', mb=0)]),
               C([H('What happens next', 'p', 'eyebrow'), H('What happens on an SEO consultation call?', 'h2', mb=18),
                  T('<p>This SEO consultation is a working call, not a sales pitch. You leave knowing which problem you have and what would be done about it first.</p>', 'lead', mb=22),
                  G([card('day', number='Step 1', title='You tell us trade and city', text='That is all we need to prepare. Send a quote you were given, or the date of a drop, if you have one.'),
@@ -380,11 +385,11 @@ def make(h):
             ]), more=('Read the two commitments', '/commitments/'), eid='minutes'),
         sec('Be ready', 'What should I have ready for the call?', ['Very little. Your trade, your city and your website address are enough for Thomas to prepare.', 'If another agency sent you a quote, or your calls fell on a date you remember, bring that. You do not need to share a password or give access to anything.'],
             more=('See the five problems owners bring', '/problems/'), eid='ready'),
-        sec('Before you book', 'Who is the discovery call for?', ['It is for the owner of a US business that depends on being found: a plumber, a dentist, a law firm, a roofer, a clinic. We take one business per trade per city, so the first thing Thomas checks is whether your place is still open.', 'For example, if a roofer in Denver is already a client, a second “roofing company denver” is told so on the call and is not sold a plan.'],
+        sec('Before you book', 'Who should book a discovery call?', ['It is for the owner of a US business that depends on being found: a plumber, a dentist, a law firm, a roofer, a clinic. We take one business per trade per city, so the first thing Thomas checks is whether your place is still open.', 'For example, if a roofer in Denver is already a client, a second “roofing company denver” is told so on the call and is not sold a plan.'],
             quote('I would rather tell you in ten minutes that we cannot take you on than sell you a plan that competes with a client.'),
             more=('Check whether your city is open', '/open-board/'), eid='who'),
         faq('About the call', 'What do owners ask before they book?', 'Short answers. For anything else, use the <a href="/ask/">Ask page</a>.', [
-            ('Is this a free SEO consultation call?', 'Yes. The discovery call costs nothing, and there is no audit to buy first and no trial to sign up for. You are not asked for a card.\nA free SEO consultation call is only worth having if you leave with something, so Thomas shows you what he found.'),
+            ('Do I have to buy anything before the call?', 'No. There is no audit to buy first and no trial to sign up for, and you are not asked for a card to book.\nA discovery call is only worth having if you leave with something, so Thomas shows you what he found for your trade and city.'),
             ('How long is the call, and who is on it?', 'It takes 20 to 30 minutes and it is with Thomas D’Souza, the founder, not a salesperson. He has worked in digital marketing since 2010.\nBring anyone who helps you decide. One conversation is all we ask of you before work would begin.'),
             ('What do I need to have ready?', 'Only your trade, your city and your website address. If you were given a quote by another agency, or your calls fell on a known date, bring that too.\nYou do not need to share passwords or give access to anything before the call.'),
             ('Will I get a price on the call?', 'Yes. Prices are not listed on this site because they depend on your trade, your city and how many searches have to be won. Thomas gives you the price on the call.\nEvery plan is month to month, with no setup fee.'),
@@ -398,9 +403,9 @@ def make(h):
     def terms(items, cols=3):
         return G([card('look', tag=k, status=st, title=t, text=x, link_text=lt, link=link(u)) for k, st, t, x, lt, u in items], cols, 2, 1)
 
-    P.append(page('dsouza-equation', '/dsouza-equation/', "D'Souza Equation, Explained | Relevant Search Media",
-        "The D'Souza Equation explains how every search engine and AI assistant picks a business. Relevance equals Read times Confirm times Choose.", [
-        hero([('Home', '/'), ('The Equation', '')], 'The D’Souza Equation', "The D'Souza Equation: how every engine decides which business to name",
+    P.append(page('dsouza-equation', '/dsouza-equation/', "The D'Souza Equation: How Search Engines Rank Websites",
+        "The D'Souza Equation explains how search engines rank websites and how AI picks a business. Relevance equals Read times Confirm times Choose.", [
+        hero([('Home', '/'), ('The Equation', '')], 'The D’Souza Equation', "The D'Souza Equation: Relevance = Read × Confirm × Choose",
              "The D'Souza Equation says Relevance = Read × Confirm × Choose. A search engine or an AI assistant names a business when it can read plainly what the business is, when independent sources confirm it, and when real people choose it. The three are multiplied, so a business that fails one check is not named.",
              'One equation. Every engine obeys it.'),
         sec('Try it', "What is the D'Souza Equation?", ['It is a way of seeing what every engine has to decide before it names a business. Google, Maps, ChatGPT, Gemini and Perplexity look different, but each takes a person’s question and names the most relevant business it can trust.', 'Move the three dials below. The lights are customers asking, and the number is how many of every hundred are sent to you.'],
@@ -410,7 +415,7 @@ def make(h):
                 {'_id': h['uid'](), 'k': 'Check three', 'name': 'Choose', 'q': 'When shown this business, do searchers pick it?', 'where_label': 'Raised by:', 'where': 'a listing and a first screen that win the click, the call and the return visit.', 'more': 'How Choose works', 'link': link('/dsouza-equation/choose/'), 'value': 75, 'color': '#A3B5F2', 'ask': 'Do people pick you?'}]}, 'rv'),
             T('<p>For example, when a customer asks “who fixes a burst pipe?”, the engine reads each plumber’s site, checks what others say, and looks at who people chose. With Read at 80, Confirm at 70 and Choose at 75, about 42 in 100 are sent to you.</p>', 'small rs-note', mt=22, mb=18),
             B('See the five problems the equation explains', '/problems/', 'rs-more', mb=0), eid='try'),
-        sec('Three checks', 'How search engines choose a business: three checks', ['This is how search engines choose a business, and how AI assistants do. Each check is a question the engine asks, and each has a place where the work is done.'],
+        sec('Three checks', 'How do search engines rank websites?', ['How do search engines rank websites, and how do AI assistants pick one business to name? With three checks. Each check is a question the engine asks, and each has a place where the work is done.'],
             terms([('Term one', 'gold', 'Read', 'The engine has to understand the business from its own pages: who it is, what it does, where, and which questions it settles.', 'How Read works', '/dsouza-equation/read/'),
                    ('Term two', 'green', 'Confirm', 'The engine then looks elsewhere. If directories, review sites and other publishers describe the business the same way, it trusts what it read.', 'How Confirm works', '/dsouza-equation/confirm/'),
                    ('Term three', 'green', 'Choose', 'Last, the engine watches behaviour. A business that searchers click, call and come back to is shown to the next searcher.', 'How Choose works', '/dsouza-equation/choose/')]),
@@ -435,7 +440,7 @@ def make(h):
         sec('Where it came from', 'Who wrote the equation, and when?', ['Thomas D’Souza, the founder of Relevant Search Media, who has worked in digital marketing since 2010. The company was founded in 2020 and the equation has been in writing since 2025.', 'It was written to answer one question owners kept asking: why does the engine name them and not me?'],
             more=('How the equation came about', '/about/'), eid='origin'),
         faq('Questions about the equation', "What do people ask about the D'Souza Equation?", 'Short answers. For anything else, use the <a href="/ask/">Ask page</a>.', [
-            ("Is the D'Souza Equation Google's ranking formula?", 'No. Nobody outside Google has that, and it changes. The equation is a model of what every engine has to decide before it names a business.\nIt is useful because it stays true when an algorithm changes: an engine still has to read you, confirm you and see you chosen.'),
+            ("How does Google rank websites, and is this its formula?", 'It is not Google’s formula. Nobody outside Google has that, and it changes. The equation is a model of what every engine has to decide before it names a business.\nIt is useful because it stays true when an algorithm changes: an engine still has to read you, confirm you and see you chosen.'),
             ('Which of the three should I raise first?', 'The weakest one. Because the terms are multiplied, lifting the lowest score moves the result more than polishing the highest.\nFor most businesses that is Read at the start, then Confirm. The checks on the <a href="/problems/">problems page</a> show which is yours in about ten minutes.'),
             ('Can a business score 100?', 'Not in practice. The dials are an illustration, and no site is perfectly readable, confirmed everywhere and always chosen.\nWhat matters is the comparison with the other businesses the engine could name for the same search, in the same city.'),
             ('How is it different from E-E-A-T?', 'E-E-A-T is Google’s shorthand for how its quality raters judge experience, expertise, authority and trust. It describes one part of the picture, for one engine.\nThe equation covers reading, confirmation and choice across every engine. Most of E-E-A-T sits inside Confirm.'),
@@ -445,10 +450,10 @@ def make(h):
         closing('See the equation <span class="gold">applied to your business.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He scores your business on Read, Confirm and Choose while you watch, tells you which term is holding you back, and shows you what the first fifteen days would raise.', 'No audit to buy first, no trial. One business per trade per city.'),
     ]))
     # ------------------------------------------------------------------ /dsouza-equation/read/
-    P.append(page('read', '/dsouza-equation/read/', 'Can Search Engines Read My Website | Relevant Search Media',
-        'Can search engines read my website? Four checks answer it in ten minutes. Read is the first term of the D’Souza Equation and holds 250 of its 413 checks.', [
-        hero(eq('Read'), 'Term one of three', 'Can search engines read my website? The Read check, explained',
-             'Search engines can read your website when four things hold: the pages can be crawled, the words are in the page itself, each page says plainly who you are, what you do and where, and the facts are marked up. Read is the first term of the D’Souza Equation, and nothing else counts until it passes.',
+    P.append(page('read', '/dsouza-equation/read/', 'On Page SEO: Can Every Engine Read You?',
+        'On page SEO decides whether an engine can read your site. Four checks answer it in ten minutes. Read holds 250 of the 413 checks.', [
+        hero(eq('Read'), 'Term one of three', 'On page SEO: the Read part of the equation',
+             'On page SEO is the work done on your own pages so that an engine can read them: the pages can be crawled, the words are in the page itself, each page says plainly who you are, what you do and where, and the facts are marked up. It is the Read part of the D’Souza Equation.',
              'Read comes first, because an engine cannot confirm or choose what it cannot read.'),
         sec('The ten-minute check', 'How do I check whether an engine can read my site?', ['Four checks, no tools to buy. Each one tests a different way a page can be open to people and closed to machines.'],
             steps([('Check 1', 'Count your pages in Google', 'Search site: followed by your domain. Compare the number with the pages you actually have.'),
@@ -468,7 +473,7 @@ def make(h):
                 ('The server is slow or failing', 'Pages time out, or return errors in Search Console', 'Fix the hosting before anything else'),
                 ('A pop-up or log-in covers the page', 'The content cannot be reached without a click', 'Show the content first and ask afterwards'),
             ]), more=('See all 413 checks', '/dsouza-equation/standard/'), eid='blockers'),
-        sec('Four layers', 'On-page SEO explained: what does an engine read on a page?', ['On-page SEO explained in one line: it is everything on your own pages that helps an engine understand them. It comes in four layers, and each is useless without the one before.'],
+        sec('Four layers', 'What is on page SEO, layer by layer?', ['What is on page SEO in one line? Everything on your own pages that helps an engine understand them. It comes in four layers, and each is useless without the one before.'],
             G([card('clause', number='1', title='Facts.', text='Who the business is, what it does, where and for whom, stated in plain sentences that could be lifted whole.'),
                card('clause', number='2', title='Answers.', text='The question as the heading and a direct answer under it, before any background.'),
                card('clause', number='3', title='Structure.', text='One main heading, sub-headings in order, short paragraphs, and links between related pages.'),
@@ -477,7 +482,7 @@ def make(h):
             more=('What we do for technical SEO', '/services/technical-seo/'), eid='layers'),
         sec('AI readers', 'Do AI assistants read a site differently from Google?', ['They fetch pages with their own crawlers, such as GPTBot, ClaudeBot and PerplexityBot, and many sites block them without knowing. A robots.txt file can welcome each by name.', 'They also favour text that answers directly. A paragraph that states a fact in full is quoted; one that hints at it is skipped. An llms.txt file helps by listing the key pages in plain text.'],
             more=('What we do for AI SEO', '/services/ai-seo/'), eid='ai'),
-        sec('Inside the Standard', 'Which of the 413 checks belong to Read?', ['Read holds 250 checks in 16 groups, from technical health and speed through headings, verified facts and AI readiness. They are run on every client site in the first three days.', 'The largest groups are technical health with 36 checks, speed and stability with 24, and AI readiness with 24.'],
+        sec('Inside the Standard', 'What is in our on page SEO checklist?', ['Our on page SEO checklist is the Read part of the Standard. It holds 250 checks in 16 groups, from technical health and speed through headings, verified facts and AI readiness. They are run on every client site in the first three days.', 'The largest groups are technical health with 36 checks, speed and stability with 24, and AI readiness with 24.'],
             terms([('36 checks', 'gold', 'Technical health', 'Crawling, indexing, canonical addresses, redirects and the sitemap.', 'See the Standard', '/dsouza-equation/standard/'),
                    ('24 checks', 'green', 'AI readiness', 'Direct answers, quotable facts, AI crawlers allowed and an llms.txt file.', 'See the Standard', '/dsouza-equation/standard/'),
                    ('20 checks', 'green', 'Verified facts', 'Every number and claim traced to a signed register before it is published.', 'How we check', '/about/editorial-policy/')]),
@@ -493,10 +498,10 @@ def make(h):
         closing('Can an engine read you? <span class="gold">Find out in one call.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He runs the four Read checks on your site while you watch, tells you what an engine can and cannot see, and shows you what the first fifteen days would open up.', 'No audit to buy first, no trial. One business per trade per city.'),
     ], parent='dsouza-equation'))
     # ------------------------------------------------------------------ /dsouza-equation/confirm/
-    P.append(page('confirm', '/dsouza-equation/confirm/', 'Search Engine Trust Signals | Relevant Search Media',
-        'Search engine trust signals are what others say about your business. Confirm is the second term of the D’Souza Equation, with 99 of its 413 checks.', [
-        hero(eq('Confirm'), 'Term two of three', 'Search engine trust signals: the Confirm check, explained',
-             'Search engine trust signals are the things an engine finds about a business outside its own website: listings, reviews, mentions, profiles and press. Confirm is the second term of the D’Souza Equation. An engine that has read your site looks elsewhere to see whether the rest of the web agrees, and names you only if it does.',
+    P.append(page('confirm', '/dsouza-equation/confirm/', 'Off Page SEO: Do Others Confirm You? | Relevant Search Media',
+        'Off page SEO is what others say about your business. It is the Confirm part of the D’Souza Equation, with 99 of its 413 checks.', [
+        hero(eq('Confirm'), 'Term two of three', 'Off page SEO: the Confirm part of the equation',
+             'Off page SEO is everything an engine finds about a business outside its own website: listings, reviews, mentions, profiles and press. It is the Confirm part of the D’Souza Equation. An engine that has read your site looks elsewhere to see whether the rest of the web agrees, and names you only if it does.',
              'Your site can say anything. Confirm is everyone else saying the same.'),
         sec('The ten-minute check', 'How do I check whether anything confirms my business?', ['Four checks. Each looks at the business from outside, the way an engine does once it has finished reading the site.'],
             steps([('Check 1', 'Search your name in quotes', 'Put the business name in quotation marks. Count the results that are not your own site.'),
@@ -505,7 +510,7 @@ def make(h):
                    ('Check 4', 'Ask who recommends you', 'Ask an AI assistant which sources mention your business. An empty answer is the finding.')]),
             T('<p>For example, a contractor in Atlanta who appears as “Smith Build”, “Smith Building Co.” and “Smith Builders LLC” on three sites has three weak records and no strong one. In the D’Souza Standard, Confirm holds 99 of the 413 checks (v1.0, 23 Nov 2026), in seven groups.</p>', 'small rs-note', mt=22, mb=18),
             B('Google shows you and AI does not?', '/problems/not-recommended-by-chatgpt/', 'rs-more', mb=0), eid='check'),
-        sec('Seven sources', 'Off-page SEO explained: where does confirmation come from?', ['Off-page SEO explained simply is the work done away from your own pages. It has seven sources, and an engine weighs them together.'],
+        sec('Seven sources', 'What is off page SEO, and where does confirmation come from?', ['What is off page SEO? It is the work done away from your own pages. It has seven sources, and an engine weighs them together.'],
             table('The seven sources of confirmation, what each proves and how many checks cover it', ('The source', 'What it proves', 'Checks in the Standard'), [
                 ('Local signals', 'The business is where it says it is', '26'),
                 ('Google Business Profile', 'The listing is complete, accurate and active', '22'),
@@ -515,10 +520,10 @@ def make(h):
                 ('Social presence', 'The business is alive on the platforms it claims', '9'),
                 ('Video and visual search', 'There is footage and imagery of real work', '8'),
             ]), more=('See all 413 checks', '/dsouza-equation/standard/'), eid='sources'),
-        sec('Listings and mentions', 'Do citations and mentions still matter?', ['Yes, with a change of emphasis. Citations and mentions matter less as a count and more as agreement. Ten listings that match exactly do more than a hundred that differ.', 'A mention without a link also counts. AI assistants read what a local paper or a trade body wrote about a business even when no link was given.'],
+        sec('Listings and mentions', 'Which off page SEO techniques still work?', ['The off page SEO techniques that still work are the plain ones. Listings and mentions matter less as a count and more as agreement. Ten listings that match exactly do more than a hundred that differ.', 'A mention without a link also counts. AI assistants read what a local paper or a trade body wrote about a business even when no link was given.'],
             quote('Nobody is confirmed by their own website. Confirmation is what the rest of the web says when you are not in the room.'),
             more=('What we do for links and earned mentions', '/services/link-building/'), eid='mentions'),
-        sec('Reviews', 'How do reviews work as a trust signal?', ['Reviews confirm three things at once: that customers exist, that they were satisfied, and that the business is active now. Recency and replies carry as much weight as the rating.', 'We do not write, buy or filter reviews. We set up the asking, so every real customer is invited, and every review gets a reply.'],
+        sec('Reviews', 'How do reviews work as a trust signal?', ['Reviews confirm three things at once: that customers exist, that they were satisfied, and that the business is active now. Recency and replies carry as much weight as the rating.', 'We do not write or buy reviews. We set up the asking, so every real customer is invited, and every review gets a reply.'],
             more=('What we do for reputation and reviews', '/services/reputation-management/'), eid='reviews'),
         sec('The named author', 'Why does a named person matter?', ['Because an engine trusts a claim more when it can tie it to someone accountable. A page signed by a named founder, with a profile that matches elsewhere, is easier to confirm than an anonymous one.', 'Every page on this site carries the name of Thomas D’Souza and the date he reviewed it.'],
             more=('About Thomas', '/thomas-dsouza/'), eid='author'),
@@ -533,10 +538,10 @@ def make(h):
         closing('Does the web back you up? <span class="gold">See in one call.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He looks at what other sites, listings and reviewers say about your business, shows you where the story breaks, and tells you what the first fifteen days would put right.', 'No audit to buy first, no trial. One business per trade per city.'),
     ], parent='dsouza-equation'))
     # ------------------------------------------------------------------ /dsouza-equation/choose/
-    P.append(page('choose', '/dsouza-equation/choose/', 'User Signals in SEO | Relevant Search Media',
-        'User signals in SEO are what people do when they see your business: click, call, stay, return. Choose is the third term of the D’Souza Equation.', [
-        hero(eq('Choose'), 'Term three of three', 'User signals in SEO: the Choose check, explained',
-             'User signals in SEO are the things people do when an engine shows them your business: they click or scroll past, call or leave, come back or never return. Choose is the third term of the D’Souza Equation. An engine that has read and confirmed you still watches whether real people pick you, and shows the chosen business more often.',
+    P.append(page('choose', '/dsouza-equation/choose/', 'Conversion Rate Optimization: Do People Choose You?',
+        'Conversion rate optimization is getting people who see you to pick you. It is the Choose part of the D’Souza Equation, with 50 checks.', [
+        hero(eq('Choose'), 'Term three of three', 'Conversion rate optimization: the Choose part of the equation',
+             'Conversion rate optimization is the work of getting more of the people who see your business to pick it: to click, call, book and come back. It is the Choose part of the D’Souza Equation. An engine that has read and confirmed you still watches whether real people choose you, and shows the chosen business more often.',
              'The engine finds you. People decide whether it keeps showing you.'),
         sec('The ten-minute check', 'How do I check whether people choose my business?', ['Four checks, done on a phone. Each one looks at a moment where a searcher either picks you or moves on.'],
             steps([('Check 1', 'Look at your result beside the others', 'Search your trade and city. Is your title and line of text the one you would tap?'),
@@ -545,14 +550,14 @@ def make(h):
                    ('Check 4', 'Find your own proof', 'Look for a result, a review or a guarantee near the button. If you cannot see one, neither can they.')]),
             T('<p>For example, a dentist in Chicago whose listing shows “Open now”, forty recent reviews and a one-tap call button is chosen over a better dentist whose listing shows none of them. In the D’Souza Standard, Choose holds 50 of the 413 checks (v1.0, 23 Nov 2026).</p>', 'small rs-note', mt=22, mb=18),
             B('Found, and still not picked?', '/problems/not-getting-leads/', 'rs-more', mb=0), eid='check'),
-        sec('Four moments', 'Click-through rate, calls and visits: where is the choice made?', ['Click-through rate is only the first of four moments. A searcher chooses, or does not, at each one, and a business can win three and lose at the fourth.'],
+        sec('Four moments', 'What is conversion rate optimization?', ['What is conversion rate optimization in practice? Winning four moments, of which the click is only the first. A searcher chooses, or does not, at each one, and a business can win three and lose at the fourth.'],
             table('The four moments of choice, what the searcher sees and what wins it', ('The moment', 'What the searcher sees', 'What wins it'), [
                 ('The result', 'A title, a line of text, stars, a distance', 'A title that answers the search and a rating worth a tap'),
                 ('The listing', 'Photos, hours, services, the latest reviews', 'Recent photos, every service named, replies to reviews'),
                 ('The first screen', 'One headline, one button, a few seconds', 'What you do, where, and one clear next step'),
                 ('The contact', 'A phone that rings, a form that sends', 'One tap to call, a short form, an answer the same day'),
             ]), more=('What we do for Google Business Profile', '/services/google-business-profile-optimization/'), eid='moments'),
-        sec('Proof', 'What makes a stranger pick one business over another?', ['Proof, placed where the decision happens. A stranger cannot judge your work, so they judge the evidence: what others said, what you promise, and whether you look ready.'],
+        sec('Proof', 'Conversion rate optimization examples: what makes a stranger pick you?', ['The conversion rate optimization examples that matter all come down to proof, placed where the decision happens. A stranger cannot judge your work, so they judge the evidence: what others said, what you promise, and whether you look ready.'],
             G([card('clause', number='1', title='Results, with a source.', text='A number means more when it says where it came from. Ours cite the fact register they are drawn from.'),
                card('clause', number='2', title='A promise in writing.', text='A commitment that costs you something if you miss it removes the risk the stranger was weighing.'),
                card('clause', number='3', title='Signs of life.', text='Opening hours that are right, a review from this month, a reply from the owner.')], 3, 1, 1),
@@ -574,10 +579,10 @@ def make(h):
         closing('Seen, but not chosen? <span class="gold">Find the moment in one call.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He walks through the four moments with your business on a phone, shows you where people leave, and tells you what the first fifteen days would change.', 'No audit to buy first, no trial. One business per trade per city.'),
     ], parent='dsouza-equation'))
     # ------------------------------------------------------------------ /dsouza-equation/standard/
-    P.append(page('standard', '/dsouza-equation/standard/', 'SEO Checklist: All 413 Checks | Relevant Search Media',
-        'This SEO checklist is the D’Souza Standard: 413 numbered checks, published in full. Use it on your own site, or hold any agency to it.', [
-        hero(eq('The Standard'), 'The D’Souza Standard', "SEO checklist: the D'Souza Standard, all 413 checks",
-             'This SEO checklist is the D’Souza Standard: 413 numbered checks, version 1.0, dated 23 Nov 2026, published here in full. Every page we build and every client site we take on is run through all of them. You can use the list on your own site, or hold any agency, including us, to it.',
+    P.append(page('standard', '/dsouza-equation/standard/', "SEO Audit: The D'Souza Standard, 413 Checks",
+        'This SEO audit is the D’Souza Standard: 413 numbered checks, published in full. Use it on your own site, or hold any agency to it.', [
+        hero(eq('The Standard'), 'The D’Souza Standard', 'The SEO audit, written out: all 413 checks',
+             'This SEO audit is the D’Souza Standard: 413 numbered checks, version 1.0, dated 23 Nov 2026, published here in full. Every page we build and every client site we take on is run through all of them. You can use the list on your own site, or hold any agency, including us, to it.',
              'Most agencies keep the method private. This is ours, in the open.', ctas=(('Book a discovery call', '/book/'), ('Ask a question', '/ask/'))),
         sec('How it is built', 'How is this SEO audit checklist organised?', ['The SEO audit checklist follows the D’Souza Equation. Every check belongs to one of its terms, so a failed check tells you which part of the equation it weakens.', 'The 413 checks sit in 27 groups. Of them, 193 apply to every page, 149 to the whole site and 71 to places beyond the site, such as listings and reviews.'],
             table('The 413 checks by equation term', ('Equation term', 'What it covers', 'Groups and checks'), [
@@ -595,7 +600,7 @@ def make(h):
                card('clause', number='3', title='Not testable yet.', text='The check needs data or a person that the page alone cannot supply. It stays open, by name.')], 3, 1, 1),
             quote('A method is only worth something if it can fail in public. So here it is, all of it, with a number on every line.'),
             more=('See our own results in the Open Log', '/open-log/'), eid='scoring'),
-        sec('Use it', 'Can I use this checklist on my own site?', ['Yes. Nothing here is behind a form. An owner can work through the groups that apply to one page in an afternoon, and the checks say plainly what to look for.', 'Where it gets heavy is scale: 413 checks across every page, every listing and every AI answer, repeated as engines change. That is the work a team does.'],
+        sec('Use it', 'Can I run this website SEO audit on my own site?', ['Yes. Nothing here is behind a form. An owner can work through the groups that apply to one page in an afternoon, and the checks say plainly what to look for.', 'Where it gets heavy is scale: 413 checks across every page, every listing and every AI answer, repeated as engines change. That is the work a team does.'],
             steps([('Step 1', 'Pick one page', 'Start with the page that should bring the most customers, usually the home page or a main service.'),
                    ('Step 2', 'Open the page groups', 'Titles and descriptions, headings and copy, images and conversion elements all apply to a single page.'),
                    ('Step 3', 'Mark each line', 'Pass, fail or cannot tell. Be strict: a check you are unsure of is a fail until shown otherwise.'),
@@ -607,7 +612,7 @@ def make(h):
             ('Why publish the whole checklist?', 'Because a method you cannot see cannot be checked. Publishing all 413 lines lets a client hold us to them, and lets anyone compare another agency’s work with the same list.\nIt also means we cannot quietly skip the hard ones.'),
             ('Do all 413 checks apply to every page?', 'No. 193 apply to every page, 149 to the site as a whole and 71 to things beyond the site, such as listings, reviews and profiles.\nA single page is held to the page checks; the site and off-site checks are run once and re-run on a schedule.'),
             ('What does “not testable yet” mean?', 'It means the answer is not in the page. A check that needs real-visitor speed data, a second reviewer’s sign-off or a week of indexing cannot be judged at publish time.\nThose checks stay open and are closed, by name, when the data arrives.'),
-            ('Is this the same as an SEO audit?', 'An audit is one run of a checklist on one day. The Standard is the checklist itself, run on day three and then kept running.\nAn audit that is never acted on changes nothing, which is why our plans ship fixes from day 5.'),
+            ('How is this different from a one-off SEO audit?', 'A one-off audit is one run of a list on one day. The Standard is the list itself, run on day three and then kept running.\nAn audit that is never acted on changes nothing, which is why our plans ship fixes from day 5.'),
             ('Can I download the checklist?', 'It is all on this page, in plain text you can copy, with every check numbered. We have not put it behind an email form.\nIf you would like it applied to your site, a discovery call is the next step.'),
         ]),
         trust(),
@@ -616,17 +621,17 @@ def make(h):
     return P
 
 GATE = {
-    '/dsouza-equation/standard/': {'kw': 'seo checklist;seo audit checklist;413 seo checks', 'type': 'reference', 'example': 'the title is 30 to 60 characters', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'checks;page;site'},
-    '/dsouza-equation/read/': {'kw': 'can search engines read my website;on-page seo explained;crawlable website', 'type': 'pillar', 'example': 'law firm in new york', 'original': '250;v1.0, 23 Nov 2026', 'trade': 'crawl;index;markup'},
-    '/dsouza-equation/confirm/': {'kw': 'search engine trust signals;off-page seo explained;citations and mentions', 'type': 'pillar', 'example': 'contractor in atlanta', 'original': '99;v1.0, 23 Nov 2026', 'trade': 'listings;reviews;mentions'},
-    '/dsouza-equation/choose/': {'kw': 'user signals in seo;click-through rate;calls and visits', 'type': 'pillar', 'example': 'dentist in chicago', 'original': '50;v1.0, 23 Nov 2026', 'trade': 'reviews;listing;call'},
-    '/dsouza-equation/': {'kw': "d'souza equation;how search engines choose a business;relevance equation", 'type': 'pillar', 'example': 'who fixes a burst pipe', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'engine;customers;reviews'},
-    '/ask/': {'kw': 'ask an seo question;seo questions answered;seo help', 'type': 'tool', 'example': 'why did my reviews disappear', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'question;answer;page'},
-    '/book/': {'kw': 'book a discovery call;seo consultation;free seo consultation call', 'type': 'tool', 'example': 'roofing company denver', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'call;plumber;dentist'},
-    '/problems/seo-cost/': {'kw': 'how much does seo cost;is my seo quote fair;seo pricing', 'type': 'problem', 'example': 'kitchen remodel atlanta', 'original': '177;v4, 18 Nov 2026', 'trade': 'quote;contract;month to month'},
-    '/problems/traffic-dropped/': {'kw': 'website traffic dropped suddenly;google rankings dropped;lost rankings after an update', 'type': 'problem', 'example': 'hvac repair dallas', 'original': '165;v4, 18 Nov 2026', 'trade': 'update;rankings;search console'},
-    '/problems/not-recommended-by-chatgpt/': {'kw': 'get recommended by chatgpt;how to get my business recommended by chatgpt;show up in chatgpt;ai not recommending my business', 'type': 'problem', 'example': 'divorce lawyer in new york', 'original': '211;v4, 18 Nov 2026', 'trade': 'lawyer;sources;reviews'},
-    '/problems/not-getting-leads/': {'kw': 'get more leads for my business;how to get more leads for my business;website not getting leads;more calls from google', 'type': 'problem', 'example': 'emergency dentist chicago', 'original': '186;v4, 18 Nov 2026', 'trade': 'dentist;reviews;listing'},
-    '/problems/not-showing-up-on-google/': {'kw': 'business not showing up on google;business not on google;not on google maps;why is my business not showing up on google', 'type': 'problem', 'example': 'roof repair denver', 'original': '170;v4, 18 Nov 2026', 'trade': 'roofer;profile;listing'},  # what the gate is told about each page: keywords, page type, the specific example and the dated original figure it must carry
-    '/problems/': {'kw': 'seo problems;search marketing problems;why is my seo not working', 'type': 'hub', 'example': 'emergency plumber miami', 'original': '166;v4, 18 Nov 2026', 'trade': 'plumber;roofer;dentist'},
+    '/dsouza-equation/standard/': {'kw': 'seo audit;seo audit checklist;website seo audit', 'type': 'reference', 'example': 'the title is 30 to 60 characters', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'checks;page;site'},
+    '/dsouza-equation/read/': {'kw': 'on page seo;what is on page seo;on page seo checklist', 'type': 'pillar', 'example': 'law firm in new york', 'original': '250;v1.0, 23 Nov 2026', 'trade': 'crawl;index;markup'},
+    '/dsouza-equation/confirm/': {'kw': 'off page seo;what is off page seo;off page seo techniques', 'type': 'pillar', 'example': 'contractor in atlanta', 'original': '99;v1.0, 23 Nov 2026', 'trade': 'listings;reviews;mentions'},
+    '/dsouza-equation/choose/': {'kw': 'conversion rate optimization;what is conversion rate optimization;conversion rate optimization examples', 'type': 'pillar', 'example': 'dentist in chicago', 'original': '50;v1.0, 23 Nov 2026', 'trade': 'reviews;listing;call'},
+    '/dsouza-equation/': {'kw': "d'souza equation;how do search engines rank websites;how does google rank websites", 'type': 'pillar', 'example': 'who fixes a burst pipe', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'engine;customers;reviews'},
+    '/ask/': {'kw': 'getting found online', 'type': 'tool', 'example': 'why did my reviews disappear', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'question;answer;page'},
+    '/book/': {'kw': 'book a discovery call', 'type': 'tool', 'example': 'roofing company denver', 'original': '413;v1.0, 23 Nov 2026', 'trade': 'call;plumber;dentist'},
+    '/problems/seo-cost/': {'kw': 'how much does seo cost;seo pricing;seo cost for small business', 'type': 'problem', 'example': 'kitchen remodel atlanta', 'original': '177;v4, 18 Nov 2026', 'trade': 'quote;contract;month to month'},
+    '/problems/traffic-dropped/': {'kw': 'website traffic dropped suddenly;google ranking dropped dramatically;why has my website traffic dropped', 'type': 'problem', 'example': 'hvac repair dallas', 'original': '165;v4, 18 Nov 2026', 'trade': 'update;rankings;search console'},
+    '/problems/not-recommended-by-chatgpt/': {'kw': 'how to get my business recommended by chatgpt;how to get my business on chatgpt;how to show up in chatgpt', 'type': 'problem', 'example': 'divorce lawyer in new york', 'original': '211;v4, 18 Nov 2026', 'trade': 'lawyer;sources;reviews'},
+    '/problems/not-getting-leads/': {'kw': 'how to get more leads for my business;how to get more customers for my business;how to get more leads', 'type': 'problem', 'example': 'emergency dentist chicago', 'original': '186;v4, 18 Nov 2026', 'trade': 'dentist;reviews;listing'},
+    '/problems/not-showing-up-on-google/': {'kw': 'why is my business not showing up on google;why is my business not showing up on google maps;how to get my business on google', 'type': 'problem', 'example': 'roof repair denver', 'original': '170;v4, 18 Nov 2026', 'trade': 'roofer;profile;listing'},  # what the gate is told about each page: keywords, page type, the specific example and the dated original figure it must carry
+    '/problems/': {'kw': 'seo problems;common seo issues;seo issues', 'type': 'hub', 'example': 'emergency plumber miami', 'original': '166;v4, 18 Nov 2026', 'trade': 'plumber;roofer;dentist'},
 }

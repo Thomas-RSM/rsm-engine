@@ -686,7 +686,7 @@ class RSM_W_Form extends RSM_Widget {
 	protected function style_targets() { return array( 'title' => '.lf-title', 'text' => '.lead-form label', 'accent' => '.lead-form button' ); }
 	protected function fields() { return array(
 		array( 'title', __( 'Heading', 'rsm-elements' ), 'text', 'Book a discovery call' ),
-		array( 'intro', __( 'Line under the heading', 'rsm-elements' ), 'textarea', '20 to 30 minutes with Thomas. Tell us your trade and city and we reply within one working day with times.' ),
+		array( 'intro', __( 'Line under the heading', 'rsm-elements' ), 'textarea', '20 to 30 minutes with Thomas. Tell us your trade and city and we reply with times.' ),
 		array( 'kind', __( 'What this form is for (stored with each enquiry)', 'rsm-elements' ), 'text', 'Discovery call' ),
 		array( 'ask_business', __( 'Ask for the business name', 'rsm-elements' ), 'switch', 'yes' ),
 		array( 'ask_phone', __( 'Ask for a phone number', 'rsm-elements' ), 'switch', 'yes' ),
@@ -695,7 +695,7 @@ class RSM_W_Form extends RSM_Widget {
 		array( 'message_label', __( 'Label of the message box', 'rsm-elements' ), 'text', 'What is the problem? (optional)' ),
 		array( 'button', __( 'Button', 'rsm-elements' ), 'text', 'Request my call' ),
 		array( 'note', __( 'Small line under the button', 'rsm-elements' ), 'text', 'No audit to buy first. We use these details only to reply to you.' ),
-		array( 'done', __( 'Shown after sending', 'rsm-elements' ), 'textarea', 'Thank you. Your request is with Thomas, and you will hear back within one working day.' ),
+		array( 'done', __( 'Shown after sending', 'rsm-elements' ), 'textarea', 'Thank you. Your request is with Thomas, and we will reply with times.' ),
 		array( 'fail', __( 'Shown if sending fails', 'rsm-elements' ), 'text', 'That did not send. Please call +1 (202) 609-6641 or email info@relevantsearchmedia.com.' ),
 	); }
 	protected function render() { $s = $this->s(); $u = 'f' . $this->get_id(); $f = function ( $name, $label, $type = 'text', $req = false, $auto = '' ) use ( $u ) {
