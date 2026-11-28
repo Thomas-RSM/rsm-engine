@@ -93,7 +93,7 @@ def make(h):
                card('day', number='Check 3', title='Ask an AI assistant', text='Type the question a customer would ask. See which business it names, and why.'),
                card('day', number='Check 4', title='Date the drop', text='If calls fell, find the week it began. A date turns a mystery into a cause.'),
                card('day', number='Check 5', title='Ask three things of a quote', text='What will be mapped, what ships in the first fifteen days, and what is in writing.')], 5, 2, 1, g=(16, 16)),
-            T('<p>For example, a plumber, a roofer or a dentist in Miami would start with searches such as “plumber near me” and “emergency plumber miami”. Our own map for plumbing in that city holds 166 searches like these (v4, 18 Nov 2026).</p>', 'small rs-note', mt=22, mb=18),
+            T('<p>For example, a plumber, a roofer or a dentist in Miami would start with searches such as “plumber near me” and “emergency plumber miami”. People search in far more ways than owners expect: our own map counts 166 different searches that plumbers in Miami make when they look for a company like ours (v4, 18 Nov 2026).</p>', 'small rs-note', mt=22, mb=18),
             B('See your own trade and city', '/searches/', 'rs-more', mb=0), eid='checks'),
         sec('Everything else', 'What if mine is one of the narrower search marketing problems?', ['Then it is probably one of these: a suspended Google listing, a page Google crawled and will not index, reviews that vanished, a redesign that lost its rankings. The encyclopedia holds 1,822 entries so far, one per problem, each signed by the specialist who checked it.', 'Entries are being published here in batches. Until yours is up, the Ask page finds the closest answer, and a discovery call covers the rest.'],
             C([B('Ask a question', '/ask/'), B('See all 413 checks', '/dsouza-equation/standard/', 'rs-more')], 'rs-actions', 'row', flex_gap=gap(14), flex_wrap='wrap', flex_align_items='center', margin=box(0, 0, 0, 0)), eid='else'),
@@ -107,8 +107,54 @@ def make(h):
         trust(),
         closing('Bring the problem. <span class="gold">Leave with the plan.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He looks at who Google, Maps and the AI engines name when your customers ask, tells you which of the five problems he sees, and shows you what the first fifteen days would be.', 'No audit to buy first, no trial. One business per trade per city.'),
     ]))
+    # ------------------------------------------------------------------ /problems/not-showing-up-on-google/
+    def steps(items, cols=4):
+        return G([card('day', number=n, title=t, text=x) for n, t, x in items], cols, 2, 1, g=(16, 16))
+    crumb = lambda name: [('Home', '/'), ('What’s wrong?', '/problems/'), (name, '')]
+
+    P.append(page('not-showing-up-on-google', '/problems/not-showing-up-on-google/', 'Business Not Showing Up on Google | Relevant Search Media',
+        'Business not showing up on Google? Run four checks to find the cause in ten minutes. Six causes, each with the fix that works.', [
+        hero(crumb('Not showing up on Google'), 'Problem 1 of 5', 'Why is my business not showing up on Google?',
+             'Your business is not showing up on Google because Google cannot yet read plainly what it is, where it works and what it answers, or cannot confirm that from anywhere else. The usual causes are an unverified or incomplete Business Profile, a website Google has not indexed, and details that differ from one listing to the next.',
+             'Four checks tell you which cause is yours.'),
+        sec('The ten-minute check', 'How do I check why my business is not on Google?', ['Run these four checks in order, in a private window so your own history does not flatter the result. Each one rules a cause in or out.'],
+            steps([('Check 1', 'Search your exact name', 'Type the business name and city. If nothing of yours appears, Google has no confirmed record of the business.'),
+                   ('Check 2', 'Search your trade and city', 'Type what a customer would, such as “roof repair denver”. Note page one and the map separately.'),
+                   ('Check 3', 'Search site:yourdomain.com', 'This lists the pages Google holds from your site. No results means the site is not indexed.'),
+                   ('Check 4', 'Open your Business Profile', 'Sign in and look at its status: verified, pending, suspended or duplicate.')]),
+            T('<p>For example, a roofer in Denver would run Check 2 with “roof repair denver” and “roofing company denver”. Owners search in many ways too: our own map counts 170 different searches roofers in Denver make when they look for a company like ours (v4, 18 Nov 2026).</p>', 'small rs-note', mt=22, mb=18),
+            B('See the searches for your trade and city', '/searches/', 'rs-more', mb=0), eid='check'),
+        sec('Six causes', 'What are the reasons a business is not on Google?', ['A business not on Google has one of six causes. Match what the four checks showed you to the row, then to the fix.', 'More than one row can apply. Work from the top, because Google has to know the business exists before it can rank it.'],
+            table('Why a business does not show up on Google: what you find, the cause and the fix', ('What you find', 'Cause', 'What fixes it'), [
+                ('Your name search shows nothing', 'No verified Business Profile', 'Create or claim the profile and complete Google’s verification'),
+                ('The profile says suspended', 'A guideline or address problem', 'Correct the profile, then file a reinstatement request'),
+                ('site: search returns no pages', 'The site is not indexed', 'Remove the block or noindex tag and submit a sitemap in Search Console'),
+                ('Your name shows, your trade and city do not', 'Google cannot tell what you do or where', 'State the service and the area plainly on the site and in the profile'),
+                ('You are in search results, not on the map', 'The profile is thin next to nearby rivals', 'Right category, full services, photos, and reviews you reply to'),
+                ('Name, address or phone differ between listings', 'Nothing confirms the business', 'Make all three identical on every listing and on the site'),
+            ]), more=('How “Read” works in the equation', '/dsouza-equation/read/'), eid='causes'),
+        sec('Search and Maps', 'Why is my business not on Google Maps when it shows in search?', ['Search results and the map are ranked separately. Google says local results turn mainly on relevance, distance and prominence: how well the profile matches the search, how far the business is from the searcher, and how well known it is.', 'A business not on Google Maps usually has a profile with the wrong primary category, missing services or few recent reviews. The website can rank while the profile stays invisible.'],
+            quote('If Google cannot say in one sentence what you do and where, it will not show you. Fix that sentence first.'),
+            more=('What we do for Google Business Profile', '/services/google-business-profile-optimization/'), eid='maps'),
+        sec('How long', 'How long does it take to show up on Google?', ['It depends on the cause. A verified, completed profile can appear within days. A new website takes longer: Google says crawling can take from a few days to a few weeks.', 'On our plans the first fixes go live by day 5 and the first report arrives on day 15. Rankings usually start moving between day 30 and day 60.'],
+            steps([('Day 1', 'Discover', 'One conversation. We learn the business and collect access.'),
+                   ('Day 2 to 3', 'Map and check', 'Every search your customers make is mapped, and the 413 checks are run on your site and listings.'),
+                   ('Day 4', 'Plan', 'You see what is wrong, in order, with a 90-day calendar.'),
+                   ('Day 5', 'Live', 'The biggest fixes go live and your log opens.')]),
+            more=('See the first fifteen days', '/dsouza-equation/method/'), eid='how-long'),
+        faq('Questions about not showing up', 'What do owners ask when their business is not on Google?', 'Asked on discovery calls, answered here the same way. For anything else, use the <a href="/ask/">Ask page</a>.', [
+            ('Why is my business not on Google when I have a website?', 'Having a website is not the same as being indexed. Google has to find the site, be allowed to read it and decide the pages are worth keeping.\nRun the site: search above. If it returns nothing, the site is blocked, too new, or carries a noindex tag.'),
+            ('Why did my business disappear from Google?', 'A business that was showing and then vanished usually has a suspended profile, a site change that blocked Google, or a drop after an update. Each leaves a date.\nCheck the profile status first, then see our page on <a href="/problems/traffic-dropped/">traffic that dropped</a>.'),
+            ('Do I have to pay Google to show up?', 'No. Organic results and Maps listings are free, and they are earned by being readable, confirmed and chosen. Ads are a separate, paid placement marked as sponsored.\nA Business Profile costs nothing to create or verify, so a business not on Google is never there for lack of a fee.'),
+            ('Is a business not on Google also missing from AI answers?', 'Usually. AI assistants draw on the same sources search engines read: your site, your listings and what others say about you.\nA business Google cannot read is rarely named by ChatGPT, Gemini or Perplexity. No one can promise an AI placement, so we track it monthly.'),
+            ('Can you guarantee my business shows up on Google?', 'We commit in writing that at least half the customer searches in your map reach page one of Google by the end of month four, or we keep working at no charge.\nWe do not promise a position on Google Maps or in AI answers, because no one honestly can.'),
+        ]),
+        trust(),
+        closing('Not on Google? <span class="gold">Find out why in one call.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He runs these four checks on your business while you watch, tells you which of the six causes he sees, and shows you what the first fifteen days would fix.', 'No audit to buy first, no trial. One business per trade per city.'),
+    ], parent='problems'))
     return P
 
-GATE = {  # what the gate is told about each page: keywords, page type, the specific example and the dated original figure it must carry
+GATE = {
+    '/problems/not-showing-up-on-google/': {'kw': 'business not showing up on google;business not on google;not on google maps;why is my business not showing up on google', 'type': 'problem', 'example': 'roof repair denver', 'original': '170;v4, 18 Nov 2026', 'trade': 'roofer;profile;listing'},  # what the gate is told about each page: keywords, page type, the specific example and the dated original figure it must carry
     '/problems/': {'kw': 'seo problems;search marketing problems;why is my seo not working', 'type': 'hub', 'example': 'emergency plumber miami', 'original': '166;v4, 18 Nov 2026', 'trade': 'plumber;roofer;dentist'},
 }

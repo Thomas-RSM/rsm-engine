@@ -635,8 +635,8 @@ class RSM_W_FAQ extends RSM_Widget {
 	); }
 	protected function render() { $s = $this->s(); $ents = array(); echo '<div class="faq glass">';
 		foreach ( array_values( (array) $s['items'] ) as $i => $it ) { $paras = array_filter( array_map( 'trim', preg_split( '/\n\s*\n/', (string) $it['a'] ) ) );
-			echo '<details' . ( 0 === $i && 'yes' === $s['open_first'] ? ' open' : '' ) . '><summary><h3>' . esc_html( $it['q'] ) . '</h3></summary>'; foreach ( $paras as $p ) { echo '<p>' . esc_html( $p ) . '</p>'; } echo '</details>';
-			$ents[] = array( '@type' => 'Question', 'name' => $it['q'], 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => implode( ' ', $paras ) ) ); }
+			echo '<details' . ( 0 === $i && 'yes' === $s['open_first'] ? ' open' : '' ) . '><summary><h3>' . esc_html( $it['q'] ) . '</h3></summary>'; foreach ( $paras as $p ) { echo '<p>' . rsm_inline( $p ) . '</p>'; } echo '</details>'; // phpcs:ignore WordPress.Security.EscapeOutput
+			$ents[] = array( '@type' => 'Question', 'name' => $it['q'], 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => wp_strip_all_tags( implode( ' ', $paras ) ) ) ); }
 		echo '</div>';
 		if ( 'yes' === $s['schema'] && $ents ) { rsm_schema_push( array( '@type' => 'FAQPage', 'mainEntity' => $ents ) ); }
 	}
