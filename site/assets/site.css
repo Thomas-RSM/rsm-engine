@@ -590,3 +590,13 @@ body{word-spacing:.03em}
 @media (max-width:760px){.lab-terms{grid-template-columns:minmax(0,1fr)}.lt.result{text-align:left}}
 .weak{position:absolute;right:auto;left:50%;top:-12px;transform:translateX(-50%);white-space:nowrap;box-shadow:0 6px 16px rgba(248,177,15,.35)}
 @media (max-width:760px){.weak{position:static;transform:none}}
+.formula-plain{text-align:center;font-size:clamp(17px,1.5vw,21px);color:var(--text);margin:14px auto 24px;max-width:44rem}
+.formula-plain b{font-family:var(--head);font-size:1.5em;color:var(--gold-2);font-weight:700;padding:0 .1em}
+.lab canvas{height:400px}
+.lt .dial{position:relative;padding-bottom:16px}
+.lt .dial::before,.lt .dial::after{position:absolute;bottom:-2px;font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.14em;color:var(--text-3)}
+.lt .dial::before{content:"WEAK";left:0}.lt .dial::after{content:"STRONG";right:58px}
+.lt .dial output{display:none}.lt .dial{grid-template-columns:minmax(0,1fr)}.lt .dial::after{right:0}
+.lt.result .lab-out span{display:block;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-2);margin-top:8px;flex:none}
+@media (max-width:760px){.lab canvas{height:230px}}
+.lab-foot .eg-lab::before{content:"Try a case"}

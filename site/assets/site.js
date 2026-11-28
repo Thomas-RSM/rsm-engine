@@ -237,11 +237,13 @@
     var COL = ['248,177,15', '76,192,168', '163,181,242'], cur = [0.8, 0.7, 0.75], tgt = cur.slice(), t = 0, prev = 0, raf = 0, visible = false, ctx = null, CW = 0, CH = 0;
     var logo = new Image(); logo.onload = function () { kick(); }; logo.src = BASE + 'rsm-logo-512.png';
     var sd = 11, rnd = function () { sd = (sd * 9301 + 49297) % 233280; return sd / 233280; };
-    var parts = []; for (var i = 0; i < 90; i++) parts.push({ u: rnd(), y: rnd() - 0.5, s: 0.7 + rnd() * 0.6, th: [rnd(), rnd(), rnd()], r: 1 + rnd() * 1.4 });
+    var NP = 80, strat = function () { var a = []; for (var i = 0; i < NP; i++) a.push((i + 0.5) / NP); for (var i = NP - 1; i > 0; i--) { var q = Math.floor(rnd() * (i + 1)), tmp = a[i]; a[i] = a[q]; a[q] = tmp; } return a; }, T0 = strat(), T1 = strat(), T2 = strat();
+    var parts = []; for (var i = 0; i < NP; i++) parts.push({ u: (i + rnd()) / NP, y: rnd() - 0.5, s: 0.85 + rnd() * 0.3, th: [T0[i], T1[i], T2[i]], r: 1.6 + rnd() * 1.2 });
     function read() {
       ins.forEach(function (el, i) { tgt[i] = el.value / 100; outs[i].textContent = el.value; if (live[i]) live[i].textContent = el.value; });
       var p = Math.round(tgt[0] * tgt[1] * tgt[2] * 100); big.textContent = p; if (live2) live2.textContent = p;
-      say.textContent = p < 5 ? 'Engines pass you by. One term near zero cancels the other two.' : p < 30 ? 'Named now and then. The weakest term is holding the other two down.' : p < 60 ? 'Named often. Raise the lowest term first; that is where the gain is.' : 'The answer. All three are strong, so every engine has a reason to name you.';
+      var W = function (v) { return v >= 0.75 ? 'yes' : v >= 0.45 ? 'partly' : v >= 0.15 ? 'hardly' : 'no'; };
+      say.textContent = 'Can engines read you: ' + W(tgt[0]) + '. Do others back you up: ' + W(tgt[1]) + '. Do people pick you: ' + W(tgt[2]) + '. ' + (p < 5 ? 'Almost every customer is sent to someone else.' : p < 30 ? 'Most customers are sent to someone else.' : p < 60 ? 'Some reach you. Fix the weakest check first.' : 'Most customers who ask are sent to you.');
       var lo = 0; for (var i = 1; i < 3; i++) if (tgt[i] < tgt[lo]) lo = i;
       cols.forEach(function (c, i) { var w = c.querySelector('.weak'); var on = i === lo && p < 60; c.classList.toggle('is-weak', on); if (w) w.hidden = !on; });
       try { document.dispatchEvent(new CustomEvent('rsm:relevance', { detail: p })); } catch (e) {}
@@ -252,56 +254,56 @@
       var r = cv.getBoundingClientRect(), w = r.width, h = r.height, dpr = Math.min(window.devicePixelRatio || 1, 2);
       if (CW !== Math.round(w * dpr) || CH !== Math.round(h * dpr)) { CW = cv.width = Math.round(w * dpr); CH = cv.height = Math.round(h * dpr); ctx = null; }
       var x = ctx || (ctx = cv.getContext('2d')); x.setTransform(dpr, 0, 0, dpr, 0, 0); x.clearRect(0, 0, w, h);
-      var small = w < 620, cy = h * 0.5, R = Math.min(h * 0.27, w * 0.074, 88), LX = [1 / 8, 3 / 8, 5 / 8].map(function (f) { return w * f; });
-      var RD = R * 0.92, xs = small ? 6 : w * 0.02, xe = w * 7 / 8;
-      var P = [xs].concat(LX, [xe]), C = ['214,226,255'].concat(COL, ['255,214,140']), out = cur[0] * cur[1] * cur[2];
-      // ---- ribbons of light: fewer and fainter strands survive each medallion
-      x.globalCompositeOperation = 'lighter'; x.lineCap = 'round'; x.lineJoin = 'round';
-      var v = 1, STR = 9;
-      for (i = 0; i < 4; i++) { if (i > 0) v *= cur[i - 1];
-        var a = P[i] + (i ? R * 0.96 : 0), b = P[i + 1] - (i < 3 ? R * 0.96 : RD * 0.9), len = b - a; if (len <= 4) continue;
-        var g = x.createLinearGradient(a, 0, b, 0); g.addColorStop(0, 'rgba(' + C[i] + ',1)'); g.addColorStop(1, 'rgba(' + C[i + 1] + ',1)');
-        var amp = Math.min(R * 0.5, len * 0.22) * (0.35 + 0.65 * v);
-        for (k = 0; k < STR; k++) { var keep = Math.max(0, Math.min(1, v * STR - k + 0.35)); if (keep <= 0.02 && k > 0) continue; if (k === 0) keep = Math.max(keep, 0.16);
-          var off = (k === 0 ? 0 : (k % 2 ? 1 : -1) * Math.ceil(k / 2) / (STR / 2));
-          x.beginPath(); for (var s = 0; s <= 28; s++) { var u = s / 28, env = Math.sin(u * Math.PI), px = a + len * u, py = cy + env * (off * amp + Math.sin(u * 6.2 + t * 1.1 + k * 1.7 + i * 2.3) * amp * 0.28); s ? x.lineTo(px, py) : x.moveTo(px, py); }
-          x.globalAlpha = keep * (k === 0 ? 0.9 : 0.42); x.strokeStyle = g; x.lineWidth = k === 0 ? 2.2 : 1.2; x.stroke();
-          if (k === 0) { x.globalAlpha = keep * 0.16; x.lineWidth = 8 + 16 * v; x.stroke(); }
-          // a pulse travelling along the strand
-          if (!REDUCE && keep > 0.3) { var pu = ((t * (0.22 + k * 0.013) + k * 0.31 + i * 0.17) % 1), env2 = Math.sin(pu * Math.PI), qx = a + len * pu, qy = cy + env2 * (off * amp + Math.sin(pu * 6.2 + t * 1.1 + k * 1.7 + i * 2.3) * amp * 0.28);
-            x.globalAlpha = keep * env2; var pg = x.createRadialGradient(qx, qy, 0, qx, qy, 9); pg.addColorStop(0, 'rgba(255,246,214,1)'); pg.addColorStop(0.3, 'rgba(255,214,130,.6)'); pg.addColorStop(1, 'rgba(248,177,15,0)'); x.fillStyle = pg; x.beginPath(); x.arc(qx, qy, 9, 0, 6.2832); x.fill(); } }
-        x.globalAlpha = 1; }
-      // ---- the answer: rays behind the disc
-      var rays = 18, rl = RD * (1.2 + 1.5 * out);
+      var small = w < 620, cy = h * (small ? 0.44 : 0.45), R = Math.min(h * 0.2, w * 0.07, 76), LX = [1 / 8, 3 / 8, 5 / 8].map(function (f) { return w * f; });
+      var RD = R * 0.95, xs = small ? 4 : w * 0.015, xe = w * 7 / 8, railY = h - (small ? 16 : 30), out = cur[0] * cur[1] * cur[2];
+      var ASK = ['Can it read you?', 'Do others back you up?', 'Do people pick you?'], word = function (v) { return v >= 0.75 ? 'Yes' : v >= 0.45 ? 'Partly' : v >= 0.15 ? 'Hardly' : 'No'; };
+      var mono = function (px) { return '700 ' + px + 'px "JetBrains Mono", monospace'; }, sora = function (px, wt) { return (wt || 700) + ' ' + px + 'px "Sora", sans-serif'; };
+      // ---- the lane the questions travel, narrowing as fewer get through
+      x.globalCompositeOperation = 'lighter'; var v = 1, P = [xs].concat(LX, [xe]);
+      for (i = 0; i < 4; i++) { if (i > 0) v *= cur[i - 1]; var bh = 3 + R * 0.5 * v, bg = x.createLinearGradient(0, cy - bh, 0, cy + bh); bg.addColorStop(0, 'rgba(248,177,15,0)'); bg.addColorStop(0.5, 'rgba(255,214,140,' + (0.04 + 0.2 * v).toFixed(3) + ')'); bg.addColorStop(1, 'rgba(248,177,15,0)'); x.fillStyle = bg; x.fillRect(P[i], cy - bh, P[i + 1] - P[i], bh * 2); }
+      // rays and glow behind "you"
+      var rays = 18, rl = RD * (1.2 + 1.4 * out);
       for (i = 0; i < rays; i++) { var an = i / rays * 6.2832 + t * 0.12 * (i % 2 ? 1 : -1), wd = 0.05 + 0.05 * ((i * 7) % 5) / 5, rg = x.createRadialGradient(xe, cy, RD * 0.7, xe, cy, rl); rg.addColorStop(0, 'rgba(255,206,110,' + (0.03 + 0.2 * out).toFixed(3) + ')'); rg.addColorStop(1, 'rgba(248,177,15,0)'); x.fillStyle = rg; x.beginPath(); x.moveTo(xe + Math.cos(an - wd * 0.3) * RD * 0.7, cy + Math.sin(an - wd * 0.3) * RD * 0.7); x.arc(xe, cy, rl, an - wd, an + wd); x.closePath(); x.fill(); }
-      var hg = x.createRadialGradient(xe, cy, 0, xe, cy, RD * 2.6); hg.addColorStop(0, 'rgba(255,200,100,' + (0.06 + 0.5 * out).toFixed(3) + ')'); hg.addColorStop(1, 'rgba(248,177,15,0)'); x.fillStyle = hg; x.beginPath(); x.arc(xe, cy, RD * 2.6, 0, 6.2832); x.fill();
-      // medallion glows
-      for (i = 0; i < 3; i++) { var gg = x.createRadialGradient(LX[i], cy, R * 0.6, LX[i], cy, R * 2.1); gg.addColorStop(0, 'rgba(' + COL[i] + ',' + (0.05 + 0.3 * cur[i]).toFixed(3) + ')'); gg.addColorStop(1, 'rgba(' + COL[i] + ',0)'); x.fillStyle = gg; x.beginPath(); x.arc(LX[i], cy, R * 2.1, 0, 6.2832); x.fill(); }
+      for (i = 0; i < 3; i++) { var gg = x.createRadialGradient(LX[i], cy, R * 0.6, LX[i], cy, R * 1.9); gg.addColorStop(0, 'rgba(' + COL[i] + ',' + (0.04 + 0.26 * cur[i]).toFixed(3) + ')'); gg.addColorStop(1, 'rgba(' + COL[i] + ',0)'); x.fillStyle = gg; x.beginPath(); x.arc(LX[i], cy, R * 1.9, 0, 6.2832); x.fill(); }
       x.globalCompositeOperation = 'source-over';
-      // ---- the question, at the source
-      var pr = 5 + 2 * Math.sin(t * 3); x.fillStyle = 'rgba(214,226,255,.9)'; x.beginPath(); x.arc(xs, cy, small ? 4 : 6, 0, 6.2832); x.fill(); x.strokeStyle = 'rgba(214,226,255,.35)'; x.lineWidth = 1.5; x.beginPath(); x.arc(xs, cy, (small ? 6 : 10) + pr, 0, 6.2832); x.stroke();
-      // ---- three medallions: glass disc, gauge ring, icon, number
+      // ---- the rail underneath: where the lost questions go
+      x.strokeStyle = 'rgba(150,170,255,.28)'; x.lineWidth = 1.5; x.setLineDash([3, 6]); x.beginPath(); x.moveTo(LX[0], railY); x.lineTo(w - (small ? 6 : 20), railY); x.stroke(); x.setLineDash([]);
+      x.beginPath(); x.moveTo(w - (small ? 6 : 20), railY); x.lineTo(w - (small ? 12 : 28), railY - 5); x.lineTo(w - (small ? 12 : 28), railY + 5); x.closePath(); x.fillStyle = 'rgba(150,170,255,.5)'; x.fill();
+      // ---- every light is one customer asking
+      for (i = 0; i < parts.length; i++) { var p = parts[i], u = REDUCE ? p.u : (p.u + t * 0.075 * p.s) % 1, px = xs + (xe - xs) * u, stop = -1;
+        for (k = 0; k < 3; k++) if (p.th[k] >= cur[k]) { stop = k; break; }
+        var sv = 1; for (k = 0; k < 3; k++) if (px > LX[k]) sv *= cur[k];
+        var py = cy + p.y * (8 + R * 0.8 * (0.2 + 0.8 * sv)), fade = Math.min(1, u / 0.04);
+        if (stop >= 0 && px > LX[stop]) { var d = (px - LX[stop]) / (w * 0.13), e = Math.min(1, d), ee = e * e * (3 - 2 * e); py = py + (railY - py) * ee; var al = d < 1 ? 0.95 : Math.max(0, 0.95 - (d - 1) * 0.9); if (al <= 0) continue;
+          x.fillStyle = 'rgba(150,165,215,' + (al * fade).toFixed(3) + ')'; x.beginPath(); x.arc(px, py, p.r + 0.6, 0, 6.2832); x.fill(); }
+        else { var gold = px > LX[2] && stop < 0; if (gold && px > xe - RD) continue; x.fillStyle = gold ? 'rgba(255,205,96,' + fade + ')' : 'rgba(236,241,255,' + (0.95 * fade).toFixed(3) + ')'; if (gold) { x.shadowColor = 'rgba(248,177,15,.9)'; x.shadowBlur = 10; } x.beginPath(); x.arc(px, py, p.r + (gold ? 1.6 : 0.8), 0, 6.2832); x.fill(); x.shadowBlur = 0; } }
+      // ---- the person asking
+      var bx = xs + (small ? 2 : 6), bw = small ? 0 : Math.min(150, LX[0] - R - bx - 14);
+      if (bw > 90) { x.fillStyle = 'rgba(30,42,100,.95)'; x.strokeStyle = 'rgba(150,170,255,.5)'; x.lineWidth = 1.2; var by = cy - R - 54; x.beginPath(); x.roundRect(bx, by, bw, 40, 12); x.fill(); x.stroke(); x.fillStyle = '#fff'; x.font = sora(12.5, 600); x.textAlign = 'left'; x.textBaseline = 'middle'; x.fillText('“Who should', bx + 10, by + 13); x.fillText('I call?”', bx + 10, by + 28); }
+      // ---- three checks
       for (i = 0; i < 3; i++) { var c = COL[i], val = cur[i], X = LX[i];
-        var bg = x.createLinearGradient(X - R, cy - R, X + R, cy + R); bg.addColorStop(0, 'rgba(58,78,170,1)'); bg.addColorStop(0.45, 'rgba(24,32,84,1)'); bg.addColorStop(1, 'rgba(9,13,40,1)');
-        x.fillStyle = bg; x.beginPath(); x.arc(X, cy, R * 0.9, 0, 6.2832); x.fill();
+        var mg = x.createLinearGradient(X - R, cy - R, X + R, cy + R); mg.addColorStop(0, 'rgba(58,78,170,1)'); mg.addColorStop(0.45, 'rgba(24,32,84,1)'); mg.addColorStop(1, 'rgba(9,13,40,1)');
+        x.fillStyle = mg; x.beginPath(); x.arc(X, cy, R * 0.9, 0, 6.2832); x.fill();
         var tint = x.createRadialGradient(X, cy + R * 0.5, 0, X, cy + R * 0.5, R * 1.1); tint.addColorStop(0, 'rgba(' + c + ',' + (0.06 + 0.26 * val).toFixed(3) + ')'); tint.addColorStop(1, 'rgba(' + c + ',0)'); x.fillStyle = tint; x.beginPath(); x.arc(X, cy, R * 0.9, 0, 6.2832); x.fill();
-        x.save(); x.beginPath(); x.arc(X, cy, R * 0.9, 0, 6.2832); x.clip(); var hl = x.createLinearGradient(0, cy - R, 0, cy); hl.addColorStop(0, 'rgba(255,255,255,.16)'); hl.addColorStop(1, 'rgba(255,255,255,0)'); x.fillStyle = hl; x.fillRect(X - R, cy - R, R * 2, R); x.restore();
-        x.strokeStyle = 'rgba(150,170,255,.22)'; x.lineWidth = Math.max(4, R * 0.085); x.beginPath(); x.arc(X, cy, R, 0, 6.2832); x.stroke();
+        x.strokeStyle = 'rgba(150,170,255,.22)'; x.lineWidth = Math.max(4, R * 0.09); x.beginPath(); x.arc(X, cy, R, 0, 6.2832); x.stroke();
         x.strokeStyle = 'rgb(' + c + ')'; x.shadowColor = 'rgba(' + c + ',.95)'; x.shadowBlur = 16; x.lineCap = 'round'; x.beginPath(); x.arc(X, cy, R, -Math.PI / 2, -Math.PI / 2 + 6.2832 * Math.max(0.006, val)); x.stroke(); x.shadowBlur = 0;
-        var ea = -Math.PI / 2 + 6.2832 * Math.max(0.006, val); x.fillStyle = '#fff'; x.beginPath(); x.arc(X + Math.cos(ea) * R, cy + Math.sin(ea) * R, Math.max(3, R * 0.06), 0, 6.2832); x.fill();
-        // icon
-        var s = R * 0.3, iy = cy - R * 0.36; x.strokeStyle = 'rgb(' + c + ')'; x.lineWidth = Math.max(1.6, R * 0.035); x.lineJoin = 'round'; x.beginPath();
+        var s = R * 0.27, iy = cy - R * 0.36; x.strokeStyle = 'rgb(' + c + ')'; x.lineWidth = Math.max(1.6, R * 0.035); x.lineJoin = 'round'; x.beginPath();
         if (i === 0) { x.rect(X - s * 0.62, iy - s * 0.8, s * 1.24, s * 1.6); x.moveTo(X - s * 0.32, iy - s * 0.36); x.lineTo(X + s * 0.32, iy - s * 0.36); x.moveTo(X - s * 0.32, iy); x.lineTo(X + s * 0.32, iy); x.moveTo(X - s * 0.32, iy + s * 0.36); x.lineTo(X + s * 0.1, iy + s * 0.36); }
         else if (i === 1) { x.moveTo(X, iy - s * 0.9); x.lineTo(X + s * 0.75, iy - s * 0.55); x.lineTo(X + s * 0.75, iy + s * 0.05); x.quadraticCurveTo(X + s * 0.7, iy + s * 0.65, X, iy + s * 0.92); x.quadraticCurveTo(X - s * 0.7, iy + s * 0.65, X - s * 0.75, iy + s * 0.05); x.lineTo(X - s * 0.75, iy - s * 0.55); x.closePath(); x.moveTo(X - s * 0.32, iy); x.lineTo(X - s * 0.06, iy + s * 0.28); x.lineTo(X + s * 0.36, iy - s * 0.26); }
         else { x.moveTo(X - s * 0.5, iy - s * 0.85); x.lineTo(X - s * 0.5, iy + s * 0.55); x.lineTo(X - s * 0.1, iy + s * 0.2); x.lineTo(X + s * 0.2, iy + s * 0.85); x.lineTo(X + s * 0.45, iy + s * 0.72); x.lineTo(X + s * 0.16, iy + s * 0.1); x.lineTo(X + s * 0.68, iy + s * 0.1); x.closePath(); }
         x.stroke();
-        x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillStyle = '#fff'; x.font = '700 ' + Math.round(R * 0.56) + 'px "Sora", sans-serif'; x.fillText(Math.round(val * 100), X, cy + R * 0.3);
-        if (i < 2) { x.fillStyle = 'rgba(248,177,15,.95)'; x.font = '700 ' + (small ? 16 : 24) + 'px "Sora", sans-serif'; x.fillText('×', (LX[i] + LX[i + 1]) / 2, cy - R - (small ? 4 : 2)); } }
-      // ---- the answer disc with the mark
+        x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillStyle = '#fff'; x.font = sora(Math.round(R * (small ? 0.36 : 0.38))); x.fillText(word(val), X, cy + R * 0.3);
+        x.textBaseline = 'alphabetic'; x.fillStyle = '#fff'; x.font = sora(small ? 9.5 : 14.5, 600); if (!small) x.fillText(ASK[i], X, cy - R - 20); else x.fillText(['Read?', 'Backed up?', 'Picked?'][i], X, cy - R - 10);
+        var n10 = Math.round(val * 10), lost = 10 - n10; x.font = mono(small ? 8 : 10.5); x.fillStyle = 'rgb(' + c + ')'; x.fillText(n10 + ' IN 10 GO ON', X, cy + R + (small ? 14 : 22));
+        if (lost > 0 && !small) { x.fillStyle = 'rgba(160,175,225,.85)'; x.fillText(lost + ' TURNED AWAY ↓', X, cy + R + 38); } }
+      // ---- you
       var dR = RD * (0.8 + 0.2 * out); x.globalAlpha = 0.35 + 0.65 * out; var dg = x.createRadialGradient(xe - dR * 0.2, cy - dR * 0.3, 0, xe, cy, dR); dg.addColorStop(0, '#FBF7EC'); dg.addColorStop(0.6, '#F1E8D4'); dg.addColorStop(1, '#DDD1B6'); x.fillStyle = dg; x.beginPath(); x.arc(xe, cy, dR, 0, 6.2832); x.fill();
       if (logo.complete && logo.naturalWidth) { var lw = dR * 1.3, lh = lw * logo.naturalHeight / logo.naturalWidth; x.drawImage(logo, xe - lw / 2 + dR * 0.03, cy - lh / 2, lw, lh); }
       x.globalAlpha = 1; x.strokeStyle = 'rgba(226,174,69,' + (0.4 + 0.6 * out).toFixed(2) + ')'; x.lineWidth = 2; x.beginPath(); x.arc(xe, cy, dR, 0, 6.2832); x.stroke();
-      x.textBaseline = 'alphabetic'; x.font = '700 ' + (small ? 9 : 11) + 'px "JetBrains Mono", monospace'; x.fillStyle = 'rgba(190,200,234,.9)'; x.textAlign = 'left'; x.fillText('THE QUESTION', small ? 4 : xs - 6, cy + R + (small ? 16 : 30)); x.textAlign = 'right'; x.fillStyle = 'rgba(255,217,138,' + (0.5 + 0.5 * out).toFixed(2) + ')'; x.textAlign = 'center'; x.fillText('THE ANSWER', xe, cy + R + (small ? 16 : 30));
+      x.textAlign = 'center'; x.fillStyle = '#fff'; x.font = sora(small ? 9.5 : 14.5, 600); x.fillText(small ? 'You' : 'Sent to you', xe, cy - R - (small ? 10 : 20));
+      x.font = mono(small ? 8 : 10.5); x.fillStyle = '#FFD98A'; x.fillText(Math.round(out * 100) + ' IN 100', xe, cy + R + (small ? 14 : 22));
+      x.textAlign = 'right'; x.fillStyle = 'rgba(160,175,225,.9)'; x.font = mono(small ? 8 : 10.5); x.fillText('SENT TO SOMEONE ELSE', w - (small ? 16 : 34), railY - 8);
+      if (!small) { x.textAlign = 'left'; x.fillStyle = 'rgba(190,200,234,.8)'; x.fillText('● EACH LIGHT IS ONE CUSTOMER ASKING', xs + 6, 22); }
       if (!REDUCE || moving) raf = requestAnimationFrame(draw); }
     function kick() { if (!raf) { prev = 0; raf = requestAnimationFrame(draw); } }
     ins.forEach(function (el) { el.addEventListener('input', read); });
