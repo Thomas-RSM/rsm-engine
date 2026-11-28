@@ -219,3 +219,44 @@ svg.eg-wide{display:none}svg.eg-tall{display:block;width:100%;max-width:400px;he
 .rs-mobilebar .elementor-button{width:100%;min-height:48px;padding:0 12px;font-size:15px}
 .site-footer{padding-bottom:76px}
 }
+
+/* ---- phones, second pass: the equation, the console, the map, small type, thumbs ---- */
+@media (max-width:760px){
+/* the lab: three short blocks and a result */
+.rsm .lab{padding:22px 14px 16px}
+.lab .formula{font-size:22px;line-height:1.3}
+.lab .formula-plain{font-size:15.5px}
+.lab-terms .lt{padding:16px 2px 14px}
+.lab-terms .lt .q{display:none}
+.lab-terms .lt h3{font-size:21px;margin:2px 0 4px}
+.lab-terms .lt p{font-size:14.5px;line-height:1.5;margin:0 0 8px}
+.lab-terms .lt .more{display:inline-block;padding:8px 0 2px;font-size:14.5px}
+.lab-terms .lt.result{padding:18px 14px}
+.lab-terms .lt.result h3{display:inline-block;margin-right:10px}
+.lab-foot .presets{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:8px;margin:0 -14px;padding:2px 14px 8px;scrollbar-width:none}
+.lab-foot .presets::-webkit-scrollbar{display:none}
+.lab-foot .presets button{flex:none;white-space:nowrap;min-height:42px}
+.eg-controls button,.eg-controls input{min-height:42px}
+/* the console */
+.console .sky{min-height:330px}
+.console .sky-count b{font-size:44px}
+.console .side{padding-top:4px}
+.console .readout>div{padding:14px 18px}
+.console .readout .big{font-size:25px}
+.console .kinds{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:8px 16px;scrollbar-width:none;padding-bottom:10px}
+.console .kinds::-webkit-scrollbar{display:none}
+.console .kinds li{flex:none;white-space:nowrap}
+.console .console-foot{font-size:12.5px;line-height:1.5}
+/* the map: names you can read */
+.usmap .city text{font-size:25px;letter-spacing:0}
+.usmap .city .pin{r:7px}
+.map-plate{padding:14px 8px 12px}
+/* nothing smaller than twelve */
+.rsm .eg-lab,.rsm .lt .k,.rsm .weak,.rsm .caption,.rsm .tag,.rsm .status,.rsm .day-n,.rsm .readout .term,.rsm .sky-count span,.rsm .footer-h,.rsm .stats .k,.rsm .console-eq,.rsm .cadence h3,.rsm .rs-cad .k,.rsm .dial i,.rsm .sky-tip i,.rsm .beats button i{font-size:12px}
+.rsm .dial span,.rsm .dial em{font-size:12px}
+/* thumbs */
+.rsm .lab-out span,.rsm .elementor-widget-rsm-chips h3{font-size:12px}
+.rsm a.go,.rsm .go,.rs-more .elementor-button,.rs-links .links a{display:inline-block;padding-top:9px;padding-bottom:9px}
+.rsm .faq summary{min-height:48px}
+.rs-closing .rs-actions{gap:12px!important}
+}
