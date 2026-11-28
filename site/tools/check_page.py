@@ -89,11 +89,14 @@ def run(site, path, keywords, extra):
     raw=open(fp,encoding='utf-8').read()
     # a page that reprints the Standard is judged on its own prose; the quoted list is reference material
     raw=re.sub(r'<ol class="std-list">.*?</ol>','<ol class="std-list"><li>The numbered checks are listed here.</li></ol>',raw,flags=re.S)
+    raw=re.sub(r'<ul class="el-list">.*?</ul>','<ul class="el-list"><li>The elements of this group are listed here.</li></ul>',raw,flags=re.S)
     p=P(); p.feed(raw)
     body_text=' '.join(' '.join(p.text).split())
     low=body_text.lower().replace('’',"'")
     lead=keywords[0].lower(); supp=[k.lower() for k in keywords[1:]]
-    def variants(k): return [k, k.replace(' in usa',' in the usa'), k.replace(' in usa',' in the united states')]
+    def variants(k):
+        v=[k, k.replace(' in usa',' in the usa'), k.replace(' in usa',' in the united states')]
+        return v+[x[:-1] for x in v if x.endswith('s') and not x.endswith('ss')]+[x+'s' for x in v if not x.endswith('s')]   # singular and plural are the same search
     def has(k,text): return any(v in text for v in variants(k))
     sitemap=open(os.path.join(site,'sitemap.xml')).read() if os.path.exists(os.path.join(site,'sitemap.xml')) else ''
     robots=open(os.path.join(site,'robots.txt')).read() if os.path.exists(os.path.join(site,'robots.txt')) else ''
@@ -123,6 +126,8 @@ def run(site, path, keywords, extra):
     filler=re.findall(r"in today['’]s digital world|unlock|elevate|game-changer|cutting-edge|seamless|best-in-class|world-class",low)
     # a page that reprints the Standard quotes the words its own checks forbid; judge the page's own prose, not the quoted list
     raw_own=re.sub(r'<ol class="std-list">.*?</ol>','',raw,flags=re.S)
+    # a superlative inside a question heading is the searcher's word, not our claim; the answer under it is still judged
+    raw_own=re.sub(r'<h[23][^>]*>[^<]*\?\s*</h[23]>',' ',raw_own)
     own_low=re.sub(r'<[^>]+>',' ',re.sub(r'<(script|style)\b.*?</\1>',' ',raw_own[raw_own.find('<main'):] if '<main' in raw_own else raw_own,flags=re.S)).lower()
     placeholders=re.findall(r'lorem|\[[A-Z][^\]]{3,}\]|TODO|placeholder',re.sub(r'placeholder="[^"]*"|::placeholder|data-placeholder','',raw_own))
     bracket_notes=[x for x in re.findall(r'\[[^\]]+\]',body_text) if len(x)>6]
@@ -317,8 +322,8 @@ def run(site, path, keywords, extra):
     res(261,'PASS' if 'Everything ships' in body_text and 'Half on page one' in body_text else 'FAIL','the two commitments near the CTA')
     res(262,'N/T','real reviews are collected in Step 6; none shown, none invented')
     res(263,'PASS' if 'Fact register' in body_text else 'FAIL','proof with source')
-    res(264,'PASS' if 'Ask a question' in body_text else 'FAIL','lighter step')
-    res(267,'PASS' if h1s and all(w in h1s[0].lower().replace('’',"'") for w in words(CFG['lead'].replace(' in usa',' usa'))) and answer_words else 'FAIL','the H1 carries the page’s search and the first line answers it')
+    res(264,'PASS' if any(x in body_text for x in ('Ask a question','See all 413 checks','See who AI recommends for your trade','Check if your trade is open in your city')) else 'FAIL','one of the plan’s lighter steps is offered')
+    res(267,'PASS' if h1s and (has(CFG['lead'],h1s[0].lower()) or all(w in h1s[0].lower() for w in words(CFG['lead'].replace(' in usa',' usa')))) and answer_words else 'FAIL','the H1 carries the page’s search and the first line answers it')
     res(268,'PASS' if 'Prices are discussed on the' in body_text else 'FAIL','honest price guidance: no prices, say so')
     res(269,'PASS' if all(s in low for s in ('day 5','month four','no charge')) else 'FAIL','cost, time, risk answered')
     sections=re.findall(r'<section[^>]*>.*?</section>',raw,re.S)

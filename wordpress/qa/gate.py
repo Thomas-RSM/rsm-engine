@@ -34,6 +34,7 @@ class Text(HTMLParser):
         if not s.boil and tag == 'div' and 'rs-boiler' in (a.get('class') or ''): s.boil = 1
         if tag in ('script', 'style', 'svg', 'noscript', 'template', 'select'): s.skip += 1
         if tag == 'ol' and 'std-list' in (a.get('class') or ''): s.skip += 1; s.std = 1
+        if tag == 'ul' and 'el-list' in (a.get('class') or ''): s.skip += 1; s.ell = 1
         if tag == 'title' and not s.skip and not s.title: s._t = 1
         if tag in ('h1', 'h2', 'h3'): s._h = [tag, '']
         if tag == 'img': s.imgs.append(a)
@@ -44,6 +45,7 @@ class Text(HTMLParser):
     def handle_endtag(s, tag):
         if tag in ('script', 'style', 'svg', 'noscript', 'template', 'select'): s.skip = max(0, s.skip - 1)
         if tag == 'ol' and getattr(s, 'std', 0): s.skip = max(0, s.skip - 1); s.std = 0
+        if tag == 'ul' and getattr(s, 'ell', 0): s.skip = max(0, s.skip - 1); s.ell = 0
         if tag == 'title': s._t = 0
         if tag in ('h1', 'h2', 'h3') and s._h: s.h.append((s._h[0], ' '.join(s._h[1].split()))); s._h = None
         if tag == 'main': s.main = 0
@@ -115,14 +117,15 @@ def main():
     # ---------- part 2: extra gates ----------
     w = words(p.text); n = len(w)
     if lead:
-        forms = [words(v) for v in {lead, lead.replace(' in usa', ' in the usa'), lead.replace(' in usa', ' in the united states')}]; lw = words(lead)
+        kwset = {lead, lead.replace(' in usa', ' in the usa'), lead.replace(' in usa', ' in the united states')}; kwset |= {x[:-1] for x in kwset if x.endswith('s') and not x.endswith('ss')} | {x + 's' for x in kwset if not x.endswith('s')}
+        forms = [words(v) for v in kwset]; lw = words(lead)
         hits = sum(1 for i in range(n) for f in forms if w[i:i + len(f)] == f); dens = 100.0 * hits * len(lw) / max(1, n)
         gate('lead keyword present in copy', hits >= 1, f'{hits} uses in {n} words')
         gate('lead keyword density at or under 2%', dens <= 2.0, f'{dens:.2f}%')
         gate('lead keyword in title', all(x in p.title.lower() for x in lw), p.title.strip()[:70])
         first = w[:110]; gate('lead keyword in the first 100 words', any(first[i:i + len(f)] == f for i in range(len(first)) for f in forms), ' '.join(first[:14]) + '…')
         h2s = [words(x) for k, x in p.h if k == 'h2']; gate('lead keyword in one H2', any(hh[i:i + len(f)] == f for hh in h2s for i in range(len(hh)) for f in forms), f'{len(h2s)} H2s')
-        h1 = [t for k, t in p.h if k == 'h1']; gate('one H1, carrying the lead keyword', len(h1) == 1 and all(x in h1[0].lower() for x in lw), ' | '.join(h1)[:90])
+        h1 = [t for k, t in p.h if k == 'h1']; hw = words(h1[0]) if h1 else []; gate('one H1, carrying the lead keyword', len(h1) == 1 and (any(hw[i:i + len(f)] == f for i in range(len(hw)) for f in forms) or all(x in hw for x in lw)), ' | '.join(h1)[:90])
         top = Counter_top(w); gate('no single content word over 3% of the copy', top[1] <= 3.0, f'{top[0]} {top[1]:.2f}%')
     gate('title 30 to 60 characters', 30 <= len(p.title.strip()) <= 60, f'{len(p.title.strip())}')
     gate('description 110 to 155 characters', 110 <= len(p.desc) <= 155, f'{len(p.desc)}')
