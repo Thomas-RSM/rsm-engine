@@ -24,7 +24,7 @@ for f in FILES:
         def rep(m, b=b):
             if re.search(r'[-_/=.]$', s[max(0, m.start() - 1):m.start()]) or s[m.end():m.end() + 1] in ('-', '_', '=', '(', '/'): return m.group(0)   # leave identifiers, classes and paths alone
             tot[m.group(0).lower()] += 1; return case(m.group(0), b)
-        s = re.sub(r'\b%s\b' % a, rep, s, flags=re.I)
+        s = re.sub(r'(?:(?<=\\n)|\b)%s\b' % a, rep, s, flags=re.I)   # also right after a literal \n in the page specs
     for a, b in P: s, n = re.subn(a, b, s); tot[a] += n
     def rep2(m):
         if re.search(r'[-_/=.]$', s[max(0, m.start() - 1):m.start()]) or s[m.end():m.end() + 1] in ('-', '_', '=', '(', '/'): return m.group(0)

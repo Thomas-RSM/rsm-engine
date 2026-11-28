@@ -76,10 +76,10 @@ def make(h):
                  T('<blockquote><p>“Engines change. Your customer’s question does not. Work on the question and every engine finds you.”</p><footer><cite>Thomas D’Souza</cite>, Founder, Relevant Search Media</footer></blockquote>', 'rs-trust-quote', mb=14),
                  B('About Thomas', '/thomas-dsouza/', 'rs-more', mb=0)], 'rs-trust-who')
         proof = C([T('<ul class="rs-proof"><li><b>900+</b> businesses served since 2020. <span>Fact register C1</span></li>'
-                     '<li><b>About 400</b> projects, 90% successful. Successful means the mapped searches reached page one of Google. <span>Fact register C3</span></li>'
+                     '<li><b>About 400</b> projects, 90% successful. <span>Fact register C3</span></li>'
                      '<li><b>413</b> numbered checks, published in full. <span>The D’Souza Standard, v1.0, 23 Nov 2026</span></li></ul>', mb=16),
                    T('<p><b>Two commitments, in writing.</b> Everything ships, or that 15-day period is free. Half on page one by month four, or we keep working at no charge.</p>'
-                     '<p>Live work by day 5 and a report every 15 days. Every plan is month to month, with no setup fee. Prices are discussed on the call, not listed here.</p>', 'rs-trust-terms', mb=14),
+                     '<p>Live work by day 5 and a report every 15 days. Every plan is month to month. Prices are discussed on the call, not listed here.</p>', 'rs-trust-terms', mb=14),
                    B('Read the two commitments', '/commitments/', 'rs-more', mb=0)], 'rs-trust-proof glass')
         return S([G([who, proof], 'minmax(0,5fr) minmax(0,7fr)', 'minmax(0,1fr)', 'minmax(0,1fr)', g=(32, 56), cls='rs-boiler', align='center')], eid='trust')
 
@@ -346,7 +346,7 @@ def make(h):
             ('What is a fair SEO cost for small business owners?', 'It depends on how many searches the business needs to win and how hard its market is. A one-trade business in one city needs a smaller map than a company serving several.\nCompare quotes by what will be mapped and what ships each month, not by the monthly figure alone.'),
             ('Is cheap SEO worth it?', 'Sometimes a low price buys real work on a small map, and that can be right for a small business. Often it buys a monthly report and little else.\nAsk the four questions on this page. Cheap work that ships and is logged beats expensive work that cannot be shown.'),
             ('Why do SEO quotes vary so much?', 'Because they are rarely quoting the same thing. One agency prices a large map and daily work; another prices a few pages and a report.\nUntil each states what is mapped, what ships and what is in writing, the two numbers cannot be compared.'),
-            ('Do I have to sign a long contract?', 'Not with us. Every plan is month to month, with no setup fee, and you cancel by email.\nYou keep the website, the content, the listings and every account from day one. Nothing is held back and nothing is charged to leave.'),
+            ('Do I have to sign a long contract?', 'Not with us. Every plan is month to month, and you cancel by email.\nYou keep the website, the content, the listings and every account from day one. Nothing is held back and nothing is charged to leave. You own everything created.'),
             ('What should an SEO proposal include?', 'The list of searches it targets, the items that ship in the first fifteen days, what is promised in writing, how the work is logged, and what you keep if you leave.\nA proposal missing any of the five is missing the part that lets you hold the agency to it.'),
         ]),
         trust(),
@@ -423,7 +423,7 @@ def make(h):
             ('Do I have to buy anything before the call?', 'No. There is no audit to buy first and no trial to sign up for, and you are not asked for a card to book.\nA discovery call is only worth having if you leave with something, so Thomas shows you what he found for your trade and city.'),
             ('How long is the call, and who is on it?', 'It takes 20 to 30 minutes and it is with Thomas D’Souza, the founder, not a salesperson. He has worked in digital marketing since 2010.\nBring anyone who helps you decide. One conversation is all we ask of you before work would begin.'),
             ('What do I need to have ready?', 'Only your trade, your city and your website address. If you were given a quote by another agency, or your calls fell on a known date, bring that too.\nYou do not need to share passwords or give access to anything before the call.'),
-            ('Will I get a price on the call?', 'Yes. Prices are not listed on this site because they depend on your trade, your city and how many searches have to be won. Thomas gives you the price on the call.\nEvery plan is month to month, with no setup fee.'),
+            ('Will I get a price on the call?', 'Yes. Prices are not listed on this site because they depend on your trade, your city and how many searches have to be won. Thomas gives you the price on the call.\nEvery plan is month to month, and you own everything created for you.'),
             ('What if my trade is already taken in my city?', 'Then we tell you right away and do not sell you a plan. We take one business per trade per city, because two rivals cannot both be the business an engine names.\nYou can ask to be told if the place opens again.'),
         ]),
         trust(),
@@ -998,7 +998,7 @@ def make(h):
         faq('Questions about our services', 'What do owners ask about the services?', 'Short answers. For anything else, use the <a href="/ask/">Ask page</a>.', [
             ('Do I have to choose one service?', 'No. The names are there because people search by them. A plan is built from your search map and your weakest term, and it uses whichever services that calls for.\nYou are not sold SEO, then AEO, then GEO as three purchases.'),
             ('Do you only work with certain kinds of business?', 'We work with US businesses that depend on being found: trades, practices, firms, stores. We take one business per trade per city.\nIf your trade is already taken in your city, we tell you on the call and do not sell you a plan.'),
-            ('Why are there no prices on the service pages?', 'Because the price depends on your trade, your city and how many searches have to be won. A figure without that would be a guess.\nThomas gives the price on the discovery call. Every plan is month to month, with no setup fee.'),
+            ('Why are there no prices on the service pages?', 'Because the price depends on your trade, your city and how many searches have to be won. A figure without that would be a guess.\nThomas gives the price on the discovery call. Every plan is month to month, and the client owns everything created.'),
             ('Is the build work separate from the search work?', 'It can be bought alone, and it is built the same way: so that every engine can read it. A site that looks good and cannot be read does not get found.\nMany clients start with search work and rebuild the site once the map shows what it has to say.'),
             ('Who does the work?', 'A team of more than 100 specialists, working US hours from New Delhi, India. Thomas D’Souza, the founder, takes the discovery call and approves each plan.\nEvery item that ships is logged with its link, so you can see who did what and when.'),
         ]),
@@ -1048,7 +1048,7 @@ def make(h):
         where_h2='Which trades and cities do we work in?', where_p=['Any US business that depends on being found. We work from New Delhi, India, on US hours, and take one business per trade per city.'],
         faq_about='this service', faq_h2='What do owners ask about SEO services?',
         faqs=[('What are SEO services, in plain words?', 'They are the work that gets a business named when someone searches for what it sells. That means a site engines can read, other sources that confirm it, and a listing people choose.\nA report alone is not a service. The service is the changes that ship.'),
-              ('Are there affordable SEO services for small businesses?', 'Yes, when the work is sized to the business. A small business in one city needs a smaller search map and less work than a company in ten.\nAffordable means worth what it costs and visible to you. Ours is month to month, with no setup fee.'),
+              ('Are there affordable SEO services for small businesses?', 'Yes, when the work is sized to the business. A small business in one city needs a smaller search map and less work than a company in ten.\nAffordable means worth what it costs and visible to you. Ours is month to month.'),
               ('Are SEO services worth it?', 'They are when the work reaches customers you want, and you can see it being done. They are not when the only output is a monthly chart.\nJudge by what shipped and by the leads you confirm were relevant, which is what our 15-day report shows.'),
               ('What is an SEO service provider responsible for?', 'For doing the work and showing it. A provider should name the searches it is working on, ship changes to the site and listings, and report what happened.\nIt is not responsible for a ranking nobody can promise, which is why our commitments are about work shipped and page-one share.'),
               ('How long before results show?', 'On our plans, live work goes up by day 5 and the first report arrives on day 15. Rankings usually start moving between day 30 and day 60.\nBy the end of month four, at least half the searches in your map reach page one of Google, or we keep working at no charge.')],
@@ -1875,7 +1875,7 @@ def make(h):
               ('What is a relevant lead?', 'An inquiry from someone who wants a service you offer, in an area you cover. You are the judge of that, not us.\nIrrelevant inquiries are useful too. They show which page or search is attracting the wrong people. We ask you to mark each one.'),
               ('Are shared leads worth buying?', 'Sometimes, as a stopgap. A shared lead goes to several firms, so the fastest caller or the lowest price tends to win.\nAn inquiry that comes through your own page is yours alone, and the customer has already chosen you.'),
               ('Why do I get traffic and no inquiries?', 'Either the visitors are the wrong people, or the page gives them no reason and no easy way to get in touch.\nBoth can be checked. The search each visitor used shows the first; the page itself shows the second.'),
-              ('How soon do inquiries change?', 'Repairs to the contact path can show at once. A broken form that is fixed starts delivering the same day.\nEnquiries from new rankings come more slowly, over months. We report every 15 days on both. The first change is usually the contact path.')],
+              ('How soon do inquiries change?', 'Repairs to the contact path can show at once. A broken form that is fixed starts delivering the same day.\nInquiries from new rankings come more slowly, over months. We report every 15 days on both. The first change is usually the contact path.')],
         closing_h2='The right searches bring the right calls. <span class="gold">Find out which you are missing.</span>',
         closing_p='A discovery call is 20 to 30 minutes with Thomas. He follows the path from a customer’s search to your phone, shows you where it breaks, and tells you whether your trade is still open in your city.'))
 
@@ -2446,7 +2446,7 @@ def make(h):
                 ('Founded', '2020', 'By Thomas D’Souza, Founder'),
                 ('Market served', 'United States only', 'Working on US hours'),
                 ('Businesses served', '900+', 'Since 2020'),
-                ('Projects', 'About 400, 90% successful', 'Successful means the mapped searches reached page one of Google'),
+                ('Projects', 'About 400, 90% successful', 'The founder’s own figure, from his records'),
                 ('Team', '100+ specialists', 'On US hours'),
                 ('Clients per trade per city', 'One', 'So we never work for your competitor'),
             ]), figure('about', {'kind': 'timeline', 'eyebrow': 'About', 'title': 'From one idea to a published method', 'items': [['2010', 'Thomas D’Souza starts in digital marketing'], ['2020', 'Relevant Search Media is founded'], ['2025', 'The D’Souza Equation in public use'], ['2026', '413 checks published in full']]}, 'Timeline from 2010 to 2026: the founder’s start, the company’s founding, the equation and the published checks', 'The dates behind the company, all from the signed fact register.'), more=('Results and reviews', '/results/'), eid='facts'),
@@ -2559,9 +2559,9 @@ def make(h):
         sec('The figures', 'What are the SEO results so far?', ['Three figures, each signed off by Thomas D’Souza. The third column says what each one means.'],
             table('The record in three figures', ('Figure', 'Value', 'What it means'), [
                 ('Businesses served', '900+', 'Since the company was founded in 2020'),
-                ('Projects', 'About 400', 'Engagements run to a keyword map'),
-                ('Successful', '90%', 'The mapped searches reached page one of Google'),
-            ]), figure('results', {'kind': 'stats', 'eyebrow': 'The record', 'title': 'The record in three figures', 'items': [['900+', 'businesses served since 2020'], ['About 400', 'projects run to a keyword map'], ['90%', 'reached page one of Google']]}, 'Figure: 900+ businesses served, about 400 projects, 90% successful', 'Signed off by Thomas D’Souza. No client is named.'), more=('About Relevant Search Media', '/about/'), eid='figures'),
+                ('Projects', 'About 400', 'From the founder’s own records'),
+                ('Successful', '90%', 'His figure, published without client detail'),
+            ]), figure('results', {'kind': 'stats', 'eyebrow': 'The record', 'title': 'The record in three figures', 'items': [['900+', 'businesses served since 2020'], ['About 400', 'projects'], ['90%', 'successful']]}, 'Figure: 900+ businesses served, about 400 projects, 90% successful', 'Signed off by Thomas D’Souza. No client is named.'), more=('About Relevant Search Media', '/about/'), eid='figures'),
         sec('What counts', 'What do we count as a result?', ['Not traffic. A result is a customer search in the map reaching page one, and after that, inquiries the owner confirms were relevant.', 'Visits that bring no inquiry are a cost. They are reported, and they are not called a result.'],
             more=('Lead generation services', '/services/lead-generation/'), eid='counts'),
         sec('No names', 'Why are there no named SEO case studies?', ['Because the results belong to the clients. SEO case studies usually name the business, its rankings and its figures, and our clients have not been asked to give those up.', 'So results are stated by trade and in ranges. No client name, exact ranking or client data appears in public.'],
@@ -2577,7 +2577,7 @@ def make(h):
                    ('Step 4', 'Test the firm’s own site', 'Search for what it sells. A search company should be findable.')]),
             B('How to choose an SEO company, and what to ask', '/guides/how-to-choose-an-seo-company/', 'rs-more', mb=0), eid='check'),
         faq('Questions about the record', 'What do owners ask about the record?', ASK, [
-            ('What does “90% successful” mean?', 'It means that in about nine projects out of ten, the customer searches in the keyword map reached page one of Google.\nIt is Thomas D’Souza’s own figure, from his records, published in his words and without client detail. We add nothing to it and take nothing away.'),
+            ('What does “90% successful” mean?', 'It is Thomas D’Souza’s own figure, drawn from his own records: about 400 projects, of which 90% were successful.\nHe has released it for this site in his words, without client names or further detail. Ask him on the discovery call what success looked like in a trade like yours.'),
             ('Can I speak to a past client?', 'Ask on the discovery call. We do not publish client names, and we do not hand out contact details without that client’s agreement.\nThomas will tell you plainly what can and cannot be shared for your trade, and why. Nothing is implied that cannot be shown.'),
             ('Why should I trust figures with no names?', 'You should test them, not trust them. The definitions are stated, the method is published in full and the commitments are in writing.\nOur own site is run in public as the worked example. Judge the work you can see.'),
             ('Do you publish results by trade?', 'Results are stated by trade and in ranges once they are drawn from a project record. Nothing is estimated to fill a gap.\nIf your trade is not yet shown, ask on the call what we have seen in it.'),
