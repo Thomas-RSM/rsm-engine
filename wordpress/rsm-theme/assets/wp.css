@@ -252,7 +252,7 @@ svg.eg-wide{display:none}svg.eg-tall{display:block;width:100%;max-width:400px;he
 .usmap .city .pin{r:7px}
 .map-plate{padding:14px 8px 12px}
 /* nothing smaller than twelve */
-.rsm .eg-lab,.rsm .lt .k,.rsm .weak,.rsm .caption,.rsm .tag,.rsm .status,.rsm .day-n,.rsm .readout .term,.rsm .sky-count span,.rsm .footer-h,.rsm .stats .k,.rsm .console-eq,.rsm .cadence h3,.rsm .rs-cad .k,.rsm .dial i,.rsm .sky-tip i,.rsm .beats button i{font-size:12px}
+.rsm .eg-lab,.rsm .lt .k,.rsm .weak,.rsm .caption,.rsm .tag,.rsm .status,.rsm .day-n,.rsm .readout .term,.rsm .sky-count span,.rsm .footer-h,.rsm .stats .k,.rsm .console-eq,.rsm .rs-cad .k,.rsm .dial i,.rsm .sky-tip i,.rsm .beats button i{font-size:12px}
 .rsm .dial span,.rsm .dial em{font-size:12px}
 /* thumbs */
 .rsm .lab-out span,.rsm .elementor-widget-rsm-chips h3{font-size:12px}
@@ -269,53 +269,39 @@ svg.eg-wide{display:none}svg.eg-tall{display:block;width:100%;max-width:400px;he
 .sky-say span[data-trade-name],.sky-say span[data-city-name]{color:var(--gold-2)}
 .sky-say>span:last-child{display:block;margin-top:6px;font-family:var(--sans);font-size:13px;font-weight:500;color:var(--text-3)}
 /* the map: full width, fifty cities */
-.map-plate{padding:26px 30px 22px}
 .map-plate .usmap{display:block;width:100%;max-width:1040px;height:auto;margin:0 auto}
 .usmap .city .pin{fill:rgba(163,181,242,.95)}
 .usmap .city.launch .pin{fill:var(--gold);filter:drop-shadow(0 0 6px rgba(248,177,15,.9))}
-.usmap .city text{font-size:9.5px;font-weight:500;letter-spacing:.02em;fill:rgba(205,214,240,.92)}
-.usmap .city.launch text{font-size:10.5px;font-weight:700;fill:#fff}
+.usmap .city text{font-size:11px;font-weight:500;letter-spacing:0;fill:rgba(205,214,240,.92)}
+.usmap .city.launch text{font-size:12.5px;font-weight:700;fill:#fff}
 .map-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px;margin-top:10px;padding-top:16px;border-top:1px solid var(--line)}
 .map-foot .caption{margin:0;text-align:left}
 .map-key{list-style:none;margin:0;padding:0;display:flex;gap:20px;font-size:13px;color:var(--text-2)}
 .map-key li::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:8px;vertical-align:baseline}
 .map-key .kl::before{background:var(--gold);box-shadow:0 0 8px rgba(248,177,15,.9)}
 .map-key .km::before{background:rgba(163,181,242,.95);width:6px;height:6px}
-#look .rs-bigmap{margin:8px 0 0}
-/* the journey: each milestone stands on its card */
-.path-plate.journey{margin:0;padding:10px 0 0}
-.path-plate.journey svg{display:block;width:100%;height:auto}
-.rs-journey .rs-day{position:relative;height:100%;transition:box-shadow .35s,transform .35s,border-color .35s}
-.rs-journey .rs-day.lit{box-shadow:0 0 0 1px rgba(255,217,138,.9),0 0 34px rgba(248,177,15,.35);transform:translateY(-3px)}
-.rs-journey>.elementor-widget:nth-child(6) .rs-day{border-color:rgba(76,192,168,.5)}
-.rs-journey>.elementor-widget:nth-child(6) .rs-day.lit{box-shadow:0 0 0 1px rgba(142,227,208,.9),0 0 34px rgba(76,192,168,.35)}
-.rs-journey>.elementor-widget:nth-child(6) .day-n{color:#8EE3D0}
-@media (max-width:1100px){.path-plate.journey .stem{display:none}}
-
-@media (min-width:1101px){
-/* 03: pick your problem */
-.rs-pick{display:grid!important;grid-template-columns:minmax(0,5fr) minmax(0,7fr)!important;grid-template-rows:repeat(6,auto);gap:0 44px!important;counter-reset:pk;align-items:stretch}
-.rs-pick>.elementor-widget,.rs-pick .elementor-widget-container,.rs-pick .problems.rs-one,.rs-pick .card{display:contents!important}
-.rs-pick .c-head{display:grid;grid-template-columns:44px minmax(0,1fr) 24px;align-items:center;grid-column:1;padding:21px 18px 21px 16px;border-top:1px solid var(--line);border-radius:0;cursor:pointer;position:relative;transition:background .2s}
-.rs-pick>.elementor-widget:last-child .c-head{border-bottom:1px solid var(--line)}
-.rs-pick .c-head::before{counter-increment:pk;content:"0" counter(pk);grid-row:1/span 2;font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.1em;color:var(--text-3);transition:color .2s}
-.rs-pick .c-head::after{content:"→";grid-column:3;grid-row:1/span 2;font-size:18px;color:var(--gold-2);opacity:0;transform:translateX(-8px);transition:opacity .2s,transform .2s}
-.rs-pick .c-head .tag{grid-column:2;margin-bottom:2px}
-.rs-pick .c-head h3{grid-column:2;margin:0;font-size:20.5px;line-height:1.25;font-weight:600;color:var(--text-2);transition:color .2s}
-.rs-pick .card.on .c-head{background:linear-gradient(90deg,rgba(248,177,15,.14),rgba(248,177,15,0) 85%)}
-.rs-pick .card.on .c-head::before{color:var(--gold)}
-.rs-pick .card.on .c-head::after{opacity:1;transform:none}
-.rs-pick .card.on .c-head h3{color:#fff}
-.rs-pick .card.on .c-head{box-shadow:inset 3px 0 0 var(--gold)}
-.rs-pick .card:focus-visible .c-head{outline:3px solid var(--gold);outline-offset:-3px}
-.rs-pick .c-body{display:flex;flex-direction:column;gap:20px;grid-column:2;grid-row:1/span 6;padding:30px 32px 30px;border-radius:24px;border:1px solid var(--line-2);background:linear-gradient(160deg,rgba(62,84,170,.34),rgba(20,28,66,.72) 45%,rgba(8,12,30,.9));box-shadow:0 30px 80px rgba(3,6,18,.55),inset 0 1px 0 rgba(255,255,255,.1);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .28s,transform .28s,visibility 0s .28s}
-.rs-pick .card.on .c-body{opacity:1;visibility:visible;transform:none;transition:opacity .28s,transform .28s}
-.rs-pick .c-body .pic{order:0;width:100%;height:auto;margin:0;border-radius:16px;background:rgba(5,8,26,.7);border:1px solid var(--line)}
-.rs-pick .c-body p{font-size:18.5px;line-height:1.55;color:var(--text);margin:0;max-width:52ch}
-.rs-pick .c-body p b{color:var(--gold-2)}
-.rs-pick .c-body .go{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:999px;background:linear-gradient(180deg,#FFD05C,#F8B10F);color:#1A1200;font-weight:700;font-size:15.5px;box-shadow:0 10px 30px rgba(248,177,15,.28)}
-.rs-pick .card.feature{background:none;border:0}
-}
+/* 07: the path and the steps below it move together */
+.rs-journey .rs-day,.rs-cadence .rs-cad{transition:box-shadow .35s,transform .35s,border-color .35s,background .35s}
+.rs-journey .rs-day.lit{border-color:rgba(255,217,138,.9);box-shadow:0 0 0 1px rgba(255,217,138,.55),0 0 36px rgba(248,177,15,.32);transform:translateY(-4px)}
+.rs-journey .rs-day.done .day-n{color:var(--gold)}
+.rs-cadence .rs-cad h3{transition:color .35s}
+.rs-cadence .rs-cad.lit{border-top-color:var(--gold)}
+.rs-cadence .rs-cad.lit h3{color:var(--gold-2)}
+.rs-cadence .rs-cad.lit::before{box-shadow:0 0 0 5px rgba(248,177,15,.22),0 0 16px rgba(248,177,15,1)}
+/* 03: the problem cards */
+.rs-probs{counter-reset:pb}
+.rs-probs .card{position:relative;padding:16px 16px 24px;gap:12px;border-radius:24px}
+.rs-probs .card .pic{border-radius:16px;border:1px solid var(--line-2);background:linear-gradient(180deg,#0C1234,#070A20);margin:0 0 6px;transition:border-color .25s}
+.rs-probs .card:hover .pic{border-color:rgba(248,177,15,.5)}
+.rs-probs .card h3{font-size:21px;line-height:1.26;padding:4px 10px 0}
+.rs-probs .card p{padding:0 10px;font-size:15.5px}
+.rs-probs .card .go{padding:10px 10px 0}
+.rs-probs .card .tag{padding:4px 10px 0}
+.rs-probs .card::after{counter-increment:pb;content:"0" counter(pb);position:absolute;left:28px;top:28px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--gold-2);background:rgba(6,9,28,.78);border:1px solid rgba(248,177,15,.4);padding:3px 9px;border-radius:999px;display:none}
+/* 05: words on the left, map on the right, nothing overlapping */
+.rsm .rs-look-top>.rs-intro{--width:100%!important;width:100%!important;max-width:100%!important;min-width:0;margin-bottom:0!important}
+.rs-look-top .map-plate{padding:18px 18px 16px}
+.rs-look-top .map-foot{flex-direction:column;align-items:flex-start;gap:10px}
 @media (min-width:761px){
 /* 04: one machine, six gauges */
 .rsm .rs-machine{gap:0!important;border:1px solid var(--line-2)!important;border-radius:26px!important;overflow:hidden!important;background:linear-gradient(165deg,rgba(62,84,170,.26),rgba(16,23,56,.7) 50%,rgba(8,12,30,.92));box-shadow:0 30px 80px rgba(3,6,18,.5),inset 0 1px 0 rgba(255,255,255,.1);counter-reset:mc}
@@ -332,3 +318,46 @@ svg.eg-wide{display:none}svg.eg-tall{display:block;width:100%;max-width:400px;he
 @media (min-width:1101px){.rs-machine>.elementor-widget:nth-child(3n) .stats.rs-one>a{border-right:0}.rs-machine>.elementor-widget:nth-last-child(-n+3) .stats.rs-one>a{border-bottom:0}}
 @media (min-width:761px) and (max-width:1100px){.rs-machine>.elementor-widget:nth-child(2n) .stats.rs-one>a{border-right:0}.rs-machine>.elementor-widget:nth-last-child(-n+2) .stats.rs-one>a{border-bottom:0}}
 @media (max-width:760px){.sky-say{display:none}.map-plate{padding:14px 8px 12px}.usmap .city text{font-size:19px}.rsm .usmap .city.launch text{font-size:19px;letter-spacing:0}.usmap .city:not(.launch) .pin{r:3.6px}.map-foot{flex-direction:column;align-items:flex-start}.usmap .city:not(.launch) text{display:none}}
+
+/* ---- phones, third pass: section by section ---- */
+@media (max-width:760px){
+/* film: even spacing now that its parts sit in one column */
+.e-grid:has(>.e-con>.elementor-widget-rsm-chapters){gap:0!important}
+.rsm .e-con:has(>.elementor-widget-rsm-chapters)>.small{margin-top:16px!important}
+/* five engines: tidy controls */
+.eg-controls{justify-content:flex-start;gap:8px}
+.eg-controls .eg-lab{flex-basis:100%;margin:0 0 2px}
+.eg-controls input{width:100%}
+.eg-hint{text-align:left}
+.lab-terms .more::after,.rsm .more::after{margin-left:6px}
+/* console: the reading sits under the ring, never over the number */
+.console .sky{padding-bottom:64px}
+.console .sky-tip{left:12px!important;right:12px;top:auto!important;bottom:10px;transform:none!important;max-width:none;opacity:1!important}
+.console .sky-count{top:calc(50% - 32px)}
+.console .sky canvas{height:calc(100% - 64px)}
+/* commitments: the numeral stays out of the words */
+.rs-clause{padding:24px 22px 22px}
+.rs-clause .roman{font-size:84px;right:14px;top:8px;-webkit-text-stroke:1.2px rgba(248,177,15,.45)}
+.rs-clause h3{padding-right:58px}
+/* the machine: one panel, six clear rows */
+.rsm .e-grid.rs-machine{--e-con-grid-template-columns:minmax(0,1fr)!important;gap:0!important;border:1px solid var(--line-2)!important;border-radius:22px!important;overflow:hidden!important;background:linear-gradient(165deg,rgba(62,84,170,.26),rgba(16,23,56,.7) 50%,rgba(8,12,30,.92))}
+.rs-machine .stats.rs-one>a{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;align-items:baseline;background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none;padding:18px 18px 14px}
+.rs-machine>.elementor-widget:last-child .stats.rs-one>a{border-bottom:0}
+.rs-machine .stats.rs-one .n{font-size:32px;margin:0;line-height:1.1}
+.rs-machine .stats.rs-one .k{margin:0;color:#fff}
+.rs-machine .stats.rs-one .d{grid-column:1/-1;margin:8px 0 2px;font-size:14.5px}
+.rs-machine .stats.rs-one .go{grid-column:1/-1}
+/* how it starts: the cards carry the steps; the rhythm reads as a list */
+.rsm .elementor-widget-rsm-path{display:none!important}
+.rsm .e-grid.rs-cadence{--e-con-grid-template-columns:minmax(0,1fr)!important;gap:0!important;margin-top:18px!important}
+.rs-cadence .rs-cad{padding:16px 0 14px 22px;border-top:1px solid var(--line)}
+.rs-cadence .rs-cad::before{top:22px}
+.rs-cadence .rs-cad h3{font-size:17px;margin:2px 0 4px}
+.rs-cadence .rs-cad p{font-size:14.5px;margin:0}
+/* problems */
+.rs-probs .card{padding:14px 14px 20px}
+.rs-probs .card h3{font-size:19px}
+/* map caption reads as a sentence */
+.map-plate .caption{font-family:var(--sans);letter-spacing:0;font-size:13.5px;line-height:1.5}
+.map-key{font-size:13px;gap:14px}
+}

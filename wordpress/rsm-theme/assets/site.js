@@ -18,7 +18,9 @@ window.RSMInit = function () {
   (function () {
     var root = document.getElementById('orbit'); if (!root) return;
     if (root.__rsm) return; root.__rsm = 1;
-    var dataEl = root.querySelector('.orbit-data'), I = []; try { I = JSON.parse(dataEl.textContent); } catch (e) {} if (!I.length) return; var NT = I.length;
+    var dataEl = root.querySelector('.orbit-data'), I = []; try { I = JSON.parse(dataEl.textContent); } catch (e) {} if (!I.length) return;
+    if (window.innerWidth < 480) { var KEEP = ['Google', 'Maps', 'ChatGPT', 'Gemini', 'Perplexity', 'Copilot', 'SEO', 'Local SEO', 'AEO', 'AIO', 'GBP', 'Reddit'], few = I.filter(function (i) { return KEEP.indexOf(i.name) >= 0; }); if (few.length >= 8) I = few; }
+    var NT = I.length;
     I.forEach(function (i) { i.src = 'url("data:image/svg+xml;utf8,' + encodeURIComponent(i.svg).replace(/'/g, '%27').replace(/\(/g, '%28').replace(/\)/g, '%29') + '")'; });
     var n1 = Math.max(1, Math.round(NT * 0.2)), n2 = Math.max(1, Math.round(NT * 0.3)), seq = function (a, b) { var r = []; for (var i = a; i < b; i++) r.push(i); return r; };
     var RINGS = [{ ids: seq(0, Math.min(n1, NT)), spd: 8 }, { ids: seq(Math.min(n1, NT), Math.min(n1 + n2, NT)), spd: 5 }, { ids: seq(Math.min(n1 + n2, NT), NT), spd: 3 }].filter(function (r) { return r.ids.length; });
@@ -39,7 +41,7 @@ window.RSMInit = function () {
     });
     var W = 0, G = null, sprites = null, ctx = null, t = REDUCE ? 20 : 0, prev = 0, raf = 0, visible = true, order = null, buf = null, P = null;
     function geo(w) {
-      if (w < 480) { var kk = w / 390; return { w: w, h: 500, cx: w / 2, cy: 246, rx: [62, 112, 162].map(function (v) { return v * kk; }), ry: [84, 150, 214], tile: 38, icon: 20, lf: 8, ls: 0.3, gap: 4, logo: Math.min(70, w * 0.17) }; }
+      if (w < 480) { var kk = w / 390; return { w: w, h: 500, cx: w / 2, cy: 246, rx: [64, 112, 156].map(function (v) { return v * kk; }), ry: [84, 150, 212], tile: 46, icon: 24, lf: 9.5, ls: 0.4, gap: 5, logo: Math.min(70, w * 0.17) }; }
       if (w < 820) { var k = Math.min(1.6, w / 390), h = 800, sm = w < 480;
         return { w: w, h: h, cx: w / 2, cy: h / 2 - 8, rx: (sm ? [58, 108, 160] : [62, 110, 158]).map(function (v) { return v * k; }), ry: [126, 232, 330], tile: sm ? 36 : 40, icon: sm ? 19 : 21, lf: sm ? 6.5 : 7, ls: sm ? 0.6 : 1, gap: 5, logo: sm ? Math.min(72, w * 0.17) : Math.min(78, w * 0.18) }; }
       var tab = w < 1100, X = Math.min(560, w / 2 - (tab ? 52 : 34)), tile = tab ? 48 : 52, f = tab ? [0.5, 0.77, 1] : [0.46, 0.76, 1.04];
@@ -389,14 +391,18 @@ window.RSMInit();
   window.addEventListener('load', pick);
 })();
 
-/* ---- the journey: the card under the moving dot lights as the dot reaches its milestone ---- */
+/* ---- 07: the step under the moving dot lights as the dot reaches it; after day 5 the rhythm below takes over ---- */
 (function () {
-  function go() { var svg = document.querySelector('.path-plate.journey svg'), row = document.querySelector('.rs-journey'); if (!svg || !row || row.__rsmJ) return; row.__rsmJ = 1;
-    var cards = [].slice.call(row.querySelectorAll('.rs-day')); if (cards.length < 2 || !svg.getCurrentTime) return; var D = 7.2, seg = D / (cards.length - 1), last = -2;
+  function go() { var fig = document.querySelector('.rs-path-sync'); if (!fig || fig.__rsmJ) return; var svg = fig.querySelector('svg'), path = svg && svg.querySelector('path[id^="launch"]'); if (!path || !svg.getCurrentTime) return; fig.__rsmJ = 1;
     if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-    setInterval(function () { if (window.innerWidth < 1101) { if (last !== -1) { cards.forEach(function (c) { c.classList.remove('lit'); }); last = -1; } return; }
-      var t = svg.getCurrentTime() % D, i = Math.round(t / seg), near = Math.abs(t - i * seg) < seg * 0.3; if (i >= cards.length) i = cards.length - 1; var cur = near ? i : -1;
-      if (cur !== last) { cards.forEach(function (c, k) { c.classList.toggle('lit', k === cur); }); last = cur; } }, 120); }
+    var xs = []; try { xs = JSON.parse(fig.getAttribute('data-days')); } catch (e) {} if (xs.length < 6) return;
+    var L = path.getTotalLength(), fr = xs.map(function (x) { var lo = 0, hi = L; for (var k = 0; k < 24; k++) { var m = (lo + hi) / 2; if (path.getPointAtLength(m).x < x) lo = m; else hi = m; } return lo / L; });
+    var days = [].slice.call(document.querySelectorAll('.rs-journey .rs-day')), cad = [].slice.call(document.querySelectorAll('.rs-cadence .rs-cad')), D = 6, last = '';
+    setInterval(function () { if (window.innerWidth < 761) { if (last !== 'off') { days.concat(cad).forEach(function (c) { c.classList.remove('lit', 'done'); }); last = 'off'; } return; }
+      var t = (svg.getCurrentTime() % D) / D, cur = -1; for (var i = 0; i < 5; i++) if (t >= fr[i] - 0.012) cur = i;
+      var daily = t >= fr[4] + 0.03 && t < fr[5] - 0.03, report = t >= fr[5] - 0.03, key = cur + '|' + daily + '|' + report; if (key === last) return; last = key;
+      days.forEach(function (c, k) { c.classList.toggle('lit', k === cur && !(k === 4 && (daily || report)) || (k === 4 && cur === 4 && !daily && !report)); c.classList.toggle('done', k < cur || (k === 4 && (daily || report))); });
+      cad.forEach(function (c, k) { c.classList.toggle('lit', (k === 0 && daily) || (k === 1 && report)); }); }, 100); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
   window.addEventListener('load', go);
 })();
