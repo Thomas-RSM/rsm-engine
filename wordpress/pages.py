@@ -275,9 +275,52 @@ def make(h):
         trust(),
         closing('Ranking, then gone? <span class="gold">Date it in one call.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He dates the drop with you, matches it against Google’s updates and your own changes, and shows you what the first fifteen days would fix.', 'Nothing to buy before the call. We take one business per trade in each city.'),
     ], parent='problems'))
+    # ------------------------------------------------------------------ /problems/seo-cost/
+    P.append(page('seo-cost', '/problems/seo-cost/', 'How Much Does SEO Cost? | Relevant Search Media',
+        'How much does SEO cost? It depends on what is mapped, what ships and what is in writing. Four questions show whether a quote is fair.', [
+        hero(crumb('Is this quote fair?'), 'Problem 5 of 5', 'How much does SEO cost, and is my quote fair?',
+             'How much SEO costs depends on three things: how many searches are mapped, how much work ships each month, and what is promised in writing. A price means little until those are stated. A fair quote tells you what will be mapped, what ships in the first fifteen days, and what happens if it does not.',
+             'Judge the quote, not the number.'),
+        sec('The ten-minute check', 'How do I check an SEO quote in ten minutes?', ['Put these four questions to whoever sent the quote, in writing. A company that does the work answers all four the same day.'],
+            steps([('Step 1', 'Ask for the map', 'Ask for the list of searches the work is aimed at, and how many there are. No list means no target.'),
+                   ('Step 2', 'Ask for the first fifteen days', 'Ask for named items with dates. “Onboarding” and “strategy” are not items.'),
+                   ('Step 3', 'Ask what is in writing', 'Ask what is promised, what happens if it is missed, how you cancel and what you keep.'),
+                   ('Step 4', 'Ask to see the log', 'Ask to see a log with links you can open. A monthly PDF of charts is not a log.')]),
+            T('<p>For example, a contractor in Atlanta comparing two quotes would ask each agency which searches it mapped, such as “kitchen remodel atlanta”. The map is the measure of the job: ours counts 177 separate searches contractors in Atlanta make when they want a company such as ours (v4, 18 Nov 2026).</p>', 'small rs-note', mt=22, mb=18),
+            B('See a map for your trade and city', '/searches/', 'rs-more', mb=0), eid='check'),
+        sec('Six ways to charge', 'How does SEO pricing work?', ['SEO pricing comes in six shapes. Each sells something different, so two quotes can differ widely and both be honest.', 'Find the row that matches your quote, then ask the question in the last column.'],
+            table('How SEO is priced: the model, what it buys and what to ask', ('How it is priced', 'What you are buying', 'What to ask'), [
+                ('A monthly fee', 'Ongoing work, month after month', 'Can I see the list of what shipped last month?'),
+                ('A one-off audit or project', 'A report, or one fixed job', 'Who carries out what the audit finds?'),
+                ('By the hour', 'Time', 'Is there a cap, and a log of what the hours produced?'),
+                ('Per lead', 'Enquiries, often resold', 'Are the leads mine alone, and who owns the page they come from?'),
+                ('A ranking guarantee', 'A promise', 'For which searches, on which engine, and what if it is missed?'),
+                ('A long contract with a setup fee', 'A commitment from you', 'What do I keep, and what do I owe, if I leave?'),
+            ]), more=('How we work, day by day', '/dsouza-equation/method/'), eid='models'),
+        sec('What moves the price', 'What makes SEO cost more or less?', ['Three things move the price of honest work. None of them is the agency’s office or its sales deck.'],
+            G([card('clause', number='1', title='The size of the map.', text='How many customer searches the work must win. Our plans map 300, 600 or 2,000 of them.'),
+               card('clause', number='2', title='The contest in your trade and city.', text='A dentist in Chicago faces more rivals than a dentist in a small town, and each rival is also doing the work.'),
+               card('clause', number='3', title='What is already in place.', text='A sound site, complete listings and recent reviews mean less to build. A blocked site or a suspended listing means more.')], 3, 1, 1),
+            more=('See all 413 checks', '/dsouza-equation/standard/'), eid='drivers'),
+        sec('The fair-quote test', 'Is my SEO quote fair? Three questions.', ['Is my SEO quote fair? It is if it answers three questions: what will be mapped, what ships in the first fifteen days, and what is in writing. A quote that answers all three can be compared with any other.', 'Ours puts two commitments in writing on every plan. Everything ships or that period is free, and half the mapped searches reach page one by month four or we work on at no charge.'],
+            quote('A fair quote is one you can check. If you cannot tell what will ship in the first fifteen days, you are not being quoted. You are being sold.'),
+            more=('Read the two commitments', '/commitments/'), eid='fair'),
+        sec('No price list', 'Why are there no prices on this page?', ['Because a price without a map is a guess. What a plan costs depends on your trade, your city and how many searches have to be won, and we take only one business per trade per city.', 'The price is given on the discovery call, after Thomas has looked at your searches. The call takes 20 to 30 minutes and there is no audit to buy first.'],
+            C([B('Book a discovery call', '/book/'), B('Check whether your city is open', '/open-board/', 'rs-more')], 'rs-actions', 'row', flex_gap=gap(14), flex_wrap='wrap', flex_align_items='center', margin=box(0, 0, 0, 0)), eid='no-prices'),
+        faq('Questions about cost', 'What do owners ask about the cost of SEO?', 'The questions that come up once a quote is on the table. For anything else, use the <a href="/ask/">Ask page</a>.', [
+            ('How much does SEO cost for a small business?', 'It depends on how many searches the business needs to win and how hard its market is. A one-trade business in one city needs a smaller map than a company serving several.\nCompare quotes by what will be mapped and what ships each month, not by the monthly figure alone.'),
+            ('Is cheap SEO worth it?', 'Sometimes a low price buys real work on a small map, and that can be right for a small business. Often it buys a monthly report and little else.\nAsk the four questions on this page. Cheap work that ships and is logged beats expensive work that cannot be shown.'),
+            ('Why do SEO quotes vary so much?', 'Because they are rarely quoting the same thing. One agency prices a large map and daily work; another prices a few pages and a report.\nUntil each states what is mapped, what ships and what is in writing, the two numbers cannot be compared.'),
+            ('Do I have to sign a long contract?', 'Not with us. Every plan is month to month, with no setup fee, and you cancel by email.\nYou keep the website, the content, the listings and every account from day one. Nothing is held back and nothing is charged to leave.'),
+            ('What should an SEO proposal include?', 'The list of searches it targets, the items that ship in the first fifteen days, what is promised in writing, how the work is logged, and what you keep if you leave.\nA proposal missing any of the five is missing the part that lets you hold the agency to it.'),
+        ]),
+        trust(),
+        closing('Holding a quote? <span class="gold">Check it in one call.</span>', 'A discovery call is 20 to 30 minutes with Thomas. Bring the quote you were given. He tells you what it covers, what it leaves out, and what the first fifteen days of real work would look like for your trade and city.', 'Nothing to pay for the call. One business per trade per city.'),
+    ], parent='problems'))
     return P
 
 GATE = {
+    '/problems/seo-cost/': {'kw': 'how much does seo cost;is my seo quote fair;seo pricing', 'type': 'problem', 'example': 'kitchen remodel atlanta', 'original': '177;v4, 18 Nov 2026', 'trade': 'quote;contract;month to month'},
     '/problems/traffic-dropped/': {'kw': 'website traffic dropped suddenly;google rankings dropped;lost rankings after an update', 'type': 'problem', 'example': 'hvac repair dallas', 'original': '165;v4, 18 Nov 2026', 'trade': 'update;rankings;search console'},
     '/problems/not-recommended-by-chatgpt/': {'kw': 'get recommended by chatgpt;how to get my business recommended by chatgpt;show up in chatgpt;ai not recommending my business', 'type': 'problem', 'example': 'divorce lawyer in new york', 'original': '211;v4, 18 Nov 2026', 'trade': 'lawyer;sources;reviews'},
     '/problems/not-getting-leads/': {'kw': 'get more leads for my business;how to get more leads for my business;website not getting leads;more calls from google', 'type': 'problem', 'example': 'emergency dentist chicago', 'original': '186;v4, 18 Nov 2026', 'trade': 'dentist;reviews;listing'},
