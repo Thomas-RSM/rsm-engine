@@ -348,5 +348,68 @@
 "example": "hvac company in dallas",
 "original": "413;v1.0, 23 Nov 2026",
 "trade": "store;buyers;map"
+},
+"/about/": {
+"kw": "relevant search media",
+"type": "about",
+"example": "roofer in denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "founded;equation;relevant"
+},
+"/thomas-dsouza/": {
+"kw": "thomas d'souza",
+"type": "about",
+"example": "dentist in chicago",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "founder;equation;call"
+},
+"/commitments/": {
+"kw": "seo guarantee;guaranteed seo services;pay for performance seo",
+"type": "about",
+"example": "roofer in denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "log;report;page one"
+},
+"/results/": {
+"kw": "relevant search media reviews;seo case studies;seo results",
+"type": "about",
+"example": "dentist in chicago",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "figures;clients;record"
+},
+"/about/editorial-policy/": {
+"kw": "",
+"type": "about",
+"example": "plumber in miami",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "register;checks;reviewed"
+},
+"/about/corrections/": {
+"kw": "",
+"type": "legal",
+"example": "dentist in chicago",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "corrected;date;error"
+},
+"/contact/": {
+"kw": "",
+"type": "tool",
+"example": "roofing company in denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "email;phone;message"
+},
+"/privacy/": {
+"kw": "",
+"type": "legal",
+"example": "plumber in miami",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "details;form;cookies"
+},
+"/terms/": {
+"kw": "",
+"type": "legal",
+"example": "electrician in phoenix",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "terms;content;agreement"
 }
 }

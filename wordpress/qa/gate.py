@@ -122,7 +122,7 @@ def main():
         hits = sum(1 for i in range(n) for f in forms if w[i:i + len(f)] == f); dens = 100.0 * hits * len(lw) / max(1, n)
         gate('lead keyword present in copy', hits >= 1, f'{hits} uses in {n} words')
         gate('lead keyword density at or under 2%', dens <= 2.0, f'{dens:.2f}%')
-        gate('lead keyword in title', all(x in p.title.lower() for x in lw), p.title.strip()[:70])
+        gate('lead keyword in title', all(x in p.title.lower().replace('’', "'") for x in lw), p.title.strip()[:70])
         first = w[:110]; gate('lead keyword in the first 100 words', any(first[i:i + len(f)] == f for i in range(len(first)) for f in forms), ' '.join(first[:14]) + '…')
         h2s = [words(x) for k, x in p.h if k == 'h2']; gate('lead keyword in one H2', any(hh[i:i + len(f)] == f for hh in h2s for i in range(len(hh)) for f in forms), f'{len(h2s)} H2s')
         h1 = [t for k, t in p.h if k == 'h1']; hw = words(h1[0]) if h1 else []; gate('one H1, carrying the lead keyword', len(h1) == 1 and (any(hw[i:i + len(f)] == f for i in range(len(hw)) for f in forms) or all(x in hw for x in lw)), ' | '.join(h1)[:90])

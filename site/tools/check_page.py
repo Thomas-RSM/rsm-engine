@@ -97,7 +97,8 @@ def run(site, path, keywords, extra):
     def variants(k):
         v=[k, k.replace(' in usa',' in the usa'), k.replace(' in usa',' in the united states')]
         return v+[x[:-1] for x in v if x.endswith('s') and not x.endswith('ss')]+[x+'s' for x in v if not x.endswith('s')]   # singular and plural are the same search
-    def has(k,text): return any(v in text for v in variants(k))
+    def has(k,text):
+        text=text.replace('’',"'"); return any(v.replace('’',"'") in text for v in variants(k))   # typographic and straight apostrophes are the same search
     sitemap=open(os.path.join(site,'sitemap.xml')).read() if os.path.exists(os.path.join(site,'sitemap.xml')) else ''
     robots=open(os.path.join(site,'robots.txt')).read() if os.path.exists(os.path.join(site,'robots.txt')) else ''
     llms=open(os.path.join(site,'llms.txt')).read() if os.path.exists(os.path.join(site,'llms.txt')) else ''
@@ -216,7 +217,7 @@ def run(site, path, keywords, extra):
     res(105,'N/T','uniqueness needs the other pages; recorded in the heroes file')
     res(106,'PASS' if has(lead,p.title.lower().replace('’',"'")) else 'FAIL',p.title)
     res(107,'PASS' if has(lead,low) else 'FAIL','title promise appears in the body')
-    res(108,'PASS' if p.title.endswith('| Relevant Search Media') or 'Relevant Search Media' not in p.title else 'FAIL','brand, where the title has room for it, sits at the end in one format')
+    res(108,'PASS' if p.title.endswith('| Relevant Search Media') or 'Relevant Search Media' not in p.title or ('relevant search media' in lead and p.title.lower().startswith(lead)) else 'FAIL','brand, where the title has room for it, sits at the end in one format')
     res(109,'PASS' if len(desc)==1 else 'FAIL',f'{len(desc)} descriptions')
     res(110,'PASS' if desc and 110<=len(desc[0])<=155 else 'FAIL',f'{len(desc[0]) if desc else 0} chars')
     res(111,'N/T','needs the other pages')
