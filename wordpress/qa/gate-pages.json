@@ -243,5 +243,33 @@
 "example": "furniture store in portland",
 "original": "413;v1.0, 23 Nov 2026",
 "trade": "products;categories;store"
+},
+"/services/b2b-seo/": {
+"kw": "b2b seo services;b2b seo agency;b2b seo strategy",
+"type": "service",
+"example": "software firm in boston",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "buyers;research;suppliers"
+},
+"/services/small-business-seo/": {
+"kw": "small business seo services;seo for small business;seo services for small businesses",
+"type": "service",
+"example": "bakery in nashville",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "owner;month;report"
+},
+"/services/lead-generation/": {
+"kw": "lead generation services;lead generation company;lead generation for small business",
+"type": "service",
+"example": "remodeler in charlotte",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "calls;enquiries;forms"
+},
+"/services/digital-marketing/": {
+"kw": "digital marketing services;digital marketing agency;digital marketing agency usa",
+"type": "service",
+"example": "dental practice in san diego",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "channels;plan;engine"
 }
 }
