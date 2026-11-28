@@ -505,3 +505,14 @@ body{word-spacing:.03em}
 @media (max-width:760px){.lab{padding:26px 18px 20px}.lab canvas{height:150px}.lab-terms{grid-template-columns:minmax(0,1fr)}.lt{border-right:0;border-bottom:1px solid var(--line);padding:22px 4px}.lt:last-child{border-bottom:0}.lt::before{display:none}.lt .k,.lt h3{text-align:left}.eq-top{margin-bottom:36px}}
 .eq-top{grid-template-columns:minmax(0,4.6fr) minmax(0,7.4fr);gap:40px 40px}
 @media (max-width:1100px){.eq-top{grid-template-columns:minmax(0,1fr)}}
+
+/* ---- equation: the five-engines picture is the highlight again ---- */
+.eq-head{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:24px 64px;align-items:end;margin-bottom:36px}
+.eq-head h2{margin:0}
+.eq-head p:last-child{margin-bottom:0}
+.engine-plate.glass{margin:0 0 28px;padding:34px 40px 22px;border-radius:26px;background:radial-gradient(700px 320px at 82% 46%,rgba(248,177,15,.12),transparent 70%),linear-gradient(160deg,rgba(72,96,214,.22) 0%,rgba(20,28,78,.66) 45%,rgba(10,14,42,.86) 100%)}
+.engine-plate.glass svg{max-width:1180px;margin:0 auto}
+.engine-plate .caption{text-align:center;margin-top:14px;font-family:var(--sans);font-size:15px;letter-spacing:0;color:var(--text-2)}
+.lab canvas{height:230px}
+@media (max-width:1100px){.eq-head{grid-template-columns:minmax(0,1fr);align-items:start}}
+@media (max-width:760px){.engine-plate.glass{padding:16px 8px 14px;border-radius:18px}.lab canvas{height:150px}}
