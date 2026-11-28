@@ -86,9 +86,9 @@ def make(h):
     def table(caption, heads, rows):
         return W('rsm-table', {'caption': caption, 'h1': heads[0], 'h2': heads[1], 'h3': heads[2], 'rows': [{'_id': h['uid'](), 'a': a, 'b': b, 'c': c} for a, b, c in rows]}, 'rv rs-plain-table')
 
-    def page(key, path, title, desc, data, parent='', words_note=''):
+    def page(key, path, title, desc, data, parent='', words_note='', kind='', label=''):
         slug = path.strip('/').split('/')[-1]
-        return {'key': key, 'slug': slug, 'parent': parent, 'title': title.split(' | ')[0], 'seo': {'title': title, 'description': desc, 'image': ('{{assets}}/fig/%s.png' % key) if key in FIG else '{{media:og}}', 'published': PUB[0], 'reviewed': PUB[0], 'images': (['{{assets}}/fig/%s.png' % key] if key in FIG else ['{{media:og}}'])}, 'data': data}
+        return {'key': key, 'slug': slug, 'parent': parent, 'title': title.split(' | ')[0], 'seo': {'title': title, 'description': desc, 'image': ('{{assets}}/fig/%s.png' % key) if key in FIG else '{{media:og}}', 'published': PUB[0], 'reviewed': PUB[0], 'images': (['{{assets}}/fig/%s.png' % key] if key in FIG else ['{{media:og}}']), 'kind': kind, 'label': label}, 'data': data}
 
     P = []
     # ------------------------------------------------------------------ /problems/
@@ -928,7 +928,7 @@ def make(h):
             trust(),
             closing(d['closing_h2'], d['closing_p'], 'No audit to buy first, no trial. One business per trade per city.'),
         ]
-        P.append(page(d['key'], d['path'], d['title'], d['desc'], body, parent='services'))
+        P.append(page(d['key'], d['path'], d['title'], d['desc'], body, parent='services', kind='service', label=d['name']))
         GATE[d['path']] = {'kw': d['kw'], 'type': 'service', 'example': d['example'], 'original': '413;v1.0, 23 Nov 2026', 'trade': d['trade']}
     T3 = lambda on: [('Term one', 'gold' if on == 'read' else 'green', 'Read', 'Can every engine read plainly what the business is, what it does and where?', 'On page SEO', '/dsouza-equation/read/'),
                      ('Term two', 'gold' if on == 'confirm' else 'green', 'Confirm', 'Do listings, reviews and mentions elsewhere say the same thing?', 'Off page SEO', '/dsouza-equation/confirm/'),
@@ -2233,7 +2233,7 @@ def make(h):
             trust(),
             closing(d['closing_h2'], d['closing_p'], 'No audit to buy first, no trial. One business per trade per city.'),
         ]
-        P.append(page(d['key'], d['path'], d['title'], d['desc'], body, parent='guides'))
+        P.append(page(d['key'], d['path'], d['title'], d['desc'], body, parent='guides', kind='article'))
         GATE[d['path']] = {'kw': d['kw'], 'type': 'pillar', 'example': d['example'], 'original': '413;v1.0, 23 Nov 2026', 'trade': d['trade']}
 
     guide(dict(key='what-is-eeat', fig=({'kind': 'pillars', 'eyebrow': 'Guide', 'title': 'E-E-A-T: three qualities that hold up trust', 'items': [['Experience', 'You have done the work'], ['Expertise', 'You know the subject'], ['Authoritativeness', 'Others point to you']], 'base': 'Trust: accurate, honest, safe'}, 'Diagram: experience, expertise and authoritativeness shown as three pillars resting on trust', 'Trust is the base. Experience, expertise and authoritativeness are how a business shows it.'), path='/guides/what-is-eeat/', name='E-E-A-T, explained', title='What Is E-E-A-T? Google’s Trust Test, Explained',
@@ -3080,7 +3080,7 @@ def make(h):
             trust(),
             closing(d['closing_h2'], d['closing_p'], SMALL),
         ]
-        P.append(page(d['key'], d['path'], d['title'], d['desc'], body, parent='industries'))
+        P.append(page(d['key'], d['path'], d['title'], d['desc'], body, parent='industries', kind='service', label=d['title'].split(' | ')[0]))
         GATE[d['path']] = {'kw': d['kw'], 'type': 'service', 'example': d['example'], 'original': '413;v1.0, 23 Nov 2026', 'trade': d['trade']}
 
     trade(dict(key='plumbers', path='/industries/plumbers/', name='Plumbers', title='SEO for Plumbers | Relevant Search Media',
@@ -3418,7 +3418,7 @@ def make(h):
         proof_p=['Pictures of landscapes you have built or maintained, ideally nearby. Then licenses for irrigation or pesticide work where the state requires them, and steady reviews.', 'A long-running maintenance customer who writes a review is strong evidence that you turn up.'],
         proof_more=('Google Business Profile optimization', '/services/google-business-profile-optimization/'),
         ai_h2='How do AI assistants answer landscaping questions?',
-        ai_p=['They handle plant and cost questions from clear, well-organised pages. Asked for a local company, they name a few with reviews and complete profiles.', 'Because many landscapers have thin websites, a business with real pages and photographs stands out quickly.'],
+        ai_p=['They handle plant and cost questions from clear, well-organized pages. Asked for a local company, they name a few with reviews and complete profiles.', 'Because many landscapers have thin websites, a business with real pages and photographs stands out quickly.'],
         check_h2='How do I check my own landscaping business?', check_p=['Four checks. Late winter is the right time.'],
         checks=[('Check 1', 'Search “lawn care”', 'With your suburb. Are you on the map?'),
                 ('Check 2', 'Search a project', 'Try “paver patio” and your city. Is a page of yours there?'),

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: RSM Elements
  * Description: Elementor widgets, editable header and footer templates, and search basics for the Relevant Search Media theme. Works with Elementor Free.
- * Version: 1.7.1
+ * Version: 1.7.2
  * Author: Relevant Search Media
  * Requires at least: 6.4
  * Requires PHP: 7.4
@@ -10,7 +10,7 @@
  * License: GPL-2.0-or-later
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
-define( 'RSM_EL_VERSION', '1.7.1' );
+define( 'RSM_EL_VERSION', '1.7.2' );
 require_once plugin_dir_path( __FILE__ ) . 'push.php';
 define( 'RSM_EL_DIR', plugin_dir_path( __FILE__ ) );
 
@@ -98,6 +98,9 @@ add_action( 'wp_footer', function () {
 		if ( $d ) { $node['description'] = $d; } if ( $img ) { $node['primaryImageOfPage'] = array( '@type' => 'ImageObject', 'url' => $img ); }
 		$person = null; foreach ( $graph as $g ) { if ( isset( $g['@type'] ) && 'Person' === $g['@type'] && ! empty( $g['@id'] ) ) { $person = $g['@id']; } }
 		if ( $person ) { $node['author'] = array( '@id' => $person ); $node['reviewedBy'] = array( '@id' => $person ); }
+		$kind = (string) get_post_meta( get_the_ID(), '_rsm_kind', true ); $label = (string) get_post_meta( get_the_ID(), '_rsm_label', true );
+		if ( 'service' === $kind && $label ) { $svc = array( '@type' => 'Service', '@id' => get_permalink() . '#service', 'name' => $label, 'serviceType' => $label, 'url' => get_permalink(), 'provider' => array( '@id' => $home . '#organization' ), 'areaServed' => array( '@type' => 'Country', 'name' => 'United States' ) ); if ( $d ) { $svc['description'] = $d; } $graph[] = $svc; $node['mainEntity'] = array( '@id' => get_permalink() . '#service' ); }
+		if ( 'article' === $kind ) { $art = array( '@type' => 'Article', '@id' => get_permalink() . '#article', 'headline' => html_entity_decode( wp_strip_all_tags( get_the_title() ), ENT_QUOTES, 'UTF-8' ), 'datePublished' => rsm_page_date( 'published' ), 'dateModified' => rsm_page_date( 'reviewed' ), 'inLanguage' => 'en-US', 'mainEntityOfPage' => array( '@id' => get_permalink() . '#webpage' ), 'publisher' => array( '@id' => $home . '#organization' ) ); if ( $person ) { $art['author'] = array( '@id' => $person ); } if ( $img ) { $art['image'] = $img; } if ( $d ) { $art['description'] = $d; } $graph[] = $art; }
 		if ( ! is_front_page() ) { $items = array( array( '@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => $home ) ); $pos = 2;
 			foreach ( array_reverse( get_post_ancestors( get_the_ID() ) ) as $aid ) { $items[] = array( '@type' => 'ListItem', 'position' => $pos++, 'name' => get_the_title( $aid ), 'item' => get_permalink( $aid ) ); }
 			$items[] = array( '@type' => 'ListItem', 'position' => $pos, 'name' => get_the_title(), 'item' => get_permalink() );
@@ -134,7 +137,7 @@ add_action( 'init', function () {
 function rsm_llms_text() { $txt = (string) get_option( 'rsm_llms_txt', '' ); if ( '' === $txt ) { return ''; }
 	if ( false !== strpos( $txt, '{{pages}}' ) ) { $rows = array(); $front = (int) get_option( 'page_on_front' );
 		foreach ( get_posts( array( 'post_type' => array( 'page', 'post' ), 'post_status' => 'publish', 'posts_per_page' => 2000, 'orderby' => 'menu_order title', 'order' => 'ASC' ) ) as $p ) { if ( get_post_meta( $p->ID, '_rsm_noindex', true ) ) { continue; }
-			$d = (string) get_post_meta( $p->ID, '_rsm_description', true ); $rows[ $p->ID === $front ? 0 : $p->ID ] = '- [' . wp_strip_all_tags( get_the_title( $p ) ) . '](' . get_permalink( $p ) . ')' . ( $d ? ': ' . $d : '' ); }
+			$d = (string) get_post_meta( $p->ID, '_rsm_description', true ); $rows[ $p->ID === $front ? 0 : $p->ID ] = '- [' . html_entity_decode( wp_strip_all_tags( get_the_title( $p ) ), ENT_QUOTES, 'UTF-8' ) . '](' . get_permalink( $p ) . ')' . ( $d ? ': ' . $d : '' ); }
 		ksort( $rows ); $txt = str_replace( '{{pages}}', implode( "\n", $rows ), $txt ); }
 	return str_replace( '{{home}}', untrailingslashit( home_url() ), $txt ); }
 function rsm_llms_sync() { $txt = rsm_llms_text(); if ( '' === $txt ) { return; } $f = ABSPATH . 'llms.txt';
@@ -168,4 +171,13 @@ add_action( 'add_meta_boxes', function () {
 add_action( 'save_post', function ( $id ) {
 	if ( ! isset( $_POST['rsm_seo_nonce'] ) || ! wp_verify_nonce( sanitize_key( $_POST['rsm_seo_nonce'] ), 'rsm_seo' ) || ! current_user_can( 'edit_post', $id ) ) { return; }
 	foreach ( array( 'title', 'description' ) as $k ) { if ( isset( $_POST[ 'rsm_seo_' . $k ] ) ) { update_post_meta( $id, '_rsm_' . $k, sanitize_text_field( wp_unslash( $_POST[ 'rsm_seo_' . $k ] ) ) ); } }
+} );
+
+/* Standard protective headers on public pages. HSTS is left to the site owner, because it cannot be undone quickly. */
+add_action( 'send_headers', function () {
+	if ( is_admin() || headers_sent() ) { return; }
+	header( 'X-Content-Type-Options: nosniff' );
+	header( 'Referrer-Policy: strict-origin-when-cross-origin' );
+	header( 'X-Frame-Options: SAMEORIGIN' );
+	header( 'Permissions-Policy: camera=(), microphone=(), geolocation=()' );
 } );

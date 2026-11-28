@@ -375,6 +375,12 @@ window.RSMInit();
   function bar() { var b = document.querySelector('.rs-mobilebar'); if (!b || b.__rsm) return; b.__rsm = 1;
     function on() { b.classList.toggle('show', window.scrollY > 420); } window.addEventListener('scroll', on, { passive: true }); on(); }
   function go() { dots(); bar(); }
+  // rows that scroll sideways on a phone must be reachable by keyboard
+  function swipeable() { document.querySelectorAll('.e-con.e-grid, ul.kinds, .rs-plain-table').forEach(function (el) {
+    var ox = getComputedStyle(el).overflowX, scrolls = (ox === 'auto' || ox === 'scroll') && el.scrollWidth > el.clientWidth + 2;
+    if (scrolls) { el.setAttribute('tabindex', '0'); if (!el.getAttribute('role')) el.setAttribute('role', 'group'); if (!el.getAttribute('aria-label')) el.setAttribute('aria-label', 'Swipe or use the arrow keys for more'); }
+    else if (el.getAttribute('aria-label') === 'Swipe or use the arrow keys for more') { el.removeAttribute('tabindex'); el.removeAttribute('role'); el.removeAttribute('aria-label'); } }); }
+  window.addEventListener('load', swipeable); window.addEventListener('resize', swipeable);
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
   window.addEventListener('load', go);
 })();
@@ -425,6 +431,12 @@ window.RSMInit();
       raf = requestAnimationFrame(frame); }
     if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { vis = es[0].isIntersecting; if (vis && !raf) raf = requestAnimationFrame(frame); }, { threshold: 0.15 }).observe(fig); else { vis = true; raf = requestAnimationFrame(frame); }
   }
+  // rows that scroll sideways on a phone must be reachable by keyboard
+  function swipeable() { document.querySelectorAll('.e-con.e-grid, ul.kinds, .rs-plain-table').forEach(function (el) {
+    var ox = getComputedStyle(el).overflowX, scrolls = (ox === 'auto' || ox === 'scroll') && el.scrollWidth > el.clientWidth + 2;
+    if (scrolls) { el.setAttribute('tabindex', '0'); if (!el.getAttribute('role')) el.setAttribute('role', 'group'); if (!el.getAttribute('aria-label')) el.setAttribute('aria-label', 'Swipe or use the arrow keys for more'); }
+    else if (el.getAttribute('aria-label') === 'Swipe or use the arrow keys for more') { el.removeAttribute('tabindex'); el.removeAttribute('role'); el.removeAttribute('aria-label'); } }); }
+  window.addEventListener('load', swipeable); window.addEventListener('resize', swipeable);
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
   window.addEventListener('load', go);
 })();
@@ -451,6 +463,12 @@ window.RSMInit();
           .then(function (r) { if (!r.ok) throw new Error(); f.classList.add('is-done'); st.textContent = f.getAttribute('data-done'); st.className = 'lf-status is-ok'; f.reset(); })
           .catch(function () { st.textContent = f.getAttribute('data-fail'); st.className = 'lf-status is-bad'; btn.disabled = false; }); }); });
   }
+  // rows that scroll sideways on a phone must be reachable by keyboard
+  function swipeable() { document.querySelectorAll('.e-con.e-grid, ul.kinds, .rs-plain-table').forEach(function (el) {
+    var ox = getComputedStyle(el).overflowX, scrolls = (ox === 'auto' || ox === 'scroll') && el.scrollWidth > el.clientWidth + 2;
+    if (scrolls) { el.setAttribute('tabindex', '0'); if (!el.getAttribute('role')) el.setAttribute('role', 'group'); if (!el.getAttribute('aria-label')) el.setAttribute('aria-label', 'Swipe or use the arrow keys for more'); }
+    else if (el.getAttribute('aria-label') === 'Swipe or use the arrow keys for more') { el.removeAttribute('tabindex'); el.removeAttribute('role'); el.removeAttribute('aria-label'); } }); }
+  window.addEventListener('load', swipeable); window.addEventListener('resize', swipeable);
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
   window.addEventListener('load', go);
 })();
