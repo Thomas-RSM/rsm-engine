@@ -426,3 +426,5 @@ svg.eg-wide{display:none}svg.eg-tall{display:block;width:100%;max-width:400px;he
 .rs-trust-terms p{font-size:15px;line-height:1.55;color:var(--text-2);margin:0 0 8px}
 .rs-trust-terms b{color:#fff}
 @media (max-width:760px){.rsm .rs-trust-proof{padding:20px 18px}.rs-proof span{font-size:12px}}
+
+@media (max-width:760px){.rsm .rs-plain-table .record-table tbody th{width:auto!important}}

@@ -45,7 +45,7 @@ def make(h):
                      '<li><b>About 400</b> projects, 90% successful. Successful means the mapped searches reached page one of Google. <span>Fact register C3</span></li>'
                      '<li><b>413</b> numbered checks, published in full. <span>The D’Souza Standard, v1.0, 23 Nov 2026</span></li></ul>', mb=16),
                    T('<p><b>Two commitments, in writing.</b> Everything ships, or that 15-day period is free. Half on page one by month four, or we keep working at no charge.</p>'
-                     '<p>Every plan is month to month, with no setup fee. Prices are discussed on the call, not listed here.</p>', 'rs-trust-terms', mb=14),
+                     '<p>Live work by day 5 and a report every 15 days. Every plan is month to month, with no setup fee. Prices are discussed on the call, not listed here.</p>', 'rs-trust-terms', mb=14),
                    B('Read the two commitments', '/commitments/', 'rs-more', mb=0)], 'rs-trust-proof glass')
         return S([G([who, proof], 'minmax(0,5fr) minmax(0,7fr)', 'minmax(0,1fr)', 'minmax(0,1fr)', g=(32, 56), cls='rs-boiler', align='center')], eid='trust')
 
@@ -152,9 +152,92 @@ def make(h):
         trust(),
         closing('Not on Google? <span class="gold">Find out why in one call.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He runs these four checks on your business while you watch, tells you which of the six causes he sees, and shows you what the first fifteen days would fix.', 'No audit to buy first, no trial. One business per trade per city.'),
     ], parent='problems'))
+    # ------------------------------------------------------------------ /problems/not-getting-leads/
+    P.append(page('not-getting-leads', '/problems/not-getting-leads/', 'Get More Leads for My Business | Relevant Search Media',
+        'How to get more leads for my business when people find it and still pick a rival. Four checks show what loses the choice, and what to fix first.', [
+        hero(crumb('Found, not picked'), 'Problem 2 of 5', 'How do I get more leads for my business from search?',
+             'You get more leads when the listing and the page people already see win the choice. If your business is found and the phone still stays quiet, the cause is almost always what a searcher sees in the first ten seconds: the photos, the reviews, the answers, and how easy it is to call you.',
+             'Being found is the engine’s job. Being picked is yours.'),
+        sec('The ten-minute check', 'How do I check why people find me and do not pick me?', ['Look at your business the way a stranger does, on a phone, next to the three businesses shown beside you. These four checks take about ten minutes.'],
+            steps([('Check 1', 'Open your listing as a stranger', 'Private window, your trade and city. Look at the photos, the hours, the services and the first two reviews.'),
+                   ('Check 2', 'Compare with the three beside you', 'Count their reviews and yours. Note the rating, the date of the latest review and whether the owner replied.'),
+                   ('Check 3', 'Tap to call', 'On a phone, tap your own call button. It should ring the right number in one tap, during the hours shown.'),
+                   ('Check 4', 'Read your first screen', 'Open your page. Without scrolling, it should say what you do, where, and what to do next.')]),
+            T('<p>For example, a dentist in Chicago would run Check 2 against the three practices shown for “emergency dentist chicago”. Owners look for help in many ways as well: our own map counts 186 different searches dentists in Chicago make when they look for a company like ours (v4, 18 Nov 2026).</p>', 'small rs-note', mt=22, mb=18),
+            B('See the searches for your trade and city', '/searches/', 'rs-more', mb=0), eid='check'),
+        sec('Six causes', 'Why is my website not getting leads?', ['A website not getting leads is losing people at one of six points. Match what you see to the row, then to the fix.', 'Start at the top. The listing is seen before the website, so it loses more people than any page does.'],
+            table('Why a business is found and not chosen: what you see, the cause and the fix', ('What you see', 'Cause', 'What fixes it'), [
+                ('Many views of the listing, few calls', 'The listing loses the side-by-side comparison', 'Recent photos, every service listed, reviews you reply to'),
+                ('Visits to the site, no enquiries', 'The first screen does not say what, where and what next', 'One plain sentence and one clear action above the fold'),
+                ('Calls come, for the wrong jobs', 'The page draws the wrong searches', 'Map searches by what the person wants and write for the jobs you want'),
+                ('People start the form and leave', 'The form asks for too much, or is broken', 'Ask only what you need and test it every month'),
+                ('Only the cheapest work comes in', 'Nothing shows why you are worth more', 'Proof beside the button: results, guarantees, licences'),
+                ('Good reviews, all of them old', 'A rival’s latest review is from this week', 'Ask every customer, and reply to each review'),
+            ]), more=('How “Choose” works in the equation', '/dsouza-equation/choose/'), eid='causes'),
+        sec('The call button', 'How do I get more calls from Google?', ['Most local searches end on the listing, not on a website. To get more calls from Google, the Business Profile has to answer the three things a caller checks: are you open, do you do this job, and do other people trust you.', 'That means correct hours, the right primary category, every service named, and recent reviews with replies. Engines then watch who gets chosen and show that business more often.'],
+            quote('Being found is the engine’s job. Being picked is yours. The engine only keeps showing the business that people pick.'),
+            more=('What we do for Google Business Profile', '/services/google-business-profile-optimization/'), eid='calls'),
+        sec('Counting leads', 'What counts as a lead, and how is it measured?', ['A lead is a call, a form or a message from someone who wants the work you do, in the area you serve. Clicks and impressions are not leads.', 'On our plans every item that ships is logged with its link. Every 15 days you get a report with the Relevance Rate: the share of leads you confirm were relevant.'],
+            steps([('Every day', 'Work, logged with its link', 'Each item goes in your log the day it goes live.'),
+                   ('Every 15 days', 'A report and the Relevance Rate', 'What moved, what came in, and which leads you confirm were relevant.'),
+                   ('Every month', 'The map re-read', 'New searches and new engines are added as rows.'),
+                   ('Always', 'Month to month', 'The site, the content and every account stay yours.')]),
+            more=('What we do for lead generation', '/services/lead-generation/'), eid='counting'),
+        faq('Questions about leads', 'What do owners ask about getting more leads?', 'Asked on discovery calls, answered here the same way. For anything else, use the <a href="/ask/">Ask page</a>.', [
+            ('How to get more leads for my business without paying for ads?', 'Win the choice on the results you already appear in. Complete the Business Profile, keep photos and reviews recent, and make the first screen of your page say what you do and where.\nAds rent attention by the click. Being the business people pick is an asset you keep.'),
+            ('Why do people visit my website and not call?', 'Usually because the first screen makes them work. If a visitor cannot tell within a few seconds what you do, where you do it and how to reach you, they go back and pick the next result.\nPut the phone number and one clear action at the top.'),
+            ('How many reviews do I need to get picked?', 'There is no fixed number. What matters is how you compare with the three businesses shown beside you: the count, the rating and how recent the latest review is.\nA steady flow of new reviews, each with a reply, does more than a large old total.'),
+            ('Are bought leads better than leads from search?', 'A bought lead is often sold to several businesses at once, and it stops the day you stop paying. A lead from search comes to you alone, from a person who chose you.\nOwners search for leads for sale far more than for service names, which is why this page exists.'),
+            ('How soon will I see more leads?', 'On our plans the first fixes go live by day 5 and the first report arrives on day 15. Rankings usually start moving between day 30 and day 60.\nWe do not promise a number of leads. We report the leads that came in and the share you confirm were relevant.'),
+        ]),
+        trust(),
+        closing('Found, but not picked? <span class="gold">See why in one call.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He opens your listing beside the three businesses shown next to you, tells you where the choice is being lost, and shows you what the first fifteen days would fix.', 'No audit to buy first, no trial. One business per trade per city.'),
+    ], parent='problems'))
+    # ------------------------------------------------------------------ /problems/not-recommended-by-chatgpt/
+    P.append(page('not-recommended-by-chatgpt', '/problems/not-recommended-by-chatgpt/', 'Get Recommended by ChatGPT | Relevant Search Media',
+        'Get recommended by ChatGPT by giving it facts it can read and sources that confirm them. Four checks show why AI names a rival, and what to fix.', [
+        hero(crumb('Google shows me, AI doesn’t'), 'Problem 3 of 5', 'How do I get recommended by ChatGPT as a local business?',
+             'To get recommended by ChatGPT, a business needs facts an assistant can read and independent sources that say the same thing. When Google shows you and an AI assistant names a rival, the cause is nearly always the second part: nothing outside your own website confirms who you are and what you do.',
+             'Ask it yourself first. It takes ten minutes.'),
+        sec('The ten-minute check', 'How do I check whether I show up in ChatGPT?', ['Ask the assistants what a customer would ask, and read the answers the way a customer would. Use a fresh chat each time so earlier questions do not steer the reply.'],
+            steps([('Check 1', 'Ask the customer’s question', 'In ChatGPT, type the question a customer would, with your trade and city. Note every business it names.'),
+                   ('Check 2', 'Ask two more assistants', 'Put the same question to Gemini and Perplexity. One answer proves little; three show a pattern.'),
+                   ('Check 3', 'Ask about your business by name', 'Type “What do you know about” and your business name. Write down anything wrong or missing.'),
+                   ('Check 4', 'Read the sources', 'Where an assistant shows its sources, open them. Those are the places you need to be named.')]),
+            T('<p>For example, a lawyer in New York would run Check 1 with “divorce lawyer in new york” and note who is named. Owners ask in many ways too: our own map counts 211 different searches law firms in New York make when they look for a company like ours (v4, 18 Nov 2026).</p>', 'small rs-note', mt=22, mb=18),
+            B('See who AI names, by trade and city', '/ai-recommendation-index/', 'rs-more', mb=0), eid='check'),
+        sec('Six causes', 'Why is AI not recommending my business?', ['When AI is not recommending my business, owners often assume the assistant is random. It is not: each of these six answers points to a cause.', 'Match what the assistant said to the row. The fix is rarely on your own website alone.'],
+            table('Why an AI assistant names another business: what it says, the cause and the fix', ('What the assistant does', 'Cause', 'What fixes it'), [
+                ('Names rivals and never you', 'Few independent sources mention you', 'Be listed and mentioned where it reads: directories, review sites, local press, trade bodies'),
+                ('Names you with wrong details', 'The web holds conflicting facts about you', 'Make name, address, phone and services identical everywhere'),
+                ('Says it has no information', 'Your site is hard to read, or says little', 'A plain facts page, question-led answers, structured data, AI crawlers allowed'),
+                ('Names you for the wrong service', 'The site does not say plainly what you do', 'One page per service, each opening with the answer'),
+                ('Google ranks you, the assistant does not', 'Ranking is not the same as being confirmed', 'Reviews on more than one platform and mentions from others'),
+                ('Named you last month, not this month', 'Answers vary from run to run', 'Track the same questions monthly; never judge on one reply'),
+            ]), more=('How “Confirm” works in the equation', '/dsouza-equation/confirm/'), eid='causes'),
+        sec('What gets you named', 'What makes an AI assistant name one business over another?', ['An assistant does the same job as a search engine: it takes a person’s question and names the most relevant business it can trust. It gets there with the three checks in the D’Souza Equation.', 'Read is your own site. Confirm is everyone else. Choose is what real customers did.'],
+            G([card('clause', number='1', title='Read: facts it can lift.', text='Plain sentences that say who you are, what you do, where and for whom. Questions as headings, answers directly under them.'),
+               card('clause', number='2', title='Confirm: others say the same.', text='Listings, reviews, press and profiles that match your site, on sources the assistant already trusts.'),
+               card('clause', number='3', title='Choose: people picked you.', text='Recent reviews, replies and repeat customers. Signs that naming you would be a safe answer.')], 3, 1, 1),
+            quote('An AI assistant will not vouch for a business it has only heard about from the business itself.'),
+            more=('What we do for AI SEO', '/services/ai-seo/'), eid='named'),
+        sec('No guarantees', 'Can anyone guarantee a ChatGPT recommendation?', ['No. Nobody outside the companies that build these assistants controls what they answer, and the same question can return different names on different days. Anyone selling a guaranteed AI placement is selling something they do not own.', 'What can be done is the work the assistants draw on, and honest tracking. Our AI Recommendation Index records who ChatGPT, Gemini and Perplexity name for each trade in each city, and is re-run every month.'],
+            C([B('Open the AI Recommendation Index', '/ai-recommendation-index/'), B('Read the two commitments', '/commitments/', 'rs-more')], 'rs-actions', 'row', flex_gap=gap(14), flex_wrap='wrap', flex_align_items='center', margin=box(0, 0, 0, 0)), eid='guarantee'),
+        faq('Questions about AI answers', 'What do owners ask about being named by AI?', 'Asked on discovery calls, answered here the same way. For anything else, use the <a href="/ask/">Ask page</a>.', [
+            ('How to get my business recommended by ChatGPT if it is new?', 'Start with what the assistant can read and check. Publish a plain facts page, complete your Google Business Profile, and get listed on the directories and review sites your trade uses.\nA new business has few mentions, so consistency matters most: the same name, address, phone and services everywhere.'),
+            ('Does ChatGPT use Google rankings?', 'Not directly. ChatGPT can search the web when a question needs current information, and it also draws on what many sources say about a business.\nRanking well makes it more likely your pages are among those it reads. It is not the same as being named in the answer.'),
+            ('Do I need an llms.txt file?', 'It helps and costs little. An llms.txt file is a plain text page that tells AI systems what your site is and where its key pages are.\nIt is not a ranking switch, and not every assistant reads it. We publish one on this site and on every client site.'),
+            ('How often do AI answers change?', 'Often. The same question can name different businesses on different days, and for different people. That is why one screenshot proves very little.\nWe put the same questions to the same assistants every month, so the trend is visible and one lucky answer is not mistaken for progress.'),
+            ('What is the AI Recommendation Index?', 'It is our public record of who ChatGPT, Gemini and Perplexity name for each trade in each city, re-run every month. The first run covers plumbing in the ten launch cities.\nIt shows where a business stands today, and whether the work is moving the answer.'),
+        ]),
+        trust(),
+        closing('Google shows you. <span class="gold">AI names someone else.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He asks three assistants the question your customers ask, shows you who they name and why, and tells you what the first fifteen days would change.', 'No audit to buy first, no trial. One business per trade per city.'),
+    ], parent='problems'))
     return P
 
 GATE = {
+    '/problems/not-recommended-by-chatgpt/': {'kw': 'get recommended by chatgpt;how to get my business recommended by chatgpt;show up in chatgpt;ai not recommending my business', 'type': 'problem', 'example': 'divorce lawyer in new york', 'original': '211;v4, 18 Nov 2026', 'trade': 'lawyer;sources;reviews'},
+    '/problems/not-getting-leads/': {'kw': 'get more leads for my business;how to get more leads for my business;website not getting leads;more calls from google', 'type': 'problem', 'example': 'emergency dentist chicago', 'original': '186;v4, 18 Nov 2026', 'trade': 'dentist;reviews;listing'},
     '/problems/not-showing-up-on-google/': {'kw': 'business not showing up on google;business not on google;not on google maps;why is my business not showing up on google', 'type': 'problem', 'example': 'roof repair denver', 'original': '170;v4, 18 Nov 2026', 'trade': 'roofer;profile;listing'},  # what the gate is told about each page: keywords, page type, the specific example and the dated original figure it must carry
     '/problems/': {'kw': 'seo problems;search marketing problems;why is my seo not working', 'type': 'hub', 'example': 'emergency plumber miami', 'original': '166;v4, 18 Nov 2026', 'trade': 'plumber;roofer;dentist'},
 }
