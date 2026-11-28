@@ -3542,7 +3542,7 @@ def make(h):
         work_p=['Five jobs. Accuracy and privacy come before anything else.'],
         work=[('Service pages', 'One per service, reviewed by a named clinician', 'Read'),
               ('Clinician pages', 'Qualifications, registration and a real photograph', 'Confirm'),
-              ('Hours and booking', 'True hours everywhere, and a booking route that works on a phone', 'Choose'),
+              ('Hours and booking', 'True hours everywhere, and a way to book an appointment that works on a phone', 'Choose'),
               ('Insurance', 'Plans accepted, kept current', 'Read'),
               ('Reviews', 'Requested appropriately, answered without any patient detail', 'Choose')],
         proof_h2='What proof does a patient look for?',
