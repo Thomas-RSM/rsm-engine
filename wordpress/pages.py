@@ -30,14 +30,17 @@ def make(h):
     W, H, T, B, C, G, S, card, link, box, gap = (h[k] for k in ('W', 'H', 'T', 'B', 'C', 'G', 'S', 'card', 'link', 'box', 'gap'))
     ART = h['PROBLEM_ART']
 
+    NOFORM = ('Ask a question', 'Book a call', 'Contact', 'Privacy policy', 'Terms', 'Corrections', 'Searches', 'Your plan', 'Open Board', 'AI Recommendation Index')   # pages that carry their own form, or are not lead pages
     def hero(crumbs, eyebrow, h1, answer, after='', ctas=(('Book a discovery call', '/book/'), ('Ask a question', '/ask/')), note='20 to 30 minutes with Thomas. No audit to buy first.'):
         trail = ' <span aria-hidden="true">›</span> '.join(('<a href="%s">%s</a>' % (u, t)) if u else '<span aria-current="page">%s</span>' % t for t, u in crumbs)
         els = [T('<nav aria-label="Breadcrumb"><p>%s</p></nav>' % trail, 'rs-crumbs', mb=18), H(eyebrow, 'p', 'eyebrow'), H(h1, 'h1', mb=22), T('<p>%s</p>' % answer, 'lead', mb=0, eid='answer')]
         if after: els.append(T('<p>%s</p>' % after, 'lead-after', mt=18))
         btns = [B(ctas[0][0], ctas[0][1])] + [B(t, u, 'rsm-btn rsm-btn-ghost') for t, u in ctas[1:]]
-        els += [C(btns, 'rs-actions', 'row', flex_gap=gap(14), flex_wrap='wrap', margin=box(28, 0, 12, 0)), T('<p>%s</p>' % note, 'small', mb=0),
-                T('<ul class="facts"><li><b>900+</b> businesses served</li><li><b>100+</b> specialists on US hours</li><li>In digital marketing <b>since 2010</b></li></ul>', 'rs-facts rs-herofacts', mt=26, mb=0)]
-        return S([C(els, 'rs-pagehero-in')], 'rs-sec rs-pagehero', pad=(72, 72), pad_m=(44, 48))
+        els += [C(btns, 'rs-actions', 'row', flex_gap=gap(14), flex_wrap='wrap', margin=box(28, 0, 12, 0)), T('<p>%s</p>' % note, 'small rs-boiler', mb=0),
+                T('<ul class="facts"><li><b>900+</b> businesses served</li><li><b>100+</b> specialists on US hours</li><li>In digital marketing <b>since 2010</b></li></ul>', 'rs-facts rs-herofacts rs-boiler', mt=26, mb=0)]
+        if crumbs[-1][0] in NOFORM: return S([C(els, 'rs-pagehero-in')], 'rs-sec rs-pagehero', pad=(72, 72), pad_m=(44, 48))
+        form = W('rsm-form', {'title': 'Book a discovery call', 'intro': '20 to 30 minutes with Thomas. Tell us your trade and city and we reply with times.', 'kind': 'Discovery call, from ' + crumbs[-1][0], 'ask_business': '', 'ask_message': '', 'button': 'Request my call', 'done': 'Thank you. Your request is with Thomas, and we will reply with times.'}, '', eid='hero-form')
+        return S([G([C(els, 'rs-pagehero-in'), C([form], 'rs-heroform rs-boiler')], 'minmax(0,7fr) minmax(0,5fr)', 'minmax(0,1fr)', 'minmax(0,1fr)', g=(36, 48), cls='rs-pagehero-grid', align='center')], 'rs-sec rs-pagehero', pad=(72, 72), pad_m=(44, 48))
 
     def sec(eyebrow, h2, paras, *content, eid='', more=None):
         intro = [H(eyebrow, 'p', 'eyebrow'), H(h2, 'h2', mb=18)] + [T('<p>%s</p>' % p, 'lead' if i == 0 else '', mb=(0 if i == len(paras) - 1 and not more else None)) for i, p in enumerate(paras)]
@@ -2655,7 +2658,7 @@ def make(h):
                 ('Discovery call', '<a href="/book/">Book a discovery call</a>', '20 to 30 minutes with Thomas about your own trade and city'),
             ]), more=('Ask a question', '/ask/'), eid='details'),
         sec('Write to us', 'Can I send a message from here?', ['Yes. A name and an email address are all we need. Add your trade and city if you want an answer about your own market.'],
-            W('rsm-form', {'title': 'Send us a message', 'intro': 'We read every message. Add your trade and city for an answer about your own market.', 'done': 'Thank you. Your message is with us, and we will reply by email.'}, 'rv', eid='form'),
+            W('rsm-form', {'title': 'Send us a message', 'intro': 'We read every message. Add your trade and city for an answer about your own market.', 'kind': 'Contact message', 'message_label': 'Your message', 'button': 'Send my message', 'done': 'Thank you. Your message is with us, and we will reply by email.'}, 'rv', eid='form'),
             B('What we do with your details', '/privacy/', 'rs-more', mb=0), eid='write'),
         sec('Which route', 'Which route should I use?', ['Four steps to the right one. For example, the owner of a roofing company in Denver who wants to know who AI names for roofers there should go straight to step 4.'],
             steps([('Step 1', 'A general question', 'Try the Ask page first. Many answers are already there.'),
@@ -2749,5 +2752,301 @@ def make(h):
         trust(),
         closing('Plain terms, plainly stated. <span class="gold">Questions are welcome.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He shows you who AI names for your trade in your city, which customer searches you are missing, and whether your trade is still open.', SMALL),
     ], kw='', example='electrician in phoenix', trade='terms;content;agreement', typ='legal')
+    # ------------------------------------------------------------------ /industries/ and /cities/
+    ident('industries', '/industries/', 'SEO by Industry | Relevant Search Media',
+        'SEO by industry: every trade is searched differently. Find yours to see how its customers look for it, and where the work usually starts.', [
+        hero([('Home', '/'), ('Industries', '')], 'Industries', 'SEO by industry: find your trade',
+             'SEO by industry means starting from how one trade’s customers actually search. Someone with a burst pipe searches differently from someone choosing a dentist or a lawyer. The method is the same for all of them; the map of searches, the proof that matters and the first job to do are not.',
+             'Every trade is searched differently. Find yours to see how its customers look and what we do about it.', ctas=(('Book a discovery call', '/book/'), ('Check if your trade is open in your city', '/open-board/'))),
+        sec('Home and property', 'How does SEO by industry differ for home services?', ['These trades are searched in a hurry and close to home. The Google map results and recent reviews decide most of the calls.'],
+            table('Home and property trades: how customers search and where work starts', ('Trade', 'How its customers tend to search', 'Where the work usually starts'), [
+                ('Plumbers', 'By emergency and by fault: “burst pipe”, “water heater leaking”', 'Google Business Profile and a page per fault'),
+                ('HVAC', 'By season and by symptom: “AC not cooling”', 'Service pages written before each season'),
+                ('Roofers', 'After storms, and by material and cost', 'Reviews, photos of real jobs, cost pages'),
+                ('Electricians', 'By job and by safety worry', 'Licence and safety proof on every page'),
+                ('Contractors', 'By project: kitchen, bathroom, addition', 'Project pages with real photographs'),
+                ('Landscapers', 'By service and by season', 'Service-area pages and a photo record'),
+                ('Painters', 'Interior or exterior, and by price', 'Clear service pages and recent reviews'),
+                ('Cleaners', 'By type and by frequency', 'Profile categories and a booking path'),
+                ('Pest control', 'By pest, and urgently', 'A page per pest, answered plainly'),
+                ('Movers', 'By distance and by date', 'Reviews and a quote form that works'),
+                ('Auto repair', 'By fault and by make of car', 'Profile, opening hours, a page per repair'),
+            ]), more=('Local SEO services', '/services/local-seo/'), eid='home'),
+        sec('Health', 'How do patients search for health practices?', ['Carefully. Health is a subject where Google asks for more evidence of trust, so named practitioners and qualifications matter.'],
+            table('Health practices: how patients search and where work starts', ('Practice', 'How its patients tend to search', 'Where the work usually starts'), [
+                ('Dentists', 'By treatment, by insurance and by emergency', 'Treatment pages and a named dentist'),
+                ('Medical clinics', 'By symptom, by service and “near me”', 'Accurate hours and practitioner pages'),
+                ('Med spas', 'By treatment name and by result', 'Treatment pages with qualifications shown'),
+            ]), more=('What is E-E-A-T, and how a small business earns it', '/guides/what-is-eeat/'), eid='health'),
+        sec('Professional services', 'How do clients search for professional firms?', ['Slowly, and more than once. They read, compare and check reviews before they call, so answers and proof carry the weight.'],
+            table('Professional firms: how clients search and where work starts', ('Firm', 'How its clients tend to search', 'Where the work usually starts'), [
+                ('Law firms', 'By legal problem, in plain words', 'A page per problem, answered directly'),
+                ('Personal injury lawyers', 'After an accident, often on a phone', 'Fast pages, clear proof, a quick contact path'),
+                ('Accountants', 'By service and at tax deadlines', 'Service pages and seasonal guides'),
+                ('Insurance agents', 'By kind of cover and by price', 'Comparison answers and local listings'),
+                ('Mortgage brokers', 'By rate questions and by loan type', 'Question pages kept current'),
+                ('Realtors', 'By neighbourhood and by price range', 'Neighbourhood pages and the profile'),
+            ]), more=('B2B SEO services', '/services/b2b-seo/'), eid='professional'),
+        sec('Why it matters', 'Why does industry specific SEO matter?', ['Industry specific SEO matters because a general checklist misses what a trade’s customers type. The words, the urgency and the proof all differ.', 'Some call this niche SEO. Whatever the name, it means the keyword map is built for one trade in one city, not copied from another.'],
+            more=('SEO keyword research: why we map every search', '/guides/seo-keyword-research/'), eid='why'),
+        sec('Find yours', 'How do I see how my own trade is searched?', ['Four steps, ten minutes. For example, a plumber in Miami doing this would find dozens of searches the website never mentions.'],
+            steps([('Step 1', 'Type your trade slowly', 'In Google, type your trade and city. Note every suggestion.'),
+                   ('Step 2', 'Search your main job', 'Read the “People also ask” questions under the results.'),
+                   ('Step 3', 'Look at the map', 'Which three businesses does Google show, and why those?'),
+                   ('Step 4', 'Ask an assistant', 'Ask ChatGPT who it recommends for your trade in your city.')]),
+            B('What your customers search for, by trade and city', '/searches/', 'rs-more', mb=0), eid='find'),
+        faq('Questions about trades', 'What do owners ask about their trade?', ASK, [
+            ('My trade is not listed. Do you work with it?', 'Probably. The trades above are the ones we have mapped in most detail, not the only ones we take.\nWe work with US businesses that depend on being found. Ask on the discovery call, and Thomas will tell you plainly.'),
+            ('Do you work with more than one business in a trade?', 'Not in the same city. We take one business per trade per city, so that we never work for two rivals.\nThe same trade in a different city is a separate market, and is open until someone there takes it.'),
+            ('Is niche SEO more expensive than general SEO?', 'Not because of the trade itself. The work depends on how many searches are worth winning and how strong the rivals are.\nOur prices are not listed on this site. Thomas gives the price on the discovery call, for your trade and city.'),
+            ('Do you write differently for each trade?', 'Yes. Pages use the words customers of that trade use, which are often not the words the trade uses itself.\nA signed fact register for each client keeps every claim true to that one business.'),
+            ('Which trades gain most from AI answers?', 'Those where people ask for a recommendation: who to hire, who is trusted, who is open. Home services, health and legal all qualify.\nAn assistant names only two or three businesses, which is why being readable and confirmed matters so much.'),
+        ]),
+        trust(),
+        closing('One business per trade per city. <span class="gold">Is yours still open?</span>', 'A discovery call is 20 to 30 minutes with Thomas. He shows you who AI names for your trade in your city, which customer searches you are missing, and whether your trade is still open.', SMALL),
+    ], kw='seo by industry;industry specific seo;niche seo', example='plumber in miami', trade='trade;customers;reviews', typ='hub')
+
+    ident('cities', '/cities/', 'SEO Company Near Me: Cities We Serve | Relevant Search Media',
+        'Looking for an SEO company near me? We work for businesses across the United States, one per trade in each city. Find your city here.', [
+        hero([('Home', '/'), ('Cities', '')], 'Cities', 'An SEO company near me? The cities we serve',
+             'If you searched for an SEO company near me, here is the honest answer: we are not around the corner. We work for businesses in cities across the United States, by phone, video and email, on US hours. What is local is the work: your city’s searches, your city’s rivals, one business per trade.',
+             'We work for businesses across the United States, one per trade in each city. Find yours.', ctas=(('Book a discovery call', '/book/'), ('Check if your trade is open in your city', '/open-board/'))),
+        sec('First cities', 'Want an SEO company near me: which cities come first?', ['Ten cities where our search maps are most complete. A business in any of them can start at once.'],
+            table('The first ten cities we serve', ('City', 'State', 'Region'), [
+                ('New York', 'New York', 'Northeast'), ('Los Angeles', 'California', 'West'), ('Chicago', 'Illinois', 'Midwest'), ('Houston', 'Texas', 'South'), ('Dallas', 'Texas', 'South'),
+                ('Miami', 'Florida', 'South'), ('Atlanta', 'Georgia', 'South'), ('Phoenix', 'Arizona', 'West'), ('Denver', 'Colorado', 'West'), ('Fresno', 'California', 'West'),
+            ]), more=('Check if your trade is open in your city', '/open-board/'), eid='first'),
+        sec('More cities', 'Which other cities do we cover?', ['Forty more, listed by region. If yours is not here, ask: we serve the whole country, and no city is turned away.'],
+            table('Further cities we serve, by region', ('Region', 'Cities', 'Count'), [
+                ('Northeast', 'Philadelphia, Boston, Washington, Baltimore', '4'),
+                ('South', 'San Antonio, Austin, Jacksonville, Fort Worth, Charlotte, Nashville, Orlando, Tampa, Oklahoma City, El Paso, Memphis, Louisville, Raleigh, Virginia Beach, Tulsa, Frisco', '16'),
+                ('Midwest', 'Columbus, Indianapolis, Detroit, Minneapolis, Milwaukee, Kansas City, Omaha', '7'),
+                ('West', 'San Diego, San Jose, San Francisco, Seattle, Las Vegas, Portland, Albuquerque, Tucson, Sacramento, Mesa, Colorado Springs, Long Beach, Oakland', '13'),
+            ]), more=('SEO by industry: find your trade', '/industries/'), eid='more'),
+        sec('Near me', 'Do I need an SEO agency near me?', ['Not for the work. Search work is done online, and an SEO agency near me is no better placed to do it than one elsewhere.', 'Two things do matter: that the firm knows your local market, and that it does not also work for your competitor down the road.'],
+            more=('How to choose an SEO company, and what to ask', '/guides/how-to-choose-an-seo-company/'), eid='near'),
+        sec('One per city', 'Why only one business per trade in each city?', ['Because an engine names two or three businesses for a search. If we worked for two plumbers in one city, we would be working against one of them.', 'So each trade in each city is taken once. After that it is closed for as long as that client stays.'],
+            more=('One business per trade per city. Is yours open?', '/open-board/'), eid='one'),
+        sec('Local work', 'What makes SEO services near me local?', ['People who type “SEO services near me” want someone who understands their town. That understanding comes from the map, not the postcode.', 'For example, for a roofer in Denver we would map searches by suburb, by storm season and by roof type common there.'],
+            more=('Local SEO services', '/services/local-seo/'), eid='local'),
+        sec('Check your city', 'How do I check my own city today?', ['Four steps, ten minutes, in a private browser window.'],
+            steps([('Step 1', 'Search your trade and city', 'Note the three businesses on the map and the first five below.'),
+                   ('Step 2', 'Add a suburb', 'Search again with a suburb or county name. Does the list change?'),
+                   ('Step 3', 'Search “near me”', 'On your phone, search your trade and “near me” from your premises.'),
+                   ('Step 4', 'Ask an assistant', 'Ask ChatGPT who it recommends for your trade in your city.')]),
+            B('Why is my business not showing up on Google?', '/problems/not-showing-up-on-google/', 'rs-more', mb=0), eid='check'),
+        faq('Questions about where we work', 'What do owners ask about where we work?', ASK, [
+            ('Do you have an office in my city?', 'No. We have no US office, and we do not rent a virtual address to appear local. The team works remotely on US hours.\nCalls are by phone or video. Everything we do for you can be seen in your log, wherever you are.'),
+            ('My city is not on the list. Can you still help?', 'Yes. We serve businesses anywhere in the United States, and no city is dropped. The lists show where our maps are most complete today.\nFor a city not yet listed, the search map is built in the first days, as it is for every client.'),
+            ('Can you rank me in nearby towns as well?', 'Often, yes. Service-area businesses can appear in towns they serve, with the right pages and a correctly set profile.\nGoogle weighs distance heavily in map results, so a town far from your premises is harder. We tell you which are realistic.'),
+            ('Do you work outside the United States?', 'No. We serve the United States only. Search habits, listings and review sites differ by country, and we would sooner do one market properly.\nEvery search we map and every page we write is for US customers.'),
+            ('How do I know whether my trade is taken in my city?', 'Ask. The discovery call starts with that check, because there is no point discussing a plan for a trade that is closed.\nIf it is taken, Thomas tells you so on the call and does not sell you anything.'),
+        ]),
+        trust(),
+        closing('Your city, your trade, one place. <span class="gold">Find out if it is open.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He shows you who AI names for your trade in your city, which customer searches you are missing, and whether your trade is still open.', SMALL),
+    ], kw='seo company near me;seo agency near me;seo services near me', example='roofer in denver', trade='city;trade;map', typ='hub')
+    # ------------------------------------------------------------------ mirror pages
+    def FORM(title, intro, kind, button, done, msg='Anything we should know? (optional)'):
+        return W('rsm-form', {'title': title, 'intro': intro, 'kind': kind, 'button': button, 'message_label': msg, 'done': done}, 'rv', eid='form')
+
+    ident('searches', '/searches/', 'Plumber SEO Keywords and More, by Trade and City',
+        'Plumber SEO keywords, and the same patterns for every trade. See the kinds of search customers make before they hire, by trade and by city.', [
+        hero([('Home', '/'), ('Searches', '')], 'Searches', 'Plumber SEO keywords and more: what customers search, by trade and city',
+             'Plumber SEO keywords are the searches people make when they need a plumber: by emergency, by fault, by place and by price. Every trade has the same six kinds of search. This page shows them for a plumber in Miami, then shows how to read the pattern for your own trade and city.',
+             'Pick your trade and city to see the searches people make before they hire.', ctas=(('Book a discovery call', '/book/'), ('Check if your trade is open in your city', '/open-board/'))),
+        sec('The worked example', 'What do plumber SEO keywords look like?', ['Six kinds, with examples for a plumber in Miami. These show the forms searches take. They are not measured volumes.'],
+            table('Six kinds of customer search, with examples for a plumber in Miami', ('Kind of search', 'Examples', 'What the customer wants'), [
+                ('Emergency', '“emergency plumber miami”, “24 hour plumber near me”', 'Someone now'),
+                ('By fault', '“water heater leaking from bottom”, “toilet keeps running”', 'A diagnosis, then a fix'),
+                ('By service', '“drain cleaning miami”, “repipe house miami”', 'A specialist for one job'),
+                ('By place', '“plumber coral gables”, “plumber miami beach”', 'Someone who covers their area'),
+                ('By price', '“how much to replace a water heater”, “plumber cost per hour miami”', 'A range before they call'),
+                ('By trust', '“licensed plumber miami reviews”, “plumber miami with good reviews”', 'Proof before they choose'),
+            ]), more=('SEO keyword research: why we map every search', '/guides/seo-keyword-research/'), eid='example'),
+        sec('Other trades', 'How does the pattern change by trade?', ['The six kinds stay. The words inside them change, and so does which kind matters most.'],
+            table('The same pattern in four other trades', ('Trade', 'The search that matters most', 'Example'), [
+                ('Roofer', 'By event and by cost', '“roof repair after hail denver”, “new roof cost”'),
+                ('Dentist', 'By treatment and by insurance', '“emergency dentist chicago”, “dentist that takes delta dental”'),
+                ('Law firm', 'By problem, in plain words', '“what to do after a car accident”, “divorce lawyer new york”'),
+                ('HVAC', 'By symptom and by season', '“ac not cooling dallas”, “furnace repair near me”'),
+            ]), more=('SEO by industry: find your trade', '/industries/'), eid='trades'),
+        sec('By city', 'How does the pattern change by city?', ['By place names, mostly. Customers search by suburb, county and neighbourhood far more than owners expect.', 'Climate and housing matter too. Plumbing SEO keywords in Miami lean toward leaks and hurricanes; in Denver, toward frozen pipes.'],
+            more=('An SEO company for your city', '/cities/'), eid='city'),
+        sec('Your own', 'How do I see the searches for my own trade and city?', ['Four steps, ten minutes, with nothing but Google.'],
+            steps([('Step 1', 'Type slowly', 'Type your trade and city one letter at a time. Write down each suggestion.'),
+                   ('Step 2', 'Sort into six', 'Put each search under emergency, fault, service, place, price or trust.'),
+                   ('Step 3', 'Find the gaps', 'Which of the six kinds has no page on your website?'),
+                   ('Step 4', 'Ask for the full map', 'Send your trade and city below for the searches we would map.')]),
+            B('Why is my business not showing up on Google?', '/problems/not-showing-up-on-google/', 'rs-more', mb=0), eid='own'),
+        sec('Ask for yours', 'Can you send me the searches for my trade?', ['Yes. Tell us your trade and city. Thomas brings the searches for your market to the discovery call.'],
+            FORM('See the searches for your trade', 'Your trade and city are enough. We reply by email.', 'Searches request', 'Send my trade and city', 'Thank you. Your trade and city are with Thomas, and we will reply by email.'),
+            B('What we do with your details', '/privacy/', 'rs-more', mb=0), eid='ask'),
+        faq('Questions about searches', 'What do owners ask about these searches?', ASK, [
+            ('Where do these example searches come from?', 'They are the forms that Google’s own suggestions take for each trade: autocomplete, “People also ask” and related searches.\nThey are shown as patterns, not as counts. We use no paid keyword tools, and we do not publish estimated volumes.'),
+            ('How many searches does one trade have in one city?', 'Usually a few hundred that are worth winning, once suburbs, faults, services and questions are counted.\nOur plans map 300, 600 or 2,000 searches. Searches with the same intent share a page, so the page count is far smaller.'),
+            ('Are plumbing SEO keywords different from plumber ones?', 'Slightly. People type both “plumber” and “plumbing”, and Google treats them as close but not identical.\nA good map includes both forms and gives each to the page that answers it, so the site does not compete with itself.'),
+            ('Do customers really search by suburb?', 'Yes. Searches with a suburb, county or neighbourhood name are common, and rivals often ignore them.\nA business that names the places it serves, plainly and truthfully, can appear for them without a separate office there.'),
+            ('Do people ask AI assistants the same things?', 'They ask in fuller sentences, such as “who is a reliable plumber in Miami for a slab leak?”\nThe intent is the same six kinds. An assistant answers with two or three names, so being readable and confirmed counts for more.'),
+        ]),
+        trust(),
+        closing('Your customers are searching now. <span class="gold">See what they type.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He shows you who AI names for your trade in your city, which customer searches you are missing, and whether your trade is still open.', SMALL),
+    ], kw='plumber seo keywords;plumbing seo keywords', example='plumber in miami', trade='searches;trade;city', typ='tool')
+
+    ident('your-plan', '/your-plan/', 'Your SEO Plan, Day by Day | Relevant Search Media',
+        'See the SEO plan we would run for you. The first 15 days are set out here item by item, from the first call to the first report.', [
+        hero([('Home', '/'), ('Your plan', '')], 'Your plan', 'See the SEO plan we would run for you',
+             'An SEO plan should say what happens on which day and what you hold at the end of it, and ours does. The first fifteen days follow one order for every client and are set out below, item by item. What changes for you is the map: the searches for your trade in your city.',
+             'Pick your trade and city. You get the first 15 days, item by item, to keep.', ctas=(('Request my plan', '/your-plan/#form'), ('Check if your trade is open in your city', '/open-board/'))),
+        sec('Fifteen days', 'What is in the SEO plan, day by day?', ['Six rows, written from the owner’s chair. The middle column is all that is asked of you.'],
+            table('Your first fifteen days, seen from your side', ('When', 'Your part', 'What arrives'), [
+                ('Day 1', 'A single call about the business, and logins where needed', 'A one-line statement of the problem'),
+                ('Day 2', 'Nothing', 'The map of searches for your trade and city'),
+                ('Day 3', 'Nothing', 'The audit: 413 checks, failures listed first'),
+                ('Day 4', 'Half an hour to walk through it', 'The growth plan and its 90-day calendar'),
+                ('Day 5', 'Nothing', 'The first fixes, live, and a log you can open'),
+                ('Days 6 to 15', 'Mark which enquiries were relevant', 'Daily log entries, then your first report'),
+            ]), more=('Our SEO strategy, day by day', '/dsouza-equation/method/'), eid='days'),
+        sec('Ninety days', 'What is in the 90 day SEO plan?', ['The 90 day SEO plan is the calendar you receive on day 4. It lists, period by period, which pages are written or repaired and which listings and mentions are worked on.', 'Every 15 days a report sets that calendar beside the log of what shipped.'],
+            more=('Two commitments, in writing', '/commitments/'), eid='ninety'),
+        sec('Made for you', 'What changes for my trade and city?', ['The map and the order. For example, for an electrician in Phoenix the map would hold searches by job, by suburb and by safety question.', 'The audit then shows which of Read, Confirm and Choose is weakest for that business, and the plan starts there.'],
+            terms(T3('read'), cls='rs-boiler'), more=('What your customers search for, by trade and city', '/searches/'), eid='yours'),
+        sec('A template', 'Is there an SEO plan template I can use myself?', ['Yes: the four steps below. An SEO plan template is only a list of what to do in what order, and this one costs nothing.'],
+            steps([('Step 1', 'Map the searches', 'List what customers type for your trade in your city.'),
+                   ('Step 2', 'Audit against a list', 'Run your site through the 413 published checks, or the ones you can.'),
+                   ('Step 3', 'Order the fixes', 'Put what blocks reading first, then listings and reviews, then new pages.'),
+                   ('Step 4', 'Log and review', 'Write down what you did each week. Review it every 15 days.')]),
+            B('See all 413 checks', '/dsouza-equation/standard/', 'rs-more', mb=0), eid='template'),
+        sec('Request it', 'How do I get the plan for my business?', ['Tell us your trade and city. Thomas prepares the first fifteen days for your market and goes through them with you on the discovery call.'],
+            FORM('Request the plan for your trade', 'Your trade and city are enough. We reply by email with times for the call.', 'Plan request', 'Request my plan', 'Thank you. Your trade and city are with Thomas, and we will reply by email.'),
+            B('What we do with your details', '/privacy/', 'rs-more', mb=0), eid='request'),
+        faq('Questions about the plan', 'What do owners ask about the plan?', ASK, [
+            ('Is the plan mine to keep?', 'Yes. The search map, the audit and the growth plan are yours, whether or not you continue with us.\nThat follows from our terms: agreements are month to month, and the client owns everything created.'),
+            ('Does every client get the same plan?', 'The first fifteen days follow the same order for everyone, because the order works. What goes into each day is specific to you.\nTwo plumbers in two cities would have different maps, different audits and different first fixes.'),
+            ('What do I have to do during the fifteen days?', 'Very little. You give one conversation on day 1 and look at the plan on day 4.\nAfter that, every 15 days, you tell us which enquiries were relevant. Everything else is done by the team and logged.'),
+            ('What happens after day 15?', 'The same rhythm continues. Work ships daily, each item is logged with its link, and a report arrives every 15 days.\nBy the end of month 4, at least half your mapped searches should be on page one of Google, or we keep working at no charge.'),
+            ('Do I pay before I see the plan?', 'The discovery call comes first, and there is no audit to buy before it. Thomas looks at your trade and city with you on that call.\nOur prices are not listed on this site. He gives the price on the call.'),
+        ]),
+        trust(),
+        closing('Fifteen days, item by item. <span class="gold">See them for your business.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He shows you who AI names for your trade in your city, which customer searches you are missing, and what days one to fifteen would be for you.', SMALL),
+    ], kw='seo plan;seo plan template;90 day seo plan', example='electrician in phoenix', trade='day;map;log', typ='tool')
+    ident('open-board', '/open-board/', 'Open Board: Is Your Trade Open in Your City?',
+        'One business per trade per city. The Open Board is where you check whether your trade is still open in yours. Ask here and Thomas confirms it.', [
+        hero([('Home', '/'), ('Open Board', '')], 'Open Board', 'One business per trade per city. Is yours open?',
+             'We work for one business per trade in each city. The reason is simple: an AI assistant names two or three businesses for a search, and we will not work for two rivals chasing the same place. Send your trade and city below, and Thomas confirms whether it is still open.',
+             'AI names two or three businesses for a search. So we work for one in each trade, in each city.', ctas=(('Book a discovery call', '/book/'), ('Get told when this changes', '/open-board/#form'))),
+        sec('Check yours', 'Is my trade open in my city?', ['Send your trade and city. Availability is confirmed by Thomas, in person, and not shown on a public board, because the list of clients is theirs and not ours to publish.'],
+            FORM('Check if your trade is open', 'Your trade and city are all we need. We reply by email.', 'Open board check', 'Check my trade', 'Thank you. Thomas will check your trade and city and reply by email.'),
+            B('What we do with your details', '/privacy/', 'rs-more', mb=0), eid='check'),
+        sec('The rule', 'What exactly is the rule?', ['Three parts. The table sets out what counts as a trade, a city and a place taken.'],
+            table('The one-per-trade-per-city rule, part by part', ('Part', 'What it means', 'Example'), [
+                ('A trade', 'One kind of business, competing for the same searches', 'Roofers, or family dentists'),
+                ('A city', 'One market, where the same customers could choose either business', 'Denver and its suburbs'),
+                ('Taken', 'A client in that trade and city is working with us', 'Closed until that client leaves'),
+            ]), more=('An SEO company for your city', '/cities/'), eid='rule'),
+        sec('Why', 'Why work for only one?', ['Because the places are few. Google’s map shows three businesses and an assistant names two or three. Two clients after the same places cannot both be served honestly.', 'It also means everything we learn about your market is used for you alone.'],
+            more=('How to get my business recommended by ChatGPT', '/problems/not-recommended-by-chatgpt/'), eid='why'),
+        sec('If it is taken', 'What happens if my trade is already taken?', ['Thomas tells you so, on the call or by email, and does not sell you a plan. You are welcome to use every guide and check on this site without us.', 'If the place opens later, we can tell you, if you ask us to.'],
+            more=('The SEO guide for business owners', '/guides/'), eid='taken'),
+        sec('Edge cases', 'What about overlapping trades or nearby towns?', ['They are decided case by case, by one test: would the same customer, making the same search, be choosing between you and an existing client?', 'For example, a roofer in Denver and a roofer in Colorado Springs are different markets. Two roofers in Denver are not.'],
+            more=('SEO by industry: find your trade', '/industries/'), eid='edge'),
+        sec('Before you ask', 'What should I check before I ask?', ['Four steps that make the answer more useful. They take ten minutes.'],
+            steps([('Step 1', 'Name the trade plainly', 'Use the words a customer would: “roofer”, not “exterior solutions”.'),
+                   ('Step 2', 'Name the market', 'Give the city and the suburbs you actually serve.'),
+                   ('Step 3', 'Look at the map', 'Search your trade and city. Note the three businesses Google shows.'),
+                   ('Step 4', 'Ask an assistant', 'Ask ChatGPT who it recommends. Note the names it gives.')]),
+            B('Book a discovery call', '/book/', 'rs-more', mb=0), eid='before'),
+        faq('Questions about the Open Board', 'What do owners ask about the rule?', ASK, [
+            ('Why is there no public list of open and closed trades?', 'Because a public list of closed places would reveal who our clients are, city by city. Their names are theirs to share, not ours.\nSo availability is confirmed privately, by Thomas, for the trade and city you ask about.'),
+            ('How long does a place stay closed?', 'For as long as that client works with us. Agreements are month to month, so a place can reopen.\nIf you asked about a closed place and want to hear when it opens, say so and we will keep your request.'),
+            ('Does asking commit me to anything?', 'No. Asking whether your trade is open costs nothing and commits you to nothing. You are not added to a mailing list.\nIf it is open and you want to go further, the next step is a discovery call with Thomas.'),
+            ('Can I reserve my trade before deciding?', 'A place is taken when a business becomes a client, not before. We do not hold places on request.\nIf two businesses in one trade and city ask at once, the first to begin work has the place.'),
+            ('Do I have more than one trade?', 'Many businesses do. A firm that does both roofing and gutters competes in two sets of searches.\nTell us everything you do. Thomas checks each against existing clients and tells you which parts are open.'),
+        ]),
+        trust(),
+        closing('One place per trade, per city. <span class="gold">Ask whether yours is open.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He shows you who AI names for your trade in your city, which customer searches you are missing, and whether your trade is still open.', SMALL),
+    ], kw='', example='roofer in denver', trade='trade;city;open', typ='tool')
+
+    ident('ai-recommendation-index', '/ai-recommendation-index/', 'How Does ChatGPT Recommend Businesses? The Index',
+        'How does ChatGPT recommend businesses? It names those it can read, confirm and see chosen. Our Index records who it names, by trade and city.', [
+        hero([('Home', '/'), ('AI Recommendation Index', '')], 'The Index', 'How does ChatGPT recommend businesses? Who AI names, by trade and by city',
+             'How does ChatGPT recommend businesses? It searches the web, reads a handful of pages and listings, and names the few it can read plainly, confirm from other sources and see people choose. The AI Recommendation Index is our record of who the assistants name, asked the same way each month, by trade and by city.',
+             'Each month we ask the AI engines who they recommend for each trade in each city, and publish what they say.', ctas=(('Book a discovery call', '/book/'), ('Get told when this changes', '/ai-recommendation-index/#form'))),
+        sec('How it decides', 'How does ChatGPT recommend businesses, step by step?', ['In four moves. Other assistants, such as Gemini, Perplexity and Copilot, work in much the same way.'],
+            table('How an assistant arrives at a recommendation', ('Move', 'What the assistant does', 'What it needs from a business'),  [
+                ('It searches', 'Runs one or more web searches for the question', 'To be findable for that search'),
+                ('It reads', 'Opens a few pages, listings and review sites', 'Facts stated plainly, in text'),
+                ('It compares', 'Looks for the same facts in more than one place', 'Listings and mentions that agree'),
+                ('It names', 'Writes an answer with two or three names and its sources', 'Signs that real people chose you'),
+            ]), more=('How to get my business recommended by ChatGPT', '/problems/not-recommended-by-chatgpt/'), eid='decides'),
+        sec('The Index', 'What is the AI Recommendation Index?', ['It is a monthly record. For each trade and city we put the same questions to the main assistants and write down which businesses each one names, and which sources it cites.', 'No month has been published yet. Results appear here only once they have been recorded, each with its date.'],
+            more=('Every AI search engine and search engine we cover', '/dsouza-equation/engines/'), eid='index'),
+        sec('The method', 'How are the answers gathered?', ['The same way every time, so one month can be compared with the next.'],
+            table('How each month’s answers are gathered', ('Rule', 'What we do', 'Why'), [
+                ('Fixed questions', 'The same wording for every trade and city', 'So changes come from the assistant, not from us'),
+                ('Fresh sessions', 'A new chat with no history for each question', 'So earlier answers do not colour later ones'),
+                ('Three runs', 'Each question is asked three times', 'Answers vary; one run proves little'),
+                ('Sources kept', 'The pages each assistant cites are recorded', 'They show where the answer came from'),
+            ]), more=('How we write and check everything we publish', '/about/editorial-policy/'), eid='method'),
+        sec('Products too', 'How does ChatGPT recommend products?', ['In the same four moves. When people ask how does ChatGPT recommend products, the answer is that it reads product pages, feeds and reviews, and names what several sources agree on.', 'A store with clear product details and independent reviews is easier to cite.'],
+            more=('Ecommerce SEO for stores that sell online', '/services/ecommerce-seo/'), eid='products'),
+        sec('Run it yourself', 'How can ChatGPT recommend my business, and how do I test it?', ['Owners ask how can ChatGPT recommend my business. First find out whether it does. For example, a dentist in Chicago can run these four steps in ten minutes.'],
+            steps([('Step 1', 'Open a fresh chat', 'Use a new conversation, signed out if you can.'),
+                   ('Step 2', 'Ask the hiring question', 'Ask who it recommends for your trade in your city.'),
+                   ('Step 3', 'Ask twice more', 'Repeat in two more fresh chats. Note every name given.'),
+                   ('Step 4', 'Open the sources', 'Read the pages it cites. They show what it trusts.')]),
+            B('ChatGPT SEO: how your business gets recommended', '/services/chatgpt-seo/', 'rs-more', mb=0), eid='test'),
+        sec('Be told', 'Can I be told when my trade and city are published?', ['Yes. Leave your trade and city, and we write to you once, when the first results for them are recorded.'],
+            FORM('Get told when this changes', 'Your trade and city are enough. One email, when your results are recorded.', 'Index updates', 'Tell me when it is published', 'Thank you. We will write to you when results for your trade and city are recorded.'),
+            B('What we do with your details', '/privacy/', 'rs-more', mb=0), eid='told'),
+        faq('Questions about the Index', 'What do owners ask about AI recommendations?', ASK, [
+            ('Why are no results shown yet?', 'Because none have been recorded to the standard set out above, and we do not publish examples made up to fill a page.\nWhen a month has been gathered for a trade and city, it is shown here with its date and the sources cited.'),
+            ('Can a business pay to be recommended by an assistant?', 'No. A place in an assistant’s answer cannot be bought, from us or from anyone. Some assistants show advertisements, which are labelled.\nWhat can be paid for is the work that makes a business readable, confirmed and chosen.'),
+            ('Why do the answers change from one chat to the next?', 'Because an assistant composes each answer afresh, from searches that may return different pages. Names near the edge come and go.\nA business named in all three runs is firmly placed. One named once in three is not.'),
+            ('Do all assistants name the same businesses?', 'Often not. Each draws on different search indexes and listings, so ChatGPT, Gemini and Perplexity can give three different lists.\nThat is why the Index asks several assistants, and why the work has to cover more than one.'),
+            ('Will you name my competitors in the Index?', 'The Index records what the assistants say in public answers, which anyone can obtain by asking the same question.\nNo client of ours is identified as a client, and no private data is used or shown.'),
+        ]),
+        trust(),
+        closing('Assistants are naming someone for your trade. <span class="gold">Find out who.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He asks the assistants for your trade in your city while you watch, shows you who they name and why, and tells you whether your trade is still open.', SMALL),
+    ], kw='how does chatgpt recommend businesses;how does chatgpt recommend products;how can chatgpt recommend my business', example='dentist in chicago', trade='assistant;sources;names', typ='tool')
+    ident('open-log', '/open-log/', 'Open Log: A Live SEO Report Example | Relevant Search Media',
+        'An SEO report example you can check: our own. We run our method on this website and publish what was done, what passed and what is still unknown.', [
+        hero([('Home', '/'), ('Open Log', '')], 'Open Log', 'An SEO report example: our own, updated in public',
+             'This is an SEO report example drawn from a real site: this one. We run the D’Souza Method on our own website and publish the record: what was published, what was checked and what is not yet known. Nothing is rounded up, and a figure we do not have is shown as missing.',
+             'We run the D’Souza Method on our own site and show the numbers: what we published, where we appear, who names us.', ctas=(('Book a discovery call', '/book/'), ('See all 413 checks', '/dsouza-equation/standard/'))),
+        sec('The record', 'What does this SEO report example show so far?', ['The position on 28 November 2026, the day this site was published. Each figure can be checked against the site itself.'],
+            table('This website’s own record, 28 Nov 2026', ('Measure', 'Figure', 'How to check it'), [
+                ('Pages published', '67', 'Count the addresses in the sitemap'),
+                ('Words published', 'More than 88,000', 'Every page is public'),
+                ('Checks run on each page', '413', 'The list is published in full'),
+                ('Checks failed, any page', '0', 'A page with one failure is not published'),
+                ('Checks a machine could test', 'About 140 per page', 'The rest are marked untested, never passed'),
+                ('Lead searches assigned', 'One per page, none shared', 'No two pages aim at the same search'),
+            ]), more=('The SEO audit, written out: all 413 checks', '/dsouza-equation/standard/'), eid='record'),
+        sec('Not yet known', 'What is not in the report yet?', ['Three things, shown as missing until real data exists. A report that hides its gaps is not a report.'],
+            table('What this report cannot show yet, and why', ('Measure', 'State', 'When it appears'), [
+                ('Where the site appears on Google', 'Not yet measured', 'Once Search Console has collected data'),
+                ('Core Web Vitals from real visitors', 'Not yet available', 'Once Google has enough field data'),
+                ('Which AI assistants name us', 'Not yet recorded', 'With the first month of the AI Recommendation Index'),
+            ]), more=('Who AI names, by trade and by city', '/ai-recommendation-index/'), eid='unknown'),
+        sec('What a report is', 'What does an SEO report look like when it is honest?', ['Owners often ask what does an SEO report look like. A sound one has four parts: what was planned, what shipped, what moved and what came in.', 'It fits on a page or two. Charts of traffic with no list of work behind them are decoration.'],
+            more=('How to choose an SEO company, and what to ask', '/guides/how-to-choose-an-seo-company/'), eid='what'),
+        sec('Progress', 'What goes into an SEO progress report every 15 days?', ['An SEO progress report sets the plan beside the log. Each item due in the period is shown as shipped, with its link, or as missed.', 'It then gives the searches that moved and the enquiries that came in, with the share the owner confirmed as relevant.'],
+            more=('Two commitments, in writing', '/commitments/'), eid='progress'),
+        sec('Read your own', 'How do I read the report I am sent now?', ['Four steps, ten minutes, with your latest report in front of you. For example, a roofer in Denver could run them on last month’s PDF.'],
+            steps([('Step 1', 'Find the work', 'Is there a list of what was done, with a link to each item?'),
+                   ('Step 2', 'Find the searches', 'Does it name the searches being worked on, and where you stand for each?'),
+                   ('Step 3', 'Find the enquiries', 'Does it count calls and forms, or only visits?'),
+                   ('Step 4', 'Find the gaps', 'Does it say what was missed or is not yet known?')]),
+            B('How much does SEO cost, and what should you get for it', '/problems/seo-cost/', 'rs-more', mb=0), eid='read'),
+        faq('Questions about the log', 'What do owners ask about reports?', ASK, [
+            ('Why publish your own report?', 'Because we ask owners to judge agencies by the work they can see. It would be odd not to show ours.\nOur site is also the one case where everything can be published, since no client’s data is involved.'),
+            ('How often is this page updated?', 'When there is something real to add. The date on each table is the date its figures were taken.\nClient reports are sent every 15 days. This public page is updated as measured data becomes available, and never with estimates.'),
+            ('Why are some figures missing?', 'Because they do not exist yet. Search Console and real-visitor speed data take weeks to accumulate on a newly published site.\nWe would sooner show a gap than a guess. Each missing figure says when it is expected.'),
+            ('Is a client report the same as this page?', 'It has the same four parts: the plan, the log, the searches and the enquiries. A client report also includes the Relevance Rate.\nThat is the share of enquiries the owner confirms were relevant, which only a client can supply.'),
+            ('What does “not testable” mean in the checks?', 'Some checks need data a machine cannot see from outside: Search Console, a real person’s judgement, or time.\nThose are marked as untested and are never counted as passed. They are worked through by hand as the data arrives.'),
+        ]),
+        trust(),
+        closing('A report should show the work. <span class="gold">Compare this with yours.</span>', 'A discovery call is 20 to 30 minutes with Thomas. He shows you a sample log and report, who AI names for your trade in your city, and whether your trade is still open.', SMALL),
+    ], kw='seo report example;what does an seo report look like;seo progress report', example='roofer in denver', trade='log;report;checks', typ='tool')
     return P
 

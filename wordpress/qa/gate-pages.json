@@ -411,5 +411,54 @@
 "example": "electrician in phoenix",
 "original": "413;v1.0, 23 Nov 2026",
 "trade": "terms;content;agreement"
+},
+"/industries/": {
+"kw": "seo by industry;industry specific seo;niche seo",
+"type": "hub",
+"example": "plumber in miami",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "trade;customers;reviews"
+},
+"/cities/": {
+"kw": "seo company near me;seo agency near me;seo services near me",
+"type": "hub",
+"example": "roofer in denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "city;trade;map"
+},
+"/searches/": {
+"kw": "plumber seo keywords;plumbing seo keywords",
+"type": "tool",
+"example": "plumber in miami",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "searches;trade;city"
+},
+"/your-plan/": {
+"kw": "seo plan;seo plan template;90 day seo plan",
+"type": "tool",
+"example": "electrician in phoenix",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "day;map;log"
+},
+"/open-board/": {
+"kw": "",
+"type": "tool",
+"example": "roofer in denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "trade;city;open"
+},
+"/ai-recommendation-index/": {
+"kw": "how does chatgpt recommend businesses;how does chatgpt recommend products;how can chatgpt recommend my business",
+"type": "tool",
+"example": "dentist in chicago",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "assistant;sources;names"
+},
+"/open-log/": {
+"kw": "seo report example;what does an seo report look like;seo progress report",
+"type": "tool",
+"example": "roofer in denver",
+"original": "413;v1.0, 23 Nov 2026",
+"trade": "log;report;checks"
 }
 }

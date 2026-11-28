@@ -323,7 +323,7 @@ def run(site, path, keywords, extra):
     res(261,'PASS' if 'Everything ships' in body_text and 'Half on page one' in body_text else 'FAIL','the two commitments near the CTA')
     res(262,'N/T','real reviews are collected in Step 6; none shown, none invented')
     res(263,'PASS' if 'Fact register' in body_text else 'FAIL','proof with source')
-    res(264,'PASS' if any(x in body_text for x in ('Ask a question','See all 413 checks','See who AI recommends for your trade','Check if your trade is open in your city')) else 'FAIL','one of the plan’s lighter steps is offered')
+    res(264,'PASS' if any(x in body_text for x in ('Ask a question','See all 413 checks','See who AI recommends for your trade','Check if your trade is open in your city','Get told when this changes')) else 'FAIL','one of the plan’s lighter steps is offered')
     res(267,'PASS' if h1s and (has(CFG['lead'],h1s[0].lower()) or all(w in h1s[0].lower() for w in words(CFG['lead'].replace(' in usa',' usa')))) and answer_words else 'FAIL','the H1 carries the page’s search and the first line answers it')
     res(268,'PASS' if 'Prices are discussed on the' in body_text else 'FAIL','honest price guidance: no prices, say so')
     res(269,'PASS' if all(s in low for s in ('day 5','month four','no charge')) else 'FAIL','cost, time, risk answered')

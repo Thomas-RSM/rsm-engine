@@ -492,3 +492,11 @@ svg.eg-wide{display:none}svg.eg-tall{display:block;width:100%;max-width:400px;he
 .rs-els .el-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 8px}
 .rs-els .el-list li{font-size:14.5px;line-height:1.3;padding:6px 11px;border-radius:999px;border:1px solid var(--line-2);background:rgba(255,255,255,.03);color:var(--text)}
 .rs-els .el-list li i{font-style:normal;font-family:var(--mono);font-size:12px;color:var(--text-3);margin-left:4px}
+
+/* enquiry form in the page hero */
+.rs-pagehero-grid>.rs-pagehero-in{max-width:none}
+.rsm .rs-heroform .lead-form{padding:26px 24px 22px}
+.rs-heroform .lf-title{font-size:24px;margin-bottom:6px}
+.rs-heroform .lf-grid{grid-template-columns:minmax(0,1fr)}
+.rs-heroform .lead-form input[type=text],.rs-heroform .lead-form input[type=email],.rs-heroform .lead-form input[type=tel]{min-height:48px;padding:11px 16px}
+@media (max-width:1024px){.rs-heroform{max-width:560px}}
