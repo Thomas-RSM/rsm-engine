@@ -70,6 +70,6 @@ for f in ('title', 'desc'):
     c = collections.Counter(v[f] for v in pages.values())
     for x, n in c.items():
         if n > 1: F.append(('site', 'duplicate %s: %s' % (f, x[:70])))
-json.dump({'pages': pages, 'findings': F, 'inbound': dict(inb)}, open('crawl.json', 'w'), indent=1)
+json.dump({'pages': pages, 'findings': F, 'inbound': dict(inb)}, open(__import__('os').path.join(__import__('os').path.dirname(__import__('os').path.abspath(__file__)), 'crawl.json'), 'w'), indent=1)
 print(len(pages), 'pages in sitemap ·', sum(v['imgs'] for v in pages.values()), 'images ·', sum(1 for v in pages.values() if v['main_imgs'] == 0), 'pages with no image in the body ·', len(F), 'findings')
 for f in F: print(' -', f[0], ':', f[1])
