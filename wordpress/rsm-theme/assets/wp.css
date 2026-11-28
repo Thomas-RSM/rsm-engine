@@ -395,3 +395,34 @@ svg.eg-wide{display:none}svg.eg-tall{display:block;width:100%;max-width:400px;he
 @media (max-width:819px){.rs-orbit-w .orbit{height:800px}}
 @media (max-width:479px){.rs-orbit-w .orbit{height:500px}}
 @media (max-width:760px){.rsm .lab .lab-out span{font-size:12px!important}}
+
+/* ================= inner pages ================= */
+.rs-pagehero{position:relative;overflow:hidden;background-image:radial-gradient(900px 420px at 78% 10%,rgba(64,98,255,.20),transparent 70%),radial-gradient(520px 320px at 88% 30%,rgba(248,177,15,.10),transparent 70%)}
+.rs-pagehero-in{max-width:880px}
+.rs-pagehero h1.elementor-heading-title{font-size:clamp(34px,4.2vw,56px);line-height:1.06;letter-spacing:-.03em}
+.rs-pagehero .lead p{max-width:46rem}
+.rs-crumbs p{margin:0;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3)}
+.rs-crumbs a{color:var(--peri);text-decoration:none}
+.rs-crumbs a:hover{color:var(--gold-2)}
+.rs-crumbs span[aria-current]{color:#fff}
+.rs-note p{max-width:60rem;padding:16px 20px;border-left:3px solid var(--gold);background:rgba(248,177,15,.07);border-radius:0 12px 12px 0;color:var(--text);font-size:15.5px;line-height:1.6}
+.rs-plain-table tbody th{font-size:17px;font-weight:600;letter-spacing:0;line-height:1.4;width:36%;white-space:normal;font-family:var(--sans);color:#fff}
+.rs-plain-table tbody th span{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:#fff}
+.rs-plain-table tbody td{font-size:15.5px;line-height:1.5}
+.rs-plain-table tbody td:nth-child(2){color:var(--gold-2);font-weight:600}
+@media (max-width:760px){.rs-pagehero h1.elementor-heading-title{font-size:32px}.rs-plain-table .record-table tbody th{font-size:17px;margin-bottom:6px}.rs-plain-table .record-table td:last-child{font-size:14.5px;color:var(--text-2)}.rs-note p{font-size:14.5px}}
+
+.rs-clause h3{position:relative;z-index:1;max-width:calc(100% - 84px)}
+@media (max-width:760px){.rs-clause h3{max-width:none}}
+
+/* the trust block on inner pages */
+.rs-trust-who p{color:var(--text-2);font-size:16px;line-height:1.6}
+.rs-trust-who a{color:var(--gold-2)}
+.rsm .rs-trust-proof{padding:28px 30px 26px;border-radius:22px}
+.rs-proof{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.rs-proof li{font-size:15.5px;line-height:1.5;color:var(--text-2);padding-bottom:12px;border-bottom:1px solid var(--line)}
+.rs-proof b{font-family:var(--head);font-size:21px;font-weight:650;letter-spacing:-.03em;color:var(--gold-2);margin-right:6px}
+.rs-proof span{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--text-3);margin-top:3px}
+.rs-trust-terms p{font-size:15px;line-height:1.55;color:var(--text-2);margin:0 0 8px}
+.rs-trust-terms b{color:#fff}
+@media (max-width:760px){.rsm .rs-trust-proof{padding:20px 18px}.rs-proof span{font-size:12px}}

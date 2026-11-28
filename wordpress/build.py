@@ -6,6 +6,7 @@
 import json, re, os, sys, zipfile, shutil
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from art import PROBLEM_ART
+import pages as PAGES
 from bs4 import BeautifulSoup
 
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
@@ -211,7 +212,7 @@ def site():
             'space_between_widgets': {'unit': 'px', 'size': 0, 'column': '0', 'row': '0', 'sizes': [], 'isLinked': True}, 'active_breakpoints': ['viewport_mobile', 'viewport_tablet'], 'viewport_mobile': 760, 'viewport_tablet': 1100,
         },
         'parts': {'header': {'key': 'header', 'title': 'Site header', 'slug': 'site-header', 'data': header()}, 'footer': {'key': 'footer', 'title': 'Site footer', 'slug': 'site-footer', 'data': footer(foot)}},
-        'pages': [{'key': 'home', 'title': 'Home', 'slug': 'home', 'front': True, 'seo': {'title': txt(head.title), 'description': head.find('meta', attrs={'name': 'description'})['content'], 'image': '{{media:og}}', 'published': '2026-11-24', 'reviewed': '2026-11-24', 'images': ['{{media:og}}', '{{media:logo}}']}, 'data': home()}],
+        'pages': [{'key': 'home', 'title': 'Home', 'slug': 'home', 'front': True, 'seo': {'title': txt(head.title), 'description': head.find('meta', attrs={'name': 'description'})['content'], 'image': '{{media:og}}', 'published': '2026-11-24', 'reviewed': '2026-11-24', 'images': ['{{media:og}}', '{{media:logo}}']}, 'data': home()}] + PAGES.make(globals()),
         'schema_graph': json.loads(gs),
         'llms': open(os.path.join(ROOT, 'site/llms.txt'), encoding='utf-8').read().split('## Start here')[0].replace(DOMAIN, '{{home}}').rstrip() + '\n\n## Pages\n{{pages}}\n\n## Site files\n- [Sitemap]({{home}}/sitemap.xml)\n',
     }

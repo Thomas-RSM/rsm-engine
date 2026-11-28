@@ -26,10 +26,12 @@ def get(url, method='GET'):
     except Exception as e: return 0, str(e).encode(), {}, time.time() - t
 
 class Text(HTMLParser):
-    def __init__(s): super().__init__(); s.main = 0; s.skip = 0; s.out = []; s.title = ''; s._t = 0; s.h = []; s._h = None; s.imgs = []; s.links = []; s.desc = ''; s.canon = ''; s.robots = ''
+    def __init__(s): super().__init__(); s.main = 0; s.skip = 0; s.out = []; s.boil = 0; s.uniq = []; s.title = ''; s._t = 0; s.h = []; s._h = None; s.imgs = []; s.links = []; s.desc = ''; s.canon = ''; s.robots = ''
     def handle_starttag(s, tag, a):
         a = dict(a)
         if tag == 'main': s.main = 1
+        if s.boil and tag == 'div': s.boil += 1
+        if not s.boil and tag == 'div' and 'rs-boiler' in (a.get('class') or ''): s.boil = 1
         if tag in ('script', 'style', 'svg', 'noscript', 'template', 'select'): s.skip += 1
         if tag == 'title' and not s.skip and not s.title: s._t = 1
         if tag in ('h1', 'h2', 'h3'): s._h = [tag, '']
@@ -43,14 +45,16 @@ class Text(HTMLParser):
         if tag == 'title': s._t = 0
         if tag in ('h1', 'h2', 'h3') and s._h: s.h.append((s._h[0], ' '.join(s._h[1].split()))); s._h = None
         if tag == 'main': s.main = 0
+        if s.boil and tag == 'div': s.boil -= 1
     def handle_data(s, d):
         if s._t: s.title += d
         if s.skip: return
         if s._h: s._h[1] += d
         if s.main: s.out.append(d)
+        if s.main and not s.boil: s.uniq.append(d)
 
 def parse(html):
-    p = Text(); p.feed(html); p.text = ' '.join(' '.join(p.out).split()); return p
+    p = Text(); p.feed(html); p.text = ' '.join(' '.join(p.out).split()); p.own = ' '.join(' '.join(p.uniq).split()); return p
 
 def words(t): return re.findall(r"[a-z0-9'’]+", t.lower())
 def shingles(t, n=8):
@@ -83,7 +87,8 @@ def main():
     out = os.path.join(d, 'result.json')
     arg = lambda k, dflt=None: a[a.index(k) + 1] if k in a else dflt
     mt = re.search(r'Last reviewed\s+(\d{1,2})\s(\w{3})\w*\s(\d{4})', p.text); mon = dict(Jan=1, Feb=2, Mar=3, Apr=4, May=5, Jun=6, Jul=7, Aug=8, Sep=9, Oct=10, Nov=11, Dec=12)
-    cfg = {'host': base, 'cwv_lab': False}
+    cfg = {'host': base, 'cwv_lab': False, 'lead': lead}
+    if arg('--trade'): cfg['trade_words'] = [x for x in arg('--trade').split(';') if x]
     if mt: cfg['modified'] = '%s-%02d-%02d' % (mt.group(3), mon.get(mt.group(2), 0), int(mt.group(1))); cfg['modified_text'] = '%d %s %s' % (int(mt.group(1)), mt.group(2), mt.group(3))
     rng = {'home': [1500, 3500], 'hub': [600, 2200], 'problem': [900, 2600], 'pillar': [1200, 3200], 'service': [900, 2600], 'tool': [300, 1800], 'about': [500, 2400], 'legal': [300, 4000]}
     cfg['words'] = rng.get(arg('--type', 'home'), [300, 3200])
@@ -121,7 +126,7 @@ def main():
     gate('at least 300 words of copy', n >= 300, f'{n}')
     # against every other recorded page
     rec = json.load(open(RECORDS)) if os.path.exists(RECORDS) else {}
-    mine = shingles(p.text); worst = ('', 0.0)
+    mine = shingles(p.own); worst = ('', 0.0)
     for op, o in rec.items():
         if op == path: continue
         if lead and o.get('lead', '').lower() == lead: fails.append(f"FAIL · cannibalisation · {op} already targets “{lead}”")

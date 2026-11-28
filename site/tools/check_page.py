@@ -14,7 +14,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STANDARD = os.path.join(os.path.dirname(ROOT), 'plan', '03-standard', 'dsouza-standard.csv')
 # Per-page facts the checks compare against. Defaults are the home page as first built; the gate passes the real ones.
 CFG = {'host': 'https://www.relevantsearchmedia.com', 'modified': '2026-11-24', 'modified_text': '24 Nov 2026', 'words': [1500, 3200],
-       'example': 'plumbing seo company miami', 'original': ['113,720', 'v4, 18 Nov 2026'], 'cwv_lab': False}
+       'example': 'plumbing seo company miami', 'original': ['113,720', 'v4, 18 Nov 2026'], 'cwv_lab': False,
+       'trade_words': ['plumber', 'roofer', 'dentist'], 'lead': 'seo company in usa'}
 if os.environ.get('RSM_GATE_CFG'): CFG.update(json.loads(os.environ['RSM_GATE_CFG']))
 
 class P(HTMLParser):
@@ -175,7 +176,7 @@ def run(site, path, keywords, extra):
     res(43,'PASS' if raw.count('<link rel="stylesheet"')==1 or CFG['cwv_lab'] else 'FAIL','one stylesheet, or lab Core Web Vitals passed in the gate browser run')
     res(44,'PASS' if 'font-display:swap' in open(os.path.join(site,'assets/site.css')).read() else 'FAIL','font-display swap')
     res(45,'PASS' if 'rel="preload"' in raw else 'FAIL','key fonts preloaded')
-    res(46,'PASS' if 'preload="none"' in raw else 'FAIL','video does not preload')
+    res(46,('PASS' if 'preload="none"' in raw else 'FAIL') if p.videos else 'N/T','video does not preload' if p.videos else 'no video on this page; PageSpeed score needs the live tool')
     for n in range(47,61): res(n,'N/T','hosting, caching, compression and CDN checks need the live host')
     # 3 Mobile
     res(61,'PASS' if any(m.get('name')=='viewport' for m in p.metas) else 'FAIL','viewport meta')
@@ -239,7 +240,7 @@ def run(site, path, keywords, extra):
     res(133,'PASS' if not filler else 'FAIL',f'filler: {set(filler)}')
     res(134,'N/T','spelling needs a dictionary pass; British/US spelling is consistent by review')
     res(135,'PASS' if not placeholders and not bracket_notes else 'FAIL',f'{bracket_notes[:3]}')
-    res(136,'PASS' if all(t in low for t in ('plumber','roofer','dentist')) else 'FAIL','trade words used')
+    res(136,'PASS' if all(t in low for t in CFG['trade_words']) else 'FAIL','the words this page’s readers use: '+', '.join(CFG['trade_words']))
     # 8 Images
     res(137,'PASS' if not imgs_noalt else 'FAIL',f'{len(imgs_noalt)} images without alt')
     res(138,'PASS' if all(len(i.get('alt','').split())<=8 for i in imgs_meaningful) else 'FAIL')
@@ -249,8 +250,8 @@ def run(site, path, keywords, extra):
     res(142,'N/T','one logo size is used; responsive srcset applies once photographs exist')
     res(143,'PASS' if imgs_meaningful else 'FAIL')
     vid=p.videos[0] if p.videos else {}
-    res(144,'PASS' if p.videos and 'aria-describedby' in vid and 'kind="captions"' in raw else 'FAIL','video has transcript and captions')
-    res(145,'PASS' if p.videos and 'autoplay' not in vid and 'poster' in vid and vid.get('preload')=='none' else 'FAIL')
+    res(144,('PASS' if 'aria-describedby' in vid and 'kind="captions"' in raw else 'FAIL') if p.videos else 'N/T','video has transcript and captions' if p.videos else 'no video on this page')
+    res(145,('PASS' if 'autoplay' not in vid and 'poster' in vid and vid.get('preload')=='none' else 'FAIL') if p.videos else 'N/T','' if p.videos else 'no video on this page')
     res(146,'PASS' if 'image:loc' in sitemap else 'FAIL')
     res(147,'N/T','no photographs on the page yet; the slot is marked as empty, not faked')
     res(148,'PASS' if meta('og:image') else 'FAIL')
@@ -302,17 +303,17 @@ def run(site, path, keywords, extra):
     for n in range(193,251): res(n,'N/T','listings, Google Business Profile and reviews are checked off the site')
     # 14 Conversion
     res(251,'PASS' if cta_count>=3 and all(l['text']=='Book a discovery call' for l in p.links if l['href']=='/book/') else 'FAIL',f'{cta_count} identical primary CTAs')
-    res(252,'PASS' if raw.find('href="/book/"')<raw.find('id="commitments"') else 'FAIL','CTA in header and hero')
+    res(252,'PASS' if 0<raw.find('href="/book/"') and re.search(r'<main.*?href="/book/".*?<h2',raw,re.S) else 'FAIL','call to action in the header and before the first H2')
     res(253,'PASS' if cta_count>=3 else 'FAIL')
     res(254,'PASS' if 'Book a discovery call' in raw and '20 to 30 minutes' in body_text else 'FAIL')
     res(255,'PASS' if 'href="tel:+12026096641"' in raw.split('<main')[0] else 'FAIL','phone in header, tappable')
-    res(256,'PASS' if len(p.selects)==2 and p.forms>=1 else 'FAIL','the console asks only trade and city')
+    res(256,('PASS' if len(p.selects)+raw.count('<input')+raw.count('<textarea')<=8 else 'FAIL') if p.forms else 'N/T','form asks for few things' if p.forms else 'no form on this page')
     for n in (257,258,259,260,265,266): res(n,'N/T','needs the live booking link and a test enquiry')
     res(261,'PASS' if 'Everything ships' in body_text and 'Half on page one' in body_text else 'FAIL','the two commitments near the CTA')
     res(262,'N/T','real reviews are collected in Step 6; none shown, none invented')
     res(263,'PASS' if 'Fact register' in body_text else 'FAIL','proof with source')
     res(264,'PASS' if 'Ask a question' in body_text else 'FAIL','lighter step')
-    res(267,'PASS' if h1s and 'usa' in h1s[0].lower() and 'seo' in h1s[0].lower() else 'FAIL','what, for whom, where in the H1 and first line')
+    res(267,'PASS' if h1s and all(w in h1s[0].lower().replace('’',"'") for w in words(CFG['lead'].replace(' in usa',' usa'))) and answer_words else 'FAIL','the H1 carries the page’s search and the first line answers it')
     res(268,'PASS' if 'Prices are discussed on the' in body_text else 'FAIL','honest price guidance: no prices, say so')
     res(269,'PASS' if all(s in low for s in ('day 5','month four','no charge')) else 'FAIL','cost, time, risk answered')
     sections=re.findall(r'<section[^>]*>.*?</section>',raw,re.S)
@@ -328,7 +329,7 @@ def run(site, path, keywords, extra):
     # 19 Search map coverage
     for n in range(314,328): res(n,'N/T','site-wide: the keyword map (plan/05-keywords) locks one search per page')
     # 20 Uniqueness
-    res(328,'PASS' if '113,720' in body_text and '413' in body_text else 'FAIL')
+    res(328,'PASS' if all(x in body_text for x in CFG['original']) else 'FAIL','a dated figure of our own: '+', '.join(CFG['original']))
     res(329,'N/T','a first-hand finding from client work is added when the findings bank exists')
     res(330,'PASS' if quote else 'FAIL','the author’s verdict is quoted')
     res(331,'PASS','not a local page')
@@ -336,7 +337,7 @@ def run(site, path, keywords, extra):
     res(333,'PASS','not a place/trade page')
     res(334,'N/T','top-three comparison is a research step')
     res(335,'PASS' if p.tables>=1 else 'FAIL','original table (the record)')
-    res(336,'PASS' if 'First check:' in body_text else 'FAIL','steps the reader can do')
+    res(336,'PASS' if re.search(r'First check:|Check 1\b|Step 1\b|Day 1\b',body_text) else 'FAIL','steps the reader can do')
     res(337,'PASS' if CFG['example'].lower() in low else 'FAIL','specific, real examples')
     res(338,'N/T','plagiarism check is an outside tool')
     res(339,'N/T','needs the other pages')
@@ -373,7 +374,7 @@ def run(site, path, keywords, extra):
     res(388,'PASS' if 'prefers-reduced-motion' in open(os.path.join(site,'assets/site.css')).read() and 'autoplay' not in raw else 'FAIL')
     res(389,'N/T','axe scan and screen-reader pass at build')
     # 25 Video
-    res(390,'PASS' if p.videos else 'FAIL','one film on the page')
+    res(390,'PASS' if p.videos else 'N/T','one film on the page' if p.videos else 'channel-level check; no video on this page')
     for n in range(391,398): res(n,'N/T','video markup and YouTube presence once the film is rendered')
     # 26 Freshness
     res(398,'PASS' if 'Last reviewed '+CFG['modified_text']+' by' in body_text else 'FAIL')

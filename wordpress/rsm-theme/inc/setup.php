@@ -97,6 +97,7 @@ function rsm_import_doc( $type, $doc, $reset, $tokens ) {
 	if ( $id && ! $reset ) { return array( $id, 'kept' ); }
 	$json = strtr( wp_json_encode( $doc['data'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ), $tokens );
 	$args = array( 'post_type' => $type, 'post_title' => $doc['title'], 'post_name' => $doc['slug'], 'post_status' => 'publish', 'post_content' => '' );
+	if ( 'page' === $type && ! empty( $doc['parent'] ) ) { $pp = get_page_by_path( $doc['parent'] ); if ( $pp ) { $args['post_parent'] = (int) $pp->ID; } }
 	if ( $id ) { $args['ID'] = $id; wp_update_post( $args ); $state = 'reset'; } else { $id = wp_insert_post( $args ); $state = 'created'; }
 	if ( is_wp_error( $id ) || ! $id ) { return array( 0, 'failed' ); }
 	update_post_meta( $id, '_rsm_import_key', $doc['key'] );
