@@ -229,37 +229,57 @@
     trade.addEventListener('change', fill); city.addEventListener('change', fill);
   })();
 
-  /* ---------- 3 · the equation lab: three terms multiply ---------- */
+  /* ---------- 3 · the equation lab: three lenses, each lets through its share of the light ---------- */
   (function () {
     var lab = document.getElementById('lab'); if (!lab) return;
     var cv = lab.querySelector('canvas'), ins = [].slice.call(lab.querySelectorAll('input[type=range]')), outs = [].slice.call(lab.querySelectorAll('.dial output')), big = lab.querySelector('[data-rel]'), say = lab.querySelector('[data-say]');
-    var COL = ['248,177,15', '76,192,168', '163,181,242'], NAME = ['READ', 'CONFIRM', 'CHOOSE'], cur = [0.8, 0.7, 0.75], tgt = cur.slice(), t = 0, prev = 0, raf = 0, visible = false, ctx = null, CW = 0, CH = 0;
-    var parts = []; for (var i = 0; i < 46; i++) parts.push({ u: i / 46, y: (Math.sin(i * 12.9898) * 43758.5453 % 1), s: 0.6 + (i * 7 % 10) / 10 });
-    function read() { ins.forEach(function (el, i) { tgt[i] = el.value / 100; outs[i].textContent = el.value; });
-      var p = Math.round(tgt[0] * tgt[1] * tgt[2] * 100); big.textContent = p;
+    var cols = [].slice.call(lab.querySelectorAll('.lt')), live = [lab.querySelector('[data-v0]'), lab.querySelector('[data-v1]'), lab.querySelector('[data-v2]')], live2 = lab.querySelector('[data-rel2]');
+    var COL = ['248,177,15', '76,192,168', '163,181,242'], cur = [0.8, 0.7, 0.75], tgt = cur.slice(), t = 0, prev = 0, raf = 0, visible = false, ctx = null, CW = 0, CH = 0;
+    var sd = 11, rnd = function () { sd = (sd * 9301 + 49297) % 233280; return sd / 233280; };
+    var parts = []; for (var i = 0; i < 90; i++) parts.push({ u: rnd(), y: rnd() - 0.5, s: 0.7 + rnd() * 0.6, th: [rnd(), rnd(), rnd()], r: 1 + rnd() * 1.4 });
+    function read() {
+      ins.forEach(function (el, i) { tgt[i] = el.value / 100; outs[i].textContent = el.value; if (live[i]) live[i].textContent = el.value; });
+      var p = Math.round(tgt[0] * tgt[1] * tgt[2] * 100); big.textContent = p; if (live2) live2.textContent = p;
       say.textContent = p < 5 ? 'Engines pass you by. One term near zero cancels the other two.' : p < 30 ? 'Named now and then. The weakest term is holding the other two down.' : p < 60 ? 'Named often. Raise the lowest term first; that is where the gain is.' : 'The answer. All three are strong, so every engine has a reason to name you.';
+      var lo = 0; for (var i = 1; i < 3; i++) if (tgt[i] < tgt[lo]) lo = i;
+      cols.forEach(function (c, i) { var w = c.querySelector('.weak'); var on = i === lo && p < 60; c.classList.toggle('is-weak', on); if (w) w.hidden = !on; });
+      try { document.dispatchEvent(new CustomEvent('rsm:relevance', { detail: p })); } catch (e) {}
       kick(); }
     function draw(now) { raf = 0; if (!visible || document.hidden) return;
       var dt = prev ? Math.min(0.05, (now - prev) / 1000) : 0.016; prev = now; t += dt;
-      var moving = false; for (var i = 0; i < 3; i++) { var dv = tgt[i] - cur[i]; if (Math.abs(dv) > 0.002) moving = true; cur[i] += dv * Math.min(1, dt * 7); }
+      var moving = false, i; for (i = 0; i < 3; i++) { var dv = tgt[i] - cur[i]; if (Math.abs(dv) > 0.002) moving = true; cur[i] += dv * Math.min(1, dt * 7); }
       var r = cv.getBoundingClientRect(), w = r.width, h = r.height, dpr = Math.min(window.devicePixelRatio || 1, 2);
       if (CW !== Math.round(w * dpr) || CH !== Math.round(h * dpr)) { CW = cv.width = Math.round(w * dpr); CH = cv.height = Math.round(h * dpr); ctx = null; }
       var x = ctx || (ctx = cv.getContext('2d')); x.setTransform(dpr, 0, 0, dpr, 0, 0); x.clearRect(0, 0, w, h);
-      var cy = h * 0.5, x0 = w * 0.015, x1 = w * 0.955, LX = [1 / 6, 0.5, 5 / 6].map(function (f) { return w * f; }), lr = Math.min(h * 0.36, 74);
-      var inten = function (px) { var v = 1; for (var i = 0; i < 3; i++) if (px > LX[i]) v *= cur[i]; return v; };
-      x.globalCompositeOperation = 'lighter';
-      var seg = [x0].concat(LX, [x1]);
-      for (i = 0; i < 4; i++) { var v = inten((seg[i] + seg[i + 1]) / 2), g = x.createLinearGradient(seg[i], 0, seg[i + 1], 0); g.addColorStop(0, 'rgba(255,214,140,' + (0.05 + 0.5 * v).toFixed(3) + ')'); g.addColorStop(1, 'rgba(255,214,140,' + (0.05 + 0.5 * v).toFixed(3) + ')'); x.strokeStyle = g; x.lineWidth = 1 + 9 * v; x.lineCap = 'round'; x.globalAlpha = 0.35; x.beginPath(); x.moveTo(seg[i], cy); x.lineTo(seg[i + 1], cy); x.stroke(); x.globalAlpha = 1; x.lineWidth = 1.2; x.strokeStyle = 'rgba(255,236,190,' + (0.12 + 0.8 * v).toFixed(3) + ')'; x.beginPath(); x.moveTo(seg[i], cy); x.lineTo(seg[i + 1], cy); x.stroke(); }
-      parts.forEach(function (p) { var u = REDUCE ? p.u : (p.u + t * 0.16 * p.s) % 1, px = x0 + (x1 - x0) * u, v = inten(px), spread = 3 + 12 * v; x.fillStyle = 'rgba(255,226,160,' + (0.9 * v).toFixed(3) + ')'; x.beginPath(); x.arc(px, cy + (Math.abs(p.y) - 0.5) * spread, 1.1 + 1.2 * v, 0, 6.2832); x.fill(); });
+      var cy = h * 0.5, x0 = w * 0.015, x1 = w * 0.955, LX = [1 / 6, 0.5, 5 / 6].map(function (f) { return w * f; }), lr = Math.min(h * 0.38, 104), lw = lr * 0.36, span = x1 - x0;
+      // the path, faint
+      x.strokeStyle = 'rgba(163,181,242,0.16)'; x.lineWidth = 1; x.setLineDash([2, 7]); x.beginPath(); x.moveTo(x0, cy); x.lineTo(x1, cy); x.stroke(); x.setLineDash([]);
+      // beam: brighter where more light survives
+      var seg = [x0].concat(LX, [x1]), v = 1;
+      x.globalCompositeOperation = 'lighter'; x.lineCap = 'round';
+      for (i = 0; i < 4; i++) { if (i > 0) v *= cur[i - 1]; var bh = 3 + lr * 0.34 * v, bg = x.createLinearGradient(0, cy - bh, 0, cy + bh); bg.addColorStop(0, 'rgba(248,177,15,0)'); bg.addColorStop(0.5, 'rgba(255,214,140,' + (0.05 + 0.3 * v).toFixed(3) + ')'); bg.addColorStop(1, 'rgba(248,177,15,0)'); x.fillStyle = bg; x.fillRect(seg[i], cy - bh, seg[i + 1] - seg[i], bh * 2); x.strokeStyle = 'rgba(255,236,190,' + (0.1 + 0.75 * v).toFixed(3) + ')'; x.lineWidth = 1.4; x.beginPath(); x.moveTo(seg[i], cy); x.lineTo(seg[i + 1], cy); x.stroke(); }
+      // the lights: each one must get through every lens
+      var arrived = 0;
+      for (i = 0; i < parts.length; i++) { var p = parts[i], u = REDUCE ? p.u : (p.u + t * 0.11 * p.s) % 1, px = x0 + span * u, stop = -1, k;
+        for (k = 0; k < 3; k++) if (p.th[k] >= cur[k]) { stop = k; break; }
+        var sv = 1; for (k = 0; k < 3; k++) if (px > LX[k]) sv *= cur[k];
+        var py = cy + p.y * (10 + lr * 0.9 * (0.25 + 0.75 * sv)), al = 0.95;
+        if (stop >= 0 && px > LX[stop]) { var d = px - LX[stop]; al = Math.max(0, 0.8 - d / (w * 0.07)); py += (p.y >= 0 ? 1 : -1) * d * 0.9; if (al <= 0) continue; x.fillStyle = 'rgba(' + COL[stop] + ',' + al.toFixed(3) + ')'; }
+        else { if (stop < 0 && u > 0.9) arrived++; x.fillStyle = 'rgba(255,232,176,' + al + ')'; }
+        x.beginPath(); x.arc(px, py, p.r, 0, 6.2832); x.fill(); }
       x.globalCompositeOperation = 'source-over';
+      // lenses: a gauge ring that fills with the term
       for (i = 0; i < 3; i++) { var c = COL[i], val = cur[i];
-        x.fillStyle = 'rgba(' + c + ',' + (0.05 + 0.2 * val).toFixed(3) + ')'; x.beginPath(); x.ellipse(LX[i], cy, lr * 0.42, lr, 0, 0, 6.2832); x.fill();
-        x.strokeStyle = 'rgba(' + c + ',' + (0.3 + 0.7 * val).toFixed(3) + ')'; x.lineWidth = 1.6; x.beginPath(); x.ellipse(LX[i], cy, lr * 0.42, lr, 0, 0, 6.2832); x.stroke();
-        x.strokeStyle = 'rgba(' + c + ',0.25)'; x.lineWidth = 1; x.beginPath(); x.ellipse(LX[i], cy, lr * 0.42 * val, lr * val, 0, 0, 6.2832); x.stroke();
-        if (i < 2) { x.fillStyle = 'rgba(248,177,15,0.95)'; x.font = '700 20px "Sora", sans-serif'; x.textAlign = 'center'; x.fillText('\u00d7', (LX[i] + LX[i + 1]) / 2, cy - lr * 0.55); } }
-      x.font = '600 10px "JetBrains Mono", monospace'; x.fillStyle = 'rgba(180,192,224,0.9)'; x.textAlign = 'left'; x.fillText('THE QUESTION', x0 + 4, cy + lr * 0.72); x.textAlign = 'right'; x.fillText('THE ANSWER', w - 8, cy + lr * 0.72);
-      var out = cur[0] * cur[1] * cur[2], ox = w * 0.955, orad = 10 + 16 * out, gl = x.createRadialGradient(ox, cy, 0, ox, cy, orad * 3.2); gl.addColorStop(0, 'rgba(255,214,140,' + (0.15 + 0.75 * out).toFixed(3) + ')'); gl.addColorStop(1, 'rgba(248,177,15,0)'); x.fillStyle = gl; x.beginPath(); x.arc(ox, cy, orad * 3.2, 0, 6.2832); x.fill();
-      x.fillStyle = 'rgba(246,241,230,' + (0.25 + 0.75 * out).toFixed(3) + ')'; x.beginPath(); x.arc(ox, cy, orad, 0, 6.2832); x.fill(); x.strokeStyle = 'rgba(226,174,69,0.95)'; x.lineWidth = 1.5; x.stroke();
+        var g = x.createRadialGradient(LX[i], cy, 0, LX[i], cy, lr); g.addColorStop(0, 'rgba(' + c + ',' + (0.05 + 0.2 * val).toFixed(3) + ')'); g.addColorStop(1, 'rgba(' + c + ',0.02)');
+        x.fillStyle = g; x.beginPath(); x.ellipse(LX[i], cy, lw, lr, 0, 0, 6.2832); x.fill();
+        x.strokeStyle = 'rgba(' + c + ',0.28)'; x.lineWidth = 1.5; x.beginPath(); x.ellipse(LX[i], cy, lw, lr, 0, 0, 6.2832); x.stroke();
+        x.strokeStyle = 'rgb(' + c + ')'; x.lineWidth = 4; x.lineCap = 'round'; x.shadowColor = 'rgba(' + c + ',0.9)'; x.shadowBlur = 12; x.beginPath(); x.ellipse(LX[i], cy, lw, lr, 0, -Math.PI / 2, -Math.PI / 2 + 6.2832 * Math.max(0.004, val)); x.stroke(); x.shadowBlur = 0;
+        x.font = '700 ' + Math.round(Math.max(13, lr * 0.2)) + 'px "Sora", sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillStyle = '#fff'; x.fillText(Math.round(val * 100), LX[i], cy - lr - 16);
+        if (i < 2) { x.fillStyle = 'rgba(248,177,15,0.95)'; x.font = '700 22px "Sora", sans-serif'; x.fillText('×', (LX[i] + LX[i + 1]) / 2, cy - lr - 16); } }
+      x.textBaseline = 'alphabetic'; x.font = '600 10.5px "JetBrains Mono", monospace'; x.fillStyle = 'rgba(190,200,234,0.9)'; x.textAlign = 'left'; x.fillText('THE QUESTION', x0 + 4, cy + lr + 4); x.textAlign = 'right'; x.fillText('THE ANSWER', w - 8, cy + lr + 4);
+      // the answer
+      var out = cur[0] * cur[1] * cur[2], ox = w * 0.955, orad = 9 + lr * 0.3 * out, gl = x.createRadialGradient(ox, cy, 0, ox, cy, orad * 3.4); gl.addColorStop(0, 'rgba(255,214,140,' + (0.12 + 0.78 * out).toFixed(3) + ')'); gl.addColorStop(1, 'rgba(248,177,15,0)'); x.fillStyle = gl; x.beginPath(); x.arc(ox, cy, orad * 3.4, 0, 6.2832); x.fill();
+      x.fillStyle = 'rgba(246,241,230,' + (0.22 + 0.78 * out).toFixed(3) + ')'; x.beginPath(); x.arc(ox, cy, orad, 0, 6.2832); x.fill(); x.strokeStyle = 'rgba(226,174,69,0.95)'; x.lineWidth = 1.5; x.stroke();
       if (!REDUCE || moving) raf = requestAnimationFrame(draw); }
     function kick() { if (!raf) { prev = 0; raf = requestAnimationFrame(draw); } }
     ins.forEach(function (el) { el.addEventListener('input', read); });
@@ -267,6 +287,23 @@
     onScreen(lab, function (v) { visible = v; kick(); });
     read();
   })();
+
+  /* ---------- 4 · five engines: change the question, tap an engine, the answer follows the dials ---------- */
+  (function () {
+    var q1 = document.getElementById('eg-q1'); if (!q1) return;
+    var q2 = document.getElementById('eg-q2'), ans = document.getElementById('eg-ans'), ansr = document.getElementById('eg-ansr'), ansl = document.getElementById('eg-ansl'), glow = document.getElementById('eg-glowc'), cap = document.getElementById('eg-cap');
+    var outs = [].slice.call(document.querySelectorAll('.eg-o')), btns = [].slice.call(document.querySelectorAll('.eg-controls button')), input = document.getElementById('eg-input'), base = cap ? cap.textContent : '';
+    function setQ(text) { text = (text || '').trim() || 'Who should I call?'; var w = text.split(' '), a = '', b = ''; w.forEach(function (x) { if (!b && (a + ' ' + x).trim().length <= 14) a = (a + ' ' + x).trim(); else b = (b + ' ' + x).trim(); }); q1.textContent = '“' + a + (b ? '' : '”'); q2.textContent = b ? b + '”' : ''; }
+    btns.forEach(function (b) { b.addEventListener('click', function () { btns.forEach(function (o) { o.classList.toggle('on', o === b); }); if (input) input.value = ''; setQ(b.getAttribute('data-q')); }); });
+    if (input) input.addEventListener('input', function () { btns.forEach(function (o) { o.classList.remove('on'); }); setQ(input.value); });
+    [].slice.call(document.querySelectorAll('.eg-tile')).forEach(function (g) { var show = function () { if (cap) cap.textContent = g.getAttribute('data-info'); }, hide = function () { if (cap) cap.textContent = base; };
+      g.addEventListener('mouseenter', show); g.addEventListener('focus', show); g.addEventListener('click', show); g.addEventListener('mouseleave', hide); g.addEventListener('blur', hide); });
+    document.addEventListener('rsm:relevance', function (e) { var p = e.detail, you = p >= 30, k = Math.max(0.12, Math.min(1, p / 60));
+      ans.textContent = you ? 'You.' : 'Someone else.'; ans.setAttribute('font-size', you ? 23 : 19); ans.setAttribute('fill', you ? '#fff' : '#B9C4EA');
+      ansr.setAttribute('stroke', you ? 'rgba(248,177,15,.8)' : 'rgba(150,170,255,.35)'); ansl.setAttribute('fill', you ? '#FFD98A' : '#8A97C4'); glow.setAttribute('opacity', you ? k : 0.05);
+      outs.forEach(function (o) { o.setAttribute('opacity', k); }); });
+  })();
+
   /* ---- the film: rolls muted when on screen, chapters jump, one button for sound ---- */
   (function () {
     var v = document.querySelector('video[data-roll]'); if (!v) return;
@@ -277,5 +314,10 @@
     v.addEventListener('timeupdate', function () { var cur = 0; chaps.forEach(function (b, i) { if (v.currentTime >= parseFloat(b.getAttribute('data-t'))) cur = i; }); chaps.forEach(function (b, i) { b.classList.toggle('on', i === cur); }); });
     if (btn) { var sync = function () { var on = !v.muted; btn.setAttribute('aria-pressed', on ? 'true' : 'false'); btn.textContent = on ? 'Sound on' : 'Play with sound'; };
       btn.addEventListener('click', function () { if (v.muted) { v.muted = false; v.currentTime = 0; play(); } else v.muted = true; sync(); }); v.addEventListener('volumechange', sync); }
+  })();
+  /* ---- header menus: Escape closes, and a click outside closes the small-screen menu ---- */
+  (function () {
+    document.addEventListener('keydown', function (e) { if (e.key !== 'Escape') return; if (document.activeElement && document.activeElement.blur) document.activeElement.blur(); var m = document.querySelector('details.menu[open]'); if (m) m.open = false; });
+    document.addEventListener('click', function (e) { var m = document.querySelector('details.menu[open]'); if (m && !m.contains(e.target)) m.open = false; });
   })();
 })();

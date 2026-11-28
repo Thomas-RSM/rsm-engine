@@ -114,7 +114,7 @@ def run(site, path, keywords, extra):
     long_paras=[x for x in paras if len(re.findall(r'[.!?](\s|$)',x))>3]
     stuffed=[x for x in paras if x.lower().count(lead)>=3]
     filler=re.findall(r"in today['’]s digital world|unlock|elevate|game-changer|cutting-edge|seamless|best-in-class|world-class",low)
-    placeholders=re.findall(r'lorem|\[[A-Z][^\]]{3,}\]|TODO|placeholder',raw)
+    placeholders=re.findall(r'lorem|\[[A-Z][^\]]{3,}\]|TODO|placeholder',re.sub(r'placeholder="[^"]*"|::placeholder','',raw))
     bracket_notes=[x for x in re.findall(r'\[[^\]]+\]',body_text) if len(x)>6]
     imgs_meaningful=[i for i in p.imgs if i.get('alt') not in ('',None)]
     imgs_noalt=[i for i in p.imgs if 'alt' not in i]
